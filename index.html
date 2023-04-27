@@ -152,7 +152,7 @@
   <nav class="site-state">
       <div class="site-state-item site-state-posts">
         <a href="/archives/">
-          <span class="site-state-item-count">13</span>
+          <span class="site-state-item-count">14</span>
           <span class="site-state-item-name">posts</span>
         </a>
       </div>
@@ -163,7 +163,7 @@
       </div>
       <div class="site-state-item site-state-tags">
           <a href="/tags/">
-        <span class="site-state-item-count">21</span>
+        <span class="site-state-item-count">22</span>
         <span class="site-state-item-name">tags</span></a>
       </div>
   </nav>
@@ -188,6 +188,150 @@
     </div>
 
     <div class="main-inner index posts-expand">
+
+    
+
+
+<div class="post-block">
+  
+  
+
+  <article itemscope itemtype="http://schema.org/Article" class="post-content" lang="">
+    <link itemprop="mainEntityOfPage" href="https://mccranky83.github.io/2023/04/27/[Fix]%20Failed%20to%20mount%20:mnt:share/">
+
+    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
+      <meta itemprop="image" content="/images/icons8-dead-cells-1024.png">
+      <meta itemprop="name" content="Mccranky83">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="Mccranky's Blog">
+      <meta itemprop="description" content=""Bliss it was in that dawn to be alive   But to be young was very heaven."">
+    </span>
+
+    <span hidden itemprop="post" itemscope itemtype="http://schema.org/CreativeWork">
+      <meta itemprop="name" content="undefined | Mccranky's Blog">
+      <meta itemprop="description" content="">
+    </span>
+      <header class="post-header">
+        <h2 class="post-title" itemprop="name headline">
+          <a href="/2023/04/27/%5BFix%5D%20Failed%20to%20mount%20:mnt:share/" class="post-title-link" itemprop="url">[Fix] Failed to mount /mnt/share</a>
+        </h2>
+
+        <div class="post-meta-container">
+          <div class="post-meta">
+    <span class="post-meta-item">
+      <span class="post-meta-item-icon">
+        <i class="far fa-calendar"></i>
+      </span>
+      <span class="post-meta-item-text">Posted on</span>
+      
+
+      <time title="Created: 2023-04-27 11:02:04 / Modified: 12:51:43" itemprop="dateCreated datePublished" datetime="2023-04-27T11:02:04+08:00">2023-04-27</time>
+    </span>
+
+  
+</div>
+
+        </div>
+      </header>
+
+    
+    
+    
+    <div class="post-body" itemprop="articleBody">
+          <h3 id="Solution"><a href="#Solution" class="headerlink" title="Solution"></a>Solution</h3><p>Our fix to the problem is to remove <code>/mnt/share</code> entirely and mount something else in its place.</p>
+<p>This is the portion of the startup process which showed the error:</p>
+<pre><code>[FAILED] Failed to mount /mnt/share.
+See &#39;systemctl status mnt-share.mount&#39; for details
+</code></pre>
+<p>By the way, this post is for those who followed <a href="/2023/04/26/Mounting-a-Shared-folder-on-ArchLinux-VM/#Rollback">my last tutorial</a> on using Samba service to mount a shared directory on ArchLinux VM.</p>
+<h3 id="Check-mount-unit-status"><a href="#Check-mount-unit-status" class="headerlink" title="Check mount unit status"></a>Check mount unit status</h3><p>We’ll start by following the instruction to check the status of the mount unit by running the suggested command:</p>
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">systemctl status mnt-share.mount</span><br></pre></td></tr></table></figure>
+
+<p>This will give us more information about the specific error that occurred.</p>
+<pre><code>Warning: The unit file, source configuration file or drop-ins of mnt-share.moun&gt;
+x mnt-share.mount - /mnt/share
+     Loaded: loaded (/etc/fstab; generated)
+     Active: failed (Result: exit-code) since Thu 2023-04-27 02:45:46 UTC; 40mi&gt;
+      Where: /mnt/share
+       What: //localhost/share
+       Docs: man:fstab(5)
+             man:systemd-fstab-generator(8)
+        CPU: 28ms
+
+Apr 27 02:45:46 alarm systemd[1]: Mounting /mnt/share...
+Apr 27 02:45:46 alarm mount[379]: mount error(111): could not connect to ::1mou&gt;
+Apr 27 02:45:46 alarm systemd[1]: mnt-share.mount: Mount process exited, code=e&gt;
+Apr 27 02:45:46 alarm systemd[1]: mnt-share.mount: Failed with result &#39;exit-cod&gt;
+Apr 27 02:45:46 alarm systemd[1]: Failed to mount /mnt/share.
+</code></pre>
+<h3 id="Side-Content"><a href="#Side-Content" class="headerlink" title="Side Content"></a>Side Content</h3><h4 id="Check-file-system-properties"><a href="#Check-file-system-properties" class="headerlink" title="Check file system properties"></a>Check file system properties</h4><p>Since we’ve decided to remove the mount <code>/mnt/share</code> instead of trying to fix it, we shall proceed to learn a little about how to mount a disk. For instance, if we want to mount an NTFS file system and ensure that the file system is accessible and error-free, we can use the following command to check it for errors:</p>
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br></pre></td><td class="code"><pre><span class="line">sudo pacman -S ntfs-3g</span><br><span class="line"></span><br><span class="line"><span class="comment">#  Install the `ntfs-3g` package which provides the `ntfsfix` tool.</span></span><br><span class="line"></span><br><span class="line">sudo ntfsfix /dev/sda1</span><br><span class="line"></span><br><span class="line"><span class="comment"># Replace `/dev/sda1` with the appropriate device and partition.</span></span><br></pre></td></tr></table></figure>
+
+<p>If the virtual hard disk has multiple partitions, we’ll need to determine which partition contains the NTFS file system we want to mount. Oftentimes we use the <code>lsblk</code> command to list the available storage devices and their partitions, and the <code>blkid</code> command to list the UUIDs of the partitions.</p>
+<pre><code>$ lsblk
+NAME   MAJ:MIN RM  SIZE RO TYPE MOUNTPOINTS
+sr0     11:0    1 1024M  0 rom  
+vda    253:0    0  9.8G  0 disk 
+|-vda1 253:1    0  200M  0 part /boot
+`-vda2 253:2    0  9.6G  0 part /
+</code></pre>
+<p>In my case, the virtual machine has a single virtual hard disk, which is identified as <code>/dev/vda</code>. This virtual hard disk has two partitions, <code>/dev/vda1</code> and <code>/dev/vda2</code>, which are mounted at <code>/boot</code> and <code>/</code>, respectively.</p>
+<p><code>/dev/vda1</code> is a 200MB partition formatted as a Linux file system such as <code>ext4</code> or <code>xfs</code>, and contains the kernel and other boot files.</p>
+<p><code>/dev/vda2</code> is a 9.6GB partition also formatted as a Linux file system, and contains the root file system for the Arch Linux operating system.</p>
+<h4 id="Mount-NTFS-file-system"><a href="#Mount-NTFS-file-system" class="headerlink" title="Mount NTFS file system"></a>Mount NTFS file system</h4><p>If we want to mount an additional NTFS file system on our virtual machine, we can create a new directory to use as the mount point, such as <code>/mnt/ntfs</code>, and then add an entry to the <code>/etc/fstab</code> file to mount the NTFS file system at that mount point.</p>
+<p>For example, if the NTFS file system is located on <code>/dev/vda3</code>, we can add the following line to the <code>/etc/fstab</code> file:</p>
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">/dev/vda3 /mnt/ntfs ntfs-3g defaults 0 0</span><br></pre></td></tr></table></figure>
+
+<p>Or if you’ve run <code>blkid</code> and looked up the UUID of the file system you wanted to mount, you can also swap the line above for the following one:</p>
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">UUID=12345678-1234-1234-1234-1234567890ab /mnt/ntfs ntfs-3g defaults 0 0</span><br><span class="line"></span><br><span class="line"><span class="comment"># Pretend for a sec that the UUID of `/dev/vda3` is &quot;12345678-1234-1234-1234-1234567890ab&quot;</span></span><br></pre></td></tr></table></figure>
+
+<p>After adding the entry to the <code>/etc/fstab</code> file, we need to run <code>sudo mount -a</code>. This should mount the NTFS file system at the specified mount point, and the mount point should be automatically mounted at boot time.</p>
+<h4 id="Remove-Samba-entries"><a href="#Remove-Samba-entries" class="headerlink" title="Remove Samba entries"></a>Remove Samba entries</h4><p>Edit Samba’s configuration file <code>/etc/samba/smb.conf</code> and remove everything in the <code>[mnt]</code> field.</p>
+<p>Then, navigate to <code>/etc/fstab</code> and comment out anything associated with <code>/mnt/share</code>:</p>
+<pre><code># share /mnt/share 9p trans=virtio,nofail 0 0
+# //localhost/share /mnt/share cifs user=mccranky,password=Rogue12 0 0
+</code></pre>
+<p>Since we’ve already removed Samba service on our machine, we have no need of checking whether if the mount options specified in the mount unit are correct. But if you haven’t removed it yet, feel free to edit the mount unit file located at <code>/etc/systemd/system/mnt-share.mount</code> and modify the mount options.</p>
+<p>Remove the mount unit for <code>/mnt/share</code>:</p>
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">sudo <span class="built_in">rm</span> /etc/systemd/system/mnt-share.mount</span><br></pre></td></tr></table></figure>
+
+<p>Reload the systemd daemon to ensure that the changes take effect:</p>
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">sudo systemctl daemon-reload</span><br></pre></td></tr></table></figure>
+
+<p>When we check the status of <code>mnt-share.mount</code>, we should get:</p>
+<pre><code> $ sudo systemctl status mnt-share.mount
+x mnt-share.mount
+     Loaded: not-found (Reason: Unit mnt-share.mount not found.)
+     Active: failed (Result: exit-code) since Thu 2023-04-27 02:45:46 UTC; 1h 5&gt;
+        CPU: 28ms
+
+Apr 27 02:45:46 alarm systemd[1]: Mounting /mnt/share...
+Apr 27 02:45:46 alarm mount[379]: mount error(111): could not connect to ::1mou&gt;
+Apr 27 02:45:46 alarm systemd[1]: mnt-share.mount: Mount process exited, code=e&gt;
+Apr 27 02:45:46 alarm systemd[1]: mnt-share.mount: Failed with result &#39;exit-cod&gt;
+Apr 27 02:45:46 alarm systemd[1]: Failed to mount /mnt/share.
+</code></pre>
+<p>Last we can finally run <code>sudo rm -r /mnt/share</code> to remove <code>/mnt/share</code> from our machine.</p>
+<p>Perfect! Now when we <code>reboot</code> again we should receive no errors.</p>
+
+      
+    </div>
+
+    
+    
+    
+
+    <footer class="post-footer">
+        <div class="post-eof"></div>
+      
+    </footer>
+  </article>
+</div>
+
+
+
 
     
 
@@ -1464,156 +1608,6 @@ S: 221 /0:0:0:0:0:0:0:1 Service closing transmission channel
 </code></pre>
 <p>用户在这个阶段可以给邮件添加标记，被添加<strong>删除标记</strong>的邮件将在最后的更新阶段被<strong>删除</strong>。</p>
 
-      
-    </div>
-
-    
-    
-    
-
-    <footer class="post-footer">
-        <div class="post-eof"></div>
-      
-    </footer>
-  </article>
-</div>
-
-
-
-
-    
-
-
-<div class="post-block">
-  
-  
-
-  <article itemscope itemtype="http://schema.org/Article" class="post-content" lang="">
-    <link itemprop="mainEntityOfPage" href="https://mccranky83.github.io/2023/04/14/%E8%BD%AF%E4%BB%B6%E5%B7%A5%E7%A8%8B%20%E7%AC%AC%E5%9B%9B%E5%91%A8%E7%9A%84%E5%8D%9A%E5%AE%A2/">
-
-    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
-      <meta itemprop="image" content="/images/icons8-dead-cells-1024.png">
-      <meta itemprop="name" content="Mccranky83">
-    </span>
-
-    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
-      <meta itemprop="name" content="Mccranky's Blog">
-      <meta itemprop="description" content=""Bliss it was in that dawn to be alive   But to be young was very heaven."">
-    </span>
-
-    <span hidden itemprop="post" itemscope itemtype="http://schema.org/CreativeWork">
-      <meta itemprop="name" content="undefined | Mccranky's Blog">
-      <meta itemprop="description" content="">
-    </span>
-      <header class="post-header">
-        <h2 class="post-title" itemprop="name headline">
-          <a href="/2023/04/14/%E8%BD%AF%E4%BB%B6%E5%B7%A5%E7%A8%8B%20%E7%AC%AC%E5%9B%9B%E5%91%A8%E7%9A%84%E5%8D%9A%E5%AE%A2/" class="post-title-link" itemprop="url">软件工程 第四周的博客</a>
-        </h2>
-
-        <div class="post-meta-container">
-          <div class="post-meta">
-    <span class="post-meta-item">
-      <span class="post-meta-item-icon">
-        <i class="far fa-calendar"></i>
-      </span>
-      <span class="post-meta-item-text">Posted on</span>
-
-      <time title="Created: 2023-04-14 13:54:18" itemprop="dateCreated datePublished" datetime="2023-04-14T13:54:18+08:00">2023-04-14</time>
-    </span>
-    <span class="post-meta-item">
-      <span class="post-meta-item-icon">
-        <i class="far fa-calendar-check"></i>
-      </span>
-      <span class="post-meta-item-text">Edited on</span>
-      <time title="Modified: 2023-04-23 14:37:15" itemprop="dateModified" datetime="2023-04-23T14:37:15+08:00">2023-04-23</time>
-    </span>
-
-  
-</div>
-
-        </div>
-      </header>
-
-    
-    
-    
-    <div class="post-body" itemprop="articleBody">
-          <h2 id="简要概述-CTF-OverTheWire-Bandit-Level-25"><a href="#简要概述-CTF-OverTheWire-Bandit-Level-25" class="headerlink" title="简要概述 CTF OverTheWire Bandit Level 25"></a><em>简要概述 CTF OverTheWire Bandit Level 25</em></h2><h3 id="题目"><a href="#题目" class="headerlink" title="题目"></a><em>题目</em></h3><blockquote>
-<p>从<code>bandit25</code>登录到<code>bandit26</code>，用户<code>bandit26</code>的<code>shell</code>不是<code>/bin/bash</code>，而是其他东西。找出它是什么，它是如何工作的，以及如何打破它。</p>
-</blockquote>
-<hr>
-<p>先利用<code>ssh</code>连接到<code>bandit.labs.overthewire.org</code>的服务器，端口号<code>2220</code>，为此我们需要<code>bandit25</code>的密码。</p>
-<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">ssh bandit25@bandit.labs.overthewire.org -p 2220</span><br><span class="line"><span class="comment">#					p7TaowMYrmu23Ol8hiZh9UvD0O9hpx8d</span></span><br></pre></td></tr></table></figure>
-
-<p>以<code>bandit25</code>进入 Level 25 之后先列举<code>/home/bandit25</code>有什么可以帮助通关的东西：</p>
-<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">find . -maxdepth 1 -<span class="built_in">exec</span> file &#123;&#125; 2&gt;/dev/null \;</span><br></pre></td></tr></table></figure>
-<pre><code>    .: directory
-    ./.bash_logout: ASCII text
-    ./.bashrc: ASCII text
-    ./bandit26.sshkey: PEM RSA private key
-    ./.profile: ASCII text
-    ./.pin: ASCII text, with no line terminators
-    ./.bandit24.password: ASCII text
-</code></pre>
-<blockquote>
-<p><code>find</code>: 查找指令</p>
-</blockquote>
-<blockquote>
-<p><code>.</code></p>
-</blockquote>
-<blockquote>
-<p><code>-maxdepth 1</code>: 类似于<code>lodash.js</code>中的<code>flattenDepth</code>的功能，用于拓展平铺树状结构，<code>1</code>代表一层</p>
-</blockquote>
-<blockquote>
-<p><code>-exec &lt;...&gt; \;</code>: 代表执行，和<code>ps</code>，<code>kill</code>，<code>id</code>，<code>stat</code>属于一类指令，多用于管理系统进程，这里我图方便用来替代<code>for</code>用一下。注意一定要在运行完<code>&lt;...&gt;</code>用<code>;</code>结束进程，<code>;</code>前面用<code>\</code>取消原本的意义</p>
-</blockquote>
-<blockquote>
-<p><code>file</code>: 查询文件类型，<code>&#123;&#125;</code>是<code>placeholder</code>，和 HTML 里的那个<code>placeholder</code>一个意思</p>
-</blockquote>
-<blockquote>
-<p><code>2&gt;/dev/null</code>: <code>2</code>是报错信息的<code>status code</code>，<code>/dev/null</code>是系统的<code>bit dump</code>，因此这句的完整的意思就是不让报错信息输出到<code>stdout</code></p>
-</blockquote>
-<p>很明显<code>bandit26.sshkey</code>有用，是<code>bandit26</code>的 SSH 密钥。</p>
-<p>我们就用它来连接<code>bandit26</code>:</p>
-<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">ssh -i bandit26.sshkey -p 2220 bandit26@localhost</span><br></pre></td></tr></table></figure>
-
-<p><code>-i</code>代表<code>identifier</code>，就是身份验证</p>
-<p>接着，在<code>handshake</code>阶段选’yes’</p>
-<p>然后，我们就被踢出来了。。。</p>
-<pre>
-  _                     _ _ _   ___   __  
- | |                   | (_) | |__ \ / /  
- | |__   __ _ _ __   __| |_| |_   ) / /_  
- | '_ \ / _` | '_ \ / _` | | __| / / '_ \ 
- | |_) | (_| | | | | (_| | | |_ / /| (_) |
- |_.__/ \__,_|_| |_|\__,_|_|\__|____\___/ 
-Connection to localhost closed.
-</pre>
-
-<p>不急，去看看<code>bandit26</code>的用户信息。</p>
-<blockquote>
-<p>在类Unix系统中(包括GNU - GNU’s Not Unix，也就是Linux)，用户信息在系统文件<code>/etc/passwd</code>里 - 这是常识，要记住！</p>
-</blockquote>
-<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line"><span class="built_in">cat</span> /etc/passwd | grep <span class="string">&quot;bandit26&quot;</span></span><br><span class="line"></span><br><span class="line"><span class="comment"># bandit26:x:11026:11026:bandit level 26:/home/bandit26:/usr/bin/showtext</span></span><br></pre></td></tr></table></figure>
-
-<p>先不用管别的，我们要找的是最后一列，也就是代表每个用户的初始<code>shell</code>。</p>
-<p>一开始有说过，<code>bandit26</code>用的<code>shell</code>不是<code>bash</code>，是别的东西。众所周知，因为<code>shell</code>负责翻译所有的指令成机码并输出给<code>kernel</code>执行，所以<code>shell</code>是开启终端进程时运行的第一个程序。因此，我们登陆不上<code>bandit26</code>肯定和这个用户修改了他的<code>default shell</code>有关。</p>
-<p>先<code>cat /usr/bin/showtext</code>看一下他的初始<code>shell</code>是什么。</p>
-<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br></pre></td><td class="code"><pre><span class="line"><span class="meta">#!/bin/sh</span></span><br><span class="line"></span><br><span class="line"><span class="built_in">export</span> TERM=linux</span><br><span class="line"></span><br><span class="line"><span class="built_in">exec</span> more ~/text.txt</span><br><span class="line"><span class="built_in">exit</span> 0</span><br><span class="line"></span><br></pre></td></tr></table></figure>
-
-<p>好家伙，改了个参数，打印了个图标就退出了，怪不得登录不上。</p>
-<p>不过因为<code>bandit26</code>用的是<code>more</code>指令，而<code>more</code>指令如果在一个窗口里打印不出文本就会卡壳，我们可以钻这个漏洞，就是把窗口缩到特别小，然后再尝试登陆。</p>
-<p>完美，它卡了。。。</p>
-<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">#</span></span><br><span class="line"><span class="comment">#   _                     _ _ _   ___ </span></span><br><span class="line"><span class="comment">#   __  </span></span><br><span class="line"><span class="comment">#  | |                   | (_) | |__ \</span></span><br><span class="line"><span class="comment">#  / /  </span></span><br><span class="line"><span class="comment"># --More--(33%)</span></span><br></pre></td></tr></table></figure>
-
-<p>我们可以在<code>more</code>的窗口里用<code>!</code>加任何指令开启一个<code>subshell</code>，也可以直接<code>v</code>打开<code>vim</code>编辑器。</p>
-<p>我们选择后者。</p>
-<p>进入<code>vim</code>之后按老规矩先<code>ESC</code>进入普通模式，然后按<code>:</code>键，跟在后面输入指令就可以改<code>shell</code>了</p>
-<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br></pre></td><td class="code"><pre><span class="line"><span class="built_in">set</span> shell=/bin/bash</span><br><span class="line"></span><br><span class="line"><span class="comment"># 改成bash</span></span><br><span class="line"></span><br><span class="line">shell</span><br><span class="line"></span><br><span class="line"><span class="comment"># 刷新并重新登陆</span></span><br></pre></td></tr></table></figure>
-
-<p>我们现在应该是以<code>bandit26</code>的身份登陆了。</p>
-<p>然后需要做的就是去取下一关的密码了。</p>
-<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line"><span class="built_in">cat</span> /etc/bandit_pass/bandit26</span><br><span class="line"><span class="comment"># c7GvcKlw9mC7aUQaPx7nwFstuAIBw1o1</span></span><br></pre></td></tr></table></figure>
       
     </div>
 

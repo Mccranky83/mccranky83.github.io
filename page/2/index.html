@@ -152,7 +152,7 @@
   <nav class="site-state">
       <div class="site-state-item site-state-posts">
         <a href="/archives/">
-          <span class="site-state-item-count">13</span>
+          <span class="site-state-item-count">14</span>
           <span class="site-state-item-name">posts</span>
         </a>
       </div>
@@ -163,7 +163,7 @@
       </div>
       <div class="site-state-item site-state-tags">
           <a href="/tags/">
-        <span class="site-state-item-count">21</span>
+        <span class="site-state-item-count">22</span>
         <span class="site-state-item-name">tags</span></a>
       </div>
   </nav>
@@ -188,6 +188,156 @@
     </div>
 
     <div class="main-inner index posts-expand">
+
+    
+
+
+<div class="post-block">
+  
+  
+
+  <article itemscope itemtype="http://schema.org/Article" class="post-content" lang="">
+    <link itemprop="mainEntityOfPage" href="https://mccranky83.github.io/2023/04/14/%E8%BD%AF%E4%BB%B6%E5%B7%A5%E7%A8%8B%20%E7%AC%AC%E5%9B%9B%E5%91%A8%E7%9A%84%E5%8D%9A%E5%AE%A2/">
+
+    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
+      <meta itemprop="image" content="/images/icons8-dead-cells-1024.png">
+      <meta itemprop="name" content="Mccranky83">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="Mccranky's Blog">
+      <meta itemprop="description" content=""Bliss it was in that dawn to be alive   But to be young was very heaven."">
+    </span>
+
+    <span hidden itemprop="post" itemscope itemtype="http://schema.org/CreativeWork">
+      <meta itemprop="name" content="undefined | Mccranky's Blog">
+      <meta itemprop="description" content="">
+    </span>
+      <header class="post-header">
+        <h2 class="post-title" itemprop="name headline">
+          <a href="/2023/04/14/%E8%BD%AF%E4%BB%B6%E5%B7%A5%E7%A8%8B%20%E7%AC%AC%E5%9B%9B%E5%91%A8%E7%9A%84%E5%8D%9A%E5%AE%A2/" class="post-title-link" itemprop="url">软件工程 第四周的博客</a>
+        </h2>
+
+        <div class="post-meta-container">
+          <div class="post-meta">
+    <span class="post-meta-item">
+      <span class="post-meta-item-icon">
+        <i class="far fa-calendar"></i>
+      </span>
+      <span class="post-meta-item-text">Posted on</span>
+
+      <time title="Created: 2023-04-14 13:54:18" itemprop="dateCreated datePublished" datetime="2023-04-14T13:54:18+08:00">2023-04-14</time>
+    </span>
+    <span class="post-meta-item">
+      <span class="post-meta-item-icon">
+        <i class="far fa-calendar-check"></i>
+      </span>
+      <span class="post-meta-item-text">Edited on</span>
+      <time title="Modified: 2023-04-23 14:37:15" itemprop="dateModified" datetime="2023-04-23T14:37:15+08:00">2023-04-23</time>
+    </span>
+
+  
+</div>
+
+        </div>
+      </header>
+
+    
+    
+    
+    <div class="post-body" itemprop="articleBody">
+          <h2 id="简要概述-CTF-OverTheWire-Bandit-Level-25"><a href="#简要概述-CTF-OverTheWire-Bandit-Level-25" class="headerlink" title="简要概述 CTF OverTheWire Bandit Level 25"></a><em>简要概述 CTF OverTheWire Bandit Level 25</em></h2><h3 id="题目"><a href="#题目" class="headerlink" title="题目"></a><em>题目</em></h3><blockquote>
+<p>从<code>bandit25</code>登录到<code>bandit26</code>，用户<code>bandit26</code>的<code>shell</code>不是<code>/bin/bash</code>，而是其他东西。找出它是什么，它是如何工作的，以及如何打破它。</p>
+</blockquote>
+<hr>
+<p>先利用<code>ssh</code>连接到<code>bandit.labs.overthewire.org</code>的服务器，端口号<code>2220</code>，为此我们需要<code>bandit25</code>的密码。</p>
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">ssh bandit25@bandit.labs.overthewire.org -p 2220</span><br><span class="line"><span class="comment">#					p7TaowMYrmu23Ol8hiZh9UvD0O9hpx8d</span></span><br></pre></td></tr></table></figure>
+
+<p>以<code>bandit25</code>进入 Level 25 之后先列举<code>/home/bandit25</code>有什么可以帮助通关的东西：</p>
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">find . -maxdepth 1 -<span class="built_in">exec</span> file &#123;&#125; 2&gt;/dev/null \;</span><br></pre></td></tr></table></figure>
+<pre><code>    .: directory
+    ./.bash_logout: ASCII text
+    ./.bashrc: ASCII text
+    ./bandit26.sshkey: PEM RSA private key
+    ./.profile: ASCII text
+    ./.pin: ASCII text, with no line terminators
+    ./.bandit24.password: ASCII text
+</code></pre>
+<blockquote>
+<p><code>find</code>: 查找指令</p>
+</blockquote>
+<blockquote>
+<p><code>.</code></p>
+</blockquote>
+<blockquote>
+<p><code>-maxdepth 1</code>: 类似于<code>lodash.js</code>中的<code>flattenDepth</code>的功能，用于拓展平铺树状结构，<code>1</code>代表一层</p>
+</blockquote>
+<blockquote>
+<p><code>-exec &lt;...&gt; \;</code>: 代表执行，和<code>ps</code>，<code>kill</code>，<code>id</code>，<code>stat</code>属于一类指令，多用于管理系统进程，这里我图方便用来替代<code>for</code>用一下。注意一定要在运行完<code>&lt;...&gt;</code>用<code>;</code>结束进程，<code>;</code>前面用<code>\</code>取消原本的意义</p>
+</blockquote>
+<blockquote>
+<p><code>file</code>: 查询文件类型，<code>&#123;&#125;</code>是<code>placeholder</code>，和 HTML 里的那个<code>placeholder</code>一个意思</p>
+</blockquote>
+<blockquote>
+<p><code>2&gt;/dev/null</code>: <code>2</code>是报错信息的<code>status code</code>，<code>/dev/null</code>是系统的<code>bit dump</code>，因此这句的完整的意思就是不让报错信息输出到<code>stdout</code></p>
+</blockquote>
+<p>很明显<code>bandit26.sshkey</code>有用，是<code>bandit26</code>的 SSH 密钥。</p>
+<p>我们就用它来连接<code>bandit26</code>:</p>
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">ssh -i bandit26.sshkey -p 2220 bandit26@localhost</span><br></pre></td></tr></table></figure>
+
+<p><code>-i</code>代表<code>identifier</code>，就是身份验证</p>
+<p>接着，在<code>handshake</code>阶段选’yes’</p>
+<p>然后，我们就被踢出来了。。。</p>
+<pre>
+  _                     _ _ _   ___   __  
+ | |                   | (_) | |__ \ / /  
+ | |__   __ _ _ __   __| |_| |_   ) / /_  
+ | '_ \ / _` | '_ \ / _` | | __| / / '_ \ 
+ | |_) | (_| | | | | (_| | | |_ / /| (_) |
+ |_.__/ \__,_|_| |_|\__,_|_|\__|____\___/ 
+Connection to localhost closed.
+</pre>
+
+<p>不急，去看看<code>bandit26</code>的用户信息。</p>
+<blockquote>
+<p>在类Unix系统中(包括GNU - GNU’s Not Unix，也就是Linux)，用户信息在系统文件<code>/etc/passwd</code>里 - 这是常识，要记住！</p>
+</blockquote>
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line"><span class="built_in">cat</span> /etc/passwd | grep <span class="string">&quot;bandit26&quot;</span></span><br><span class="line"></span><br><span class="line"><span class="comment"># bandit26:x:11026:11026:bandit level 26:/home/bandit26:/usr/bin/showtext</span></span><br></pre></td></tr></table></figure>
+
+<p>先不用管别的，我们要找的是最后一列，也就是代表每个用户的初始<code>shell</code>。</p>
+<p>一开始有说过，<code>bandit26</code>用的<code>shell</code>不是<code>bash</code>，是别的东西。众所周知，因为<code>shell</code>负责翻译所有的指令成机码并输出给<code>kernel</code>执行，所以<code>shell</code>是开启终端进程时运行的第一个程序。因此，我们登陆不上<code>bandit26</code>肯定和这个用户修改了他的<code>default shell</code>有关。</p>
+<p>先<code>cat /usr/bin/showtext</code>看一下他的初始<code>shell</code>是什么。</p>
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br></pre></td><td class="code"><pre><span class="line"><span class="meta">#!/bin/sh</span></span><br><span class="line"></span><br><span class="line"><span class="built_in">export</span> TERM=linux</span><br><span class="line"></span><br><span class="line"><span class="built_in">exec</span> more ~/text.txt</span><br><span class="line"><span class="built_in">exit</span> 0</span><br><span class="line"></span><br></pre></td></tr></table></figure>
+
+<p>好家伙，改了个参数，打印了个图标就退出了，怪不得登录不上。</p>
+<p>不过因为<code>bandit26</code>用的是<code>more</code>指令，而<code>more</code>指令如果在一个窗口里打印不出文本就会卡壳，我们可以钻这个漏洞，就是把窗口缩到特别小，然后再尝试登陆。</p>
+<p>完美，它卡了。。。</p>
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">#</span></span><br><span class="line"><span class="comment">#   _                     _ _ _   ___ </span></span><br><span class="line"><span class="comment">#   __  </span></span><br><span class="line"><span class="comment">#  | |                   | (_) | |__ \</span></span><br><span class="line"><span class="comment">#  / /  </span></span><br><span class="line"><span class="comment"># --More--(33%)</span></span><br></pre></td></tr></table></figure>
+
+<p>我们可以在<code>more</code>的窗口里用<code>!</code>加任何指令开启一个<code>subshell</code>，也可以直接<code>v</code>打开<code>vim</code>编辑器。</p>
+<p>我们选择后者。</p>
+<p>进入<code>vim</code>之后按老规矩先<code>ESC</code>进入普通模式，然后按<code>:</code>键，跟在后面输入指令就可以改<code>shell</code>了</p>
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br></pre></td><td class="code"><pre><span class="line"><span class="built_in">set</span> shell=/bin/bash</span><br><span class="line"></span><br><span class="line"><span class="comment"># 改成bash</span></span><br><span class="line"></span><br><span class="line">shell</span><br><span class="line"></span><br><span class="line"><span class="comment"># 刷新并重新登陆</span></span><br></pre></td></tr></table></figure>
+
+<p>我们现在应该是以<code>bandit26</code>的身份登陆了。</p>
+<p>然后需要做的就是去取下一关的密码了。</p>
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line"><span class="built_in">cat</span> /etc/bandit_pass/bandit26</span><br><span class="line"><span class="comment"># c7GvcKlw9mC7aUQaPx7nwFstuAIBw1o1</span></span><br></pre></td></tr></table></figure>
+      
+    </div>
+
+    
+    
+    
+
+    <footer class="post-footer">
+        <div class="post-eof"></div>
+      
+    </footer>
+  </article>
+</div>
+
+
+
 
     
 
