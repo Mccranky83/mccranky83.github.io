@@ -227,7 +227,7 @@
       <span class="post-meta-item-text">Posted on</span>
       
 
-      <time title="Created: 2023-04-27 15:08:59 / Modified: 15:24:43" itemprop="dateCreated datePublished" datetime="2023-04-27T15:08:59+08:00">2023-04-27</time>
+      <time title="Created: 2023-04-27 15:08:59 / Modified: 18:07:07" itemprop="dateCreated datePublished" datetime="2023-04-27T15:08:59+08:00">2023-04-27</time>
     </span>
     <span class="post-meta-item">
       <span class="post-meta-item-icon">
@@ -265,6 +265,17 @@
 
 <figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><span class="line">sudo systemctl <span class="built_in">enable</span> puppetserver.service</span><br><span class="line"></span><br><span class="line"><span class="comment"># Add to &quot;/etc/systemd/system/multi-user.target.wants&quot;.</span></span><br><span class="line"></span><br><span class="line">sudo systemctl start puppetserver.service</span><br><span class="line"></span><br></pre></td></tr></table></figure>
 
+<h3 id="Delete-a-key"><a href="#Delete-a-key" class="headerlink" title="Delete a key"></a>Delete a key</h3><p>List the keys in your keyring using the command <code>gpg --list-keys</code>:</p>
+<pre><code>$ gpg --list-keys
+/root/.gnupg/pubring.kbx
+------------------------
+pub   rsa4096 2019-04-08 [SC] [expires: 2025-04-06]
+      D6811ED3ADEEB8441AF5AA8F4528B6CD9E61EF26
+uid           [ unknown] Puppet, Inc. Release Key (Puppet, Inc. Release Key) &lt;release@puppet.com&gt;
+</code></pre>
+<p>For example, the key ID of the instance above is “D6811ED3ADEEB8441AF5AA8F4528B6CD9E61EF26”.</p>
+<p>Delete the key using the command <code>gpg --delete-keys [key ID]</code>.</p>
+<p>Note that deleting a key from your keyring will prevent you from verifying any signatures made with that key in the future. If you need to use the key again later, you will need to fetch it again using the <code>gpg --fetch-keys</code> command.</p>
 <blockquote>
 <p>Configuration</p>
 </blockquote>
@@ -488,7 +499,7 @@ Apr 27 02:45:46 alarm systemd[1]: Failed to mount /mnt/share.
         <i class="far fa-calendar-check"></i>
       </span>
       <span class="post-meta-item-text">Edited on</span>
-      <time title="Modified: 2023-04-27 14:43:33" itemprop="dateModified" datetime="2023-04-27T14:43:33+08:00">2023-04-27</time>
+      <time title="Modified: 2023-04-27 18:58:51" itemprop="dateModified" datetime="2023-04-27T18:58:51+08:00">2023-04-27</time>
     </span>
     <span class="post-meta-item">
       <span class="post-meta-item-icon">
@@ -559,7 +570,7 @@ Apr 27 02:45:46 alarm systemd[1]: Failed to mount /mnt/share.
 <figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">firefox --no-remote http://127.0.0.1:9843</span><br></pre></td></tr></table></figure>
 
 <p>If the <code>SPICE WebDAV</code> service is running correctly, you should be able to see the page in the Firefox browser window.</p>
-<h3 id="Headless-browser"><a href="#Headless-browser" class="headerlink" title="Headless browser"></a>Headless browser</h3><h4 id=""><a href="#" class="headerlink" title=""></a></h4><h4 id="i2pdbrowser"><a href="#i2pdbrowser" class="headerlink" title="i2pdbrowser"></a>i2pdbrowser</h4><p>Clone this repo:</p>
+<h3 id="Headless-browser"><a href="#Headless-browser" class="headerlink" title="Headless browser"></a>Headless browser</h3><h4 id="Puppeteer"><a href="#Puppeteer" class="headerlink" title="Puppeteer"></a>Puppeteer</h4><h4 id="i2pdbrowser"><a href="#i2pdbrowser" class="headerlink" title="i2pdbrowser"></a>i2pdbrowser</h4><p>Clone this repo:</p>
 <figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">git <span class="built_in">clone</span> https://github.com/PurpleI2P/i2pdbrowser.git</span><br></pre></td></tr></table></figure>
 
 <p>Navigate to the README.md file for more information</p>
@@ -822,7 +833,7 @@ r=mccranky)
         <i class="far fa-calendar-check"></i>
       </span>
       <span class="post-meta-item-text">Edited on</span>
-      <time title="Modified: 2023-04-27 14:22:07" itemprop="dateModified" datetime="2023-04-27T14:22:07+08:00">2023-04-27</time>
+      <time title="Modified: 2023-04-27 19:34:50" itemprop="dateModified" datetime="2023-04-27T19:34:50+08:00">2023-04-27</time>
     </span>
     <span class="post-meta-item">
       <span class="post-meta-item-icon">
@@ -882,7 +893,7 @@ r=mccranky)
 <p><code>pacman -Syu</code>: <code>-S</code> stands for “sync”, <code>-y</code> and <code>-u</code> are options that tell <code>pacman</code> to refresh the package databases and upgrade all packages, respectively. <code>-Syu</code>, as a whole, updates the system and all installed packages to the latest version.</p>
 </blockquote>
 <blockquote>
-<p><code>pacman -S &lt;package&gt;</code>: <code>-S</code> is a shorthand for <code>--sync</code>. This command installs a package.</p>
+<p><code>pacman -S &lt;package&gt;</code>: <code>-S</code> is a shorthand for <code>--sync</code>. This command installs a package. When <code>--needed</code> option is specified alongside the <code>pacman -S</code> command, only packages that are not already installed on your system get installed.</p>
 </blockquote>
 <blockquote>
 <p><code>pacman -R &lt;package&gt;</code>: <code>-R</code> stands for “remove”. This command removes a package.</p>
