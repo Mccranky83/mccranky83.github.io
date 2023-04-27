@@ -20,57 +20,202 @@
       </tags>
   </entry>
   <entry>
-    <title>Initialize shared directory with SPICE WebDAV</title>
-    <url>/2023/04/26/Initialize%20shared%20directory%20with%20SPICE%20WebDAV/</url>
-    <content><![CDATA[<h3 id="Install-Dependencies"><a href="#Install-Dependencies" class="headerlink" title="Install Dependencies"></a>Install Dependencies</h3><h4 id="SPICE-guest-tools"><a href="#SPICE-guest-tools" class="headerlink" title="SPICE guest tools"></a><em><code>SPICE guest tools</code></em></h4><p>See <a href="/2023/04/25/Running%20ArchLinux%20ARM%20in%20UTM%20on%20a%20M1%20MacBook%20Air/#SPICE-guest-tools"><code>SPICE guest tools</code></a></p>
-<h4 id="SPICE-WebDAV"><a href="#SPICE-WebDAV" class="headerlink" title="SPICE WebDAV"></a><em><code>SPICE WebDAV</code></em></h4><p>SPICE WebDAV is required for <a href="https://docs.getutm.app/settings-qemu/sharing/#spice-webdav" title="QEMU directory sharing">QEMU directory sharing</a> as an alternative to VirtFS.</p>
-<p>Since we’re on ArchLinux, we should run the following command:</p>
-<figure class="highlight bash"><table><tr><td class="code"><pre><span class="line">sudo pacman -S phodav</span><br></pre></td></tr></table></figure>
-
-<p>Now we should want to visit the shared directory.</p>
-<p>Normally, it is exposed as a WebDAV mount on the guest’s localhost (typically on port 9843).</p>
-<p>To access it, we need a browser.</p>
-<h3 id="Firefox"><a href="#Firefox" class="headerlink" title="Firefox"></a>Firefox</h3><p>I don’t have one yet, so I’ll Install Firefox via <a href="/2023/04/25/Running%20ArchLinux%20ARM%20in%20UTM%20on%20a%20M1%20MacBook%20Air/#yay"><code>yay</code></a>.</p>
-<figure class="highlight bash"><table><tr><td class="code"><pre><span class="line">yay -S firefox</span><br></pre></td></tr></table></figure>
-
-<p>Before we move on, let’s configure the <code>DISPLAY</code> environment variable first. Again, I need to install one:</p>
-<figure class="highlight bash"><table><tr><td class="code"><pre><span class="line">sudo pacman -S xorg xorg-xinit xfce4</span><br><span class="line"></span><br><span class="line"><span class="comment"># Once installation is complete, `reboot` and log-back-in</span></span><br></pre></td></tr></table></figure>
-
-<p>Before we proceed, make sure to check the following conditions:</p>
-<blockquote>
-<p>X Window System is actually running: You can start the X Window System by running the command <code>startx</code> in a terminal window.</p>
+    <title>Running ArchLinux ARM in UTM on a M1 MacBook Air</title>
+    <url>/2023/04/25/Running%20ArchLinux%20ARM%20in%20UTM%20on%20a%20M1%20MacBook%20Air/</url>
+    <content><![CDATA[<blockquote>
+<p>ArchLinux is a text-based operating system that does not come with a graphical interface, and all tasks are performed by running commands in the Command Line Interface (CLI).</p>
 </blockquote>
-<blockquote>
-<p>You have permission to access the X Window System: You may need to add your user account to the <code>video</code> group by running the command <code>sudo usermod -aG video &lt;username&gt;</code>.</p>
-</blockquote>
-<blockquote>
-<p>X Window System is configured to allow remote connections: You may need to edit the <code>/etc/X11/xinit/xserverrc</code> file to include the <code>-listen tcp</code> option. For example, you can add the line <code>exec /usr/bin/X -listen tcp</code> to the file.</p>
-</blockquote>
-<hr>
-<p>We may face some problems when we run <code>startx</code> because X server requires some sort of display device or screen so that it can display graphical output, and since ArchLinux is text-based, we’ll have to go through a few extra steps.</p>
-<ul>
-<li><p>Run <code>sudo pacman -S xf86-video-fbdev</code> to install the <code>xf86-video-fbdev</code> package. This package provides a generic framebuffer driver that can be used in place of a specific display driver.</p>
+<h3 id="Setup"><a href="#Setup" class="headerlink" title="Setup"></a>Setup</h3><p>The setting up of UTM and running virtual machines on it is rather simple. Just follow the steps shown below and you’ll be playing around soon enough.</p>
+<ol>
+<li><p><a href="https://github.com/utmapp/UTM/releases/latest/download/UTM.dmg" title="Download UTM">Download UTM</a></p>
 </li>
-<li><p>Edit the <code>/etc/X11/xorg.conf.d/10-monitor.conf</code> file to specify the <code>fbdev</code> driver. We can do this by adding the following lines to the file:</p>
+<li><p><a href="https://mac.getutm.app/gallery/archlinux-arm" title="UTM Gallery - ArchLinux ARM">Click on <em>Open in UTM</em></a> - this automatically redirects you to your newly installed UTM app, where UTM will download the pre-built ArchLinux VM for you.</p>
+</li>
+<li><p>(Optional) You can run the VM as is, but feel free to tweak with the settings if you want to.</p>
+</li>
+</ol>
+<h3 id="Install-Dependencies"><a href="#Install-Dependencies" class="headerlink" title="Install Dependencies"></a>Install Dependencies</h3><h4 id="sudo"><a href="#sudo" class="headerlink" title="sudo"></a><em><code>sudo</code></em></h4><figure class="highlight bash"><table><tr><td class="code"><pre><span class="line">su -</span><br><span class="line"></span><br><span class="line">pacman -Syu</span><br><span class="line"></span><br><span class="line">pacman -S sudo</span><br><span class="line"></span><br></pre></td></tr></table></figure>
+
+<p><code>su</code> is short for “substitute user”, and it is used to switch to another user account in Unix-based operating systems. When you use <code>su</code> without any options, it will switch to the root user account by default.</p>
+<p>The <code>-</code> option used with <code>su</code> is used to simulate a full login for the new user, and it is not specific to the root user. When you use <code>su -</code> followed by a username, it will switch to that user’s account with a login shell.</p>
+<p>So, to summarize:</p>
+<ul>
+<li><p><code>su</code> is used to switch to another user account.</p>
+</li>
+<li><p><code>su</code> without any options will switch to the root user account by default.</p>
+</li>
+<li><p><code>su -</code> followed by a username will switch to that user’s account with a login shell, simulating a full login for that user.</p>
 </li>
 </ul>
-<figure class="highlight bash"><table><tr><td class="code"><pre><span class="line">Section <span class="string">&quot;Device&quot;</span></span><br><span class="line">    Identifier <span class="string">&quot;fbdev&quot;</span></span><br><span class="line">    Driver <span class="string">&quot;fbdev&quot;</span></span><br><span class="line">EndSection</span><br></pre></td></tr></table></figure>
-
-<p>That should do the trick when we run <code>startx</code> again.</p>
-<p>If the X server still fails to start, you may need to investigate further by checking the <code>/var/log/Xorg.0.log</code> file for additional information about the error.</p>
 <hr>
-<p>After double-checking the conditions listed above, we can now run the command <code>export DISPLAY=:0</code> to set the display environment variable to the default value for the X Window System.</p>
-<p>At last we launch Firefox and navigate to <code>http://127.0.0.1:9843</code>.</p>
-<figure class="highlight bash"><table><tr><td class="code"><pre><span class="line">firefox http://127.0.0.1:9843</span><br></pre></td></tr></table></figure>
+<p><strong><em><code>pacman</code></em></strong></p>
+<p><code>pacman</code> is the package manager for Arch Linux, a lightweight and flexible Linux distribution.</p>
+<p>With <code>pacman</code>, users can easily install, remove, and update software packages on their Arch Linux system. It uses a binary package format, which means that packages are precompiled and ready to install, making the process faster and more efficient than compiling from source.</p>
+<p>Some common <code>pacman</code> options include:</p>
+<blockquote>
+<p><code>pacman -Syu</code>: <code>-S</code> stands for “sync”, <code>-y</code> and <code>-u</code> are options that tell <code>pacman</code> to refresh the package databases and upgrade all packages, respectively. <code>-Syu</code>, as a whole, updates the system and all installed packages to the latest version.</p>
+</blockquote>
+<blockquote>
+<p><code>pacman -S &lt;package&gt;</code>: <code>-S</code> is a shorthand for <code>--sync</code>. This command installs a package.</p>
+</blockquote>
+<blockquote>
+<p><code>pacman -R &lt;package&gt;</code>: <code>-R</code> stands for “remove”. This command removes a package.</p>
+</blockquote>
+<blockquote>
+<p><code>pacman -Ss &lt;searchterm&gt;</code>: <code>-Ss</code> stands for “synchronize&#x2F;search”. This command searches for packages containing the specified search term.</p>
+</blockquote>
+<blockquote>
+<p><code>pacman -Q</code>: <code>-Q</code> stands for “query”. This command lists all installed packages on the system.</p>
+</blockquote>
+<hr>
+<p>Once the installation is complete, we need to configure <code>sudo</code> to allow users to execute commands with administrative privileges. To do this, you need to add the user to the <code>wheel</code> group. Run the following command to add the user to the wheel group:</p>
+<figure class="highlight bash"><table><tr><td class="code"><pre><span class="line">usermod -aG wheel &lt;username&gt;</span><br></pre></td></tr></table></figure>
 
-<p>We can also try running Firefox with the <code>--no-remote</code> option. This option tells Firefox to open a new instance of the browser, rather than connecting to an existing instance.</p>
-<figure class="highlight bash"><table><tr><td class="code"><pre><span class="line">firefox --no-remote http://127.0.0.1:9843</span><br></pre></td></tr></table></figure>
+<p>This command is used to add a <code>user</code> to the <code>wheel</code> group, which will give them the ability to perform administrative tasks on the system using the <code>sudo</code> command.</p>
+<blockquote>
+<p><code>usermod</code>: This is a command-line utility in Unix-based operating systems that is used to modify user account properties. The <code>usermod</code> command allows you to add or remove a user from a group, change a user’s home directory, and modify other user account settings.</p>
+</blockquote>
+<blockquote>
+<p><code>wheel</code>: This is a special group in Unix-based operating systems that is used to control access to administrative tasks. Users who are members of the <code>wheel</code> group are allowed to use the <code>sudo</code> command to execute commands with <code>root</code> privileges.</p>
+</blockquote>
+<blockquote>
+<p><code>-aG</code>: These two options used alongside <code>usermod</code> are used to add a user to a group. Specifically, <code>-a</code> stands for “append”, which means that the user is added to the group without removing them from any other groups they may already be a member of. <code>-G</code> stands for “group”, and is followed by the name of the group to add the user to.</p>
+</blockquote>
+<hr>
+<figure class="highlight bash"><table><tr><td class="code"><pre><span class="line">visudo -f /etc/sudoers</span><br></pre></td></tr></table></figure>
 
-<p>If the <code>SPICE WebDAV</code> service is running correctly, you should be able to see the page in the Firefox browser window.</p>
-<h3 id="I2pd"><a href="#I2pd" class="headerlink" title="I2pd"></a>I2pd</h3>]]></content>
+<blockquote>
+<p><code>visudo</code>: This is a command used in Unix-based operating systems to edit the <code>sudoers</code> file, which controls user access to administrative commands.</p>
+</blockquote>
+<blockquote>
+<p><code>-f</code>: This option is used to specify the file to edit.</p>
+</blockquote>
+<p><code>visudo</code> uses the system’s default editor to open and edit the <code>sudoers</code> file, which is often <code>vi</code>.</p>
+<p>If <code>vi</code> is not your thing, you can always specify which editor to use by pass <code>EDITOR=&lt;editor-name&gt;</code> in front of <code>visudo</code>. You can change the default editor once and for all by change these two environment variables: <code>VISUAL</code> and <code>EDITOR</code>.</p>
+<figure class="highlight bash"><table><tr><td class="code"><pre><span class="line"><span class="built_in">export</span> EDITOR=nano</span><br></pre></td></tr></table></figure>
+
+<blockquote>
+<p><strong><em>Note</em></strong><br>The main difference between the two is that <code>VISUAL</code> is used for visual editors, such as Sublime Text, Atom, or Visual Studio Code, while <code>EDITOR</code> is used for non-visual editors, such as nano, vim, or emacs.</p>
+</blockquote>
+<p>Let’s add the finishing touch and uncomment the following line in the <code>sudoers</code> file:</p>
+<figure class="highlight bash"><table><tr><td class="code"><pre><span class="line">%wheel ALL=(ALL:ALL) ALL</span><br></pre></td></tr></table></figure>
+
+<h4 id="SPICE-guest-tools"><a href="#SPICE-guest-tools" class="headerlink" title="SPICE guest tools"></a><em><code>SPICE guest tools</code></em></h4><p><code>SPICE</code> stands for Simple Protocol for Independent Computing Environments. It is a remote computing solution that allows users to access the desktop of a virtual machine or remote system from a client device. <code>SPICE</code> provides a high-performance, low-latency connection that supports a wide range of features, including audio, video, and USB redirection. It is commonly used in virtualization environments, such as those provided by QEMU and KVM, to provide remote access to virtual machines.</p>
+<p>However, we’re using it for clipboard sharing. With <code>SPICE guest tools</code> installed, the clipboard will be synced between the guest and the host.</p>
+<p>Install the <code>spice-vdagent</code> package by running the following command:</p>
+<figure class="highlight bash"><table><tr><td class="code"><pre><span class="line">sudo pacman -S spice-vdagent</span><br></pre></td></tr></table></figure>
+
+<p>Once the installation is complete, start the <code>spice-vdagent</code> service by running the following command:</p>
+<figure class="highlight bash"><table><tr><td class="code"><pre><span class="line">sudo systemctl start spice-vdagentd.service</span><br></pre></td></tr></table></figure>
+
+<p>You can also enable the service to start automatically at boot time by running the following command:</p>
+<figure class="highlight bash"><table><tr><td class="code"><pre><span class="line">sudo systemctl <span class="built_in">enable</span> spice-vdagentd.service</span><br></pre></td></tr></table></figure>
+
+<p>However, I wasn’t able to enable it on first try.</p>
+<pre><code>The unit files have no installation config (WantedBy=, RequiredBy=, Also=,
+Alias= settings in the [Install] section, and DefaultInstance= for template
+units). This means they are not meant to be enabled or disabled using systemctl.
+
+Possible reasons for having this kind of units are:
+
+* A unit may be statically enabled by being symlinked from another unit&#39;s
+  .wants/ or .requires/ directory.
+* A unit&#39;s purpose may be to act as a helper for some other unit which has
+  a requirement dependency on it.
+* A unit may be started when needed via activation (socket, path, timer,
+  D-Bus, udev, scripted systemctl call, ...).
+* In case of template units, the unit is meant to be enabled with some
+  instance name specified.
+</code></pre>
+<p>Here are some potential reasons why this error might be occurring and how we can address them:</p>
+<blockquote>
+<p>The unit file might be missing the <code>[Install]</code> section. Check the <code>spice-vdagentd.service</code> file located in <code>/usr/lib/systemd/system</code> to see if it contains an <code>[Install]</code> section with the appropriate <code>WantedBy</code> or <code>RequiredBy</code> settings. If the section is missing or incomplete, you can add it manually. For example, to enable the service at boot time, you can add the line <code>WantedBy=multi-user.target</code> to the <code>[Install]</code> section.</p>
+</blockquote>
+<blockquote>
+<p>The unit file might be a template unit. Template units are designed to be instantiated with specific instance names and cannot be enabled or disabled directly. Check the <code>spice-vdagentd.service</code> file to see if it contains the <code>DefaultInstance</code> setting in the <code>[Install]</code> section. If it does, you will need to specify an instance name when enabling the service using the <code>systemctl enable</code> command. For example, if the <code>DefaultInstance</code> setting is <code>my-instance</code>, you would run <code>systemctl enable spice-vdagentd@my-instance.service</code>.</p>
+</blockquote>
+<blockquote>
+<p>The unit file might be symlinked from another unit’s <code>.wants/</code> or <code>.requires/</code> directory. Check the contents of these directories located in <code>/etc/systemd/system</code> to see if there are any symlinks pointing to <code>spice-vdagentd.service</code>. If there are, you do not need to enable the service separately as it will be started automatically when the dependent unit is started.</p>
+</blockquote>
+<p>It’s the first fix for me. My <code>[Install]</code> section had only one line “<code>Also=spice-vdagentd.socket</code>“, so I added a second.</p>
+<h4 id="wget"><a href="#wget" class="headerlink" title="wget"></a><em><code>wget</code></em></h4><p>Install the <code>wget</code> command-line tool:</p>
+<figure class="highlight bash"><table><tr><td class="code"><pre><span class="line">sudo pacman -Syy</span><br><span class="line"></span><br><span class="line"><span class="comment"># Update package database</span></span><br><span class="line"></span><br><span class="line">sudo pacman -S wget</span><br></pre></td></tr></table></figure>
+
+<blockquote>
+<p>Note: You may need to <a href="#Refresh-keys">refresh your keychains</a> first!</p>
+</blockquote>
+<h4 id="git"><a href="#git" class="headerlink" title="git"></a><em><code>git</code></em></h4><p>Install the <code>git</code> package by running the following command:</p>
+<figure class="highlight bash"><table><tr><td class="code"><pre><span class="line">sudo pacman -S git</span><br></pre></td></tr></table></figure>
+
+<h4 id="yay"><a href="#yay" class="headerlink" title="yay"></a><em><code>yay</code></em></h4><p>The reason why we’re not installing <code>apt</code> is because <code>apt</code> is a package manager used in Debian-based Linux distributions like Ubuntu, and it is not available in Arch Linux. Instead, Arch Linux uses its own package manager called <code>pacman</code>, the one we just talked about.</p>
+<p>If you are familiar with <code>apt</code> and want to use a similar package manager in Arch Linux, you can use <code>yay</code>, which is a popular AUR (Arch User Repository) helper that provides a pacman-like interface with added features.</p>
+<figure class="highlight bash"><table><tr><td class="code"><pre><span class="line">sudo pacman -S base-devel</span><br></pre></td></tr></table></figure>
+
+<p>Install yay by running the following command:</p>
+<figure class="highlight bash"><table><tr><td class="code"><pre><span class="line">git <span class="built_in">clone</span> https://aur.archlinux.org/yay.git</span><br><span class="line"></span><br><span class="line"><span class="built_in">cd</span> yay</span><br><span class="line"></span><br><span class="line">makepkg -si</span><br><span class="line"></span><br></pre></td></tr></table></figure>
+
+<p><code>makepkg -si</code> is a command used in Arch Linux to build and install a package from source code.</p>
+<blockquote>
+<p><code>makepkg</code>: This is a tool that automates the process of building packages from source code in Arch Linux. It creates a package file that can be installed using the package manager.</p>
+</blockquote>
+<blockquote>
+<p><code>-s</code>: A flag that tells <code>makepkg</code> to install any dependencies needed to build the package.</p>
+</blockquote>
+<blockquote>
+<p><code>-i</code>: A flag that tells <code>makepkg</code> to install the package after it has been built.</p>
+</blockquote>
+<h4 id="Create-a-non-root-user"><a href="#Create-a-non-root-user" class="headerlink" title="Create a non-root user"></a>Create a non-root user</h4><p>Before we move on to the next step, we have to create an alternative user apart from our current root, otherwise <code>makepkg -si</code> won’t work.</p>
+<p>It’s fairly simple.</p>
+<p>To create a non-root user account on Arch Linux, we have to run these few steps:</p>
+<p>Run the following command to create a new user account:</p>
+<figure class="highlight bash"><table><tr><td class="code"><pre><span class="line">useradd -m -s /bin/bash &lt;username&gt;</span><br></pre></td></tr></table></figure>
+
+<p>Set a password for the new user account:</p>
+<figure class="highlight bash"><table><tr><td class="code"><pre><span class="line">sudo passwd &lt;username&gt;</span><br></pre></td></tr></table></figure>
+
+<p>Add the new user to the <code>wheel</code> group to allow them to use <code>sudo</code>:</p>
+<figure class="highlight bash"><table><tr><td class="code"><pre><span class="line">usermod -aG wheel &lt;username&gt;</span><br></pre></td></tr></table></figure>
+
+<p>At last, we simply log out of the <code>root</code> user account and log in to the new user account by entering the username and password we just created.</p>
+<hr>
+<p>Once the installation is complete, you can use <code>yay</code> to search for and install packages from the AUR. For example, to install the firefox package from the AUR, you can run the following command:</p>
+<figure class="highlight bash"><table><tr><td class="code"><pre><span class="line">yay -S firefox</span><br></pre></td></tr></table></figure>
+
+<p>Or if you want to uninstall, run the following command:</p>
+<figure class="highlight bash"><table><tr><td class="code"><pre><span class="line">yay -Rns firefox</span><br></pre></td></tr></table></figure>
+
+<p>This command will remove Firefox and its dependencies (<code>-R</code>), including any configuration files (<code>-n</code>) and any packages that were installed as dependencies and are no longer required (<code>-s</code>).</p>
+<p>Now, <code>yay</code> will automatically download and install the package and its dependencies.</p>
+<blockquote>
+<p><strong><em>Note</em></strong><br>While <code>yay</code> provides a pacman-like interface, it is not a drop-in replacement for <code>apt</code>, and there may be some differences in the way packages are managed and installed.</p>
+</blockquote>
+<hr>
+<h4 id="Refresh-keys"><a href="#Refresh-keys" class="headerlink" title="Refresh keys"></a>Refresh keys</h4><p>PGP keys are used to verify the authenticity of packages in the official Arch Linux repositories.</p>
+<p>Update the keyring package by running the following command:</p>
+<figure class="highlight bash"><table><tr><td class="code"><pre><span class="line">sudo pacman -Sy archlinux-keyring</span><br></pre></td></tr></table></figure>
+
+<p>Import the new keys by running the following command:</p>
+<figure class="highlight bash"><table><tr><td class="code"><pre><span class="line">sudo pacman-key --populate archlinux</span><br></pre></td></tr></table></figure>
+
+<p>Refresh the keyring by running the following command:</p>
+<figure class="highlight bash"><table><tr><td class="code"><pre><span class="line">sudo pacman-key --refresh-keys</span><br><span class="line"></span><br><span class="line"><span class="comment"># This command retrieves the latest keys from the keyserver and update your keyring accordingly.</span></span><br></pre></td></tr></table></figure>
+
+<p>Now your keychains should be up to date and you should be able to verify the authenticity of packages in the official Arch Linux repositories.</p>
+<h4 id="Poweroff"><a href="#Poweroff" class="headerlink" title="Poweroff"></a>Poweroff</h4><p>Once you had your fun, you’d probably want to poweroff. Here’s what you should do:</p>
+<figure class="highlight bash"><table><tr><td class="code"><pre><span class="line">sudo poweroff</span><br></pre></td></tr></table></figure>
+
+<p>Or:</p>
+<figure class="highlight bash"><table><tr><td class="code"><pre><span class="line">sudo shutdown -h now</span><br></pre></td></tr></table></figure>
+
+]]></content>
+      <categories>
+        <category>Linux</category>
+        <category>ArchLinux</category>
+      </categories>
       <tags>
-        <tag>Linux</tag>
+        <tag>UTM</tag>
         <tag>ArchLinux</tag>
+        <tag>Virtual Machine</tag>
       </tags>
   </entry>
   <entry>
@@ -124,6 +269,149 @@
       <tags>
         <tag>JavaScript</tag>
         <tag>Methods</tag>
+      </tags>
+  </entry>
+  <entry>
+    <title>Initialize shared directory with SPICE WebDAV</title>
+    <url>/2023/04/26/Initialize%20shared%20directory%20with%20SPICE%20WebDAV/</url>
+    <content><![CDATA[<h3 id="Install-Dependencies"><a href="#Install-Dependencies" class="headerlink" title="Install Dependencies"></a>Install Dependencies</h3><h4 id="SPICE-guest-tools"><a href="#SPICE-guest-tools" class="headerlink" title="SPICE guest tools"></a><em><code>SPICE guest tools</code></em></h4><p>See <a href="/2023/04/25/Running%20ArchLinux%20ARM%20in%20UTM%20on%20a%20M1%20MacBook%20Air/#SPICE-guest-tools"><code>SPICE guest tools</code></a></p>
+<h4 id="SPICE-WebDAV"><a href="#SPICE-WebDAV" class="headerlink" title="SPICE WebDAV"></a><em><code>SPICE WebDAV</code></em></h4><p>SPICE WebDAV is required for <a href="https://docs.getutm.app/settings-qemu/sharing/#spice-webdav" title="QEMU directory sharing">QEMU directory sharing</a> as an alternative to VirtFS.</p>
+<p>Since we’re on ArchLinux, we should run the following command:</p>
+<figure class="highlight bash"><table><tr><td class="code"><pre><span class="line">sudo pacman -S phodav</span><br></pre></td></tr></table></figure>
+
+<p>Now we should want to visit the shared directory.</p>
+<p>Normally, it is exposed as a WebDAV mount on the guest’s localhost (typically on port 9843).</p>
+<p>To access it, we need a browser.</p>
+<h3 id="Firefox"><a href="#Firefox" class="headerlink" title="Firefox"></a>Firefox</h3><p>I don’t have one yet, so I’ll Install Firefox via <a href="/2023/04/25/Running%20ArchLinux%20ARM%20in%20UTM%20on%20a%20M1%20MacBook%20Air/#yay"><code>yay</code></a>.</p>
+<figure class="highlight bash"><table><tr><td class="code"><pre><span class="line">yay -S firefox</span><br></pre></td></tr></table></figure>
+
+<p>Before we move on, let’s configure the <code>DISPLAY</code> environment variable first. Again, I need to install one:</p>
+<figure class="highlight bash"><table><tr><td class="code"><pre><span class="line">sudo pacman -S xorg xorg-xinit xfce4</span><br><span class="line"></span><br><span class="line"><span class="comment"># Once installation is complete, `reboot` and log-back-in</span></span><br></pre></td></tr></table></figure>
+
+<p>Before we proceed, make sure to check the following conditions:</p>
+<blockquote>
+<p>X Window System is actually running: You can start the X Window System by running the command <code>startx</code> in a terminal window.</p>
+</blockquote>
+<blockquote>
+<p>You have permission to access the X Window System: You may need to add your user account to the <code>video</code> group by running the command <code>sudo usermod -aG video &lt;username&gt;</code>.</p>
+</blockquote>
+<blockquote>
+<p>X Window System is configured to allow remote connections: You may need to edit the <code>/etc/X11/xinit/xserverrc</code> file to include the <code>-listen tcp</code> option. For example, you can add the line <code>exec /usr/bin/X -listen tcp</code> to the file.</p>
+</blockquote>
+<hr>
+<p>We may face some problems when we run <code>startx</code> because X server requires some sort of display device or screen so that it can display graphical output, and since ArchLinux is text-based, we’ll have to go through a few extra steps.</p>
+<ul>
+<li><p>Run <code>sudo pacman -S xf86-video-fbdev</code> to install the <code>xf86-video-fbdev</code> package. This package provides a generic framebuffer driver that can be used in place of a specific display driver.</p>
+</li>
+<li><p>Edit the <code>/etc/X11/xorg.conf.d/10-monitor.conf</code> file to specify the <code>fbdev</code> driver. We can do this by adding the following lines to the file:</p>
+</li>
+</ul>
+<figure class="highlight bash"><table><tr><td class="code"><pre><span class="line">Section <span class="string">&quot;Device&quot;</span></span><br><span class="line">    Identifier <span class="string">&quot;fbdev&quot;</span></span><br><span class="line">    Driver <span class="string">&quot;fbdev&quot;</span></span><br><span class="line">EndSection</span><br></pre></td></tr></table></figure>
+
+<p>That should do the trick when we run <code>startx</code> again.</p>
+<p>If the X server still fails to start, you may need to investigate further by checking the <code>/var/log/Xorg.0.log</code> file for additional information about the error.</p>
+<hr>
+<p>After double-checking the conditions listed above, we can now run the command <code>export DISPLAY=:0</code> to set the display environment variable to the default value for the X Window System.</p>
+<p>At last we launch Firefox and navigate to <code>http://127.0.0.1:9843</code>.</p>
+<figure class="highlight bash"><table><tr><td class="code"><pre><span class="line">firefox http://127.0.0.1:9843</span><br></pre></td></tr></table></figure>
+
+<p>We can also try running Firefox with the <code>--no-remote</code> option. This option tells Firefox to open a new instance of the browser, rather than connecting to an existing instance.</p>
+<figure class="highlight bash"><table><tr><td class="code"><pre><span class="line">firefox --no-remote http://127.0.0.1:9843</span><br></pre></td></tr></table></figure>
+
+<p>If the <code>SPICE WebDAV</code> service is running correctly, you should be able to see the page in the Firefox browser window.</p>
+<h3 id="I2pd"><a href="#I2pd" class="headerlink" title="I2pd"></a>I2pd</h3>]]></content>
+      <categories>
+        <category>Linux</category>
+        <category>ArchLinux</category>
+      </categories>
+  </entry>
+  <entry>
+    <title>[Fix] Failed to mount /mnt/share</title>
+    <url>/2023/04/27/%5BFix%5D%20Failed%20to%20mount%20:mnt:share/</url>
+    <content><![CDATA[<h3 id="Solution"><a href="#Solution" class="headerlink" title="Solution"></a>Solution</h3><p>Our fix to the problem is to remove <code>/mnt/share</code> entirely and mount something else in its place.</p>
+<p>This is the portion of the startup process which showed the error:</p>
+<pre><code>[FAILED] Failed to mount /mnt/share.
+See &#39;systemctl status mnt-share.mount&#39; for details
+</code></pre>
+<p>By the way, this post is for those who followed <a href="/2023/04/26/Mounting-a-Shared-folder-on-ArchLinux-VM/#Rollback">my last tutorial</a> on using Samba service to mount a shared directory on ArchLinux VM.</p>
+<h3 id="Check-mount-unit-status"><a href="#Check-mount-unit-status" class="headerlink" title="Check mount unit status"></a>Check mount unit status</h3><p>We’ll start by following the instruction to check the status of the mount unit by running the suggested command:</p>
+<figure class="highlight bash"><table><tr><td class="code"><pre><span class="line">systemctl status mnt-share.mount</span><br></pre></td></tr></table></figure>
+
+<p>This will give us more information about the specific error that occurred.</p>
+<pre><code>Warning: The unit file, source configuration file or drop-ins of mnt-share.moun&gt;
+x mnt-share.mount - /mnt/share
+     Loaded: loaded (/etc/fstab; generated)
+     Active: failed (Result: exit-code) since Thu 2023-04-27 02:45:46 UTC; 40mi&gt;
+      Where: /mnt/share
+       What: //localhost/share
+       Docs: man:fstab(5)
+             man:systemd-fstab-generator(8)
+        CPU: 28ms
+
+Apr 27 02:45:46 alarm systemd[1]: Mounting /mnt/share...
+Apr 27 02:45:46 alarm mount[379]: mount error(111): could not connect to ::1mou&gt;
+Apr 27 02:45:46 alarm systemd[1]: mnt-share.mount: Mount process exited, code=e&gt;
+Apr 27 02:45:46 alarm systemd[1]: mnt-share.mount: Failed with result &#39;exit-cod&gt;
+Apr 27 02:45:46 alarm systemd[1]: Failed to mount /mnt/share.
+</code></pre>
+<h3 id="Side-Content"><a href="#Side-Content" class="headerlink" title="Side Content"></a>Side Content</h3><h4 id="Check-file-system-properties"><a href="#Check-file-system-properties" class="headerlink" title="Check file system properties"></a>Check file system properties</h4><p>Since we’ve decided to remove the mount <code>/mnt/share</code> instead of trying to fix it, we shall proceed to learn a little about how to mount a disk. For instance, if we want to mount an NTFS file system and ensure that the file system is accessible and error-free, we can use the following command to check it for errors:</p>
+<figure class="highlight bash"><table><tr><td class="code"><pre><span class="line">sudo pacman -S ntfs-3g</span><br><span class="line"></span><br><span class="line"><span class="comment">#  Install the `ntfs-3g` package which provides the `ntfsfix` tool.</span></span><br><span class="line"></span><br><span class="line">sudo ntfsfix /dev/sda1</span><br><span class="line"></span><br><span class="line"><span class="comment"># Replace `/dev/sda1` with the appropriate device and partition.</span></span><br></pre></td></tr></table></figure>
+
+<p>If the virtual hard disk has multiple partitions, we’ll need to determine which partition contains the NTFS file system we want to mount. Oftentimes we use the <code>lsblk</code> command to list the available storage devices and their partitions, and the <code>blkid</code> command to list the UUIDs of the partitions.</p>
+<pre><code>$ lsblk
+NAME   MAJ:MIN RM  SIZE RO TYPE MOUNTPOINTS
+sr0     11:0    1 1024M  0 rom  
+vda    253:0    0  9.8G  0 disk 
+|-vda1 253:1    0  200M  0 part /boot
+`-vda2 253:2    0  9.6G  0 part /
+</code></pre>
+<p>In my case, the virtual machine has a single virtual hard disk, which is identified as <code>/dev/vda</code>. This virtual hard disk has two partitions, <code>/dev/vda1</code> and <code>/dev/vda2</code>, which are mounted at <code>/boot</code> and <code>/</code>, respectively.</p>
+<p><code>/dev/vda1</code> is a 200MB partition formatted as a Linux file system such as <code>ext4</code> or <code>xfs</code>, and contains the kernel and other boot files.</p>
+<p><code>/dev/vda2</code> is a 9.6GB partition also formatted as a Linux file system, and contains the root file system for the Arch Linux operating system.</p>
+<h4 id="Mount-NTFS-file-system"><a href="#Mount-NTFS-file-system" class="headerlink" title="Mount NTFS file system"></a>Mount NTFS file system</h4><p>If we want to mount an additional NTFS file system on our virtual machine, we can create a new directory to use as the mount point, such as <code>/mnt/ntfs</code>, and then add an entry to the <code>/etc/fstab</code> file to mount the NTFS file system at that mount point.</p>
+<p>For example, if the NTFS file system is located on <code>/dev/vda3</code>, we can add the following line to the <code>/etc/fstab</code> file:</p>
+<figure class="highlight bash"><table><tr><td class="code"><pre><span class="line">/dev/vda3 /mnt/ntfs ntfs-3g defaults 0 0</span><br></pre></td></tr></table></figure>
+
+<p>Or if you’ve run <code>blkid</code> and looked up the UUID of the file system you wanted to mount, you can also swap the line above for the following one:</p>
+<figure class="highlight bash"><table><tr><td class="code"><pre><span class="line">UUID=12345678-1234-1234-1234-1234567890ab /mnt/ntfs ntfs-3g defaults 0 0</span><br><span class="line"></span><br><span class="line"><span class="comment"># Pretend for a sec that the UUID of `/dev/vda3` is &quot;12345678-1234-1234-1234-1234567890ab&quot;</span></span><br></pre></td></tr></table></figure>
+
+<p>After adding the entry to the <code>/etc/fstab</code> file, we need to run <code>sudo mount -a</code>. This should mount the NTFS file system at the specified mount point, and the mount point should be automatically mounted at boot time.</p>
+<h4 id="Remove-Samba-entries"><a href="#Remove-Samba-entries" class="headerlink" title="Remove Samba entries"></a>Remove Samba entries</h4><p>Edit Samba’s configuration file <code>/etc/samba/smb.conf</code> and remove everything in the <code>[mnt]</code> field.</p>
+<p>Then, navigate to <code>/etc/fstab</code> and comment out anything associated with <code>/mnt/share</code>:</p>
+<pre><code># share /mnt/share 9p trans=virtio,nofail 0 0
+# //localhost/share /mnt/share cifs user=mccranky,password=Rogue12 0 0
+</code></pre>
+<p>Since we’ve already removed Samba service on our machine, we have no need of checking whether if the mount options specified in the mount unit are correct. But if you haven’t removed it yet, feel free to edit the mount unit file located at <code>/etc/systemd/system/mnt-share.mount</code> and modify the mount options.</p>
+<p>Remove the mount unit for <code>/mnt/share</code>:</p>
+<figure class="highlight bash"><table><tr><td class="code"><pre><span class="line">sudo <span class="built_in">rm</span> /etc/systemd/system/mnt-share.mount</span><br></pre></td></tr></table></figure>
+
+<p>Reload the systemd daemon to ensure that the changes take effect:</p>
+<figure class="highlight bash"><table><tr><td class="code"><pre><span class="line">sudo systemctl daemon-reload</span><br></pre></td></tr></table></figure>
+
+<p>When we check the status of <code>mnt-share.mount</code>, we should get:</p>
+<pre><code> $ sudo systemctl status mnt-share.mount
+x mnt-share.mount
+     Loaded: not-found (Reason: Unit mnt-share.mount not found.)
+     Active: failed (Result: exit-code) since Thu 2023-04-27 02:45:46 UTC; 1h 5&gt;
+        CPU: 28ms
+
+Apr 27 02:45:46 alarm systemd[1]: Mounting /mnt/share...
+Apr 27 02:45:46 alarm mount[379]: mount error(111): could not connect to ::1mou&gt;
+Apr 27 02:45:46 alarm systemd[1]: mnt-share.mount: Mount process exited, code=e&gt;
+Apr 27 02:45:46 alarm systemd[1]: mnt-share.mount: Failed with result &#39;exit-cod&gt;
+Apr 27 02:45:46 alarm systemd[1]: Failed to mount /mnt/share.
+</code></pre>
+<p>Last we can finally run <code>sudo rm -r /mnt/share</code> to remove <code>/mnt/share</code> from our machine.</p>
+<p>Perfect! Now when we <code>reboot</code> again we should receive no errors.</p>
+]]></content>
+      <categories>
+        <category>Linux</category>
+        <category>ArchLinux</category>
+      </categories>
+      <tags>
+        <tag>ArchLinux</tag>
+        <tag>Virtual Machine</tag>
+        <tag>Issue</tag>
       </tags>
   </entry>
   <entry>
@@ -244,280 +532,9 @@ r=mccranky)
         <category>ArchLinux</category>
       </categories>
       <tags>
-        <tag>ArchLinux</tag>
         <tag>UTM</tag>
-        <tag>Virtual Machine</tag>
-      </tags>
-  </entry>
-  <entry>
-    <title>Running ArchLinux ARM in UTM on a M1 MacBook Air</title>
-    <url>/2023/04/25/Running%20ArchLinux%20ARM%20in%20UTM%20on%20a%20M1%20MacBook%20Air/</url>
-    <content><![CDATA[<blockquote>
-<p>ArchLinux is a text-based operating system that does not come with a graphical interface, and all tasks are performed by running commands in the Command Line Interface (CLI).</p>
-</blockquote>
-<h3 id="Setup"><a href="#Setup" class="headerlink" title="Setup"></a>Setup</h3><p>The setting up of UTM and running virtual machines on it is rather simple. Just follow the steps shown below and you’ll be playing around soon enough.</p>
-<ol>
-<li><p><a href="https://github.com/utmapp/UTM/releases/latest/download/UTM.dmg" title="Download UTM">Download UTM</a></p>
-</li>
-<li><p><a href="https://mac.getutm.app/gallery/archlinux-arm" title="UTM Gallery - ArchLinux ARM">Click on <em>Open in UTM</em></a> - this automatically redirects you to your newly installed UTM app, where UTM will download the pre-built ArchLinux VM for you.</p>
-</li>
-<li><p>(Optional) You can run the VM as is, but feel free to tweak with the settings if you want to.</p>
-</li>
-</ol>
-<h3 id="Install-Dependencies"><a href="#Install-Dependencies" class="headerlink" title="Install Dependencies"></a>Install Dependencies</h3><h4 id="sudo"><a href="#sudo" class="headerlink" title="sudo"></a><em><code>sudo</code></em></h4><figure class="highlight bash"><table><tr><td class="code"><pre><span class="line">su -</span><br><span class="line"></span><br><span class="line">pacman -Syu</span><br><span class="line"></span><br><span class="line">pacman -S sudo</span><br><span class="line"></span><br></pre></td></tr></table></figure>
-
-<p><code>su</code> is short for “substitute user”, and it is used to switch to another user account in Unix-based operating systems. When you use <code>su</code> without any options, it will switch to the root user account by default.</p>
-<p>The <code>-</code> option used with <code>su</code> is used to simulate a full login for the new user, and it is not specific to the root user. When you use <code>su -</code> followed by a username, it will switch to that user’s account with a login shell.</p>
-<p>So, to summarize:</p>
-<ul>
-<li><p><code>su</code> is used to switch to another user account.</p>
-</li>
-<li><p><code>su</code> without any options will switch to the root user account by default.</p>
-</li>
-<li><p><code>su -</code> followed by a username will switch to that user’s account with a login shell, simulating a full login for that user.</p>
-</li>
-</ul>
-<hr>
-<p><strong><em><code>pacman</code></em></strong></p>
-<p><code>pacman</code> is the package manager for Arch Linux, a lightweight and flexible Linux distribution.</p>
-<p>With <code>pacman</code>, users can easily install, remove, and update software packages on their Arch Linux system. It uses a binary package format, which means that packages are precompiled and ready to install, making the process faster and more efficient than compiling from source.</p>
-<p>Some common <code>pacman</code> options include:</p>
-<blockquote>
-<p><code>pacman -Syu</code>: <code>-S</code> stands for “sync”, <code>-y</code> and <code>-u</code> are options that tell <code>pacman</code> to refresh the package databases and upgrade all packages, respectively. <code>-Syu</code>, as a whole, updates the system and all installed packages to the latest version.</p>
-</blockquote>
-<blockquote>
-<p><code>pacman -S &lt;package&gt;</code>: <code>-S</code> is a shorthand for <code>--sync</code>. This command installs a package.</p>
-</blockquote>
-<blockquote>
-<p><code>pacman -R &lt;package&gt;</code>: <code>-R</code> stands for “remove”. This command removes a package.</p>
-</blockquote>
-<blockquote>
-<p><code>pacman -Ss &lt;searchterm&gt;</code>: <code>-Ss</code> stands for “synchronize&#x2F;search”. This command searches for packages containing the specified search term.</p>
-</blockquote>
-<blockquote>
-<p><code>pacman -Q</code>: <code>-Q</code> stands for “query”. This command lists all installed packages on the system.</p>
-</blockquote>
-<hr>
-<p>Once the installation is complete, we need to configure <code>sudo</code> to allow users to execute commands with administrative privileges. To do this, you need to add the user to the <code>wheel</code> group. Run the following command to add the user to the wheel group:</p>
-<figure class="highlight bash"><table><tr><td class="code"><pre><span class="line">usermod -aG wheel &lt;username&gt;</span><br></pre></td></tr></table></figure>
-
-<p>This command is used to add a <code>user</code> to the <code>wheel</code> group, which will give them the ability to perform administrative tasks on the system using the <code>sudo</code> command.</p>
-<blockquote>
-<p><code>usermod</code>: This is a command-line utility in Unix-based operating systems that is used to modify user account properties. The <code>usermod</code> command allows you to add or remove a user from a group, change a user’s home directory, and modify other user account settings.</p>
-</blockquote>
-<blockquote>
-<p><code>wheel</code>: This is a special group in Unix-based operating systems that is used to control access to administrative tasks. Users who are members of the <code>wheel</code> group are allowed to use the <code>sudo</code> command to execute commands with <code>root</code> privileges.</p>
-</blockquote>
-<blockquote>
-<p><code>-aG</code>: These two options used alongside <code>usermod</code> are used to add a user to a group. Specifically, <code>-a</code> stands for “append”, which means that the user is added to the group without removing them from any other groups they may already be a member of. <code>-G</code> stands for “group”, and is followed by the name of the group to add the user to.</p>
-</blockquote>
-<hr>
-<figure class="highlight bash"><table><tr><td class="code"><pre><span class="line">visudo -f /etc/sudoers</span><br></pre></td></tr></table></figure>
-
-<blockquote>
-<p><code>visudo</code>: This is a command used in Unix-based operating systems to edit the <code>sudoers</code> file, which controls user access to administrative commands.</p>
-</blockquote>
-<blockquote>
-<p><code>-f</code>: This option is used to specify the file to edit.</p>
-</blockquote>
-<p><code>visudo</code> uses the system’s default editor to open and edit the <code>sudoers</code> file, which is often <code>vi</code>.</p>
-<p>If <code>vi</code> is not your thing, you can always specify which editor to use by pass <code>EDITOR=&lt;editor-name&gt;</code> in front of <code>visudo</code>. You can change the default editor once and for all by change these two environment variables: <code>VISUAL</code> and <code>EDITOR</code>.</p>
-<figure class="highlight bash"><table><tr><td class="code"><pre><span class="line"><span class="built_in">export</span> EDITOR=nano</span><br></pre></td></tr></table></figure>
-
-<blockquote>
-<p><strong><em>Note</em></strong><br>The main difference between the two is that <code>VISUAL</code> is used for visual editors, such as Sublime Text, Atom, or Visual Studio Code, while <code>EDITOR</code> is used for non-visual editors, such as nano, vim, or emacs.</p>
-</blockquote>
-<p>Let’s add the finishing touch and uncomment the following line in the <code>sudoers</code> file:</p>
-<figure class="highlight bash"><table><tr><td class="code"><pre><span class="line">%wheel ALL=(ALL:ALL) ALL</span><br></pre></td></tr></table></figure>
-
-<h4 id="SPICE-guest-tools"><a href="#SPICE-guest-tools" class="headerlink" title="SPICE guest tools"></a><em><code>SPICE guest tools</code></em></h4><p><code>SPICE</code> stands for Simple Protocol for Independent Computing Environments. It is a remote computing solution that allows users to access the desktop of a virtual machine or remote system from a client device. <code>SPICE</code> provides a high-performance, low-latency connection that supports a wide range of features, including audio, video, and USB redirection. It is commonly used in virtualization environments, such as those provided by QEMU and KVM, to provide remote access to virtual machines.</p>
-<p>However, we’re using it for clipboard sharing. With <code>SPICE guest tools</code> installed, the clipboard will be synced between the guest and the host.</p>
-<p>Install the <code>spice-vdagent</code> package by running the following command:</p>
-<figure class="highlight bash"><table><tr><td class="code"><pre><span class="line">sudo pacman -S spice-vdagent</span><br></pre></td></tr></table></figure>
-
-<p>Once the installation is complete, start the <code>spice-vdagent</code> service by running the following command:</p>
-<figure class="highlight bash"><table><tr><td class="code"><pre><span class="line">sudo systemctl start spice-vdagentd.service</span><br></pre></td></tr></table></figure>
-
-<p>You can also enable the service to start automatically at boot time by running the following command:</p>
-<figure class="highlight bash"><table><tr><td class="code"><pre><span class="line">sudo systemctl <span class="built_in">enable</span> spice-vdagentd.service</span><br></pre></td></tr></table></figure>
-
-<p>However, I wasn’t able to enable it on first try.</p>
-<pre><code>The unit files have no installation config (WantedBy=, RequiredBy=, Also=,
-Alias= settings in the [Install] section, and DefaultInstance= for template
-units). This means they are not meant to be enabled or disabled using systemctl.
-
-Possible reasons for having this kind of units are:
-
-* A unit may be statically enabled by being symlinked from another unit&#39;s
-  .wants/ or .requires/ directory.
-* A unit&#39;s purpose may be to act as a helper for some other unit which has
-  a requirement dependency on it.
-* A unit may be started when needed via activation (socket, path, timer,
-  D-Bus, udev, scripted systemctl call, ...).
-* In case of template units, the unit is meant to be enabled with some
-  instance name specified.
-</code></pre>
-<p>Here are some potential reasons why this error might be occurring and how we can address them:</p>
-<blockquote>
-<p>The unit file might be missing the <code>[Install]</code> section. Check the <code>spice-vdagentd.service</code> file located in <code>/usr/lib/systemd/system</code> to see if it contains an <code>[Install]</code> section with the appropriate <code>WantedBy</code> or <code>RequiredBy</code> settings. If the section is missing or incomplete, you can add it manually. For example, to enable the service at boot time, you can add the line <code>WantedBy=multi-user.target</code> to the <code>[Install]</code> section.</p>
-</blockquote>
-<blockquote>
-<p>The unit file might be a template unit. Template units are designed to be instantiated with specific instance names and cannot be enabled or disabled directly. Check the <code>spice-vdagentd.service</code> file to see if it contains the <code>DefaultInstance</code> setting in the <code>[Install]</code> section. If it does, you will need to specify an instance name when enabling the service using the <code>systemctl enable</code> command. For example, if the <code>DefaultInstance</code> setting is <code>my-instance</code>, you would run <code>systemctl enable spice-vdagentd@my-instance.service</code>.</p>
-</blockquote>
-<blockquote>
-<p>The unit file might be symlinked from another unit’s <code>.wants/</code> or <code>.requires/</code> directory. Check the contents of these directories located in <code>/etc/systemd/system</code> to see if there are any symlinks pointing to <code>spice-vdagentd.service</code>. If there are, you do not need to enable the service separately as it will be started automatically when the dependent unit is started.</p>
-</blockquote>
-<p>It’s the first fix for me. My <code>[Install]</code> section had only one line “<code>Also=spice-vdagentd.socket</code>“, so I added a second.</p>
-<h4 id="wget"><a href="#wget" class="headerlink" title="wget"></a><em><code>wget</code></em></h4><p>Install the <code>wget</code> command-line tool:</p>
-<figure class="highlight bash"><table><tr><td class="code"><pre><span class="line">sudo pacman -S wget</span><br></pre></td></tr></table></figure>
-
-<h4 id="git"><a href="#git" class="headerlink" title="git"></a><em><code>git</code></em></h4><p>Install the <code>git</code> package by running the following command:</p>
-<figure class="highlight bash"><table><tr><td class="code"><pre><span class="line">sudo pacman -S git</span><br></pre></td></tr></table></figure>
-
-<h4 id="yay"><a href="#yay" class="headerlink" title="yay"></a><em><code>yay</code></em></h4><p>The reason why we’re not installing <code>apt</code> is because <code>apt</code> is a package manager used in Debian-based Linux distributions like Ubuntu, and it is not available in Arch Linux. Instead, Arch Linux uses its own package manager called <code>pacman</code>, the one we just talked about.</p>
-<p>If you are familiar with <code>apt</code> and want to use a similar package manager in Arch Linux, you can use <code>yay</code>, which is a popular AUR (Arch User Repository) helper that provides a pacman-like interface with added features.</p>
-<figure class="highlight bash"><table><tr><td class="code"><pre><span class="line">sudo pacman -S base-devel</span><br></pre></td></tr></table></figure>
-
-<p>Install yay by running the following command:</p>
-<figure class="highlight bash"><table><tr><td class="code"><pre><span class="line">git <span class="built_in">clone</span> https://aur.archlinux.org/yay.git</span><br><span class="line"></span><br><span class="line"><span class="built_in">cd</span> yay</span><br><span class="line"></span><br><span class="line">makepkg -si</span><br><span class="line"></span><br></pre></td></tr></table></figure>
-
-<p><code>makepkg -si</code> is a command used in Arch Linux to build and install a package from source code.</p>
-<blockquote>
-<p><code>makepkg</code>: This is a tool that automates the process of building packages from source code in Arch Linux. It creates a package file that can be installed using the package manager.</p>
-</blockquote>
-<blockquote>
-<p><code>-s</code>: A flag that tells <code>makepkg</code> to install any dependencies needed to build the package.</p>
-</blockquote>
-<blockquote>
-<p><code>-i</code>: A flag that tells <code>makepkg</code> to install the package after it has been built.</p>
-</blockquote>
-<hr>
-<p>Before we move on to the next step, we have to create an alternative user apart from our current root, otherwise <code>makepkg -si</code> won’t work.</p>
-<p>It’s fairly simple.</p>
-<p>To create a non-root user account on Arch Linux, we have to run these few steps:</p>
-<p>Run the following command to create a new user account:</p>
-<figure class="highlight bash"><table><tr><td class="code"><pre><span class="line">useradd -m -s /bin/bash &lt;username&gt;</span><br></pre></td></tr></table></figure>
-
-<p>Set a password for the new user account:</p>
-<figure class="highlight bash"><table><tr><td class="code"><pre><span class="line">sudo passwd &lt;username&gt;</span><br></pre></td></tr></table></figure>
-
-<p>Add the new user to the <code>wheel</code> group to allow them to use <code>sudo</code>:</p>
-<figure class="highlight bash"><table><tr><td class="code"><pre><span class="line">usermod -aG wheel &lt;username&gt;</span><br></pre></td></tr></table></figure>
-
-<p>At last, we simply log out of the <code>root</code> user account and log in to the new user account by entering the username and password we just created.</p>
-<hr>
-<p>Once the installation is complete, you can use <code>yay</code> to search for and install packages from the AUR. For example, to install the firefox package from the AUR, you can run the following command:</p>
-<figure class="highlight bash"><table><tr><td class="code"><pre><span class="line">yay -S firefox</span><br></pre></td></tr></table></figure>
-
-<p>Or if you want to uninstall, run the following command:</p>
-<figure class="highlight bash"><table><tr><td class="code"><pre><span class="line">yay -Rns firefox</span><br></pre></td></tr></table></figure>
-
-<p>This command will remove Firefox and its dependencies (<code>-R</code>), including any configuration files (<code>-n</code>) and any packages that were installed as dependencies and are no longer required (<code>-s</code>).</p>
-<p>Now, <code>yay</code> will automatically download and install the package and its dependencies.</p>
-<blockquote>
-<p><strong><em>Note</em></strong><br>While <code>yay</code> provides a pacman-like interface, it is not a drop-in replacement for <code>apt</code>, and there may be some differences in the way packages are managed and installed.</p>
-</blockquote>
-<hr>
-<p>Once you had your fun, you’d probably want to poweroff. Here’s what you should do:</p>
-<figure class="highlight bash"><table><tr><td class="code"><pre><span class="line">sudo poweroff</span><br></pre></td></tr></table></figure>
-
-<p>Or:</p>
-<figure class="highlight bash"><table><tr><td class="code"><pre><span class="line">sudo shutdown -h now</span><br></pre></td></tr></table></figure>
-
-]]></content>
-      <categories>
-        <category>Linux</category>
-        <category>ArchLinux</category>
-      </categories>
-      <tags>
-        <tag>ArchLinux</tag>
-        <tag>UTM</tag>
-        <tag>Virtual Machine</tag>
-      </tags>
-  </entry>
-  <entry>
-    <title>[Fix] Failed to mount /mnt/share</title>
-    <url>/2023/04/27/%5BFix%5D%20Failed%20to%20mount%20:mnt:share/</url>
-    <content><![CDATA[<h3 id="Solution"><a href="#Solution" class="headerlink" title="Solution"></a>Solution</h3><p>Our fix to the problem is to remove <code>/mnt/share</code> entirely and mount something else in its place.</p>
-<p>This is the portion of the startup process which showed the error:</p>
-<pre><code>[FAILED] Failed to mount /mnt/share.
-See &#39;systemctl status mnt-share.mount&#39; for details
-</code></pre>
-<p>By the way, this post is for those who followed <a href="/2023/04/26/Mounting-a-Shared-folder-on-ArchLinux-VM/#Rollback">my last tutorial</a> on using Samba service to mount a shared directory on ArchLinux VM.</p>
-<h3 id="Check-mount-unit-status"><a href="#Check-mount-unit-status" class="headerlink" title="Check mount unit status"></a>Check mount unit status</h3><p>We’ll start by following the instruction to check the status of the mount unit by running the suggested command:</p>
-<figure class="highlight bash"><table><tr><td class="code"><pre><span class="line">systemctl status mnt-share.mount</span><br></pre></td></tr></table></figure>
-
-<p>This will give us more information about the specific error that occurred.</p>
-<pre><code>Warning: The unit file, source configuration file or drop-ins of mnt-share.moun&gt;
-x mnt-share.mount - /mnt/share
-     Loaded: loaded (/etc/fstab; generated)
-     Active: failed (Result: exit-code) since Thu 2023-04-27 02:45:46 UTC; 40mi&gt;
-      Where: /mnt/share
-       What: //localhost/share
-       Docs: man:fstab(5)
-             man:systemd-fstab-generator(8)
-        CPU: 28ms
-
-Apr 27 02:45:46 alarm systemd[1]: Mounting /mnt/share...
-Apr 27 02:45:46 alarm mount[379]: mount error(111): could not connect to ::1mou&gt;
-Apr 27 02:45:46 alarm systemd[1]: mnt-share.mount: Mount process exited, code=e&gt;
-Apr 27 02:45:46 alarm systemd[1]: mnt-share.mount: Failed with result &#39;exit-cod&gt;
-Apr 27 02:45:46 alarm systemd[1]: Failed to mount /mnt/share.
-</code></pre>
-<h3 id="Side-Content"><a href="#Side-Content" class="headerlink" title="Side Content"></a>Side Content</h3><h4 id="Check-file-system-properties"><a href="#Check-file-system-properties" class="headerlink" title="Check file system properties"></a>Check file system properties</h4><p>Since we’ve decided to remove the mount <code>/mnt/share</code> instead of trying to fix it, we shall proceed to learn a little about how to mount a disk. For instance, if we want to mount an NTFS file system and ensure that the file system is accessible and error-free, we can use the following command to check it for errors:</p>
-<figure class="highlight bash"><table><tr><td class="code"><pre><span class="line">sudo pacman -S ntfs-3g</span><br><span class="line"></span><br><span class="line"><span class="comment">#  Install the `ntfs-3g` package which provides the `ntfsfix` tool.</span></span><br><span class="line"></span><br><span class="line">sudo ntfsfix /dev/sda1</span><br><span class="line"></span><br><span class="line"><span class="comment"># Replace `/dev/sda1` with the appropriate device and partition.</span></span><br></pre></td></tr></table></figure>
-
-<p>If the virtual hard disk has multiple partitions, we’ll need to determine which partition contains the NTFS file system we want to mount. Oftentimes we use the <code>lsblk</code> command to list the available storage devices and their partitions, and the <code>blkid</code> command to list the UUIDs of the partitions.</p>
-<pre><code>$ lsblk
-NAME   MAJ:MIN RM  SIZE RO TYPE MOUNTPOINTS
-sr0     11:0    1 1024M  0 rom  
-vda    253:0    0  9.8G  0 disk 
-|-vda1 253:1    0  200M  0 part /boot
-`-vda2 253:2    0  9.6G  0 part /
-</code></pre>
-<p>In my case, the virtual machine has a single virtual hard disk, which is identified as <code>/dev/vda</code>. This virtual hard disk has two partitions, <code>/dev/vda1</code> and <code>/dev/vda2</code>, which are mounted at <code>/boot</code> and <code>/</code>, respectively.</p>
-<p><code>/dev/vda1</code> is a 200MB partition formatted as a Linux file system such as <code>ext4</code> or <code>xfs</code>, and contains the kernel and other boot files.</p>
-<p><code>/dev/vda2</code> is a 9.6GB partition also formatted as a Linux file system, and contains the root file system for the Arch Linux operating system.</p>
-<h4 id="Mount-NTFS-file-system"><a href="#Mount-NTFS-file-system" class="headerlink" title="Mount NTFS file system"></a>Mount NTFS file system</h4><p>If we want to mount an additional NTFS file system on our virtual machine, we can create a new directory to use as the mount point, such as <code>/mnt/ntfs</code>, and then add an entry to the <code>/etc/fstab</code> file to mount the NTFS file system at that mount point.</p>
-<p>For example, if the NTFS file system is located on <code>/dev/vda3</code>, we can add the following line to the <code>/etc/fstab</code> file:</p>
-<figure class="highlight bash"><table><tr><td class="code"><pre><span class="line">/dev/vda3 /mnt/ntfs ntfs-3g defaults 0 0</span><br></pre></td></tr></table></figure>
-
-<p>Or if you’ve run <code>blkid</code> and looked up the UUID of the file system you wanted to mount, you can also swap the line above for the following one:</p>
-<figure class="highlight bash"><table><tr><td class="code"><pre><span class="line">UUID=12345678-1234-1234-1234-1234567890ab /mnt/ntfs ntfs-3g defaults 0 0</span><br><span class="line"></span><br><span class="line"><span class="comment"># Pretend for a sec that the UUID of `/dev/vda3` is &quot;12345678-1234-1234-1234-1234567890ab&quot;</span></span><br></pre></td></tr></table></figure>
-
-<p>After adding the entry to the <code>/etc/fstab</code> file, we need to run <code>sudo mount -a</code>. This should mount the NTFS file system at the specified mount point, and the mount point should be automatically mounted at boot time.</p>
-<h4 id="Remove-Samba-entries"><a href="#Remove-Samba-entries" class="headerlink" title="Remove Samba entries"></a>Remove Samba entries</h4><p>Edit Samba’s configuration file <code>/etc/samba/smb.conf</code> and remove everything in the <code>[mnt]</code> field.</p>
-<p>Then, navigate to <code>/etc/fstab</code> and comment out anything associated with <code>/mnt/share</code>:</p>
-<pre><code># share /mnt/share 9p trans=virtio,nofail 0 0
-# //localhost/share /mnt/share cifs user=mccranky,password=Rogue12 0 0
-</code></pre>
-<p>Since we’ve already removed Samba service on our machine, we have no need of checking whether if the mount options specified in the mount unit are correct. But if you haven’t removed it yet, feel free to edit the mount unit file located at <code>/etc/systemd/system/mnt-share.mount</code> and modify the mount options.</p>
-<p>Remove the mount unit for <code>/mnt/share</code>:</p>
-<figure class="highlight bash"><table><tr><td class="code"><pre><span class="line">sudo <span class="built_in">rm</span> /etc/systemd/system/mnt-share.mount</span><br></pre></td></tr></table></figure>
-
-<p>Reload the systemd daemon to ensure that the changes take effect:</p>
-<figure class="highlight bash"><table><tr><td class="code"><pre><span class="line">sudo systemctl daemon-reload</span><br></pre></td></tr></table></figure>
-
-<p>When we check the status of <code>mnt-share.mount</code>, we should get:</p>
-<pre><code> $ sudo systemctl status mnt-share.mount
-x mnt-share.mount
-     Loaded: not-found (Reason: Unit mnt-share.mount not found.)
-     Active: failed (Result: exit-code) since Thu 2023-04-27 02:45:46 UTC; 1h 5&gt;
-        CPU: 28ms
-
-Apr 27 02:45:46 alarm systemd[1]: Mounting /mnt/share...
-Apr 27 02:45:46 alarm mount[379]: mount error(111): could not connect to ::1mou&gt;
-Apr 27 02:45:46 alarm systemd[1]: mnt-share.mount: Mount process exited, code=e&gt;
-Apr 27 02:45:46 alarm systemd[1]: mnt-share.mount: Failed with result &#39;exit-cod&gt;
-Apr 27 02:45:46 alarm systemd[1]: Failed to mount /mnt/share.
-</code></pre>
-<p>Last we can finally run <code>sudo rm -r /mnt/share</code> to remove <code>/mnt/share</code> from our machine.</p>
-<p>Perfect! Now when we <code>reboot</code> again we should receive no errors.</p>
-]]></content>
-      <tags>
         <tag>ArchLinux</tag>
         <tag>Virtual Machine</tag>
-        <tag>Issue</tag>
       </tags>
   </entry>
   <entry>
@@ -693,53 +710,6 @@ S: 221 /0:0:0:0:0:0:0:1 Service closing transmission channel
       </tags>
   </entry>
   <entry>
-    <title>如何使用 GitHub Pages 托管 Hexo 静态博客网站</title>
-    <url>/2023/04/22/%E5%A6%82%E4%BD%95%E4%BD%BF%E7%94%A8%20GitHub%20Pages%20%E6%89%98%E7%AE%A1%20Hexo%20%E9%9D%99%E6%80%81%E5%8D%9A%E5%AE%A2%E7%BD%91%E7%AB%99/</url>
-    <content><![CDATA[<p>– <strong>请先阅读 <a href="/2023/04/22/%E4%BD%BF%E7%94%A8%20Hexo%20%E7%94%9F%E6%88%90%E9%9D%99%E6%80%81%E7%BD%91%E9%A1%B5%E5%8D%9A%E5%AE%A2/index.html">使用 Hexo 生成静态网页博客</a>！</strong></p>
-<h3 id="准备工作"><a href="#准备工作" class="headerlink" title="准备工作"></a>准备工作</h3><p>首先，我们基于完成的博客<code>.md</code>文件生成静态网页：</p>
-<figure class="highlight bash"><table><tr><td class="code"><pre><span class="line"><span class="built_in">cd</span> /path/to/site/</span><br><span class="line"><span class="comment"># 跑到项目路径目录</span></span><br><span class="line"></span><br><span class="line">hexo generate</span><br><span class="line"><span class="comment"># 生成静态网页，存放与 public 文件夹内</span></span><br></pre></td></tr></table></figure>
-
-<p>接着，我们进入<code>public</code>文件夹。</p>
-<pre><code>.
-├── node_modules
-├── public
-├── scaffolds
-├── source
-└── themes
-</code></pre>
-<p>因为我们是使用 GitHub Pages 托管，所以我们需要在<code>public</code>文件夹内初始化<code>git</code>：</p>
-<figure class="highlight bash"><table><tr><td class="code"><pre><span class="line">git init</span><br><span class="line"></span><br><span class="line">git branch -m main</span><br><span class="line"></span><br><span class="line">git add .</span><br><span class="line"></span><br><span class="line">git commit -m <span class="string">&quot;初始化工作&quot;</span></span><br></pre></td></tr></table></figure>
-
-<p>其次，我们还需要在 GitHub 上面建立一个远程仓库，格式<strong>必须</strong>为<code>username.github.io</code>，这是硬性要求。</p>
-<h3 id="关联和发布"><a href="#关联和发布" class="headerlink" title="关联和发布"></a>关联和发布</h3><p>我们现在需要关联本地仓库和远程仓库，用例中我们使用<code>https</code>协议，当然也可以使用<code>ssh</code>密钥：</p>
-<figure class="highlight bash"><table><tr><td class="code"><pre><span class="line">git remote add origin https://github.com/username/username.github.io.git</span><br><span class="line"></span><br><span class="line">git push origin main</span><br></pre></td></tr></table></figure>
-
-<p>我们还需要更改一下远程仓库的 GitHub Pages 的设置，目的是告知它托管文件的地址：</p>
-<div style="display: block; margin-left: auto; margin-right: auto; text-align: center; font-size: 1rem;">
-  
-<p>  <img src="/2023/04/22/%E5%A6%82%E4%BD%95%E4%BD%BF%E7%94%A8%20GitHub%20Pages%20%E6%89%98%E7%AE%A1%20Hexo%20%E9%9D%99%E6%80%81%E5%8D%9A%E5%AE%A2%E7%BD%91%E7%AB%99/images/0001.png" alt="点击 Settings" title="点击 Settings"></p>
-  <div>点击 Settings</div>
-  <br>
-
-<p>  <img src="/2023/04/22/%E5%A6%82%E4%BD%95%E4%BD%BF%E7%94%A8%20GitHub%20Pages%20%E6%89%98%E7%AE%A1%20Hexo%20%E9%9D%99%E6%80%81%E5%8D%9A%E5%AE%A2%E7%BD%91%E7%AB%99/images/0002.png" alt="点击 Pages" title="点击 Pages"></p>
-  <div>点击 Pages</div>
-  <br>
-
-<p>  <img src="/2023/04/22/%E5%A6%82%E4%BD%95%E4%BD%BF%E7%94%A8%20GitHub%20Pages%20%E6%89%98%E7%AE%A1%20Hexo%20%E9%9D%99%E6%80%81%E5%8D%9A%E5%AE%A2%E7%BD%91%E7%AB%99/images/0003.png" alt="修改设置" title="修改设置"></p>
-  <div>修改设置</div>
-  <br>
-
-</div>
-
-<p>最后，我们访问<code>username.github.io</code>就可以来到我们的博客页了 :)</p>
-]]></content>
-      <tags>
-        <tag>Hexo</tag>
-        <tag>GitHub Pages</tag>
-        <tag>Git</tag>
-      </tags>
-  </entry>
-  <entry>
     <title>如何生成项目树状结构图</title>
     <url>/2023/04/22/%E5%A6%82%E4%BD%95%E7%94%9F%E6%88%90%E9%A1%B9%E7%9B%AE%E6%A0%91%E7%8A%B6%E7%BB%93%E6%9E%84%E5%9B%BE/</url>
     <content><![CDATA[<h3 id="Prerequisites"><a href="#Prerequisites" class="headerlink" title="Prerequisites"></a>Prerequisites</h3><ul>
@@ -814,9 +784,9 @@ S: 221 /0:0:0:0:0:0:0:1 Service closing transmission channel
 <figure class="highlight bash"><table><tr><td class="code"><pre><span class="line">git push origin temp</span><br></pre></td></tr></table></figure>]]></content>
       <tags>
         <tag>Bash</tag>
-        <tag>Git</tag>
         <tag>CLI</tag>
         <tag>File Systems</tag>
+        <tag>Git</tag>
       </tags>
   </entry>
   <entry>
@@ -896,48 +866,6 @@ S: 221 /0:0:0:0:0:0:0:1 Service closing transmission channel
         <tag>CTF</tag>
         <tag>OverTheWire</tag>
         <tag>Bandit</tag>
-      </tags>
-  </entry>
-  <entry>
-    <title>软件工程 第二周的博客</title>
-    <url>/2023/03/29/%E8%BD%AF%E4%BB%B6%E5%B7%A5%E7%A8%8B%20%E7%AC%AC%E4%BA%8C%E5%91%A8%E7%9A%84%E5%8D%9A%E5%AE%A2/</url>
-    <content><![CDATA[<h3 id="使用-Node-js-的-Express-js-模组-Host-自己的静态网页"><a href="#使用-Node-js-的-Express-js-模组-Host-自己的静态网页" class="headerlink" title="使用 Node.js 的 Express.js 模组 Host 自己的静态网页"></a><em>使用 Node.js 的 Express.js 模组 Host 自己的静态网页</em></h3><p>首先创建项目文件夹:</p>
-<figure class="highlight plaintext"><table><tr><td class="code"><pre><span class="line"></span><br><span class="line">mkdir project01; cd project01</span><br><span class="line"></span><br></pre></td></tr></table></figure>
-
-<p>然后创建app.js文件：</p>
-<figure class="highlight plaintext"><table><tr><td class="code"><pre><span class="line"></span><br><span class="line">touch app.js; sudo nano app.js</span><br><span class="line"></span><br></pre></td></tr></table></figure>
-
-<blockquote>
-<p>差点忘了，没下载Node.js的先去这个地址下载一下：<a href="https://nodejs.org/en/download/">https://nodejs.org/en/download/</a></p>
-</blockquote>
-<p>下载完初始化一下：</p>
-<figure class="highlight plaintext"><table><tr><td class="code"><pre><span class="line"></span><br><span class="line">node init -y</span><br><span class="line"></span><br></pre></td></tr></table></figure>
-
-<p>到生成的package.json文件里 script object 里加个参数：</p>
-<figure class="highlight plaintext"><table><tr><td class="code"><pre><span class="line"></span><br><span class="line">‘start&#x27;：‘node app’</span><br><span class="line"></span><br></pre></td></tr></table></figure>
-
-<p>好的，非常完美。</p>
-<p>然后下载express：</p>
-<figure class="highlight plaintext"><table><tr><td class="code"><pre><span class="line"></span><br><span class="line">npm i express --save</span><br><span class="line"></span><br></pre></td></tr></table></figure>
-
-<p>这里不建议把它下载为–global，因为会和别的模组冲突。</p>
-<p>面对空白页，先导入express模组并初始化app（关于http模组的基础不做赘述，因为用那个太麻烦了）：</p>
-<figure class="highlight plaintext"><table><tr><td class="code"><pre><span class="line"></span><br><span class="line">const app = require(&#x27;express&#x27;)()</span><br><span class="line"></span><br></pre></td></tr></table></figure>
-
-<p>然后省略几千字，直接上代码，不懂看注释 : )</p>
-<figure class="highlight plaintext"><table><tr><td class="code"><pre><span class="line"></span><br><span class="line">app.use(express.static(&#x27;./public&#x27;))     // 把静态网页需要的资源全扔 public 文件夹里就好了</span><br><span class="line"></span><br><span class="line">app.all(&#x27;*&#x27;, (req, res) =&gt; &#123;</span><br><span class="line">  res.status(404).send(&#x27;resource not found&#x27;)</span><br><span class="line">&#125;)                                                           // 这个是用来处理404 Bad Request 的</span><br><span class="line"></span><br><span class="line">app.listen(5000, () =&gt; &#123;</span><br><span class="line">  console.log(&#x27;server is listening on port 5000....&#x27;)</span><br><span class="line">&#125;)                                                          // 这个是选择端口</span><br><span class="line"></span><br></pre></td></tr></table></figure>
-
-<p>最后在 console 里输入：</p>
-<figure class="highlight plaintext"><table><tr><td class="code"><pre><span class="line"></span><br><span class="line">npm start</span><br><span class="line"></span><br></pre></td></tr></table></figure>
-
-<p>完成！唯一的问题是我们用的还是 localhost， 也就是只有自己可以在端口 5000 看到自己的网页。</p>
-<p>想让别人看到的话就去使用 Git Pages 的免费服务。</p>
-<p>是不是很简单，开自己动手试一试吧！</p>
-]]></content>
-      <tags>
-        <tag>JavaScript</tag>
-        <tag>Node.js</tag>
-        <tag>Express.js</tag>
       </tags>
   </entry>
   <entry>
@@ -1024,6 +952,95 @@ Connection to localhost closed.
         <tag>CTF</tag>
         <tag>OverTheWire</tag>
         <tag>Bandit</tag>
+      </tags>
+  </entry>
+  <entry>
+    <title>软件工程 第二周的博客</title>
+    <url>/2023/03/29/%E8%BD%AF%E4%BB%B6%E5%B7%A5%E7%A8%8B%20%E7%AC%AC%E4%BA%8C%E5%91%A8%E7%9A%84%E5%8D%9A%E5%AE%A2/</url>
+    <content><![CDATA[<h3 id="使用-Node-js-的-Express-js-模组-Host-自己的静态网页"><a href="#使用-Node-js-的-Express-js-模组-Host-自己的静态网页" class="headerlink" title="使用 Node.js 的 Express.js 模组 Host 自己的静态网页"></a><em>使用 Node.js 的 Express.js 模组 Host 自己的静态网页</em></h3><p>首先创建项目文件夹:</p>
+<figure class="highlight plaintext"><table><tr><td class="code"><pre><span class="line"></span><br><span class="line">mkdir project01; cd project01</span><br><span class="line"></span><br></pre></td></tr></table></figure>
+
+<p>然后创建app.js文件：</p>
+<figure class="highlight plaintext"><table><tr><td class="code"><pre><span class="line"></span><br><span class="line">touch app.js; sudo nano app.js</span><br><span class="line"></span><br></pre></td></tr></table></figure>
+
+<blockquote>
+<p>差点忘了，没下载Node.js的先去这个地址下载一下：<a href="https://nodejs.org/en/download/">https://nodejs.org/en/download/</a></p>
+</blockquote>
+<p>下载完初始化一下：</p>
+<figure class="highlight plaintext"><table><tr><td class="code"><pre><span class="line"></span><br><span class="line">node init -y</span><br><span class="line"></span><br></pre></td></tr></table></figure>
+
+<p>到生成的package.json文件里 script object 里加个参数：</p>
+<figure class="highlight plaintext"><table><tr><td class="code"><pre><span class="line"></span><br><span class="line">‘start&#x27;：‘node app’</span><br><span class="line"></span><br></pre></td></tr></table></figure>
+
+<p>好的，非常完美。</p>
+<p>然后下载express：</p>
+<figure class="highlight plaintext"><table><tr><td class="code"><pre><span class="line"></span><br><span class="line">npm i express --save</span><br><span class="line"></span><br></pre></td></tr></table></figure>
+
+<p>这里不建议把它下载为–global，因为会和别的模组冲突。</p>
+<p>面对空白页，先导入express模组并初始化app（关于http模组的基础不做赘述，因为用那个太麻烦了）：</p>
+<figure class="highlight plaintext"><table><tr><td class="code"><pre><span class="line"></span><br><span class="line">const app = require(&#x27;express&#x27;)()</span><br><span class="line"></span><br></pre></td></tr></table></figure>
+
+<p>然后省略几千字，直接上代码，不懂看注释 : )</p>
+<figure class="highlight plaintext"><table><tr><td class="code"><pre><span class="line"></span><br><span class="line">app.use(express.static(&#x27;./public&#x27;))     // 把静态网页需要的资源全扔 public 文件夹里就好了</span><br><span class="line"></span><br><span class="line">app.all(&#x27;*&#x27;, (req, res) =&gt; &#123;</span><br><span class="line">  res.status(404).send(&#x27;resource not found&#x27;)</span><br><span class="line">&#125;)                                                           // 这个是用来处理404 Bad Request 的</span><br><span class="line"></span><br><span class="line">app.listen(5000, () =&gt; &#123;</span><br><span class="line">  console.log(&#x27;server is listening on port 5000....&#x27;)</span><br><span class="line">&#125;)                                                          // 这个是选择端口</span><br><span class="line"></span><br></pre></td></tr></table></figure>
+
+<p>最后在 console 里输入：</p>
+<figure class="highlight plaintext"><table><tr><td class="code"><pre><span class="line"></span><br><span class="line">npm start</span><br><span class="line"></span><br></pre></td></tr></table></figure>
+
+<p>完成！唯一的问题是我们用的还是 localhost， 也就是只有自己可以在端口 5000 看到自己的网页。</p>
+<p>想让别人看到的话就去使用 Git Pages 的免费服务。</p>
+<p>是不是很简单，开自己动手试一试吧！</p>
+]]></content>
+      <tags>
+        <tag>JavaScript</tag>
+        <tag>Node.js</tag>
+        <tag>Express.js</tag>
+      </tags>
+  </entry>
+  <entry>
+    <title>如何使用 GitHub Pages 托管 Hexo 静态博客网站</title>
+    <url>/2023/04/22/%E5%A6%82%E4%BD%95%E4%BD%BF%E7%94%A8%20GitHub%20Pages%20%E6%89%98%E7%AE%A1%20Hexo%20%E9%9D%99%E6%80%81%E5%8D%9A%E5%AE%A2%E7%BD%91%E7%AB%99/</url>
+    <content><![CDATA[<p>– <strong>请先阅读 <a href="/2023/04/22/%E4%BD%BF%E7%94%A8%20Hexo%20%E7%94%9F%E6%88%90%E9%9D%99%E6%80%81%E7%BD%91%E9%A1%B5%E5%8D%9A%E5%AE%A2/index.html">使用 Hexo 生成静态网页博客</a>！</strong></p>
+<h3 id="准备工作"><a href="#准备工作" class="headerlink" title="准备工作"></a>准备工作</h3><p>首先，我们基于完成的博客<code>.md</code>文件生成静态网页：</p>
+<figure class="highlight bash"><table><tr><td class="code"><pre><span class="line"><span class="built_in">cd</span> /path/to/site/</span><br><span class="line"><span class="comment"># 跑到项目路径目录</span></span><br><span class="line"></span><br><span class="line">hexo generate</span><br><span class="line"><span class="comment"># 生成静态网页，存放与 public 文件夹内</span></span><br></pre></td></tr></table></figure>
+
+<p>接着，我们进入<code>public</code>文件夹。</p>
+<pre><code>.
+├── node_modules
+├── public
+├── scaffolds
+├── source
+└── themes
+</code></pre>
+<p>因为我们是使用 GitHub Pages 托管，所以我们需要在<code>public</code>文件夹内初始化<code>git</code>：</p>
+<figure class="highlight bash"><table><tr><td class="code"><pre><span class="line">git init</span><br><span class="line"></span><br><span class="line">git branch -m main</span><br><span class="line"></span><br><span class="line">git add .</span><br><span class="line"></span><br><span class="line">git commit -m <span class="string">&quot;初始化工作&quot;</span></span><br></pre></td></tr></table></figure>
+
+<p>其次，我们还需要在 GitHub 上面建立一个远程仓库，格式<strong>必须</strong>为<code>username.github.io</code>，这是硬性要求。</p>
+<h3 id="关联和发布"><a href="#关联和发布" class="headerlink" title="关联和发布"></a>关联和发布</h3><p>我们现在需要关联本地仓库和远程仓库，用例中我们使用<code>https</code>协议，当然也可以使用<code>ssh</code>密钥：</p>
+<figure class="highlight bash"><table><tr><td class="code"><pre><span class="line">git remote add origin https://github.com/username/username.github.io.git</span><br><span class="line"></span><br><span class="line">git push origin main</span><br></pre></td></tr></table></figure>
+
+<p>我们还需要更改一下远程仓库的 GitHub Pages 的设置，目的是告知它托管文件的地址：</p>
+<div style="display: block; margin-left: auto; margin-right: auto; text-align: center; font-size: 1rem;">
+  
+<p>  <img src="/2023/04/22/%E5%A6%82%E4%BD%95%E4%BD%BF%E7%94%A8%20GitHub%20Pages%20%E6%89%98%E7%AE%A1%20Hexo%20%E9%9D%99%E6%80%81%E5%8D%9A%E5%AE%A2%E7%BD%91%E7%AB%99/images/0001.png" alt="点击 Settings" title="点击 Settings"></p>
+  <div>点击 Settings</div>
+  <br>
+
+<p>  <img src="/2023/04/22/%E5%A6%82%E4%BD%95%E4%BD%BF%E7%94%A8%20GitHub%20Pages%20%E6%89%98%E7%AE%A1%20Hexo%20%E9%9D%99%E6%80%81%E5%8D%9A%E5%AE%A2%E7%BD%91%E7%AB%99/images/0002.png" alt="点击 Pages" title="点击 Pages"></p>
+  <div>点击 Pages</div>
+  <br>
+
+<p>  <img src="/2023/04/22/%E5%A6%82%E4%BD%95%E4%BD%BF%E7%94%A8%20GitHub%20Pages%20%E6%89%98%E7%AE%A1%20Hexo%20%E9%9D%99%E6%80%81%E5%8D%9A%E5%AE%A2%E7%BD%91%E7%AB%99/images/0003.png" alt="修改设置" title="修改设置"></p>
+  <div>修改设置</div>
+  <br>
+
+</div>
+
+<p>最后，我们访问<code>username.github.io</code>就可以来到我们的博客页了 :)</p>
+]]></content>
+      <tags>
+        <tag>Hexo</tag>
+        <tag>Git</tag>
+        <tag>GitHub Pages</tag>
       </tags>
   </entry>
 </search>

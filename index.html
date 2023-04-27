@@ -163,7 +163,7 @@
       </div>
       <div class="site-state-item site-state-tags">
           <a href="/tags/">
-        <span class="site-state-item-count">22</span>
+        <span class="site-state-item-count">21</span>
         <span class="site-state-item-name">tags</span></a>
       </div>
   </nav>
@@ -227,7 +227,20 @@
       <span class="post-meta-item-text">Posted on</span>
       
 
-      <time title="Created: 2023-04-27 11:02:04 / Modified: 12:51:43" itemprop="dateCreated datePublished" datetime="2023-04-27T11:02:04+08:00">2023-04-27</time>
+      <time title="Created: 2023-04-27 11:02:04 / Modified: 13:10:50" itemprop="dateCreated datePublished" datetime="2023-04-27T11:02:04+08:00">2023-04-27</time>
+    </span>
+    <span class="post-meta-item">
+      <span class="post-meta-item-icon">
+        <i class="far fa-folder"></i>
+      </span>
+      <span class="post-meta-item-text">In</span>
+        <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
+          <a href="/categories/Linux/" itemprop="url" rel="index"><span itemprop="name">Linux</span></a>
+        </span>
+          , 
+        <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
+          <a href="/categories/Linux/ArchLinux/" itemprop="url" rel="index"><span itemprop="name">ArchLinux</span></a>
+        </span>
     </span>
 
   
@@ -369,9 +382,28 @@ Apr 27 02:45:46 alarm systemd[1]: Failed to mount /mnt/share.
         <i class="far fa-calendar"></i>
       </span>
       <span class="post-meta-item-text">Posted on</span>
-      
 
-      <time title="Created: 2023-04-26 21:04:31 / Modified: 22:13:10" itemprop="dateCreated datePublished" datetime="2023-04-26T21:04:31+08:00">2023-04-26</time>
+      <time title="Created: 2023-04-26 21:04:31" itemprop="dateCreated datePublished" datetime="2023-04-26T21:04:31+08:00">2023-04-26</time>
+    </span>
+    <span class="post-meta-item">
+      <span class="post-meta-item-icon">
+        <i class="far fa-calendar-check"></i>
+      </span>
+      <span class="post-meta-item-text">Edited on</span>
+      <time title="Modified: 2023-04-27 13:11:06" itemprop="dateModified" datetime="2023-04-27T13:11:06+08:00">2023-04-27</time>
+    </span>
+    <span class="post-meta-item">
+      <span class="post-meta-item-icon">
+        <i class="far fa-folder"></i>
+      </span>
+      <span class="post-meta-item-text">In</span>
+        <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
+          <a href="/categories/Linux/" itemprop="url" rel="index"><span itemprop="name">Linux</span></a>
+        </span>
+          , 
+        <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
+          <a href="/categories/Linux/ArchLinux/" itemprop="url" rel="index"><span itemprop="name">ArchLinux</span></a>
+        </span>
     </span>
 
   
@@ -688,7 +720,7 @@ r=mccranky)
         <i class="far fa-calendar-check"></i>
       </span>
       <span class="post-meta-item-text">Edited on</span>
-      <time title="Modified: 2023-04-26 22:10:19" itemprop="dateModified" datetime="2023-04-26T22:10:19+08:00">2023-04-26</time>
+      <time title="Modified: 2023-04-27 13:13:08" itemprop="dateModified" datetime="2023-04-27T13:13:08+08:00">2023-04-27</time>
     </span>
     <span class="post-meta-item">
       <span class="post-meta-item-icon">
@@ -831,8 +863,11 @@ Possible reasons for having this kind of units are:
 </blockquote>
 <p>It’s the first fix for me. My <code>[Install]</code> section had only one line “<code>Also=spice-vdagentd.socket</code>“, so I added a second.</p>
 <h4 id="wget"><a href="#wget" class="headerlink" title="wget"></a><em><code>wget</code></em></h4><p>Install the <code>wget</code> command-line tool:</p>
-<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">sudo pacman -S wget</span><br></pre></td></tr></table></figure>
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line">sudo pacman -Syy</span><br><span class="line"></span><br><span class="line"><span class="comment"># Update package database</span></span><br><span class="line"></span><br><span class="line">sudo pacman -S wget</span><br></pre></td></tr></table></figure>
 
+<blockquote>
+<p>Note: You may need to <a href="#Refresh-keys">refresh your keychains</a> first!</p>
+</blockquote>
 <h4 id="git"><a href="#git" class="headerlink" title="git"></a><em><code>git</code></em></h4><p>Install the <code>git</code> package by running the following command:</p>
 <figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">sudo pacman -S git</span><br></pre></td></tr></table></figure>
 
@@ -853,8 +888,7 @@ Possible reasons for having this kind of units are:
 <blockquote>
 <p><code>-i</code>: A flag that tells <code>makepkg</code> to install the package after it has been built.</p>
 </blockquote>
-<hr>
-<p>Before we move on to the next step, we have to create an alternative user apart from our current root, otherwise <code>makepkg -si</code> won’t work.</p>
+<h4 id="Create-a-non-root-user"><a href="#Create-a-non-root-user" class="headerlink" title="Create a non-root user"></a>Create a non-root user</h4><p>Before we move on to the next step, we have to create an alternative user apart from our current root, otherwise <code>makepkg -si</code> won’t work.</p>
 <p>It’s fairly simple.</p>
 <p>To create a non-root user account on Arch Linux, we have to run these few steps:</p>
 <p>Run the following command to create a new user account:</p>
@@ -880,7 +914,18 @@ Possible reasons for having this kind of units are:
 <p><strong><em>Note</em></strong><br>While <code>yay</code> provides a pacman-like interface, it is not a drop-in replacement for <code>apt</code>, and there may be some differences in the way packages are managed and installed.</p>
 </blockquote>
 <hr>
-<p>Once you had your fun, you’d probably want to poweroff. Here’s what you should do:</p>
+<h4 id="Refresh-keys"><a href="#Refresh-keys" class="headerlink" title="Refresh keys"></a>Refresh keys</h4><p>PGP keys are used to verify the authenticity of packages in the official Arch Linux repositories.</p>
+<p>Update the keyring package by running the following command:</p>
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">sudo pacman -Sy archlinux-keyring</span><br></pre></td></tr></table></figure>
+
+<p>Import the new keys by running the following command:</p>
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">sudo pacman-key --populate archlinux</span><br></pre></td></tr></table></figure>
+
+<p>Refresh the keyring by running the following command:</p>
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">sudo pacman-key --refresh-keys</span><br><span class="line"></span><br><span class="line"><span class="comment"># This command retrieves the latest keys from the keyserver and update your keyring accordingly.</span></span><br></pre></td></tr></table></figure>
+
+<p>Now your keychains should be up to date and you should be able to verify the authenticity of packages in the official Arch Linux repositories.</p>
+<h4 id="Poweroff"><a href="#Poweroff" class="headerlink" title="Poweroff"></a>Poweroff</h4><p>Once you had your fun, you’d probably want to poweroff. Here’s what you should do:</p>
 <figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">sudo poweroff</span><br></pre></td></tr></table></figure>
 
 <p>Or:</p>
