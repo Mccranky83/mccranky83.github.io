@@ -20,6 +20,110 @@
       </tags>
   </entry>
   <entry>
+    <title>Dabbling with Puppeteer</title>
+    <url>/2023/04/27/Dabbling%20with%20Puppeteer/</url>
+    <content><![CDATA[<p>Puppeteer is a Node.js library that provides a high-level API to control headless Chrome or Chromium browsers. It is widely used for web scraping, testing, and automation, and is an essential tool for many developers who work with web applications.</p>
+<blockquote>
+<p>Note that I’ll be demonstrating on ArchLinux</p>
+</blockquote>
+<p>Because Puppeteer is relys on Node.js, the first thing we do is create a project directory and initiate <code>npm</code>.</p>
+<figure class="highlight bash"><table><tr><td class="code"><pre><span class="line"><span class="built_in">mkdir</span> puppeteer-project;</span><br><span class="line"></span><br><span class="line"><span class="built_in">cd</span> puppeteer-project;</span><br><span class="line"></span><br><span class="line">npm init -y</span><br><span class="line"></span><br><span class="line">npm i puppeteer --save</span><br><span class="line"></span><br><span class="line">sudo pacman -S libx11 libxcomposite libxdamage libxext libxi libxtst nss freetype2 harfbuzz</span><br><span class="line"></span><br><span class="line"><span class="comment"># Puppeteer requires some additional dependencies to be installed</span></span><br><span class="line"></span><br></pre></td></tr></table></figure>
+
+<p>Now we write our script:</p>
+<figure class="highlight bash"><table><tr><td class="code"><pre><span class="line">vim puppeteer.js</span><br></pre></td></tr></table></figure>
+
+<p>The script should be on the lines of this template:</p>
+<figure class="highlight javascript"><table><tr><td class="code"><pre><span class="line"><span class="keyword">const</span> puppeteer = <span class="built_in">require</span>(<span class="string">&#x27;puppeteer&#x27;</span>);</span><br><span class="line"></span><br><span class="line">(<span class="keyword">async</span> () =&gt; &#123;</span><br><span class="line">  <span class="keyword">const</span> browser = <span class="keyword">await</span> puppeteer.<span class="title function_">launch</span>(&#123;</span><br><span class="line">  	<span class="attr">executablePath</span>: <span class="string">&#x27;/usr/bin/chromium&#x27;</span>,</span><br><span class="line"></span><br><span class="line">  	<span class="comment">// We can also drop this line and instead, set an environment variable in Bash.</span></span><br><span class="line"></span><br><span class="line">  	<span class="comment">// `$ export PUPPETEER_EXECUTABLE_PATH=/usr/bin/chromium`</span></span><br><span class="line"></span><br><span class="line">  	<span class="attr">headless</span>: <span class="literal">true</span></span><br><span class="line">  &#125;);</span><br><span class="line">  <span class="keyword">const</span> page = <span class="keyword">await</span> browser.<span class="title function_">newPage</span>();</span><br><span class="line">  <span class="keyword">await</span> page.<span class="title function_">goto</span>(<span class="string">&#x27;https://www.example.com&#x27;</span>);</span><br><span class="line">  <span class="keyword">await</span> page.<span class="title function_">screenshot</span>(&#123; <span class="attr">path</span>: <span class="string">&#x27;example.png&#x27;</span> &#125;);</span><br><span class="line">  <span class="keyword">await</span> browser.<span class="title function_">close</span>();</span><br><span class="line">&#125;)();</span><br><span class="line"></span><br></pre></td></tr></table></figure>
+
+<p>This code will launch Chromium in headless mode and navigate to <code>https://www.example.com</code>, take a screenshot of the page, and then close the browser.</p>
+<p><strong><em>More content about Puppeteer coming up!</em></strong></p>
+]]></content>
+      <categories>
+        <category>Puppeteer</category>
+      </categories>
+      <tags>
+        <tag>Linux</tag>
+        <tag>ArchLinux</tag>
+        <tag>Headless Browser</tag>
+      </tags>
+  </entry>
+  <entry>
+    <title>Immediately Executing Function Demo</title>
+    <url>/2023/04/27/Immediately%20Executing%20Function%20Demo/</url>
+    <content><![CDATA[<p>The main point about this demo is that compared to <code>if</code>, <code>else</code>, and <code>while</code>, the use of an immediately executing function creates a new variable scope in JavaScript. This fact is demonstrated in the code below:</p>
+<figure class="highlight javascript"><table><tr><td class="code"><pre><span class="line"><span class="keyword">var</span> foo = <span class="number">123</span></span><br><span class="line"></span><br><span class="line"><span class="keyword">if</span> (<span class="number">1</span>) &#123;</span><br><span class="line">    <span class="keyword">var</span> foo = <span class="number">456</span></span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"><span class="built_in">setTimeout</span>(<span class="function"><span class="params">_</span> =&gt;</span> &#123;</span><br><span class="line">    <span class="keyword">var</span> foo = <span class="number">123</span></span><br><span class="line">    <span class="variable language_">console</span>.<span class="title function_">log</span>(foo)</span><br><span class="line">&#125;, <span class="number">3000</span>)</span><br><span class="line"></span><br><span class="line"><span class="variable language_">console</span>.<span class="title function_">log</span>(foo)</span><br><span class="line"></span><br><span class="line"><span class="variable language_">console</span>.<span class="title function_">log</span>(<span class="string">&quot;After 3 seconds...&quot;</span>)</span><br><span class="line"></span><br></pre></td></tr></table></figure>
+
+<p>Output:</p>
+<pre><code>456
+After 3 seconds...
+123
+</code></pre>
+<p>Notice how the function does not reset the value of variable <code>foo</code>? Now that’s something to keep in mind of!</p>
+]]></content>
+      <categories>
+        <category>JavaScript</category>
+      </categories>
+  </entry>
+  <entry>
+    <title>Initialize shared directory with SPICE WebDAV</title>
+    <url>/2023/04/26/Initialize%20shared%20directory%20with%20SPICE%20WebDAV/</url>
+    <content><![CDATA[<h3 id="Install-Dependencies"><a href="#Install-Dependencies" class="headerlink" title="Install Dependencies"></a>Install Dependencies</h3><h4 id="SPICE-guest-tools"><a href="#SPICE-guest-tools" class="headerlink" title="SPICE guest tools"></a><em><code>SPICE guest tools</code></em></h4><p>See <a href="/2023/04/25/Running%20ArchLinux%20ARM%20in%20UTM%20on%20a%20M1%20MacBook%20Air/#SPICE-guest-tools"><code>SPICE guest tools</code></a></p>
+<h4 id="SPICE-WebDAV"><a href="#SPICE-WebDAV" class="headerlink" title="SPICE WebDAV"></a><em><code>SPICE WebDAV</code></em></h4><p>SPICE WebDAV is required for <a href="https://docs.getutm.app/settings-qemu/sharing/#spice-webdav" title="QEMU directory sharing">QEMU directory sharing</a> as an alternative to VirtFS.</p>
+<p>Since we’re on ArchLinux, we should run the following command:</p>
+<figure class="highlight bash"><table><tr><td class="code"><pre><span class="line">sudo pacman -S phodav</span><br></pre></td></tr></table></figure>
+
+<p>Now we should want to visit the shared directory.</p>
+<p>Normally, it is exposed as a WebDAV mount on the guest’s localhost (typically on port 9843).</p>
+<p>To access it, we need a browser.</p>
+<h3 id="Firefox"><a href="#Firefox" class="headerlink" title="Firefox"></a>Firefox</h3><p>I don’t have one yet, so I’ll Install Firefox via <a href="/2023/04/25/Running%20ArchLinux%20ARM%20in%20UTM%20on%20a%20M1%20MacBook%20Air/#yay"><code>yay</code></a>.</p>
+<figure class="highlight bash"><table><tr><td class="code"><pre><span class="line">yay -S firefox</span><br></pre></td></tr></table></figure>
+
+<p>Before we move on, let’s configure the <code>DISPLAY</code> environment variable first. Again, I need to install one:</p>
+<figure class="highlight bash"><table><tr><td class="code"><pre><span class="line">sudo pacman -S xorg xorg-xinit xfce4</span><br><span class="line"></span><br><span class="line"><span class="comment"># Once installation is complete, `reboot` and log-back-in</span></span><br></pre></td></tr></table></figure>
+
+<p>Before we proceed, make sure to check the following conditions:</p>
+<blockquote>
+<p>X Window System is actually running: You can start the X Window System by running the command <code>startx</code> in a terminal window.</p>
+</blockquote>
+<blockquote>
+<p>You have permission to access the X Window System: You may need to add your user account to the <code>video</code> group by running the command <code>sudo usermod -aG video &lt;username&gt;</code>.</p>
+</blockquote>
+<blockquote>
+<p>X Window System is configured to allow remote connections: You may need to edit the <code>/etc/X11/xinit/xserverrc</code> file to include the <code>-listen tcp</code> option. For example, you can add the line <code>exec /usr/bin/X -listen tcp</code> to the file.</p>
+</blockquote>
+<hr>
+<p>We may face some problems when we run <code>startx</code> because X server requires some sort of display device or screen so that it can display graphical output, and since ArchLinux is text-based, we’ll have to go through a few extra steps.</p>
+<ul>
+<li><p>Run <code>sudo pacman -S xf86-video-fbdev</code> to install the <code>xf86-video-fbdev</code> package. This package provides a generic framebuffer driver that can be used in place of a specific display driver.</p>
+</li>
+<li><p>Edit the <code>/etc/X11/xorg.conf.d/10-monitor.conf</code> file to specify the <code>fbdev</code> driver. We can do this by adding the following lines to the file:</p>
+</li>
+</ul>
+<figure class="highlight bash"><table><tr><td class="code"><pre><span class="line">Section <span class="string">&quot;Device&quot;</span></span><br><span class="line">    Identifier <span class="string">&quot;fbdev&quot;</span></span><br><span class="line">    Driver <span class="string">&quot;fbdev&quot;</span></span><br><span class="line">EndSection</span><br></pre></td></tr></table></figure>
+
+<p>That should do the trick when we run <code>startx</code> again.</p>
+<p>If the X server still fails to start, you may need to investigate further by checking the <code>/var/log/Xorg.0.log</code> file for additional information about the error.</p>
+<hr>
+<p>After double-checking the conditions listed above, we can now run the command <code>export DISPLAY=:0</code> to set the display environment variable to the default value for the X Window System.</p>
+<p>At last we launch Firefox and navigate to <code>http://127.0.0.1:9843</code>.</p>
+<figure class="highlight bash"><table><tr><td class="code"><pre><span class="line">firefox http://127.0.0.1:9843</span><br></pre></td></tr></table></figure>
+
+<p>We can also try running Firefox with the <code>--no-remote</code> option. This option tells Firefox to open a new instance of the browser, rather than connecting to an existing instance.</p>
+<figure class="highlight bash"><table><tr><td class="code"><pre><span class="line">firefox --no-remote http://127.0.0.1:9843</span><br></pre></td></tr></table></figure>
+
+<p>If the <code>SPICE WebDAV</code> service is running correctly, you should be able to see the page in the Firefox browser window.</p>
+<h3 id="Headless-browser"><a href="#Headless-browser" class="headerlink" title="Headless browser"></a>Headless browser</h3><h4 id="Puppeteer"><a href="#Puppeteer" class="headerlink" title="Puppeteer"></a>Puppeteer</h4><p>See <a href="/2023/04/27/Dabbling%20with%20Puppeteer/">here</a></p>
+<h4 id="i2pdbrowser"><a href="#i2pdbrowser" class="headerlink" title="i2pdbrowser"></a>i2pdbrowser</h4><p>Clone this repo:</p>
+<figure class="highlight bash"><table><tr><td class="code"><pre><span class="line">git <span class="built_in">clone</span> https://github.com/PurpleI2P/i2pdbrowser.git</span><br></pre></td></tr></table></figure>
+
+<p>Navigate to the README.md file for more information</p>
+]]></content>
+      <categories>
+        <category>Linux</category>
+        <category>ArchLinux</category>
+      </categories>
+  </entry>
+  <entry>
     <title>Installing Puppet server on ArchLinux</title>
     <url>/2023/04/27/Installing%20Puppet%20server%20on%20ArchLinux/</url>
     <content><![CDATA[<h3 id="Installation"><a href="#Installation" class="headerlink" title="Installation"></a>Installation</h3><p>To install puppet server first add the upstream GPG key:</p>
@@ -63,34 +167,6 @@ uid           [ unknown] Puppet, Inc. Release Key (Puppet, Inc. Release Key) &lt
         <tag>Puppet</tag>
         <tag>server</tag>
         <tag>GPG key</tag>
-      </tags>
-  </entry>
-  <entry>
-    <title>Dabbling with Puppeteer</title>
-    <url>/2023/04/27/Dabbling%20with%20Puppeteer/</url>
-    <content><![CDATA[<p>Puppeteer is a Node.js library that provides a high-level API to control headless Chrome or Chromium browsers. It is widely used for web scraping, testing, and automation, and is an essential tool for many developers who work with web applications.</p>
-<blockquote>
-<p>Note that I’ll be demonstrating on ArchLinux</p>
-</blockquote>
-<p>Because Puppeteer is relys on Node.js, the first thing we do is create a project directory and initiate <code>npm</code>.</p>
-<figure class="highlight bash"><table><tr><td class="code"><pre><span class="line"><span class="built_in">mkdir</span> puppeteer-project;</span><br><span class="line"></span><br><span class="line"><span class="built_in">cd</span> puppeteer-project;</span><br><span class="line"></span><br><span class="line">npm init -y</span><br><span class="line"></span><br><span class="line">npm i puppeteer --save</span><br><span class="line"></span><br><span class="line">sudo pacman -S libx11 libxcomposite libxdamage libxext libxi libxtst nss freetype2 harfbuzz</span><br><span class="line"></span><br><span class="line"><span class="comment"># Puppeteer requires some additional dependencies to be installed</span></span><br><span class="line"></span><br></pre></td></tr></table></figure>
-
-<p>Now we write our script:</p>
-<figure class="highlight bash"><table><tr><td class="code"><pre><span class="line">vim puppeteer.js</span><br></pre></td></tr></table></figure>
-
-<p>The script should be on the lines of this template:</p>
-<figure class="highlight javascript"><table><tr><td class="code"><pre><span class="line"><span class="keyword">const</span> puppeteer = <span class="built_in">require</span>(<span class="string">&#x27;puppeteer&#x27;</span>);</span><br><span class="line"></span><br><span class="line">(<span class="keyword">async</span> () =&gt; &#123;</span><br><span class="line">  <span class="keyword">const</span> browser = <span class="keyword">await</span> puppeteer.<span class="title function_">launch</span>(&#123;</span><br><span class="line">  	<span class="attr">executablePath</span>: <span class="string">&#x27;/usr/bin/chromium&#x27;</span>,</span><br><span class="line"></span><br><span class="line">  	<span class="comment">// We can also drop this line and instead, set an environment variable in Bash.</span></span><br><span class="line"></span><br><span class="line">  	<span class="comment">// `$ export PUPPETEER_EXECUTABLE_PATH=/usr/bin/chromium`</span></span><br><span class="line"></span><br><span class="line">  	<span class="attr">headless</span>: <span class="literal">true</span></span><br><span class="line">  &#125;);</span><br><span class="line">  <span class="keyword">const</span> page = <span class="keyword">await</span> browser.<span class="title function_">newPage</span>();</span><br><span class="line">  <span class="keyword">await</span> page.<span class="title function_">goto</span>(<span class="string">&#x27;https://www.example.com&#x27;</span>);</span><br><span class="line">  <span class="keyword">await</span> page.<span class="title function_">screenshot</span>(&#123; <span class="attr">path</span>: <span class="string">&#x27;example.png&#x27;</span> &#125;);</span><br><span class="line">  <span class="keyword">await</span> browser.<span class="title function_">close</span>();</span><br><span class="line">&#125;)();</span><br><span class="line"></span><br></pre></td></tr></table></figure>
-
-<p>This code will launch Chromium in headless mode and navigate to <code>https://www.example.com</code>, take a screenshot of the page, and then close the browser.</p>
-<p><strong><em>More content about Puppeteer coming up!</em></strong></p>
-]]></content>
-      <categories>
-        <category>Puppeteer</category>
-      </categories>
-      <tags>
-        <tag>Linux</tag>
-        <tag>ArchLinux</tag>
-        <tag>Headless Browser</tag>
       </tags>
   </entry>
   <entry>
@@ -144,6 +220,129 @@ uid           [ unknown] Puppet, Inc. Release Key (Puppet, Inc. Release Key) &lt
       <tags>
         <tag>JavaScript</tag>
         <tag>Methods</tag>
+      </tags>
+  </entry>
+  <entry>
+    <title>Mounting a shared folder on ArchLinux VM</title>
+    <url>/2023/04/26/Mounting-a-Shared-folder-on-ArchLinux-VM/</url>
+    <content><![CDATA[<p>For this tutorial, we’ll be using <strong>Samba</strong>. As for what Samba really is though, the most I can figure out from my search on Google is that Samba is a free and open-source software that allows files to be shared across Windows and Linux systems simply and easily. To be exact, it is an open-source implementation of the SMB&#x2F;CIFS protocol.</p>
+<h3 id="Setup"><a href="#Setup" class="headerlink" title="Setup"></a>Setup</h3><h4 id="Install-smbclient-util-with-pacman"><a href="#Install-smbclient-util-with-pacman" class="headerlink" title="Install smbclient util with pacman"></a>Install <code>smbclient</code> util with <code>pacman</code></h4><figure class="highlight bash"><table><tr><td class="code"><pre><span class="line">sudo pacman -S smbclient</span><br></pre></td></tr></table></figure>
+
+<h4 id="Create-shared-directory"><a href="#Create-shared-directory" class="headerlink" title="Create shared directory"></a>Create shared directory</h4><figure class="highlight bash"><table><tr><td class="code"><pre><span class="line">sudo <span class="built_in">mkdir</span> /home/&lt;user&gt;/share</span><br></pre></td></tr></table></figure>
+
+<p>This directory is to be shared between the host and guest machines.</p>
+<h4 id="Edit-the-Samba-configuration-file"><a href="#Edit-the-Samba-configuration-file" class="headerlink" title="Edit the Samba configuration file"></a>Edit the Samba configuration file</h4><p>Open up the configuration file for samba:</p>
+<figure class="highlight bash"><table><tr><td class="code"><pre><span class="line">sudo nano /etc/samba/smb.conf</span><br></pre></td></tr></table></figure>
+
+<p>Add these lines to the configuration file:</p>
+<figure class="highlight bash"><table><tr><td class="code"><pre><span class="line">[share]</span><br><span class="line">path = /home/&lt;user&gt;/share</span><br><span class="line"><span class="built_in">read</span> only = no</span><br><span class="line">guest ok = <span class="built_in">yes</span></span><br></pre></td></tr></table></figure>
+
+<h4 id="Create-Samba-password"><a href="#Create-Samba-password" class="headerlink" title="Create Samba password"></a>Create Samba password</h4><figure class="highlight bash"><table><tr><td class="code"><pre><span class="line">sudo smbpasswd -a &lt;user&gt;</span><br></pre></td></tr></table></figure>
+
+<p>Restart the Samba service to refresh:</p>
+<figure class="highlight bash"><table><tr><td class="code"><pre><span class="line">sudo systemctl restart smb.service</span><br></pre></td></tr></table></figure>
+
+<h4 id="IP-Configuration"><a href="#IP-Configuration" class="headerlink" title="IP Configuration"></a>IP Configuration</h4><p>In the UTM app on your MacBook, go to the settings for the ArchLinux VM and enable the “Port Forwarding” option. Add a new rule with the following settings:</p>
+<pre><code>Protocol: TCP
+Host Port: 445
+Guest IP: IP address of the ArchLinux VM
+Guest Port: 445
+</code></pre>
+<p>To get Guest IP, run the following line:</p>
+<figure class="highlight bash"><table><tr><td class="code"><pre><span class="line">[root@alarm ~]<span class="comment"># ip addr | grep inet</span></span><br></pre></td></tr></table></figure>
+
+<pre><code>inet 127.0.0.1/8 scope host lo
+inet6 ::1/128 scope host 
+inet 192.168.65.3/24 metric 1024 brd 192.168.65.255 scope global dynamic enp0s1
+inet6 fde3:e977:b4d3:5c13:e0b4:51ff:fee5:2142/64 scope global dynamic mngtmpaddr noprefixroute 
+inet6 fe80::e0b4:51ff:fee5:2142/64 scope link
+</code></pre>
+<p>In this case, it’s <code>192.168.65.3</code>.</p>
+<p>To get Host IP, run the following line:</p>
+<figure class="highlight bash"><table><tr><td class="code"><pre><span class="line">ipconfig getifaddr en0</span><br><span class="line"></span><br><span class="line"><span class="comment"># 10.8.189.52</span></span><br></pre></td></tr></table></figure>
+
+<p>On your MacBook, open Finder and click “Go” &gt; “Connect to Server” (Cmd + K). </p>
+<p>Enter this address: <code>smb://localhost:445/share</code></p>
+<p>Enter the Samba username and password when prompted.</p>
+<p>You can now access the shared directory and transfer files between the host and guest operating systems.</p>
+<h3 id="Mount-mnt-share"><a href="#Mount-mnt-share" class="headerlink" title="Mount /mnt/share"></a>Mount <code>/mnt/share</code></h3><p>Normally during the boot-up process of our machines, the mounting up of disks and folders are done for us. However, I keep getting this error telling me:</p>
+<pre><code>[FAILED] Failed to mount /mnt/share.
+</code></pre>
+<p>So I have to mount this directory myself, by running:</p>
+<figure class="highlight bash"><table><tr><td class="code"><pre><span class="line">sudo mount -t cifs //localhost/share /mnt/share -o user=&lt;Samba username&gt;,password=&lt;Samba password&gt;</span><br></pre></td></tr></table></figure>
+
+<p>This command mounts a Samba share located on the local machine (localhost) to a directory (&#x2F;mnt&#x2F;share) using the Common Internet File System (CIFS) protocol.</p>
+<p>The <code>-o</code> option specifies additional mount options, in this case, it provides the Samba username and password to authenticate and access the share.</p>
+<hr>
+<h4 id="Enable-Samba-service"><a href="#Enable-Samba-service" class="headerlink" title="Enable Samba service"></a>Enable Samba service</h4><p>But before we run this command, we have to ensure that Samba service on the ArchLinux VM is up and running.</p>
+<p>Check that the Samba service is running on the ArchLinux VM:</p>
+<figure class="highlight bash"><table><tr><td class="code"><pre><span class="line">sudo systemctl status smb.service</span><br></pre></td></tr></table></figure>
+
+<p>If the service is not running, start it using the following command:</p>
+<figure class="highlight bash"><table><tr><td class="code"><pre><span class="line">sudo systemctl start smb.service</span><br></pre></td></tr></table></figure>
+
+<p>To automatically start the Samba service on boot, you can enable the <code>smb.service</code> unit running the following command:</p>
+<figure class="highlight bash"><table><tr><td class="code"><pre><span class="line">sudo systemctl <span class="built_in">enable</span> smb.service</span><br></pre></td></tr></table></figure>
+
+<blockquote>
+<p><strong><em>Make sure that the Samba username and password are correct.</em></strong></p>
+</blockquote>
+<figure class="highlight bash"><table><tr><td class="code"><pre><span class="line">smbclient //localhost/share -U mccranky</span><br></pre></td></tr></table></figure>
+
+<p>Restart the ArchLinux VM to test that the Samba service starts automatically:</p>
+<figure class="highlight bash"><table><tr><td class="code"><pre><span class="line">sudo systemctl reboot</span><br></pre></td></tr></table></figure>
+
+<hr>
+<p>To check whether <code>/mnt/share</code> has been successfully mounted, run the following line:</p>
+<figure class="highlight bash"><table><tr><td class="code"><pre><span class="line">mount | grep /mnt/share</span><br></pre></td></tr></table></figure>
+
+<p>If the directory is mounted, we should be able to see something similar to this:</p>
+<pre><code>//localhost/share on /mnt/share type cifs (rw,relatime,vers=3.1.1,cache=strict,username=mccranky,
+uid=0,noforceuid,gid=0,noforcegid,addr=127.0.0.1,file_mode=0755,dir_mode=0755,soft,nounix,serveri
+no,mapposix,rsize=4194304,wsize=4194304,bsize=1048576,echo_interval=60,actimeo=1,closetimeo=1,use
+r=mccranky)
+</code></pre>
+<h4 id="Mount-mnt-share-on-startup"><a href="#Mount-mnt-share-on-startup" class="headerlink" title="Mount /mnt/share on startup"></a>Mount <code>/mnt/share</code> on startup</h4><p>To automatically mount the Samba shared directory on boot, you can add an entry to the <code>/etc/fstab</code> file.</p>
+<figure class="highlight bash"><table><tr><td class="code"><pre><span class="line">sudo nano /etc/fstab</span><br></pre></td></tr></table></figure>
+
+<p>Then append the following line to the end of the file:</p>
+<figure class="highlight bash"><table><tr><td class="code"><pre><span class="line">//localhost/share /mnt/share cifs user=mccranky,password=Rogue12 0 0</span><br></pre></td></tr></table></figure>
+
+<p>However, it seems that our new input comflicts with this line:</p>
+<figure class="highlight bash"><table><tr><td class="code"><pre><span class="line">share /mnt/share 9p trans=virtio,nofail 0 0</span><br></pre></td></tr></table></figure>
+
+<p>The reason for this is because our new line mounts a CIFS file system from <code>localhost</code> onto the mount point <code>/mnt/share</code>, using the username <code>mccranky</code> and password <code>Rogue12</code>.</p>
+<p>The old line mounts a 9p file system onto the same mount point <code>/mnt/share</code>, using the virtio transport and the nofail option.</p>
+<p>Since our old entry gave us much headache, I’ll just swap it for the new one. :)</p>
+<p>Let’s test the mount by running the following command:</p>
+<figure class="highlight bash"><table><tr><td class="code"><pre><span class="line">sudo mount -a</span><br></pre></td></tr></table></figure>
+
+<p>This command will attempt to mount all entries in the <code>/etc/fstab</code> file. If there are any errors, it will display them in the terminal.</p>
+<p>Now we run <code>sudo systemctl reboot</code> to see if everything has been resolved at boot-up. There should be no more failures.</p>
+<h3 id="Rollback"><a href="#Rollback" class="headerlink" title="Rollback"></a>Rollback</h3><h4 id="Disable-Samba-service"><a href="#Disable-Samba-service" class="headerlink" title="Disable Samba service"></a>Disable Samba service</h4><figure class="highlight bash"><table><tr><td class="code"><pre><span class="line">sudo systemctl stop smb.service</span><br><span class="line"></span><br><span class="line">sudo systemctl <span class="built_in">disable</span> smb.service</span><br><span class="line"></span><br><span class="line">sudo pacman -R samba</span><br><span class="line"></span><br><span class="line">sudo <span class="built_in">rm</span> -rf /etc/samba</span><br><span class="line">sudo <span class="built_in">rm</span> -rf /var/cache/samba</span><br><span class="line">sudo <span class="built_in">rm</span> -rf /var/lib/samba</span><br><span class="line"></span><br><span class="line">sudo userdel -r samba</span><br><span class="line">sudo groupdel samba</span><br><span class="line"></span><br></pre></td></tr></table></figure>
+
+<h4 id="Unmount-mnt-share"><a href="#Unmount-mnt-share" class="headerlink" title="Unmount /mnt/share"></a>Unmount <code>/mnt/share</code></h4><p>Edit the Samba configuration file <code>/etc/samba/smb.conf</code> using a text editor:</p>
+<figure class="highlight bash"><table><tr><td class="code"><pre><span class="line">sudo nano /etc/samba/smb.conf</span><br></pre></td></tr></table></figure>
+
+<p>Find the section that defines the <code>/mnt/share</code> share. It should look something like this:</p>
+<figure class="highlight bash"><table><tr><td class="code"><pre><span class="line">[mnt]</span><br><span class="line">   path = /mnt/share</span><br><span class="line">   <span class="built_in">read</span> only = no</span><br><span class="line">   guest ok = <span class="built_in">yes</span></span><br></pre></td></tr></table></figure>
+
+<p>Remove the entire section, then restart the Samba service:</p>
+<figure class="highlight bash"><table><tr><td class="code"><pre><span class="line">sudo systemctl start smb.service</span><br></pre></td></tr></table></figure>
+
+<p>The <code>/mnt/share</code> share should now be removed from Samba on Arch Linux.</p>
+<h4 id="Revoke-Samba-password"><a href="#Revoke-Samba-password" class="headerlink" title="Revoke Samba password"></a>Revoke Samba password</h4><figure class="highlight bash"><table><tr><td class="code"><pre><span class="line">sudo smbpasswd -x &lt;user&gt;</span><br></pre></td></tr></table></figure>
+
+<p>This will remove the user’s password from the Samba password database, effectively undoing the <code>sudo smbpasswd -a &lt;user&gt;</code> command.</p>
+]]></content>
+      <categories>
+        <category>Linux</category>
+        <category>ArchLinux</category>
+      </categories>
+      <tags>
+        <tag>ArchLinux</tag>
+        <tag>UTM</tag>
+        <tag>Virtual Machine</tag>
       </tags>
   </entry>
   <entry>
@@ -358,117 +557,83 @@ Possible reasons for having this kind of units are:
       </tags>
   </entry>
   <entry>
-    <title>Mounting a shared folder on ArchLinux VM</title>
-    <url>/2023/04/26/Mounting-a-Shared-folder-on-ArchLinux-VM/</url>
-    <content><![CDATA[<p>For this tutorial, we’ll be using <strong>Samba</strong>. As for what Samba really is though, the most I can figure out from my search on Google is that Samba is a free and open-source software that allows files to be shared across Windows and Linux systems simply and easily. To be exact, it is an open-source implementation of the SMB&#x2F;CIFS protocol.</p>
-<h3 id="Setup"><a href="#Setup" class="headerlink" title="Setup"></a>Setup</h3><h4 id="Install-smbclient-util-with-pacman"><a href="#Install-smbclient-util-with-pacman" class="headerlink" title="Install smbclient util with pacman"></a>Install <code>smbclient</code> util with <code>pacman</code></h4><figure class="highlight bash"><table><tr><td class="code"><pre><span class="line">sudo pacman -S smbclient</span><br></pre></td></tr></table></figure>
-
-<h4 id="Create-shared-directory"><a href="#Create-shared-directory" class="headerlink" title="Create shared directory"></a>Create shared directory</h4><figure class="highlight bash"><table><tr><td class="code"><pre><span class="line">sudo <span class="built_in">mkdir</span> /home/&lt;user&gt;/share</span><br></pre></td></tr></table></figure>
-
-<p>This directory is to be shared between the host and guest machines.</p>
-<h4 id="Edit-the-Samba-configuration-file"><a href="#Edit-the-Samba-configuration-file" class="headerlink" title="Edit the Samba configuration file"></a>Edit the Samba configuration file</h4><p>Open up the configuration file for samba:</p>
-<figure class="highlight bash"><table><tr><td class="code"><pre><span class="line">sudo nano /etc/samba/smb.conf</span><br></pre></td></tr></table></figure>
-
-<p>Add these lines to the configuration file:</p>
-<figure class="highlight bash"><table><tr><td class="code"><pre><span class="line">[share]</span><br><span class="line">path = /home/&lt;user&gt;/share</span><br><span class="line"><span class="built_in">read</span> only = no</span><br><span class="line">guest ok = <span class="built_in">yes</span></span><br></pre></td></tr></table></figure>
-
-<h4 id="Create-Samba-password"><a href="#Create-Samba-password" class="headerlink" title="Create Samba password"></a>Create Samba password</h4><figure class="highlight bash"><table><tr><td class="code"><pre><span class="line">sudo smbpasswd -a &lt;user&gt;</span><br></pre></td></tr></table></figure>
-
-<p>Restart the Samba service to refresh:</p>
-<figure class="highlight bash"><table><tr><td class="code"><pre><span class="line">sudo systemctl restart smb.service</span><br></pre></td></tr></table></figure>
-
-<h4 id="IP-Configuration"><a href="#IP-Configuration" class="headerlink" title="IP Configuration"></a>IP Configuration</h4><p>In the UTM app on your MacBook, go to the settings for the ArchLinux VM and enable the “Port Forwarding” option. Add a new rule with the following settings:</p>
-<pre><code>Protocol: TCP
-Host Port: 445
-Guest IP: IP address of the ArchLinux VM
-Guest Port: 445
-</code></pre>
-<p>To get Guest IP, run the following line:</p>
-<figure class="highlight bash"><table><tr><td class="code"><pre><span class="line">[root@alarm ~]<span class="comment"># ip addr | grep inet</span></span><br></pre></td></tr></table></figure>
-
-<pre><code>inet 127.0.0.1/8 scope host lo
-inet6 ::1/128 scope host 
-inet 192.168.65.3/24 metric 1024 brd 192.168.65.255 scope global dynamic enp0s1
-inet6 fde3:e977:b4d3:5c13:e0b4:51ff:fee5:2142/64 scope global dynamic mngtmpaddr noprefixroute 
-inet6 fe80::e0b4:51ff:fee5:2142/64 scope link
-</code></pre>
-<p>In this case, it’s <code>192.168.65.3</code>.</p>
-<p>To get Host IP, run the following line:</p>
-<figure class="highlight bash"><table><tr><td class="code"><pre><span class="line">ipconfig getifaddr en0</span><br><span class="line"></span><br><span class="line"><span class="comment"># 10.8.189.52</span></span><br></pre></td></tr></table></figure>
-
-<p>On your MacBook, open Finder and click “Go” &gt; “Connect to Server” (Cmd + K). </p>
-<p>Enter this address: <code>smb://localhost:445/share</code></p>
-<p>Enter the Samba username and password when prompted.</p>
-<p>You can now access the shared directory and transfer files between the host and guest operating systems.</p>
-<h3 id="Mount-mnt-share"><a href="#Mount-mnt-share" class="headerlink" title="Mount /mnt/share"></a>Mount <code>/mnt/share</code></h3><p>Normally during the boot-up process of our machines, the mounting up of disks and folders are done for us. However, I keep getting this error telling me:</p>
+    <title>[Fix] Failed to mount /mnt/share</title>
+    <url>/2023/04/27/%5BFix%5D%20Failed%20to%20mount%20:mnt:share/</url>
+    <content><![CDATA[<h3 id="Solution"><a href="#Solution" class="headerlink" title="Solution"></a>Solution</h3><p>Our fix to the problem is to remove <code>/mnt/share</code> entirely and mount something else in its place.</p>
+<p>This is the portion of the startup process which showed the error:</p>
 <pre><code>[FAILED] Failed to mount /mnt/share.
+See &#39;systemctl status mnt-share.mount&#39; for details
 </code></pre>
-<p>So I have to mount this directory myself, by running:</p>
-<figure class="highlight bash"><table><tr><td class="code"><pre><span class="line">sudo mount -t cifs //localhost/share /mnt/share -o user=&lt;Samba username&gt;,password=&lt;Samba password&gt;</span><br></pre></td></tr></table></figure>
+<p>By the way, this post is for those who followed <a href="/2023/04/26/Mounting-a-Shared-folder-on-ArchLinux-VM/#Rollback">my last tutorial</a> on using Samba service to mount a shared directory on ArchLinux VM.</p>
+<h3 id="Check-mount-unit-status"><a href="#Check-mount-unit-status" class="headerlink" title="Check mount unit status"></a>Check mount unit status</h3><p>We’ll start by following the instruction to check the status of the mount unit by running the suggested command:</p>
+<figure class="highlight bash"><table><tr><td class="code"><pre><span class="line">systemctl status mnt-share.mount</span><br></pre></td></tr></table></figure>
 
-<p>This command mounts a Samba share located on the local machine (localhost) to a directory (&#x2F;mnt&#x2F;share) using the Common Internet File System (CIFS) protocol.</p>
-<p>The <code>-o</code> option specifies additional mount options, in this case, it provides the Samba username and password to authenticate and access the share.</p>
-<hr>
-<h4 id="Enable-Samba-service"><a href="#Enable-Samba-service" class="headerlink" title="Enable Samba service"></a>Enable Samba service</h4><p>But before we run this command, we have to ensure that Samba service on the ArchLinux VM is up and running.</p>
-<p>Check that the Samba service is running on the ArchLinux VM:</p>
-<figure class="highlight bash"><table><tr><td class="code"><pre><span class="line">sudo systemctl status smb.service</span><br></pre></td></tr></table></figure>
+<p>This will give us more information about the specific error that occurred.</p>
+<pre><code>Warning: The unit file, source configuration file or drop-ins of mnt-share.moun&gt;
+x mnt-share.mount - /mnt/share
+     Loaded: loaded (/etc/fstab; generated)
+     Active: failed (Result: exit-code) since Thu 2023-04-27 02:45:46 UTC; 40mi&gt;
+      Where: /mnt/share
+       What: //localhost/share
+       Docs: man:fstab(5)
+             man:systemd-fstab-generator(8)
+        CPU: 28ms
 
-<p>If the service is not running, start it using the following command:</p>
-<figure class="highlight bash"><table><tr><td class="code"><pre><span class="line">sudo systemctl start smb.service</span><br></pre></td></tr></table></figure>
-
-<p>To automatically start the Samba service on boot, you can enable the <code>smb.service</code> unit running the following command:</p>
-<figure class="highlight bash"><table><tr><td class="code"><pre><span class="line">sudo systemctl <span class="built_in">enable</span> smb.service</span><br></pre></td></tr></table></figure>
-
-<blockquote>
-<p><strong><em>Make sure that the Samba username and password are correct.</em></strong></p>
-</blockquote>
-<figure class="highlight bash"><table><tr><td class="code"><pre><span class="line">smbclient //localhost/share -U mccranky</span><br></pre></td></tr></table></figure>
-
-<p>Restart the ArchLinux VM to test that the Samba service starts automatically:</p>
-<figure class="highlight bash"><table><tr><td class="code"><pre><span class="line">sudo systemctl reboot</span><br></pre></td></tr></table></figure>
-
-<hr>
-<p>To check whether <code>/mnt/share</code> has been successfully mounted, run the following line:</p>
-<figure class="highlight bash"><table><tr><td class="code"><pre><span class="line">mount | grep /mnt/share</span><br></pre></td></tr></table></figure>
-
-<p>If the directory is mounted, we should be able to see something similar to this:</p>
-<pre><code>//localhost/share on /mnt/share type cifs (rw,relatime,vers=3.1.1,cache=strict,username=mccranky,
-uid=0,noforceuid,gid=0,noforcegid,addr=127.0.0.1,file_mode=0755,dir_mode=0755,soft,nounix,serveri
-no,mapposix,rsize=4194304,wsize=4194304,bsize=1048576,echo_interval=60,actimeo=1,closetimeo=1,use
-r=mccranky)
+Apr 27 02:45:46 alarm systemd[1]: Mounting /mnt/share...
+Apr 27 02:45:46 alarm mount[379]: mount error(111): could not connect to ::1mou&gt;
+Apr 27 02:45:46 alarm systemd[1]: mnt-share.mount: Mount process exited, code=e&gt;
+Apr 27 02:45:46 alarm systemd[1]: mnt-share.mount: Failed with result &#39;exit-cod&gt;
+Apr 27 02:45:46 alarm systemd[1]: Failed to mount /mnt/share.
 </code></pre>
-<h4 id="Mount-mnt-share-on-startup"><a href="#Mount-mnt-share-on-startup" class="headerlink" title="Mount /mnt/share on startup"></a>Mount <code>/mnt/share</code> on startup</h4><p>To automatically mount the Samba shared directory on boot, you can add an entry to the <code>/etc/fstab</code> file.</p>
-<figure class="highlight bash"><table><tr><td class="code"><pre><span class="line">sudo nano /etc/fstab</span><br></pre></td></tr></table></figure>
+<h3 id="Side-Content"><a href="#Side-Content" class="headerlink" title="Side Content"></a>Side Content</h3><h4 id="Check-file-system-properties"><a href="#Check-file-system-properties" class="headerlink" title="Check file system properties"></a>Check file system properties</h4><p>Since we’ve decided to remove the mount <code>/mnt/share</code> instead of trying to fix it, we shall proceed to learn a little about how to mount a disk. For instance, if we want to mount an NTFS file system and ensure that the file system is accessible and error-free, we can use the following command to check it for errors:</p>
+<figure class="highlight bash"><table><tr><td class="code"><pre><span class="line">sudo pacman -S ntfs-3g</span><br><span class="line"></span><br><span class="line"><span class="comment">#  Install the `ntfs-3g` package which provides the `ntfsfix` tool.</span></span><br><span class="line"></span><br><span class="line">sudo ntfsfix /dev/sda1</span><br><span class="line"></span><br><span class="line"><span class="comment"># Replace `/dev/sda1` with the appropriate device and partition.</span></span><br></pre></td></tr></table></figure>
 
-<p>Then append the following line to the end of the file:</p>
-<figure class="highlight bash"><table><tr><td class="code"><pre><span class="line">//localhost/share /mnt/share cifs user=mccranky,password=Rogue12 0 0</span><br></pre></td></tr></table></figure>
+<p>If the virtual hard disk has multiple partitions, we’ll need to determine which partition contains the NTFS file system we want to mount. Oftentimes we use the <code>lsblk</code> command to list the available storage devices and their partitions, and the <code>blkid</code> command to list the UUIDs of the partitions.</p>
+<pre><code>$ lsblk
+NAME   MAJ:MIN RM  SIZE RO TYPE MOUNTPOINTS
+sr0     11:0    1 1024M  0 rom  
+vda    253:0    0  9.8G  0 disk 
+|-vda1 253:1    0  200M  0 part /boot
+`-vda2 253:2    0  9.6G  0 part /
+</code></pre>
+<p>In my case, the virtual machine has a single virtual hard disk, which is identified as <code>/dev/vda</code>. This virtual hard disk has two partitions, <code>/dev/vda1</code> and <code>/dev/vda2</code>, which are mounted at <code>/boot</code> and <code>/</code>, respectively.</p>
+<p><code>/dev/vda1</code> is a 200MB partition formatted as a Linux file system such as <code>ext4</code> or <code>xfs</code>, and contains the kernel and other boot files.</p>
+<p><code>/dev/vda2</code> is a 9.6GB partition also formatted as a Linux file system, and contains the root file system for the Arch Linux operating system.</p>
+<h4 id="Mount-NTFS-file-system"><a href="#Mount-NTFS-file-system" class="headerlink" title="Mount NTFS file system"></a>Mount NTFS file system</h4><p>If we want to mount an additional NTFS file system on our virtual machine, we can create a new directory to use as the mount point, such as <code>/mnt/ntfs</code>, and then add an entry to the <code>/etc/fstab</code> file to mount the NTFS file system at that mount point.</p>
+<p>For example, if the NTFS file system is located on <code>/dev/vda3</code>, we can add the following line to the <code>/etc/fstab</code> file:</p>
+<figure class="highlight bash"><table><tr><td class="code"><pre><span class="line">/dev/vda3 /mnt/ntfs ntfs-3g defaults 0 0</span><br></pre></td></tr></table></figure>
 
-<p>However, it seems that our new input comflicts with this line:</p>
-<figure class="highlight bash"><table><tr><td class="code"><pre><span class="line">share /mnt/share 9p trans=virtio,nofail 0 0</span><br></pre></td></tr></table></figure>
+<p>Or if you’ve run <code>blkid</code> and looked up the UUID of the file system you wanted to mount, you can also swap the line above for the following one:</p>
+<figure class="highlight bash"><table><tr><td class="code"><pre><span class="line">UUID=12345678-1234-1234-1234-1234567890ab /mnt/ntfs ntfs-3g defaults 0 0</span><br><span class="line"></span><br><span class="line"><span class="comment"># Pretend for a sec that the UUID of `/dev/vda3` is &quot;12345678-1234-1234-1234-1234567890ab&quot;</span></span><br></pre></td></tr></table></figure>
 
-<p>The reason for this is because our new line mounts a CIFS file system from <code>localhost</code> onto the mount point <code>/mnt/share</code>, using the username <code>mccranky</code> and password <code>Rogue12</code>.</p>
-<p>The old line mounts a 9p file system onto the same mount point <code>/mnt/share</code>, using the virtio transport and the nofail option.</p>
-<p>Since our old entry gave us much headache, I’ll just swap it for the new one. :)</p>
-<p>Let’s test the mount by running the following command:</p>
-<figure class="highlight bash"><table><tr><td class="code"><pre><span class="line">sudo mount -a</span><br></pre></td></tr></table></figure>
+<p>After adding the entry to the <code>/etc/fstab</code> file, we need to run <code>sudo mount -a</code>. This should mount the NTFS file system at the specified mount point, and the mount point should be automatically mounted at boot time.</p>
+<h4 id="Remove-Samba-entries"><a href="#Remove-Samba-entries" class="headerlink" title="Remove Samba entries"></a>Remove Samba entries</h4><p>Edit Samba’s configuration file <code>/etc/samba/smb.conf</code> and remove everything in the <code>[mnt]</code> field.</p>
+<p>Then, navigate to <code>/etc/fstab</code> and comment out anything associated with <code>/mnt/share</code>:</p>
+<pre><code># share /mnt/share 9p trans=virtio,nofail 0 0
+# //localhost/share /mnt/share cifs user=mccranky,password=Rogue12 0 0
+</code></pre>
+<p>Since we’ve already removed Samba service on our machine, we have no need of checking whether if the mount options specified in the mount unit are correct. But if you haven’t removed it yet, feel free to edit the mount unit file located at <code>/etc/systemd/system/mnt-share.mount</code> and modify the mount options.</p>
+<p>Remove the mount unit for <code>/mnt/share</code>:</p>
+<figure class="highlight bash"><table><tr><td class="code"><pre><span class="line">sudo <span class="built_in">rm</span> /etc/systemd/system/mnt-share.mount</span><br></pre></td></tr></table></figure>
 
-<p>This command will attempt to mount all entries in the <code>/etc/fstab</code> file. If there are any errors, it will display them in the terminal.</p>
-<p>Now we run <code>sudo systemctl reboot</code> to see if everything has been resolved at boot-up. There should be no more failures.</p>
-<h3 id="Rollback"><a href="#Rollback" class="headerlink" title="Rollback"></a>Rollback</h3><h4 id="Disable-Samba-service"><a href="#Disable-Samba-service" class="headerlink" title="Disable Samba service"></a>Disable Samba service</h4><figure class="highlight bash"><table><tr><td class="code"><pre><span class="line">sudo systemctl stop smb.service</span><br><span class="line"></span><br><span class="line">sudo systemctl <span class="built_in">disable</span> smb.service</span><br><span class="line"></span><br><span class="line">sudo pacman -R samba</span><br><span class="line"></span><br><span class="line">sudo <span class="built_in">rm</span> -rf /etc/samba</span><br><span class="line">sudo <span class="built_in">rm</span> -rf /var/cache/samba</span><br><span class="line">sudo <span class="built_in">rm</span> -rf /var/lib/samba</span><br><span class="line"></span><br><span class="line">sudo userdel -r samba</span><br><span class="line">sudo groupdel samba</span><br><span class="line"></span><br></pre></td></tr></table></figure>
+<p>Reload the systemd daemon to ensure that the changes take effect:</p>
+<figure class="highlight bash"><table><tr><td class="code"><pre><span class="line">sudo systemctl daemon-reload</span><br></pre></td></tr></table></figure>
 
-<h4 id="Unmount-mnt-share"><a href="#Unmount-mnt-share" class="headerlink" title="Unmount /mnt/share"></a>Unmount <code>/mnt/share</code></h4><p>Edit the Samba configuration file <code>/etc/samba/smb.conf</code> using a text editor:</p>
-<figure class="highlight bash"><table><tr><td class="code"><pre><span class="line">sudo nano /etc/samba/smb.conf</span><br></pre></td></tr></table></figure>
+<p>When we check the status of <code>mnt-share.mount</code>, we should get:</p>
+<pre><code> $ sudo systemctl status mnt-share.mount
+x mnt-share.mount
+     Loaded: not-found (Reason: Unit mnt-share.mount not found.)
+     Active: failed (Result: exit-code) since Thu 2023-04-27 02:45:46 UTC; 1h 5&gt;
+        CPU: 28ms
 
-<p>Find the section that defines the <code>/mnt/share</code> share. It should look something like this:</p>
-<figure class="highlight bash"><table><tr><td class="code"><pre><span class="line">[mnt]</span><br><span class="line">   path = /mnt/share</span><br><span class="line">   <span class="built_in">read</span> only = no</span><br><span class="line">   guest ok = <span class="built_in">yes</span></span><br></pre></td></tr></table></figure>
-
-<p>Remove the entire section, then restart the Samba service:</p>
-<figure class="highlight bash"><table><tr><td class="code"><pre><span class="line">sudo systemctl start smb.service</span><br></pre></td></tr></table></figure>
-
-<p>The <code>/mnt/share</code> share should now be removed from Samba on Arch Linux.</p>
-<h4 id="Revoke-Samba-password"><a href="#Revoke-Samba-password" class="headerlink" title="Revoke Samba password"></a>Revoke Samba password</h4><figure class="highlight bash"><table><tr><td class="code"><pre><span class="line">sudo smbpasswd -x &lt;user&gt;</span><br></pre></td></tr></table></figure>
-
-<p>This will remove the user’s password from the Samba password database, effectively undoing the <code>sudo smbpasswd -a &lt;user&gt;</code> command.</p>
+Apr 27 02:45:46 alarm systemd[1]: Mounting /mnt/share...
+Apr 27 02:45:46 alarm mount[379]: mount error(111): could not connect to ::1mou&gt;
+Apr 27 02:45:46 alarm systemd[1]: mnt-share.mount: Mount process exited, code=e&gt;
+Apr 27 02:45:46 alarm systemd[1]: mnt-share.mount: Failed with result &#39;exit-cod&gt;
+Apr 27 02:45:46 alarm systemd[1]: Failed to mount /mnt/share.
+</code></pre>
+<p>Last we can finally run <code>sudo rm -r /mnt/share</code> to remove <code>/mnt/share</code> from our machine.</p>
+<p>Perfect! Now when we <code>reboot</code> again we should receive no errors.</p>
 ]]></content>
       <categories>
         <category>Linux</category>
@@ -476,8 +641,8 @@ r=mccranky)
       </categories>
       <tags>
         <tag>ArchLinux</tag>
-        <tag>UTM</tag>
         <tag>Virtual Machine</tag>
+        <tag>Issue</tag>
       </tags>
   </entry>
   <entry>
@@ -700,95 +865,6 @@ S: 221 /0:0:0:0:0:0:0:1 Service closing transmission channel
       </tags>
   </entry>
   <entry>
-    <title>[Fix] Failed to mount /mnt/share</title>
-    <url>/2023/04/27/%5BFix%5D%20Failed%20to%20mount%20:mnt:share/</url>
-    <content><![CDATA[<h3 id="Solution"><a href="#Solution" class="headerlink" title="Solution"></a>Solution</h3><p>Our fix to the problem is to remove <code>/mnt/share</code> entirely and mount something else in its place.</p>
-<p>This is the portion of the startup process which showed the error:</p>
-<pre><code>[FAILED] Failed to mount /mnt/share.
-See &#39;systemctl status mnt-share.mount&#39; for details
-</code></pre>
-<p>By the way, this post is for those who followed <a href="/2023/04/26/Mounting-a-Shared-folder-on-ArchLinux-VM/#Rollback">my last tutorial</a> on using Samba service to mount a shared directory on ArchLinux VM.</p>
-<h3 id="Check-mount-unit-status"><a href="#Check-mount-unit-status" class="headerlink" title="Check mount unit status"></a>Check mount unit status</h3><p>We’ll start by following the instruction to check the status of the mount unit by running the suggested command:</p>
-<figure class="highlight bash"><table><tr><td class="code"><pre><span class="line">systemctl status mnt-share.mount</span><br></pre></td></tr></table></figure>
-
-<p>This will give us more information about the specific error that occurred.</p>
-<pre><code>Warning: The unit file, source configuration file or drop-ins of mnt-share.moun&gt;
-x mnt-share.mount - /mnt/share
-     Loaded: loaded (/etc/fstab; generated)
-     Active: failed (Result: exit-code) since Thu 2023-04-27 02:45:46 UTC; 40mi&gt;
-      Where: /mnt/share
-       What: //localhost/share
-       Docs: man:fstab(5)
-             man:systemd-fstab-generator(8)
-        CPU: 28ms
-
-Apr 27 02:45:46 alarm systemd[1]: Mounting /mnt/share...
-Apr 27 02:45:46 alarm mount[379]: mount error(111): could not connect to ::1mou&gt;
-Apr 27 02:45:46 alarm systemd[1]: mnt-share.mount: Mount process exited, code=e&gt;
-Apr 27 02:45:46 alarm systemd[1]: mnt-share.mount: Failed with result &#39;exit-cod&gt;
-Apr 27 02:45:46 alarm systemd[1]: Failed to mount /mnt/share.
-</code></pre>
-<h3 id="Side-Content"><a href="#Side-Content" class="headerlink" title="Side Content"></a>Side Content</h3><h4 id="Check-file-system-properties"><a href="#Check-file-system-properties" class="headerlink" title="Check file system properties"></a>Check file system properties</h4><p>Since we’ve decided to remove the mount <code>/mnt/share</code> instead of trying to fix it, we shall proceed to learn a little about how to mount a disk. For instance, if we want to mount an NTFS file system and ensure that the file system is accessible and error-free, we can use the following command to check it for errors:</p>
-<figure class="highlight bash"><table><tr><td class="code"><pre><span class="line">sudo pacman -S ntfs-3g</span><br><span class="line"></span><br><span class="line"><span class="comment">#  Install the `ntfs-3g` package which provides the `ntfsfix` tool.</span></span><br><span class="line"></span><br><span class="line">sudo ntfsfix /dev/sda1</span><br><span class="line"></span><br><span class="line"><span class="comment"># Replace `/dev/sda1` with the appropriate device and partition.</span></span><br></pre></td></tr></table></figure>
-
-<p>If the virtual hard disk has multiple partitions, we’ll need to determine which partition contains the NTFS file system we want to mount. Oftentimes we use the <code>lsblk</code> command to list the available storage devices and their partitions, and the <code>blkid</code> command to list the UUIDs of the partitions.</p>
-<pre><code>$ lsblk
-NAME   MAJ:MIN RM  SIZE RO TYPE MOUNTPOINTS
-sr0     11:0    1 1024M  0 rom  
-vda    253:0    0  9.8G  0 disk 
-|-vda1 253:1    0  200M  0 part /boot
-`-vda2 253:2    0  9.6G  0 part /
-</code></pre>
-<p>In my case, the virtual machine has a single virtual hard disk, which is identified as <code>/dev/vda</code>. This virtual hard disk has two partitions, <code>/dev/vda1</code> and <code>/dev/vda2</code>, which are mounted at <code>/boot</code> and <code>/</code>, respectively.</p>
-<p><code>/dev/vda1</code> is a 200MB partition formatted as a Linux file system such as <code>ext4</code> or <code>xfs</code>, and contains the kernel and other boot files.</p>
-<p><code>/dev/vda2</code> is a 9.6GB partition also formatted as a Linux file system, and contains the root file system for the Arch Linux operating system.</p>
-<h4 id="Mount-NTFS-file-system"><a href="#Mount-NTFS-file-system" class="headerlink" title="Mount NTFS file system"></a>Mount NTFS file system</h4><p>If we want to mount an additional NTFS file system on our virtual machine, we can create a new directory to use as the mount point, such as <code>/mnt/ntfs</code>, and then add an entry to the <code>/etc/fstab</code> file to mount the NTFS file system at that mount point.</p>
-<p>For example, if the NTFS file system is located on <code>/dev/vda3</code>, we can add the following line to the <code>/etc/fstab</code> file:</p>
-<figure class="highlight bash"><table><tr><td class="code"><pre><span class="line">/dev/vda3 /mnt/ntfs ntfs-3g defaults 0 0</span><br></pre></td></tr></table></figure>
-
-<p>Or if you’ve run <code>blkid</code> and looked up the UUID of the file system you wanted to mount, you can also swap the line above for the following one:</p>
-<figure class="highlight bash"><table><tr><td class="code"><pre><span class="line">UUID=12345678-1234-1234-1234-1234567890ab /mnt/ntfs ntfs-3g defaults 0 0</span><br><span class="line"></span><br><span class="line"><span class="comment"># Pretend for a sec that the UUID of `/dev/vda3` is &quot;12345678-1234-1234-1234-1234567890ab&quot;</span></span><br></pre></td></tr></table></figure>
-
-<p>After adding the entry to the <code>/etc/fstab</code> file, we need to run <code>sudo mount -a</code>. This should mount the NTFS file system at the specified mount point, and the mount point should be automatically mounted at boot time.</p>
-<h4 id="Remove-Samba-entries"><a href="#Remove-Samba-entries" class="headerlink" title="Remove Samba entries"></a>Remove Samba entries</h4><p>Edit Samba’s configuration file <code>/etc/samba/smb.conf</code> and remove everything in the <code>[mnt]</code> field.</p>
-<p>Then, navigate to <code>/etc/fstab</code> and comment out anything associated with <code>/mnt/share</code>:</p>
-<pre><code># share /mnt/share 9p trans=virtio,nofail 0 0
-# //localhost/share /mnt/share cifs user=mccranky,password=Rogue12 0 0
-</code></pre>
-<p>Since we’ve already removed Samba service on our machine, we have no need of checking whether if the mount options specified in the mount unit are correct. But if you haven’t removed it yet, feel free to edit the mount unit file located at <code>/etc/systemd/system/mnt-share.mount</code> and modify the mount options.</p>
-<p>Remove the mount unit for <code>/mnt/share</code>:</p>
-<figure class="highlight bash"><table><tr><td class="code"><pre><span class="line">sudo <span class="built_in">rm</span> /etc/systemd/system/mnt-share.mount</span><br></pre></td></tr></table></figure>
-
-<p>Reload the systemd daemon to ensure that the changes take effect:</p>
-<figure class="highlight bash"><table><tr><td class="code"><pre><span class="line">sudo systemctl daemon-reload</span><br></pre></td></tr></table></figure>
-
-<p>When we check the status of <code>mnt-share.mount</code>, we should get:</p>
-<pre><code> $ sudo systemctl status mnt-share.mount
-x mnt-share.mount
-     Loaded: not-found (Reason: Unit mnt-share.mount not found.)
-     Active: failed (Result: exit-code) since Thu 2023-04-27 02:45:46 UTC; 1h 5&gt;
-        CPU: 28ms
-
-Apr 27 02:45:46 alarm systemd[1]: Mounting /mnt/share...
-Apr 27 02:45:46 alarm mount[379]: mount error(111): could not connect to ::1mou&gt;
-Apr 27 02:45:46 alarm systemd[1]: mnt-share.mount: Mount process exited, code=e&gt;
-Apr 27 02:45:46 alarm systemd[1]: mnt-share.mount: Failed with result &#39;exit-cod&gt;
-Apr 27 02:45:46 alarm systemd[1]: Failed to mount /mnt/share.
-</code></pre>
-<p>Last we can finally run <code>sudo rm -r /mnt/share</code> to remove <code>/mnt/share</code> from our machine.</p>
-<p>Perfect! Now when we <code>reboot</code> again we should receive no errors.</p>
-]]></content>
-      <categories>
-        <category>Linux</category>
-        <category>ArchLinux</category>
-      </categories>
-      <tags>
-        <tag>ArchLinux</tag>
-        <tag>Virtual Machine</tag>
-        <tag>Issue</tag>
-      </tags>
-  </entry>
-  <entry>
     <title>如何生成项目树状结构图</title>
     <url>/2023/04/22/%E5%A6%82%E4%BD%95%E7%94%9F%E6%88%90%E9%A1%B9%E7%9B%AE%E6%A0%91%E7%8A%B6%E7%BB%93%E6%9E%84%E5%9B%BE/</url>
     <content><![CDATA[<h3 id="Prerequisites"><a href="#Prerequisites" class="headerlink" title="Prerequisites"></a>Prerequisites</h3><ul>
@@ -835,6 +911,127 @@ Apr 27 02:45:46 alarm systemd[1]: Failed to mount /mnt/share.
         <tag>Bash</tag>
         <tag>CLI</tag>
         <tag>File Systems</tag>
+      </tags>
+  </entry>
+  <entry>
+    <title>软件工程 第三周的博客</title>
+    <url>/2023/04/07/%E8%BD%AF%E4%BB%B6%E5%B7%A5%E7%A8%8B%20%E7%AC%AC%E4%B8%89%E5%91%A8%E7%9A%84%E5%8D%9A%E5%AE%A2/</url>
+    <content><![CDATA[<h2 id="简要概述-CTF-OverTheWire-Bandit-Level-24"><a href="#简要概述-CTF-OverTheWire-Bandit-Level-24" class="headerlink" title="简要概述 CTF OverTheWire Bandit Level 24"></a><em>简要概述 CTF OverTheWire Bandit Level 24</em></h2><h3 id="题目"><a href="#题目" class="headerlink" title="题目"></a><em>题目</em></h3><blockquote>
+<p>在端口 30002 上有一个守护进程正在监听，如果提供了 bandit24 的密码和一个秘密的 4 位数的数字密码，它将为您提供 bandit25 的密码。除了通过穷举全部 10000 种组合的方式以外，没有其他获得 pincode 的方法，这被称为暴力破解。</p>
+</blockquote>
+<p>大致思路如下：</p>
+<ul>
+<li>先写一个<code>script</code>，按要求进行排版输出到<code>stdout</code></li>
+<li>把输出的 10000 种组合<code>pipe</code>到<code>netcat</code>监视的<code>localhost:30002</code>进行测试</li>
+<li>直接输出到<code>stdout</code>可能会<code>timeout</code>打断进程，所以我们输出到<code>output.txt</code></li>
+<li>最后<code>cat</code>文本内容拿到密码</li>
+</ul>
+<p>先利用<code>ssh</code>连接到<code>bandit.labs.overthewire.org</code>的服务器，端口号<code>2220</code>，为此我们需要<code>bandit24</code>的密码。</p>
+<figure class="highlight bash"><table><tr><td class="code"><pre><span class="line">ssh bandit24@bandit.labs.overthewire.org -p 2220</span><br><span class="line"><span class="comment">#					VAfGXJ1PBSsPSnvsjI8p759leLZ9GGar</span></span><br></pre></td></tr></table></figure>
+
+<p>以<code>bandit24</code>进入 Level 24 之后先到系统文件夹<code>/tmp</code>下建立本关的临时文件夹。</p>
+<figure class="highlight bash"><table><tr><td class="code"><pre><span class="line"><span class="built_in">cd</span> /tmp; <span class="built_in">mktemp</span> -d</span><br><span class="line"></span><br><span class="line"><span class="comment"># /tmp/tmp.u4oQlmpmWL</span></span><br><span class="line"></span><br><span class="line"><span class="built_in">cd</span> /tmp/tmp.u4oQlmpmWL</span><br><span class="line"></span><br><span class="line"><span class="comment"># bandit24@bandit:/tmp/tmp.u4oQlmpmWL$</span></span><br></pre></td></tr></table></figure>
+
+<blockquote>
+<p><code>-d</code>代表<code>directory</code>，即告诉<code>mktemp</code>指令创建的临时文件属性为文件夹</p>
+</blockquote>
+<figure class="highlight bash"><table><tr><td class="code"><pre><span class="line"><span class="built_in">touch</span> script.sh</span><br><span class="line"></span><br><span class="line"><span class="built_in">chmod</span> 777 script.sh</span><br><span class="line"></span><br><span class="line">vim script.sh</span><br></pre></td></tr></table></figure>
+
+<blockquote>
+<p><code>touch</code>: 创建文件</p>
+</blockquote>
+<blockquote>
+<p><code>chmod</code> - <code>change mode</code>: 改变文档<code>rwx</code>权限</p>
+</blockquote>
+<ul>
+<li><code>r</code> - <code>read</code>: 读取权限<code>status code</code>为 4</li>
+<li><code>w</code> - <code>write</code>: 书写权限<code>status code</code>为 2</li>
+<li><code>x</code> - <code>execute</code>: 执行权限<code>status code</code>为 1</li>
+</ul>
+<p>进入文本编辑器之后，选定”插入“模式，按<code>i</code>键</p>
+<p>首行书写<code>shebang</code>行，选定使用哪个<code>shell</code>来执行该<code>script</code> - 我们选用<code>bash</code></p>
+<p>然后写我们的<code>entity body</code>的代码：</p>
+<figure class="highlight bash"><table><tr><td class="code"><pre><span class="line"><span class="meta">#!/bin/bash</span></span><br><span class="line"></span><br><span class="line"><span class="keyword">for</span> i <span class="keyword">in</span> &#123;0000..9999&#125;; <span class="keyword">do</span></span><br><span class="line">        <span class="built_in">echo</span> <span class="variable">$i</span></span><br><span class="line">        <span class="built_in">printf</span> <span class="string">&quot;%s %s\n&quot;</span> <span class="string">&quot;VAfGXJ1PBSsPSnvsjI8p759leLZ9GGar&quot;</span> <span class="string">&quot;<span class="variable">$i</span>&quot;</span></span><br><span class="line"><span class="keyword">done</span></span><br><span class="line"></span><br><span class="line"><span class="built_in">exit</span> 0</span><br><span class="line"></span><br></pre></td></tr></table></figure>
+
+<p>除了语法上微小的一点差异，该题的<code>syntax</code>和<code>C</code>的语法很相像，所以不赘述了。</p>
+<p>大致格式就是<code>for [ test statement]; do &lt;command&gt;; done</code></p>
+<p>编辑结束按<code>ESC</code>键回到普通模式，按<code>:</code>,然后输入指令<code>wq</code>，回车保存并退出。</p>
+<p>执行<code>script.sh</code>，并把结果<code>pipe</code>到<code>netcat</code>:</p>
+<figure class="highlight bash"><table><tr><td class="code"><pre><span class="line">./script.sh | nc localhost 30002 &gt; output.txt</span><br></pre></td></tr></table></figure>
+
+<p>然后<code>cat output.txt</code>读取文本内容，这是其中的一小部分：</p>
+<pre>
+        Fail! You did not supply enough data. Try again.
+        Wrong! Please enter the correct pincode. Try again.
+        Fail! You did not supply enough data. Try again.
+        Wrong! Please enter the correct pincode. Try again.
+        Fail! You did not supply enough data. Try again.
+        Wrong! Please enter the correct pincode. Try again.
+        Fail! You did not supply enough data. Try again.
+        Wrong! Please enter the correct pincode. Try again.
+        Fail! You did not supply enough data. Try again.
+        Wrong! Please enter the correct pincode. Try again.
+        Fail! You did not supply enough data. Try again.
+        Wrong! Please enter the correct pincode. Try again.
+        Fail! You did not supply enough data. Try again.
+        Wrong! Please enter the correct pincode. Try again.
+        Fail! You did not supply enough data. Try again.
+        Wrong! Please enter the correct pincode. Try again.
+        Fail! You did not supply enough data. Try again.
+        Correct!
+        The password of user bandit25 is p7TaowMYrmu23Ol8hiZh9UvD0O9hpx8d
+
+        Exiting.
+</pre>
+
+]]></content>
+      <tags>
+        <tag>Bash</tag>
+        <tag>CTF</tag>
+        <tag>OverTheWire</tag>
+        <tag>Bandit</tag>
+      </tags>
+  </entry>
+  <entry>
+    <title>软件工程 第二周的博客</title>
+    <url>/2023/03/29/%E8%BD%AF%E4%BB%B6%E5%B7%A5%E7%A8%8B%20%E7%AC%AC%E4%BA%8C%E5%91%A8%E7%9A%84%E5%8D%9A%E5%AE%A2/</url>
+    <content><![CDATA[<h3 id="使用-Node-js-的-Express-js-模组-Host-自己的静态网页"><a href="#使用-Node-js-的-Express-js-模组-Host-自己的静态网页" class="headerlink" title="使用 Node.js 的 Express.js 模组 Host 自己的静态网页"></a><em>使用 Node.js 的 Express.js 模组 Host 自己的静态网页</em></h3><p>首先创建项目文件夹:</p>
+<figure class="highlight plaintext"><table><tr><td class="code"><pre><span class="line"></span><br><span class="line">mkdir project01; cd project01</span><br><span class="line"></span><br></pre></td></tr></table></figure>
+
+<p>然后创建app.js文件：</p>
+<figure class="highlight plaintext"><table><tr><td class="code"><pre><span class="line"></span><br><span class="line">touch app.js; sudo nano app.js</span><br><span class="line"></span><br></pre></td></tr></table></figure>
+
+<blockquote>
+<p>差点忘了，没下载Node.js的先去这个地址下载一下：<a href="https://nodejs.org/en/download/">https://nodejs.org/en/download/</a></p>
+</blockquote>
+<p>下载完初始化一下：</p>
+<figure class="highlight plaintext"><table><tr><td class="code"><pre><span class="line"></span><br><span class="line">node init -y</span><br><span class="line"></span><br></pre></td></tr></table></figure>
+
+<p>到生成的package.json文件里 script object 里加个参数：</p>
+<figure class="highlight plaintext"><table><tr><td class="code"><pre><span class="line"></span><br><span class="line">‘start&#x27;：‘node app’</span><br><span class="line"></span><br></pre></td></tr></table></figure>
+
+<p>好的，非常完美。</p>
+<p>然后下载express：</p>
+<figure class="highlight plaintext"><table><tr><td class="code"><pre><span class="line"></span><br><span class="line">npm i express --save</span><br><span class="line"></span><br></pre></td></tr></table></figure>
+
+<p>这里不建议把它下载为–global，因为会和别的模组冲突。</p>
+<p>面对空白页，先导入express模组并初始化app（关于http模组的基础不做赘述，因为用那个太麻烦了）：</p>
+<figure class="highlight plaintext"><table><tr><td class="code"><pre><span class="line"></span><br><span class="line">const app = require(&#x27;express&#x27;)()</span><br><span class="line"></span><br></pre></td></tr></table></figure>
+
+<p>然后省略几千字，直接上代码，不懂看注释 : )</p>
+<figure class="highlight plaintext"><table><tr><td class="code"><pre><span class="line"></span><br><span class="line">app.use(express.static(&#x27;./public&#x27;))     // 把静态网页需要的资源全扔 public 文件夹里就好了</span><br><span class="line"></span><br><span class="line">app.all(&#x27;*&#x27;, (req, res) =&gt; &#123;</span><br><span class="line">  res.status(404).send(&#x27;resource not found&#x27;)</span><br><span class="line">&#125;)                                                           // 这个是用来处理404 Bad Request 的</span><br><span class="line"></span><br><span class="line">app.listen(5000, () =&gt; &#123;</span><br><span class="line">  console.log(&#x27;server is listening on port 5000....&#x27;)</span><br><span class="line">&#125;)                                                          // 这个是选择端口</span><br><span class="line"></span><br></pre></td></tr></table></figure>
+
+<p>最后在 console 里输入：</p>
+<figure class="highlight plaintext"><table><tr><td class="code"><pre><span class="line"></span><br><span class="line">npm start</span><br><span class="line"></span><br></pre></td></tr></table></figure>
+
+<p>完成！唯一的问题是我们用的还是 localhost， 也就是只有自己可以在端口 5000 看到自己的网页。</p>
+<p>想让别人看到的话就去使用 Git Pages 的免费服务。</p>
+<p>是不是很简单，开自己动手试一试吧！</p>
+]]></content>
+      <tags>
+        <tag>JavaScript</tag>
+        <tag>Node.js</tag>
+        <tag>Express.js</tag>
       </tags>
   </entry>
   <entry>
@@ -916,186 +1113,6 @@ Connection to localhost closed.
 <p>我们现在应该是以<code>bandit26</code>的身份登陆了。</p>
 <p>然后需要做的就是去取下一关的密码了。</p>
 <figure class="highlight bash"><table><tr><td class="code"><pre><span class="line"><span class="built_in">cat</span> /etc/bandit_pass/bandit26</span><br><span class="line"><span class="comment"># c7GvcKlw9mC7aUQaPx7nwFstuAIBw1o1</span></span><br></pre></td></tr></table></figure>]]></content>
-      <tags>
-        <tag>Bash</tag>
-        <tag>CTF</tag>
-        <tag>OverTheWire</tag>
-        <tag>Bandit</tag>
-      </tags>
-  </entry>
-  <entry>
-    <title>软件工程 第二周的博客</title>
-    <url>/2023/03/29/%E8%BD%AF%E4%BB%B6%E5%B7%A5%E7%A8%8B%20%E7%AC%AC%E4%BA%8C%E5%91%A8%E7%9A%84%E5%8D%9A%E5%AE%A2/</url>
-    <content><![CDATA[<h3 id="使用-Node-js-的-Express-js-模组-Host-自己的静态网页"><a href="#使用-Node-js-的-Express-js-模组-Host-自己的静态网页" class="headerlink" title="使用 Node.js 的 Express.js 模组 Host 自己的静态网页"></a><em>使用 Node.js 的 Express.js 模组 Host 自己的静态网页</em></h3><p>首先创建项目文件夹:</p>
-<figure class="highlight plaintext"><table><tr><td class="code"><pre><span class="line"></span><br><span class="line">mkdir project01; cd project01</span><br><span class="line"></span><br></pre></td></tr></table></figure>
-
-<p>然后创建app.js文件：</p>
-<figure class="highlight plaintext"><table><tr><td class="code"><pre><span class="line"></span><br><span class="line">touch app.js; sudo nano app.js</span><br><span class="line"></span><br></pre></td></tr></table></figure>
-
-<blockquote>
-<p>差点忘了，没下载Node.js的先去这个地址下载一下：<a href="https://nodejs.org/en/download/">https://nodejs.org/en/download/</a></p>
-</blockquote>
-<p>下载完初始化一下：</p>
-<figure class="highlight plaintext"><table><tr><td class="code"><pre><span class="line"></span><br><span class="line">node init -y</span><br><span class="line"></span><br></pre></td></tr></table></figure>
-
-<p>到生成的package.json文件里 script object 里加个参数：</p>
-<figure class="highlight plaintext"><table><tr><td class="code"><pre><span class="line"></span><br><span class="line">‘start&#x27;：‘node app’</span><br><span class="line"></span><br></pre></td></tr></table></figure>
-
-<p>好的，非常完美。</p>
-<p>然后下载express：</p>
-<figure class="highlight plaintext"><table><tr><td class="code"><pre><span class="line"></span><br><span class="line">npm i express --save</span><br><span class="line"></span><br></pre></td></tr></table></figure>
-
-<p>这里不建议把它下载为–global，因为会和别的模组冲突。</p>
-<p>面对空白页，先导入express模组并初始化app（关于http模组的基础不做赘述，因为用那个太麻烦了）：</p>
-<figure class="highlight plaintext"><table><tr><td class="code"><pre><span class="line"></span><br><span class="line">const app = require(&#x27;express&#x27;)()</span><br><span class="line"></span><br></pre></td></tr></table></figure>
-
-<p>然后省略几千字，直接上代码，不懂看注释 : )</p>
-<figure class="highlight plaintext"><table><tr><td class="code"><pre><span class="line"></span><br><span class="line">app.use(express.static(&#x27;./public&#x27;))     // 把静态网页需要的资源全扔 public 文件夹里就好了</span><br><span class="line"></span><br><span class="line">app.all(&#x27;*&#x27;, (req, res) =&gt; &#123;</span><br><span class="line">  res.status(404).send(&#x27;resource not found&#x27;)</span><br><span class="line">&#125;)                                                           // 这个是用来处理404 Bad Request 的</span><br><span class="line"></span><br><span class="line">app.listen(5000, () =&gt; &#123;</span><br><span class="line">  console.log(&#x27;server is listening on port 5000....&#x27;)</span><br><span class="line">&#125;)                                                          // 这个是选择端口</span><br><span class="line"></span><br></pre></td></tr></table></figure>
-
-<p>最后在 console 里输入：</p>
-<figure class="highlight plaintext"><table><tr><td class="code"><pre><span class="line"></span><br><span class="line">npm start</span><br><span class="line"></span><br></pre></td></tr></table></figure>
-
-<p>完成！唯一的问题是我们用的还是 localhost， 也就是只有自己可以在端口 5000 看到自己的网页。</p>
-<p>想让别人看到的话就去使用 Git Pages 的免费服务。</p>
-<p>是不是很简单，开自己动手试一试吧！</p>
-]]></content>
-      <tags>
-        <tag>JavaScript</tag>
-        <tag>Node.js</tag>
-        <tag>Express.js</tag>
-      </tags>
-  </entry>
-  <entry>
-    <title>Initialize shared directory with SPICE WebDAV</title>
-    <url>/2023/04/26/Initialize%20shared%20directory%20with%20SPICE%20WebDAV/</url>
-    <content><![CDATA[<h3 id="Install-Dependencies"><a href="#Install-Dependencies" class="headerlink" title="Install Dependencies"></a>Install Dependencies</h3><h4 id="SPICE-guest-tools"><a href="#SPICE-guest-tools" class="headerlink" title="SPICE guest tools"></a><em><code>SPICE guest tools</code></em></h4><p>See <a href="/2023/04/25/Running%20ArchLinux%20ARM%20in%20UTM%20on%20a%20M1%20MacBook%20Air/#SPICE-guest-tools"><code>SPICE guest tools</code></a></p>
-<h4 id="SPICE-WebDAV"><a href="#SPICE-WebDAV" class="headerlink" title="SPICE WebDAV"></a><em><code>SPICE WebDAV</code></em></h4><p>SPICE WebDAV is required for <a href="https://docs.getutm.app/settings-qemu/sharing/#spice-webdav" title="QEMU directory sharing">QEMU directory sharing</a> as an alternative to VirtFS.</p>
-<p>Since we’re on ArchLinux, we should run the following command:</p>
-<figure class="highlight bash"><table><tr><td class="code"><pre><span class="line">sudo pacman -S phodav</span><br></pre></td></tr></table></figure>
-
-<p>Now we should want to visit the shared directory.</p>
-<p>Normally, it is exposed as a WebDAV mount on the guest’s localhost (typically on port 9843).</p>
-<p>To access it, we need a browser.</p>
-<h3 id="Firefox"><a href="#Firefox" class="headerlink" title="Firefox"></a>Firefox</h3><p>I don’t have one yet, so I’ll Install Firefox via <a href="/2023/04/25/Running%20ArchLinux%20ARM%20in%20UTM%20on%20a%20M1%20MacBook%20Air/#yay"><code>yay</code></a>.</p>
-<figure class="highlight bash"><table><tr><td class="code"><pre><span class="line">yay -S firefox</span><br></pre></td></tr></table></figure>
-
-<p>Before we move on, let’s configure the <code>DISPLAY</code> environment variable first. Again, I need to install one:</p>
-<figure class="highlight bash"><table><tr><td class="code"><pre><span class="line">sudo pacman -S xorg xorg-xinit xfce4</span><br><span class="line"></span><br><span class="line"><span class="comment"># Once installation is complete, `reboot` and log-back-in</span></span><br></pre></td></tr></table></figure>
-
-<p>Before we proceed, make sure to check the following conditions:</p>
-<blockquote>
-<p>X Window System is actually running: You can start the X Window System by running the command <code>startx</code> in a terminal window.</p>
-</blockquote>
-<blockquote>
-<p>You have permission to access the X Window System: You may need to add your user account to the <code>video</code> group by running the command <code>sudo usermod -aG video &lt;username&gt;</code>.</p>
-</blockquote>
-<blockquote>
-<p>X Window System is configured to allow remote connections: You may need to edit the <code>/etc/X11/xinit/xserverrc</code> file to include the <code>-listen tcp</code> option. For example, you can add the line <code>exec /usr/bin/X -listen tcp</code> to the file.</p>
-</blockquote>
-<hr>
-<p>We may face some problems when we run <code>startx</code> because X server requires some sort of display device or screen so that it can display graphical output, and since ArchLinux is text-based, we’ll have to go through a few extra steps.</p>
-<ul>
-<li><p>Run <code>sudo pacman -S xf86-video-fbdev</code> to install the <code>xf86-video-fbdev</code> package. This package provides a generic framebuffer driver that can be used in place of a specific display driver.</p>
-</li>
-<li><p>Edit the <code>/etc/X11/xorg.conf.d/10-monitor.conf</code> file to specify the <code>fbdev</code> driver. We can do this by adding the following lines to the file:</p>
-</li>
-</ul>
-<figure class="highlight bash"><table><tr><td class="code"><pre><span class="line">Section <span class="string">&quot;Device&quot;</span></span><br><span class="line">    Identifier <span class="string">&quot;fbdev&quot;</span></span><br><span class="line">    Driver <span class="string">&quot;fbdev&quot;</span></span><br><span class="line">EndSection</span><br></pre></td></tr></table></figure>
-
-<p>That should do the trick when we run <code>startx</code> again.</p>
-<p>If the X server still fails to start, you may need to investigate further by checking the <code>/var/log/Xorg.0.log</code> file for additional information about the error.</p>
-<hr>
-<p>After double-checking the conditions listed above, we can now run the command <code>export DISPLAY=:0</code> to set the display environment variable to the default value for the X Window System.</p>
-<p>At last we launch Firefox and navigate to <code>http://127.0.0.1:9843</code>.</p>
-<figure class="highlight bash"><table><tr><td class="code"><pre><span class="line">firefox http://127.0.0.1:9843</span><br></pre></td></tr></table></figure>
-
-<p>We can also try running Firefox with the <code>--no-remote</code> option. This option tells Firefox to open a new instance of the browser, rather than connecting to an existing instance.</p>
-<figure class="highlight bash"><table><tr><td class="code"><pre><span class="line">firefox --no-remote http://127.0.0.1:9843</span><br></pre></td></tr></table></figure>
-
-<p>If the <code>SPICE WebDAV</code> service is running correctly, you should be able to see the page in the Firefox browser window.</p>
-<h3 id="Headless-browser"><a href="#Headless-browser" class="headerlink" title="Headless browser"></a>Headless browser</h3><h4 id="Puppeteer"><a href="#Puppeteer" class="headerlink" title="Puppeteer"></a>Puppeteer</h4><p>See <a href="/2023/04/27/Dabbling%20with%20Puppeteer/">here</a></p>
-<h4 id="i2pdbrowser"><a href="#i2pdbrowser" class="headerlink" title="i2pdbrowser"></a>i2pdbrowser</h4><p>Clone this repo:</p>
-<figure class="highlight bash"><table><tr><td class="code"><pre><span class="line">git <span class="built_in">clone</span> https://github.com/PurpleI2P/i2pdbrowser.git</span><br></pre></td></tr></table></figure>
-
-<p>Navigate to the README.md file for more information</p>
-]]></content>
-      <categories>
-        <category>Linux</category>
-        <category>ArchLinux</category>
-      </categories>
-  </entry>
-  <entry>
-    <title>软件工程 第三周的博客</title>
-    <url>/2023/04/07/%E8%BD%AF%E4%BB%B6%E5%B7%A5%E7%A8%8B%20%E7%AC%AC%E4%B8%89%E5%91%A8%E7%9A%84%E5%8D%9A%E5%AE%A2/</url>
-    <content><![CDATA[<h2 id="简要概述-CTF-OverTheWire-Bandit-Level-24"><a href="#简要概述-CTF-OverTheWire-Bandit-Level-24" class="headerlink" title="简要概述 CTF OverTheWire Bandit Level 24"></a><em>简要概述 CTF OverTheWire Bandit Level 24</em></h2><h3 id="题目"><a href="#题目" class="headerlink" title="题目"></a><em>题目</em></h3><blockquote>
-<p>在端口 30002 上有一个守护进程正在监听，如果提供了 bandit24 的密码和一个秘密的 4 位数的数字密码，它将为您提供 bandit25 的密码。除了通过穷举全部 10000 种组合的方式以外，没有其他获得 pincode 的方法，这被称为暴力破解。</p>
-</blockquote>
-<p>大致思路如下：</p>
-<ul>
-<li>先写一个<code>script</code>，按要求进行排版输出到<code>stdout</code></li>
-<li>把输出的 10000 种组合<code>pipe</code>到<code>netcat</code>监视的<code>localhost:30002</code>进行测试</li>
-<li>直接输出到<code>stdout</code>可能会<code>timeout</code>打断进程，所以我们输出到<code>output.txt</code></li>
-<li>最后<code>cat</code>文本内容拿到密码</li>
-</ul>
-<p>先利用<code>ssh</code>连接到<code>bandit.labs.overthewire.org</code>的服务器，端口号<code>2220</code>，为此我们需要<code>bandit24</code>的密码。</p>
-<figure class="highlight bash"><table><tr><td class="code"><pre><span class="line">ssh bandit24@bandit.labs.overthewire.org -p 2220</span><br><span class="line"><span class="comment">#					VAfGXJ1PBSsPSnvsjI8p759leLZ9GGar</span></span><br></pre></td></tr></table></figure>
-
-<p>以<code>bandit24</code>进入 Level 24 之后先到系统文件夹<code>/tmp</code>下建立本关的临时文件夹。</p>
-<figure class="highlight bash"><table><tr><td class="code"><pre><span class="line"><span class="built_in">cd</span> /tmp; <span class="built_in">mktemp</span> -d</span><br><span class="line"></span><br><span class="line"><span class="comment"># /tmp/tmp.u4oQlmpmWL</span></span><br><span class="line"></span><br><span class="line"><span class="built_in">cd</span> /tmp/tmp.u4oQlmpmWL</span><br><span class="line"></span><br><span class="line"><span class="comment"># bandit24@bandit:/tmp/tmp.u4oQlmpmWL$</span></span><br></pre></td></tr></table></figure>
-
-<blockquote>
-<p><code>-d</code>代表<code>directory</code>，即告诉<code>mktemp</code>指令创建的临时文件属性为文件夹</p>
-</blockquote>
-<figure class="highlight bash"><table><tr><td class="code"><pre><span class="line"><span class="built_in">touch</span> script.sh</span><br><span class="line"></span><br><span class="line"><span class="built_in">chmod</span> 777 script.sh</span><br><span class="line"></span><br><span class="line">vim script.sh</span><br></pre></td></tr></table></figure>
-
-<blockquote>
-<p><code>touch</code>: 创建文件</p>
-</blockquote>
-<blockquote>
-<p><code>chmod</code> - <code>change mode</code>: 改变文档<code>rwx</code>权限</p>
-</blockquote>
-<ul>
-<li><code>r</code> - <code>read</code>: 读取权限<code>status code</code>为 4</li>
-<li><code>w</code> - <code>write</code>: 书写权限<code>status code</code>为 2</li>
-<li><code>x</code> - <code>execute</code>: 执行权限<code>status code</code>为 1</li>
-</ul>
-<p>进入文本编辑器之后，选定”插入“模式，按<code>i</code>键</p>
-<p>首行书写<code>shebang</code>行，选定使用哪个<code>shell</code>来执行该<code>script</code> - 我们选用<code>bash</code></p>
-<p>然后写我们的<code>entity body</code>的代码：</p>
-<figure class="highlight bash"><table><tr><td class="code"><pre><span class="line"><span class="meta">#!/bin/bash</span></span><br><span class="line"></span><br><span class="line"><span class="keyword">for</span> i <span class="keyword">in</span> &#123;0000..9999&#125;; <span class="keyword">do</span></span><br><span class="line">        <span class="built_in">echo</span> <span class="variable">$i</span></span><br><span class="line">        <span class="built_in">printf</span> <span class="string">&quot;%s %s\n&quot;</span> <span class="string">&quot;VAfGXJ1PBSsPSnvsjI8p759leLZ9GGar&quot;</span> <span class="string">&quot;<span class="variable">$i</span>&quot;</span></span><br><span class="line"><span class="keyword">done</span></span><br><span class="line"></span><br><span class="line"><span class="built_in">exit</span> 0</span><br><span class="line"></span><br></pre></td></tr></table></figure>
-
-<p>除了语法上微小的一点差异，该题的<code>syntax</code>和<code>C</code>的语法很相像，所以不赘述了。</p>
-<p>大致格式就是<code>for [ test statement]; do &lt;command&gt;; done</code></p>
-<p>编辑结束按<code>ESC</code>键回到普通模式，按<code>:</code>,然后输入指令<code>wq</code>，回车保存并退出。</p>
-<p>执行<code>script.sh</code>，并把结果<code>pipe</code>到<code>netcat</code>:</p>
-<figure class="highlight bash"><table><tr><td class="code"><pre><span class="line">./script.sh | nc localhost 30002 &gt; output.txt</span><br></pre></td></tr></table></figure>
-
-<p>然后<code>cat output.txt</code>读取文本内容，这是其中的一小部分：</p>
-<pre>
-        Fail! You did not supply enough data. Try again.
-        Wrong! Please enter the correct pincode. Try again.
-        Fail! You did not supply enough data. Try again.
-        Wrong! Please enter the correct pincode. Try again.
-        Fail! You did not supply enough data. Try again.
-        Wrong! Please enter the correct pincode. Try again.
-        Fail! You did not supply enough data. Try again.
-        Wrong! Please enter the correct pincode. Try again.
-        Fail! You did not supply enough data. Try again.
-        Wrong! Please enter the correct pincode. Try again.
-        Fail! You did not supply enough data. Try again.
-        Wrong! Please enter the correct pincode. Try again.
-        Fail! You did not supply enough data. Try again.
-        Wrong! Please enter the correct pincode. Try again.
-        Fail! You did not supply enough data. Try again.
-        Wrong! Please enter the correct pincode. Try again.
-        Fail! You did not supply enough data. Try again.
-        Correct!
-        The password of user bandit25 is p7TaowMYrmu23Ol8hiZh9UvD0O9hpx8d
-
-        Exiting.
-</pre>
-
-]]></content>
       <tags>
         <tag>Bash</tag>
         <tag>CTF</tag>
