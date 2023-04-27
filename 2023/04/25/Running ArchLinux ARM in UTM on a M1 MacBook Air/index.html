@@ -1,0 +1,534 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+<meta name="viewport" content="width=device-width">
+<meta name="theme-color" content="#222" media="(prefers-color-scheme: light)">
+<meta name="theme-color" content="#222" media="(prefers-color-scheme: dark)"><meta name="generator" content="Hexo 6.3.0">
+
+  <link rel="apple-touch-icon" sizes="180x180" href="/images/apple-touch-icon-next.png">
+  <link rel="icon" type="image/png" sizes="32x32" href="/images/favicon-32x32-next.png">
+  <link rel="icon" type="image/png" sizes="16x16" href="/images/favicon-16x16-next.png">
+  <link rel="mask-icon" href="/images/logo.svg" color="#222">
+
+<link rel="stylesheet" href="/css/main.css">
+
+
+
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css" integrity="sha256-HtsXJanqjKTc8vVQjO4YMhiqFoXkfBsjBWcX91T1jr8=" crossorigin="anonymous">
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/animate.css/3.1.1/animate.min.css" integrity="sha256-PR7ttpcvz8qrF57fur/yAx1qXMFJeJFiA6pSzWi0OIE=" crossorigin="anonymous">
+
+<script class="next-config" data-name="main" type="application/json">{"hostname":"mccranky83.github.io","root":"/","images":"/images","scheme":"Muse","darkmode":true,"version":"8.15.1","exturl":false,"sidebar":{"position":"right","display":"post","padding":18,"offset":12},"copycode":{"enable":true,"style":"flat"},"bookmark":{"enable":false,"color":"#222","save":"auto"},"mediumzoom":false,"lazyload":false,"pangu":false,"comments":{"style":"tabs","active":null,"storage":true,"lazyload":false,"nav":null},"stickytabs":false,"motion":{"enable":true,"async":false,"transition":{"menu_item":"fadeInDown","post_block":"fadeIn","post_header":"fadeInDown","post_body":"fadeInDown","coll_header":"fadeInLeft","sidebar":"fadeInUp"}},"prism":false,"i18n":{"placeholder":"Searching...","empty":"We didn't find any results for the search: ${query}","hits_time":"${hits} results found in ${time} ms","hits":"${hits} results found"},"path":"/search.xml","localsearch":{"enable":true,"trigger":"auto","top_n_per_article":1,"unescape":false,"preload":false}}</script><script src="/js/config.js"></script>
+
+    <meta name="description" content="ArchLinux is a text-based operating system that does not come with a graphical interface, and all tasks are performed by running commands in the Command Line Interface (CLI).  SetupThe setting up of">
+<meta property="og:type" content="article">
+<meta property="og:title" content="Running ArchLinux ARM in UTM on a M1 MacBook Air">
+<meta property="og:url" content="https://mccranky83.github.io/2023/04/25/Running%20ArchLinux%20ARM%20in%20UTM%20on%20a%20M1%20MacBook%20Air/index.html">
+<meta property="og:site_name" content="Mccranky&#39;s Blog">
+<meta property="og:description" content="ArchLinux is a text-based operating system that does not come with a graphical interface, and all tasks are performed by running commands in the Command Line Interface (CLI).  SetupThe setting up of">
+<meta property="og:locale" content="en_US">
+<meta property="article:published_time" content="2023-04-25T12:29:29.000Z">
+<meta property="article:modified_time" content="2023-04-26T14:10:19.526Z">
+<meta property="article:author" content="Mccranky83">
+<meta property="article:tag" content="ArchLinux">
+<meta property="article:tag" content="UTM">
+<meta property="article:tag" content="Virtual Machine">
+<meta name="twitter:card" content="summary">
+
+
+<link rel="canonical" href="https://mccranky83.github.io/2023/04/25/Running%20ArchLinux%20ARM%20in%20UTM%20on%20a%20M1%20MacBook%20Air/">
+
+
+
+<script class="next-config" data-name="page" type="application/json">{"sidebar":"","isHome":false,"isPost":true,"lang":"en","comments":true,"permalink":"https://mccranky83.github.io/2023/04/25/Running%20ArchLinux%20ARM%20in%20UTM%20on%20a%20M1%20MacBook%20Air/","path":"2023/04/25/Running ArchLinux ARM in UTM on a M1 MacBook Air/","title":"Running ArchLinux ARM in UTM on a M1 MacBook Air"}</script>
+
+<script class="next-config" data-name="calendar" type="application/json">""</script>
+<title>Running ArchLinux ARM in UTM on a M1 MacBook Air | Mccranky's Blog</title>
+  
+
+
+
+
+
+
+
+
+  <noscript>
+    <link rel="stylesheet" href="/css/noscript.css">
+  </noscript>
+</head>
+
+<body itemscope itemtype="http://schema.org/WebPage" class="use-motion">
+  <div class="headband"></div>
+
+  <main class="main">
+    <div class="column">
+      <header class="header" itemscope itemtype="http://schema.org/WPHeader"><div class="site-brand-container">
+  <div class="site-nav-toggle">
+    <div class="toggle" aria-label="Toggle navigation bar" role="button">
+        <span class="toggle-line"></span>
+        <span class="toggle-line"></span>
+        <span class="toggle-line"></span>
+    </div>
+  </div>
+
+  <div class="site-meta">
+
+    <a href="/" class="brand" rel="start">
+      <i class="logo-line"></i>
+      <p class="site-title">Mccranky's Blog</p>
+      <i class="logo-line"></i>
+    </a>
+      <p class="site-subtitle" itemprop="description">Turn On, Boot Up, Jack In</p>
+  </div>
+
+  <div class="site-nav-right">
+    <div class="toggle popup-trigger" aria-label="Search" role="button">
+        <i class="fa fa-search fa-fw fa-lg"></i>
+    </div>
+  </div>
+</div>
+
+
+
+<nav class="site-nav">
+  <ul class="main-menu menu"><li class="menu-item menu-item-home"><a href="/" rel="section"><i class="fa fa-home fa-fw"></i>Home</a></li><li class="menu-item menu-item-tags"><a href="/tags/" rel="section"><i class="fa fa-tags fa-fw"></i>Tags</a></li><li class="menu-item menu-item-categories"><a href="/categories/" rel="section"><i class="fa fa-th fa-fw"></i>Categories</a></li><li class="menu-item menu-item-archives"><a href="/archives/" rel="section"><i class="fa fa-archive fa-fw"></i>Archives</a></li>
+      <li class="menu-item menu-item-search">
+        <a role="button" class="popup-trigger"><i class="fa fa-search fa-fw"></i>Search
+        </a>
+      </li>
+  </ul>
+</nav>
+
+
+
+  <div class="search-pop-overlay">
+    <div class="popup search-popup"><div class="search-header">
+  <span class="search-icon">
+    <i class="fa fa-search"></i>
+  </span>
+  <div class="search-input-container">
+    <input autocomplete="off" autocapitalize="off" maxlength="80"
+           placeholder="Searching..." spellcheck="false"
+           type="search" class="search-input">
+  </div>
+  <span class="popup-btn-close" role="button">
+    <i class="fa fa-times-circle"></i>
+  </span>
+</div>
+<div class="search-result-container no-result">
+  <div class="search-result-icon">
+    <i class="fa fa-spinner fa-pulse fa-5x"></i>
+  </div>
+</div>
+
+    </div>
+  </div>
+
+</header>
+        
+  
+  <aside class="sidebar">
+
+    <div class="sidebar-inner sidebar-nav-active sidebar-toc-active">
+      <ul class="sidebar-nav">
+        <li class="sidebar-nav-toc">
+          Table of Contents
+        </li>
+        <li class="sidebar-nav-overview">
+          Overview
+        </li>
+      </ul>
+
+      <div class="sidebar-panel-container">
+        <!--noindex-->
+        <div class="post-toc-wrap sidebar-panel">
+            <div class="post-toc animated"><ol class="nav"><li class="nav-item nav-level-3"><a class="nav-link" href="#Setup"><span class="nav-number">1.</span> <span class="nav-text">Setup</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#Install-Dependencies"><span class="nav-number">2.</span> <span class="nav-text">Install Dependencies</span></a><ol class="nav-child"><li class="nav-item nav-level-4"><a class="nav-link" href="#sudo"><span class="nav-number">2.1.</span> <span class="nav-text">sudo</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#SPICE-guest-tools"><span class="nav-number">2.2.</span> <span class="nav-text">SPICE guest tools</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#wget"><span class="nav-number">2.3.</span> <span class="nav-text">wget</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#git"><span class="nav-number">2.4.</span> <span class="nav-text">git</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#yay"><span class="nav-number">2.5.</span> <span class="nav-text">yay</span></a></li></ol></li></ol></div>
+        </div>
+        <!--/noindex-->
+
+        <div class="site-overview-wrap sidebar-panel">
+          <div class="site-author animated" itemprop="author" itemscope itemtype="http://schema.org/Person">
+    <img class="site-author-image" itemprop="image" alt="Mccranky83"
+      src="/images/icons8-dead-cells-1024.png">
+  <p class="site-author-name" itemprop="name">Mccranky83</p>
+  <div class="site-description" itemprop="description">"Bliss it was in that dawn to be alive   But to be young was very heaven."</div>
+</div>
+<div class="site-state-wrap animated">
+  <nav class="site-state">
+      <div class="site-state-item site-state-posts">
+        <a href="/archives/">
+          <span class="site-state-item-count">13</span>
+          <span class="site-state-item-name">posts</span>
+        </a>
+      </div>
+      <div class="site-state-item site-state-categories">
+          <a href="/categories/">
+        <span class="site-state-item-count">2</span>
+        <span class="site-state-item-name">categories</span></a>
+      </div>
+      <div class="site-state-item site-state-tags">
+          <a href="/tags/">
+        <span class="site-state-item-count">21</span>
+        <span class="site-state-item-name">tags</span></a>
+      </div>
+  </nav>
+</div>
+  <div class="links-of-author animated">
+      <span class="links-of-author-item">
+        <a href="https://github.com/Mccranky83" title="GitHub → https:&#x2F;&#x2F;github.com&#x2F;Mccranky83" rel="noopener me" target="_blank"><i class="fab fa-github fa-fw"></i>GitHub</a>
+      </span>
+      <span class="links-of-author-item">
+        <a href="mailto:typomaniac0516@gmail.com" title="E-Mail → mailto:typomaniac0516@gmail.com" rel="noopener me" target="_blank"><i class="fa fa-envelope fa-fw"></i>E-Mail</a>
+      </span>
+  </div>
+
+        </div>
+      </div>
+    </div>
+
+    
+  </aside>
+
+
+    </div>
+
+    <div class="main-inner post posts-expand">
+
+
+  
+
+
+<div class="post-block">
+  
+  
+
+  <article itemscope itemtype="http://schema.org/Article" class="post-content" lang="en">
+    <link itemprop="mainEntityOfPage" href="https://mccranky83.github.io/2023/04/25/Running%20ArchLinux%20ARM%20in%20UTM%20on%20a%20M1%20MacBook%20Air/">
+
+    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
+      <meta itemprop="image" content="/images/icons8-dead-cells-1024.png">
+      <meta itemprop="name" content="Mccranky83">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="Mccranky's Blog">
+      <meta itemprop="description" content=""Bliss it was in that dawn to be alive   But to be young was very heaven."">
+    </span>
+
+    <span hidden itemprop="post" itemscope itemtype="http://schema.org/CreativeWork">
+      <meta itemprop="name" content="Running ArchLinux ARM in UTM on a M1 MacBook Air | Mccranky's Blog">
+      <meta itemprop="description" content="">
+    </span>
+      <header class="post-header">
+        <h1 class="post-title" itemprop="name headline">
+          Running ArchLinux ARM in UTM on a M1 MacBook Air
+        </h1>
+
+        <div class="post-meta-container">
+          <div class="post-meta">
+    <span class="post-meta-item">
+      <span class="post-meta-item-icon">
+        <i class="far fa-calendar"></i>
+      </span>
+      <span class="post-meta-item-text">Posted on</span>
+
+      <time title="Created: 2023-04-25 20:29:29" itemprop="dateCreated datePublished" datetime="2023-04-25T20:29:29+08:00">2023-04-25</time>
+    </span>
+    <span class="post-meta-item">
+      <span class="post-meta-item-icon">
+        <i class="far fa-calendar-check"></i>
+      </span>
+      <span class="post-meta-item-text">Edited on</span>
+      <time title="Modified: 2023-04-26 22:10:19" itemprop="dateModified" datetime="2023-04-26T22:10:19+08:00">2023-04-26</time>
+    </span>
+    <span class="post-meta-item">
+      <span class="post-meta-item-icon">
+        <i class="far fa-folder"></i>
+      </span>
+      <span class="post-meta-item-text">In</span>
+        <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
+          <a href="/categories/Linux/" itemprop="url" rel="index"><span itemprop="name">Linux</span></a>
+        </span>
+          , 
+        <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
+          <a href="/categories/Linux/ArchLinux/" itemprop="url" rel="index"><span itemprop="name">ArchLinux</span></a>
+        </span>
+    </span>
+
+  
+</div>
+
+        </div>
+      </header>
+
+    
+    
+    
+    <div class="post-body" itemprop="articleBody">
+        <blockquote>
+<p>ArchLinux is a text-based operating system that does not come with a graphical interface, and all tasks are performed by running commands in the Command Line Interface (CLI).</p>
+</blockquote>
+<h3 id="Setup"><a href="#Setup" class="headerlink" title="Setup"></a>Setup</h3><p>The setting up of UTM and running virtual machines on it is rather simple. Just follow the steps shown below and you’ll be playing around soon enough.</p>
+<ol>
+<li><p><a target="_blank" rel="noopener" href="https://github.com/utmapp/UTM/releases/latest/download/UTM.dmg" title="Download UTM">Download UTM</a></p>
+</li>
+<li><p><a target="_blank" rel="noopener" href="https://mac.getutm.app/gallery/archlinux-arm" title="UTM Gallery - ArchLinux ARM">Click on <em>Open in UTM</em></a> - this automatically redirects you to your newly installed UTM app, where UTM will download the pre-built ArchLinux VM for you.</p>
+</li>
+<li><p>(Optional) You can run the VM as is, but feel free to tweak with the settings if you want to.</p>
+</li>
+</ol>
+<h3 id="Install-Dependencies"><a href="#Install-Dependencies" class="headerlink" title="Install Dependencies"></a>Install Dependencies</h3><h4 id="sudo"><a href="#sudo" class="headerlink" title="sudo"></a><em><code>sudo</code></em></h4><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><span class="line">su -</span><br><span class="line"></span><br><span class="line">pacman -Syu</span><br><span class="line"></span><br><span class="line">pacman -S sudo</span><br><span class="line"></span><br></pre></td></tr></table></figure>
+
+<p><code>su</code> is short for “substitute user”, and it is used to switch to another user account in Unix-based operating systems. When you use <code>su</code> without any options, it will switch to the root user account by default.</p>
+<p>The <code>-</code> option used with <code>su</code> is used to simulate a full login for the new user, and it is not specific to the root user. When you use <code>su -</code> followed by a username, it will switch to that user’s account with a login shell.</p>
+<p>So, to summarize:</p>
+<ul>
+<li><p><code>su</code> is used to switch to another user account.</p>
+</li>
+<li><p><code>su</code> without any options will switch to the root user account by default.</p>
+</li>
+<li><p><code>su -</code> followed by a username will switch to that user’s account with a login shell, simulating a full login for that user.</p>
+</li>
+</ul>
+<hr>
+<p><strong><em><code>pacman</code></em></strong></p>
+<p><code>pacman</code> is the package manager for Arch Linux, a lightweight and flexible Linux distribution.</p>
+<p>With <code>pacman</code>, users can easily install, remove, and update software packages on their Arch Linux system. It uses a binary package format, which means that packages are precompiled and ready to install, making the process faster and more efficient than compiling from source.</p>
+<p>Some common <code>pacman</code> options include:</p>
+<blockquote>
+<p><code>pacman -Syu</code>: <code>-S</code> stands for “sync”, <code>-y</code> and <code>-u</code> are options that tell <code>pacman</code> to refresh the package databases and upgrade all packages, respectively. <code>-Syu</code>, as a whole, updates the system and all installed packages to the latest version.</p>
+</blockquote>
+<blockquote>
+<p><code>pacman -S &lt;package&gt;</code>: <code>-S</code> is a shorthand for <code>--sync</code>. This command installs a package.</p>
+</blockquote>
+<blockquote>
+<p><code>pacman -R &lt;package&gt;</code>: <code>-R</code> stands for “remove”. This command removes a package.</p>
+</blockquote>
+<blockquote>
+<p><code>pacman -Ss &lt;searchterm&gt;</code>: <code>-Ss</code> stands for “synchronize&#x2F;search”. This command searches for packages containing the specified search term.</p>
+</blockquote>
+<blockquote>
+<p><code>pacman -Q</code>: <code>-Q</code> stands for “query”. This command lists all installed packages on the system.</p>
+</blockquote>
+<hr>
+<p>Once the installation is complete, we need to configure <code>sudo</code> to allow users to execute commands with administrative privileges. To do this, you need to add the user to the <code>wheel</code> group. Run the following command to add the user to the wheel group:</p>
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">usermod -aG wheel &lt;username&gt;</span><br></pre></td></tr></table></figure>
+
+<p>This command is used to add a <code>user</code> to the <code>wheel</code> group, which will give them the ability to perform administrative tasks on the system using the <code>sudo</code> command.</p>
+<blockquote>
+<p><code>usermod</code>: This is a command-line utility in Unix-based operating systems that is used to modify user account properties. The <code>usermod</code> command allows you to add or remove a user from a group, change a user’s home directory, and modify other user account settings.</p>
+</blockquote>
+<blockquote>
+<p><code>wheel</code>: This is a special group in Unix-based operating systems that is used to control access to administrative tasks. Users who are members of the <code>wheel</code> group are allowed to use the <code>sudo</code> command to execute commands with <code>root</code> privileges.</p>
+</blockquote>
+<blockquote>
+<p><code>-aG</code>: These two options used alongside <code>usermod</code> are used to add a user to a group. Specifically, <code>-a</code> stands for “append”, which means that the user is added to the group without removing them from any other groups they may already be a member of. <code>-G</code> stands for “group”, and is followed by the name of the group to add the user to.</p>
+</blockquote>
+<hr>
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">visudo -f /etc/sudoers</span><br></pre></td></tr></table></figure>
+
+<blockquote>
+<p><code>visudo</code>: This is a command used in Unix-based operating systems to edit the <code>sudoers</code> file, which controls user access to administrative commands.</p>
+</blockquote>
+<blockquote>
+<p><code>-f</code>: This option is used to specify the file to edit.</p>
+</blockquote>
+<p><code>visudo</code> uses the system’s default editor to open and edit the <code>sudoers</code> file, which is often <code>vi</code>.</p>
+<p>If <code>vi</code> is not your thing, you can always specify which editor to use by pass <code>EDITOR=&lt;editor-name&gt;</code> in front of <code>visudo</code>. You can change the default editor once and for all by change these two environment variables: <code>VISUAL</code> and <code>EDITOR</code>.</p>
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line"><span class="built_in">export</span> EDITOR=nano</span><br></pre></td></tr></table></figure>
+
+<blockquote>
+<p><strong><em>Note</em></strong><br>The main difference between the two is that <code>VISUAL</code> is used for visual editors, such as Sublime Text, Atom, or Visual Studio Code, while <code>EDITOR</code> is used for non-visual editors, such as nano, vim, or emacs.</p>
+</blockquote>
+<p>Let’s add the finishing touch and uncomment the following line in the <code>sudoers</code> file:</p>
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">%wheel ALL=(ALL:ALL) ALL</span><br></pre></td></tr></table></figure>
+
+<h4 id="SPICE-guest-tools"><a href="#SPICE-guest-tools" class="headerlink" title="SPICE guest tools"></a><em><code>SPICE guest tools</code></em></h4><p><code>SPICE</code> stands for Simple Protocol for Independent Computing Environments. It is a remote computing solution that allows users to access the desktop of a virtual machine or remote system from a client device. <code>SPICE</code> provides a high-performance, low-latency connection that supports a wide range of features, including audio, video, and USB redirection. It is commonly used in virtualization environments, such as those provided by QEMU and KVM, to provide remote access to virtual machines.</p>
+<p>However, we’re using it for clipboard sharing. With <code>SPICE guest tools</code> installed, the clipboard will be synced between the guest and the host.</p>
+<p>Install the <code>spice-vdagent</code> package by running the following command:</p>
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">sudo pacman -S spice-vdagent</span><br></pre></td></tr></table></figure>
+
+<p>Once the installation is complete, start the <code>spice-vdagent</code> service by running the following command:</p>
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">sudo systemctl start spice-vdagentd.service</span><br></pre></td></tr></table></figure>
+
+<p>You can also enable the service to start automatically at boot time by running the following command:</p>
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">sudo systemctl <span class="built_in">enable</span> spice-vdagentd.service</span><br></pre></td></tr></table></figure>
+
+<p>However, I wasn’t able to enable it on first try.</p>
+<pre><code>The unit files have no installation config (WantedBy=, RequiredBy=, Also=,
+Alias= settings in the [Install] section, and DefaultInstance= for template
+units). This means they are not meant to be enabled or disabled using systemctl.
+
+Possible reasons for having this kind of units are:
+
+* A unit may be statically enabled by being symlinked from another unit&#39;s
+  .wants/ or .requires/ directory.
+* A unit&#39;s purpose may be to act as a helper for some other unit which has
+  a requirement dependency on it.
+* A unit may be started when needed via activation (socket, path, timer,
+  D-Bus, udev, scripted systemctl call, ...).
+* In case of template units, the unit is meant to be enabled with some
+  instance name specified.
+</code></pre>
+<p>Here are some potential reasons why this error might be occurring and how we can address them:</p>
+<blockquote>
+<p>The unit file might be missing the <code>[Install]</code> section. Check the <code>spice-vdagentd.service</code> file located in <code>/usr/lib/systemd/system</code> to see if it contains an <code>[Install]</code> section with the appropriate <code>WantedBy</code> or <code>RequiredBy</code> settings. If the section is missing or incomplete, you can add it manually. For example, to enable the service at boot time, you can add the line <code>WantedBy=multi-user.target</code> to the <code>[Install]</code> section.</p>
+</blockquote>
+<blockquote>
+<p>The unit file might be a template unit. Template units are designed to be instantiated with specific instance names and cannot be enabled or disabled directly. Check the <code>spice-vdagentd.service</code> file to see if it contains the <code>DefaultInstance</code> setting in the <code>[Install]</code> section. If it does, you will need to specify an instance name when enabling the service using the <code>systemctl enable</code> command. For example, if the <code>DefaultInstance</code> setting is <code>my-instance</code>, you would run <code>systemctl enable spice-vdagentd@my-instance.service</code>.</p>
+</blockquote>
+<blockquote>
+<p>The unit file might be symlinked from another unit’s <code>.wants/</code> or <code>.requires/</code> directory. Check the contents of these directories located in <code>/etc/systemd/system</code> to see if there are any symlinks pointing to <code>spice-vdagentd.service</code>. If there are, you do not need to enable the service separately as it will be started automatically when the dependent unit is started.</p>
+</blockquote>
+<p>It’s the first fix for me. My <code>[Install]</code> section had only one line “<code>Also=spice-vdagentd.socket</code>“, so I added a second.</p>
+<h4 id="wget"><a href="#wget" class="headerlink" title="wget"></a><em><code>wget</code></em></h4><p>Install the <code>wget</code> command-line tool:</p>
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">sudo pacman -S wget</span><br></pre></td></tr></table></figure>
+
+<h4 id="git"><a href="#git" class="headerlink" title="git"></a><em><code>git</code></em></h4><p>Install the <code>git</code> package by running the following command:</p>
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">sudo pacman -S git</span><br></pre></td></tr></table></figure>
+
+<h4 id="yay"><a href="#yay" class="headerlink" title="yay"></a><em><code>yay</code></em></h4><p>The reason why we’re not installing <code>apt</code> is because <code>apt</code> is a package manager used in Debian-based Linux distributions like Ubuntu, and it is not available in Arch Linux. Instead, Arch Linux uses its own package manager called <code>pacman</code>, the one we just talked about.</p>
+<p>If you are familiar with <code>apt</code> and want to use a similar package manager in Arch Linux, you can use <code>yay</code>, which is a popular AUR (Arch User Repository) helper that provides a pacman-like interface with added features.</p>
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">sudo pacman -S base-devel</span><br></pre></td></tr></table></figure>
+
+<p>Install yay by running the following command:</p>
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><span class="line">git <span class="built_in">clone</span> https://aur.archlinux.org/yay.git</span><br><span class="line"></span><br><span class="line"><span class="built_in">cd</span> yay</span><br><span class="line"></span><br><span class="line">makepkg -si</span><br><span class="line"></span><br></pre></td></tr></table></figure>
+
+<p><code>makepkg -si</code> is a command used in Arch Linux to build and install a package from source code.</p>
+<blockquote>
+<p><code>makepkg</code>: This is a tool that automates the process of building packages from source code in Arch Linux. It creates a package file that can be installed using the package manager.</p>
+</blockquote>
+<blockquote>
+<p><code>-s</code>: A flag that tells <code>makepkg</code> to install any dependencies needed to build the package.</p>
+</blockquote>
+<blockquote>
+<p><code>-i</code>: A flag that tells <code>makepkg</code> to install the package after it has been built.</p>
+</blockquote>
+<hr>
+<p>Before we move on to the next step, we have to create an alternative user apart from our current root, otherwise <code>makepkg -si</code> won’t work.</p>
+<p>It’s fairly simple.</p>
+<p>To create a non-root user account on Arch Linux, we have to run these few steps:</p>
+<p>Run the following command to create a new user account:</p>
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">useradd -m -s /bin/bash &lt;username&gt;</span><br></pre></td></tr></table></figure>
+
+<p>Set a password for the new user account:</p>
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">sudo passwd &lt;username&gt;</span><br></pre></td></tr></table></figure>
+
+<p>Add the new user to the <code>wheel</code> group to allow them to use <code>sudo</code>:</p>
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">usermod -aG wheel &lt;username&gt;</span><br></pre></td></tr></table></figure>
+
+<p>At last, we simply log out of the <code>root</code> user account and log in to the new user account by entering the username and password we just created.</p>
+<hr>
+<p>Once the installation is complete, you can use <code>yay</code> to search for and install packages from the AUR. For example, to install the firefox package from the AUR, you can run the following command:</p>
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">yay -S firefox</span><br></pre></td></tr></table></figure>
+
+<p>Or if you want to uninstall, run the following command:</p>
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">yay -Rns firefox</span><br></pre></td></tr></table></figure>
+
+<p>This command will remove Firefox and its dependencies (<code>-R</code>), including any configuration files (<code>-n</code>) and any packages that were installed as dependencies and are no longer required (<code>-s</code>).</p>
+<p>Now, <code>yay</code> will automatically download and install the package and its dependencies.</p>
+<blockquote>
+<p><strong><em>Note</em></strong><br>While <code>yay</code> provides a pacman-like interface, it is not a drop-in replacement for <code>apt</code>, and there may be some differences in the way packages are managed and installed.</p>
+</blockquote>
+<hr>
+<p>Once you had your fun, you’d probably want to poweroff. Here’s what you should do:</p>
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">sudo poweroff</span><br></pre></td></tr></table></figure>
+
+<p>Or:</p>
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">sudo shutdown -h now</span><br></pre></td></tr></table></figure>
+
+
+    </div>
+
+    
+    
+    
+
+    <footer class="post-footer">
+          <div class="post-tags">
+              <a href="/tags/ArchLinux/" rel="tag"># ArchLinux</a>
+              <a href="/tags/UTM/" rel="tag"># UTM</a>
+              <a href="/tags/Virtual-Machine/" rel="tag"># Virtual Machine</a>
+          </div>
+
+        
+
+          <div class="post-nav">
+            <div class="post-nav-item">
+                <a href="/2023/04/24/7-2-Java-%E5%9F%BA%E6%9C%AC%E8%AF%AD%E6%B3%95-%E5%A4%A7%E6%95%B4%E6%95%B0%E7%9B%B8%E5%8A%A0/" rel="prev" title="7-2-Java-基本语法-大整数相加">
+                  <i class="fa fa-chevron-left"></i> 7-2-Java-基本语法-大整数相加
+                </a>
+            </div>
+            <div class="post-nav-item">
+                <a href="/2023/04/26/Mounting-a-Shared-folder-on-ArchLinux-VM/" rel="next" title="Mounting a shared folder on ArchLinux VM">
+                  Mounting a shared folder on ArchLinux VM <i class="fa fa-chevron-right"></i>
+                </a>
+            </div>
+          </div>
+    </footer>
+  </article>
+</div>
+
+
+
+
+
+
+</div>
+  </main>
+
+  <footer class="footer">
+    <div class="footer-inner">
+
+
+<div class="copyright">
+  &copy; 
+  <span itemprop="copyrightYear">2023</span>
+  <span class="with-love">
+    <i class="fa fa-heart"></i>
+  </span>
+  <span class="author" itemprop="copyrightHolder">Mccranky83</span>
+</div>
+  <div class="powered-by">Powered by <a href="https://hexo.io/" rel="noopener" target="_blank">Hexo</a> & <a href="https://theme-next.js.org/muse/" rel="noopener" target="_blank">NexT.Muse</a>
+  </div>
+
+    </div>
+  </footer>
+
+  
+  <div class="toggle sidebar-toggle" role="button">
+    <span class="toggle-line"></span>
+    <span class="toggle-line"></span>
+    <span class="toggle-line"></span>
+  </div>
+  <div class="sidebar-dimmer"></div>
+  <div class="back-to-top" role="button" aria-label="Back to top">
+    <i class="fa fa-arrow-up fa-lg"></i>
+    <span>0%</span>
+  </div>
+
+<noscript>
+  <div class="noscript-warning">Theme NexT works best with JavaScript enabled</div>
+</noscript>
+
+
+  
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/animejs/3.2.1/anime.min.js" integrity="sha256-XL2inqUJaslATFnHdJOi9GfQ60on8Wx1C2H8DYiN1xY=" crossorigin="anonymous"></script>
+<script src="/js/comments.js"></script><script src="/js/utils.js"></script><script src="/js/motion.js"></script><script src="/js/schemes/muse.js"></script><script src="/js/next-boot.js"></script>
+
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/hexo-generator-searchdb/1.4.1/search.js" integrity="sha256-1kfA5uHPf65M5cphT2dvymhkuyHPQp5A53EGZOnOLmc=" crossorigin="anonymous"></script>
+<script src="/js/third-party/search/local-search.js"></script>
+
+
+
+
+
+  
+
+
+
+
+
+</body>
+</html>

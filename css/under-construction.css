@@ -1,0 +1,17 @@
+/*.main-content {
+
+    width: 95%;
+    height: 50px;
+    background-color: #454545;
+    border-radius: 15px;
+    padding: 50px 40px;
+    box-shadow: 0 0 10px;
+
+}*/
+
+.main-content .text-area {
+    font-size: 2rem;
+    line-height: 1.5;
+    text-align: center;
+    color: silver;
+}
