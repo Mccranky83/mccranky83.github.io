@@ -720,7 +720,7 @@ r=mccranky)
         <i class="far fa-calendar-check"></i>
       </span>
       <span class="post-meta-item-text">Edited on</span>
-      <time title="Modified: 2023-04-27 13:13:08" itemprop="dateModified" datetime="2023-04-27T13:13:08+08:00">2023-04-27</time>
+      <time title="Modified: 2023-04-27 14:22:07" itemprop="dateModified" datetime="2023-04-27T14:22:07+08:00">2023-04-27</time>
     </span>
     <span class="post-meta-item">
       <span class="post-meta-item-icon">
@@ -790,6 +790,16 @@ r=mccranky)
 </blockquote>
 <blockquote>
 <p><code>pacman -Q</code>: <code>-Q</code> stands for “query”. This command lists all installed packages on the system.</p>
+</blockquote>
+<p><strong><em>Use the following commands with caution!</em></strong></p>
+<blockquote>
+<p><code>pacman -Sc</code>: Removes all the packages from the cache which are not currently installed on the system. It will only remove packages that are not needed anymore and will not affect any installed packages. This command can be useful to free up disk space on the system.</p>
+</blockquote>
+<blockquote>
+<p><code>pacman -Scc</code>: Removes all the packages from the cache, <strong>including</strong> those that are currently installed on the system. It will remove all the package files from the cache, along with their associated databases. This command can be useful if you want to completely clean the package cache and start fresh.</p>
+</blockquote>
+<blockquote>
+<p><code>pacman -Syy</code>: Forces a refresh of all package databases, <em>even if</em> they are already up to date. This ensures that you have the latest package database information available, which can be useful in situations where the package databases may have become <em>out of sync</em> or <em>corrupted</em>.</p>
 </blockquote>
 <hr>
 <p>Once the installation is complete, we need to configure <code>sudo</code> to allow users to execute commands with administrative privileges. To do this, you need to add the user to the <code>wheel</code> group. Run the following command to add the user to the wheel group:</p>
