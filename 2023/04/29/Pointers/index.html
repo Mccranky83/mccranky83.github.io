@@ -20,15 +20,15 @@
 
 <script class="next-config" data-name="main" type="application/json">{"hostname":"mccranky83.github.io","root":"/","images":"/images","scheme":"Muse","darkmode":true,"version":"8.15.1","exturl":false,"sidebar":{"position":"right","display":"post","padding":18,"offset":12},"copycode":{"enable":true,"style":"flat"},"bookmark":{"enable":false,"color":"#222","save":"auto"},"mediumzoom":false,"lazyload":false,"pangu":false,"comments":{"style":"tabs","active":null,"storage":true,"lazyload":false,"nav":null},"stickytabs":false,"motion":{"enable":true,"async":false,"transition":{"menu_item":"fadeInDown","post_block":"fadeIn","post_header":"fadeInDown","post_body":"fadeInDown","coll_header":"fadeInLeft","sidebar":"fadeInUp"}},"prism":false,"i18n":{"placeholder":"Searching...","empty":"We didn't find any results for the search: ${query}","hits_time":"${hits} results found in ${time} ms","hits":"${hits} results found"},"path":"/search.xml","localsearch":{"enable":true,"trigger":"auto","top_n_per_article":1,"unescape":false,"preload":false}}</script><script src="/js/config.js"></script>
 
-    <meta name="description" content="Code: 12345678910111213#include &lt;iostream&gt;using namespace std;int main()&amp;#123;    int* ap[15];    int ai[15]&#x3D; &amp;#123;&amp;#125;;    for (int i &#x3D; 0; i &lt; 15; ++i) &amp;#123;        ai[i] &#x3D; i;         ap">
+    <meta name="description" content="Array of pointers to intsCode: 12345678910111213#include &lt;iostream&gt;int main()&amp;#123;    int* ap[15];    int ai[15] &#x3D; &amp;#123;&amp;#125;;    for (int i &#x3D; 0; i &lt; 15; ++i) &amp;#123;        ai[i] &#x3D; i;">
 <meta property="og:type" content="article">
 <meta property="og:title" content="Pointers">
 <meta property="og:url" content="https://mccranky83.github.io/2023/04/29/Pointers/index.html">
 <meta property="og:site_name" content="Mccranky&#39;s Blog">
-<meta property="og:description" content="Code: 12345678910111213#include &lt;iostream&gt;using namespace std;int main()&amp;#123;    int* ap[15];    int ai[15]&#x3D; &amp;#123;&amp;#125;;    for (int i &#x3D; 0; i &lt; 15; ++i) &amp;#123;        ai[i] &#x3D; i;         ap">
+<meta property="og:description" content="Array of pointers to intsCode: 12345678910111213#include &lt;iostream&gt;int main()&amp;#123;    int* ap[15];    int ai[15] &#x3D; &amp;#123;&amp;#125;;    for (int i &#x3D; 0; i &lt; 15; ++i) &amp;#123;        ai[i] &#x3D; i;">
 <meta property="og:locale" content="en_US">
 <meta property="article:published_time" content="2023-04-29T06:12:51.000Z">
-<meta property="article:modified_time" content="2023-04-29T06:19:13.930Z">
+<meta property="article:modified_time" content="2023-04-30T02:38:28.748Z">
 <meta property="article:author" content="Mccranky83">
 <meta property="article:tag" content="C++">
 <meta name="twitter:card" content="summary">
@@ -128,7 +128,7 @@
   
   <aside class="sidebar">
 
-    <div class="sidebar-inner sidebar-overview-active">
+    <div class="sidebar-inner sidebar-nav-active sidebar-toc-active">
       <ul class="sidebar-nav">
         <li class="sidebar-nav-toc">
           Table of Contents
@@ -141,6 +141,7 @@
       <div class="sidebar-panel-container">
         <!--noindex-->
         <div class="post-toc-wrap sidebar-panel">
+            <div class="post-toc animated"><ol class="nav"><li class="nav-item nav-level-3"><a class="nav-link" href="#Array-of-pointers-to-ints"><span class="nav-number">1.</span> <span class="nav-text">Array of pointers to ints</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#Pointer-to-an-array-of-ints"><span class="nav-number">2.</span> <span class="nav-text">Pointer to an array of ints</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#Pointer-to-function-taking-a-string-argument"><span class="nav-number">3.</span> <span class="nav-text">Pointer to function taking a string argument;</span></a><ol class="nav-child"><li class="nav-item nav-level-4"><a class="nav-link" href="#returns-an-string"><span class="nav-number">3.1.</span> <span class="nav-text">returns an string</span></a></li></ol></li></ol></div>
         </div>
         <!--/noindex-->
 
@@ -229,9 +230,15 @@
         <i class="far fa-calendar"></i>
       </span>
       <span class="post-meta-item-text">Posted on</span>
-      
 
-      <time title="Created: 2023-04-29 14:12:51 / Modified: 14:19:13" itemprop="dateCreated datePublished" datetime="2023-04-29T14:12:51+08:00">2023-04-29</time>
+      <time title="Created: 2023-04-29 14:12:51" itemprop="dateCreated datePublished" datetime="2023-04-29T14:12:51+08:00">2023-04-29</time>
+    </span>
+    <span class="post-meta-item">
+      <span class="post-meta-item-icon">
+        <i class="far fa-calendar-check"></i>
+      </span>
+      <span class="post-meta-item-text">Edited on</span>
+      <time title="Modified: 2023-04-30 10:38:28" itemprop="dateModified" datetime="2023-04-30T10:38:28+08:00">2023-04-30</time>
     </span>
     <span class="post-meta-item">
       <span class="post-meta-item-icon">
@@ -253,8 +260,8 @@
     
     
     <div class="post-body" itemprop="articleBody">
-        <p><strong>Code:</strong></p>
-<figure class="highlight cpp"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br></pre></td><td class="code"><pre><span class="line"><span class="meta">#<span class="keyword">include</span> <span class="string">&lt;iostream&gt;</span></span></span><br><span class="line"><span class="keyword">using</span> <span class="keyword">namespace</span> std;</span><br><span class="line"><span class="function"><span class="type">int</span> <span class="title">main</span><span class="params">()</span></span></span><br><span class="line"><span class="function"></span>&#123;</span><br><span class="line">    <span class="type">int</span>* ap[<span class="number">15</span>];</span><br><span class="line">    <span class="type">int</span> ai[<span class="number">15</span>]= &#123;&#125;;</span><br><span class="line">    <span class="keyword">for</span> (<span class="type">int</span> i = <span class="number">0</span>; i &lt; <span class="number">15</span>; ++i) &#123;</span><br><span class="line">        ai[i] = i; </span><br><span class="line">        ap[i] = &amp;ai[i];</span><br><span class="line">        cout &lt;&lt; *ap[i] &lt;&lt; <span class="string">&quot; &quot;</span> &lt;&lt; ap[i]&lt;&lt; endl;</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br><span class="line"></span><br></pre></td></tr></table></figure>
+        <h3 id="Array-of-pointers-to-ints"><a href="#Array-of-pointers-to-ints" class="headerlink" title="Array of pointers to ints"></a>Array of pointers to ints</h3><p><strong>Code:</strong></p>
+<figure class="highlight cpp"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br></pre></td><td class="code"><pre><span class="line"><span class="meta">#<span class="keyword">include</span> <span class="string">&lt;iostream&gt;</span></span></span><br><span class="line"></span><br><span class="line"><span class="function"><span class="type">int</span> <span class="title">main</span><span class="params">()</span></span></span><br><span class="line"><span class="function"></span>&#123;</span><br><span class="line">    <span class="type">int</span>* ap[<span class="number">15</span>];</span><br><span class="line">    <span class="type">int</span> ai[<span class="number">15</span>] = &#123;&#125;;</span><br><span class="line">    <span class="keyword">for</span> (<span class="type">int</span> i = <span class="number">0</span>; i &lt; <span class="number">15</span>; ++i) &#123;</span><br><span class="line">        ai[i] = i; </span><br><span class="line">        ap[i] = &amp;ai[i];</span><br><span class="line">        std::cout &lt;&lt; *ap[i] &lt;&lt; <span class="string">&quot; &quot;</span> &lt;&lt; ap[i]&lt;&lt; std::endl;</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br><span class="line"></span><br></pre></td></tr></table></figure>
 
 <p><strong>Console:</strong></p>
 <pre><code>0 0x16d296d14
@@ -272,6 +279,28 @@
 12 0x16d296d44
 13 0x16d296d48
 14 0x16d296d4c
+</code></pre>
+<h3 id="Pointer-to-an-array-of-ints"><a href="#Pointer-to-an-array-of-ints" class="headerlink" title="Pointer to an array of ints"></a>Pointer to an array of ints</h3><p><strong>Code:</strong></p>
+<figure class="highlight cpp"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br></pre></td><td class="code"><pre><span class="line"><span class="meta">#<span class="keyword">include</span> <span class="string">&lt;iostream&gt;</span></span></span><br><span class="line"></span><br><span class="line"><span class="function"><span class="type">int</span> <span class="title">main</span><span class="params">()</span></span></span><br><span class="line"><span class="function"></span>&#123;</span><br><span class="line">    <span class="type">int</span> ai[<span class="number">15</span>];</span><br><span class="line">    <span class="keyword">for</span> (<span class="type">int</span> i = <span class="number">0</span>; i &lt; <span class="number">15</span>; i++) ai[i] = i;</span><br><span class="line">    <span class="built_in">int</span> (*ptr)[] = &amp;ai;</span><br><span class="line">    <span class="keyword">for</span> (<span class="type">int</span> i = <span class="number">0</span>; i &lt; <span class="number">15</span>; i++) &#123;</span><br><span class="line">        std::cout &lt;&lt; (*ptr)[i] &lt;&lt; <span class="string">&quot; &quot;</span>;</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br><span class="line"></span><br></pre></td></tr></table></figure>
+
+<p><strong><em>Console</em></strong></p>
+<pre><code>0 1 2 3 4 5 6 7 8 9 10 11 12 13 14
+</code></pre>
+<blockquote>
+<p><strong><em>Notes</em></strong></p>
+</blockquote>
+<ul>
+<li><p>The parentheses around <code>*ptr</code> are necessary because the <code>[]</code> operator has<br>  higher precedence than the <code>*</code> operator. Without the parentheses, the<br>  declaration would be parsed as an array of pointers to int, like int<br>  <code>*ptr[15]</code>.</p>
+</li>
+<li><p>When I took the address of the array, I got a pointer to the first element<br>  of the array. However, the pointer itself does not contain any information<br>  about the size of the array.</p>
+</li>
+</ul>
+<h3 id="Pointer-to-function-taking-a-string-argument"><a href="#Pointer-to-function-taking-a-string-argument" class="headerlink" title="Pointer to function taking a string argument;"></a>Pointer to function taking a string argument;</h3><h4 id="returns-an-string"><a href="#returns-an-string" class="headerlink" title="returns an string"></a>returns an string</h4><p><strong>Code:</strong></p>
+<figure class="highlight cpp"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br></pre></td><td class="code"><pre><span class="line"><span class="meta">#<span class="keyword">include</span> <span class="string">&lt;iostream&gt;</span></span></span><br><span class="line"><span class="meta">#<span class="keyword">include</span> <span class="string">&lt;string&gt;</span></span></span><br><span class="line"></span><br><span class="line"><span class="function"><span class="type">void</span> <span class="title">replaceX</span><span class="params">(std::string *str, std::string x)</span></span></span><br><span class="line"><span class="function"></span>&#123;</span><br><span class="line">    <span class="type">size_t</span> pos = (*str).<span class="built_in">find</span>(<span class="string">&quot;$&#123;x&#125;&quot;</span>);</span><br><span class="line">    <span class="keyword">if</span> (pos != std::string::npos)</span><br><span class="line">        (*str).<span class="built_in">replace</span>(pos, <span class="number">4</span>, x);</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"><span class="function">std::string <span class="title">foo</span><span class="params">(std::string x)</span></span></span><br><span class="line"><span class="function"></span>&#123;</span><br><span class="line">    std::string str = <span class="string">&quot;hello this is $&#123;x&#125;&quot;</span>;</span><br><span class="line">    <span class="built_in">replaceX</span>(&amp;str, x);</span><br><span class="line">    <span class="keyword">return</span> str;</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"><span class="function"><span class="type">int</span> <span class="title">main</span><span class="params">()</span></span></span><br><span class="line"><span class="function"></span>&#123;</span><br><span class="line">    std::<span class="built_in">string</span> (*fp)(std::string) = &amp;foo;</span><br><span class="line">    std::cout &lt;&lt; (*fp)(<span class="string">&quot;foo&quot;</span>) &lt;&lt; std::endl;</span><br><span class="line">    std::cout &lt;&lt; (*fp)(<span class="string">&quot;bar&quot;</span>) &lt;&lt; std::endl;</span><br><span class="line">&#125;</span><br><span class="line"></span><br></pre></td></tr></table></figure>
+
+<p><strong>Console:</strong></p>
+<pre><code>hello this is foo
+hello this is bar
 </code></pre>
 
     </div>
