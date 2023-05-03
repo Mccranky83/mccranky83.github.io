@@ -152,18 +152,18 @@
   <nav class="site-state">
       <div class="site-state-item site-state-posts">
         <a href="/archives/">
-          <span class="site-state-item-count">21</span>
+          <span class="site-state-item-count">22</span>
           <span class="site-state-item-name">posts</span>
         </a>
       </div>
       <div class="site-state-item site-state-categories">
           <a href="/categories/">
-        <span class="site-state-item-count">9</span>
+        <span class="site-state-item-count">10</span>
         <span class="site-state-item-name">categories</span></a>
       </div>
       <div class="site-state-item site-state-tags">
           <a href="/tags/">
-        <span class="site-state-item-count">28</span>
+        <span class="site-state-item-count">29</span>
         <span class="site-state-item-name">tags</span></a>
       </div>
   </nav>
@@ -188,6 +188,203 @@
     </div>
 
     <div class="main-inner index posts-expand">
+
+    
+
+
+<div class="post-block">
+  
+  
+
+  <article itemscope itemtype="http://schema.org/Article" class="post-content" lang="">
+    <link itemprop="mainEntityOfPage" href="https://mccranky83.github.io/2023/04/26/Mounting-a-Shared-folder-on-ArchLinux-VM/">
+
+    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
+      <meta itemprop="image" content="/images/icons8-dead-cells-1024.png">
+      <meta itemprop="name" content="Mccranky83">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="Mccranky's Blog">
+      <meta itemprop="description" content=""Bliss it was in that dawn to be alive   But to be young was very heaven."">
+    </span>
+
+    <span hidden itemprop="post" itemscope itemtype="http://schema.org/CreativeWork">
+      <meta itemprop="name" content="undefined | Mccranky's Blog">
+      <meta itemprop="description" content="">
+    </span>
+      <header class="post-header">
+        <h2 class="post-title" itemprop="name headline">
+          <a href="/2023/04/26/Mounting-a-Shared-folder-on-ArchLinux-VM/" class="post-title-link" itemprop="url">Mounting a shared folder on ArchLinux VM</a>
+        </h2>
+
+        <div class="post-meta-container">
+          <div class="post-meta">
+    <span class="post-meta-item">
+      <span class="post-meta-item-icon">
+        <i class="far fa-calendar"></i>
+      </span>
+      <span class="post-meta-item-text">Posted on</span>
+
+      <time title="Created: 2023-04-26 10:18:05" itemprop="dateCreated datePublished" datetime="2023-04-26T10:18:05+08:00">2023-04-26</time>
+    </span>
+    <span class="post-meta-item">
+      <span class="post-meta-item-icon">
+        <i class="far fa-calendar-check"></i>
+      </span>
+      <span class="post-meta-item-text">Edited on</span>
+      <time title="Modified: 2023-04-27 11:00:35" itemprop="dateModified" datetime="2023-04-27T11:00:35+08:00">2023-04-27</time>
+    </span>
+    <span class="post-meta-item">
+      <span class="post-meta-item-icon">
+        <i class="far fa-folder"></i>
+      </span>
+      <span class="post-meta-item-text">In</span>
+        <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
+          <a href="/categories/Linux/" itemprop="url" rel="index"><span itemprop="name">Linux</span></a>
+        </span>
+          , 
+        <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
+          <a href="/categories/Linux/ArchLinux/" itemprop="url" rel="index"><span itemprop="name">ArchLinux</span></a>
+        </span>
+    </span>
+
+  
+</div>
+
+        </div>
+      </header>
+
+    
+    
+    
+    <div class="post-body" itemprop="articleBody">
+          <p>For this tutorial, we’ll be using <strong>Samba</strong>. As for what Samba really is though, the most I can figure out from my search on Google is that Samba is a free and open-source software that allows files to be shared across Windows and Linux systems simply and easily. To be exact, it is an open-source implementation of the SMB&#x2F;CIFS protocol.</p>
+<h3 id="Setup"><a href="#Setup" class="headerlink" title="Setup"></a>Setup</h3><h4 id="Install-smbclient-util-with-pacman"><a href="#Install-smbclient-util-with-pacman" class="headerlink" title="Install smbclient util with pacman"></a>Install <code>smbclient</code> util with <code>pacman</code></h4><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">sudo pacman -S smbclient</span><br></pre></td></tr></table></figure>
+
+<h4 id="Create-shared-directory"><a href="#Create-shared-directory" class="headerlink" title="Create shared directory"></a>Create shared directory</h4><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">sudo <span class="built_in">mkdir</span> /home/&lt;user&gt;/share</span><br></pre></td></tr></table></figure>
+
+<p>This directory is to be shared between the host and guest machines.</p>
+<h4 id="Edit-the-Samba-configuration-file"><a href="#Edit-the-Samba-configuration-file" class="headerlink" title="Edit the Samba configuration file"></a>Edit the Samba configuration file</h4><p>Open up the configuration file for samba:</p>
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">sudo nano /etc/samba/smb.conf</span><br></pre></td></tr></table></figure>
+
+<p>Add these lines to the configuration file:</p>
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line">[share]</span><br><span class="line">path = /home/&lt;user&gt;/share</span><br><span class="line"><span class="built_in">read</span> only = no</span><br><span class="line">guest ok = <span class="built_in">yes</span></span><br></pre></td></tr></table></figure>
+
+<h4 id="Create-Samba-password"><a href="#Create-Samba-password" class="headerlink" title="Create Samba password"></a>Create Samba password</h4><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">sudo smbpasswd -a &lt;user&gt;</span><br></pre></td></tr></table></figure>
+
+<p>Restart the Samba service to refresh:</p>
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">sudo systemctl restart smb.service</span><br></pre></td></tr></table></figure>
+
+<h4 id="IP-Configuration"><a href="#IP-Configuration" class="headerlink" title="IP Configuration"></a>IP Configuration</h4><p>In the UTM app on your MacBook, go to the settings for the ArchLinux VM and enable the “Port Forwarding” option. Add a new rule with the following settings:</p>
+<pre><code>Protocol: TCP
+Host Port: 445
+Guest IP: IP address of the ArchLinux VM
+Guest Port: 445
+</code></pre>
+<p>To get Guest IP, run the following line:</p>
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">[root@alarm ~]<span class="comment"># ip addr | grep inet</span></span><br></pre></td></tr></table></figure>
+
+<pre><code>inet 127.0.0.1/8 scope host lo
+inet6 ::1/128 scope host 
+inet 192.168.65.3/24 metric 1024 brd 192.168.65.255 scope global dynamic enp0s1
+inet6 fde3:e977:b4d3:5c13:e0b4:51ff:fee5:2142/64 scope global dynamic mngtmpaddr noprefixroute 
+inet6 fe80::e0b4:51ff:fee5:2142/64 scope link
+</code></pre>
+<p>In this case, it’s <code>192.168.65.3</code>.</p>
+<p>To get Host IP, run the following line:</p>
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">ipconfig getifaddr en0</span><br><span class="line"></span><br><span class="line"><span class="comment"># 10.8.189.52</span></span><br></pre></td></tr></table></figure>
+
+<p>On your MacBook, open Finder and click “Go” &gt; “Connect to Server” (Cmd + K). </p>
+<p>Enter this address: <code>smb://localhost:445/share</code></p>
+<p>Enter the Samba username and password when prompted.</p>
+<p>You can now access the shared directory and transfer files between the host and guest operating systems.</p>
+<h3 id="Mount-mnt-share"><a href="#Mount-mnt-share" class="headerlink" title="Mount /mnt/share"></a>Mount <code>/mnt/share</code></h3><p>Normally during the boot-up process of our machines, the mounting up of disks and folders are done for us. However, I keep getting this error telling me:</p>
+<pre><code>[FAILED] Failed to mount /mnt/share.
+</code></pre>
+<p>So I have to mount this directory myself, by running:</p>
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">sudo mount -t cifs //localhost/share /mnt/share -o user=&lt;Samba username&gt;,password=&lt;Samba password&gt;</span><br></pre></td></tr></table></figure>
+
+<p>This command mounts a Samba share located on the local machine (localhost) to a directory (&#x2F;mnt&#x2F;share) using the Common Internet File System (CIFS) protocol.</p>
+<p>The <code>-o</code> option specifies additional mount options, in this case, it provides the Samba username and password to authenticate and access the share.</p>
+<hr>
+<h4 id="Enable-Samba-service"><a href="#Enable-Samba-service" class="headerlink" title="Enable Samba service"></a>Enable Samba service</h4><p>But before we run this command, we have to ensure that Samba service on the ArchLinux VM is up and running.</p>
+<p>Check that the Samba service is running on the ArchLinux VM:</p>
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">sudo systemctl status smb.service</span><br></pre></td></tr></table></figure>
+
+<p>If the service is not running, start it using the following command:</p>
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">sudo systemctl start smb.service</span><br></pre></td></tr></table></figure>
+
+<p>To automatically start the Samba service on boot, you can enable the <code>smb.service</code> unit running the following command:</p>
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">sudo systemctl <span class="built_in">enable</span> smb.service</span><br></pre></td></tr></table></figure>
+
+<blockquote>
+<p><strong><em>Make sure that the Samba username and password are correct.</em></strong></p>
+</blockquote>
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">smbclient //localhost/share -U mccranky</span><br></pre></td></tr></table></figure>
+
+<p>Restart the ArchLinux VM to test that the Samba service starts automatically:</p>
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">sudo systemctl reboot</span><br></pre></td></tr></table></figure>
+
+<hr>
+<p>To check whether <code>/mnt/share</code> has been successfully mounted, run the following line:</p>
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">mount | grep /mnt/share</span><br></pre></td></tr></table></figure>
+
+<p>If the directory is mounted, we should be able to see something similar to this:</p>
+<pre><code>//localhost/share on /mnt/share type cifs (rw,relatime,vers=3.1.1,cache=strict,username=mccranky,
+uid=0,noforceuid,gid=0,noforcegid,addr=127.0.0.1,file_mode=0755,dir_mode=0755,soft,nounix,serveri
+no,mapposix,rsize=4194304,wsize=4194304,bsize=1048576,echo_interval=60,actimeo=1,closetimeo=1,use
+r=mccranky)
+</code></pre>
+<h4 id="Mount-mnt-share-on-startup"><a href="#Mount-mnt-share-on-startup" class="headerlink" title="Mount /mnt/share on startup"></a>Mount <code>/mnt/share</code> on startup</h4><p>To automatically mount the Samba shared directory on boot, you can add an entry to the <code>/etc/fstab</code> file.</p>
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">sudo nano /etc/fstab</span><br></pre></td></tr></table></figure>
+
+<p>Then append the following line to the end of the file:</p>
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">//localhost/share /mnt/share cifs user=mccranky,password=Rogue12 0 0</span><br></pre></td></tr></table></figure>
+
+<p>However, it seems that our new input comflicts with this line:</p>
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">share /mnt/share 9p trans=virtio,nofail 0 0</span><br></pre></td></tr></table></figure>
+
+<p>The reason for this is because our new line mounts a CIFS file system from <code>localhost</code> onto the mount point <code>/mnt/share</code>, using the username <code>mccranky</code> and password <code>Rogue12</code>.</p>
+<p>The old line mounts a 9p file system onto the same mount point <code>/mnt/share</code>, using the virtio transport and the nofail option.</p>
+<p>Since our old entry gave us much headache, I’ll just swap it for the new one. :)</p>
+<p>Let’s test the mount by running the following command:</p>
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">sudo mount -a</span><br></pre></td></tr></table></figure>
+
+<p>This command will attempt to mount all entries in the <code>/etc/fstab</code> file. If there are any errors, it will display them in the terminal.</p>
+<p>Now we run <code>sudo systemctl reboot</code> to see if everything has been resolved at boot-up. There should be no more failures.</p>
+<h3 id="Rollback"><a href="#Rollback" class="headerlink" title="Rollback"></a>Rollback</h3><h4 id="Disable-Samba-service"><a href="#Disable-Samba-service" class="headerlink" title="Disable Samba service"></a>Disable Samba service</h4><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br></pre></td><td class="code"><pre><span class="line">sudo systemctl stop smb.service</span><br><span class="line"></span><br><span class="line">sudo systemctl <span class="built_in">disable</span> smb.service</span><br><span class="line"></span><br><span class="line">sudo pacman -R samba</span><br><span class="line"></span><br><span class="line">sudo <span class="built_in">rm</span> -rf /etc/samba</span><br><span class="line">sudo <span class="built_in">rm</span> -rf /var/cache/samba</span><br><span class="line">sudo <span class="built_in">rm</span> -rf /var/lib/samba</span><br><span class="line"></span><br><span class="line">sudo userdel -r samba</span><br><span class="line">sudo groupdel samba</span><br><span class="line"></span><br></pre></td></tr></table></figure>
+
+<h4 id="Unmount-mnt-share"><a href="#Unmount-mnt-share" class="headerlink" title="Unmount /mnt/share"></a>Unmount <code>/mnt/share</code></h4><p>Edit the Samba configuration file <code>/etc/samba/smb.conf</code> using a text editor:</p>
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">sudo nano /etc/samba/smb.conf</span><br></pre></td></tr></table></figure>
+
+<p>Find the section that defines the <code>/mnt/share</code> share. It should look something like this:</p>
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line">[mnt]</span><br><span class="line">   path = /mnt/share</span><br><span class="line">   <span class="built_in">read</span> only = no</span><br><span class="line">   guest ok = <span class="built_in">yes</span></span><br></pre></td></tr></table></figure>
+
+<p>Remove the entire section, then restart the Samba service:</p>
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">sudo systemctl start smb.service</span><br></pre></td></tr></table></figure>
+
+<p>The <code>/mnt/share</code> share should now be removed from Samba on Arch Linux.</p>
+<h4 id="Revoke-Samba-password"><a href="#Revoke-Samba-password" class="headerlink" title="Revoke Samba password"></a>Revoke Samba password</h4><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">sudo smbpasswd -x &lt;user&gt;</span><br></pre></td></tr></table></figure>
+
+<p>This will remove the user’s password from the Samba password database, effectively undoing the <code>sudo smbpasswd -a &lt;user&gt;</code> command.</p>
+
+      
+    </div>
+
+    
+    
+    
+
+    <footer class="post-footer">
+        <div class="post-eof"></div>
+      
+    </footer>
+  </article>
+</div>
+
+
+
 
     
 
@@ -1470,113 +1667,6 @@ Connection to localhost closed.
         Exiting.
 </pre>
 
-
-      
-    </div>
-
-    
-    
-    
-
-    <footer class="post-footer">
-        <div class="post-eof"></div>
-      
-    </footer>
-  </article>
-</div>
-
-
-
-
-    
-
-
-<div class="post-block">
-  
-  
-
-  <article itemscope itemtype="http://schema.org/Article" class="post-content" lang="">
-    <link itemprop="mainEntityOfPage" href="https://mccranky83.github.io/2023/03/29/%E8%BD%AF%E4%BB%B6%E5%B7%A5%E7%A8%8B%20%E7%AC%AC%E4%BA%8C%E5%91%A8%E7%9A%84%E5%8D%9A%E5%AE%A2/">
-
-    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
-      <meta itemprop="image" content="/images/icons8-dead-cells-1024.png">
-      <meta itemprop="name" content="Mccranky83">
-    </span>
-
-    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
-      <meta itemprop="name" content="Mccranky's Blog">
-      <meta itemprop="description" content=""Bliss it was in that dawn to be alive   But to be young was very heaven."">
-    </span>
-
-    <span hidden itemprop="post" itemscope itemtype="http://schema.org/CreativeWork">
-      <meta itemprop="name" content="undefined | Mccranky's Blog">
-      <meta itemprop="description" content="">
-    </span>
-      <header class="post-header">
-        <h2 class="post-title" itemprop="name headline">
-          <a href="/2023/03/29/%E8%BD%AF%E4%BB%B6%E5%B7%A5%E7%A8%8B%20%E7%AC%AC%E4%BA%8C%E5%91%A8%E7%9A%84%E5%8D%9A%E5%AE%A2/" class="post-title-link" itemprop="url">软件工程 第二周的博客</a>
-        </h2>
-
-        <div class="post-meta-container">
-          <div class="post-meta">
-    <span class="post-meta-item">
-      <span class="post-meta-item-icon">
-        <i class="far fa-calendar"></i>
-      </span>
-      <span class="post-meta-item-text">Posted on</span>
-
-      <time title="Created: 2023-03-29 13:54:18" itemprop="dateCreated datePublished" datetime="2023-03-29T13:54:18+08:00">2023-03-29</time>
-    </span>
-    <span class="post-meta-item">
-      <span class="post-meta-item-icon">
-        <i class="far fa-calendar-check"></i>
-      </span>
-      <span class="post-meta-item-text">Edited on</span>
-      <time title="Modified: 2023-04-23 20:51:42" itemprop="dateModified" datetime="2023-04-23T20:51:42+08:00">2023-04-23</time>
-    </span>
-
-  
-</div>
-
-        </div>
-      </header>
-
-    
-    
-    
-    <div class="post-body" itemprop="articleBody">
-          <h3 id="使用-Node-js-的-Express-js-模组-Host-自己的静态网页"><a href="#使用-Node-js-的-Express-js-模组-Host-自己的静态网页" class="headerlink" title="使用 Node.js 的 Express.js 模组 Host 自己的静态网页"></a><em>使用 Node.js 的 Express.js 模组 Host 自己的静态网页</em></h3><p>首先创建项目文件夹:</p>
-<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line"></span><br><span class="line">mkdir project01; cd project01</span><br><span class="line"></span><br></pre></td></tr></table></figure>
-
-<p>然后创建app.js文件：</p>
-<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line"></span><br><span class="line">touch app.js; sudo nano app.js</span><br><span class="line"></span><br></pre></td></tr></table></figure>
-
-<blockquote>
-<p>差点忘了，没下载Node.js的先去这个地址下载一下：<a target="_blank" rel="noopener" href="https://nodejs.org/en/download/">https://nodejs.org/en/download/</a></p>
-</blockquote>
-<p>下载完初始化一下：</p>
-<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line"></span><br><span class="line">node init -y</span><br><span class="line"></span><br></pre></td></tr></table></figure>
-
-<p>到生成的package.json文件里 script object 里加个参数：</p>
-<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line"></span><br><span class="line">‘start&#x27;：‘node app’</span><br><span class="line"></span><br></pre></td></tr></table></figure>
-
-<p>好的，非常完美。</p>
-<p>然后下载express：</p>
-<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line"></span><br><span class="line">npm i express --save</span><br><span class="line"></span><br></pre></td></tr></table></figure>
-
-<p>这里不建议把它下载为–global，因为会和别的模组冲突。</p>
-<p>面对空白页，先导入express模组并初始化app（关于http模组的基础不做赘述，因为用那个太麻烦了）：</p>
-<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line"></span><br><span class="line">const app = require(&#x27;express&#x27;)()</span><br><span class="line"></span><br></pre></td></tr></table></figure>
-
-<p>然后省略几千字，直接上代码，不懂看注释 : )</p>
-<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br></pre></td><td class="code"><pre><span class="line"></span><br><span class="line">app.use(express.static(&#x27;./public&#x27;))     // 把静态网页需要的资源全扔 public 文件夹里就好了</span><br><span class="line"></span><br><span class="line">app.all(&#x27;*&#x27;, (req, res) =&gt; &#123;</span><br><span class="line">  res.status(404).send(&#x27;resource not found&#x27;)</span><br><span class="line">&#125;)                                                           // 这个是用来处理404 Bad Request 的</span><br><span class="line"></span><br><span class="line">app.listen(5000, () =&gt; &#123;</span><br><span class="line">  console.log(&#x27;server is listening on port 5000....&#x27;)</span><br><span class="line">&#125;)                                                          // 这个是选择端口</span><br><span class="line"></span><br></pre></td></tr></table></figure>
-
-<p>最后在 console 里输入：</p>
-<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line"></span><br><span class="line">npm start</span><br><span class="line"></span><br></pre></td></tr></table></figure>
-
-<p>完成！唯一的问题是我们用的还是 localhost， 也就是只有自己可以在端口 5000 看到自己的网页。</p>
-<p>想让别人看到的话就去使用 Git Pages 的免费服务。</p>
-<p>是不是很简单，开自己动手试一试吧！</p>
 
       
     </div>

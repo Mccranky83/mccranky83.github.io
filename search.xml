@@ -63,56 +63,68 @@
       </categories>
   </entry>
   <entry>
-    <title>JavaScript Method：localeCompare</title>
-    <url>/2023/04/24/JavaScript%20Method%EF%BC%9AlocaleCompare/</url>
-    <content><![CDATA[<p>Lately I’ve been thinking that since Java has an equalsIgnoreCase method, JavaScript must have something similar. This is what I found: the <code>localeCompare</code> method.</p>
-<h3 id="Structure"><a href="#Structure" class="headerlink" title="Structure"></a>Structure</h3><figure class="highlight javascript"><table><tr><td class="code"><pre><span class="line">str1.<span class="title function_">localeCompare</span>(str2, [locales], [options])</span><br></pre></td></tr></table></figure>
+    <title>Dead Cells：Unlocking Daily Challenge blueprints</title>
+    <url>/2023/05/03/Dead%20Cells%EF%BC%9AUnlocking%20Daily%20Challenge%20blueprints/</url>
+    <content><![CDATA[<p>The Daily Challenge has a huge player base, even within an already well-acclaimed title like Dead Cells. However, this is bad news for us freeloaders who, through various means, gained access to the game without ever paying the publisher a single cent. Some may consider this bad practice, but to be honest, I’m broke as f*ck.</p>
+<p>Since we can’t do the challenge runs like the normal person would, I find it not much of a stretch to hack the game a bit further.</p>
+<h3 id="Overview"><a href="#Overview" class="headerlink" title="Overview"></a>Overview</h3><p>The approach we’re taking is to assign the blueprints to a chosen enemy. Naturally we’d want to assign it to an enemy we frequently run into and have a decent drop rate. It so happens that the zombie fits our description perfectly.</p>
+<p>Let us have a look at the relevant part of its JSON description:</p>
+<figure class="highlight json"><table><tr><td class="code"><pre><span class="line"><span class="attr">&quot;name&quot;</span><span class="punctuation">:</span> <span class="string">&quot;Zombie&quot;</span><span class="punctuation">,</span></span><br><span class="line"><span class="attr">&quot;score&quot;</span><span class="punctuation">:</span> <span class="number">2</span><span class="punctuation">,</span></span><br><span class="line"><span class="attr">&quot;maxPerRoom&quot;</span><span class="punctuation">:</span> <span class="number">0</span><span class="punctuation">,</span></span><br><span class="line"><span class="attr">&quot;canBeElite&quot;</span><span class="punctuation">:</span> <span class="literal"><span class="keyword">true</span></span><span class="punctuation">,</span></span><br><span class="line"><span class="attr">&quot;glowInnerColor&quot;</span><span class="punctuation">:</span> <span class="number">11197250</span><span class="punctuation">,</span></span><br><span class="line"><span class="attr">&quot;volteDelay&quot;</span><span class="punctuation">:</span> <span class="number">1</span><span class="punctuation">,</span></span><br><span class="line"><span class="attr">&quot;flesh1&quot;</span><span class="punctuation">:</span> <span class="number">5669211</span><span class="punctuation">,</span></span><br><span class="line"><span class="attr">&quot;flesh2&quot;</span><span class="punctuation">:</span> <span class="number">12303527</span><span class="punctuation">,</span></span><br><span class="line"><span class="attr">&quot;pfCost&quot;</span><span class="punctuation">:</span> <span class="number">0.5</span><span class="punctuation">,</span></span><br><span class="line"><span class="attr">&quot;blueprints&quot;</span><span class="punctuation">:</span> <span class="punctuation">[</span></span><br><span class="line">	<span class="punctuation">&#123;</span></span><br><span class="line">		<span class="attr">&quot;item&quot;</span><span class="punctuation">:</span> <span class="string">&quot;HorizontalTurret&quot;</span><span class="punctuation">,</span></span><br><span class="line">		<span class="attr">&quot;rarity&quot;</span><span class="punctuation">:</span> <span class="string">&quot;Rare&quot;</span><span class="punctuation">,</span></span><br><span class="line">		<span class="attr">&quot;minDifficulty&quot;</span><span class="punctuation">:</span> <span class="number">0</span></span><br><span class="line">	<span class="punctuation">&#125;</span><span class="punctuation">,</span></span><br><span class="line">	<span class="punctuation">&#123;</span></span><br><span class="line">		<span class="attr">&quot;item&quot;</span><span class="punctuation">:</span> <span class="string">&quot;Bleeder&quot;</span><span class="punctuation">,</span></span><br><span class="line">		<span class="attr">&quot;rarity&quot;</span><span class="punctuation">:</span> <span class="string">&quot;Always&quot;</span><span class="punctuation">,</span></span><br><span class="line">		<span class="attr">&quot;minDifficulty&quot;</span><span class="punctuation">:</span> <span class="number">0</span></span><br><span class="line">	<span class="punctuation">&#125;</span><span class="punctuation">,</span></span><br><span class="line">	<span class="punctuation">&#123;</span></span><br><span class="line">		<span class="attr">&quot;rarity&quot;</span><span class="punctuation">:</span> <span class="string">&quot;Rare&quot;</span><span class="punctuation">,</span></span><br><span class="line">		<span class="attr">&quot;minDifficulty&quot;</span><span class="punctuation">:</span> <span class="number">1</span><span class="punctuation">,</span></span><br><span class="line">		<span class="attr">&quot;item&quot;</span><span class="punctuation">:</span> <span class="string">&quot;PrisonerBobby&quot;</span></span><br><span class="line">	<span class="punctuation">&#125;</span></span><br><span class="line"><span class="punctuation">]</span></span><br></pre></td></tr></table></figure>
 
-<p><strong><em>Note: The Linux commands also has a <code>locale</code> command!</em></strong></p>
-<h3 id="Available-locales"><a href="#Available-locales" class="headerlink" title="Available locales"></a>Available locales</h3><p><strong><em><code>language</code></em></strong></p>
-<pre><code>&#39;en&#39;: English
-&#39;fr&#39;: French
-&#39;de&#39;: German
-&#39;es&#39;: Spanish
-&#39;ja&#39;: Japanese
-&#39;zh&#39;: Chinese
-&#39;ar&#39;: Arabic
-&#39;ru&#39;: Russian
-</code></pre>
-<p>We can also use a combination of <code>language</code> and <code>region</code> subtags to specify a more specific locale. For example:</p>
-<pre><code>&#39;en-US&#39;: English (United States)
-&#39;fr-CA&#39;: French (Canada)
-&#39;de-DE&#39;: German (Germany)
-&#39;es-MX&#39;: Spanish (Mexico)
-&#39;ja-JP&#39;: Japanese (Japan)
-&#39;zh-CN&#39;: Chinese (China)
-&#39;ar-EG&#39;: Arabic (Egypt)
-&#39;ru-RU&#39;: Russian (Russia)
-</code></pre>
-<h3 id="Available-options"><a href="#Available-options" class="headerlink" title="Available options"></a>Available options</h3><p><strong><em><code>numeric</code></em></strong></p>
-<figure class="highlight javascript"><table><tr><td class="code"><pre><span class="line"><span class="variable language_">console</span>.<span class="title function_">log</span>(<span class="string">&quot;60&quot;</span>.<span class="title function_">localeCompare</span>(<span class="string">&quot;40&quot;</span>, <span class="literal">undefined</span>, &#123; <span class="attr">numeric</span>: <span class="literal">true</span> &#125;)) <span class="comment">// 1</span></span><br><span class="line"></span><br><span class="line"><span class="variable language_">console</span>.<span class="title function_">log</span>(<span class="string">&quot;60&quot;</span>.<span class="title function_">localeCompare</span>(<span class="string">&quot;60&quot;</span>, <span class="literal">undefined</span>, &#123; <span class="attr">numeric</span>: <span class="literal">true</span> &#125;)) <span class="comment">// 0</span></span><br><span class="line"></span><br><span class="line"><span class="variable language_">console</span>.<span class="title function_">log</span>(<span class="string">&quot;60&quot;</span>.<span class="title function_">localeCompare</span>(<span class="string">&quot;100&quot;</span>, <span class="literal">undefined</span>, &#123; <span class="attr">numeric</span>: <span class="literal">true</span> &#125;)) <span class="comment">// -1</span></span><br></pre></td></tr></table></figure>
+<p><code>Bleeder</code> is the internal name for <code>Blood Sword</code>, which is typically the first blueprint obtained by Dead Cells players on their initial run. As such, it can be readily exchanged for an item of our preference.</p>
+<div style="display: block; margin-left: auto; margin-right: auto; text-align: center; font-size: 1rem;">
 
-<p><code>numeric</code> can take one of the two values: <code>true</code> and <code>false</code></p>
-<figure class="highlight javascript"><table><tr><td class="code"><pre><span class="line"><span class="variable language_">console</span>.<span class="title function_">log</span>(<span class="string">&quot;60&quot;</span>.<span class="title function_">localeCompare</span>(<span class="string">&quot;100&quot;</span>, <span class="literal">undefined</span>, &#123; <span class="attr">numeric</span>: <span class="literal">false</span> &#125;)) <span class="comment">// 1</span></span><br></pre></td></tr></table></figure>
+<p><img src="/2023/05/03/Dead%20Cells%EF%BC%9AUnlocking%20Daily%20Challenge%20blueprints/images/Blood%20Sword.png" alt="Blood Sword" title="Blood Sword"></p>
+<p><span>Blood Sword</span></p>
+</div>
 
-<p>With <code>false</code>, both <code>60</code> and <code>100</code> are treated as normal String objects.</p>
-<p><strong><em><code>sensitivity</code></em></strong></p>
-<p><code>sensitivity</code> can take one of the three values: <code>base</code>, <code>accent</code>, <code>case</code></p>
-<figure class="highlight javascript"><table><tr><td class="code"><pre><span class="line"><span class="variable language_">console</span>.<span class="title function_">log</span>(<span class="string">&quot;café&quot;</span>.<span class="title function_">localeCompare</span>(<span class="string">&quot;Cafe&quot;</span>, <span class="literal">undefined</span>, &#123; <span class="attr">sensitivity</span>: <span class="string">&quot;base&quot;</span> &#125;)) <span class="comment">// 0</span></span><br><span class="line"></span><br><span class="line"><span class="variable language_">console</span>.<span class="title function_">log</span>(<span class="string">&quot;café&quot;</span>.<span class="title function_">localeCompare</span>(<span class="string">&quot;Cafe&quot;</span>, <span class="literal">undefined</span>, &#123; <span class="attr">sensitivity</span>: <span class="string">&quot;accent&quot;</span> &#125;)) <span class="comment">// 1</span></span><br><span class="line"></span><br><span class="line"><span class="variable language_">console</span>.<span class="title function_">log</span>(<span class="string">&quot;café&quot;</span>.<span class="title function_">localeCompare</span>(<span class="string">&quot;Cafe&quot;</span>, <span class="literal">undefined</span>, &#123; <span class="attr">sensitivity</span>: <span class="string">&quot;case&quot;</span> &#125;)) <span class="comment">// -1</span></span><br></pre></td></tr></table></figure>
+<h4 id="Targets"><a href="#Targets" class="headerlink" title="Targets:"></a>Targets:</h4><ol>
+<li><em>Swift Sword</em> (internal name <code>SpeedBlade</code>) - first run</li>
+<li><em>Lacerating Aura</em> (internal name <code>DamageAura</code>) - 5th run</li>
+<li><em>Meat Skewer</em> (internal name <code>DashSword</code>) - 10th run</li>
+</ol>
+<p>Visit <a href="https://deadcells.fandom.com/wiki/Dead_Cells_Wiki">the official wiki page</a> for more information!</p>
+<h3 id="CellPacker"><a href="#CellPacker" class="headerlink" title="CellPacker"></a>CellPacker</h3><p>I use CellPacker to extract the <code>data.cdb</code> file so as to avoid having to read from the hexdump. It is a lot more comfortable to inspect an formatted JSON file!</p>
+<div style="display: block; margin-left: auto; margin-right: auto; text-align: center; font-size: 1rem;">
 
-<p><strong><em><code>caseFirst</code></em></strong></p>
-<p>The <code>caseFirst</code> option in the <code>localeCompare()</code> method specifies whether uppercase letters should come before or after lowercase letters in the sort order. It can take one of the following two values:</p>
-<p><code>upper</code>: Sort uppercase letters before lowercase letters.</p>
-<p><code>lower</code>: Sort lowercase letters before uppercase letters.</p>
-<figure class="highlight javascript"><table><tr><td class="code"><pre><span class="line"><span class="variable language_">console</span>.<span class="title function_">log</span>(<span class="string">&quot;Ba&quot;</span>.<span class="title function_">localeCompare</span>(<span class="string">&quot;AB&quot;</span>, <span class="literal">undefined</span>, &#123; <span class="attr">sensitivity</span>: <span class="string">&quot;case&quot;</span> &#125;)) <span class="comment">// 1</span></span><br><span class="line"></span><br><span class="line"><span class="variable language_">console</span>.<span class="title function_">log</span>(<span class="string">&quot;aB&quot;</span>.<span class="title function_">localeCompare</span>(<span class="string">&quot;AB&quot;</span>, <span class="literal">undefined</span>, &#123; <span class="attr">sensitivity</span>: <span class="string">&quot;case&quot;</span> &#125;)) <span class="comment">// -1</span></span><br><span class="line"></span><br><span class="line"><span class="variable language_">console</span>.<span class="title function_">log</span>(<span class="string">&quot;aB&quot;</span>.<span class="title function_">localeCompare</span>(<span class="string">&quot;AB&quot;</span>, <span class="literal">undefined</span>, &#123; <span class="attr">sensitivity</span>: <span class="string">&quot;case&quot;</span>, <span class="attr">caseFirst</span>: <span class="string">&quot;upper&quot;</span> &#125;)) <span class="comment">// 1</span></span><br></pre></td></tr></table></figure>
+<p><img src="/2023/05/03/Dead%20Cells%EF%BC%9AUnlocking%20Daily%20Challenge%20blueprints/images/CellPacker.png" alt="CellPacker" title="CellPacker"></p>
+<p><span>CellPacker</span></p>
+</div>
 
-<p><strong><em><code>ignorePunctuation</code></em></strong></p>
-<p>The <code>ignorePunctuation</code> option in the <code>localeCompare()</code> method specifies whether punctuation and other symbols should be ignored during the comparison.</p>
-<p>It can take one of the following two values: <code>true</code> and <code>false</code></p>
-<figure class="highlight javascript"><table><tr><td class="code"><pre><span class="line"><span class="variable language_">console</span>.<span class="title function_">log</span>(<span class="string">&quot;Hello, world!&quot;</span>.<span class="title function_">localeCompare</span>(<span class="string">&quot;Hello world&quot;</span>, <span class="literal">undefined</span>, &#123; <span class="attr">ignorePunctuation</span>: <span class="literal">true</span> &#125;)) <span class="comment">// 0</span></span><br></pre></td></tr></table></figure>]]></content>
+<p>We <em>can</em> open CellPacker by double-clicking <code>CellPacker.jar</code>, however I suggest running the following command to avoid headaches:</p>
+<figure class="highlight bash"><table><tr><td class="code"><pre><span class="line">java -jar /path/to/CellPacker.jar</span><br></pre></td></tr></table></figure>
+
+<p>GitHub repo: <a href="https://github.com/ReBuilders101/CellPacker" title="ReBuilders101/CellPacker Repo">ReBuilders101&#x2F;CellPacker</a></p>
+<p>Click <a href="https://github.com/ReBuilders101/CellPacker/raw/master/release/CellPacker.jar" title="CellPacker.jar">here</a> to install <code>CellPacker.jar</code>.</p>
+<h3 id="res-pak"><a href="#res-pak" class="headerlink" title="res.pak"></a><em><code>res.pak</code></em></h3><p>As the name suggests, the <code>res.pak</code> is the resource pack for the game itself and contains every aspect of what the graphics and cutscenes require to load. It also contains the <code>json</code> data files which store the underlying logic behind the interactions in the game.</p>
+<p>To hack it, we need a hexdump editor. I use <code>ghex</code> because it’s fairly simple and easy to use. We can install it on our MacBook via Homebrew, using the following command:</p>
+<figure class="highlight bash"><table><tr><td class="code"><pre><span class="line">brew install ghex</span><br></pre></td></tr></table></figure>
+
+<blockquote>
+<p><strong><em>Note:</em></strong><br>Before we begin the actual editing process, make sure you have a copy of your game saves and the resource pack we’re editing on. This is in case we make a mistake and corrupt the files.</p>
+</blockquote>
+<h3 id="ghex"><a href="#ghex" class="headerlink" title="ghex"></a><em><code>ghex</code></em></h3><p>Run <code>ghex</code> in Terminal and open <code>res.pak</code>. Locate <code>Bleeder</code> and replace it with the internal name of any of the three daily challenge blueprints.</p>
+<div style="display: block; margin-left: auto; margin-right: auto; text-align: center; font-size: 1rem;">
+
+<p><img src="/2023/05/03/Dead%20Cells%EF%BC%9AUnlocking%20Daily%20Challenge%20blueprints/images/Before.png" alt="Before" title="Before"></p>
+</div>
+
+<p>Please note that the resulting file must remain the same size as the original. Making significant changes will only complicate matters. For instance, <code>Bleeder</code> has 7 characters, while <code>SpeedBlade</code> and <code>DamageAura</code> have 10, and <code>DashSword</code> has 9. To address this discrepancy, I reduced the length of “Zombie” by the difference. Here’s an example:</p>
+<div style="display: block; margin-left: auto; margin-right: auto; text-align: center; font-size: 1rem;">
+
+<p><img src="/2023/05/03/Dead%20Cells%EF%BC%9AUnlocking%20Daily%20Challenge%20blueprints/images/After.png" alt="After" title="After"></p>
+</div>
+
+<hr>
+<h3 id="References"><a href="#References" class="headerlink" title="References"></a>References</h3><ul>
+<li>Sebadorn’s Blog: <a href="https://sebadorn.de/2021/06/28/dead-cells-unlocking-the-daily-challenge-blueprints-in-the-bugged-linux-gog-version" title="Unlocking the Daily Challenge blueprints in the bugged Linux GOG version">2021.06.28</a></li>
+</ul>
+]]></content>
+      <categories>
+        <category>Games</category>
+      </categories>
       <tags>
-        <tag>JavaScript</tag>
-        <tag>Methods</tag>
+        <tag>Dead Cells</tag>
       </tags>
   </entry>
   <entry>
@@ -175,56 +187,102 @@
       </categories>
   </entry>
   <entry>
-    <title>Pointers</title>
-    <url>/2023/04/29/Pointers/</url>
-    <content><![CDATA[<h3 id="Array-of-pointers-to-ints"><a href="#Array-of-pointers-to-ints" class="headerlink" title="Array of pointers to ints"></a>Array of pointers to ints</h3><p><strong>Code:</strong></p>
-<figure class="highlight cpp"><table><tr><td class="code"><pre><span class="line"><span class="meta">#<span class="keyword">include</span> <span class="string">&lt;iostream&gt;</span></span></span><br><span class="line"></span><br><span class="line"><span class="function"><span class="type">int</span> <span class="title">main</span><span class="params">()</span></span></span><br><span class="line"><span class="function"></span>&#123;</span><br><span class="line">    <span class="type">int</span>* ap[<span class="number">15</span>];</span><br><span class="line">    <span class="type">int</span> ai[<span class="number">15</span>] = &#123;&#125;;</span><br><span class="line">    <span class="keyword">for</span> (<span class="type">int</span> i = <span class="number">0</span>; i &lt; <span class="number">15</span>; ++i) &#123;</span><br><span class="line">        ai[i] = i; </span><br><span class="line">        ap[i] = &amp;ai[i];</span><br><span class="line">        std::cout &lt;&lt; *ap[i] &lt;&lt; <span class="string">&quot; &quot;</span> &lt;&lt; ap[i]&lt;&lt; std::endl;</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br><span class="line"></span><br></pre></td></tr></table></figure>
-
-<p><strong>Console:</strong></p>
-<pre><code>0 0x16d296d14
-1 0x16d296d18
-2 0x16d296d1c
-3 0x16d296d20
-4 0x16d296d24
-5 0x16d296d28
-6 0x16d296d2c
-7 0x16d296d30
-8 0x16d296d34
-9 0x16d296d38
-10 0x16d296d3c
-11 0x16d296d40
-12 0x16d296d44
-13 0x16d296d48
-14 0x16d296d4c
+    <title>Installing Puppet server on ArchLinux</title>
+    <url>/2023/04/27/Installing%20Puppet%20server%20on%20ArchLinux/</url>
+    <content><![CDATA[<h3 id="Installation"><a href="#Installation" class="headerlink" title="Installation"></a>Installation</h3><p>To install puppet server first add the upstream GPG key:</p>
+<pre><code>$ gpg --fetch-keys https://yum.puppetlabs.com/RPM-GPG-KEY-puppet-20250406
 </code></pre>
-<h3 id="Pointer-to-an-array-of-ints"><a href="#Pointer-to-an-array-of-ints" class="headerlink" title="Pointer to an array of ints"></a>Pointer to an array of ints</h3><p><strong>Code:</strong></p>
-<figure class="highlight cpp"><table><tr><td class="code"><pre><span class="line"><span class="meta">#<span class="keyword">include</span> <span class="string">&lt;iostream&gt;</span></span></span><br><span class="line"></span><br><span class="line"><span class="function"><span class="type">int</span> <span class="title">main</span><span class="params">()</span></span></span><br><span class="line"><span class="function"></span>&#123;</span><br><span class="line">    <span class="type">int</span> ai[<span class="number">15</span>];</span><br><span class="line">    <span class="keyword">for</span> (<span class="type">int</span> i = <span class="number">0</span>; i &lt; <span class="number">15</span>; i++) ai[i] = i;</span><br><span class="line">    <span class="built_in">int</span> (*ptr)[] = &amp;ai;</span><br><span class="line">    <span class="keyword">for</span> (<span class="type">int</span> i = <span class="number">0</span>; i &lt; <span class="number">15</span>; i++) &#123;</span><br><span class="line">        std::cout &lt;&lt; (*ptr)[i] &lt;&lt; <span class="string">&quot; &quot;</span>;</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br><span class="line"></span><br></pre></td></tr></table></figure>
+<div>
+    Then install the <a href="https://aur.archlinux.org/packages/puppetserver"><b>puppetserver</b></a><sup>AUR</sup> package.
+</div>
 
-<p><strong><em>Console</em></strong></p>
-<pre><code>0 1 2 3 4 5 6 7 8 9 10 11 12 13 14
+<figure class="highlight bash"><table><tr><td class="code"><pre><span class="line">git <span class="built_in">clone</span> https://aur.archlinux.org/puppetserver.git</span><br><span class="line"></span><br><span class="line"><span class="built_in">cd</span> puppetserver/</span><br><span class="line"></span><br><span class="line">makepkg -si</span><br><span class="line"></span><br></pre></td></tr></table></figure>
+
+<p>Having questions about the <code>makepkg</code> command? Visit <a href="/2023/04/25/Running%20ArchLinux%20ARM%20in%20UTM%20on%20a%20M1%20MacBook%20Air/#yay" title="makepkg">here</a>!</p>
+<div>
+    Afterwards, enable and start the <b>puppetserver</b> service.
+</div>
+
+<figure class="highlight bash"><table><tr><td class="code"><pre><span class="line">sudo systemctl <span class="built_in">enable</span> puppetserver.service</span><br><span class="line"></span><br><span class="line"><span class="comment"># Add to &quot;/etc/systemd/system/multi-user.target.wants&quot;.</span></span><br><span class="line"></span><br><span class="line">sudo systemctl start puppetserver.service</span><br><span class="line"></span><br></pre></td></tr></table></figure>
+
+<h3 id="Delete-a-key"><a href="#Delete-a-key" class="headerlink" title="Delete a key"></a>Delete a key</h3><p>List the keys in your keyring using the command <code>gpg --list-keys</code>:</p>
+<pre><code>$ gpg --list-keys
+/root/.gnupg/pubring.kbx
+------------------------
+pub   rsa4096 2019-04-08 [SC] [expires: 2025-04-06]
+      D6811ED3ADEEB8441AF5AA8F4528B6CD9E61EF26
+uid           [ unknown] Puppet, Inc. Release Key (Puppet, Inc. Release Key) &lt;release@puppet.com&gt;
 </code></pre>
+<p>For example, the key ID of the instance above is “D6811ED3ADEEB8441AF5AA8F4528B6CD9E61EF26”.</p>
+<p>Delete the key using the command <code>gpg --delete-keys [key ID]</code>.</p>
+<p>Note that deleting a key from your keyring will prevent you from verifying any signatures made with that key in the future. If you need to use the key again later, you will need to fetch it again using the <code>gpg --fetch-keys</code> command.</p>
 <blockquote>
-<p><strong><em>Notes</em></strong></p>
+<p>Configuration</p>
 </blockquote>
-<ul>
-<li><p>The parentheses around <code>*ptr</code> are necessary because the <code>[]</code> operator has<br>  higher precedence than the <code>*</code> operator. Without the parentheses, the<br>  declaration would be parsed as an array of pointers to int, like int<br>  <code>*ptr[15]</code>.</p>
-</li>
-<li><p>When I took the address of the array, I got a pointer to the first element<br>  of the array. However, the pointer itself does not contain any information<br>  about the size of the array.</p>
-</li>
-</ul>
-<h3 id="Pointer-to-function-taking-a-string-argument"><a href="#Pointer-to-function-taking-a-string-argument" class="headerlink" title="Pointer to function taking a string argument;"></a>Pointer to function taking a string argument;</h3><h4 id="returns-an-string"><a href="#returns-an-string" class="headerlink" title="returns an string"></a>returns an string</h4><p><strong>Code:</strong></p>
-<figure class="highlight cpp"><table><tr><td class="code"><pre><span class="line"><span class="meta">#<span class="keyword">include</span> <span class="string">&lt;iostream&gt;</span></span></span><br><span class="line"><span class="meta">#<span class="keyword">include</span> <span class="string">&lt;string&gt;</span></span></span><br><span class="line"></span><br><span class="line"><span class="function"><span class="type">void</span> <span class="title">replaceX</span><span class="params">(std::string *str, std::string x)</span></span></span><br><span class="line"><span class="function"></span>&#123;</span><br><span class="line">    <span class="type">size_t</span> pos = (*str).<span class="built_in">find</span>(<span class="string">&quot;$&#123;x&#125;&quot;</span>);</span><br><span class="line">    <span class="keyword">if</span> (pos != std::string::npos)</span><br><span class="line">        (*str).<span class="built_in">replace</span>(pos, <span class="number">4</span>, x);</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"><span class="function">std::string <span class="title">foo</span><span class="params">(std::string x)</span></span></span><br><span class="line"><span class="function"></span>&#123;</span><br><span class="line">    std::string str = <span class="string">&quot;hello this is $&#123;x&#125;&quot;</span>;</span><br><span class="line">    <span class="built_in">replaceX</span>(&amp;str, x);</span><br><span class="line">    <span class="keyword">return</span> str;</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"><span class="function"><span class="type">int</span> <span class="title">main</span><span class="params">()</span></span></span><br><span class="line"><span class="function"></span>&#123;</span><br><span class="line">    std::<span class="built_in">string</span> (*fp)(std::string) = &amp;foo;</span><br><span class="line">    std::cout &lt;&lt; (*fp)(<span class="string">&quot;foo&quot;</span>) &lt;&lt; std::endl;</span><br><span class="line">    std::cout &lt;&lt; (*fp)(<span class="string">&quot;bar&quot;</span>) &lt;&lt; std::endl;</span><br><span class="line">&#125;</span><br><span class="line"></span><br></pre></td></tr></table></figure>
-
-<p><strong>Console:</strong></p>
-<pre><code>hello this is foo
-hello this is bar
-</code></pre>
+<p>The Puppet Server’s configuration files are stored in <code>/etc/puppetlabs/puppetserver/</code>.</p>
 ]]></content>
       <categories>
-        <category>C++</category>
+        <category>Puppet</category>
       </categories>
       <tags>
-        <tag>Pointers</tag>
+        <tag>Linux</tag>
+        <tag>ArchLinux</tag>
+        <tag>Puppet</tag>
+        <tag>server</tag>
+        <tag>GPG key</tag>
+      </tags>
+  </entry>
+  <entry>
+    <title>JavaScript Method：localeCompare</title>
+    <url>/2023/04/24/JavaScript%20Method%EF%BC%9AlocaleCompare/</url>
+    <content><![CDATA[<p>Lately I’ve been thinking that since Java has an equalsIgnoreCase method, JavaScript must have something similar. This is what I found: the <code>localeCompare</code> method.</p>
+<h3 id="Structure"><a href="#Structure" class="headerlink" title="Structure"></a>Structure</h3><figure class="highlight javascript"><table><tr><td class="code"><pre><span class="line">str1.<span class="title function_">localeCompare</span>(str2, [locales], [options])</span><br></pre></td></tr></table></figure>
+
+<p><strong><em>Note: The Linux commands also has a <code>locale</code> command!</em></strong></p>
+<h3 id="Available-locales"><a href="#Available-locales" class="headerlink" title="Available locales"></a>Available locales</h3><p><strong><em><code>language</code></em></strong></p>
+<pre><code>&#39;en&#39;: English
+&#39;fr&#39;: French
+&#39;de&#39;: German
+&#39;es&#39;: Spanish
+&#39;ja&#39;: Japanese
+&#39;zh&#39;: Chinese
+&#39;ar&#39;: Arabic
+&#39;ru&#39;: Russian
+</code></pre>
+<p>We can also use a combination of <code>language</code> and <code>region</code> subtags to specify a more specific locale. For example:</p>
+<pre><code>&#39;en-US&#39;: English (United States)
+&#39;fr-CA&#39;: French (Canada)
+&#39;de-DE&#39;: German (Germany)
+&#39;es-MX&#39;: Spanish (Mexico)
+&#39;ja-JP&#39;: Japanese (Japan)
+&#39;zh-CN&#39;: Chinese (China)
+&#39;ar-EG&#39;: Arabic (Egypt)
+&#39;ru-RU&#39;: Russian (Russia)
+</code></pre>
+<h3 id="Available-options"><a href="#Available-options" class="headerlink" title="Available options"></a>Available options</h3><p><strong><em><code>numeric</code></em></strong></p>
+<figure class="highlight javascript"><table><tr><td class="code"><pre><span class="line"><span class="variable language_">console</span>.<span class="title function_">log</span>(<span class="string">&quot;60&quot;</span>.<span class="title function_">localeCompare</span>(<span class="string">&quot;40&quot;</span>, <span class="literal">undefined</span>, &#123; <span class="attr">numeric</span>: <span class="literal">true</span> &#125;)) <span class="comment">// 1</span></span><br><span class="line"></span><br><span class="line"><span class="variable language_">console</span>.<span class="title function_">log</span>(<span class="string">&quot;60&quot;</span>.<span class="title function_">localeCompare</span>(<span class="string">&quot;60&quot;</span>, <span class="literal">undefined</span>, &#123; <span class="attr">numeric</span>: <span class="literal">true</span> &#125;)) <span class="comment">// 0</span></span><br><span class="line"></span><br><span class="line"><span class="variable language_">console</span>.<span class="title function_">log</span>(<span class="string">&quot;60&quot;</span>.<span class="title function_">localeCompare</span>(<span class="string">&quot;100&quot;</span>, <span class="literal">undefined</span>, &#123; <span class="attr">numeric</span>: <span class="literal">true</span> &#125;)) <span class="comment">// -1</span></span><br></pre></td></tr></table></figure>
+
+<p><code>numeric</code> can take one of the two values: <code>true</code> and <code>false</code></p>
+<figure class="highlight javascript"><table><tr><td class="code"><pre><span class="line"><span class="variable language_">console</span>.<span class="title function_">log</span>(<span class="string">&quot;60&quot;</span>.<span class="title function_">localeCompare</span>(<span class="string">&quot;100&quot;</span>, <span class="literal">undefined</span>, &#123; <span class="attr">numeric</span>: <span class="literal">false</span> &#125;)) <span class="comment">// 1</span></span><br></pre></td></tr></table></figure>
+
+<p>With <code>false</code>, both <code>60</code> and <code>100</code> are treated as normal String objects.</p>
+<p><strong><em><code>sensitivity</code></em></strong></p>
+<p><code>sensitivity</code> can take one of the three values: <code>base</code>, <code>accent</code>, <code>case</code></p>
+<figure class="highlight javascript"><table><tr><td class="code"><pre><span class="line"><span class="variable language_">console</span>.<span class="title function_">log</span>(<span class="string">&quot;café&quot;</span>.<span class="title function_">localeCompare</span>(<span class="string">&quot;Cafe&quot;</span>, <span class="literal">undefined</span>, &#123; <span class="attr">sensitivity</span>: <span class="string">&quot;base&quot;</span> &#125;)) <span class="comment">// 0</span></span><br><span class="line"></span><br><span class="line"><span class="variable language_">console</span>.<span class="title function_">log</span>(<span class="string">&quot;café&quot;</span>.<span class="title function_">localeCompare</span>(<span class="string">&quot;Cafe&quot;</span>, <span class="literal">undefined</span>, &#123; <span class="attr">sensitivity</span>: <span class="string">&quot;accent&quot;</span> &#125;)) <span class="comment">// 1</span></span><br><span class="line"></span><br><span class="line"><span class="variable language_">console</span>.<span class="title function_">log</span>(<span class="string">&quot;café&quot;</span>.<span class="title function_">localeCompare</span>(<span class="string">&quot;Cafe&quot;</span>, <span class="literal">undefined</span>, &#123; <span class="attr">sensitivity</span>: <span class="string">&quot;case&quot;</span> &#125;)) <span class="comment">// -1</span></span><br></pre></td></tr></table></figure>
+
+<p><strong><em><code>caseFirst</code></em></strong></p>
+<p>The <code>caseFirst</code> option in the <code>localeCompare()</code> method specifies whether uppercase letters should come before or after lowercase letters in the sort order. It can take one of the following two values:</p>
+<p><code>upper</code>: Sort uppercase letters before lowercase letters.</p>
+<p><code>lower</code>: Sort lowercase letters before uppercase letters.</p>
+<figure class="highlight javascript"><table><tr><td class="code"><pre><span class="line"><span class="variable language_">console</span>.<span class="title function_">log</span>(<span class="string">&quot;Ba&quot;</span>.<span class="title function_">localeCompare</span>(<span class="string">&quot;AB&quot;</span>, <span class="literal">undefined</span>, &#123; <span class="attr">sensitivity</span>: <span class="string">&quot;case&quot;</span> &#125;)) <span class="comment">// 1</span></span><br><span class="line"></span><br><span class="line"><span class="variable language_">console</span>.<span class="title function_">log</span>(<span class="string">&quot;aB&quot;</span>.<span class="title function_">localeCompare</span>(<span class="string">&quot;AB&quot;</span>, <span class="literal">undefined</span>, &#123; <span class="attr">sensitivity</span>: <span class="string">&quot;case&quot;</span> &#125;)) <span class="comment">// -1</span></span><br><span class="line"></span><br><span class="line"><span class="variable language_">console</span>.<span class="title function_">log</span>(<span class="string">&quot;aB&quot;</span>.<span class="title function_">localeCompare</span>(<span class="string">&quot;AB&quot;</span>, <span class="literal">undefined</span>, &#123; <span class="attr">sensitivity</span>: <span class="string">&quot;case&quot;</span>, <span class="attr">caseFirst</span>: <span class="string">&quot;upper&quot;</span> &#125;)) <span class="comment">// 1</span></span><br></pre></td></tr></table></figure>
+
+<p><strong><em><code>ignorePunctuation</code></em></strong></p>
+<p>The <code>ignorePunctuation</code> option in the <code>localeCompare()</code> method specifies whether punctuation and other symbols should be ignored during the comparison.</p>
+<p>It can take one of the following two values: <code>true</code> and <code>false</code></p>
+<figure class="highlight javascript"><table><tr><td class="code"><pre><span class="line"><span class="variable language_">console</span>.<span class="title function_">log</span>(<span class="string">&quot;Hello, world!&quot;</span>.<span class="title function_">localeCompare</span>(<span class="string">&quot;Hello world&quot;</span>, <span class="literal">undefined</span>, &#123; <span class="attr">ignorePunctuation</span>: <span class="literal">true</span> &#125;)) <span class="comment">// 0</span></span><br></pre></td></tr></table></figure>]]></content>
+      <tags>
+        <tag>JavaScript</tag>
+        <tag>Methods</tag>
       </tags>
   </entry>
   <entry>
@@ -597,6 +655,176 @@ Possible reasons for having this kind of units are:
       </tags>
   </entry>
   <entry>
+    <title>Pointers</title>
+    <url>/2023/04/29/Pointers/</url>
+    <content><![CDATA[<h3 id="Array-of-pointers-to-ints"><a href="#Array-of-pointers-to-ints" class="headerlink" title="Array of pointers to ints"></a>Array of pointers to ints</h3><p><strong>Code:</strong></p>
+<figure class="highlight cpp"><table><tr><td class="code"><pre><span class="line"><span class="meta">#<span class="keyword">include</span> <span class="string">&lt;iostream&gt;</span></span></span><br><span class="line"></span><br><span class="line"><span class="function"><span class="type">int</span> <span class="title">main</span><span class="params">()</span></span></span><br><span class="line"><span class="function"></span>&#123;</span><br><span class="line">    <span class="type">int</span>* ap[<span class="number">15</span>];</span><br><span class="line">    <span class="type">int</span> ai[<span class="number">15</span>] = &#123;&#125;;</span><br><span class="line">    <span class="keyword">for</span> (<span class="type">int</span> i = <span class="number">0</span>; i &lt; <span class="number">15</span>; ++i) &#123;</span><br><span class="line">        ai[i] = i; </span><br><span class="line">        ap[i] = &amp;ai[i];</span><br><span class="line">        std::cout &lt;&lt; *ap[i] &lt;&lt; <span class="string">&quot; &quot;</span> &lt;&lt; ap[i]&lt;&lt; std::endl;</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br><span class="line"></span><br></pre></td></tr></table></figure>
+
+<p><strong>Console:</strong></p>
+<pre><code>0 0x16d296d14
+1 0x16d296d18
+2 0x16d296d1c
+3 0x16d296d20
+4 0x16d296d24
+5 0x16d296d28
+6 0x16d296d2c
+7 0x16d296d30
+8 0x16d296d34
+9 0x16d296d38
+10 0x16d296d3c
+11 0x16d296d40
+12 0x16d296d44
+13 0x16d296d48
+14 0x16d296d4c
+</code></pre>
+<h3 id="Pointer-to-an-array-of-ints"><a href="#Pointer-to-an-array-of-ints" class="headerlink" title="Pointer to an array of ints"></a>Pointer to an array of ints</h3><p><strong>Code:</strong></p>
+<figure class="highlight cpp"><table><tr><td class="code"><pre><span class="line"><span class="meta">#<span class="keyword">include</span> <span class="string">&lt;iostream&gt;</span></span></span><br><span class="line"></span><br><span class="line"><span class="function"><span class="type">int</span> <span class="title">main</span><span class="params">()</span></span></span><br><span class="line"><span class="function"></span>&#123;</span><br><span class="line">    <span class="type">int</span> ai[<span class="number">15</span>];</span><br><span class="line">    <span class="keyword">for</span> (<span class="type">int</span> i = <span class="number">0</span>; i &lt; <span class="number">15</span>; i++) ai[i] = i;</span><br><span class="line">    <span class="built_in">int</span> (*ptr)[] = &amp;ai;</span><br><span class="line">    <span class="keyword">for</span> (<span class="type">int</span> i = <span class="number">0</span>; i &lt; <span class="number">15</span>; i++) &#123;</span><br><span class="line">        std::cout &lt;&lt; (*ptr)[i] &lt;&lt; <span class="string">&quot; &quot;</span>;</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br><span class="line"></span><br></pre></td></tr></table></figure>
+
+<p><strong><em>Console</em></strong></p>
+<pre><code>0 1 2 3 4 5 6 7 8 9 10 11 12 13 14
+</code></pre>
+<blockquote>
+<p><strong><em>Notes</em></strong></p>
+</blockquote>
+<ul>
+<li><p>The parentheses around <code>*ptr</code> are necessary because the <code>[]</code> operator has<br>  higher precedence than the <code>*</code> operator. Without the parentheses, the<br>  declaration would be parsed as an array of pointers to int, like int<br>  <code>*ptr[15]</code>.</p>
+</li>
+<li><p>When I took the address of the array, I got a pointer to the first element<br>  of the array. However, the pointer itself does not contain any information<br>  about the size of the array.</p>
+</li>
+</ul>
+<h3 id="Pointer-to-function-taking-a-string-argument"><a href="#Pointer-to-function-taking-a-string-argument" class="headerlink" title="Pointer to function taking a string argument;"></a>Pointer to function taking a string argument;</h3><h4 id="returns-an-string"><a href="#returns-an-string" class="headerlink" title="returns an string"></a>returns an string</h4><p><strong>Code:</strong></p>
+<figure class="highlight cpp"><table><tr><td class="code"><pre><span class="line"><span class="meta">#<span class="keyword">include</span> <span class="string">&lt;iostream&gt;</span></span></span><br><span class="line"><span class="meta">#<span class="keyword">include</span> <span class="string">&lt;string&gt;</span></span></span><br><span class="line"></span><br><span class="line"><span class="function"><span class="type">void</span> <span class="title">replaceX</span><span class="params">(std::string *str, std::string x)</span></span></span><br><span class="line"><span class="function"></span>&#123;</span><br><span class="line">    <span class="type">size_t</span> pos = (*str).<span class="built_in">find</span>(<span class="string">&quot;$&#123;x&#125;&quot;</span>);</span><br><span class="line">    <span class="keyword">if</span> (pos != std::string::npos)</span><br><span class="line">        (*str).<span class="built_in">replace</span>(pos, <span class="number">4</span>, x);</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"><span class="function">std::string <span class="title">foo</span><span class="params">(std::string x)</span></span></span><br><span class="line"><span class="function"></span>&#123;</span><br><span class="line">    std::string str = <span class="string">&quot;hello this is $&#123;x&#125;&quot;</span>;</span><br><span class="line">    <span class="built_in">replaceX</span>(&amp;str, x);</span><br><span class="line">    <span class="keyword">return</span> str;</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"><span class="function"><span class="type">int</span> <span class="title">main</span><span class="params">()</span></span></span><br><span class="line"><span class="function"></span>&#123;</span><br><span class="line">    std::<span class="built_in">string</span> (*fp)(std::string) = &amp;foo;</span><br><span class="line">    std::cout &lt;&lt; (*fp)(<span class="string">&quot;foo&quot;</span>) &lt;&lt; std::endl;</span><br><span class="line">    std::cout &lt;&lt; (*fp)(<span class="string">&quot;bar&quot;</span>) &lt;&lt; std::endl;</span><br><span class="line">&#125;</span><br><span class="line"></span><br></pre></td></tr></table></figure>
+
+<p><strong>Console:</strong></p>
+<pre><code>hello this is foo
+hello this is bar
+</code></pre>
+]]></content>
+      <categories>
+        <category>C++</category>
+      </categories>
+      <tags>
+        <tag>Pointers</tag>
+      </tags>
+  </entry>
+  <entry>
+    <title>`node` in the command line</title>
+    <url>/2023/04/28/%60node%60%20in%20the%20command%20line/</url>
+    <content><![CDATA[<p>I ran into this hassle the other day when my <code>npm</code> command failed to work in the command line. It took me a while to sort things out and left me in a foul mood. To prevent something like that from happening again, I decided to write this post. Nothing fancy - just some commands that might prove helpful in the long run.</p>
+<h3 id="node"><a href="#node" class="headerlink" title="node"></a><em><code>node</code></em></h3><h4 id="Display-global-installation-directory"><a href="#Display-global-installation-directory" class="headerlink" title="Display global installation directory"></a>Display global installation directory</h4><figure class="highlight bash"><table><tr><td class="code"><pre><span class="line">npm root -g</span><br></pre></td></tr></table></figure>
+
+<p>If you installed <code>node</code> using the official package installer, the global installation directory for <code>npm</code> packages would be:</p>
+<pre><code>/usr/local/lib/node_modules
+</code></pre>
+<p>Or you could’ve installed it using Homebrew. In that case, the global installation directory would be:</p>
+<pre><code>/opt/homebrew/lib/node_modules
+</code></pre>
+<h4 id="View-global-installation"><a href="#View-global-installation" class="headerlink" title="View global installation"></a>View global installation</h4><figure class="highlight bash"><table><tr><td class="code"><pre><span class="line">npm <span class="built_in">ls</span> -g</span><br></pre></td></tr></table></figure>
+
+<pre><code>/opt/homebrew/lib
+├── @e-hentai/home@1.6.0-alpha.9
+├── express-generator@4.16.1
+├── nodemon@2.0.22
+└── npm@9.6.5
+</code></pre>
+<h4 id="Update-global-installation"><a href="#Update-global-installation" class="headerlink" title="Update global installation"></a>Update global installation</h4><figure class="highlight bash"><table><tr><td class="code"><pre><span class="line">npm update -g</span><br></pre></td></tr></table></figure>
+
+<h4 id="View-global-configuration"><a href="#View-global-configuration" class="headerlink" title="View global configuration"></a>View global configuration</h4><figure class="highlight bash"><table><tr><td class="code"><pre><span class="line">npm config list</span><br></pre></td></tr></table></figure>
+
+<p>The output should be on the lines of this:</p>
+<pre><code>; &quot;builtin&quot; config from /opt/homebrew/lib/node_modules/npm/npmrc
+
+prefix = &quot;/opt/homebrew&quot; 
+
+; &quot;user&quot; config from /Users/Mccranky/.npmrc
+
+fetch-retry-maxtimeout = 300000 
+
+; node bin location = /opt/homebrew/Cellar/node/20.0.0/bin/node
+; node version = v20.0.0
+; npm local prefix = /Users/Mccranky
+; npm version = 9.6.5
+; cwd = /Users/Mccranky
+; HOME = /Users/Mccranky
+; Run `npm config ls -l` to show all defaults.
+</code></pre>
+<p>From it, we can discern a few key instances that might prove helpful.</p>
+<blockquote>
+<p>“builtin” config is stored at <code>/opt/homebrew/lib/node_modules/npm/npmrc</code></p>
+</blockquote>
+<blockquote>
+<p>“user” config is stored at <code>/Users/Mccranky/.npmrc</code></p>
+</blockquote>
+<h4 id="Add-x2F-remove-configuration"><a href="#Add-x2F-remove-configuration" class="headerlink" title="Add&#x2F;remove configuration"></a>Add&#x2F;remove configuration</h4><figure class="highlight bash"><table><tr><td class="code"><pre><span class="line">npm config <span class="built_in">set</span> &lt;name&gt; &lt;value&gt;</span><br></pre></td></tr></table></figure>
+
+<p>For example, if I want to specify a range of time before timeout occurs, I can use the following command:</p>
+<figure class="highlight bash"><table><tr><td class="code"><pre><span class="line">npm config <span class="built_in">set</span> fetch-retry-maxtimeout 300000 // 5 minutes</span><br><span class="line"></span><br><span class="line">npm config <span class="built_in">set</span> fetch-retry-mintimeout 60000 // 1 minute</span><br><span class="line"></span><br></pre></td></tr></table></figure>
+
+<p>The same mechanism applys when it comes to how we delete configurations:</p>
+<figure class="highlight bash"><table><tr><td class="code"><pre><span class="line">npm config delete fetch-retry-maxtimeout</span><br><span class="line"></span><br><span class="line">npm config delete fetch-retry-mintimeout</span><br><span class="line"></span><br></pre></td></tr></table></figure>
+
+<h3 id="express"><a href="#express" class="headerlink" title="express"></a><em><code>express</code></em></h3><p>I’ve only just started dabbling with <code>express</code> and my expertise is cut pretty thin, but the rule of thumb I tend to follow is:</p>
+<ol>
+<li><p>If you’re installing something that you want to use in <strong>your program</strong> using <code>require(&#39;something&#39;)</code>, then install it locally, at the root of your project.</p>
+</li>
+<li><p>If you’re installing something that you want to use on the <strong>command line</strong> or something, install it globally, so that its binaries end up in your <code>$PATH</code> environment variable.</p>
+</li>
+</ol>
+<p>Based on this, you would want to install <code>express-generator</code> using the <code>-g</code> flag as you will use it as a command line tool, but you’d want to install <code>express</code> without this flag as it’s a module you will want to <code>require()</code> it in your application.</p>
+]]></content>
+      <categories>
+        <category>Node.js</category>
+      </categories>
+      <tags>
+        <tag>Node.js</tag>
+        <tag>Express.js</tag>
+        <tag>Note</tag>
+      </tags>
+  </entry>
+  <entry>
+    <title>`inpath`</title>
+    <url>/2023/04/29/%60inpath%60/</url>
+    <content><![CDATA[<p>Coding along with the book <em>Wicked Cool Shell Scripts- 101 Scripts for Linux, OS X, and UNIX Systems</em>.</p>
+<p>This is the script from Page 11:</p>
+<figure class="highlight bash"><table><tr><td class="code"><pre><span class="line"><span class="meta">#!/bin/bash</span></span><br><span class="line"></span><br><span class="line"><span class="function"><span class="title">in_path</span></span>()</span><br><span class="line">&#123;</span><br><span class="line">        cmd=<span class="variable">$1</span></span><br><span class="line">        ourpath=<span class="variable">$2</span>      </span><br><span class="line">        result=1</span><br><span class="line">        oldIFS=<span class="variable">$IFS</span>     </span><br><span class="line">        IFS=<span class="string">&quot;:&quot;</span></span><br><span class="line"> </span><br><span class="line">        <span class="keyword">for</span> directory <span class="keyword">in</span> <span class="variable">$ourpath</span>; <span class="keyword">do</span></span><br><span class="line"></span><br><span class="line">        <span class="comment"># If i double quoted `$ourpath`, it will not word split, and the loop will only run once.</span></span><br><span class="line"></span><br><span class="line">                <span class="keyword">if</span> [ -x <span class="string">&quot;<span class="variable">$directory</span>/<span class="variable">$cmd</span>&quot;</span> ]; <span class="keyword">then</span></span><br><span class="line">                        result=0</span><br><span class="line">                <span class="keyword">fi</span></span><br><span class="line">        <span class="keyword">done</span></span><br><span class="line"> </span><br><span class="line">        IFS=<span class="variable">$oldIFS</span></span><br><span class="line">        <span class="built_in">return</span> <span class="variable">$result</span></span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"><span class="function"><span class="title">checkForCmdInPath</span></span>()</span><br><span class="line">&#123;</span><br><span class="line">        var=<span class="variable">$1</span></span><br><span class="line"> </span><br><span class="line">        <span class="keyword">if</span> [ ! <span class="string">&quot;<span class="variable">$var</span>&quot;</span> = <span class="string">&quot;&quot;</span> ]; <span class="keyword">then</span></span><br><span class="line">                <span class="keyword">if</span> [ <span class="string">&quot;<span class="variable">$&#123;var:0:1&#125;</span>&quot;</span> = <span class="string">&quot;/&quot;</span> ]; <span class="keyword">then</span></span><br><span class="line">                	<span class="comment"># Checks whether the command represented by the `$var` is an absolute path or not. </span></span><br><span class="line">                        <span class="keyword">if</span> [ ! -x <span class="string">&quot;<span class="variable">$var</span>&quot;</span> ]; <span class="keyword">then</span></span><br><span class="line">                                <span class="built_in">return</span> 1</span><br><span class="line">                        <span class="keyword">fi</span></span><br><span class="line">                <span class="keyword">elif</span> ! in_path <span class="string">&quot;<span class="variable">$var</span>&quot;</span> <span class="string">&quot;<span class="variable">$PATH</span>&quot;</span>; <span class="keyword">then</span></span><br><span class="line">                        <span class="built_in">return</span> 2</span><br><span class="line">                <span class="keyword">fi</span></span><br><span class="line">        <span class="keyword">fi</span></span><br><span class="line">&#125;</span><br><span class="line"></span><br></pre></td></tr></table></figure>
+
+<h3 id="Positional-parameters"><a href="#Positional-parameters" class="headerlink" title="Positional parameters"></a>Positional parameters</h3><p>See <a href="/2023/04/29/Positional%20Parameters/">here</a></p>
+<blockquote>
+<p><strong><em>A Quick Word</em></strong>  </p>
+<p>It is good practice to put double quotes around variables in Bash because it prevents word splitting and globbing.</p>
+<ul>
+<li><p>Word splitting is the process of breaking up a string into separate words based on whitespace. If a variable contains spaces, without quotes, Bash will treat each space-separated word as a separate argument. This can cause unexpected behavior if the variable is used as an argument to a command.</p>
+</li>
+<li><p>Globbing is the process of expanding wildcard characters such as <code>*</code> and <code>?</code> into a list of matching filenames. If a variable contains a glob character, without quotes, Bash will try to expand it into a list of matching filenames. This can also cause unexpected behavior if the variable is used as an argument to a command.</p>
+</li>
+</ul>
+<p>By putting double quotes around variables, Bash treats the variable as a single argument, preserving any whitespace or glob characters within the variable. This helps to ensure that the variable is interpreted correctly and the script behaves as expected.</p>
+</blockquote>
+<h3 id="Special-variables"><a href="#Special-variables" class="headerlink" title="Special variables"></a>Special variables</h3><p><strong><em><code>$IFS</code></em></strong></p>
+<p>The internal field separator (IFS) is a special variable in Bash that specifies the delimiter used to separate fields in a string. By default, the IFS is set to whitespace (i.e., space, tab, and newline characters).</p>
+<p><strong><em>&#96;$?</em></strong></p>
+<p>Display the return values of functions.</p>
+<figure class="highlight bash"><table><tr><td class="code"><pre><span class="line"><span class="built_in">echo</span> $?</span><br></pre></td></tr></table></figure>
+
+<p>You can use it immediately after calling a function with return value.</p>
+<h3 id="Slice"><a href="#Slice" class="headerlink" title="Slice"></a>Slice</h3><pre><code>[ &quot;$&#123;var:0:1&#125;&quot; = &quot;/&quot; ];
+</code></pre>
+<p>The slicing starts at index <code>0</code> and lasts for the duration of a single character.</p>
+<h3 id="Compare"><a href="#Compare" class="headerlink" title="Compare"></a>Compare</h3><p><strong><em>String comparison</em></strong></p>
+<p><code>=</code> tests if two strings are equal. For example, if <code>[ &quot;$string1&quot; = &quot;$string2&quot; ]</code> would be true if <code>$string1</code> and <code>$string2</code> have the same value.</p>
+<p><strong><em>Pattern matching</em></strong></p>
+<p><code>==</code> tests if a string matches a pattern using globbing, which is a way to match filenames based on wildcard characters. For example, if <code>[[ &quot;$string&quot; == a* ]]</code> would be true if <code>$string</code> starts with the letter “a”.</p>
+]]></content>
+      <categories>
+        <category>Wicked Cool Shell Scripts</category>
+      </categories>
+      <tags>
+        <tag>Linux</tag>
+        <tag>ArchLinux</tag>
+        <tag>Bash</tag>
+      </tags>
+  </entry>
+  <entry>
     <title>[Fix] Failed to mount /mnt/share</title>
     <url>/2023/04/27/%5BFix%5D%20Failed%20to%20mount%20:mnt:share/</url>
     <content><![CDATA[<h3 id="Solution"><a href="#Solution" class="headerlink" title="Solution"></a>Solution</h3><p>Our fix to the problem is to remove <code>/mnt/share</code> entirely and mount something else in its place.</p>
@@ -686,225 +914,73 @@ Apr 27 02:45:46 alarm systemd[1]: Failed to mount /mnt/share.
       </tags>
   </entry>
   <entry>
-    <title>使用 Telnet 连接 GreenMail 模拟邮件服务器 (测试 SMTP / IMAP 连接)</title>
-    <url>/2023/04/21/%E4%BD%BF%E7%94%A8%20Telnet%20%E8%BF%9E%E6%8E%A5%20GreenMail%20%E6%A8%A1%E6%8B%9F%E9%82%AE%E4%BB%B6%E6%9C%8D%E5%8A%A1%E5%99%A8%20(%E6%B5%8B%E8%AF%95%20SMTP%20:%20IMAP%20%E8%BF%9E%E6%8E%A5)/</url>
+    <title>使用 Hexo 生成静态网页博客</title>
+    <url>/2023/04/22/%E4%BD%BF%E7%94%A8%20Hexo%20%E7%94%9F%E6%88%90%E9%9D%99%E6%80%81%E7%BD%91%E9%A1%B5%E5%8D%9A%E5%AE%A2/</url>
     <content><![CDATA[<h3 id="要求"><a href="#要求" class="headerlink" title="要求"></a><em>要求</em></h3><ul>
-<li><p>GreenMail Standalone</p>
+<li><p>Node.js</p>
 </li>
-<li><p>本地 Apache 服务器</p>
+<li><p>Git</p>
 </li>
 </ul>
-<h3 id="下载"><a href="#下载" class="headerlink" title="下载"></a><em>下载</em></h3><ol>
-<li><p>从<a href="https://greenmail-mail-test.github.io/greenmail/#download" title="GreenMail Download"> GreenMail 官网</a>直接下载</p>
+<h3 id="下载"><a href="#下载" class="headerlink" title="下载"></a><em>下载</em></h3><ul>
+<li><p><a href="https://nodejs.org/dist/v18.15.0/node-v18.15.0.pkg" title="Download Node (LTS)">官网下载 Node.js 安装包</a></p>
 </li>
-<li><p>使用命令行指令下载：</p>
+<li><p><a href="https://git-scm.com/downloads" title="Download Git">官网下载 Git</a></p>
 </li>
-</ol>
-<figure class="highlight bash"><table><tr><td class="code"><pre><span class="line"><span class="built_in">cd</span> /home/user/</span><br><span class="line"></span><br><span class="line">wget https://repo1.maven.org/maven2/com/icegreen/greenmail-standalone/2.1.0-alpha-1/greenmail-standalone-2.1.0-alpha-1.jar</span><br></pre></td></tr></table></figure>
+</ul>
+<p>– <strong>请注意参考个人电脑的操作系统！</strong></p>
+<p>进入 Terminal 查看安装的版本：</p>
+<figure class="highlight bash"><table><tr><td class="code"><pre><span class="line">node --version <span class="comment"># v18.16.0</span></span><br><span class="line"></span><br><span class="line">git --version <span class="comment"># git version 2.40.0</span></span><br></pre></td></tr></table></figure>
 
-<p>下载完成以后从终端运行<code>.jar</code>文件：</p>
-<figure class="highlight bash"><table><tr><td class="code"><pre><span class="line">java -Dgreenmail.smtp.timeout=120000 -Dgreenmail.smtp.hostname=0.0.0.0 -Dgreenmail.smtp.port=3025 -Dgreenmail.imap.hostname=0.0.0.0 -Dgreenmail.imap.port=3143 -jar /path/to/file/greenmail-standalone-2.1.0-alpha-1.jar</span><br></pre></td></tr></table></figure>
+<h3 id="Quick-Start"><a href="#Quick-Start" class="headerlink" title="Quick Start"></a>Quick Start</h3><figure class="highlight bash"><table><tr><td class="code"><pre><span class="line">hexo init my-blog</span><br><span class="line"></span><br><span class="line"><span class="built_in">cd</span> my-blog</span><br><span class="line"></span><br><span class="line"><span class="comment"># 因为 hexo 是基于 Node.js 完成的框架，所以完成第一步之后无需再执行 `npm init -y` 生成 package.json 文件</span></span><br><span class="line"></span><br><span class="line">npm i </span><br><span class="line"></span><br><span class="line">hexo server</span><br></pre></td></tr></table></figure>
+
+<p>接着我们去 <code>localhost:4000</code> 就能看到我们的博客了！</p>
+<h3 id="项目树状结构图"><a href="#项目树状结构图" class="headerlink" title="项目树状结构图"></a>项目树状结构图</h3><p>我们首先来了解一下我们的项目文件夹下面有些什么：</p>
+<figure class="highlight plaintext"><table><tr><td class="code"><pre><span class="line">.</span><br><span class="line">├── _config.landscape.yml</span><br><span class="line">├── _config.yml</span><br><span class="line">├── db.json</span><br><span class="line">├── node_modules</span><br><span class="line">├── package-lock.json</span><br><span class="line">├── package.json</span><br><span class="line">├── public</span><br><span class="line">├── scaffolds</span><br><span class="line">├── source</span><br><span class="line">├── themes</span><br><span class="line">└── yarn.lock</span><br></pre></td></tr></table></figure>
+
+<ul>
+<li><a href="/2023/04/22/%E5%A6%82%E4%BD%95%E7%94%9F%E6%88%90%E9%A1%B9%E7%9B%AE%E6%A0%91%E7%8A%B6%E7%BB%93%E6%9E%84%E5%9B%BE/index.html">如何生成项目树状结构图</a></li>
+</ul>
+<blockquote>
+<p><code>_config.yml</code>：Hexo 博客设置</p>
+</blockquote>
+<blockquote>
+<p><code>node_modules</code>：存放启动需要使用的模组</p>
+</blockquote>
+<blockquote>
+<p><code>public</code>：存放生成的静态网页</p>
+</blockquote>
+<figure class="highlight plaintext"><table><tr><td class="code"><pre><span class="line">public</span><br><span class="line">├── 2023</span><br><span class="line">├── README.md</span><br><span class="line">├── archives</span><br><span class="line">├── assets</span><br><span class="line">├── css</span><br><span class="line">├── fontawesome</span><br><span class="line">├── fonts</span><br><span class="line">├── images</span><br><span class="line">├── index.html</span><br><span class="line">├── js</span><br><span class="line">├── tags</span><br><span class="line">└── webfonts</span><br></pre></td></tr></table></figure>
 
 <blockquote>
-<p><code>-Dgreenmail.smtp.timeout</code>：为防止 SMTP 服务器超时，把超时时常设置为 120000 毫秒</p>
+<p><code>scaffolds</code>：存放 Hexo 个人博客的 3 种模版：page (白页)，post (博客)，draft (草稿)</p>
 </blockquote>
-<blockquote>
-<p><code>-Dgreenmail.smtp.hostname</code>, <code>Dgreenmail.smtp.port</code>：设置 SMTP 地址和端口</p>
-</blockquote>
-<blockquote>
-<p><code>-Dgreenmail.imap.hostname</code>, <code>-Dgreenmail.imap.port</code>：设置 IMAP 地址和端口</p>
-</blockquote>
-<h3 id="连接-SMTP-服务器"><a href="#连接-SMTP-服务器" class="headerlink" title="连接 SMTP 服务器"></a>连接 SMTP 服务器</h3><p>开启 Telnet 进程，连接到 SMTP 服务器的 3025 端口：</p>
-<figure class="highlight bash"><table><tr><td class="code"><pre><span class="line">telent localhost 3025</span><br><span class="line"></span><br><span class="line"><span class="comment"># 因为是模拟握手，所以服务器地址就是本地域名</span></span><br></pre></td></tr></table></figure>
+<figure class="highlight plaintext"><table><tr><td class="code"><pre><span class="line">scaffolds</span><br><span class="line">├── draft.md</span><br><span class="line">├── page.md</span><br><span class="line">└── post.md</span><br></pre></td></tr></table></figure>
 
-<pre><code>telnet localhost 3025
-Trying ::1...
-Connected to localhost.
-Escape character is &#39;^]&#39;.
-220 /0:0:0:0:0:0:0:1 GreenMail SMTP Service v2.1.0-alpha-1 ready
-421 Service shutting down and closing transmission channel (socket timeout, SO_TIMEOUT: 30000ms)
-</code></pre>
-<p>握手成功了！接下里可以输入四字指令和 SMTP 服务器交流：</p>
-<pre><code>C: HELO localhost
-S: 250-/0:0:0:0:0:0:0:1
-   250 AUTH PLAIN LOGIN
-C: MAIL FROM: &lt;example@email.com&gt;
-S: 250 OK
-C: RCPT TO: &lt;example@email.com&gt;
-S: 250 OK
-C: DATA
-S: 354 Start mail input; end with &lt;CRLF&gt;.&lt;CRLF&gt;
-C: HELLO THERE
-   THIS IS USER SPEAKING
-   .
-S: 250 OK
-C: QUIT
-S: 221 /0:0:0:0:0:0:0:1 Service closing transmission channel
-   Connection closed by foreign host.
-</code></pre>
-<p>解释一下这些缩写是什么意思：</p>
 <blockquote>
-<p><code>HELO</code>: hello</p>
+<p><code>source</code>：存放博客<code>.md</code>文件</p>
 </blockquote>
 <blockquote>
-<p><code>RCPT</code>: recipient</p>
+<p><code>themes</code>：存放<code>Custom</code>主题，从<code>npm</code>下载的主题存放在<code>node_modules</code>里</p>
 </blockquote>
-<blockquote>
-<p><code>CRLF</code>: carriage return &amp; line feed</p>
-</blockquote>
-<hr>
-<h3 id="连接-IMAP-服务器"><a href="#连接-IMAP-服务器" class="headerlink" title="连接 IMAP 服务器"></a>连接 IMAP 服务器</h3><p><strong><em>认证阶段</em></strong></p>
-<pre><code>  telnet mailServer 110
-  +OK POP3 server ready
-  user bob
-  +OK
-  pass hungry
-  +OK user successfully logged on
-</code></pre>
-<p><strong><em>交易阶段</em></strong></p>
-<pre><code>  C: list
-  S: 1 498
-  S: 2 912
-  S: .
-  C: retr 1
-  S: (blah blah ...
-  S: .................
-  S: ..........blah)
-  S: .
-  C: dele 1
-  C: retr 2
-  S: (blah blah ...
-  S: .................
-  S: ..........blah)
-  S: .
-  C: dele 2
-  C: quit
-  S: +OK POP3 server signing off
-</code></pre>
-<p>用户在这个阶段可以给邮件添加标记，被添加<strong>删除标记</strong>的邮件将在最后的更新阶段被<strong>删除</strong>。</p>
+<h3 id="第一篇博客"><a href="#第一篇博客" class="headerlink" title="第一篇博客"></a>第一篇博客</h3><p>我们先从草稿开始：</p>
+<figure class="highlight bash"><table><tr><td class="code"><pre><span class="line">hexo new draft first-draft</span><br></pre></td></tr></table></figure>
+
+<p>Hexo 会帮我们在<code>/source/_drafts/</code>文件夹里创建我们的第一篇草稿。</p>
+<p>如果觉得写得差不多了，我们可以：</p>
+<figure class="highlight bash"><table><tr><td class="code"><pre><span class="line">hexo publish first-draft</span><br></pre></td></tr></table></figure>
+
+<p>Hexo 会自动帮我们把<code>first-draft.md</code>移动到<code>/source/_posts/</code>文件夹里，这样当我们打开服务器的时候就能看到这篇博客了。</p>
+<p>当然我们也可以带参数运行<code>hexo server</code>：</p>
+<figure class="highlight bash"><table><tr><td class="code"><pre><span class="line">hexo server --draft</span><br></pre></td></tr></table></figure>
+<p>这样我们在写草稿时也能看到最终的布局，方便我们对内容排版进行修改。</p>
+<h3 id="修改-config-yml文件"><a href="#修改-config-yml文件" class="headerlink" title="修改_config.yml文件"></a>修改<code>_config.yml</code>文件</h3><p>我们可以通过修改设置文件来改变 Hexo 的一些初始行为，比如说在 Writing 一栏里改变<code>default_layout</code>变量的参数可以改变<code>hexo new</code>创建的文件类型。</p>
+<figure class="highlight yml"><table><tr><td class="code"><pre><span class="line"><span class="comment"># Writing</span></span><br><span class="line"><span class="attr">default_layout:</span> <span class="string">post</span></span><br></pre></td></tr></table></figure>
+<p>这样我们就不用每次<code>hexo new</code>时还需要特地指定创建的文件类型了。</p>
 ]]></content>
       <tags>
-        <tag>Computer Networking</tag>
-      </tags>
-  </entry>
-  <entry>
-    <title>Installing Puppet server on ArchLinux</title>
-    <url>/2023/04/27/Installing%20Puppet%20server%20on%20ArchLinux/</url>
-    <content><![CDATA[<h3 id="Installation"><a href="#Installation" class="headerlink" title="Installation"></a>Installation</h3><p>To install puppet server first add the upstream GPG key:</p>
-<pre><code>$ gpg --fetch-keys https://yum.puppetlabs.com/RPM-GPG-KEY-puppet-20250406
-</code></pre>
-<div>
-    Then install the <a href="https://aur.archlinux.org/packages/puppetserver"><b>puppetserver</b></a><sup>AUR</sup> package.
-</div>
-
-<figure class="highlight bash"><table><tr><td class="code"><pre><span class="line">git <span class="built_in">clone</span> https://aur.archlinux.org/puppetserver.git</span><br><span class="line"></span><br><span class="line"><span class="built_in">cd</span> puppetserver/</span><br><span class="line"></span><br><span class="line">makepkg -si</span><br><span class="line"></span><br></pre></td></tr></table></figure>
-
-<p>Having questions about the <code>makepkg</code> command? Visit <a href="/2023/04/25/Running%20ArchLinux%20ARM%20in%20UTM%20on%20a%20M1%20MacBook%20Air/#yay" title="makepkg">here</a>!</p>
-<div>
-    Afterwards, enable and start the <b>puppetserver</b> service.
-</div>
-
-<figure class="highlight bash"><table><tr><td class="code"><pre><span class="line">sudo systemctl <span class="built_in">enable</span> puppetserver.service</span><br><span class="line"></span><br><span class="line"><span class="comment"># Add to &quot;/etc/systemd/system/multi-user.target.wants&quot;.</span></span><br><span class="line"></span><br><span class="line">sudo systemctl start puppetserver.service</span><br><span class="line"></span><br></pre></td></tr></table></figure>
-
-<h3 id="Delete-a-key"><a href="#Delete-a-key" class="headerlink" title="Delete a key"></a>Delete a key</h3><p>List the keys in your keyring using the command <code>gpg --list-keys</code>:</p>
-<pre><code>$ gpg --list-keys
-/root/.gnupg/pubring.kbx
-------------------------
-pub   rsa4096 2019-04-08 [SC] [expires: 2025-04-06]
-      D6811ED3ADEEB8441AF5AA8F4528B6CD9E61EF26
-uid           [ unknown] Puppet, Inc. Release Key (Puppet, Inc. Release Key) &lt;release@puppet.com&gt;
-</code></pre>
-<p>For example, the key ID of the instance above is “D6811ED3ADEEB8441AF5AA8F4528B6CD9E61EF26”.</p>
-<p>Delete the key using the command <code>gpg --delete-keys [key ID]</code>.</p>
-<p>Note that deleting a key from your keyring will prevent you from verifying any signatures made with that key in the future. If you need to use the key again later, you will need to fetch it again using the <code>gpg --fetch-keys</code> command.</p>
-<blockquote>
-<p>Configuration</p>
-</blockquote>
-<p>The Puppet Server’s configuration files are stored in <code>/etc/puppetlabs/puppetserver/</code>.</p>
-]]></content>
-      <categories>
-        <category>Puppet</category>
-      </categories>
-      <tags>
-        <tag>Linux</tag>
-        <tag>ArchLinux</tag>
-        <tag>Puppet</tag>
-        <tag>server</tag>
-        <tag>GPG key</tag>
-      </tags>
-  </entry>
-  <entry>
-    <title>`node` in the command line</title>
-    <url>/2023/04/28/%60node%60%20in%20the%20command%20line/</url>
-    <content><![CDATA[<p>I ran into this hassle the other day when my <code>npm</code> command failed to work in the command line. It took me a while to sort things out and left me in a foul mood. To prevent something like that from happening again, I decided to write this post. Nothing fancy - just some commands that might prove helpful in the long run.</p>
-<h3 id="node"><a href="#node" class="headerlink" title="node"></a><em><code>node</code></em></h3><h4 id="Display-global-installation-directory"><a href="#Display-global-installation-directory" class="headerlink" title="Display global installation directory"></a>Display global installation directory</h4><figure class="highlight bash"><table><tr><td class="code"><pre><span class="line">npm root -g</span><br></pre></td></tr></table></figure>
-
-<p>If you installed <code>node</code> using the official package installer, the global installation directory for <code>npm</code> packages would be:</p>
-<pre><code>/usr/local/lib/node_modules
-</code></pre>
-<p>Or you could’ve installed it using Homebrew. In that case, the global installation directory would be:</p>
-<pre><code>/opt/homebrew/lib/node_modules
-</code></pre>
-<h4 id="View-global-installation"><a href="#View-global-installation" class="headerlink" title="View global installation"></a>View global installation</h4><figure class="highlight bash"><table><tr><td class="code"><pre><span class="line">npm <span class="built_in">ls</span> -g</span><br></pre></td></tr></table></figure>
-
-<pre><code>/opt/homebrew/lib
-├── @e-hentai/home@1.6.0-alpha.9
-├── express-generator@4.16.1
-├── nodemon@2.0.22
-└── npm@9.6.5
-</code></pre>
-<h4 id="Update-global-installation"><a href="#Update-global-installation" class="headerlink" title="Update global installation"></a>Update global installation</h4><figure class="highlight bash"><table><tr><td class="code"><pre><span class="line">npm update -g</span><br></pre></td></tr></table></figure>
-
-<h4 id="View-global-configuration"><a href="#View-global-configuration" class="headerlink" title="View global configuration"></a>View global configuration</h4><figure class="highlight bash"><table><tr><td class="code"><pre><span class="line">npm config list</span><br></pre></td></tr></table></figure>
-
-<p>The output should be on the lines of this:</p>
-<pre><code>; &quot;builtin&quot; config from /opt/homebrew/lib/node_modules/npm/npmrc
-
-prefix = &quot;/opt/homebrew&quot; 
-
-; &quot;user&quot; config from /Users/Mccranky/.npmrc
-
-fetch-retry-maxtimeout = 300000 
-
-; node bin location = /opt/homebrew/Cellar/node/20.0.0/bin/node
-; node version = v20.0.0
-; npm local prefix = /Users/Mccranky
-; npm version = 9.6.5
-; cwd = /Users/Mccranky
-; HOME = /Users/Mccranky
-; Run `npm config ls -l` to show all defaults.
-</code></pre>
-<p>From it, we can discern a few key instances that might prove helpful.</p>
-<blockquote>
-<p>“builtin” config is stored at <code>/opt/homebrew/lib/node_modules/npm/npmrc</code></p>
-</blockquote>
-<blockquote>
-<p>“user” config is stored at <code>/Users/Mccranky/.npmrc</code></p>
-</blockquote>
-<h4 id="Add-x2F-remove-configuration"><a href="#Add-x2F-remove-configuration" class="headerlink" title="Add&#x2F;remove configuration"></a>Add&#x2F;remove configuration</h4><figure class="highlight bash"><table><tr><td class="code"><pre><span class="line">npm config <span class="built_in">set</span> &lt;name&gt; &lt;value&gt;</span><br></pre></td></tr></table></figure>
-
-<p>For example, if I want to specify a range of time before timeout occurs, I can use the following command:</p>
-<figure class="highlight bash"><table><tr><td class="code"><pre><span class="line">npm config <span class="built_in">set</span> fetch-retry-maxtimeout 300000 // 5 minutes</span><br><span class="line"></span><br><span class="line">npm config <span class="built_in">set</span> fetch-retry-mintimeout 60000 // 1 minute</span><br><span class="line"></span><br></pre></td></tr></table></figure>
-
-<p>The same mechanism applys when it comes to how we delete configurations:</p>
-<figure class="highlight bash"><table><tr><td class="code"><pre><span class="line">npm config delete fetch-retry-maxtimeout</span><br><span class="line"></span><br><span class="line">npm config delete fetch-retry-mintimeout</span><br><span class="line"></span><br></pre></td></tr></table></figure>
-
-<h3 id="express"><a href="#express" class="headerlink" title="express"></a><em><code>express</code></em></h3><p>I’ve only just started dabbling with <code>express</code> and my expertise is cut pretty thin, but the rule of thumb I tend to follow is:</p>
-<ol>
-<li><p>If you’re installing something that you want to use in <strong>your program</strong> using <code>require(&#39;something&#39;)</code>, then install it locally, at the root of your project.</p>
-</li>
-<li><p>If you’re installing something that you want to use on the <strong>command line</strong> or something, install it globally, so that its binaries end up in your <code>$PATH</code> environment variable.</p>
-</li>
-</ol>
-<p>Based on this, you would want to install <code>express-generator</code> using the <code>-g</code> flag as you will use it as a command line tool, but you’d want to install <code>express</code> without this flag as it’s a module you will want to <code>require()</code> it in your application.</p>
-]]></content>
-      <categories>
-        <category>Node.js</category>
-      </categories>
-      <tags>
-        <tag>Node.js</tag>
-        <tag>Express.js</tag>
-        <tag>Note</tag>
+        <tag>Bash</tag>
+        <tag>Hexo</tag>
       </tags>
   </entry>
   <entry>
@@ -1035,76 +1111,6 @@ fetch-retry-maxtimeout = 300000
       </tags>
   </entry>
   <entry>
-    <title>使用 Hexo 生成静态网页博客</title>
-    <url>/2023/04/22/%E4%BD%BF%E7%94%A8%20Hexo%20%E7%94%9F%E6%88%90%E9%9D%99%E6%80%81%E7%BD%91%E9%A1%B5%E5%8D%9A%E5%AE%A2/</url>
-    <content><![CDATA[<h3 id="要求"><a href="#要求" class="headerlink" title="要求"></a><em>要求</em></h3><ul>
-<li><p>Node.js</p>
-</li>
-<li><p>Git</p>
-</li>
-</ul>
-<h3 id="下载"><a href="#下载" class="headerlink" title="下载"></a><em>下载</em></h3><ul>
-<li><p><a href="https://nodejs.org/dist/v18.15.0/node-v18.15.0.pkg" title="Download Node (LTS)">官网下载 Node.js 安装包</a></p>
-</li>
-<li><p><a href="https://git-scm.com/downloads" title="Download Git">官网下载 Git</a></p>
-</li>
-</ul>
-<p>– <strong>请注意参考个人电脑的操作系统！</strong></p>
-<p>进入 Terminal 查看安装的版本：</p>
-<figure class="highlight bash"><table><tr><td class="code"><pre><span class="line">node --version <span class="comment"># v18.16.0</span></span><br><span class="line"></span><br><span class="line">git --version <span class="comment"># git version 2.40.0</span></span><br></pre></td></tr></table></figure>
-
-<h3 id="Quick-Start"><a href="#Quick-Start" class="headerlink" title="Quick Start"></a>Quick Start</h3><figure class="highlight bash"><table><tr><td class="code"><pre><span class="line">hexo init my-blog</span><br><span class="line"></span><br><span class="line"><span class="built_in">cd</span> my-blog</span><br><span class="line"></span><br><span class="line"><span class="comment"># 因为 hexo 是基于 Node.js 完成的框架，所以完成第一步之后无需再执行 `npm init -y` 生成 package.json 文件</span></span><br><span class="line"></span><br><span class="line">npm i </span><br><span class="line"></span><br><span class="line">hexo server</span><br></pre></td></tr></table></figure>
-
-<p>接着我们去 <code>localhost:4000</code> 就能看到我们的博客了！</p>
-<h3 id="项目树状结构图"><a href="#项目树状结构图" class="headerlink" title="项目树状结构图"></a>项目树状结构图</h3><p>我们首先来了解一下我们的项目文件夹下面有些什么：</p>
-<figure class="highlight plaintext"><table><tr><td class="code"><pre><span class="line">.</span><br><span class="line">├── _config.landscape.yml</span><br><span class="line">├── _config.yml</span><br><span class="line">├── db.json</span><br><span class="line">├── node_modules</span><br><span class="line">├── package-lock.json</span><br><span class="line">├── package.json</span><br><span class="line">├── public</span><br><span class="line">├── scaffolds</span><br><span class="line">├── source</span><br><span class="line">├── themes</span><br><span class="line">└── yarn.lock</span><br></pre></td></tr></table></figure>
-
-<ul>
-<li><a href="/2023/04/22/%E5%A6%82%E4%BD%95%E7%94%9F%E6%88%90%E9%A1%B9%E7%9B%AE%E6%A0%91%E7%8A%B6%E7%BB%93%E6%9E%84%E5%9B%BE/index.html">如何生成项目树状结构图</a></li>
-</ul>
-<blockquote>
-<p><code>_config.yml</code>：Hexo 博客设置</p>
-</blockquote>
-<blockquote>
-<p><code>node_modules</code>：存放启动需要使用的模组</p>
-</blockquote>
-<blockquote>
-<p><code>public</code>：存放生成的静态网页</p>
-</blockquote>
-<figure class="highlight plaintext"><table><tr><td class="code"><pre><span class="line">public</span><br><span class="line">├── 2023</span><br><span class="line">├── README.md</span><br><span class="line">├── archives</span><br><span class="line">├── assets</span><br><span class="line">├── css</span><br><span class="line">├── fontawesome</span><br><span class="line">├── fonts</span><br><span class="line">├── images</span><br><span class="line">├── index.html</span><br><span class="line">├── js</span><br><span class="line">├── tags</span><br><span class="line">└── webfonts</span><br></pre></td></tr></table></figure>
-
-<blockquote>
-<p><code>scaffolds</code>：存放 Hexo 个人博客的 3 种模版：page (白页)，post (博客)，draft (草稿)</p>
-</blockquote>
-<figure class="highlight plaintext"><table><tr><td class="code"><pre><span class="line">scaffolds</span><br><span class="line">├── draft.md</span><br><span class="line">├── page.md</span><br><span class="line">└── post.md</span><br></pre></td></tr></table></figure>
-
-<blockquote>
-<p><code>source</code>：存放博客<code>.md</code>文件</p>
-</blockquote>
-<blockquote>
-<p><code>themes</code>：存放<code>Custom</code>主题，从<code>npm</code>下载的主题存放在<code>node_modules</code>里</p>
-</blockquote>
-<h3 id="第一篇博客"><a href="#第一篇博客" class="headerlink" title="第一篇博客"></a>第一篇博客</h3><p>我们先从草稿开始：</p>
-<figure class="highlight bash"><table><tr><td class="code"><pre><span class="line">hexo new draft first-draft</span><br></pre></td></tr></table></figure>
-
-<p>Hexo 会帮我们在<code>/source/_drafts/</code>文件夹里创建我们的第一篇草稿。</p>
-<p>如果觉得写得差不多了，我们可以：</p>
-<figure class="highlight bash"><table><tr><td class="code"><pre><span class="line">hexo publish first-draft</span><br></pre></td></tr></table></figure>
-
-<p>Hexo 会自动帮我们把<code>first-draft.md</code>移动到<code>/source/_posts/</code>文件夹里，这样当我们打开服务器的时候就能看到这篇博客了。</p>
-<p>当然我们也可以带参数运行<code>hexo server</code>：</p>
-<figure class="highlight bash"><table><tr><td class="code"><pre><span class="line">hexo server --draft</span><br></pre></td></tr></table></figure>
-<p>这样我们在写草稿时也能看到最终的布局，方便我们对内容排版进行修改。</p>
-<h3 id="修改-config-yml文件"><a href="#修改-config-yml文件" class="headerlink" title="修改_config.yml文件"></a>修改<code>_config.yml</code>文件</h3><p>我们可以通过修改设置文件来改变 Hexo 的一些初始行为，比如说在 Writing 一栏里改变<code>default_layout</code>变量的参数可以改变<code>hexo new</code>创建的文件类型。</p>
-<figure class="highlight yml"><table><tr><td class="code"><pre><span class="line"><span class="comment"># Writing</span></span><br><span class="line"><span class="attr">default_layout:</span> <span class="string">post</span></span><br></pre></td></tr></table></figure>
-<p>这样我们就不用每次<code>hexo new</code>时还需要特地指定创建的文件类型了。</p>
-]]></content>
-      <tags>
-        <tag>Bash</tag>
-        <tag>Hexo</tag>
-      </tags>
-  </entry>
-  <entry>
     <title>软件工程 第三周的博客</title>
     <url>/2023/04/07/%E8%BD%AF%E4%BB%B6%E5%B7%A5%E7%A8%8B%20%E7%AC%AC%E4%B8%89%E5%91%A8%E7%9A%84%E5%8D%9A%E5%AE%A2/</url>
     <content><![CDATA[<h2 id="简要概述-CTF-OverTheWire-Bandit-Level-24"><a href="#简要概述-CTF-OverTheWire-Bandit-Level-24" class="headerlink" title="简要概述 CTF OverTheWire Bandit Level 24"></a><em>简要概述 CTF OverTheWire Bandit Level 24</em></h2><h3 id="题目"><a href="#题目" class="headerlink" title="题目"></a><em>题目</em></h3><blockquote>
@@ -1184,49 +1190,6 @@ fetch-retry-maxtimeout = 300000
       </tags>
   </entry>
   <entry>
-    <title>`inpath`</title>
-    <url>/2023/04/29/%60inpath%60/</url>
-    <content><![CDATA[<p>Coding along with the book <em>Wicked Cool Shell Scripts- 101 Scripts for Linux, OS X, and UNIX Systems</em>.</p>
-<p>This is the script from Page 11:</p>
-<figure class="highlight bash"><table><tr><td class="code"><pre><span class="line"><span class="meta">#!/bin/bash</span></span><br><span class="line"></span><br><span class="line"><span class="function"><span class="title">in_path</span></span>()</span><br><span class="line">&#123;</span><br><span class="line">        cmd=<span class="variable">$1</span></span><br><span class="line">        ourpath=<span class="variable">$2</span>      </span><br><span class="line">        result=1</span><br><span class="line">        oldIFS=<span class="variable">$IFS</span>     </span><br><span class="line">        IFS=<span class="string">&quot;:&quot;</span></span><br><span class="line"> </span><br><span class="line">        <span class="keyword">for</span> directory <span class="keyword">in</span> <span class="variable">$ourpath</span>; <span class="keyword">do</span></span><br><span class="line"></span><br><span class="line">        <span class="comment"># If i double quoted `$ourpath`, it will not word split, and the loop will only run once.</span></span><br><span class="line"></span><br><span class="line">                <span class="keyword">if</span> [ -x <span class="string">&quot;<span class="variable">$directory</span>/<span class="variable">$cmd</span>&quot;</span> ]; <span class="keyword">then</span></span><br><span class="line">                        result=0</span><br><span class="line">                <span class="keyword">fi</span></span><br><span class="line">        <span class="keyword">done</span></span><br><span class="line"> </span><br><span class="line">        IFS=<span class="variable">$oldIFS</span></span><br><span class="line">        <span class="built_in">return</span> <span class="variable">$result</span></span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"><span class="function"><span class="title">checkForCmdInPath</span></span>()</span><br><span class="line">&#123;</span><br><span class="line">        var=<span class="variable">$1</span></span><br><span class="line"> </span><br><span class="line">        <span class="keyword">if</span> [ ! <span class="string">&quot;<span class="variable">$var</span>&quot;</span> = <span class="string">&quot;&quot;</span> ]; <span class="keyword">then</span></span><br><span class="line">                <span class="keyword">if</span> [ <span class="string">&quot;<span class="variable">$&#123;var:0:1&#125;</span>&quot;</span> = <span class="string">&quot;/&quot;</span> ]; <span class="keyword">then</span></span><br><span class="line">                	<span class="comment"># Checks whether the command represented by the `$var` is an absolute path or not. </span></span><br><span class="line">                        <span class="keyword">if</span> [ ! -x <span class="string">&quot;<span class="variable">$var</span>&quot;</span> ]; <span class="keyword">then</span></span><br><span class="line">                                <span class="built_in">return</span> 1</span><br><span class="line">                        <span class="keyword">fi</span></span><br><span class="line">                <span class="keyword">elif</span> ! in_path <span class="string">&quot;<span class="variable">$var</span>&quot;</span> <span class="string">&quot;<span class="variable">$PATH</span>&quot;</span>; <span class="keyword">then</span></span><br><span class="line">                        <span class="built_in">return</span> 2</span><br><span class="line">                <span class="keyword">fi</span></span><br><span class="line">        <span class="keyword">fi</span></span><br><span class="line">&#125;</span><br><span class="line"></span><br></pre></td></tr></table></figure>
-
-<h3 id="Positional-parameters"><a href="#Positional-parameters" class="headerlink" title="Positional parameters"></a>Positional parameters</h3><p>See <a href="/2023/04/29/Positional%20Parameters/">here</a></p>
-<blockquote>
-<p><strong><em>A Quick Word</em></strong>  </p>
-<p>It is good practice to put double quotes around variables in Bash because it prevents word splitting and globbing.</p>
-<ul>
-<li><p>Word splitting is the process of breaking up a string into separate words based on whitespace. If a variable contains spaces, without quotes, Bash will treat each space-separated word as a separate argument. This can cause unexpected behavior if the variable is used as an argument to a command.</p>
-</li>
-<li><p>Globbing is the process of expanding wildcard characters such as <code>*</code> and <code>?</code> into a list of matching filenames. If a variable contains a glob character, without quotes, Bash will try to expand it into a list of matching filenames. This can also cause unexpected behavior if the variable is used as an argument to a command.</p>
-</li>
-</ul>
-<p>By putting double quotes around variables, Bash treats the variable as a single argument, preserving any whitespace or glob characters within the variable. This helps to ensure that the variable is interpreted correctly and the script behaves as expected.</p>
-</blockquote>
-<h3 id="Special-variables"><a href="#Special-variables" class="headerlink" title="Special variables"></a>Special variables</h3><p><strong><em><code>$IFS</code></em></strong></p>
-<p>The internal field separator (IFS) is a special variable in Bash that specifies the delimiter used to separate fields in a string. By default, the IFS is set to whitespace (i.e., space, tab, and newline characters).</p>
-<p><strong><em>&#96;$?</em></strong></p>
-<p>Display the return values of functions.</p>
-<figure class="highlight bash"><table><tr><td class="code"><pre><span class="line"><span class="built_in">echo</span> $?</span><br></pre></td></tr></table></figure>
-
-<p>You can use it immediately after calling a function with return value.</p>
-<h3 id="Slice"><a href="#Slice" class="headerlink" title="Slice"></a>Slice</h3><pre><code>[ &quot;$&#123;var:0:1&#125;&quot; = &quot;/&quot; ];
-</code></pre>
-<p>The slicing starts at index <code>0</code> and lasts for the duration of a single character.</p>
-<h3 id="Compare"><a href="#Compare" class="headerlink" title="Compare"></a>Compare</h3><p><strong><em>String comparison</em></strong></p>
-<p><code>=</code> tests if two strings are equal. For example, if <code>[ &quot;$string1&quot; = &quot;$string2&quot; ]</code> would be true if <code>$string1</code> and <code>$string2</code> have the same value.</p>
-<p><strong><em>Pattern matching</em></strong></p>
-<p><code>==</code> tests if a string matches a pattern using globbing, which is a way to match filenames based on wildcard characters. For example, if <code>[[ &quot;$string&quot; == a* ]]</code> would be true if <code>$string</code> starts with the letter “a”.</p>
-]]></content>
-      <categories>
-        <category>Wicked Cool Shell Scripts</category>
-      </categories>
-      <tags>
-        <tag>Linux</tag>
-        <tag>ArchLinux</tag>
-        <tag>Bash</tag>
-      </tags>
-  </entry>
-  <entry>
     <title>软件工程 第二周的博客</title>
     <url>/2023/03/29/%E8%BD%AF%E4%BB%B6%E5%B7%A5%E7%A8%8B%20%E7%AC%AC%E4%BA%8C%E5%91%A8%E7%9A%84%E5%8D%9A%E5%AE%A2/</url>
     <content><![CDATA[<h3 id="使用-Node-js-的-Express-js-模组-Host-自己的静态网页"><a href="#使用-Node-js-的-Express-js-模组-Host-自己的静态网页" class="headerlink" title="使用 Node.js 的 Express.js 模组 Host 自己的静态网页"></a><em>使用 Node.js 的 Express.js 模组 Host 自己的静态网页</em></h3><p>首先创建项目文件夹:</p>
@@ -1266,6 +1229,108 @@ fetch-retry-maxtimeout = 300000
         <tag>JavaScript</tag>
         <tag>Node.js</tag>
         <tag>Express.js</tag>
+      </tags>
+  </entry>
+  <entry>
+    <title>使用 Telnet 连接 GreenMail 模拟邮件服务器 (测试 SMTP / IMAP 连接)</title>
+    <url>/2023/04/21/%E4%BD%BF%E7%94%A8%20Telnet%20%E8%BF%9E%E6%8E%A5%20GreenMail%20%E6%A8%A1%E6%8B%9F%E9%82%AE%E4%BB%B6%E6%9C%8D%E5%8A%A1%E5%99%A8%20(%E6%B5%8B%E8%AF%95%20SMTP%20:%20IMAP%20%E8%BF%9E%E6%8E%A5)/</url>
+    <content><![CDATA[<h3 id="要求"><a href="#要求" class="headerlink" title="要求"></a><em>要求</em></h3><ul>
+<li><p>GreenMail Standalone</p>
+</li>
+<li><p>本地 Apache 服务器</p>
+</li>
+</ul>
+<h3 id="下载"><a href="#下载" class="headerlink" title="下载"></a><em>下载</em></h3><ol>
+<li><p>从<a href="https://greenmail-mail-test.github.io/greenmail/#download" title="GreenMail Download"> GreenMail 官网</a>直接下载</p>
+</li>
+<li><p>使用命令行指令下载：</p>
+</li>
+</ol>
+<figure class="highlight bash"><table><tr><td class="code"><pre><span class="line"><span class="built_in">cd</span> /home/user/</span><br><span class="line"></span><br><span class="line">wget https://repo1.maven.org/maven2/com/icegreen/greenmail-standalone/2.1.0-alpha-1/greenmail-standalone-2.1.0-alpha-1.jar</span><br></pre></td></tr></table></figure>
+
+<p>下载完成以后从终端运行<code>.jar</code>文件：</p>
+<figure class="highlight bash"><table><tr><td class="code"><pre><span class="line">java -Dgreenmail.smtp.timeout=120000 -Dgreenmail.smtp.hostname=0.0.0.0 -Dgreenmail.smtp.port=3025 -Dgreenmail.imap.hostname=0.0.0.0 -Dgreenmail.imap.port=3143 -jar /path/to/file/greenmail-standalone-2.1.0-alpha-1.jar</span><br></pre></td></tr></table></figure>
+
+<blockquote>
+<p><code>-Dgreenmail.smtp.timeout</code>：为防止 SMTP 服务器超时，把超时时常设置为 120000 毫秒</p>
+</blockquote>
+<blockquote>
+<p><code>-Dgreenmail.smtp.hostname</code>, <code>Dgreenmail.smtp.port</code>：设置 SMTP 地址和端口</p>
+</blockquote>
+<blockquote>
+<p><code>-Dgreenmail.imap.hostname</code>, <code>-Dgreenmail.imap.port</code>：设置 IMAP 地址和端口</p>
+</blockquote>
+<h3 id="连接-SMTP-服务器"><a href="#连接-SMTP-服务器" class="headerlink" title="连接 SMTP 服务器"></a>连接 SMTP 服务器</h3><p>开启 Telnet 进程，连接到 SMTP 服务器的 3025 端口：</p>
+<figure class="highlight bash"><table><tr><td class="code"><pre><span class="line">telent localhost 3025</span><br><span class="line"></span><br><span class="line"><span class="comment"># 因为是模拟握手，所以服务器地址就是本地域名</span></span><br></pre></td></tr></table></figure>
+
+<pre><code>telnet localhost 3025
+Trying ::1...
+Connected to localhost.
+Escape character is &#39;^]&#39;.
+220 /0:0:0:0:0:0:0:1 GreenMail SMTP Service v2.1.0-alpha-1 ready
+421 Service shutting down and closing transmission channel (socket timeout, SO_TIMEOUT: 30000ms)
+</code></pre>
+<p>握手成功了！接下里可以输入四字指令和 SMTP 服务器交流：</p>
+<pre><code>C: HELO localhost
+S: 250-/0:0:0:0:0:0:0:1
+   250 AUTH PLAIN LOGIN
+C: MAIL FROM: &lt;example@email.com&gt;
+S: 250 OK
+C: RCPT TO: &lt;example@email.com&gt;
+S: 250 OK
+C: DATA
+S: 354 Start mail input; end with &lt;CRLF&gt;.&lt;CRLF&gt;
+C: HELLO THERE
+   THIS IS USER SPEAKING
+   .
+S: 250 OK
+C: QUIT
+S: 221 /0:0:0:0:0:0:0:1 Service closing transmission channel
+   Connection closed by foreign host.
+</code></pre>
+<p>解释一下这些缩写是什么意思：</p>
+<blockquote>
+<p><code>HELO</code>: hello</p>
+</blockquote>
+<blockquote>
+<p><code>RCPT</code>: recipient</p>
+</blockquote>
+<blockquote>
+<p><code>CRLF</code>: carriage return &amp; line feed</p>
+</blockquote>
+<hr>
+<h3 id="连接-IMAP-服务器"><a href="#连接-IMAP-服务器" class="headerlink" title="连接 IMAP 服务器"></a>连接 IMAP 服务器</h3><p><strong><em>认证阶段</em></strong></p>
+<pre><code>  telnet mailServer 110
+  +OK POP3 server ready
+  user bob
+  +OK
+  pass hungry
+  +OK user successfully logged on
+</code></pre>
+<p><strong><em>交易阶段</em></strong></p>
+<pre><code>  C: list
+  S: 1 498
+  S: 2 912
+  S: .
+  C: retr 1
+  S: (blah blah ...
+  S: .................
+  S: ..........blah)
+  S: .
+  C: dele 1
+  C: retr 2
+  S: (blah blah ...
+  S: .................
+  S: ..........blah)
+  S: .
+  C: dele 2
+  C: quit
+  S: +OK POP3 server signing off
+</code></pre>
+<p>用户在这个阶段可以给邮件添加标记，被添加<strong>删除标记</strong>的邮件将在最后的更新阶段被<strong>删除</strong>。</p>
+]]></content>
+      <tags>
+        <tag>Computer Networking</tag>
       </tags>
   </entry>
   <entry>

@@ -152,18 +152,18 @@
   <nav class="site-state">
       <div class="site-state-item site-state-posts">
         <a href="/archives/">
-          <span class="site-state-item-count">21</span>
+          <span class="site-state-item-count">22</span>
           <span class="site-state-item-name">posts</span>
         </a>
       </div>
       <div class="site-state-item site-state-categories">
           <a href="/categories/">
-        <span class="site-state-item-count">9</span>
+        <span class="site-state-item-count">10</span>
         <span class="site-state-item-name">categories</span></a>
       </div>
       <div class="site-state-item site-state-tags">
           <a href="/tags/">
-        <span class="site-state-item-count">28</span>
+        <span class="site-state-item-count">29</span>
         <span class="site-state-item-name">tags</span></a>
       </div>
   </nav>
@@ -188,6 +188,113 @@
     </div>
 
     <div class="main-inner index posts-expand">
+
+    
+
+
+<div class="post-block">
+  
+  
+
+  <article itemscope itemtype="http://schema.org/Article" class="post-content" lang="">
+    <link itemprop="mainEntityOfPage" href="https://mccranky83.github.io/2023/03/29/%E8%BD%AF%E4%BB%B6%E5%B7%A5%E7%A8%8B%20%E7%AC%AC%E4%BA%8C%E5%91%A8%E7%9A%84%E5%8D%9A%E5%AE%A2/">
+
+    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
+      <meta itemprop="image" content="/images/icons8-dead-cells-1024.png">
+      <meta itemprop="name" content="Mccranky83">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="Mccranky's Blog">
+      <meta itemprop="description" content=""Bliss it was in that dawn to be alive   But to be young was very heaven."">
+    </span>
+
+    <span hidden itemprop="post" itemscope itemtype="http://schema.org/CreativeWork">
+      <meta itemprop="name" content="undefined | Mccranky's Blog">
+      <meta itemprop="description" content="">
+    </span>
+      <header class="post-header">
+        <h2 class="post-title" itemprop="name headline">
+          <a href="/2023/03/29/%E8%BD%AF%E4%BB%B6%E5%B7%A5%E7%A8%8B%20%E7%AC%AC%E4%BA%8C%E5%91%A8%E7%9A%84%E5%8D%9A%E5%AE%A2/" class="post-title-link" itemprop="url">软件工程 第二周的博客</a>
+        </h2>
+
+        <div class="post-meta-container">
+          <div class="post-meta">
+    <span class="post-meta-item">
+      <span class="post-meta-item-icon">
+        <i class="far fa-calendar"></i>
+      </span>
+      <span class="post-meta-item-text">Posted on</span>
+
+      <time title="Created: 2023-03-29 13:54:18" itemprop="dateCreated datePublished" datetime="2023-03-29T13:54:18+08:00">2023-03-29</time>
+    </span>
+    <span class="post-meta-item">
+      <span class="post-meta-item-icon">
+        <i class="far fa-calendar-check"></i>
+      </span>
+      <span class="post-meta-item-text">Edited on</span>
+      <time title="Modified: 2023-04-23 20:51:42" itemprop="dateModified" datetime="2023-04-23T20:51:42+08:00">2023-04-23</time>
+    </span>
+
+  
+</div>
+
+        </div>
+      </header>
+
+    
+    
+    
+    <div class="post-body" itemprop="articleBody">
+          <h3 id="使用-Node-js-的-Express-js-模组-Host-自己的静态网页"><a href="#使用-Node-js-的-Express-js-模组-Host-自己的静态网页" class="headerlink" title="使用 Node.js 的 Express.js 模组 Host 自己的静态网页"></a><em>使用 Node.js 的 Express.js 模组 Host 自己的静态网页</em></h3><p>首先创建项目文件夹:</p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line"></span><br><span class="line">mkdir project01; cd project01</span><br><span class="line"></span><br></pre></td></tr></table></figure>
+
+<p>然后创建app.js文件：</p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line"></span><br><span class="line">touch app.js; sudo nano app.js</span><br><span class="line"></span><br></pre></td></tr></table></figure>
+
+<blockquote>
+<p>差点忘了，没下载Node.js的先去这个地址下载一下：<a target="_blank" rel="noopener" href="https://nodejs.org/en/download/">https://nodejs.org/en/download/</a></p>
+</blockquote>
+<p>下载完初始化一下：</p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line"></span><br><span class="line">node init -y</span><br><span class="line"></span><br></pre></td></tr></table></figure>
+
+<p>到生成的package.json文件里 script object 里加个参数：</p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line"></span><br><span class="line">‘start&#x27;：‘node app’</span><br><span class="line"></span><br></pre></td></tr></table></figure>
+
+<p>好的，非常完美。</p>
+<p>然后下载express：</p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line"></span><br><span class="line">npm i express --save</span><br><span class="line"></span><br></pre></td></tr></table></figure>
+
+<p>这里不建议把它下载为–global，因为会和别的模组冲突。</p>
+<p>面对空白页，先导入express模组并初始化app（关于http模组的基础不做赘述，因为用那个太麻烦了）：</p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line"></span><br><span class="line">const app = require(&#x27;express&#x27;)()</span><br><span class="line"></span><br></pre></td></tr></table></figure>
+
+<p>然后省略几千字，直接上代码，不懂看注释 : )</p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br></pre></td><td class="code"><pre><span class="line"></span><br><span class="line">app.use(express.static(&#x27;./public&#x27;))     // 把静态网页需要的资源全扔 public 文件夹里就好了</span><br><span class="line"></span><br><span class="line">app.all(&#x27;*&#x27;, (req, res) =&gt; &#123;</span><br><span class="line">  res.status(404).send(&#x27;resource not found&#x27;)</span><br><span class="line">&#125;)                                                           // 这个是用来处理404 Bad Request 的</span><br><span class="line"></span><br><span class="line">app.listen(5000, () =&gt; &#123;</span><br><span class="line">  console.log(&#x27;server is listening on port 5000....&#x27;)</span><br><span class="line">&#125;)                                                          // 这个是选择端口</span><br><span class="line"></span><br></pre></td></tr></table></figure>
+
+<p>最后在 console 里输入：</p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line"></span><br><span class="line">npm start</span><br><span class="line"></span><br></pre></td></tr></table></figure>
+
+<p>完成！唯一的问题是我们用的还是 localhost， 也就是只有自己可以在端口 5000 看到自己的网页。</p>
+<p>想让别人看到的话就去使用 Git Pages 的免费服务。</p>
+<p>是不是很简单，开自己动手试一试吧！</p>
+
+      
+    </div>
+
+    
+    
+    
+
+    <footer class="post-footer">
+        <div class="post-eof"></div>
+      
+    </footer>
+  </article>
+</div>
+
+
+
 
     
 
