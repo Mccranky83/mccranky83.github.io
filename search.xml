@@ -20,80 +20,6 @@
       </tags>
   </entry>
   <entry>
-    <title>Immediately Executing Function Demo</title>
-    <url>/2023/04/27/Immediately%20Executing%20Function%20Demo/</url>
-    <content><![CDATA[<p>The key aspect of this demo is that the utilization of an immediately executing function in JavaScript generates a fresh variable scope, which distinguishes it from <code>if</code>, <code>else</code>, and <code>while</code>. The code presented below exemplifies this fact.</p>
-<figure class="highlight javascript"><table><tr><td class="code"><pre><span class="line"><span class="keyword">var</span> foo = <span class="number">123</span></span><br><span class="line"></span><br><span class="line"><span class="keyword">if</span> (<span class="number">1</span>) &#123;</span><br><span class="line">    <span class="keyword">var</span> foo = <span class="number">456</span></span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line">(<span class="function"><span class="params">_</span> =&gt;</span> &#123;</span><br><span class="line">    <span class="keyword">var</span> foo = <span class="number">123</span></span><br><span class="line">&#125;)()</span><br><span class="line"></span><br><span class="line"><span class="variable language_">console</span>.<span class="title function_">log</span>(foo)</span><br><span class="line"></span><br></pre></td></tr></table></figure>
-
-<p>Output:</p>
-<pre><code>456
-</code></pre>
-<p>Notice how the function does not reset the value of variable <code>foo</code>? Now that’s something to be mindful of!</p>
-]]></content>
-      <categories>
-        <category>JavaScript</category>
-      </categories>
-  </entry>
-  <entry>
-    <title>Initialize shared directory with SPICE WebDAV</title>
-    <url>/2023/04/26/Initialize%20shared%20directory%20with%20SPICE%20WebDAV/</url>
-    <content><![CDATA[<h3 id="Install-Dependencies"><a href="#Install-Dependencies" class="headerlink" title="Install Dependencies"></a>Install Dependencies</h3><h4 id="SPICE-guest-tools"><a href="#SPICE-guest-tools" class="headerlink" title="SPICE guest tools"></a><em><code>SPICE guest tools</code></em></h4><p>See <a href="/2023/04/25/Running%20ArchLinux%20ARM%20in%20UTM%20on%20a%20M1%20MacBook%20Air/#SPICE-guest-tools"><code>SPICE guest tools</code></a></p>
-<h4 id="SPICE-WebDAV"><a href="#SPICE-WebDAV" class="headerlink" title="SPICE WebDAV"></a><em><code>SPICE WebDAV</code></em></h4><p>SPICE WebDAV is required for <a href="https://docs.getutm.app/settings-qemu/sharing/#spice-webdav" title="QEMU directory sharing">QEMU directory sharing</a> as an alternative to VirtFS.</p>
-<p>Since we’re on ArchLinux, we should run the following command:</p>
-<figure class="highlight bash"><table><tr><td class="code"><pre><span class="line">sudo pacman -S phodav</span><br></pre></td></tr></table></figure>
-
-<p>Now we should want to visit the shared directory.</p>
-<p>Normally, it is exposed as a WebDAV mount on the guest’s localhost (typically on port 9843).</p>
-<p>To access it, we need a browser.</p>
-<h3 id="Firefox"><a href="#Firefox" class="headerlink" title="Firefox"></a>Firefox</h3><p>I don’t have one yet, so I’ll Install Firefox via <a href="/2023/04/25/Running%20ArchLinux%20ARM%20in%20UTM%20on%20a%20M1%20MacBook%20Air/#yay"><code>yay</code></a>.</p>
-<figure class="highlight bash"><table><tr><td class="code"><pre><span class="line">yay -S firefox</span><br></pre></td></tr></table></figure>
-
-<p>Before we move on, let’s configure the <code>DISPLAY</code> environment variable first. Again, I need to install one:</p>
-<figure class="highlight bash"><table><tr><td class="code"><pre><span class="line">sudo pacman -S xorg xorg-xinit xfce4</span><br><span class="line"></span><br><span class="line"><span class="comment"># Once installation is complete, `reboot` and log-back-in</span></span><br></pre></td></tr></table></figure>
-
-<p>Before we proceed, make sure to check the following conditions:</p>
-<blockquote>
-<p>X Window System is actually running: You can start the X Window System by running the command <code>startx</code> in a terminal window.</p>
-</blockquote>
-<blockquote>
-<p>You have permission to access the X Window System: You may need to add your user account to the <code>video</code> group by running the command <code>sudo usermod -aG video &lt;username&gt;</code>.</p>
-</blockquote>
-<blockquote>
-<p>X Window System is configured to allow remote connections: You may need to edit the <code>/etc/X11/xinit/xserverrc</code> file to include the <code>-listen tcp</code> option. For example, you can add the line <code>exec /usr/bin/X -listen tcp</code> to the file.</p>
-</blockquote>
-<hr>
-<p>We may face some problems when we run <code>startx</code> because X server requires some sort of display device or screen so that it can display graphical output, and since ArchLinux is text-based, we’ll have to go through a few extra steps.</p>
-<ul>
-<li><p>Run <code>sudo pacman -S xf86-video-fbdev</code> to install the <code>xf86-video-fbdev</code> package. This package provides a generic framebuffer driver that can be used in place of a specific display driver.</p>
-</li>
-<li><p>Edit the <code>/etc/X11/xorg.conf.d/10-monitor.conf</code> file to specify the <code>fbdev</code> driver. We can do this by adding the following lines to the file:</p>
-</li>
-</ul>
-<figure class="highlight bash"><table><tr><td class="code"><pre><span class="line">Section <span class="string">&quot;Device&quot;</span></span><br><span class="line">    Identifier <span class="string">&quot;fbdev&quot;</span></span><br><span class="line">    Driver <span class="string">&quot;fbdev&quot;</span></span><br><span class="line">EndSection</span><br></pre></td></tr></table></figure>
-
-<p>That should do the trick when we run <code>startx</code> again.</p>
-<p>If the X server still fails to start, you may need to investigate further by checking the <code>/var/log/Xorg.0.log</code> file for additional information about the error.</p>
-<hr>
-<p>After double-checking the conditions listed above, we can now run the command <code>export DISPLAY=:0</code> to set the display environment variable to the default value for the X Window System.</p>
-<p>At last we launch Firefox and navigate to <code>http://127.0.0.1:9843</code>.</p>
-<figure class="highlight bash"><table><tr><td class="code"><pre><span class="line">firefox http://127.0.0.1:9843</span><br></pre></td></tr></table></figure>
-
-<p>We can also try running Firefox with the <code>--no-remote</code> option. This option tells Firefox to open a new instance of the browser, rather than connecting to an existing instance.</p>
-<figure class="highlight bash"><table><tr><td class="code"><pre><span class="line">firefox --no-remote http://127.0.0.1:9843</span><br></pre></td></tr></table></figure>
-
-<p>If the <code>SPICE WebDAV</code> service is running correctly, you should be able to see the page in the Firefox browser window.</p>
-<h3 id="Headless-browser"><a href="#Headless-browser" class="headerlink" title="Headless browser"></a>Headless browser</h3><h4 id="Puppeteer"><a href="#Puppeteer" class="headerlink" title="Puppeteer"></a>Puppeteer</h4><p>See <a href="/2023/04/27/Dabbling%20with%20Puppeteer/">here</a></p>
-<h4 id="i2pdbrowser"><a href="#i2pdbrowser" class="headerlink" title="i2pdbrowser"></a>i2pdbrowser</h4><p>Clone this repo:</p>
-<figure class="highlight bash"><table><tr><td class="code"><pre><span class="line">git <span class="built_in">clone</span> https://github.com/PurpleI2P/i2pdbrowser.git</span><br></pre></td></tr></table></figure>
-
-<p>Navigate to the README.md file for more information</p>
-]]></content>
-      <categories>
-        <category>Linux</category>
-        <category>ArchLinux</category>
-      </categories>
-  </entry>
-  <entry>
     <title>Dabbling with Puppeteer</title>
     <url>/2023/04/27/Dabbling%20with%20Puppeteer/</url>
     <content><![CDATA[<p>Puppeteer is a Node.js library that provides a high-level API to control headless Chrome or Chromium browsers. It is widely used for web scraping, testing, and automation, and is an essential tool for many developers who work with web applications.</p>
@@ -124,7 +50,7 @@
   <entry>
     <title>Dead Cells：Unlocking Daily Challenge blueprints</title>
     <url>/2023/05/03/Dead%20Cells%EF%BC%9AUnlocking%20Daily%20Challenge%20blueprints/</url>
-    <content><![CDATA[<p>The Daily Challenge has a huge player base, even within an already well-acclaimed title like Dead Cells. However, this is bad news for us freeloaders who, through various means, gained access to the game without ever paying the publisher a single cent. Some may consider this bad practice, but to be honest, I’m broke as f*ck.</p>
+    <content><![CDATA[<p>The Daily Challenge mode boasts a significant player base, even compared to other popular modes, and offers several exclusive weapons to boot. However, this is bad news for us freeloaders who, through various means, gained access to the game without ever paying the publisher a single cent. Some may consider piracy bad practice, but to be honest, I’m broke as f*ck.</p>
 <p>Since we can’t do the challenge runs like the normal person would, I find it not much of a stretch to hack the game a bit further.</p>
 <h3 id="Overview"><a href="#Overview" class="headerlink" title="Overview"></a>Overview</h3><p>The approach we’re taking is to assign the blueprints to a chosen enemy. Naturally we’d want to assign it to an enemy we frequently run into and have a decent drop rate. It so happens that the zombie fits our description perfectly.</p>
 <p>Let us have a look at the relevant part of its JSON description:</p>
@@ -185,6 +111,65 @@
       <tags>
         <tag>Dead Cells</tag>
       </tags>
+  </entry>
+  <entry>
+    <title>Initialize shared directory with SPICE WebDAV</title>
+    <url>/2023/04/26/Initialize%20shared%20directory%20with%20SPICE%20WebDAV/</url>
+    <content><![CDATA[<h3 id="Install-Dependencies"><a href="#Install-Dependencies" class="headerlink" title="Install Dependencies"></a>Install Dependencies</h3><h4 id="SPICE-guest-tools"><a href="#SPICE-guest-tools" class="headerlink" title="SPICE guest tools"></a><em><code>SPICE guest tools</code></em></h4><p>See <a href="/2023/04/25/Running%20ArchLinux%20ARM%20in%20UTM%20on%20a%20M1%20MacBook%20Air/#SPICE-guest-tools"><code>SPICE guest tools</code></a></p>
+<h4 id="SPICE-WebDAV"><a href="#SPICE-WebDAV" class="headerlink" title="SPICE WebDAV"></a><em><code>SPICE WebDAV</code></em></h4><p>SPICE WebDAV is required for <a href="https://docs.getutm.app/settings-qemu/sharing/#spice-webdav" title="QEMU directory sharing">QEMU directory sharing</a> as an alternative to VirtFS.</p>
+<p>Since we’re on ArchLinux, we should run the following command:</p>
+<figure class="highlight bash"><table><tr><td class="code"><pre><span class="line">sudo pacman -S phodav</span><br></pre></td></tr></table></figure>
+
+<p>Now we should want to visit the shared directory.</p>
+<p>Normally, it is exposed as a WebDAV mount on the guest’s localhost (typically on port 9843).</p>
+<p>To access it, we need a browser.</p>
+<h3 id="Firefox"><a href="#Firefox" class="headerlink" title="Firefox"></a>Firefox</h3><p>I don’t have one yet, so I’ll Install Firefox via <a href="/2023/04/25/Running%20ArchLinux%20ARM%20in%20UTM%20on%20a%20M1%20MacBook%20Air/#yay"><code>yay</code></a>.</p>
+<figure class="highlight bash"><table><tr><td class="code"><pre><span class="line">yay -S firefox</span><br></pre></td></tr></table></figure>
+
+<p>Before we move on, let’s configure the <code>DISPLAY</code> environment variable first. Again, I need to install one:</p>
+<figure class="highlight bash"><table><tr><td class="code"><pre><span class="line">sudo pacman -S xorg xorg-xinit xfce4</span><br><span class="line"></span><br><span class="line"><span class="comment"># Once installation is complete, `reboot` and log-back-in</span></span><br></pre></td></tr></table></figure>
+
+<p>Before we proceed, make sure to check the following conditions:</p>
+<blockquote>
+<p>X Window System is actually running: You can start the X Window System by running the command <code>startx</code> in a terminal window.</p>
+</blockquote>
+<blockquote>
+<p>You have permission to access the X Window System: You may need to add your user account to the <code>video</code> group by running the command <code>sudo usermod -aG video &lt;username&gt;</code>.</p>
+</blockquote>
+<blockquote>
+<p>X Window System is configured to allow remote connections: You may need to edit the <code>/etc/X11/xinit/xserverrc</code> file to include the <code>-listen tcp</code> option. For example, you can add the line <code>exec /usr/bin/X -listen tcp</code> to the file.</p>
+</blockquote>
+<hr>
+<p>We may face some problems when we run <code>startx</code> because X server requires some sort of display device or screen so that it can display graphical output, and since ArchLinux is text-based, we’ll have to go through a few extra steps.</p>
+<ul>
+<li><p>Run <code>sudo pacman -S xf86-video-fbdev</code> to install the <code>xf86-video-fbdev</code> package. This package provides a generic framebuffer driver that can be used in place of a specific display driver.</p>
+</li>
+<li><p>Edit the <code>/etc/X11/xorg.conf.d/10-monitor.conf</code> file to specify the <code>fbdev</code> driver. We can do this by adding the following lines to the file:</p>
+</li>
+</ul>
+<figure class="highlight bash"><table><tr><td class="code"><pre><span class="line">Section <span class="string">&quot;Device&quot;</span></span><br><span class="line">    Identifier <span class="string">&quot;fbdev&quot;</span></span><br><span class="line">    Driver <span class="string">&quot;fbdev&quot;</span></span><br><span class="line">EndSection</span><br></pre></td></tr></table></figure>
+
+<p>That should do the trick when we run <code>startx</code> again.</p>
+<p>If the X server still fails to start, you may need to investigate further by checking the <code>/var/log/Xorg.0.log</code> file for additional information about the error.</p>
+<hr>
+<p>After double-checking the conditions listed above, we can now run the command <code>export DISPLAY=:0</code> to set the display environment variable to the default value for the X Window System.</p>
+<p>At last we launch Firefox and navigate to <code>http://127.0.0.1:9843</code>.</p>
+<figure class="highlight bash"><table><tr><td class="code"><pre><span class="line">firefox http://127.0.0.1:9843</span><br></pre></td></tr></table></figure>
+
+<p>We can also try running Firefox with the <code>--no-remote</code> option. This option tells Firefox to open a new instance of the browser, rather than connecting to an existing instance.</p>
+<figure class="highlight bash"><table><tr><td class="code"><pre><span class="line">firefox --no-remote http://127.0.0.1:9843</span><br></pre></td></tr></table></figure>
+
+<p>If the <code>SPICE WebDAV</code> service is running correctly, you should be able to see the page in the Firefox browser window.</p>
+<h3 id="Headless-browser"><a href="#Headless-browser" class="headerlink" title="Headless browser"></a>Headless browser</h3><h4 id="Puppeteer"><a href="#Puppeteer" class="headerlink" title="Puppeteer"></a>Puppeteer</h4><p>See <a href="/2023/04/27/Dabbling%20with%20Puppeteer/">here</a></p>
+<h4 id="i2pdbrowser"><a href="#i2pdbrowser" class="headerlink" title="i2pdbrowser"></a>i2pdbrowser</h4><p>Clone this repo:</p>
+<figure class="highlight bash"><table><tr><td class="code"><pre><span class="line">git <span class="built_in">clone</span> https://github.com/PurpleI2P/i2pdbrowser.git</span><br></pre></td></tr></table></figure>
+
+<p>Navigate to the README.md file for more information</p>
+]]></content>
+      <categories>
+        <category>Linux</category>
+        <category>ArchLinux</category>
+      </categories>
   </entry>
   <entry>
     <title>Installing Puppet server on ArchLinux</title>
@@ -283,94 +268,6 @@ uid           [ unknown] Puppet, Inc. Release Key (Puppet, Inc. Release Key) &lt
       <tags>
         <tag>JavaScript</tag>
         <tag>Methods</tag>
-      </tags>
-  </entry>
-  <entry>
-    <title>Positional Parameters</title>
-    <url>/2023/04/29/Positional%20Parameters/</url>
-    <content><![CDATA[<p>In Bash, positional parameters are special variables that hold the arguments passed to a script or function. The positional parameters are numbered from <code>0</code> to <code>9</code>, where <code>$0</code> holds the name of the script or function, and <code>$1</code> through <code>$9</code> hold the first through ninth arguments, respectively.</p>
-<p><code>$@</code> and <code>$*</code> both hold all the arguments passed to the script. Note that <code>$@</code> is an array-like variable that holds all the positional parameters as <em>separate elements</em>, while <code>$*</code> is another variable that holds all the positional parameters as <em>a single string</em>.</p>
-<p>Here’s an example:</p>
-<pre><code>#!/bin/bash
-
-#!/bin/bash
-
-echo &quot;Script Name: $0&quot;
-echo &quot;First Arg: $1&quot;
-echo &quot;Second Arg: $2&quot;
-echo &quot;All args (arr): $@&quot;
-echo &quot;All args (str): $*&quot;
-</code></pre>
-<p>Now let’s run the script with three arguments:</p>
-<figure class="highlight bash"><table><tr><td class="code"><pre><span class="line"><span class="built_in">chmod</span> u+x ./script <span class="comment"># Grant execution privilege for user</span></span><br><span class="line"></span><br><span class="line">./script a b c</span><br><span class="line"></span><br></pre></td></tr></table></figure>
-
-<p>The output should be something like this:</p>
-<pre><code>Script Name: ./script.sh
-First Arg: a
-Second Arg: b
-All args (arr): a b c
-All args (str): a b c
-</code></pre>
-]]></content>
-      <categories>
-        <category>Bash</category>
-      </categories>
-      <tags>
-        <tag>Linux</tag>
-        <tag>Bash</tag>
-      </tags>
-  </entry>
-  <entry>
-    <title>Pointers</title>
-    <url>/2023/04/29/Pointers/</url>
-    <content><![CDATA[<h3 id="Array-of-pointers-to-ints"><a href="#Array-of-pointers-to-ints" class="headerlink" title="Array of pointers to ints"></a>Array of pointers to ints</h3><p><strong>Code:</strong></p>
-<figure class="highlight cpp"><table><tr><td class="code"><pre><span class="line"><span class="meta">#<span class="keyword">include</span> <span class="string">&lt;iostream&gt;</span></span></span><br><span class="line"></span><br><span class="line"><span class="function"><span class="type">int</span> <span class="title">main</span><span class="params">()</span></span></span><br><span class="line"><span class="function"></span>&#123;</span><br><span class="line">    <span class="type">int</span>* ap[<span class="number">15</span>];</span><br><span class="line">    <span class="type">int</span> ai[<span class="number">15</span>] = &#123;&#125;;</span><br><span class="line">    <span class="keyword">for</span> (<span class="type">int</span> i = <span class="number">0</span>; i &lt; <span class="number">15</span>; ++i) &#123;</span><br><span class="line">        ai[i] = i; </span><br><span class="line">        ap[i] = &amp;ai[i];</span><br><span class="line">        std::cout &lt;&lt; *ap[i] &lt;&lt; <span class="string">&quot; &quot;</span> &lt;&lt; ap[i]&lt;&lt; std::endl;</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br><span class="line"></span><br></pre></td></tr></table></figure>
-
-<p><strong>Console:</strong></p>
-<pre><code>0 0x16d296d14
-1 0x16d296d18
-2 0x16d296d1c
-3 0x16d296d20
-4 0x16d296d24
-5 0x16d296d28
-6 0x16d296d2c
-7 0x16d296d30
-8 0x16d296d34
-9 0x16d296d38
-10 0x16d296d3c
-11 0x16d296d40
-12 0x16d296d44
-13 0x16d296d48
-14 0x16d296d4c
-</code></pre>
-<h3 id="Pointer-to-an-array-of-ints"><a href="#Pointer-to-an-array-of-ints" class="headerlink" title="Pointer to an array of ints"></a>Pointer to an array of ints</h3><p><strong>Code:</strong></p>
-<figure class="highlight cpp"><table><tr><td class="code"><pre><span class="line"><span class="meta">#<span class="keyword">include</span> <span class="string">&lt;iostream&gt;</span></span></span><br><span class="line"></span><br><span class="line"><span class="function"><span class="type">int</span> <span class="title">main</span><span class="params">()</span></span></span><br><span class="line"><span class="function"></span>&#123;</span><br><span class="line">    <span class="type">int</span> ai[<span class="number">15</span>];</span><br><span class="line">    <span class="keyword">for</span> (<span class="type">int</span> i = <span class="number">0</span>; i &lt; <span class="number">15</span>; i++) ai[i] = i;</span><br><span class="line">    <span class="built_in">int</span> (*ptr)[] = &amp;ai;</span><br><span class="line">    <span class="keyword">for</span> (<span class="type">int</span> i = <span class="number">0</span>; i &lt; <span class="number">15</span>; i++) &#123;</span><br><span class="line">        std::cout &lt;&lt; (*ptr)[i] &lt;&lt; <span class="string">&quot; &quot;</span>;</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br><span class="line"></span><br></pre></td></tr></table></figure>
-
-<p><strong><em>Console</em></strong></p>
-<pre><code>0 1 2 3 4 5 6 7 8 9 10 11 12 13 14
-</code></pre>
-<blockquote>
-<p><strong><em>Notes</em></strong></p>
-</blockquote>
-<ul>
-<li><p>The parentheses around <code>*ptr</code> are necessary because the <code>[]</code> operator has<br>  higher precedence than the <code>*</code> operator. Without the parentheses, the<br>  declaration would be parsed as an array of pointers to int, like int<br>  <code>*ptr[15]</code>.</p>
-</li>
-<li><p>When I took the address of the array, I got a pointer to the first element<br>  of the array. However, the pointer itself does not contain any information<br>  about the size of the array.</p>
-</li>
-</ul>
-<h3 id="Pointer-to-function-taking-a-string-argument"><a href="#Pointer-to-function-taking-a-string-argument" class="headerlink" title="Pointer to function taking a string argument;"></a>Pointer to function taking a string argument;</h3><h4 id="returns-an-string"><a href="#returns-an-string" class="headerlink" title="returns an string"></a>returns an string</h4><p><strong>Code:</strong></p>
-<figure class="highlight cpp"><table><tr><td class="code"><pre><span class="line"><span class="meta">#<span class="keyword">include</span> <span class="string">&lt;iostream&gt;</span></span></span><br><span class="line"><span class="meta">#<span class="keyword">include</span> <span class="string">&lt;string&gt;</span></span></span><br><span class="line"></span><br><span class="line"><span class="function"><span class="type">void</span> <span class="title">replaceX</span><span class="params">(std::string *str, std::string x)</span></span></span><br><span class="line"><span class="function"></span>&#123;</span><br><span class="line">    <span class="type">size_t</span> pos = (*str).<span class="built_in">find</span>(<span class="string">&quot;$&#123;x&#125;&quot;</span>);</span><br><span class="line">    <span class="keyword">if</span> (pos != std::string::npos)</span><br><span class="line">        (*str).<span class="built_in">replace</span>(pos, <span class="number">4</span>, x);</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"><span class="function">std::string <span class="title">foo</span><span class="params">(std::string x)</span></span></span><br><span class="line"><span class="function"></span>&#123;</span><br><span class="line">    std::string str = <span class="string">&quot;hello this is $&#123;x&#125;&quot;</span>;</span><br><span class="line">    <span class="built_in">replaceX</span>(&amp;str, x);</span><br><span class="line">    <span class="keyword">return</span> str;</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"><span class="function"><span class="type">int</span> <span class="title">main</span><span class="params">()</span></span></span><br><span class="line"><span class="function"></span>&#123;</span><br><span class="line">    std::<span class="built_in">string</span> (*fp)(std::string) = &amp;foo;</span><br><span class="line">    std::cout &lt;&lt; (*fp)(<span class="string">&quot;foo&quot;</span>) &lt;&lt; std::endl;</span><br><span class="line">    std::cout &lt;&lt; (*fp)(<span class="string">&quot;bar&quot;</span>) &lt;&lt; std::endl;</span><br><span class="line">&#125;</span><br><span class="line"></span><br></pre></td></tr></table></figure>
-
-<p><strong>Console:</strong></p>
-<pre><code>hello this is foo
-hello this is bar
-</code></pre>
-]]></content>
-      <categories>
-        <category>C++</category>
-      </categories>
-      <tags>
-        <tag>Pointers</tag>
       </tags>
   </entry>
   <entry>
@@ -494,6 +391,94 @@ r=mccranky)
         <tag>ArchLinux</tag>
         <tag>UTM</tag>
         <tag>Virtual Machine</tag>
+      </tags>
+  </entry>
+  <entry>
+    <title>Pointers</title>
+    <url>/2023/04/29/Pointers/</url>
+    <content><![CDATA[<h3 id="Array-of-pointers-to-ints"><a href="#Array-of-pointers-to-ints" class="headerlink" title="Array of pointers to ints"></a>Array of pointers to ints</h3><p><strong>Code:</strong></p>
+<figure class="highlight cpp"><table><tr><td class="code"><pre><span class="line"><span class="meta">#<span class="keyword">include</span> <span class="string">&lt;iostream&gt;</span></span></span><br><span class="line"></span><br><span class="line"><span class="function"><span class="type">int</span> <span class="title">main</span><span class="params">()</span></span></span><br><span class="line"><span class="function"></span>&#123;</span><br><span class="line">    <span class="type">int</span>* ap[<span class="number">15</span>];</span><br><span class="line">    <span class="type">int</span> ai[<span class="number">15</span>] = &#123;&#125;;</span><br><span class="line">    <span class="keyword">for</span> (<span class="type">int</span> i = <span class="number">0</span>; i &lt; <span class="number">15</span>; ++i) &#123;</span><br><span class="line">        ai[i] = i; </span><br><span class="line">        ap[i] = &amp;ai[i];</span><br><span class="line">        std::cout &lt;&lt; *ap[i] &lt;&lt; <span class="string">&quot; &quot;</span> &lt;&lt; ap[i]&lt;&lt; std::endl;</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br><span class="line"></span><br></pre></td></tr></table></figure>
+
+<p><strong>Console:</strong></p>
+<pre><code>0 0x16d296d14
+1 0x16d296d18
+2 0x16d296d1c
+3 0x16d296d20
+4 0x16d296d24
+5 0x16d296d28
+6 0x16d296d2c
+7 0x16d296d30
+8 0x16d296d34
+9 0x16d296d38
+10 0x16d296d3c
+11 0x16d296d40
+12 0x16d296d44
+13 0x16d296d48
+14 0x16d296d4c
+</code></pre>
+<h3 id="Pointer-to-an-array-of-ints"><a href="#Pointer-to-an-array-of-ints" class="headerlink" title="Pointer to an array of ints"></a>Pointer to an array of ints</h3><p><strong>Code:</strong></p>
+<figure class="highlight cpp"><table><tr><td class="code"><pre><span class="line"><span class="meta">#<span class="keyword">include</span> <span class="string">&lt;iostream&gt;</span></span></span><br><span class="line"></span><br><span class="line"><span class="function"><span class="type">int</span> <span class="title">main</span><span class="params">()</span></span></span><br><span class="line"><span class="function"></span>&#123;</span><br><span class="line">    <span class="type">int</span> ai[<span class="number">15</span>];</span><br><span class="line">    <span class="keyword">for</span> (<span class="type">int</span> i = <span class="number">0</span>; i &lt; <span class="number">15</span>; i++) ai[i] = i;</span><br><span class="line">    <span class="built_in">int</span> (*ptr)[] = &amp;ai;</span><br><span class="line">    <span class="keyword">for</span> (<span class="type">int</span> i = <span class="number">0</span>; i &lt; <span class="number">15</span>; i++) &#123;</span><br><span class="line">        std::cout &lt;&lt; (*ptr)[i] &lt;&lt; <span class="string">&quot; &quot;</span>;</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br><span class="line"></span><br></pre></td></tr></table></figure>
+
+<p><strong><em>Console</em></strong></p>
+<pre><code>0 1 2 3 4 5 6 7 8 9 10 11 12 13 14
+</code></pre>
+<blockquote>
+<p><strong><em>Notes</em></strong></p>
+</blockquote>
+<ul>
+<li><p>The parentheses around <code>*ptr</code> are necessary because the <code>[]</code> operator has<br>  higher precedence than the <code>*</code> operator. Without the parentheses, the<br>  declaration would be parsed as an array of pointers to int, like int<br>  <code>*ptr[15]</code>.</p>
+</li>
+<li><p>When I took the address of the array, I got a pointer to the first element<br>  of the array. However, the pointer itself does not contain any information<br>  about the size of the array.</p>
+</li>
+</ul>
+<h3 id="Pointer-to-function-taking-a-string-argument"><a href="#Pointer-to-function-taking-a-string-argument" class="headerlink" title="Pointer to function taking a string argument;"></a>Pointer to function taking a string argument;</h3><h4 id="returns-an-string"><a href="#returns-an-string" class="headerlink" title="returns an string"></a>returns an string</h4><p><strong>Code:</strong></p>
+<figure class="highlight cpp"><table><tr><td class="code"><pre><span class="line"><span class="meta">#<span class="keyword">include</span> <span class="string">&lt;iostream&gt;</span></span></span><br><span class="line"><span class="meta">#<span class="keyword">include</span> <span class="string">&lt;string&gt;</span></span></span><br><span class="line"></span><br><span class="line"><span class="function"><span class="type">void</span> <span class="title">replaceX</span><span class="params">(std::string *str, std::string x)</span></span></span><br><span class="line"><span class="function"></span>&#123;</span><br><span class="line">    <span class="type">size_t</span> pos = (*str).<span class="built_in">find</span>(<span class="string">&quot;$&#123;x&#125;&quot;</span>);</span><br><span class="line">    <span class="keyword">if</span> (pos != std::string::npos)</span><br><span class="line">        (*str).<span class="built_in">replace</span>(pos, <span class="number">4</span>, x);</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"><span class="function">std::string <span class="title">foo</span><span class="params">(std::string x)</span></span></span><br><span class="line"><span class="function"></span>&#123;</span><br><span class="line">    std::string str = <span class="string">&quot;hello this is $&#123;x&#125;&quot;</span>;</span><br><span class="line">    <span class="built_in">replaceX</span>(&amp;str, x);</span><br><span class="line">    <span class="keyword">return</span> str;</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"><span class="function"><span class="type">int</span> <span class="title">main</span><span class="params">()</span></span></span><br><span class="line"><span class="function"></span>&#123;</span><br><span class="line">    std::<span class="built_in">string</span> (*fp)(std::string) = &amp;foo;</span><br><span class="line">    std::cout &lt;&lt; (*fp)(<span class="string">&quot;foo&quot;</span>) &lt;&lt; std::endl;</span><br><span class="line">    std::cout &lt;&lt; (*fp)(<span class="string">&quot;bar&quot;</span>) &lt;&lt; std::endl;</span><br><span class="line">&#125;</span><br><span class="line"></span><br></pre></td></tr></table></figure>
+
+<p><strong>Console:</strong></p>
+<pre><code>hello this is foo
+hello this is bar
+</code></pre>
+]]></content>
+      <categories>
+        <category>C++</category>
+      </categories>
+      <tags>
+        <tag>Pointers</tag>
+      </tags>
+  </entry>
+  <entry>
+    <title>Positional Parameters</title>
+    <url>/2023/04/29/Positional%20Parameters/</url>
+    <content><![CDATA[<p>In Bash, positional parameters are special variables that hold the arguments passed to a script or function. The positional parameters are numbered from <code>0</code> to <code>9</code>, where <code>$0</code> holds the name of the script or function, and <code>$1</code> through <code>$9</code> hold the first through ninth arguments, respectively.</p>
+<p><code>$@</code> and <code>$*</code> both hold all the arguments passed to the script. Note that <code>$@</code> is an array-like variable that holds all the positional parameters as <em>separate elements</em>, while <code>$*</code> is another variable that holds all the positional parameters as <em>a single string</em>.</p>
+<p>Here’s an example:</p>
+<pre><code>#!/bin/bash
+
+#!/bin/bash
+
+echo &quot;Script Name: $0&quot;
+echo &quot;First Arg: $1&quot;
+echo &quot;Second Arg: $2&quot;
+echo &quot;All args (arr): $@&quot;
+echo &quot;All args (str): $*&quot;
+</code></pre>
+<p>Now let’s run the script with three arguments:</p>
+<figure class="highlight bash"><table><tr><td class="code"><pre><span class="line"><span class="built_in">chmod</span> u+x ./script <span class="comment"># Grant execution privilege for user</span></span><br><span class="line"></span><br><span class="line">./script a b c</span><br><span class="line"></span><br></pre></td></tr></table></figure>
+
+<p>The output should be something like this:</p>
+<pre><code>Script Name: ./script.sh
+First Arg: a
+Second Arg: b
+All args (arr): a b c
+All args (str): a b c
+</code></pre>
+]]></content>
+      <categories>
+        <category>Bash</category>
+      </categories>
+      <tags>
+        <tag>Linux</tag>
+        <tag>Bash</tag>
       </tags>
   </entry>
   <entry>
@@ -708,49 +693,6 @@ Possible reasons for having this kind of units are:
       </tags>
   </entry>
   <entry>
-    <title>`inpath`</title>
-    <url>/2023/04/29/%60inpath%60/</url>
-    <content><![CDATA[<p>Coding along with the book <em>Wicked Cool Shell Scripts- 101 Scripts for Linux, OS X, and UNIX Systems</em>.</p>
-<p>This is the script from Page 11:</p>
-<figure class="highlight bash"><table><tr><td class="code"><pre><span class="line"><span class="meta">#!/bin/bash</span></span><br><span class="line"></span><br><span class="line"><span class="function"><span class="title">in_path</span></span>()</span><br><span class="line">&#123;</span><br><span class="line">        cmd=<span class="variable">$1</span></span><br><span class="line">        ourpath=<span class="variable">$2</span>      </span><br><span class="line">        result=1</span><br><span class="line">        oldIFS=<span class="variable">$IFS</span>     </span><br><span class="line">        IFS=<span class="string">&quot;:&quot;</span></span><br><span class="line"> </span><br><span class="line">        <span class="keyword">for</span> directory <span class="keyword">in</span> <span class="variable">$ourpath</span>; <span class="keyword">do</span></span><br><span class="line"></span><br><span class="line">        <span class="comment"># If i double quoted `$ourpath`, it will not word split, and the loop will only run once.</span></span><br><span class="line"></span><br><span class="line">                <span class="keyword">if</span> [ -x <span class="string">&quot;<span class="variable">$directory</span>/<span class="variable">$cmd</span>&quot;</span> ]; <span class="keyword">then</span></span><br><span class="line">                        result=0</span><br><span class="line">                <span class="keyword">fi</span></span><br><span class="line">        <span class="keyword">done</span></span><br><span class="line"> </span><br><span class="line">        IFS=<span class="variable">$oldIFS</span></span><br><span class="line">        <span class="built_in">return</span> <span class="variable">$result</span></span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"><span class="function"><span class="title">checkForCmdInPath</span></span>()</span><br><span class="line">&#123;</span><br><span class="line">        var=<span class="variable">$1</span></span><br><span class="line"> </span><br><span class="line">        <span class="keyword">if</span> [ ! <span class="string">&quot;<span class="variable">$var</span>&quot;</span> = <span class="string">&quot;&quot;</span> ]; <span class="keyword">then</span></span><br><span class="line">                <span class="keyword">if</span> [ <span class="string">&quot;<span class="variable">$&#123;var:0:1&#125;</span>&quot;</span> = <span class="string">&quot;/&quot;</span> ]; <span class="keyword">then</span></span><br><span class="line">                	<span class="comment"># Checks whether the command represented by the `$var` is an absolute path or not. </span></span><br><span class="line">                        <span class="keyword">if</span> [ ! -x <span class="string">&quot;<span class="variable">$var</span>&quot;</span> ]; <span class="keyword">then</span></span><br><span class="line">                                <span class="built_in">return</span> 1</span><br><span class="line">                        <span class="keyword">fi</span></span><br><span class="line">                <span class="keyword">elif</span> ! in_path <span class="string">&quot;<span class="variable">$var</span>&quot;</span> <span class="string">&quot;<span class="variable">$PATH</span>&quot;</span>; <span class="keyword">then</span></span><br><span class="line">                        <span class="built_in">return</span> 2</span><br><span class="line">                <span class="keyword">fi</span></span><br><span class="line">        <span class="keyword">fi</span></span><br><span class="line">&#125;</span><br><span class="line"></span><br></pre></td></tr></table></figure>
-
-<h3 id="Positional-parameters"><a href="#Positional-parameters" class="headerlink" title="Positional parameters"></a>Positional parameters</h3><p>See <a href="/2023/04/29/Positional%20Parameters/">here</a></p>
-<blockquote>
-<p><strong><em>A Quick Word</em></strong>  </p>
-<p>It is good practice to put double quotes around variables in Bash because it prevents word splitting and globbing.</p>
-<ul>
-<li><p>Word splitting is the process of breaking up a string into separate words based on whitespace. If a variable contains spaces, without quotes, Bash will treat each space-separated word as a separate argument. This can cause unexpected behavior if the variable is used as an argument to a command.</p>
-</li>
-<li><p>Globbing is the process of expanding wildcard characters such as <code>*</code> and <code>?</code> into a list of matching filenames. If a variable contains a glob character, without quotes, Bash will try to expand it into a list of matching filenames. This can also cause unexpected behavior if the variable is used as an argument to a command.</p>
-</li>
-</ul>
-<p>By putting double quotes around variables, Bash treats the variable as a single argument, preserving any whitespace or glob characters within the variable. This helps to ensure that the variable is interpreted correctly and the script behaves as expected.</p>
-</blockquote>
-<h3 id="Special-variables"><a href="#Special-variables" class="headerlink" title="Special variables"></a>Special variables</h3><p><strong><em><code>$IFS</code></em></strong></p>
-<p>The internal field separator (IFS) is a special variable in Bash that specifies the delimiter used to separate fields in a string. By default, the IFS is set to whitespace (i.e., space, tab, and newline characters).</p>
-<p><strong><em>&#96;$?</em></strong></p>
-<p>Display the return values of functions.</p>
-<figure class="highlight bash"><table><tr><td class="code"><pre><span class="line"><span class="built_in">echo</span> $?</span><br></pre></td></tr></table></figure>
-
-<p>You can use it immediately after calling a function with return value.</p>
-<h3 id="Slice"><a href="#Slice" class="headerlink" title="Slice"></a>Slice</h3><pre><code>[ &quot;$&#123;var:0:1&#125;&quot; = &quot;/&quot; ];
-</code></pre>
-<p>The slicing starts at index <code>0</code> and lasts for the duration of a single character.</p>
-<h3 id="Compare"><a href="#Compare" class="headerlink" title="Compare"></a>Compare</h3><p><strong><em>String comparison</em></strong></p>
-<p><code>=</code> tests if two strings are equal. For example, if <code>[ &quot;$string1&quot; = &quot;$string2&quot; ]</code> would be true if <code>$string1</code> and <code>$string2</code> have the same value.</p>
-<p><strong><em>Pattern matching</em></strong></p>
-<p><code>==</code> tests if a string matches a pattern using globbing, which is a way to match filenames based on wildcard characters. For example, if <code>[[ &quot;$string&quot; == a* ]]</code> would be true if <code>$string</code> starts with the letter “a”.</p>
-]]></content>
-      <categories>
-        <category>Wicked Cool Shell Scripts</category>
-      </categories>
-      <tags>
-        <tag>Linux</tag>
-        <tag>ArchLinux</tag>
-        <tag>Bash</tag>
-      </tags>
-  </entry>
-  <entry>
     <title>[Fix] Failed to mount /mnt/share</title>
     <url>/2023/04/27/%5BFix%5D%20Failed%20to%20mount%20:mnt:share/</url>
     <content><![CDATA[<h3 id="Solution"><a href="#Solution" class="headerlink" title="Solution"></a>Solution</h3><p>Our fix to the problem is to remove <code>/mnt/share</code> entirely and mount something else in its place.</p>
@@ -840,6 +782,49 @@ Apr 27 02:45:46 alarm systemd[1]: Failed to mount /mnt/share.
       </tags>
   </entry>
   <entry>
+    <title>`inpath`</title>
+    <url>/2023/04/29/%60inpath%60/</url>
+    <content><![CDATA[<p>Coding along with the book <em>Wicked Cool Shell Scripts- 101 Scripts for Linux, OS X, and UNIX Systems</em>.</p>
+<p>This is the script from Page 11:</p>
+<figure class="highlight bash"><table><tr><td class="code"><pre><span class="line"><span class="meta">#!/bin/bash</span></span><br><span class="line"></span><br><span class="line"><span class="function"><span class="title">in_path</span></span>()</span><br><span class="line">&#123;</span><br><span class="line">        cmd=<span class="variable">$1</span></span><br><span class="line">        ourpath=<span class="variable">$2</span>      </span><br><span class="line">        result=1</span><br><span class="line">        oldIFS=<span class="variable">$IFS</span>     </span><br><span class="line">        IFS=<span class="string">&quot;:&quot;</span></span><br><span class="line"> </span><br><span class="line">        <span class="keyword">for</span> directory <span class="keyword">in</span> <span class="variable">$ourpath</span>; <span class="keyword">do</span></span><br><span class="line"></span><br><span class="line">        <span class="comment"># If i double quoted `$ourpath`, it will not word split, and the loop will only run once.</span></span><br><span class="line"></span><br><span class="line">                <span class="keyword">if</span> [ -x <span class="string">&quot;<span class="variable">$directory</span>/<span class="variable">$cmd</span>&quot;</span> ]; <span class="keyword">then</span></span><br><span class="line">                        result=0</span><br><span class="line">                <span class="keyword">fi</span></span><br><span class="line">        <span class="keyword">done</span></span><br><span class="line"> </span><br><span class="line">        IFS=<span class="variable">$oldIFS</span></span><br><span class="line">        <span class="built_in">return</span> <span class="variable">$result</span></span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"><span class="function"><span class="title">checkForCmdInPath</span></span>()</span><br><span class="line">&#123;</span><br><span class="line">        var=<span class="variable">$1</span></span><br><span class="line"> </span><br><span class="line">        <span class="keyword">if</span> [ ! <span class="string">&quot;<span class="variable">$var</span>&quot;</span> = <span class="string">&quot;&quot;</span> ]; <span class="keyword">then</span></span><br><span class="line">                <span class="keyword">if</span> [ <span class="string">&quot;<span class="variable">$&#123;var:0:1&#125;</span>&quot;</span> = <span class="string">&quot;/&quot;</span> ]; <span class="keyword">then</span></span><br><span class="line">                	<span class="comment"># Checks whether the command represented by the `$var` is an absolute path or not. </span></span><br><span class="line">                        <span class="keyword">if</span> [ ! -x <span class="string">&quot;<span class="variable">$var</span>&quot;</span> ]; <span class="keyword">then</span></span><br><span class="line">                                <span class="built_in">return</span> 1</span><br><span class="line">                        <span class="keyword">fi</span></span><br><span class="line">                <span class="keyword">elif</span> ! in_path <span class="string">&quot;<span class="variable">$var</span>&quot;</span> <span class="string">&quot;<span class="variable">$PATH</span>&quot;</span>; <span class="keyword">then</span></span><br><span class="line">                        <span class="built_in">return</span> 2</span><br><span class="line">                <span class="keyword">fi</span></span><br><span class="line">        <span class="keyword">fi</span></span><br><span class="line">&#125;</span><br><span class="line"></span><br></pre></td></tr></table></figure>
+
+<h3 id="Positional-parameters"><a href="#Positional-parameters" class="headerlink" title="Positional parameters"></a>Positional parameters</h3><p>See <a href="/2023/04/29/Positional%20Parameters/">here</a></p>
+<blockquote>
+<p><strong><em>A Quick Word</em></strong>  </p>
+<p>It is good practice to put double quotes around variables in Bash because it prevents word splitting and globbing.</p>
+<ul>
+<li><p>Word splitting is the process of breaking up a string into separate words based on whitespace. If a variable contains spaces, without quotes, Bash will treat each space-separated word as a separate argument. This can cause unexpected behavior if the variable is used as an argument to a command.</p>
+</li>
+<li><p>Globbing is the process of expanding wildcard characters such as <code>*</code> and <code>?</code> into a list of matching filenames. If a variable contains a glob character, without quotes, Bash will try to expand it into a list of matching filenames. This can also cause unexpected behavior if the variable is used as an argument to a command.</p>
+</li>
+</ul>
+<p>By putting double quotes around variables, Bash treats the variable as a single argument, preserving any whitespace or glob characters within the variable. This helps to ensure that the variable is interpreted correctly and the script behaves as expected.</p>
+</blockquote>
+<h3 id="Special-variables"><a href="#Special-variables" class="headerlink" title="Special variables"></a>Special variables</h3><p><strong><em><code>$IFS</code></em></strong></p>
+<p>The internal field separator (IFS) is a special variable in Bash that specifies the delimiter used to separate fields in a string. By default, the IFS is set to whitespace (i.e., space, tab, and newline characters).</p>
+<p><strong><em>&#96;$?</em></strong></p>
+<p>Display the return values of functions.</p>
+<figure class="highlight bash"><table><tr><td class="code"><pre><span class="line"><span class="built_in">echo</span> $?</span><br></pre></td></tr></table></figure>
+
+<p>You can use it immediately after calling a function with return value.</p>
+<h3 id="Slice"><a href="#Slice" class="headerlink" title="Slice"></a>Slice</h3><pre><code>[ &quot;$&#123;var:0:1&#125;&quot; = &quot;/&quot; ];
+</code></pre>
+<p>The slicing starts at index <code>0</code> and lasts for the duration of a single character.</p>
+<h3 id="Compare"><a href="#Compare" class="headerlink" title="Compare"></a>Compare</h3><p><strong><em>String comparison</em></strong></p>
+<p><code>=</code> tests if two strings are equal. For example, if <code>[ &quot;$string1&quot; = &quot;$string2&quot; ]</code> would be true if <code>$string1</code> and <code>$string2</code> have the same value.</p>
+<p><strong><em>Pattern matching</em></strong></p>
+<p><code>==</code> tests if a string matches a pattern using globbing, which is a way to match filenames based on wildcard characters. For example, if <code>[[ &quot;$string&quot; == a* ]]</code> would be true if <code>$string</code> starts with the letter “a”.</p>
+]]></content>
+      <categories>
+        <category>Wicked Cool Shell Scripts</category>
+      </categories>
+      <tags>
+        <tag>Linux</tag>
+        <tag>ArchLinux</tag>
+        <tag>Bash</tag>
+      </tags>
+  </entry>
+  <entry>
     <title>`node` in the command line</title>
     <url>/2023/04/28/%60node%60%20in%20the%20command%20line/</url>
     <content><![CDATA[<p>I ran into this hassle the other day when my <code>npm</code> command failed to work in the command line. It took me a while to sort things out and left me in a foul mood. To prevent something like that from happening again, I decided to write this post. Nothing fancy - just some commands that might prove helpful in the long run.</p>
@@ -911,6 +896,76 @@ fetch-retry-maxtimeout = 300000
         <tag>Node.js</tag>
         <tag>Express.js</tag>
         <tag>Note</tag>
+      </tags>
+  </entry>
+  <entry>
+    <title>使用 Hexo 生成静态网页博客</title>
+    <url>/2023/04/22/%E4%BD%BF%E7%94%A8%20Hexo%20%E7%94%9F%E6%88%90%E9%9D%99%E6%80%81%E7%BD%91%E9%A1%B5%E5%8D%9A%E5%AE%A2/</url>
+    <content><![CDATA[<h3 id="要求"><a href="#要求" class="headerlink" title="要求"></a><em>要求</em></h3><ul>
+<li><p>Node.js</p>
+</li>
+<li><p>Git</p>
+</li>
+</ul>
+<h3 id="下载"><a href="#下载" class="headerlink" title="下载"></a><em>下载</em></h3><ul>
+<li><p><a href="https://nodejs.org/dist/v18.15.0/node-v18.15.0.pkg" title="Download Node (LTS)">官网下载 Node.js 安装包</a></p>
+</li>
+<li><p><a href="https://git-scm.com/downloads" title="Download Git">官网下载 Git</a></p>
+</li>
+</ul>
+<p>– <strong>请注意参考个人电脑的操作系统！</strong></p>
+<p>进入 Terminal 查看安装的版本：</p>
+<figure class="highlight bash"><table><tr><td class="code"><pre><span class="line">node --version <span class="comment"># v18.16.0</span></span><br><span class="line"></span><br><span class="line">git --version <span class="comment"># git version 2.40.0</span></span><br></pre></td></tr></table></figure>
+
+<h3 id="Quick-Start"><a href="#Quick-Start" class="headerlink" title="Quick Start"></a>Quick Start</h3><figure class="highlight bash"><table><tr><td class="code"><pre><span class="line">hexo init my-blog</span><br><span class="line"></span><br><span class="line"><span class="built_in">cd</span> my-blog</span><br><span class="line"></span><br><span class="line"><span class="comment"># 因为 hexo 是基于 Node.js 完成的框架，所以完成第一步之后无需再执行 `npm init -y` 生成 package.json 文件</span></span><br><span class="line"></span><br><span class="line">npm i </span><br><span class="line"></span><br><span class="line">hexo server</span><br></pre></td></tr></table></figure>
+
+<p>接着我们去 <code>localhost:4000</code> 就能看到我们的博客了！</p>
+<h3 id="项目树状结构图"><a href="#项目树状结构图" class="headerlink" title="项目树状结构图"></a>项目树状结构图</h3><p>我们首先来了解一下我们的项目文件夹下面有些什么：</p>
+<figure class="highlight plaintext"><table><tr><td class="code"><pre><span class="line">.</span><br><span class="line">├── _config.landscape.yml</span><br><span class="line">├── _config.yml</span><br><span class="line">├── db.json</span><br><span class="line">├── node_modules</span><br><span class="line">├── package-lock.json</span><br><span class="line">├── package.json</span><br><span class="line">├── public</span><br><span class="line">├── scaffolds</span><br><span class="line">├── source</span><br><span class="line">├── themes</span><br><span class="line">└── yarn.lock</span><br></pre></td></tr></table></figure>
+
+<ul>
+<li><a href="/2023/04/22/%E5%A6%82%E4%BD%95%E7%94%9F%E6%88%90%E9%A1%B9%E7%9B%AE%E6%A0%91%E7%8A%B6%E7%BB%93%E6%9E%84%E5%9B%BE/index.html">如何生成项目树状结构图</a></li>
+</ul>
+<blockquote>
+<p><code>_config.yml</code>：Hexo 博客设置</p>
+</blockquote>
+<blockquote>
+<p><code>node_modules</code>：存放启动需要使用的模组</p>
+</blockquote>
+<blockquote>
+<p><code>public</code>：存放生成的静态网页</p>
+</blockquote>
+<figure class="highlight plaintext"><table><tr><td class="code"><pre><span class="line">public</span><br><span class="line">├── 2023</span><br><span class="line">├── README.md</span><br><span class="line">├── archives</span><br><span class="line">├── assets</span><br><span class="line">├── css</span><br><span class="line">├── fontawesome</span><br><span class="line">├── fonts</span><br><span class="line">├── images</span><br><span class="line">├── index.html</span><br><span class="line">├── js</span><br><span class="line">├── tags</span><br><span class="line">└── webfonts</span><br></pre></td></tr></table></figure>
+
+<blockquote>
+<p><code>scaffolds</code>：存放 Hexo 个人博客的 3 种模版：page (白页)，post (博客)，draft (草稿)</p>
+</blockquote>
+<figure class="highlight plaintext"><table><tr><td class="code"><pre><span class="line">scaffolds</span><br><span class="line">├── draft.md</span><br><span class="line">├── page.md</span><br><span class="line">└── post.md</span><br></pre></td></tr></table></figure>
+
+<blockquote>
+<p><code>source</code>：存放博客<code>.md</code>文件</p>
+</blockquote>
+<blockquote>
+<p><code>themes</code>：存放<code>Custom</code>主题，从<code>npm</code>下载的主题存放在<code>node_modules</code>里</p>
+</blockquote>
+<h3 id="第一篇博客"><a href="#第一篇博客" class="headerlink" title="第一篇博客"></a>第一篇博客</h3><p>我们先从草稿开始：</p>
+<figure class="highlight bash"><table><tr><td class="code"><pre><span class="line">hexo new draft first-draft</span><br></pre></td></tr></table></figure>
+
+<p>Hexo 会帮我们在<code>/source/_drafts/</code>文件夹里创建我们的第一篇草稿。</p>
+<p>如果觉得写得差不多了，我们可以：</p>
+<figure class="highlight bash"><table><tr><td class="code"><pre><span class="line">hexo publish first-draft</span><br></pre></td></tr></table></figure>
+
+<p>Hexo 会自动帮我们把<code>first-draft.md</code>移动到<code>/source/_posts/</code>文件夹里，这样当我们打开服务器的时候就能看到这篇博客了。</p>
+<p>当然我们也可以带参数运行<code>hexo server</code>：</p>
+<figure class="highlight bash"><table><tr><td class="code"><pre><span class="line">hexo server --draft</span><br></pre></td></tr></table></figure>
+<p>这样我们在写草稿时也能看到最终的布局，方便我们对内容排版进行修改。</p>
+<h3 id="修改-config-yml文件"><a href="#修改-config-yml文件" class="headerlink" title="修改_config.yml文件"></a>修改<code>_config.yml</code>文件</h3><p>我们可以通过修改设置文件来改变 Hexo 的一些初始行为，比如说在 Writing 一栏里改变<code>default_layout</code>变量的参数可以改变<code>hexo new</code>创建的文件类型。</p>
+<figure class="highlight yml"><table><tr><td class="code"><pre><span class="line"><span class="comment"># Writing</span></span><br><span class="line"><span class="attr">default_layout:</span> <span class="string">post</span></span><br></pre></td></tr></table></figure>
+<p>这样我们就不用每次<code>hexo new</code>时还需要特地指定创建的文件类型了。</p>
+]]></content>
+      <tags>
+        <tag>Bash</tag>
+        <tag>Hexo</tag>
       </tags>
   </entry>
   <entry>
@@ -1016,73 +1071,50 @@ S: 221 /0:0:0:0:0:0:0:1 Service closing transmission channel
       </tags>
   </entry>
   <entry>
-    <title>使用 Hexo 生成静态网页博客</title>
-    <url>/2023/04/22/%E4%BD%BF%E7%94%A8%20Hexo%20%E7%94%9F%E6%88%90%E9%9D%99%E6%80%81%E7%BD%91%E9%A1%B5%E5%8D%9A%E5%AE%A2/</url>
-    <content><![CDATA[<h3 id="要求"><a href="#要求" class="headerlink" title="要求"></a><em>要求</em></h3><ul>
-<li><p>Node.js</p>
-</li>
-<li><p>Git</p>
-</li>
-</ul>
-<h3 id="下载"><a href="#下载" class="headerlink" title="下载"></a><em>下载</em></h3><ul>
-<li><p><a href="https://nodejs.org/dist/v18.15.0/node-v18.15.0.pkg" title="Download Node (LTS)">官网下载 Node.js 安装包</a></p>
-</li>
-<li><p><a href="https://git-scm.com/downloads" title="Download Git">官网下载 Git</a></p>
-</li>
-</ul>
-<p>– <strong>请注意参考个人电脑的操作系统！</strong></p>
-<p>进入 Terminal 查看安装的版本：</p>
-<figure class="highlight bash"><table><tr><td class="code"><pre><span class="line">node --version <span class="comment"># v18.16.0</span></span><br><span class="line"></span><br><span class="line">git --version <span class="comment"># git version 2.40.0</span></span><br></pre></td></tr></table></figure>
+    <title>如何使用 GitHub Pages 托管 Hexo 静态博客网站</title>
+    <url>/2023/04/22/%E5%A6%82%E4%BD%95%E4%BD%BF%E7%94%A8%20GitHub%20Pages%20%E6%89%98%E7%AE%A1%20Hexo%20%E9%9D%99%E6%80%81%E5%8D%9A%E5%AE%A2%E7%BD%91%E7%AB%99/</url>
+    <content><![CDATA[<p>– <strong>请先阅读 <a href="/2023/04/22/%E4%BD%BF%E7%94%A8%20Hexo%20%E7%94%9F%E6%88%90%E9%9D%99%E6%80%81%E7%BD%91%E9%A1%B5%E5%8D%9A%E5%AE%A2/index.html">使用 Hexo 生成静态网页博客</a>！</strong></p>
+<h3 id="准备工作"><a href="#准备工作" class="headerlink" title="准备工作"></a>准备工作</h3><p>首先，我们基于完成的博客<code>.md</code>文件生成静态网页：</p>
+<figure class="highlight bash"><table><tr><td class="code"><pre><span class="line"><span class="built_in">cd</span> /path/to/site/</span><br><span class="line"><span class="comment"># 跑到项目路径目录</span></span><br><span class="line"></span><br><span class="line">hexo generate</span><br><span class="line"><span class="comment"># 生成静态网页，存放与 public 文件夹内</span></span><br></pre></td></tr></table></figure>
 
-<h3 id="Quick-Start"><a href="#Quick-Start" class="headerlink" title="Quick Start"></a>Quick Start</h3><figure class="highlight bash"><table><tr><td class="code"><pre><span class="line">hexo init my-blog</span><br><span class="line"></span><br><span class="line"><span class="built_in">cd</span> my-blog</span><br><span class="line"></span><br><span class="line"><span class="comment"># 因为 hexo 是基于 Node.js 完成的框架，所以完成第一步之后无需再执行 `npm init -y` 生成 package.json 文件</span></span><br><span class="line"></span><br><span class="line">npm i </span><br><span class="line"></span><br><span class="line">hexo server</span><br></pre></td></tr></table></figure>
+<p>接着，我们进入<code>public</code>文件夹。</p>
+<pre><code>.
+├── node_modules
+├── public
+├── scaffolds
+├── source
+└── themes
+</code></pre>
+<p>因为我们是使用 GitHub Pages 托管，所以我们需要在<code>public</code>文件夹内初始化<code>git</code>：</p>
+<figure class="highlight bash"><table><tr><td class="code"><pre><span class="line">git init</span><br><span class="line"></span><br><span class="line">git branch -m main</span><br><span class="line"></span><br><span class="line">git add .</span><br><span class="line"></span><br><span class="line">git commit -m <span class="string">&quot;初始化工作&quot;</span></span><br></pre></td></tr></table></figure>
 
-<p>接着我们去 <code>localhost:4000</code> 就能看到我们的博客了！</p>
-<h3 id="项目树状结构图"><a href="#项目树状结构图" class="headerlink" title="项目树状结构图"></a>项目树状结构图</h3><p>我们首先来了解一下我们的项目文件夹下面有些什么：</p>
-<figure class="highlight plaintext"><table><tr><td class="code"><pre><span class="line">.</span><br><span class="line">├── _config.landscape.yml</span><br><span class="line">├── _config.yml</span><br><span class="line">├── db.json</span><br><span class="line">├── node_modules</span><br><span class="line">├── package-lock.json</span><br><span class="line">├── package.json</span><br><span class="line">├── public</span><br><span class="line">├── scaffolds</span><br><span class="line">├── source</span><br><span class="line">├── themes</span><br><span class="line">└── yarn.lock</span><br></pre></td></tr></table></figure>
+<p>其次，我们还需要在 GitHub 上面建立一个远程仓库，格式<strong>必须</strong>为<code>username.github.io</code>，这是硬性要求。</p>
+<h3 id="关联和发布"><a href="#关联和发布" class="headerlink" title="关联和发布"></a>关联和发布</h3><p>我们现在需要关联本地仓库和远程仓库，用例中我们使用<code>https</code>协议，当然也可以使用<code>ssh</code>密钥：</p>
+<figure class="highlight bash"><table><tr><td class="code"><pre><span class="line">git remote add origin https://github.com/username/username.github.io.git</span><br><span class="line"></span><br><span class="line">git push origin main</span><br></pre></td></tr></table></figure>
 
-<ul>
-<li><a href="/2023/04/22/%E5%A6%82%E4%BD%95%E7%94%9F%E6%88%90%E9%A1%B9%E7%9B%AE%E6%A0%91%E7%8A%B6%E7%BB%93%E6%9E%84%E5%9B%BE/index.html">如何生成项目树状结构图</a></li>
-</ul>
-<blockquote>
-<p><code>_config.yml</code>：Hexo 博客设置</p>
-</blockquote>
-<blockquote>
-<p><code>node_modules</code>：存放启动需要使用的模组</p>
-</blockquote>
-<blockquote>
-<p><code>public</code>：存放生成的静态网页</p>
-</blockquote>
-<figure class="highlight plaintext"><table><tr><td class="code"><pre><span class="line">public</span><br><span class="line">├── 2023</span><br><span class="line">├── README.md</span><br><span class="line">├── archives</span><br><span class="line">├── assets</span><br><span class="line">├── css</span><br><span class="line">├── fontawesome</span><br><span class="line">├── fonts</span><br><span class="line">├── images</span><br><span class="line">├── index.html</span><br><span class="line">├── js</span><br><span class="line">├── tags</span><br><span class="line">└── webfonts</span><br></pre></td></tr></table></figure>
+<p>我们还需要更改一下远程仓库的 GitHub Pages 的设置，目的是告知它托管文件的地址：</p>
+<div style="display: block; margin-left: auto; margin-right: auto; text-align: center; font-size: 1rem;">
+  
+<p>  <img src="/2023/04/22/%E5%A6%82%E4%BD%95%E4%BD%BF%E7%94%A8%20GitHub%20Pages%20%E6%89%98%E7%AE%A1%20Hexo%20%E9%9D%99%E6%80%81%E5%8D%9A%E5%AE%A2%E7%BD%91%E7%AB%99/images/0001.png" alt="点击 Settings" title="点击 Settings"></p>
+  <div>点击 Settings</div>
+  <br>
 
-<blockquote>
-<p><code>scaffolds</code>：存放 Hexo 个人博客的 3 种模版：page (白页)，post (博客)，draft (草稿)</p>
-</blockquote>
-<figure class="highlight plaintext"><table><tr><td class="code"><pre><span class="line">scaffolds</span><br><span class="line">├── draft.md</span><br><span class="line">├── page.md</span><br><span class="line">└── post.md</span><br></pre></td></tr></table></figure>
+<p>  <img src="/2023/04/22/%E5%A6%82%E4%BD%95%E4%BD%BF%E7%94%A8%20GitHub%20Pages%20%E6%89%98%E7%AE%A1%20Hexo%20%E9%9D%99%E6%80%81%E5%8D%9A%E5%AE%A2%E7%BD%91%E7%AB%99/images/0002.png" alt="点击 Pages" title="点击 Pages"></p>
+  <div>点击 Pages</div>
+  <br>
 
-<blockquote>
-<p><code>source</code>：存放博客<code>.md</code>文件</p>
-</blockquote>
-<blockquote>
-<p><code>themes</code>：存放<code>Custom</code>主题，从<code>npm</code>下载的主题存放在<code>node_modules</code>里</p>
-</blockquote>
-<h3 id="第一篇博客"><a href="#第一篇博客" class="headerlink" title="第一篇博客"></a>第一篇博客</h3><p>我们先从草稿开始：</p>
-<figure class="highlight bash"><table><tr><td class="code"><pre><span class="line">hexo new draft first-draft</span><br></pre></td></tr></table></figure>
+<p>  <img src="/2023/04/22/%E5%A6%82%E4%BD%95%E4%BD%BF%E7%94%A8%20GitHub%20Pages%20%E6%89%98%E7%AE%A1%20Hexo%20%E9%9D%99%E6%80%81%E5%8D%9A%E5%AE%A2%E7%BD%91%E7%AB%99/images/0003.png" alt="修改设置" title="修改设置"></p>
+  <div>修改设置</div>
+  <br>
 
-<p>Hexo 会帮我们在<code>/source/_drafts/</code>文件夹里创建我们的第一篇草稿。</p>
-<p>如果觉得写得差不多了，我们可以：</p>
-<figure class="highlight bash"><table><tr><td class="code"><pre><span class="line">hexo publish first-draft</span><br></pre></td></tr></table></figure>
+</div>
 
-<p>Hexo 会自动帮我们把<code>first-draft.md</code>移动到<code>/source/_posts/</code>文件夹里，这样当我们打开服务器的时候就能看到这篇博客了。</p>
-<p>当然我们也可以带参数运行<code>hexo server</code>：</p>
-<figure class="highlight bash"><table><tr><td class="code"><pre><span class="line">hexo server --draft</span><br></pre></td></tr></table></figure>
-<p>这样我们在写草稿时也能看到最终的布局，方便我们对内容排版进行修改。</p>
-<h3 id="修改-config-yml文件"><a href="#修改-config-yml文件" class="headerlink" title="修改_config.yml文件"></a>修改<code>_config.yml</code>文件</h3><p>我们可以通过修改设置文件来改变 Hexo 的一些初始行为，比如说在 Writing 一栏里改变<code>default_layout</code>变量的参数可以改变<code>hexo new</code>创建的文件类型。</p>
-<figure class="highlight yml"><table><tr><td class="code"><pre><span class="line"><span class="comment"># Writing</span></span><br><span class="line"><span class="attr">default_layout:</span> <span class="string">post</span></span><br></pre></td></tr></table></figure>
-<p>这样我们就不用每次<code>hexo new</code>时还需要特地指定创建的文件类型了。</p>
+<p>最后，我们访问<code>username.github.io</code>就可以来到我们的博客页了 :)</p>
 ]]></content>
       <tags>
-        <tag>Bash</tag>
         <tag>Hexo</tag>
+        <tag>GitHub Pages</tag>
+        <tag>Git</tag>
       </tags>
   </entry>
   <entry>
@@ -1132,6 +1164,79 @@ S: 221 /0:0:0:0:0:0:0:1 Service closing transmission channel
         <tag>Bash</tag>
         <tag>CLI</tag>
         <tag>File Systems</tag>
+      </tags>
+  </entry>
+  <entry>
+    <title>软件工程 第一周的博客</title>
+    <url>/2023/03/22/%E8%BD%AF%E4%BB%B6%E5%B7%A5%E7%A8%8B%20%E7%AC%AC%E4%B8%80%E5%91%A8%E7%9A%84%E5%8D%9A%E5%AE%A2/</url>
+    <content><![CDATA[<h3 id="使用Git-VCS的一些小技巧"><a href="#使用Git-VCS的一些小技巧" class="headerlink" title="使用Git VCS的一些小技巧"></a><em>使用Git VCS的一些小技巧</em></h3><p>初始化步骤我就大段省略了，大致就是去 Git 官网下载 Binary Dependencies 然后安装就好了，或者是去安装<code>xcode-command-line-tools</code>，其中<code>git</code>自动包含在里面了。</p>
+<p>说白了 Git 就是一个 Distributional VCS ，大体就是结合了 Local VCS和Centralized VCS，因此基本步骤就是本地建立一个 Local Repository，再在 Gitea 上建立一个 Remote Repository，然后把两个库连接一下，最后把本地的改动<code>push</code>到 Remote Repository 就可以了。</p>
+<p>先说如何建 Local Repository。</p>
+<p>选一处“风水宝地”，一般选择<code>/User/home</code>。然后跑到系统默认的 Terminal Emulator 去（ Windows：PowerShell ），输入一下指令：</p>
+<figure class="highlight bash"><table><tr><td class="code"><pre><span class="line"><span class="built_in">mkdir</span> temp <span class="comment"># 建立temp</span></span><br><span class="line"></span><br><span class="line"><span class="built_in">cd</span> temp <span class="comment"># 进入</span></span><br><span class="line"></span><br><span class="line">git init <span class="comment"># 初始化 Local Repository</span></span><br><span class="line"></span><br></pre></td></tr></table></figure>
+
+<p>做完最后一步会看到 Git 生成了一个<code>.git</code>的隐藏文件夹。千万不要把自己的项目文件扔进去！</p>
+<p>初始化完成后，你就可以开始做项目了。等你做完第一个版本，你就可以把项目<code>add</code>到<code>staging area</code>。用如下指令：</p>
+<figure class="highlight bash"><table><tr><td class="code"><pre><span class="line">git add file.. <span class="comment"># add 后可以加入多个文件</span></span><br></pre></td></tr></table></figure>
+
+<p>然后用<code>git status</code>查看 Local Repository 的状态。如果你看到所有想要<code>staged</code>的文件已经在<code>staging area</code>里面了，就可以上传了。</p>
+<blockquote>
+<p>eg:</p>
+</blockquote>
+<figure class="highlight bash"><table><tr><td class="code"><pre><span class="line">git commit -m “message<span class="string">&quot;</span></span><br></pre></td></tr></table></figure>
+
+<p>最后，我们需要创建一个 Remote Repository，过程如下：</p>
+<figure class="highlight bash"><table><tr><td class="code"><pre><span class="line">git remote add origin git@example.git</span><br></pre></td></tr></table></figure>
+
+<p>然后，我们<code>push</code> Local Repo 到 Remote Repository，过程如下：</p>
+<figure class="highlight bash"><table><tr><td class="code"><pre><span class="line">git push origin temp</span><br></pre></td></tr></table></figure>]]></content>
+      <tags>
+        <tag>Bash</tag>
+        <tag>Git</tag>
+        <tag>CLI</tag>
+        <tag>File Systems</tag>
+      </tags>
+  </entry>
+  <entry>
+    <title>软件工程 第二周的博客</title>
+    <url>/2023/03/29/%E8%BD%AF%E4%BB%B6%E5%B7%A5%E7%A8%8B%20%E7%AC%AC%E4%BA%8C%E5%91%A8%E7%9A%84%E5%8D%9A%E5%AE%A2/</url>
+    <content><![CDATA[<h3 id="使用-Node-js-的-Express-js-模组-Host-自己的静态网页"><a href="#使用-Node-js-的-Express-js-模组-Host-自己的静态网页" class="headerlink" title="使用 Node.js 的 Express.js 模组 Host 自己的静态网页"></a><em>使用 Node.js 的 Express.js 模组 Host 自己的静态网页</em></h3><p>首先创建项目文件夹:</p>
+<figure class="highlight plaintext"><table><tr><td class="code"><pre><span class="line"></span><br><span class="line">mkdir project01; cd project01</span><br><span class="line"></span><br></pre></td></tr></table></figure>
+
+<p>然后创建app.js文件：</p>
+<figure class="highlight plaintext"><table><tr><td class="code"><pre><span class="line"></span><br><span class="line">touch app.js; sudo nano app.js</span><br><span class="line"></span><br></pre></td></tr></table></figure>
+
+<blockquote>
+<p>差点忘了，没下载Node.js的先去这个地址下载一下：<a href="https://nodejs.org/en/download/">https://nodejs.org/en/download/</a></p>
+</blockquote>
+<p>下载完初始化一下：</p>
+<figure class="highlight plaintext"><table><tr><td class="code"><pre><span class="line"></span><br><span class="line">node init -y</span><br><span class="line"></span><br></pre></td></tr></table></figure>
+
+<p>到生成的package.json文件里 script object 里加个参数：</p>
+<figure class="highlight plaintext"><table><tr><td class="code"><pre><span class="line"></span><br><span class="line">‘start&#x27;：‘node app’</span><br><span class="line"></span><br></pre></td></tr></table></figure>
+
+<p>好的，非常完美。</p>
+<p>然后下载express：</p>
+<figure class="highlight plaintext"><table><tr><td class="code"><pre><span class="line"></span><br><span class="line">npm i express --save</span><br><span class="line"></span><br></pre></td></tr></table></figure>
+
+<p>这里不建议把它下载为–global，因为会和别的模组冲突。</p>
+<p>面对空白页，先导入express模组并初始化app（关于http模组的基础不做赘述，因为用那个太麻烦了）：</p>
+<figure class="highlight plaintext"><table><tr><td class="code"><pre><span class="line"></span><br><span class="line">const app = require(&#x27;express&#x27;)()</span><br><span class="line"></span><br></pre></td></tr></table></figure>
+
+<p>然后省略几千字，直接上代码，不懂看注释 : )</p>
+<figure class="highlight plaintext"><table><tr><td class="code"><pre><span class="line"></span><br><span class="line">app.use(express.static(&#x27;./public&#x27;))     // 把静态网页需要的资源全扔 public 文件夹里就好了</span><br><span class="line"></span><br><span class="line">app.all(&#x27;*&#x27;, (req, res) =&gt; &#123;</span><br><span class="line">  res.status(404).send(&#x27;resource not found&#x27;)</span><br><span class="line">&#125;)                                                           // 这个是用来处理404 Bad Request 的</span><br><span class="line"></span><br><span class="line">app.listen(5000, () =&gt; &#123;</span><br><span class="line">  console.log(&#x27;server is listening on port 5000....&#x27;)</span><br><span class="line">&#125;)                                                          // 这个是选择端口</span><br><span class="line"></span><br></pre></td></tr></table></figure>
+
+<p>最后在 console 里输入：</p>
+<figure class="highlight plaintext"><table><tr><td class="code"><pre><span class="line"></span><br><span class="line">npm start</span><br><span class="line"></span><br></pre></td></tr></table></figure>
+
+<p>完成！唯一的问题是我们用的还是 localhost， 也就是只有自己可以在端口 5000 看到自己的网页。</p>
+<p>想让别人看到的话就去使用 Git Pages 的免费服务。</p>
+<p>是不是很简单，开自己动手试一试吧！</p>
+]]></content>
+      <tags>
+        <tag>JavaScript</tag>
+        <tag>Node.js</tag>
+        <tag>Express.js</tag>
       </tags>
   </entry>
   <entry>
@@ -1211,126 +1316,6 @@ S: 221 /0:0:0:0:0:0:0:1 Service closing transmission channel
         <tag>CTF</tag>
         <tag>OverTheWire</tag>
         <tag>Bandit</tag>
-      </tags>
-  </entry>
-  <entry>
-    <title>如何使用 GitHub Pages 托管 Hexo 静态博客网站</title>
-    <url>/2023/04/22/%E5%A6%82%E4%BD%95%E4%BD%BF%E7%94%A8%20GitHub%20Pages%20%E6%89%98%E7%AE%A1%20Hexo%20%E9%9D%99%E6%80%81%E5%8D%9A%E5%AE%A2%E7%BD%91%E7%AB%99/</url>
-    <content><![CDATA[<p>– <strong>请先阅读 <a href="/2023/04/22/%E4%BD%BF%E7%94%A8%20Hexo%20%E7%94%9F%E6%88%90%E9%9D%99%E6%80%81%E7%BD%91%E9%A1%B5%E5%8D%9A%E5%AE%A2/index.html">使用 Hexo 生成静态网页博客</a>！</strong></p>
-<h3 id="准备工作"><a href="#准备工作" class="headerlink" title="准备工作"></a>准备工作</h3><p>首先，我们基于完成的博客<code>.md</code>文件生成静态网页：</p>
-<figure class="highlight bash"><table><tr><td class="code"><pre><span class="line"><span class="built_in">cd</span> /path/to/site/</span><br><span class="line"><span class="comment"># 跑到项目路径目录</span></span><br><span class="line"></span><br><span class="line">hexo generate</span><br><span class="line"><span class="comment"># 生成静态网页，存放与 public 文件夹内</span></span><br></pre></td></tr></table></figure>
-
-<p>接着，我们进入<code>public</code>文件夹。</p>
-<pre><code>.
-├── node_modules
-├── public
-├── scaffolds
-├── source
-└── themes
-</code></pre>
-<p>因为我们是使用 GitHub Pages 托管，所以我们需要在<code>public</code>文件夹内初始化<code>git</code>：</p>
-<figure class="highlight bash"><table><tr><td class="code"><pre><span class="line">git init</span><br><span class="line"></span><br><span class="line">git branch -m main</span><br><span class="line"></span><br><span class="line">git add .</span><br><span class="line"></span><br><span class="line">git commit -m <span class="string">&quot;初始化工作&quot;</span></span><br></pre></td></tr></table></figure>
-
-<p>其次，我们还需要在 GitHub 上面建立一个远程仓库，格式<strong>必须</strong>为<code>username.github.io</code>，这是硬性要求。</p>
-<h3 id="关联和发布"><a href="#关联和发布" class="headerlink" title="关联和发布"></a>关联和发布</h3><p>我们现在需要关联本地仓库和远程仓库，用例中我们使用<code>https</code>协议，当然也可以使用<code>ssh</code>密钥：</p>
-<figure class="highlight bash"><table><tr><td class="code"><pre><span class="line">git remote add origin https://github.com/username/username.github.io.git</span><br><span class="line"></span><br><span class="line">git push origin main</span><br></pre></td></tr></table></figure>
-
-<p>我们还需要更改一下远程仓库的 GitHub Pages 的设置，目的是告知它托管文件的地址：</p>
-<div style="display: block; margin-left: auto; margin-right: auto; text-align: center; font-size: 1rem;">
-  
-<p>  <img src="/2023/04/22/%E5%A6%82%E4%BD%95%E4%BD%BF%E7%94%A8%20GitHub%20Pages%20%E6%89%98%E7%AE%A1%20Hexo%20%E9%9D%99%E6%80%81%E5%8D%9A%E5%AE%A2%E7%BD%91%E7%AB%99/images/0001.png" alt="点击 Settings" title="点击 Settings"></p>
-  <div>点击 Settings</div>
-  <br>
-
-<p>  <img src="/2023/04/22/%E5%A6%82%E4%BD%95%E4%BD%BF%E7%94%A8%20GitHub%20Pages%20%E6%89%98%E7%AE%A1%20Hexo%20%E9%9D%99%E6%80%81%E5%8D%9A%E5%AE%A2%E7%BD%91%E7%AB%99/images/0002.png" alt="点击 Pages" title="点击 Pages"></p>
-  <div>点击 Pages</div>
-  <br>
-
-<p>  <img src="/2023/04/22/%E5%A6%82%E4%BD%95%E4%BD%BF%E7%94%A8%20GitHub%20Pages%20%E6%89%98%E7%AE%A1%20Hexo%20%E9%9D%99%E6%80%81%E5%8D%9A%E5%AE%A2%E7%BD%91%E7%AB%99/images/0003.png" alt="修改设置" title="修改设置"></p>
-  <div>修改设置</div>
-  <br>
-
-</div>
-
-<p>最后，我们访问<code>username.github.io</code>就可以来到我们的博客页了 :)</p>
-]]></content>
-      <tags>
-        <tag>Hexo</tag>
-        <tag>GitHub Pages</tag>
-        <tag>Git</tag>
-      </tags>
-  </entry>
-  <entry>
-    <title>软件工程 第一周的博客</title>
-    <url>/2023/03/22/%E8%BD%AF%E4%BB%B6%E5%B7%A5%E7%A8%8B%20%E7%AC%AC%E4%B8%80%E5%91%A8%E7%9A%84%E5%8D%9A%E5%AE%A2/</url>
-    <content><![CDATA[<h3 id="使用Git-VCS的一些小技巧"><a href="#使用Git-VCS的一些小技巧" class="headerlink" title="使用Git VCS的一些小技巧"></a><em>使用Git VCS的一些小技巧</em></h3><p>初始化步骤我就大段省略了，大致就是去 Git 官网下载 Binary Dependencies 然后安装就好了，或者是去安装<code>xcode-command-line-tools</code>，其中<code>git</code>自动包含在里面了。</p>
-<p>说白了 Git 就是一个 Distributional VCS ，大体就是结合了 Local VCS和Centralized VCS，因此基本步骤就是本地建立一个 Local Repository，再在 Gitea 上建立一个 Remote Repository，然后把两个库连接一下，最后把本地的改动<code>push</code>到 Remote Repository 就可以了。</p>
-<p>先说如何建 Local Repository。</p>
-<p>选一处“风水宝地”，一般选择<code>/User/home</code>。然后跑到系统默认的 Terminal Emulator 去（ Windows：PowerShell ），输入一下指令：</p>
-<figure class="highlight bash"><table><tr><td class="code"><pre><span class="line"><span class="built_in">mkdir</span> temp <span class="comment"># 建立temp</span></span><br><span class="line"></span><br><span class="line"><span class="built_in">cd</span> temp <span class="comment"># 进入</span></span><br><span class="line"></span><br><span class="line">git init <span class="comment"># 初始化 Local Repository</span></span><br><span class="line"></span><br></pre></td></tr></table></figure>
-
-<p>做完最后一步会看到 Git 生成了一个<code>.git</code>的隐藏文件夹。千万不要把自己的项目文件扔进去！</p>
-<p>初始化完成后，你就可以开始做项目了。等你做完第一个版本，你就可以把项目<code>add</code>到<code>staging area</code>。用如下指令：</p>
-<figure class="highlight bash"><table><tr><td class="code"><pre><span class="line">git add file.. <span class="comment"># add 后可以加入多个文件</span></span><br></pre></td></tr></table></figure>
-
-<p>然后用<code>git status</code>查看 Local Repository 的状态。如果你看到所有想要<code>staged</code>的文件已经在<code>staging area</code>里面了，就可以上传了。</p>
-<blockquote>
-<p>eg:</p>
-</blockquote>
-<figure class="highlight bash"><table><tr><td class="code"><pre><span class="line">git commit -m “message<span class="string">&quot;</span></span><br></pre></td></tr></table></figure>
-
-<p>最后，我们需要创建一个 Remote Repository，过程如下：</p>
-<figure class="highlight bash"><table><tr><td class="code"><pre><span class="line">git remote add origin git@example.git</span><br></pre></td></tr></table></figure>
-
-<p>然后，我们<code>push</code> Local Repo 到 Remote Repository，过程如下：</p>
-<figure class="highlight bash"><table><tr><td class="code"><pre><span class="line">git push origin temp</span><br></pre></td></tr></table></figure>]]></content>
-      <tags>
-        <tag>Bash</tag>
-        <tag>CLI</tag>
-        <tag>File Systems</tag>
-        <tag>Git</tag>
-      </tags>
-  </entry>
-  <entry>
-    <title>软件工程 第二周的博客</title>
-    <url>/2023/03/29/%E8%BD%AF%E4%BB%B6%E5%B7%A5%E7%A8%8B%20%E7%AC%AC%E4%BA%8C%E5%91%A8%E7%9A%84%E5%8D%9A%E5%AE%A2/</url>
-    <content><![CDATA[<h3 id="使用-Node-js-的-Express-js-模组-Host-自己的静态网页"><a href="#使用-Node-js-的-Express-js-模组-Host-自己的静态网页" class="headerlink" title="使用 Node.js 的 Express.js 模组 Host 自己的静态网页"></a><em>使用 Node.js 的 Express.js 模组 Host 自己的静态网页</em></h3><p>首先创建项目文件夹:</p>
-<figure class="highlight plaintext"><table><tr><td class="code"><pre><span class="line"></span><br><span class="line">mkdir project01; cd project01</span><br><span class="line"></span><br></pre></td></tr></table></figure>
-
-<p>然后创建app.js文件：</p>
-<figure class="highlight plaintext"><table><tr><td class="code"><pre><span class="line"></span><br><span class="line">touch app.js; sudo nano app.js</span><br><span class="line"></span><br></pre></td></tr></table></figure>
-
-<blockquote>
-<p>差点忘了，没下载Node.js的先去这个地址下载一下：<a href="https://nodejs.org/en/download/">https://nodejs.org/en/download/</a></p>
-</blockquote>
-<p>下载完初始化一下：</p>
-<figure class="highlight plaintext"><table><tr><td class="code"><pre><span class="line"></span><br><span class="line">node init -y</span><br><span class="line"></span><br></pre></td></tr></table></figure>
-
-<p>到生成的package.json文件里 script object 里加个参数：</p>
-<figure class="highlight plaintext"><table><tr><td class="code"><pre><span class="line"></span><br><span class="line">‘start&#x27;：‘node app’</span><br><span class="line"></span><br></pre></td></tr></table></figure>
-
-<p>好的，非常完美。</p>
-<p>然后下载express：</p>
-<figure class="highlight plaintext"><table><tr><td class="code"><pre><span class="line"></span><br><span class="line">npm i express --save</span><br><span class="line"></span><br></pre></td></tr></table></figure>
-
-<p>这里不建议把它下载为–global，因为会和别的模组冲突。</p>
-<p>面对空白页，先导入express模组并初始化app（关于http模组的基础不做赘述，因为用那个太麻烦了）：</p>
-<figure class="highlight plaintext"><table><tr><td class="code"><pre><span class="line"></span><br><span class="line">const app = require(&#x27;express&#x27;)()</span><br><span class="line"></span><br></pre></td></tr></table></figure>
-
-<p>然后省略几千字，直接上代码，不懂看注释 : )</p>
-<figure class="highlight plaintext"><table><tr><td class="code"><pre><span class="line"></span><br><span class="line">app.use(express.static(&#x27;./public&#x27;))     // 把静态网页需要的资源全扔 public 文件夹里就好了</span><br><span class="line"></span><br><span class="line">app.all(&#x27;*&#x27;, (req, res) =&gt; &#123;</span><br><span class="line">  res.status(404).send(&#x27;resource not found&#x27;)</span><br><span class="line">&#125;)                                                           // 这个是用来处理404 Bad Request 的</span><br><span class="line"></span><br><span class="line">app.listen(5000, () =&gt; &#123;</span><br><span class="line">  console.log(&#x27;server is listening on port 5000....&#x27;)</span><br><span class="line">&#125;)                                                          // 这个是选择端口</span><br><span class="line"></span><br></pre></td></tr></table></figure>
-
-<p>最后在 console 里输入：</p>
-<figure class="highlight plaintext"><table><tr><td class="code"><pre><span class="line"></span><br><span class="line">npm start</span><br><span class="line"></span><br></pre></td></tr></table></figure>
-
-<p>完成！唯一的问题是我们用的还是 localhost， 也就是只有自己可以在端口 5000 看到自己的网页。</p>
-<p>想让别人看到的话就去使用 Git Pages 的免费服务。</p>
-<p>是不是很简单，开自己动手试一试吧！</p>
-]]></content>
-      <tags>
-        <tag>JavaScript</tag>
-        <tag>Node.js</tag>
-        <tag>Express.js</tag>
       </tags>
   </entry>
   <entry>
@@ -1418,5 +1403,20 @@ Connection to localhost closed.
         <tag>OverTheWire</tag>
         <tag>Bandit</tag>
       </tags>
+  </entry>
+  <entry>
+    <title>Immediately Executing Function Demo</title>
+    <url>/2023/04/27/Immediately%20Executing%20Function%20Demo/</url>
+    <content><![CDATA[<p>The key aspect of this demo is that the utilization of an immediately executing function in JavaScript generates a fresh variable scope, which distinguishes it from <code>if</code>, <code>else</code>, and <code>while</code>. The code presented below exemplifies this fact.</p>
+<figure class="highlight javascript"><table><tr><td class="code"><pre><span class="line"><span class="keyword">var</span> foo = <span class="number">123</span></span><br><span class="line"></span><br><span class="line"><span class="keyword">if</span> (<span class="number">1</span>) &#123;</span><br><span class="line">    <span class="keyword">var</span> foo = <span class="number">456</span></span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line">(<span class="function"><span class="params">_</span> =&gt;</span> &#123;</span><br><span class="line">    <span class="keyword">var</span> foo = <span class="number">123</span></span><br><span class="line">&#125;)()</span><br><span class="line"></span><br><span class="line"><span class="variable language_">console</span>.<span class="title function_">log</span>(foo)</span><br><span class="line"></span><br></pre></td></tr></table></figure>
+
+<p>Output:</p>
+<pre><code>456
+</code></pre>
+<p>Notice how the function does not reset the value of variable <code>foo</code>? Now that’s something to be mindful of!</p>
+]]></content>
+      <categories>
+        <category>JavaScript</category>
+      </categories>
   </entry>
 </search>
