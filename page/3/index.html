@@ -152,7 +152,7 @@
   <nav class="site-state">
       <div class="site-state-item site-state-posts">
         <a href="/archives/">
-          <span class="site-state-item-count">24</span>
+          <span class="site-state-item-count">25</span>
           <span class="site-state-item-name">posts</span>
         </a>
       </div>
@@ -163,7 +163,7 @@
       </div>
       <div class="site-state-item site-state-tags">
           <a href="/tags/">
-        <span class="site-state-item-count">34</span>
+        <span class="site-state-item-count">35</span>
         <span class="site-state-item-name">tags</span></a>
       </div>
   </nav>
@@ -188,6 +188,175 @@
     </div>
 
     <div class="main-inner index posts-expand">
+
+    
+
+
+<div class="post-block">
+  
+  
+
+  <article itemscope itemtype="http://schema.org/Article" class="post-content" lang="">
+    <link itemprop="mainEntityOfPage" href="https://mccranky83.github.io/2023/04/21/%E4%BD%BF%E7%94%A8%20Telnet%20%E8%BF%9E%E6%8E%A5%20GreenMail%20%E6%A8%A1%E6%8B%9F%E9%82%AE%E4%BB%B6%E6%9C%8D%E5%8A%A1%E5%99%A8%20(%E6%B5%8B%E8%AF%95%20SMTP%20:%20IMAP%20%E8%BF%9E%E6%8E%A5)/">
+
+    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
+      <meta itemprop="image" content="/images/icons8-dead-cells-1024.png">
+      <meta itemprop="name" content="Mccranky83">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="Mccranky's Blog">
+      <meta itemprop="description" content=""Bliss it was in that dawn to be alive   But to be young was very heaven."">
+    </span>
+
+    <span hidden itemprop="post" itemscope itemtype="http://schema.org/CreativeWork">
+      <meta itemprop="name" content="undefined | Mccranky's Blog">
+      <meta itemprop="description" content="">
+    </span>
+      <header class="post-header">
+        <h2 class="post-title" itemprop="name headline">
+          <a href="/2023/04/21/%E4%BD%BF%E7%94%A8%20Telnet%20%E8%BF%9E%E6%8E%A5%20GreenMail%20%E6%A8%A1%E6%8B%9F%E9%82%AE%E4%BB%B6%E6%9C%8D%E5%8A%A1%E5%99%A8%20(%E6%B5%8B%E8%AF%95%20SMTP%20:%20IMAP%20%E8%BF%9E%E6%8E%A5)/" class="post-title-link" itemprop="url">使用 Telnet 连接 GreenMail 模拟邮件服务器 (测试 SMTP / IMAP 连接)</a>
+        </h2>
+
+        <div class="post-meta-container">
+          <div class="post-meta">
+    <span class="post-meta-item">
+      <span class="post-meta-item-icon">
+        <i class="far fa-calendar"></i>
+      </span>
+      <span class="post-meta-item-text">Posted on</span>
+
+      <time title="Created: 2023-04-21 13:46:23" itemprop="dateCreated datePublished" datetime="2023-04-21T13:46:23+08:00">2023-04-21</time>
+    </span>
+    <span class="post-meta-item">
+      <span class="post-meta-item-icon">
+        <i class="far fa-calendar-check"></i>
+      </span>
+      <span class="post-meta-item-text">Edited on</span>
+      <time title="Modified: 2023-04-23 12:21:58" itemprop="dateModified" datetime="2023-04-23T12:21:58+08:00">2023-04-23</time>
+    </span>
+
+  
+</div>
+
+        </div>
+      </header>
+
+    
+    
+    
+    <div class="post-body" itemprop="articleBody">
+          <h3 id="要求"><a href="#要求" class="headerlink" title="要求"></a><em>要求</em></h3><ul>
+<li><p>GreenMail Standalone</p>
+</li>
+<li><p>本地 Apache 服务器</p>
+</li>
+</ul>
+<h3 id="下载"><a href="#下载" class="headerlink" title="下载"></a><em>下载</em></h3><ol>
+<li><p>从<a target="_blank" rel="noopener" href="https://greenmail-mail-test.github.io/greenmail/#download" title="GreenMail Download"> GreenMail 官网</a>直接下载</p>
+</li>
+<li><p>使用命令行指令下载：</p>
+</li>
+</ol>
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line"><span class="built_in">cd</span> /home/user/</span><br><span class="line"></span><br><span class="line">wget https://repo1.maven.org/maven2/com/icegreen/greenmail-standalone/2.1.0-alpha-1/greenmail-standalone-2.1.0-alpha-1.jar</span><br></pre></td></tr></table></figure>
+
+<p>下载完成以后从终端运行<code>.jar</code>文件：</p>
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">java -Dgreenmail.smtp.timeout=120000 -Dgreenmail.smtp.hostname=0.0.0.0 -Dgreenmail.smtp.port=3025 -Dgreenmail.imap.hostname=0.0.0.0 -Dgreenmail.imap.port=3143 -jar /path/to/file/greenmail-standalone-2.1.0-alpha-1.jar</span><br></pre></td></tr></table></figure>
+
+<blockquote>
+<p><code>-Dgreenmail.smtp.timeout</code>：为防止 SMTP 服务器超时，把超时时常设置为 120000 毫秒</p>
+</blockquote>
+<blockquote>
+<p><code>-Dgreenmail.smtp.hostname</code>, <code>Dgreenmail.smtp.port</code>：设置 SMTP 地址和端口</p>
+</blockquote>
+<blockquote>
+<p><code>-Dgreenmail.imap.hostname</code>, <code>-Dgreenmail.imap.port</code>：设置 IMAP 地址和端口</p>
+</blockquote>
+<h3 id="连接-SMTP-服务器"><a href="#连接-SMTP-服务器" class="headerlink" title="连接 SMTP 服务器"></a>连接 SMTP 服务器</h3><p>开启 Telnet 进程，连接到 SMTP 服务器的 3025 端口：</p>
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">telent localhost 3025</span><br><span class="line"></span><br><span class="line"><span class="comment"># 因为是模拟握手，所以服务器地址就是本地域名</span></span><br></pre></td></tr></table></figure>
+
+<pre><code>telnet localhost 3025
+Trying ::1...
+Connected to localhost.
+Escape character is &#39;^]&#39;.
+220 /0:0:0:0:0:0:0:1 GreenMail SMTP Service v2.1.0-alpha-1 ready
+421 Service shutting down and closing transmission channel (socket timeout, SO_TIMEOUT: 30000ms)
+</code></pre>
+<p>握手成功了！接下里可以输入四字指令和 SMTP 服务器交流：</p>
+<pre><code>C: HELO localhost
+S: 250-/0:0:0:0:0:0:0:1
+   250 AUTH PLAIN LOGIN
+C: MAIL FROM: &lt;example@email.com&gt;
+S: 250 OK
+C: RCPT TO: &lt;example@email.com&gt;
+S: 250 OK
+C: DATA
+S: 354 Start mail input; end with &lt;CRLF&gt;.&lt;CRLF&gt;
+C: HELLO THERE
+   THIS IS USER SPEAKING
+   .
+S: 250 OK
+C: QUIT
+S: 221 /0:0:0:0:0:0:0:1 Service closing transmission channel
+   Connection closed by foreign host.
+</code></pre>
+<p>解释一下这些缩写是什么意思：</p>
+<blockquote>
+<p><code>HELO</code>: hello</p>
+</blockquote>
+<blockquote>
+<p><code>RCPT</code>: recipient</p>
+</blockquote>
+<blockquote>
+<p><code>CRLF</code>: carriage return &amp; line feed</p>
+</blockquote>
+<hr>
+<h3 id="连接-IMAP-服务器"><a href="#连接-IMAP-服务器" class="headerlink" title="连接 IMAP 服务器"></a>连接 IMAP 服务器</h3><p><strong><em>认证阶段</em></strong></p>
+<pre><code>  telnet mailServer 110
+  +OK POP3 server ready
+  user bob
+  +OK
+  pass hungry
+  +OK user successfully logged on
+</code></pre>
+<p><strong><em>交易阶段</em></strong></p>
+<pre><code>  C: list
+  S: 1 498
+  S: 2 912
+  S: .
+  C: retr 1
+  S: (blah blah ...
+  S: .................
+  S: ..........blah)
+  S: .
+  C: dele 1
+  C: retr 2
+  S: (blah blah ...
+  S: .................
+  S: ..........blah)
+  S: .
+  C: dele 2
+  C: quit
+  S: +OK POP3 server signing off
+</code></pre>
+<p>用户在这个阶段可以给邮件添加标记，被添加<strong>删除标记</strong>的邮件将在最后的更新阶段被<strong>删除</strong>。</p>
+
+      
+    </div>
+
+    
+    
+    
+
+    <footer class="post-footer">
+        <div class="post-eof"></div>
+      
+    </footer>
+  </article>
+</div>
+
+
+
 
     
 

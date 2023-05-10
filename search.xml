@@ -113,36 +113,6 @@
       </tags>
   </entry>
   <entry>
-    <title>How to re-center Spotlight search bar on Mac?</title>
-    <url>/2023/05/06/How%20to%20re-center%20Spotlight%20search%20bar%20on%20Mac?/</url>
-    <content><![CDATA[<p>Click and hold the Spotlight icon on the menu bar, until the Spotlight window has returned to its original location.</p>
-]]></content>
-      <categories>
-        <category>Tips</category>
-      </categories>
-      <tags>
-        <tag>MacOS</tag>
-        <tag>Spotlight</tag>
-        <tag>Tips</tag>
-        <tag>Utilities</tag>
-      </tags>
-  </entry>
-  <entry>
-    <title>Immediately Executing Function Demo</title>
-    <url>/2023/04/27/Immediately%20Executing%20Function%20Demo/</url>
-    <content><![CDATA[<p>The key aspect of this demo is that the utilization of an immediately executing function in JavaScript generates a fresh variable scope, which distinguishes it from <code>if</code>, <code>else</code>, and <code>while</code>. The code presented below exemplifies this fact.</p>
-<figure class="highlight javascript"><table><tr><td class="code"><pre><span class="line"><span class="keyword">var</span> foo = <span class="number">123</span></span><br><span class="line"></span><br><span class="line"><span class="keyword">if</span> (<span class="number">1</span>) &#123;</span><br><span class="line">    <span class="keyword">var</span> foo = <span class="number">456</span></span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line">(<span class="function"><span class="params">_</span> =&gt;</span> &#123;</span><br><span class="line">    <span class="keyword">var</span> foo = <span class="number">123</span></span><br><span class="line">&#125;)()</span><br><span class="line"></span><br><span class="line"><span class="variable language_">console</span>.<span class="title function_">log</span>(foo)</span><br><span class="line"></span><br></pre></td></tr></table></figure>
-
-<p>Output:</p>
-<pre><code>456
-</code></pre>
-<p>Notice how the function does not reset the value of variable <code>foo</code>? Now that’s something to be mindful of!</p>
-]]></content>
-      <categories>
-        <category>JavaScript</category>
-      </categories>
-  </entry>
-  <entry>
     <title>Initialize shared directory with SPICE WebDAV</title>
     <url>/2023/04/26/Initialize%20shared%20directory%20with%20SPICE%20WebDAV/</url>
     <content><![CDATA[<h3 id="Install-Dependencies"><a href="#Install-Dependencies" class="headerlink" title="Install Dependencies"></a>Install Dependencies</h3><h4 id="SPICE-guest-tools"><a href="#SPICE-guest-tools" class="headerlink" title="SPICE guest tools"></a><em><code>SPICE guest tools</code></em></h4><p>See <a href="/2023/04/25/Running%20ArchLinux%20ARM%20in%20UTM%20on%20a%20M1%20MacBook%20Air/#SPICE-guest-tools"><code>SPICE guest tools</code></a></p>
@@ -202,6 +172,21 @@
       </categories>
   </entry>
   <entry>
+    <title>Immediately Executing Function Demo</title>
+    <url>/2023/04/27/Immediately%20Executing%20Function%20Demo/</url>
+    <content><![CDATA[<p>The key aspect of this demo is that the utilization of an immediately executing function in JavaScript generates a fresh variable scope, which distinguishes it from <code>if</code>, <code>else</code>, and <code>while</code>. The code presented below exemplifies this fact.</p>
+<figure class="highlight javascript"><table><tr><td class="code"><pre><span class="line"><span class="keyword">var</span> foo = <span class="number">123</span></span><br><span class="line"></span><br><span class="line"><span class="keyword">if</span> (<span class="number">1</span>) &#123;</span><br><span class="line">    <span class="keyword">var</span> foo = <span class="number">456</span></span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line">(<span class="function"><span class="params">_</span> =&gt;</span> &#123;</span><br><span class="line">    <span class="keyword">var</span> foo = <span class="number">123</span></span><br><span class="line">&#125;)()</span><br><span class="line"></span><br><span class="line"><span class="variable language_">console</span>.<span class="title function_">log</span>(foo)</span><br><span class="line"></span><br></pre></td></tr></table></figure>
+
+<p>Output:</p>
+<pre><code>456
+</code></pre>
+<p>Notice how the function does not reset the value of variable <code>foo</code>? Now that’s something to be mindful of!</p>
+]]></content>
+      <categories>
+        <category>JavaScript</category>
+      </categories>
+  </entry>
+  <entry>
     <title>Installing Puppet server on ArchLinux</title>
     <url>/2023/04/27/Installing%20Puppet%20server%20on%20ArchLinux/</url>
     <content><![CDATA[<h3 id="Installation"><a href="#Installation" class="headerlink" title="Installation"></a>Installation</h3><p>To install puppet server first add the upstream GPG key:</p>
@@ -245,6 +230,38 @@ uid           [ unknown] Puppet, Inc. Release Key (Puppet, Inc. Release Key) &lt
         <tag>Puppet</tag>
         <tag>server</tag>
         <tag>GPG key</tag>
+      </tags>
+  </entry>
+  <entry>
+    <title>Intuition</title>
+    <url>/2023/05/10/Intuition/</url>
+    <content><![CDATA[<p>While a clever person may have a strong intuition, their insights may only benefit themselves. On the other hand, a learned person who has gained knowledge through studies has the ability to express their ideas and contribute to society.</p>
+<p>Intuition is often described as a gut feeling or a hunch that arises without conscious reasoning. It is a valuable skill, but it can be limited by personal biases and experiences. In contrast, knowledge gained through education and study is based on evidence and critical thinking. This allows learned individuals to make informed decisions and contribute to the advancement of society.</p>
+<p><strong><em>References:</em></strong></p>
+<ul>
+<li><p>The Catcher in the Rye: Mr. Antolini Quotes in Chapter 24</p>
+</li>
+<li><p>Steve Jobs: “Intuition is a very powerful thing, more powerful than intellect, in my opinion.”</p>
+</li>
+</ul>
+]]></content>
+      <tags>
+        <tag>Revelations</tag>
+      </tags>
+  </entry>
+  <entry>
+    <title>How to re-center Spotlight search bar on Mac?</title>
+    <url>/2023/05/06/How%20to%20re-center%20Spotlight%20search%20bar%20on%20Mac?/</url>
+    <content><![CDATA[<p>Click and hold the Spotlight icon on the menu bar, until the Spotlight window has returned to its original location.</p>
+]]></content>
+      <categories>
+        <category>Tips</category>
+      </categories>
+      <tags>
+        <tag>MacOS</tag>
+        <tag>Spotlight</tag>
+        <tag>Tips</tag>
+        <tag>Utilities</tag>
       </tags>
   </entry>
   <entry>
@@ -298,6 +315,94 @@ uid           [ unknown] Puppet, Inc. Release Key (Puppet, Inc. Release Key) &lt
       <tags>
         <tag>JavaScript</tag>
         <tag>Methods</tag>
+      </tags>
+  </entry>
+  <entry>
+    <title>Pointers</title>
+    <url>/2023/04/29/Pointers/</url>
+    <content><![CDATA[<h3 id="Array-of-pointers-to-ints"><a href="#Array-of-pointers-to-ints" class="headerlink" title="Array of pointers to ints"></a>Array of pointers to ints</h3><p><strong>Code:</strong></p>
+<figure class="highlight cpp"><table><tr><td class="code"><pre><span class="line"><span class="meta">#<span class="keyword">include</span> <span class="string">&lt;iostream&gt;</span></span></span><br><span class="line"></span><br><span class="line"><span class="function"><span class="type">int</span> <span class="title">main</span><span class="params">()</span></span></span><br><span class="line"><span class="function"></span>&#123;</span><br><span class="line">    <span class="type">int</span>* ap[<span class="number">15</span>];</span><br><span class="line">    <span class="type">int</span> ai[<span class="number">15</span>] = &#123;&#125;;</span><br><span class="line">    <span class="keyword">for</span> (<span class="type">int</span> i = <span class="number">0</span>; i &lt; <span class="number">15</span>; ++i) &#123;</span><br><span class="line">        ai[i] = i; </span><br><span class="line">        ap[i] = &amp;ai[i];</span><br><span class="line">        std::cout &lt;&lt; *ap[i] &lt;&lt; <span class="string">&quot; &quot;</span> &lt;&lt; ap[i]&lt;&lt; std::endl;</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br><span class="line"></span><br></pre></td></tr></table></figure>
+
+<p><strong>Console:</strong></p>
+<pre><code>0 0x16d296d14
+1 0x16d296d18
+2 0x16d296d1c
+3 0x16d296d20
+4 0x16d296d24
+5 0x16d296d28
+6 0x16d296d2c
+7 0x16d296d30
+8 0x16d296d34
+9 0x16d296d38
+10 0x16d296d3c
+11 0x16d296d40
+12 0x16d296d44
+13 0x16d296d48
+14 0x16d296d4c
+</code></pre>
+<h3 id="Pointer-to-an-array-of-ints"><a href="#Pointer-to-an-array-of-ints" class="headerlink" title="Pointer to an array of ints"></a>Pointer to an array of ints</h3><p><strong>Code:</strong></p>
+<figure class="highlight cpp"><table><tr><td class="code"><pre><span class="line"><span class="meta">#<span class="keyword">include</span> <span class="string">&lt;iostream&gt;</span></span></span><br><span class="line"></span><br><span class="line"><span class="function"><span class="type">int</span> <span class="title">main</span><span class="params">()</span></span></span><br><span class="line"><span class="function"></span>&#123;</span><br><span class="line">    <span class="type">int</span> ai[<span class="number">15</span>];</span><br><span class="line">    <span class="keyword">for</span> (<span class="type">int</span> i = <span class="number">0</span>; i &lt; <span class="number">15</span>; i++) ai[i] = i;</span><br><span class="line">    <span class="built_in">int</span> (*ptr)[] = &amp;ai;</span><br><span class="line">    <span class="keyword">for</span> (<span class="type">int</span> i = <span class="number">0</span>; i &lt; <span class="number">15</span>; i++) &#123;</span><br><span class="line">        std::cout &lt;&lt; (*ptr)[i] &lt;&lt; <span class="string">&quot; &quot;</span>;</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br><span class="line"></span><br></pre></td></tr></table></figure>
+
+<p><strong><em>Console</em></strong></p>
+<pre><code>0 1 2 3 4 5 6 7 8 9 10 11 12 13 14
+</code></pre>
+<blockquote>
+<p><strong><em>Notes</em></strong></p>
+</blockquote>
+<ul>
+<li><p>The parentheses around <code>*ptr</code> are necessary because the <code>[]</code> operator has<br>  higher precedence than the <code>*</code> operator. Without the parentheses, the<br>  declaration would be parsed as an array of pointers to int, like int<br>  <code>*ptr[15]</code>.</p>
+</li>
+<li><p>When I took the address of the array, I got a pointer to the first element<br>  of the array. However, the pointer itself does not contain any information<br>  about the size of the array.</p>
+</li>
+</ul>
+<h3 id="Pointer-to-function-taking-a-string-argument"><a href="#Pointer-to-function-taking-a-string-argument" class="headerlink" title="Pointer to function taking a string argument;"></a>Pointer to function taking a string argument;</h3><h4 id="returns-an-string"><a href="#returns-an-string" class="headerlink" title="returns an string"></a>returns an string</h4><p><strong>Code:</strong></p>
+<figure class="highlight cpp"><table><tr><td class="code"><pre><span class="line"><span class="meta">#<span class="keyword">include</span> <span class="string">&lt;iostream&gt;</span></span></span><br><span class="line"><span class="meta">#<span class="keyword">include</span> <span class="string">&lt;string&gt;</span></span></span><br><span class="line"></span><br><span class="line"><span class="function"><span class="type">void</span> <span class="title">replaceX</span><span class="params">(std::string *str, std::string x)</span></span></span><br><span class="line"><span class="function"></span>&#123;</span><br><span class="line">    <span class="type">size_t</span> pos = (*str).<span class="built_in">find</span>(<span class="string">&quot;$&#123;x&#125;&quot;</span>);</span><br><span class="line">    <span class="keyword">if</span> (pos != std::string::npos)</span><br><span class="line">        (*str).<span class="built_in">replace</span>(pos, <span class="number">4</span>, x);</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"><span class="function">std::string <span class="title">foo</span><span class="params">(std::string x)</span></span></span><br><span class="line"><span class="function"></span>&#123;</span><br><span class="line">    std::string str = <span class="string">&quot;hello this is $&#123;x&#125;&quot;</span>;</span><br><span class="line">    <span class="built_in">replaceX</span>(&amp;str, x);</span><br><span class="line">    <span class="keyword">return</span> str;</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"><span class="function"><span class="type">int</span> <span class="title">main</span><span class="params">()</span></span></span><br><span class="line"><span class="function"></span>&#123;</span><br><span class="line">    std::<span class="built_in">string</span> (*fp)(std::string) = &amp;foo;</span><br><span class="line">    std::cout &lt;&lt; (*fp)(<span class="string">&quot;foo&quot;</span>) &lt;&lt; std::endl;</span><br><span class="line">    std::cout &lt;&lt; (*fp)(<span class="string">&quot;bar&quot;</span>) &lt;&lt; std::endl;</span><br><span class="line">&#125;</span><br><span class="line"></span><br></pre></td></tr></table></figure>
+
+<p><strong>Console:</strong></p>
+<pre><code>hello this is foo
+hello this is bar
+</code></pre>
+]]></content>
+      <categories>
+        <category>C++</category>
+      </categories>
+      <tags>
+        <tag>Pointers</tag>
+      </tags>
+  </entry>
+  <entry>
+    <title>Positional Parameters</title>
+    <url>/2023/04/29/Positional%20Parameters/</url>
+    <content><![CDATA[<p>In Bash, positional parameters are special variables that hold the arguments passed to a script or function. The positional parameters are numbered from <code>0</code> to <code>9</code>, where <code>$0</code> holds the name of the script or function, and <code>$1</code> through <code>$9</code> hold the first through ninth arguments, respectively.</p>
+<p><code>$@</code> and <code>$*</code> both hold all the arguments passed to the script. Note that <code>$@</code> is an array-like variable that holds all the positional parameters as <em>separate elements</em>, while <code>$*</code> is another variable that holds all the positional parameters as <em>a single string</em>.</p>
+<p>Here’s an example:</p>
+<pre><code>#!/bin/bash
+
+#!/bin/bash
+
+echo &quot;Script Name: $0&quot;
+echo &quot;First Arg: $1&quot;
+echo &quot;Second Arg: $2&quot;
+echo &quot;All args (arr): $@&quot;
+echo &quot;All args (str): $*&quot;
+</code></pre>
+<p>Now let’s run the script with three arguments:</p>
+<figure class="highlight bash"><table><tr><td class="code"><pre><span class="line"><span class="built_in">chmod</span> u+x ./script <span class="comment"># Grant execution privilege for user</span></span><br><span class="line"></span><br><span class="line">./script a b c</span><br><span class="line"></span><br></pre></td></tr></table></figure>
+
+<p>The output should be something like this:</p>
+<pre><code>Script Name: ./script.sh
+First Arg: a
+Second Arg: b
+All args (arr): a b c
+All args (str): a b c
+</code></pre>
+]]></content>
+      <categories>
+        <category>Bash</category>
+      </categories>
+      <tags>
+        <tag>Linux</tag>
+        <tag>Bash</tag>
       </tags>
   </entry>
   <entry>
@@ -424,38 +529,27 @@ r=mccranky)
       </tags>
   </entry>
   <entry>
-    <title>Positional Parameters</title>
-    <url>/2023/04/29/Positional%20Parameters/</url>
-    <content><![CDATA[<p>In Bash, positional parameters are special variables that hold the arguments passed to a script or function. The positional parameters are numbered from <code>0</code> to <code>9</code>, where <code>$0</code> holds the name of the script or function, and <code>$1</code> through <code>$9</code> hold the first through ninth arguments, respectively.</p>
-<p><code>$@</code> and <code>$*</code> both hold all the arguments passed to the script. Note that <code>$@</code> is an array-like variable that holds all the positional parameters as <em>separate elements</em>, while <code>$*</code> is another variable that holds all the positional parameters as <em>a single string</em>.</p>
-<p>Here’s an example:</p>
-<pre><code>#!/bin/bash
-
-#!/bin/bash
-
-echo &quot;Script Name: $0&quot;
-echo &quot;First Arg: $1&quot;
-echo &quot;Second Arg: $2&quot;
-echo &quot;All args (arr): $@&quot;
-echo &quot;All args (str): $*&quot;
-</code></pre>
-<p>Now let’s run the script with three arguments:</p>
-<figure class="highlight bash"><table><tr><td class="code"><pre><span class="line"><span class="built_in">chmod</span> u+x ./script <span class="comment"># Grant execution privilege for user</span></span><br><span class="line"></span><br><span class="line">./script a b c</span><br><span class="line"></span><br></pre></td></tr></table></figure>
-
-<p>The output should be something like this:</p>
-<pre><code>Script Name: ./script.sh
-First Arg: a
-Second Arg: b
-All args (arr): a b c
-All args (str): a b c
-</code></pre>
+    <title>The Shanghai Lockdown Diary</title>
+    <url>/2023/05/05/The%20Shanghai%20Lockdown%20Diary/</url>
+    <content><![CDATA[<p>A late addition to the stack, but by all accounts no less authentic. This is a real account of what transpired in Shanghai during the great lockdown. I, for one, was away at the time, locked up at school in a different city. Nonetheless, ripples of the cataclysmic effects had reached me in that northern coast-lined city, sending waves of shock and grief, piercing my heart like daggers.</p>
+<p>My mom’s account of those three months is a testament to her talent with words and positive outlook on life in general. She describes the despair and hopelessness that consumed many during that time, but also the resilience and strength of the human spirit. Her words paint a vivid picture of what life was like during the lockdown, and the following account is for anyone interested in gaining a deeper understanding of this human experience.</p>
+<p>2022年4月8日，是丈夫和我因上海疫情在家禁足的第十一天。</p>
+<p>微信群每天都有几百上千条信息：朝阳群众雪亮的双眼把偷溜下楼的人拍照发群，让其 “见光死”，果然后面几天下楼溜达的人几乎绝迹；把各区发放的食品发群，让群众们点评到底哪个区更“豪横”？将各种荒唐离谱的防疫搞笑视频发群，对其极尽调侃之能事；最重要的是，街道居委的各类通知也由楼组长发布在群里，实施无漏洞的网格化管理。每天每日每个楼洞排着队整齐划一去做核酸检测，真乃“威武之师”也！</p>
+<p>随着封控天数的增加，每家每户存粮逐渐耗尽。微信群里搞笑调侃的少了，群情激昂点评时事的少了，取而代之的是各种团购群组。从米面油蔬菜水果到婴儿奶粉纸尿裤，应有尽有。此时此刻，没有什么比一桶油一盒鸡蛋更重要的了。也有幸运儿在群里炫耀自己在各类APP上拼手速抢到的食物图片，普普通通的一块奶油蛋糕就足以让人垂涎欲滴。望着每日重复的食物和日渐的清空冰箱，我有点心动了。</p>
+<p>当晚，我就在手机上下载了四个外卖应用：美团、叮咚买菜、每日优鲜、盒马。先看美团，发现“你所在的小区不在配送范围”。再看每日优鲜，很多东西是“缺货”，好不容易找到有货的，鸡蛋10个29.8元，狠狠心把它加入购物车，点击购买时，发现仍然需要在早上六点抢，当下不能生成订单，我如释重负，毫不犹豫将这“绿色有机”的鸡蛋删除了。叮咚买菜、盒马鲜生也都是需要在早上六点拼手速抢下单，浏览了一遍，东西普遍价格高，也谈不到质优，本就抱着试试看心态的我干脆放弃了。</p>
+<p>回过来审视我自己的情况：目前家中存粮还够吃，挨饿是肯定不会的。这得益于我的一个好习惯：经常清点家中存货，一旦缺少，马上补足三个月的量。2020年武汉疫情时，由于对病毒的无知而产生的恐惧，我有过大半个月没有下楼的经历，一切全靠网购，且放足了余量。现在看来，未雨绸缪，广积粮是必要的。</p>
+<p>如今，八旬老父老母在故乡身体健康，自强自立的两位老人把自己的生活安排得妥妥帖帖，不要子女操半点心；儿子离开上海在大学正常地学习生活，为着自己的目标在每天努力；海外的家人们安居乐业，捷报频传。身无后顾之忧的我俩一身轻松：我精打细算烧菜做饭，丈夫风花雪月吟诗作对，禁足的日子过得并不乏味且充满诗意。</p>
+<p>惟愿疫情的阴霾尽快散去，我爱的家人们能很快相聚，上海重现东方明珠的风采！</p>
+<hr>
+<p>On April 8th, 2022, it was the eleventh day of being confined at home in Shanghai due to the pandemic. Every day, there were hundreds or even thousands of messages in our WeChat groups. Some groups had photos of people sneaking out of their homes, which were then shared to shame them. This resulted in fewer people sneaking out in the following days. Other groups shared information about food distribution in different districts, and we would compare which district had better supplies. There were also many funny videos related to the pandemic that were shared, which made us laugh and helped to relieve some of the stress.</p>
+<p>As the days went by, our food supplies began to dwindle. The funny videos and discussions about current events became less frequent in the groups, and were replaced by various group-buying options. Everything from rice, noodles, oil, vegetables, fruits, to baby formula and diapers were available. At this time, nothing was more important than having a bucket of oil and a box of eggs. Some lucky people would show off the food they had managed to buy from various apps, and even a simple piece of cake would make us drool.</p>
+<p>That night, I downloaded four food delivery apps on my phone: Meituan, Dingdong Maicai, MissFresh, and Hema. I checked Meituan first, but my neighborhood was not within their delivery range. Then I tried MissFresh, but many items were out of stock. I finally found eggs, but they were priced at 29.8 yuan for a pack of 10. When I tried to purchase them, I found out that I still needed to compete with others at 6am to place my order. I felt relieved that I didn’t have to buy them and deleted them from my cart. Dingdong Maicai and Hema also required me to compete with others at 6am to place my order, and the prices were generally high with no guarantee of quality. I decided to give up on them altogether.</p>
+<p>Looking back at my situation, I realized that we still had enough food to eat, and we wouldn’t go hungry. This was thanks to my good habit of regularly checking our food supplies and stocking up on a three-month supply when we were running low. During the Wuhan pandemic in 2020, I was afraid of the virus and didn’t leave my home for almost two weeks. All of our supplies were ordered online and we had extra just in case. Now, it’s clear that preparing ahead of time and stocking up on food is necessary.</p>
+<p>Currently, my elderly parents are healthy and living in their hometown, and they are self-sufficient and don’t require any assistance from their children. My son is away at university, working hard towards his goals, and my family members who live abroad are doing well. With no worries, my husband and I are enjoying our time at home during the lockdown. I cook and budget carefully, while my husband writes poetry and enjoys his hobbies. Although we are confined to our home, it’s not boring and we find joy in simple things.</p>
+<p>We hope that the pandemic will soon be over, and that we can be reunited with our loved ones. We also hope that Shanghai can once again thrive and shine like the Oriental Pearl it is.</p>
 ]]></content>
-      <categories>
-        <category>Bash</category>
-      </categories>
       <tags>
-        <tag>Linux</tag>
-        <tag>Bash</tag>
+        <tag>Life</tag>
       </tags>
   </entry>
   <entry>
@@ -670,59 +764,6 @@ Possible reasons for having this kind of units are:
       </tags>
   </entry>
   <entry>
-    <title>Pointers</title>
-    <url>/2023/04/29/Pointers/</url>
-    <content><![CDATA[<h3 id="Array-of-pointers-to-ints"><a href="#Array-of-pointers-to-ints" class="headerlink" title="Array of pointers to ints"></a>Array of pointers to ints</h3><p><strong>Code:</strong></p>
-<figure class="highlight cpp"><table><tr><td class="code"><pre><span class="line"><span class="meta">#<span class="keyword">include</span> <span class="string">&lt;iostream&gt;</span></span></span><br><span class="line"></span><br><span class="line"><span class="function"><span class="type">int</span> <span class="title">main</span><span class="params">()</span></span></span><br><span class="line"><span class="function"></span>&#123;</span><br><span class="line">    <span class="type">int</span>* ap[<span class="number">15</span>];</span><br><span class="line">    <span class="type">int</span> ai[<span class="number">15</span>] = &#123;&#125;;</span><br><span class="line">    <span class="keyword">for</span> (<span class="type">int</span> i = <span class="number">0</span>; i &lt; <span class="number">15</span>; ++i) &#123;</span><br><span class="line">        ai[i] = i; </span><br><span class="line">        ap[i] = &amp;ai[i];</span><br><span class="line">        std::cout &lt;&lt; *ap[i] &lt;&lt; <span class="string">&quot; &quot;</span> &lt;&lt; ap[i]&lt;&lt; std::endl;</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br><span class="line"></span><br></pre></td></tr></table></figure>
-
-<p><strong>Console:</strong></p>
-<pre><code>0 0x16d296d14
-1 0x16d296d18
-2 0x16d296d1c
-3 0x16d296d20
-4 0x16d296d24
-5 0x16d296d28
-6 0x16d296d2c
-7 0x16d296d30
-8 0x16d296d34
-9 0x16d296d38
-10 0x16d296d3c
-11 0x16d296d40
-12 0x16d296d44
-13 0x16d296d48
-14 0x16d296d4c
-</code></pre>
-<h3 id="Pointer-to-an-array-of-ints"><a href="#Pointer-to-an-array-of-ints" class="headerlink" title="Pointer to an array of ints"></a>Pointer to an array of ints</h3><p><strong>Code:</strong></p>
-<figure class="highlight cpp"><table><tr><td class="code"><pre><span class="line"><span class="meta">#<span class="keyword">include</span> <span class="string">&lt;iostream&gt;</span></span></span><br><span class="line"></span><br><span class="line"><span class="function"><span class="type">int</span> <span class="title">main</span><span class="params">()</span></span></span><br><span class="line"><span class="function"></span>&#123;</span><br><span class="line">    <span class="type">int</span> ai[<span class="number">15</span>];</span><br><span class="line">    <span class="keyword">for</span> (<span class="type">int</span> i = <span class="number">0</span>; i &lt; <span class="number">15</span>; i++) ai[i] = i;</span><br><span class="line">    <span class="built_in">int</span> (*ptr)[] = &amp;ai;</span><br><span class="line">    <span class="keyword">for</span> (<span class="type">int</span> i = <span class="number">0</span>; i &lt; <span class="number">15</span>; i++) &#123;</span><br><span class="line">        std::cout &lt;&lt; (*ptr)[i] &lt;&lt; <span class="string">&quot; &quot;</span>;</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br><span class="line"></span><br></pre></td></tr></table></figure>
-
-<p><strong><em>Console</em></strong></p>
-<pre><code>0 1 2 3 4 5 6 7 8 9 10 11 12 13 14
-</code></pre>
-<blockquote>
-<p><strong><em>Notes</em></strong></p>
-</blockquote>
-<ul>
-<li><p>The parentheses around <code>*ptr</code> are necessary because the <code>[]</code> operator has<br>  higher precedence than the <code>*</code> operator. Without the parentheses, the<br>  declaration would be parsed as an array of pointers to int, like int<br>  <code>*ptr[15]</code>.</p>
-</li>
-<li><p>When I took the address of the array, I got a pointer to the first element<br>  of the array. However, the pointer itself does not contain any information<br>  about the size of the array.</p>
-</li>
-</ul>
-<h3 id="Pointer-to-function-taking-a-string-argument"><a href="#Pointer-to-function-taking-a-string-argument" class="headerlink" title="Pointer to function taking a string argument;"></a>Pointer to function taking a string argument;</h3><h4 id="returns-an-string"><a href="#returns-an-string" class="headerlink" title="returns an string"></a>returns an string</h4><p><strong>Code:</strong></p>
-<figure class="highlight cpp"><table><tr><td class="code"><pre><span class="line"><span class="meta">#<span class="keyword">include</span> <span class="string">&lt;iostream&gt;</span></span></span><br><span class="line"><span class="meta">#<span class="keyword">include</span> <span class="string">&lt;string&gt;</span></span></span><br><span class="line"></span><br><span class="line"><span class="function"><span class="type">void</span> <span class="title">replaceX</span><span class="params">(std::string *str, std::string x)</span></span></span><br><span class="line"><span class="function"></span>&#123;</span><br><span class="line">    <span class="type">size_t</span> pos = (*str).<span class="built_in">find</span>(<span class="string">&quot;$&#123;x&#125;&quot;</span>);</span><br><span class="line">    <span class="keyword">if</span> (pos != std::string::npos)</span><br><span class="line">        (*str).<span class="built_in">replace</span>(pos, <span class="number">4</span>, x);</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"><span class="function">std::string <span class="title">foo</span><span class="params">(std::string x)</span></span></span><br><span class="line"><span class="function"></span>&#123;</span><br><span class="line">    std::string str = <span class="string">&quot;hello this is $&#123;x&#125;&quot;</span>;</span><br><span class="line">    <span class="built_in">replaceX</span>(&amp;str, x);</span><br><span class="line">    <span class="keyword">return</span> str;</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"><span class="function"><span class="type">int</span> <span class="title">main</span><span class="params">()</span></span></span><br><span class="line"><span class="function"></span>&#123;</span><br><span class="line">    std::<span class="built_in">string</span> (*fp)(std::string) = &amp;foo;</span><br><span class="line">    std::cout &lt;&lt; (*fp)(<span class="string">&quot;foo&quot;</span>) &lt;&lt; std::endl;</span><br><span class="line">    std::cout &lt;&lt; (*fp)(<span class="string">&quot;bar&quot;</span>) &lt;&lt; std::endl;</span><br><span class="line">&#125;</span><br><span class="line"></span><br></pre></td></tr></table></figure>
-
-<p><strong>Console:</strong></p>
-<pre><code>hello this is foo
-hello this is bar
-</code></pre>
-]]></content>
-      <categories>
-        <category>C++</category>
-      </categories>
-      <tags>
-        <tag>Pointers</tag>
-      </tags>
-  </entry>
-  <entry>
     <title>[Fix] Failed to mount /mnt/share</title>
     <url>/2023/04/27/%5BFix%5D%20Failed%20to%20mount%20:mnt:share/</url>
     <content><![CDATA[<h3 id="Solution"><a href="#Solution" class="headerlink" title="Solution"></a>Solution</h3><p>Our fix to the problem is to remove <code>/mnt/share</code> entirely and mount something else in its place.</p>
@@ -852,30 +893,6 @@ Apr 27 02:45:46 alarm systemd[1]: Failed to mount /mnt/share.
         <tag>Linux</tag>
         <tag>ArchLinux</tag>
         <tag>Bash</tag>
-      </tags>
-  </entry>
-  <entry>
-    <title>The Shanghai Lockdown Diary</title>
-    <url>/2023/05/05/The%20Shanghai%20Lockdown%20Diary/</url>
-    <content><![CDATA[<p>A late addition to the stack, but by all accounts no less authentic. This is a real account of what transpired in Shanghai during the great lockdown. I, for one, was away at the time, locked up at school in a different city. Nonetheless, ripples of the cataclysmic effects had reached me in that northern coast-lined city, sending waves of shock and grief, piercing my heart like daggers.</p>
-<p>My mom’s account of those three months is a testament to her talent with words and positive outlook on life in general. She describes the despair and hopelessness that consumed many during that time, but also the resilience and strength of the human spirit. Her words paint a vivid picture of what life was like during the lockdown, and the following account is for anyone interested in gaining a deeper understanding of this human experience.</p>
-<p>2022年4月8日，是丈夫和我因上海疫情在家禁足的第十一天。</p>
-<p>微信群每天都有几百上千条信息：朝阳群众雪亮的双眼把偷溜下楼的人拍照发群，让其 “见光死”，果然后面几天下楼溜达的人几乎绝迹；把各区发放的食品发群，让群众们点评到底哪个区更“豪横”？将各种荒唐离谱的防疫搞笑视频发群，对其极尽调侃之能事；最重要的是，街道居委的各类通知也由楼组长发布在群里，实施无漏洞的网格化管理。每天每日每个楼洞排着队整齐划一去做核酸检测，真乃“威武之师”也！</p>
-<p>随着封控天数的增加，每家每户存粮逐渐耗尽。微信群里搞笑调侃的少了，群情激昂点评时事的少了，取而代之的是各种团购群组。从米面油蔬菜水果到婴儿奶粉纸尿裤，应有尽有。此时此刻，没有什么比一桶油一盒鸡蛋更重要的了。也有幸运儿在群里炫耀自己在各类APP上拼手速抢到的食物图片，普普通通的一块奶油蛋糕就足以让人垂涎欲滴。望着每日重复的食物和日渐的清空冰箱，我有点心动了。</p>
-<p>当晚，我就在手机上下载了四个外卖应用：美团、叮咚买菜、每日优鲜、盒马。先看美团，发现“你所在的小区不在配送范围”。再看每日优鲜，很多东西是“缺货”，好不容易找到有货的，鸡蛋10个29.8元，狠狠心把它加入购物车，点击购买时，发现仍然需要在早上六点抢，当下不能生成订单，我如释重负，毫不犹豫将这“绿色有机”的鸡蛋删除了。叮咚买菜、盒马鲜生也都是需要在早上六点拼手速抢下单，浏览了一遍，东西普遍价格高，也谈不到质优，本就抱着试试看心态的我干脆放弃了。</p>
-<p>回过来审视我自己的情况：目前家中存粮还够吃，挨饿是肯定不会的。这得益于我的一个好习惯：经常清点家中存货，一旦缺少，马上补足三个月的量。2020年武汉疫情时，由于对病毒的无知而产生的恐惧，我有过大半个月没有下楼的经历，一切全靠网购，且放足了余量。现在看来，未雨绸缪，广积粮是必要的。</p>
-<p>如今，八旬老父老母在故乡身体健康，自强自立的两位老人把自己的生活安排得妥妥帖帖，不要子女操半点心；儿子离开上海在大学正常地学习生活，为着自己的目标在每天努力；海外的家人们安居乐业，捷报频传。身无后顾之忧的我俩一身轻松：我精打细算烧菜做饭，丈夫风花雪月吟诗作对，禁足的日子过得并不乏味且充满诗意。</p>
-<p>惟愿疫情的阴霾尽快散去，我爱的家人们能很快相聚，上海重现东方明珠的风采！</p>
-<hr>
-<p>On April 8th, 2022, it was the eleventh day of being confined at home in Shanghai due to the pandemic. Every day, there were hundreds or even thousands of messages in our WeChat groups. Some groups had photos of people sneaking out of their homes, which were then shared to shame them. This resulted in fewer people sneaking out in the following days. Other groups shared information about food distribution in different districts, and we would compare which district had better supplies. There were also many funny videos related to the pandemic that were shared, which made us laugh and helped to relieve some of the stress.</p>
-<p>As the days went by, our food supplies began to dwindle. The funny videos and discussions about current events became less frequent in the groups, and were replaced by various group-buying options. Everything from rice, noodles, oil, vegetables, fruits, to baby formula and diapers were available. At this time, nothing was more important than having a bucket of oil and a box of eggs. Some lucky people would show off the food they had managed to buy from various apps, and even a simple piece of cake would make us drool.</p>
-<p>That night, I downloaded four food delivery apps on my phone: Meituan, Dingdong Maicai, MissFresh, and Hema. I checked Meituan first, but my neighborhood was not within their delivery range. Then I tried MissFresh, but many items were out of stock. I finally found eggs, but they were priced at 29.8 yuan for a pack of 10. When I tried to purchase them, I found out that I still needed to compete with others at 6am to place my order. I felt relieved that I didn’t have to buy them and deleted them from my cart. Dingdong Maicai and Hema also required me to compete with others at 6am to place my order, and the prices were generally high with no guarantee of quality. I decided to give up on them altogether.</p>
-<p>Looking back at my situation, I realized that we still had enough food to eat, and we wouldn’t go hungry. This was thanks to my good habit of regularly checking our food supplies and stocking up on a three-month supply when we were running low. During the Wuhan pandemic in 2020, I was afraid of the virus and didn’t leave my home for almost two weeks. All of our supplies were ordered online and we had extra just in case. Now, it’s clear that preparing ahead of time and stocking up on food is necessary.</p>
-<p>Currently, my elderly parents are healthy and living in their hometown, and they are self-sufficient and don’t require any assistance from their children. My son is away at university, working hard towards his goals, and my family members who live abroad are doing well. With no worries, my husband and I are enjoying our time at home during the lockdown. I cook and budget carefully, while my husband writes poetry and enjoys his hobbies. Although we are confined to our home, it’s not boring and we find joy in simple things.</p>
-<p>We hope that the pandemic will soon be over, and that we can be reunited with our loved ones. We also hope that Shanghai can once again thrive and shine like the Oriental Pearl it is.</p>
-]]></content>
-      <tags>
-        <tag>Life</tag>
       </tags>
   </entry>
   <entry>
@@ -1125,6 +1142,53 @@ S: 221 /0:0:0:0:0:0:0:1 Service closing transmission channel
       </tags>
   </entry>
   <entry>
+    <title>如何使用 GitHub Pages 托管 Hexo 静态博客网站</title>
+    <url>/2023/04/22/%E5%A6%82%E4%BD%95%E4%BD%BF%E7%94%A8%20GitHub%20Pages%20%E6%89%98%E7%AE%A1%20Hexo%20%E9%9D%99%E6%80%81%E5%8D%9A%E5%AE%A2%E7%BD%91%E7%AB%99/</url>
+    <content><![CDATA[<p>– <strong>请先阅读 <a href="/2023/04/22/%E4%BD%BF%E7%94%A8%20Hexo%20%E7%94%9F%E6%88%90%E9%9D%99%E6%80%81%E7%BD%91%E9%A1%B5%E5%8D%9A%E5%AE%A2/index.html">使用 Hexo 生成静态网页博客</a>！</strong></p>
+<h3 id="准备工作"><a href="#准备工作" class="headerlink" title="准备工作"></a>准备工作</h3><p>首先，我们基于完成的博客<code>.md</code>文件生成静态网页：</p>
+<figure class="highlight bash"><table><tr><td class="code"><pre><span class="line"><span class="built_in">cd</span> /path/to/site/</span><br><span class="line"><span class="comment"># 跑到项目路径目录</span></span><br><span class="line"></span><br><span class="line">hexo generate</span><br><span class="line"><span class="comment"># 生成静态网页，存放与 public 文件夹内</span></span><br></pre></td></tr></table></figure>
+
+<p>接着，我们进入<code>public</code>文件夹。</p>
+<pre><code>.
+├── node_modules
+├── public
+├── scaffolds
+├── source
+└── themes
+</code></pre>
+<p>因为我们是使用 GitHub Pages 托管，所以我们需要在<code>public</code>文件夹内初始化<code>git</code>：</p>
+<figure class="highlight bash"><table><tr><td class="code"><pre><span class="line">git init</span><br><span class="line"></span><br><span class="line">git branch -m main</span><br><span class="line"></span><br><span class="line">git add .</span><br><span class="line"></span><br><span class="line">git commit -m <span class="string">&quot;初始化工作&quot;</span></span><br></pre></td></tr></table></figure>
+
+<p>其次，我们还需要在 GitHub 上面建立一个远程仓库，格式<strong>必须</strong>为<code>username.github.io</code>，这是硬性要求。</p>
+<h3 id="关联和发布"><a href="#关联和发布" class="headerlink" title="关联和发布"></a>关联和发布</h3><p>我们现在需要关联本地仓库和远程仓库，用例中我们使用<code>https</code>协议，当然也可以使用<code>ssh</code>密钥：</p>
+<figure class="highlight bash"><table><tr><td class="code"><pre><span class="line">git remote add origin https://github.com/username/username.github.io.git</span><br><span class="line"></span><br><span class="line">git push origin main</span><br></pre></td></tr></table></figure>
+
+<p>我们还需要更改一下远程仓库的 GitHub Pages 的设置，目的是告知它托管文件的地址：</p>
+<div style="display: block; margin-left: auto; margin-right: auto; text-align: center; font-size: 1rem;">
+  
+<p>  <img src="/2023/04/22/%E5%A6%82%E4%BD%95%E4%BD%BF%E7%94%A8%20GitHub%20Pages%20%E6%89%98%E7%AE%A1%20Hexo%20%E9%9D%99%E6%80%81%E5%8D%9A%E5%AE%A2%E7%BD%91%E7%AB%99/images/0001.png" alt="点击 Settings" title="点击 Settings"></p>
+  <div>点击 Settings</div>
+  <br>
+
+<p>  <img src="/2023/04/22/%E5%A6%82%E4%BD%95%E4%BD%BF%E7%94%A8%20GitHub%20Pages%20%E6%89%98%E7%AE%A1%20Hexo%20%E9%9D%99%E6%80%81%E5%8D%9A%E5%AE%A2%E7%BD%91%E7%AB%99/images/0002.png" alt="点击 Pages" title="点击 Pages"></p>
+  <div>点击 Pages</div>
+  <br>
+
+<p>  <img src="/2023/04/22/%E5%A6%82%E4%BD%95%E4%BD%BF%E7%94%A8%20GitHub%20Pages%20%E6%89%98%E7%AE%A1%20Hexo%20%E9%9D%99%E6%80%81%E5%8D%9A%E5%AE%A2%E7%BD%91%E7%AB%99/images/0003.png" alt="修改设置" title="修改设置"></p>
+  <div>修改设置</div>
+  <br>
+
+</div>
+
+<p>最后，我们访问<code>username.github.io</code>就可以来到我们的博客页了 :)</p>
+]]></content>
+      <tags>
+        <tag>Hexo</tag>
+        <tag>GitHub Pages</tag>
+        <tag>Git</tag>
+      </tags>
+  </entry>
+  <entry>
     <title>如何生成项目树状结构图</title>
     <url>/2023/04/22/%E5%A6%82%E4%BD%95%E7%94%9F%E6%88%90%E9%A1%B9%E7%9B%AE%E6%A0%91%E7%8A%B6%E7%BB%93%E6%9E%84%E5%9B%BE/</url>
     <content><![CDATA[<h3 id="Prerequisites"><a href="#Prerequisites" class="headerlink" title="Prerequisites"></a>Prerequisites</h3><ul>
@@ -1174,53 +1238,6 @@ S: 221 /0:0:0:0:0:0:0:1 Service closing transmission channel
       </tags>
   </entry>
   <entry>
-    <title>如何使用 GitHub Pages 托管 Hexo 静态博客网站</title>
-    <url>/2023/04/22/%E5%A6%82%E4%BD%95%E4%BD%BF%E7%94%A8%20GitHub%20Pages%20%E6%89%98%E7%AE%A1%20Hexo%20%E9%9D%99%E6%80%81%E5%8D%9A%E5%AE%A2%E7%BD%91%E7%AB%99/</url>
-    <content><![CDATA[<p>– <strong>请先阅读 <a href="/2023/04/22/%E4%BD%BF%E7%94%A8%20Hexo%20%E7%94%9F%E6%88%90%E9%9D%99%E6%80%81%E7%BD%91%E9%A1%B5%E5%8D%9A%E5%AE%A2/index.html">使用 Hexo 生成静态网页博客</a>！</strong></p>
-<h3 id="准备工作"><a href="#准备工作" class="headerlink" title="准备工作"></a>准备工作</h3><p>首先，我们基于完成的博客<code>.md</code>文件生成静态网页：</p>
-<figure class="highlight bash"><table><tr><td class="code"><pre><span class="line"><span class="built_in">cd</span> /path/to/site/</span><br><span class="line"><span class="comment"># 跑到项目路径目录</span></span><br><span class="line"></span><br><span class="line">hexo generate</span><br><span class="line"><span class="comment"># 生成静态网页，存放与 public 文件夹内</span></span><br></pre></td></tr></table></figure>
-
-<p>接着，我们进入<code>public</code>文件夹。</p>
-<pre><code>.
-├── node_modules
-├── public
-├── scaffolds
-├── source
-└── themes
-</code></pre>
-<p>因为我们是使用 GitHub Pages 托管，所以我们需要在<code>public</code>文件夹内初始化<code>git</code>：</p>
-<figure class="highlight bash"><table><tr><td class="code"><pre><span class="line">git init</span><br><span class="line"></span><br><span class="line">git branch -m main</span><br><span class="line"></span><br><span class="line">git add .</span><br><span class="line"></span><br><span class="line">git commit -m <span class="string">&quot;初始化工作&quot;</span></span><br></pre></td></tr></table></figure>
-
-<p>其次，我们还需要在 GitHub 上面建立一个远程仓库，格式<strong>必须</strong>为<code>username.github.io</code>，这是硬性要求。</p>
-<h3 id="关联和发布"><a href="#关联和发布" class="headerlink" title="关联和发布"></a>关联和发布</h3><p>我们现在需要关联本地仓库和远程仓库，用例中我们使用<code>https</code>协议，当然也可以使用<code>ssh</code>密钥：</p>
-<figure class="highlight bash"><table><tr><td class="code"><pre><span class="line">git remote add origin https://github.com/username/username.github.io.git</span><br><span class="line"></span><br><span class="line">git push origin main</span><br></pre></td></tr></table></figure>
-
-<p>我们还需要更改一下远程仓库的 GitHub Pages 的设置，目的是告知它托管文件的地址：</p>
-<div style="display: block; margin-left: auto; margin-right: auto; text-align: center; font-size: 1rem;">
-  
-<p>  <img src="/2023/04/22/%E5%A6%82%E4%BD%95%E4%BD%BF%E7%94%A8%20GitHub%20Pages%20%E6%89%98%E7%AE%A1%20Hexo%20%E9%9D%99%E6%80%81%E5%8D%9A%E5%AE%A2%E7%BD%91%E7%AB%99/images/0001.png" alt="点击 Settings" title="点击 Settings"></p>
-  <div>点击 Settings</div>
-  <br>
-
-<p>  <img src="/2023/04/22/%E5%A6%82%E4%BD%95%E4%BD%BF%E7%94%A8%20GitHub%20Pages%20%E6%89%98%E7%AE%A1%20Hexo%20%E9%9D%99%E6%80%81%E5%8D%9A%E5%AE%A2%E7%BD%91%E7%AB%99/images/0002.png" alt="点击 Pages" title="点击 Pages"></p>
-  <div>点击 Pages</div>
-  <br>
-
-<p>  <img src="/2023/04/22/%E5%A6%82%E4%BD%95%E4%BD%BF%E7%94%A8%20GitHub%20Pages%20%E6%89%98%E7%AE%A1%20Hexo%20%E9%9D%99%E6%80%81%E5%8D%9A%E5%AE%A2%E7%BD%91%E7%AB%99/images/0003.png" alt="修改设置" title="修改设置"></p>
-  <div>修改设置</div>
-  <br>
-
-</div>
-
-<p>最后，我们访问<code>username.github.io</code>就可以来到我们的博客页了 :)</p>
-]]></content>
-      <tags>
-        <tag>Hexo</tag>
-        <tag>GitHub Pages</tag>
-        <tag>Git</tag>
-      </tags>
-  </entry>
-  <entry>
     <title>软件工程 第一周的博客</title>
     <url>/2023/03/22/%E8%BD%AF%E4%BB%B6%E5%B7%A5%E7%A8%8B%20%E7%AC%AC%E4%B8%80%E5%91%A8%E7%9A%84%E5%8D%9A%E5%AE%A2/</url>
     <content><![CDATA[<h3 id="使用Git-VCS的一些小技巧"><a href="#使用Git-VCS的一些小技巧" class="headerlink" title="使用Git VCS的一些小技巧"></a><em>使用Git VCS的一些小技巧</em></h3><p>初始化步骤我就大段省略了，大致就是去 Git 官网下载 Binary Dependencies 然后安装就好了，或者是去安装<code>xcode-command-line-tools</code>，其中<code>git</code>自动包含在里面了。</p>
@@ -1246,9 +1263,9 @@ S: 221 /0:0:0:0:0:0:0:1 Service closing transmission channel
 <figure class="highlight bash"><table><tr><td class="code"><pre><span class="line">git push origin temp</span><br></pre></td></tr></table></figure>]]></content>
       <tags>
         <tag>Bash</tag>
+        <tag>Git</tag>
         <tag>CLI</tag>
         <tag>File Systems</tag>
-        <tag>Git</tag>
       </tags>
   </entry>
   <entry>
