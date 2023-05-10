@@ -1,25 +1,6 @@
 <?xml version="1.0" encoding="utf-8"?>
 <search>
   <entry>
-    <title>7-2-Java-基本语法-大整数相加</title>
-    <url>/2023/04/24/7-2-Java-%E5%9F%BA%E6%9C%AC%E8%AF%AD%E6%B3%95-%E5%A4%A7%E6%95%B4%E6%95%B0%E7%9B%B8%E5%8A%A0/</url>
-    <content><![CDATA[<h3 id="题目"><a href="#题目" class="headerlink" title="题目"></a>题目</h3><p>有若干大整数，需要对其进行求和操作。</p>
-<h3 id="输入格式"><a href="#输入格式" class="headerlink" title="输入格式"></a>输入格式</h3><p>每行输入一个字符串代表一个大整数，连续输入若干行，当某行字符为e或E时退出。</p>
-<h3 id="输入样例"><a href="#输入样例" class="headerlink" title="输入样例:"></a>输入样例:</h3><figure class="highlight plaintext"><table><tr><td class="code"><pre><span class="line">42846280183517070527831839425882145521227251250327</span><br><span class="line">55121603546981200581762165212827652751691296897789</span><br><span class="line">e</span><br></pre></td></tr></table></figure>
-
-<h3 id="输出样例"><a href="#输出样例" class="headerlink" title="输出样例:"></a>输出样例:</h3><figure class="highlight plaintext"><table><tr><td class="code"><pre><span class="line">97967883730498271109594004638709798272918548148116</span><br></pre></td></tr></table></figure>
-
-<h3 id="JavaScript"><a href="#JavaScript" class="headerlink" title="JavaScript"></a>JavaScript</h3><figure class="highlight javascript"><table><tr><td class="code"><pre><span class="line"><span class="keyword">const</span> readline = <span class="built_in">require</span>(<span class="string">&#x27;readline&#x27;</span>)</span><br><span class="line"><span class="keyword">const</span> rl = readline.<span class="title function_">createInterface</span>(&#123;</span><br><span class="line">    <span class="attr">input</span>: process.<span class="property">stdin</span>,</span><br><span class="line">    <span class="attr">output</span>: process.<span class="property">stdout</span></span><br><span class="line">&#125;)</span><br><span class="line"></span><br><span class="line"><span class="keyword">let</span> sum = <span class="title class_">BigInt</span>(<span class="number">0</span>)</span><br><span class="line"></span><br><span class="line">rl.<span class="title function_">on</span>(<span class="string">&#x27;line&#x27;</span>, <span class="function"><span class="params">line</span> =&gt;</span> &#123;</span><br><span class="line">    <span class="keyword">if</span> (!line.<span class="title function_">localeCompare</span>(<span class="string">&quot;e&quot;</span>, <span class="literal">undefined</span>, &#123; <span class="attr">sensitivity</span>: <span class="string">&quot;base&quot;</span> &#125;)) &#123;</span><br><span class="line">        <span class="variable language_">console</span>.<span class="title function_">log</span>(sum.<span class="title function_">toString</span>())</span><br><span class="line">        rl.<span class="title function_">close</span>()</span><br><span class="line">    &#125; <span class="keyword">else</span> &#123;</span><br><span class="line">        sum += <span class="title class_">BigInt</span>(line)</span><br><span class="line">    &#125;</span><br><span class="line">&#125;)</span><br></pre></td></tr></table></figure>
-
-<h3 id="Java"><a href="#Java" class="headerlink" title="Java"></a>Java</h3><figure class="highlight java"><table><tr><td class="code"><pre><span class="line"><span class="keyword">import</span> java.util.Scanner;</span><br><span class="line"><span class="keyword">import</span> java.math.BigInteger;</span><br><span class="line"></span><br><span class="line"><span class="keyword">public</span> <span class="keyword">class</span> <span class="title class_">Main</span> &#123;</span><br><span class="line">    <span class="keyword">public</span> <span class="keyword">static</span> <span class="keyword">void</span> <span class="title function_">main</span> <span class="params">(String[] args)</span> &#123;</span><br><span class="line">        <span class="type">Scanner</span> <span class="variable">scanner</span> <span class="operator">=</span> <span class="keyword">new</span> <span class="title class_">Scanner</span>(System.in);</span><br><span class="line">        <span class="type">BigInteger</span> <span class="variable">sum</span> <span class="operator">=</span> BigInteger.ZERO;</span><br><span class="line"></span><br><span class="line">        <span class="keyword">while</span> (scanner.hasNextLine()) &#123;</span><br><span class="line">            <span class="type">String</span> <span class="variable">line</span> <span class="operator">=</span> scanner.nextLine();</span><br><span class="line">            <span class="keyword">if</span> (line.equalsIgnoreCase(<span class="string">&quot;e&quot;</span>)) &#123;</span><br><span class="line">                System.out.println(sum.toString());</span><br><span class="line">                <span class="keyword">break</span>;</span><br><span class="line">            &#125; <span class="keyword">else</span> &#123;</span><br><span class="line">                sum = sum.add(<span class="keyword">new</span> <span class="title class_">BigInteger</span>(line));</span><br><span class="line">            &#125;</span><br><span class="line">        &#125;</span><br><span class="line">        scanner.close();</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>]]></content>
-      <tags>
-        <tag>Java</tag>
-        <tag>JavaScript</tag>
-        <tag>BigInt</tag>
-        <tag>readline</tag>
-      </tags>
-  </entry>
-  <entry>
     <title>Dabbling with Puppeteer</title>
     <url>/2023/04/27/Dabbling%20with%20Puppeteer/</url>
     <content><![CDATA[<p>Puppeteer is a Node.js library that provides a high-level API to control headless Chrome or Chromium browsers. It is widely used for web scraping, testing, and automation, and is an essential tool for many developers who work with web applications.</p>
@@ -48,128 +29,38 @@
       </tags>
   </entry>
   <entry>
-    <title>Dead Cells：Unlocking Daily Challenge blueprints</title>
-    <url>/2023/05/03/Dead%20Cells%EF%BC%9AUnlocking%20Daily%20Challenge%20blueprints/</url>
-    <content><![CDATA[<p>The Daily Challenge mode boasts a significant player base, even compared to other popular modes, and offers several exclusive weapons to boot. However, this is bad news for us freeloaders who, through various means, gained access to the game without ever paying the publisher a single cent. Some may consider piracy bad practice, but to be honest, I’m broke as f*ck.</p>
-<p>Since we can’t do the challenge runs like the normal person would, I find it not much of a stretch to hack the game a bit further.</p>
-<h3 id="Overview"><a href="#Overview" class="headerlink" title="Overview"></a>Overview</h3><p>The approach we’re taking is to assign the blueprints to a chosen enemy. Naturally we’d want to assign it to an enemy we frequently run into and have a decent drop rate. It so happens that the zombie fits our description perfectly.</p>
-<p>Let us have a look at the relevant part of its JSON description:</p>
-<figure class="highlight json"><table><tr><td class="code"><pre><span class="line"><span class="attr">&quot;name&quot;</span><span class="punctuation">:</span> <span class="string">&quot;Zombie&quot;</span><span class="punctuation">,</span></span><br><span class="line"><span class="attr">&quot;score&quot;</span><span class="punctuation">:</span> <span class="number">2</span><span class="punctuation">,</span></span><br><span class="line"><span class="attr">&quot;maxPerRoom&quot;</span><span class="punctuation">:</span> <span class="number">0</span><span class="punctuation">,</span></span><br><span class="line"><span class="attr">&quot;canBeElite&quot;</span><span class="punctuation">:</span> <span class="literal"><span class="keyword">true</span></span><span class="punctuation">,</span></span><br><span class="line"><span class="attr">&quot;glowInnerColor&quot;</span><span class="punctuation">:</span> <span class="number">11197250</span><span class="punctuation">,</span></span><br><span class="line"><span class="attr">&quot;volteDelay&quot;</span><span class="punctuation">:</span> <span class="number">1</span><span class="punctuation">,</span></span><br><span class="line"><span class="attr">&quot;flesh1&quot;</span><span class="punctuation">:</span> <span class="number">5669211</span><span class="punctuation">,</span></span><br><span class="line"><span class="attr">&quot;flesh2&quot;</span><span class="punctuation">:</span> <span class="number">12303527</span><span class="punctuation">,</span></span><br><span class="line"><span class="attr">&quot;pfCost&quot;</span><span class="punctuation">:</span> <span class="number">0.5</span><span class="punctuation">,</span></span><br><span class="line"><span class="attr">&quot;blueprints&quot;</span><span class="punctuation">:</span> <span class="punctuation">[</span></span><br><span class="line">	<span class="punctuation">&#123;</span></span><br><span class="line">		<span class="attr">&quot;item&quot;</span><span class="punctuation">:</span> <span class="string">&quot;HorizontalTurret&quot;</span><span class="punctuation">,</span></span><br><span class="line">		<span class="attr">&quot;rarity&quot;</span><span class="punctuation">:</span> <span class="string">&quot;Rare&quot;</span><span class="punctuation">,</span></span><br><span class="line">		<span class="attr">&quot;minDifficulty&quot;</span><span class="punctuation">:</span> <span class="number">0</span></span><br><span class="line">	<span class="punctuation">&#125;</span><span class="punctuation">,</span></span><br><span class="line">	<span class="punctuation">&#123;</span></span><br><span class="line">		<span class="attr">&quot;item&quot;</span><span class="punctuation">:</span> <span class="string">&quot;Bleeder&quot;</span><span class="punctuation">,</span></span><br><span class="line">		<span class="attr">&quot;rarity&quot;</span><span class="punctuation">:</span> <span class="string">&quot;Always&quot;</span><span class="punctuation">,</span></span><br><span class="line">		<span class="attr">&quot;minDifficulty&quot;</span><span class="punctuation">:</span> <span class="number">0</span></span><br><span class="line">	<span class="punctuation">&#125;</span><span class="punctuation">,</span></span><br><span class="line">	<span class="punctuation">&#123;</span></span><br><span class="line">		<span class="attr">&quot;rarity&quot;</span><span class="punctuation">:</span> <span class="string">&quot;Rare&quot;</span><span class="punctuation">,</span></span><br><span class="line">		<span class="attr">&quot;minDifficulty&quot;</span><span class="punctuation">:</span> <span class="number">1</span><span class="punctuation">,</span></span><br><span class="line">		<span class="attr">&quot;item&quot;</span><span class="punctuation">:</span> <span class="string">&quot;PrisonerBobby&quot;</span></span><br><span class="line">	<span class="punctuation">&#125;</span></span><br><span class="line"><span class="punctuation">]</span></span><br></pre></td></tr></table></figure>
+    <title>7-2-Java-基本语法-大整数相加</title>
+    <url>/2023/04/24/7-2-Java-%E5%9F%BA%E6%9C%AC%E8%AF%AD%E6%B3%95-%E5%A4%A7%E6%95%B4%E6%95%B0%E7%9B%B8%E5%8A%A0/</url>
+    <content><![CDATA[<h3 id="题目"><a href="#题目" class="headerlink" title="题目"></a>题目</h3><p>有若干大整数，需要对其进行求和操作。</p>
+<h3 id="输入格式"><a href="#输入格式" class="headerlink" title="输入格式"></a>输入格式</h3><p>每行输入一个字符串代表一个大整数，连续输入若干行，当某行字符为e或E时退出。</p>
+<h3 id="输入样例"><a href="#输入样例" class="headerlink" title="输入样例:"></a>输入样例:</h3><figure class="highlight plaintext"><table><tr><td class="code"><pre><span class="line">42846280183517070527831839425882145521227251250327</span><br><span class="line">55121603546981200581762165212827652751691296897789</span><br><span class="line">e</span><br></pre></td></tr></table></figure>
 
-<p><code>Bleeder</code> is the internal name for <code>Blood Sword</code>, which is typically the first blueprint obtained by Dead Cells players on their initial run. As such, it can be readily exchanged for an item of our preference.</p>
-<div style="display: block; margin-left: auto; margin-right: auto; text-align: center; font-size: 1rem;">
+<h3 id="输出样例"><a href="#输出样例" class="headerlink" title="输出样例:"></a>输出样例:</h3><figure class="highlight plaintext"><table><tr><td class="code"><pre><span class="line">97967883730498271109594004638709798272918548148116</span><br></pre></td></tr></table></figure>
 
-<p><img src="/2023/05/03/Dead%20Cells%EF%BC%9AUnlocking%20Daily%20Challenge%20blueprints/images/Blood%20Sword.png" alt="Blood Sword" title="Blood Sword"></p>
-<p><span>Blood Sword</span></p>
-</div>
+<h3 id="JavaScript"><a href="#JavaScript" class="headerlink" title="JavaScript"></a>JavaScript</h3><figure class="highlight javascript"><table><tr><td class="code"><pre><span class="line"><span class="keyword">const</span> readline = <span class="built_in">require</span>(<span class="string">&#x27;readline&#x27;</span>)</span><br><span class="line"><span class="keyword">const</span> rl = readline.<span class="title function_">createInterface</span>(&#123;</span><br><span class="line">    <span class="attr">input</span>: process.<span class="property">stdin</span>,</span><br><span class="line">    <span class="attr">output</span>: process.<span class="property">stdout</span></span><br><span class="line">&#125;)</span><br><span class="line"></span><br><span class="line"><span class="keyword">let</span> sum = <span class="title class_">BigInt</span>(<span class="number">0</span>)</span><br><span class="line"></span><br><span class="line">rl.<span class="title function_">on</span>(<span class="string">&#x27;line&#x27;</span>, <span class="function"><span class="params">line</span> =&gt;</span> &#123;</span><br><span class="line">    <span class="keyword">if</span> (!line.<span class="title function_">localeCompare</span>(<span class="string">&quot;e&quot;</span>, <span class="literal">undefined</span>, &#123; <span class="attr">sensitivity</span>: <span class="string">&quot;base&quot;</span> &#125;)) &#123;</span><br><span class="line">        <span class="variable language_">console</span>.<span class="title function_">log</span>(sum.<span class="title function_">toString</span>())</span><br><span class="line">        rl.<span class="title function_">close</span>()</span><br><span class="line">    &#125; <span class="keyword">else</span> &#123;</span><br><span class="line">        sum += <span class="title class_">BigInt</span>(line)</span><br><span class="line">    &#125;</span><br><span class="line">&#125;)</span><br></pre></td></tr></table></figure>
 
-<h4 id="Targets"><a href="#Targets" class="headerlink" title="Targets:"></a>Targets:</h4><ol>
-<li><em>Swift Sword</em> (internal name <code>SpeedBlade</code>) - first run</li>
-<li><em>Lacerating Aura</em> (internal name <code>DamageAura</code>) - 5th run</li>
-<li><em>Meat Skewer</em> (internal name <code>DashSword</code>) - 10th run</li>
-</ol>
-<p>Visit <a href="https://deadcells.fandom.com/wiki/Dead_Cells_Wiki">the official wiki page</a> for more information!</p>
-<h3 id="CellPacker"><a href="#CellPacker" class="headerlink" title="CellPacker"></a>CellPacker</h3><p>I use CellPacker to extract the <code>data.cdb</code> file so as to avoid having to read from the hexdump. It is a lot more comfortable to inspect an formatted JSON file!</p>
-<div style="display: block; margin-left: auto; margin-right: auto; text-align: center; font-size: 1rem;">
-
-<p><img src="/2023/05/03/Dead%20Cells%EF%BC%9AUnlocking%20Daily%20Challenge%20blueprints/images/CellPacker.png" alt="CellPacker" title="CellPacker"></p>
-<p><span>CellPacker</span></p>
-</div>
-
-<p>We <em>can</em> open CellPacker by double-clicking <code>CellPacker.jar</code>, however I suggest running the following command to avoid headaches:</p>
-<figure class="highlight bash"><table><tr><td class="code"><pre><span class="line">java -jar /path/to/CellPacker.jar</span><br></pre></td></tr></table></figure>
-
-<p>GitHub Repo: <a href="https://github.com/ReBuilders101/CellPacker" title="ReBuilders101/CellPacker Repo">ReBuilders101&#x2F;CellPacker</a></p>
-<p>Click <a href="https://github.com/ReBuilders101/CellPacker/raw/master/release/CellPacker.jar" title="CellPacker.jar">here</a> to install <code>CellPacker.jar</code>.</p>
-<h3 id="res-pak"><a href="#res-pak" class="headerlink" title="res.pak"></a><em><code>res.pak</code></em></h3><p>As the name suggests, the <code>res.pak</code> is the resource pack for the game itself and contains every aspect of what the graphics and cutscenes require to load. It also contains the <code>json</code> data files which store the underlying logic behind the interactions in the game.</p>
-<p>To hack it, we need a hexdump editor. I use <code>ghex</code> because it’s fairly simple and easy to use. We can install it on our MacBook via Homebrew, using the following command:</p>
-<figure class="highlight bash"><table><tr><td class="code"><pre><span class="line">brew install ghex</span><br></pre></td></tr></table></figure>
-
-<blockquote>
-<p><strong><em>Note:</em></strong><br>Before we begin the actual editing process, make sure you have a copy of your game saves and the resource pack we’re editing on. This is in case we make a mistake and corrupt the files.</p>
-</blockquote>
-<h3 id="ghex"><a href="#ghex" class="headerlink" title="ghex"></a><em><code>ghex</code></em></h3><p>Run <code>ghex</code> in Terminal and open <code>res.pak</code>. Locate <code>Bleeder</code> and replace it with the internal name of any of the three daily challenge blueprints.</p>
-<div style="display: block; margin-left: auto; margin-right: auto; text-align: center; font-size: 1rem;">
-
-<p><img src="/2023/05/03/Dead%20Cells%EF%BC%9AUnlocking%20Daily%20Challenge%20blueprints/images/Before.png" alt="Before" title="Before"></p>
-</div>
-
-<p>Please note that the resulting file must remain the same size as the original. Making significant changes will only complicate matters. For instance, <code>Bleeder</code> has 7 characters, while <code>SpeedBlade</code> and <code>DamageAura</code> have 10, and <code>DashSword</code> has 9. To address this discrepancy, I reduced the length of “Zombie” by the difference. Here’s an example:</p>
-<div style="display: block; margin-left: auto; margin-right: auto; text-align: center; font-size: 1rem;">
-
-<p><img src="/2023/05/03/Dead%20Cells%EF%BC%9AUnlocking%20Daily%20Challenge%20blueprints/images/After.png" alt="After" title="After"></p>
-</div>
-
-<hr>
-<h3 id="References"><a href="#References" class="headerlink" title="References"></a>References</h3><ul>
-<li>Sebadorn’s Blog: <a href="https://sebadorn.de/2021/06/28/dead-cells-unlocking-the-daily-challenge-blueprints-in-the-bugged-linux-gog-version" title="Unlocking the Daily Challenge blueprints in the bugged Linux GOG version">2021.06.28</a></li>
-</ul>
-]]></content>
-      <categories>
-        <category>Games</category>
-      </categories>
+<h3 id="Java"><a href="#Java" class="headerlink" title="Java"></a>Java</h3><figure class="highlight java"><table><tr><td class="code"><pre><span class="line"><span class="keyword">import</span> java.util.Scanner;</span><br><span class="line"><span class="keyword">import</span> java.math.BigInteger;</span><br><span class="line"></span><br><span class="line"><span class="keyword">public</span> <span class="keyword">class</span> <span class="title class_">Main</span> &#123;</span><br><span class="line">    <span class="keyword">public</span> <span class="keyword">static</span> <span class="keyword">void</span> <span class="title function_">main</span> <span class="params">(String[] args)</span> &#123;</span><br><span class="line">        <span class="type">Scanner</span> <span class="variable">scanner</span> <span class="operator">=</span> <span class="keyword">new</span> <span class="title class_">Scanner</span>(System.in);</span><br><span class="line">        <span class="type">BigInteger</span> <span class="variable">sum</span> <span class="operator">=</span> BigInteger.ZERO;</span><br><span class="line"></span><br><span class="line">        <span class="keyword">while</span> (scanner.hasNextLine()) &#123;</span><br><span class="line">            <span class="type">String</span> <span class="variable">line</span> <span class="operator">=</span> scanner.nextLine();</span><br><span class="line">            <span class="keyword">if</span> (line.equalsIgnoreCase(<span class="string">&quot;e&quot;</span>)) &#123;</span><br><span class="line">                System.out.println(sum.toString());</span><br><span class="line">                <span class="keyword">break</span>;</span><br><span class="line">            &#125; <span class="keyword">else</span> &#123;</span><br><span class="line">                sum = sum.add(<span class="keyword">new</span> <span class="title class_">BigInteger</span>(line));</span><br><span class="line">            &#125;</span><br><span class="line">        &#125;</span><br><span class="line">        scanner.close();</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>]]></content>
       <tags>
-        <tag>Dead Cells</tag>
+        <tag>Java</tag>
+        <tag>JavaScript</tag>
+        <tag>BigInt</tag>
+        <tag>readline</tag>
       </tags>
   </entry>
   <entry>
-    <title>Initialize shared directory with SPICE WebDAV</title>
-    <url>/2023/04/26/Initialize%20shared%20directory%20with%20SPICE%20WebDAV/</url>
-    <content><![CDATA[<h3 id="Install-Dependencies"><a href="#Install-Dependencies" class="headerlink" title="Install Dependencies"></a>Install Dependencies</h3><h4 id="SPICE-guest-tools"><a href="#SPICE-guest-tools" class="headerlink" title="SPICE guest tools"></a><em><code>SPICE guest tools</code></em></h4><p>See <a href="/2023/04/25/Running%20ArchLinux%20ARM%20in%20UTM%20on%20a%20M1%20MacBook%20Air/#SPICE-guest-tools"><code>SPICE guest tools</code></a></p>
-<h4 id="SPICE-WebDAV"><a href="#SPICE-WebDAV" class="headerlink" title="SPICE WebDAV"></a><em><code>SPICE WebDAV</code></em></h4><p>SPICE WebDAV is required for <a href="https://docs.getutm.app/settings-qemu/sharing/#spice-webdav" title="QEMU directory sharing">QEMU directory sharing</a> as an alternative to VirtFS.</p>
-<p>Since we’re on ArchLinux, we should run the following command:</p>
-<figure class="highlight bash"><table><tr><td class="code"><pre><span class="line">sudo pacman -S phodav</span><br></pre></td></tr></table></figure>
-
-<p>Now we should want to visit the shared directory.</p>
-<p>Normally, it is exposed as a WebDAV mount on the guest’s localhost (typically on port 9843).</p>
-<p>To access it, we need a browser.</p>
-<h3 id="Firefox"><a href="#Firefox" class="headerlink" title="Firefox"></a>Firefox</h3><p>I don’t have one yet, so I’ll Install Firefox via <a href="/2023/04/25/Running%20ArchLinux%20ARM%20in%20UTM%20on%20a%20M1%20MacBook%20Air/#yay"><code>yay</code></a>.</p>
-<figure class="highlight bash"><table><tr><td class="code"><pre><span class="line">yay -S firefox</span><br></pre></td></tr></table></figure>
-
-<p>Before we move on, let’s configure the <code>DISPLAY</code> environment variable first. Again, I need to install one:</p>
-<figure class="highlight bash"><table><tr><td class="code"><pre><span class="line">sudo pacman -S xorg xorg-xinit xfce4</span><br><span class="line"></span><br><span class="line"><span class="comment"># Once installation is complete, `reboot` and log-back-in</span></span><br></pre></td></tr></table></figure>
-
-<p>Before we proceed, make sure to check the following conditions:</p>
-<blockquote>
-<p>X Window System is actually running: You can start the X Window System by running the command <code>startx</code> in a terminal window.</p>
-</blockquote>
-<blockquote>
-<p>You have permission to access the X Window System: You may need to add your user account to the <code>video</code> group by running the command <code>sudo usermod -aG video &lt;username&gt;</code>.</p>
-</blockquote>
-<blockquote>
-<p>X Window System is configured to allow remote connections: You may need to edit the <code>/etc/X11/xinit/xserverrc</code> file to include the <code>-listen tcp</code> option. For example, you can add the line <code>exec /usr/bin/X -listen tcp</code> to the file.</p>
-</blockquote>
-<hr>
-<p>We may face some problems when we run <code>startx</code> because X server requires some sort of display device or screen so that it can display graphical output, and since ArchLinux is text-based, we’ll have to go through a few extra steps.</p>
-<ul>
-<li><p>Run <code>sudo pacman -S xf86-video-fbdev</code> to install the <code>xf86-video-fbdev</code> package. This package provides a generic framebuffer driver that can be used in place of a specific display driver.</p>
-</li>
-<li><p>Edit the <code>/etc/X11/xorg.conf.d/10-monitor.conf</code> file to specify the <code>fbdev</code> driver. We can do this by adding the following lines to the file:</p>
-</li>
-</ul>
-<figure class="highlight bash"><table><tr><td class="code"><pre><span class="line">Section <span class="string">&quot;Device&quot;</span></span><br><span class="line">    Identifier <span class="string">&quot;fbdev&quot;</span></span><br><span class="line">    Driver <span class="string">&quot;fbdev&quot;</span></span><br><span class="line">EndSection</span><br></pre></td></tr></table></figure>
-
-<p>That should do the trick when we run <code>startx</code> again.</p>
-<p>If the X server still fails to start, you may need to investigate further by checking the <code>/var/log/Xorg.0.log</code> file for additional information about the error.</p>
-<hr>
-<p>After double-checking the conditions listed above, we can now run the command <code>export DISPLAY=:0</code> to set the display environment variable to the default value for the X Window System.</p>
-<p>At last we launch Firefox and navigate to <code>http://127.0.0.1:9843</code>.</p>
-<figure class="highlight bash"><table><tr><td class="code"><pre><span class="line">firefox http://127.0.0.1:9843</span><br></pre></td></tr></table></figure>
-
-<p>We can also try running Firefox with the <code>--no-remote</code> option. This option tells Firefox to open a new instance of the browser, rather than connecting to an existing instance.</p>
-<figure class="highlight bash"><table><tr><td class="code"><pre><span class="line">firefox --no-remote http://127.0.0.1:9843</span><br></pre></td></tr></table></figure>
-
-<p>If the <code>SPICE WebDAV</code> service is running correctly, you should be able to see the page in the Firefox browser window.</p>
-<h3 id="Headless-browser"><a href="#Headless-browser" class="headerlink" title="Headless browser"></a>Headless browser</h3><h4 id="Puppeteer"><a href="#Puppeteer" class="headerlink" title="Puppeteer"></a>Puppeteer</h4><p>See <a href="/2023/04/27/Dabbling%20with%20Puppeteer/">here</a></p>
-<h4 id="i2pdbrowser"><a href="#i2pdbrowser" class="headerlink" title="i2pdbrowser"></a>i2pdbrowser</h4><p>Clone this repo:</p>
-<figure class="highlight bash"><table><tr><td class="code"><pre><span class="line">git <span class="built_in">clone</span> https://github.com/PurpleI2P/i2pdbrowser.git</span><br></pre></td></tr></table></figure>
-
-<p>Navigate to the README.md file for more information</p>
+    <title>How to re-center Spotlight search bar on Mac?</title>
+    <url>/2023/05/06/How%20to%20re-center%20Spotlight%20search%20bar%20on%20Mac?/</url>
+    <content><![CDATA[<p>Click and hold the Spotlight icon on the menu bar, until the Spotlight window has returned to its original location.</p>
 ]]></content>
       <categories>
-        <category>Linux</category>
-        <category>ArchLinux</category>
+        <category>Tips</category>
       </categories>
+      <tags>
+        <tag>MacOS</tag>
+        <tag>Spotlight</tag>
+        <tag>Tips</tag>
+        <tag>Utilities</tag>
+      </tags>
   </entry>
   <entry>
     <title>Immediately Executing Function Demo</title>
@@ -233,36 +124,63 @@ uid           [ unknown] Puppet, Inc. Release Key (Puppet, Inc. Release Key) &lt
       </tags>
   </entry>
   <entry>
-    <title>Intuition</title>
-    <url>/2023/05/10/Intuition/</url>
-    <content><![CDATA[<p>While a clever person may have a strong intuition, their insights may only benefit themselves. On the other hand, a learned person who has gained knowledge through studies has the ability to express their ideas and contribute to society.</p>
-<p>Intuition is often described as a gut feeling or a hunch that arises without conscious reasoning. It is a valuable skill, but it can be limited by personal biases and experiences. In contrast, knowledge gained through education and study is based on evidence and critical thinking. This allows learned individuals to make informed decisions and contribute to the advancement of society.</p>
-<p><strong><em>References:</em></strong></p>
+    <title>Initialize shared directory with SPICE WebDAV</title>
+    <url>/2023/04/26/Initialize%20shared%20directory%20with%20SPICE%20WebDAV/</url>
+    <content><![CDATA[<h3 id="Install-Dependencies"><a href="#Install-Dependencies" class="headerlink" title="Install Dependencies"></a>Install Dependencies</h3><h4 id="SPICE-guest-tools"><a href="#SPICE-guest-tools" class="headerlink" title="SPICE guest tools"></a><em><code>SPICE guest tools</code></em></h4><p>See <a href="/2023/04/25/Running%20ArchLinux%20ARM%20in%20UTM%20on%20a%20M1%20MacBook%20Air/#SPICE-guest-tools"><code>SPICE guest tools</code></a></p>
+<h4 id="SPICE-WebDAV"><a href="#SPICE-WebDAV" class="headerlink" title="SPICE WebDAV"></a><em><code>SPICE WebDAV</code></em></h4><p>SPICE WebDAV is required for <a href="https://docs.getutm.app/settings-qemu/sharing/#spice-webdav" title="QEMU directory sharing">QEMU directory sharing</a> as an alternative to VirtFS.</p>
+<p>Since we’re on ArchLinux, we should run the following command:</p>
+<figure class="highlight bash"><table><tr><td class="code"><pre><span class="line">sudo pacman -S phodav</span><br></pre></td></tr></table></figure>
+
+<p>Now we should want to visit the shared directory.</p>
+<p>Normally, it is exposed as a WebDAV mount on the guest’s localhost (typically on port 9843).</p>
+<p>To access it, we need a browser.</p>
+<h3 id="Firefox"><a href="#Firefox" class="headerlink" title="Firefox"></a>Firefox</h3><p>I don’t have one yet, so I’ll Install Firefox via <a href="/2023/04/25/Running%20ArchLinux%20ARM%20in%20UTM%20on%20a%20M1%20MacBook%20Air/#yay"><code>yay</code></a>.</p>
+<figure class="highlight bash"><table><tr><td class="code"><pre><span class="line">yay -S firefox</span><br></pre></td></tr></table></figure>
+
+<p>Before we move on, let’s configure the <code>DISPLAY</code> environment variable first. Again, I need to install one:</p>
+<figure class="highlight bash"><table><tr><td class="code"><pre><span class="line">sudo pacman -S xorg xorg-xinit xfce4</span><br><span class="line"></span><br><span class="line"><span class="comment"># Once installation is complete, `reboot` and log-back-in</span></span><br></pre></td></tr></table></figure>
+
+<p>Before we proceed, make sure to check the following conditions:</p>
+<blockquote>
+<p>X Window System is actually running: You can start the X Window System by running the command <code>startx</code> in a terminal window.</p>
+</blockquote>
+<blockquote>
+<p>You have permission to access the X Window System: You may need to add your user account to the <code>video</code> group by running the command <code>sudo usermod -aG video &lt;username&gt;</code>.</p>
+</blockquote>
+<blockquote>
+<p>X Window System is configured to allow remote connections: You may need to edit the <code>/etc/X11/xinit/xserverrc</code> file to include the <code>-listen tcp</code> option. For example, you can add the line <code>exec /usr/bin/X -listen tcp</code> to the file.</p>
+</blockquote>
+<hr>
+<p>We may face some problems when we run <code>startx</code> because X server requires some sort of display device or screen so that it can display graphical output, and since ArchLinux is text-based, we’ll have to go through a few extra steps.</p>
 <ul>
-<li><p>The Catcher in the Rye: Mr. Antolini Quotes in Chapter 24</p>
+<li><p>Run <code>sudo pacman -S xf86-video-fbdev</code> to install the <code>xf86-video-fbdev</code> package. This package provides a generic framebuffer driver that can be used in place of a specific display driver.</p>
 </li>
-<li><p>Steve Jobs: “Intuition is a very powerful thing, more powerful than intellect, in my opinion.”</p>
+<li><p>Edit the <code>/etc/X11/xorg.conf.d/10-monitor.conf</code> file to specify the <code>fbdev</code> driver. We can do this by adding the following lines to the file:</p>
 </li>
 </ul>
-]]></content>
-      <tags>
-        <tag>Revelations</tag>
-      </tags>
-  </entry>
-  <entry>
-    <title>How to re-center Spotlight search bar on Mac?</title>
-    <url>/2023/05/06/How%20to%20re-center%20Spotlight%20search%20bar%20on%20Mac?/</url>
-    <content><![CDATA[<p>Click and hold the Spotlight icon on the menu bar, until the Spotlight window has returned to its original location.</p>
+<figure class="highlight bash"><table><tr><td class="code"><pre><span class="line">Section <span class="string">&quot;Device&quot;</span></span><br><span class="line">    Identifier <span class="string">&quot;fbdev&quot;</span></span><br><span class="line">    Driver <span class="string">&quot;fbdev&quot;</span></span><br><span class="line">EndSection</span><br></pre></td></tr></table></figure>
+
+<p>That should do the trick when we run <code>startx</code> again.</p>
+<p>If the X server still fails to start, you may need to investigate further by checking the <code>/var/log/Xorg.0.log</code> file for additional information about the error.</p>
+<hr>
+<p>After double-checking the conditions listed above, we can now run the command <code>export DISPLAY=:0</code> to set the display environment variable to the default value for the X Window System.</p>
+<p>At last we launch Firefox and navigate to <code>http://127.0.0.1:9843</code>.</p>
+<figure class="highlight bash"><table><tr><td class="code"><pre><span class="line">firefox http://127.0.0.1:9843</span><br></pre></td></tr></table></figure>
+
+<p>We can also try running Firefox with the <code>--no-remote</code> option. This option tells Firefox to open a new instance of the browser, rather than connecting to an existing instance.</p>
+<figure class="highlight bash"><table><tr><td class="code"><pre><span class="line">firefox --no-remote http://127.0.0.1:9843</span><br></pre></td></tr></table></figure>
+
+<p>If the <code>SPICE WebDAV</code> service is running correctly, you should be able to see the page in the Firefox browser window.</p>
+<h3 id="Headless-browser"><a href="#Headless-browser" class="headerlink" title="Headless browser"></a>Headless browser</h3><h4 id="Puppeteer"><a href="#Puppeteer" class="headerlink" title="Puppeteer"></a>Puppeteer</h4><p>See <a href="/2023/04/27/Dabbling%20with%20Puppeteer/">here</a></p>
+<h4 id="i2pdbrowser"><a href="#i2pdbrowser" class="headerlink" title="i2pdbrowser"></a>i2pdbrowser</h4><p>Clone this repo:</p>
+<figure class="highlight bash"><table><tr><td class="code"><pre><span class="line">git <span class="built_in">clone</span> https://github.com/PurpleI2P/i2pdbrowser.git</span><br></pre></td></tr></table></figure>
+
+<p>Navigate to the README.md file for more information</p>
 ]]></content>
       <categories>
-        <category>Tips</category>
+        <category>Linux</category>
+        <category>ArchLinux</category>
       </categories>
-      <tags>
-        <tag>MacOS</tag>
-        <tag>Spotlight</tag>
-        <tag>Tips</tag>
-        <tag>Utilities</tag>
-      </tags>
   </entry>
   <entry>
     <title>JavaScript Method：localeCompare</title>
@@ -318,6 +236,24 @@ uid           [ unknown] Puppet, Inc. Release Key (Puppet, Inc. Release Key) &lt
       </tags>
   </entry>
   <entry>
+    <title>Intuition</title>
+    <url>/2023/05/10/Intuition/</url>
+    <content><![CDATA[<p>While a clever person may have a strong intuition, their insights may only benefit themselves. On the other hand, a learned person who has gained knowledge through studies has the ability to express their ideas and contribute to society.</p>
+<p>Intuition is often described as a gut feeling or a hunch that arises without conscious reasoning. It is a valuable skill, but it can be limited by personal biases and experiences. In contrast, knowledge gained through education and study is based on evidence and critical thinking. This allows learned individuals to make informed decisions and contribute to the advancement of society.</p>
+<hr>
+<p><strong><em>References:</em></strong></p>
+<ul>
+<li><p>The Catcher in the Rye: Mr. Antolini Quotes in Chapter 24</p>
+</li>
+<li><p>Steve Jobs: “Intuition is a very powerful thing, more powerful than intellect, in my opinion.”</p>
+</li>
+</ul>
+]]></content>
+      <tags>
+        <tag>Revelations</tag>
+      </tags>
+  </entry>
+  <entry>
     <title>Pointers</title>
     <url>/2023/04/29/Pointers/</url>
     <content><![CDATA[<h3 id="Array-of-pointers-to-ints"><a href="#Array-of-pointers-to-ints" class="headerlink" title="Array of pointers to ints"></a>Array of pointers to ints</h3><p><strong>Code:</strong></p>
@@ -368,41 +304,6 @@ hello this is bar
       </categories>
       <tags>
         <tag>Pointers</tag>
-      </tags>
-  </entry>
-  <entry>
-    <title>Positional Parameters</title>
-    <url>/2023/04/29/Positional%20Parameters/</url>
-    <content><![CDATA[<p>In Bash, positional parameters are special variables that hold the arguments passed to a script or function. The positional parameters are numbered from <code>0</code> to <code>9</code>, where <code>$0</code> holds the name of the script or function, and <code>$1</code> through <code>$9</code> hold the first through ninth arguments, respectively.</p>
-<p><code>$@</code> and <code>$*</code> both hold all the arguments passed to the script. Note that <code>$@</code> is an array-like variable that holds all the positional parameters as <em>separate elements</em>, while <code>$*</code> is another variable that holds all the positional parameters as <em>a single string</em>.</p>
-<p>Here’s an example:</p>
-<pre><code>#!/bin/bash
-
-#!/bin/bash
-
-echo &quot;Script Name: $0&quot;
-echo &quot;First Arg: $1&quot;
-echo &quot;Second Arg: $2&quot;
-echo &quot;All args (arr): $@&quot;
-echo &quot;All args (str): $*&quot;
-</code></pre>
-<p>Now let’s run the script with three arguments:</p>
-<figure class="highlight bash"><table><tr><td class="code"><pre><span class="line"><span class="built_in">chmod</span> u+x ./script <span class="comment"># Grant execution privilege for user</span></span><br><span class="line"></span><br><span class="line">./script a b c</span><br><span class="line"></span><br></pre></td></tr></table></figure>
-
-<p>The output should be something like this:</p>
-<pre><code>Script Name: ./script.sh
-First Arg: a
-Second Arg: b
-All args (arr): a b c
-All args (str): a b c
-</code></pre>
-]]></content>
-      <categories>
-        <category>Bash</category>
-      </categories>
-      <tags>
-        <tag>Linux</tag>
-        <tag>Bash</tag>
       </tags>
   </entry>
   <entry>
@@ -526,6 +427,106 @@ r=mccranky)
         <tag>ArchLinux</tag>
         <tag>UTM</tag>
         <tag>Virtual Machine</tag>
+      </tags>
+  </entry>
+  <entry>
+    <title>Dead Cells：Unlocking Daily Challenge blueprints</title>
+    <url>/2023/05/03/Dead%20Cells%EF%BC%9AUnlocking%20Daily%20Challenge%20blueprints/</url>
+    <content><![CDATA[<p>The Daily Challenge mode boasts a significant player base, even compared to other popular modes, and offers several exclusive weapons to boot. However, this is bad news for us freeloaders who, through various means, gained access to the game without ever paying the publisher a single cent. Some may consider piracy bad practice, but to be honest, I’m broke as f*ck.</p>
+<p>Since we can’t do the challenge runs like the normal person would, I find it not much of a stretch to hack the game a bit further.</p>
+<h3 id="Overview"><a href="#Overview" class="headerlink" title="Overview"></a>Overview</h3><p>The approach we’re taking is to assign the blueprints to a chosen enemy. Naturally we’d want to assign it to an enemy we frequently run into and have a decent drop rate. It so happens that the zombie fits our description perfectly.</p>
+<p>Let us have a look at the relevant part of its JSON description:</p>
+<figure class="highlight json"><table><tr><td class="code"><pre><span class="line"><span class="attr">&quot;name&quot;</span><span class="punctuation">:</span> <span class="string">&quot;Zombie&quot;</span><span class="punctuation">,</span></span><br><span class="line"><span class="attr">&quot;score&quot;</span><span class="punctuation">:</span> <span class="number">2</span><span class="punctuation">,</span></span><br><span class="line"><span class="attr">&quot;maxPerRoom&quot;</span><span class="punctuation">:</span> <span class="number">0</span><span class="punctuation">,</span></span><br><span class="line"><span class="attr">&quot;canBeElite&quot;</span><span class="punctuation">:</span> <span class="literal"><span class="keyword">true</span></span><span class="punctuation">,</span></span><br><span class="line"><span class="attr">&quot;glowInnerColor&quot;</span><span class="punctuation">:</span> <span class="number">11197250</span><span class="punctuation">,</span></span><br><span class="line"><span class="attr">&quot;volteDelay&quot;</span><span class="punctuation">:</span> <span class="number">1</span><span class="punctuation">,</span></span><br><span class="line"><span class="attr">&quot;flesh1&quot;</span><span class="punctuation">:</span> <span class="number">5669211</span><span class="punctuation">,</span></span><br><span class="line"><span class="attr">&quot;flesh2&quot;</span><span class="punctuation">:</span> <span class="number">12303527</span><span class="punctuation">,</span></span><br><span class="line"><span class="attr">&quot;pfCost&quot;</span><span class="punctuation">:</span> <span class="number">0.5</span><span class="punctuation">,</span></span><br><span class="line"><span class="attr">&quot;blueprints&quot;</span><span class="punctuation">:</span> <span class="punctuation">[</span></span><br><span class="line">	<span class="punctuation">&#123;</span></span><br><span class="line">		<span class="attr">&quot;item&quot;</span><span class="punctuation">:</span> <span class="string">&quot;HorizontalTurret&quot;</span><span class="punctuation">,</span></span><br><span class="line">		<span class="attr">&quot;rarity&quot;</span><span class="punctuation">:</span> <span class="string">&quot;Rare&quot;</span><span class="punctuation">,</span></span><br><span class="line">		<span class="attr">&quot;minDifficulty&quot;</span><span class="punctuation">:</span> <span class="number">0</span></span><br><span class="line">	<span class="punctuation">&#125;</span><span class="punctuation">,</span></span><br><span class="line">	<span class="punctuation">&#123;</span></span><br><span class="line">		<span class="attr">&quot;item&quot;</span><span class="punctuation">:</span> <span class="string">&quot;Bleeder&quot;</span><span class="punctuation">,</span></span><br><span class="line">		<span class="attr">&quot;rarity&quot;</span><span class="punctuation">:</span> <span class="string">&quot;Always&quot;</span><span class="punctuation">,</span></span><br><span class="line">		<span class="attr">&quot;minDifficulty&quot;</span><span class="punctuation">:</span> <span class="number">0</span></span><br><span class="line">	<span class="punctuation">&#125;</span><span class="punctuation">,</span></span><br><span class="line">	<span class="punctuation">&#123;</span></span><br><span class="line">		<span class="attr">&quot;rarity&quot;</span><span class="punctuation">:</span> <span class="string">&quot;Rare&quot;</span><span class="punctuation">,</span></span><br><span class="line">		<span class="attr">&quot;minDifficulty&quot;</span><span class="punctuation">:</span> <span class="number">1</span><span class="punctuation">,</span></span><br><span class="line">		<span class="attr">&quot;item&quot;</span><span class="punctuation">:</span> <span class="string">&quot;PrisonerBobby&quot;</span></span><br><span class="line">	<span class="punctuation">&#125;</span></span><br><span class="line"><span class="punctuation">]</span></span><br></pre></td></tr></table></figure>
+
+<p><code>Bleeder</code> is the internal name for <code>Blood Sword</code>, which is typically the first blueprint obtained by Dead Cells players on their initial run. As such, it can be readily exchanged for an item of our preference.</p>
+<div style="display: block; margin-left: auto; margin-right: auto; text-align: center; font-size: 1rem;">
+
+<p><img src="/2023/05/03/Dead%20Cells%EF%BC%9AUnlocking%20Daily%20Challenge%20blueprints/images/Blood%20Sword.png" alt="Blood Sword" title="Blood Sword"></p>
+<p><span>Blood Sword</span></p>
+</div>
+
+<h4 id="Targets"><a href="#Targets" class="headerlink" title="Targets:"></a>Targets:</h4><ol>
+<li><em>Swift Sword</em> (internal name <code>SpeedBlade</code>) - first run</li>
+<li><em>Lacerating Aura</em> (internal name <code>DamageAura</code>) - 5th run</li>
+<li><em>Meat Skewer</em> (internal name <code>DashSword</code>) - 10th run</li>
+</ol>
+<p>Visit <a href="https://deadcells.fandom.com/wiki/Dead_Cells_Wiki">the official wiki page</a> for more information!</p>
+<h3 id="CellPacker"><a href="#CellPacker" class="headerlink" title="CellPacker"></a>CellPacker</h3><p>I use CellPacker to extract the <code>data.cdb</code> file so as to avoid having to read from the hexdump. It is a lot more comfortable to inspect an formatted JSON file!</p>
+<div style="display: block; margin-left: auto; margin-right: auto; text-align: center; font-size: 1rem;">
+
+<p><img src="/2023/05/03/Dead%20Cells%EF%BC%9AUnlocking%20Daily%20Challenge%20blueprints/images/CellPacker.png" alt="CellPacker" title="CellPacker"></p>
+<p><span>CellPacker</span></p>
+</div>
+
+<p>We <em>can</em> open CellPacker by double-clicking <code>CellPacker.jar</code>, however I suggest running the following command to avoid headaches:</p>
+<figure class="highlight bash"><table><tr><td class="code"><pre><span class="line">java -jar /path/to/CellPacker.jar</span><br></pre></td></tr></table></figure>
+
+<p>GitHub Repo: <a href="https://github.com/ReBuilders101/CellPacker" title="ReBuilders101/CellPacker Repo">ReBuilders101&#x2F;CellPacker</a></p>
+<p>Click <a href="https://github.com/ReBuilders101/CellPacker/raw/master/release/CellPacker.jar" title="CellPacker.jar">here</a> to install <code>CellPacker.jar</code>.</p>
+<h3 id="res-pak"><a href="#res-pak" class="headerlink" title="res.pak"></a><em><code>res.pak</code></em></h3><p>As the name suggests, the <code>res.pak</code> is the resource pack for the game itself and contains every aspect of what the graphics and cutscenes require to load. It also contains the <code>json</code> data files which store the underlying logic behind the interactions in the game.</p>
+<p>To hack it, we need a hexdump editor. I use <code>ghex</code> because it’s fairly simple and easy to use. We can install it on our MacBook via Homebrew, using the following command:</p>
+<figure class="highlight bash"><table><tr><td class="code"><pre><span class="line">brew install ghex</span><br></pre></td></tr></table></figure>
+
+<blockquote>
+<p><strong><em>Note:</em></strong><br>Before we begin the actual editing process, make sure you have a copy of your game saves and the resource pack we’re editing on. This is in case we make a mistake and corrupt the files.</p>
+</blockquote>
+<h3 id="ghex"><a href="#ghex" class="headerlink" title="ghex"></a><em><code>ghex</code></em></h3><p>Run <code>ghex</code> in Terminal and open <code>res.pak</code>. Locate <code>Bleeder</code> and replace it with the internal name of any of the three daily challenge blueprints.</p>
+<div style="display: block; margin-left: auto; margin-right: auto; text-align: center; font-size: 1rem;">
+
+<p><img src="/2023/05/03/Dead%20Cells%EF%BC%9AUnlocking%20Daily%20Challenge%20blueprints/images/Before.png" alt="Before" title="Before"></p>
+</div>
+
+<p>Please note that the resulting file must remain the same size as the original. Making significant changes will only complicate matters. For instance, <code>Bleeder</code> has 7 characters, while <code>SpeedBlade</code> and <code>DamageAura</code> have 10, and <code>DashSword</code> has 9. To address this discrepancy, I reduced the length of “Zombie” by the difference. Here’s an example:</p>
+<div style="display: block; margin-left: auto; margin-right: auto; text-align: center; font-size: 1rem;">
+
+<p><img src="/2023/05/03/Dead%20Cells%EF%BC%9AUnlocking%20Daily%20Challenge%20blueprints/images/After.png" alt="After" title="After"></p>
+</div>
+
+<hr>
+<h3 id="References"><a href="#References" class="headerlink" title="References"></a>References</h3><ul>
+<li>Sebadorn’s Blog: <a href="https://sebadorn.de/2021/06/28/dead-cells-unlocking-the-daily-challenge-blueprints-in-the-bugged-linux-gog-version" title="Unlocking the Daily Challenge blueprints in the bugged Linux GOG version">2021.06.28</a></li>
+</ul>
+]]></content>
+      <categories>
+        <category>Games</category>
+      </categories>
+      <tags>
+        <tag>Dead Cells</tag>
+      </tags>
+  </entry>
+  <entry>
+    <title>Positional Parameters</title>
+    <url>/2023/04/29/Positional%20Parameters/</url>
+    <content><![CDATA[<p>In Bash, positional parameters are special variables that hold the arguments passed to a script or function. The positional parameters are numbered from <code>0</code> to <code>9</code>, where <code>$0</code> holds the name of the script or function, and <code>$1</code> through <code>$9</code> hold the first through ninth arguments, respectively.</p>
+<p><code>$@</code> and <code>$*</code> both hold all the arguments passed to the script. Note that <code>$@</code> is an array-like variable that holds all the positional parameters as <em>separate elements</em>, while <code>$*</code> is another variable that holds all the positional parameters as <em>a single string</em>.</p>
+<p>Here’s an example:</p>
+<pre><code>#!/bin/bash
+
+#!/bin/bash
+
+echo &quot;Script Name: $0&quot;
+echo &quot;First Arg: $1&quot;
+echo &quot;Second Arg: $2&quot;
+echo &quot;All args (arr): $@&quot;
+echo &quot;All args (str): $*&quot;
+</code></pre>
+<p>Now let’s run the script with three arguments:</p>
+<figure class="highlight bash"><table><tr><td class="code"><pre><span class="line"><span class="built_in">chmod</span> u+x ./script <span class="comment"># Grant execution privilege for user</span></span><br><span class="line"></span><br><span class="line">./script a b c</span><br><span class="line"></span><br></pre></td></tr></table></figure>
+
+<p>The output should be something like this:</p>
+<pre><code>Script Name: ./script.sh
+First Arg: a
+Second Arg: b
+All args (arr): a b c
+All args (str): a b c
+</code></pre>
+]]></content>
+      <categories>
+        <category>Bash</category>
+      </categories>
+      <tags>
+        <tag>Linux</tag>
+        <tag>Bash</tag>
       </tags>
   </entry>
   <entry>
@@ -1142,53 +1143,6 @@ S: 221 /0:0:0:0:0:0:0:1 Service closing transmission channel
       </tags>
   </entry>
   <entry>
-    <title>如何使用 GitHub Pages 托管 Hexo 静态博客网站</title>
-    <url>/2023/04/22/%E5%A6%82%E4%BD%95%E4%BD%BF%E7%94%A8%20GitHub%20Pages%20%E6%89%98%E7%AE%A1%20Hexo%20%E9%9D%99%E6%80%81%E5%8D%9A%E5%AE%A2%E7%BD%91%E7%AB%99/</url>
-    <content><![CDATA[<p>– <strong>请先阅读 <a href="/2023/04/22/%E4%BD%BF%E7%94%A8%20Hexo%20%E7%94%9F%E6%88%90%E9%9D%99%E6%80%81%E7%BD%91%E9%A1%B5%E5%8D%9A%E5%AE%A2/index.html">使用 Hexo 生成静态网页博客</a>！</strong></p>
-<h3 id="准备工作"><a href="#准备工作" class="headerlink" title="准备工作"></a>准备工作</h3><p>首先，我们基于完成的博客<code>.md</code>文件生成静态网页：</p>
-<figure class="highlight bash"><table><tr><td class="code"><pre><span class="line"><span class="built_in">cd</span> /path/to/site/</span><br><span class="line"><span class="comment"># 跑到项目路径目录</span></span><br><span class="line"></span><br><span class="line">hexo generate</span><br><span class="line"><span class="comment"># 生成静态网页，存放与 public 文件夹内</span></span><br></pre></td></tr></table></figure>
-
-<p>接着，我们进入<code>public</code>文件夹。</p>
-<pre><code>.
-├── node_modules
-├── public
-├── scaffolds
-├── source
-└── themes
-</code></pre>
-<p>因为我们是使用 GitHub Pages 托管，所以我们需要在<code>public</code>文件夹内初始化<code>git</code>：</p>
-<figure class="highlight bash"><table><tr><td class="code"><pre><span class="line">git init</span><br><span class="line"></span><br><span class="line">git branch -m main</span><br><span class="line"></span><br><span class="line">git add .</span><br><span class="line"></span><br><span class="line">git commit -m <span class="string">&quot;初始化工作&quot;</span></span><br></pre></td></tr></table></figure>
-
-<p>其次，我们还需要在 GitHub 上面建立一个远程仓库，格式<strong>必须</strong>为<code>username.github.io</code>，这是硬性要求。</p>
-<h3 id="关联和发布"><a href="#关联和发布" class="headerlink" title="关联和发布"></a>关联和发布</h3><p>我们现在需要关联本地仓库和远程仓库，用例中我们使用<code>https</code>协议，当然也可以使用<code>ssh</code>密钥：</p>
-<figure class="highlight bash"><table><tr><td class="code"><pre><span class="line">git remote add origin https://github.com/username/username.github.io.git</span><br><span class="line"></span><br><span class="line">git push origin main</span><br></pre></td></tr></table></figure>
-
-<p>我们还需要更改一下远程仓库的 GitHub Pages 的设置，目的是告知它托管文件的地址：</p>
-<div style="display: block; margin-left: auto; margin-right: auto; text-align: center; font-size: 1rem;">
-  
-<p>  <img src="/2023/04/22/%E5%A6%82%E4%BD%95%E4%BD%BF%E7%94%A8%20GitHub%20Pages%20%E6%89%98%E7%AE%A1%20Hexo%20%E9%9D%99%E6%80%81%E5%8D%9A%E5%AE%A2%E7%BD%91%E7%AB%99/images/0001.png" alt="点击 Settings" title="点击 Settings"></p>
-  <div>点击 Settings</div>
-  <br>
-
-<p>  <img src="/2023/04/22/%E5%A6%82%E4%BD%95%E4%BD%BF%E7%94%A8%20GitHub%20Pages%20%E6%89%98%E7%AE%A1%20Hexo%20%E9%9D%99%E6%80%81%E5%8D%9A%E5%AE%A2%E7%BD%91%E7%AB%99/images/0002.png" alt="点击 Pages" title="点击 Pages"></p>
-  <div>点击 Pages</div>
-  <br>
-
-<p>  <img src="/2023/04/22/%E5%A6%82%E4%BD%95%E4%BD%BF%E7%94%A8%20GitHub%20Pages%20%E6%89%98%E7%AE%A1%20Hexo%20%E9%9D%99%E6%80%81%E5%8D%9A%E5%AE%A2%E7%BD%91%E7%AB%99/images/0003.png" alt="修改设置" title="修改设置"></p>
-  <div>修改设置</div>
-  <br>
-
-</div>
-
-<p>最后，我们访问<code>username.github.io</code>就可以来到我们的博客页了 :)</p>
-]]></content>
-      <tags>
-        <tag>Hexo</tag>
-        <tag>GitHub Pages</tag>
-        <tag>Git</tag>
-      </tags>
-  </entry>
-  <entry>
     <title>如何生成项目树状结构图</title>
     <url>/2023/04/22/%E5%A6%82%E4%BD%95%E7%94%9F%E6%88%90%E9%A1%B9%E7%9B%AE%E6%A0%91%E7%8A%B6%E7%BB%93%E6%9E%84%E5%9B%BE/</url>
     <content><![CDATA[<h3 id="Prerequisites"><a href="#Prerequisites" class="headerlink" title="Prerequisites"></a>Prerequisites</h3><ul>
@@ -1238,34 +1192,50 @@ S: 221 /0:0:0:0:0:0:0:1 Service closing transmission channel
       </tags>
   </entry>
   <entry>
-    <title>软件工程 第一周的博客</title>
-    <url>/2023/03/22/%E8%BD%AF%E4%BB%B6%E5%B7%A5%E7%A8%8B%20%E7%AC%AC%E4%B8%80%E5%91%A8%E7%9A%84%E5%8D%9A%E5%AE%A2/</url>
-    <content><![CDATA[<h3 id="使用Git-VCS的一些小技巧"><a href="#使用Git-VCS的一些小技巧" class="headerlink" title="使用Git VCS的一些小技巧"></a><em>使用Git VCS的一些小技巧</em></h3><p>初始化步骤我就大段省略了，大致就是去 Git 官网下载 Binary Dependencies 然后安装就好了，或者是去安装<code>xcode-command-line-tools</code>，其中<code>git</code>自动包含在里面了。</p>
-<p>说白了 Git 就是一个 Distributional VCS ，大体就是结合了 Local VCS和Centralized VCS，因此基本步骤就是本地建立一个 Local Repository，再在 Gitea 上建立一个 Remote Repository，然后把两个库连接一下，最后把本地的改动<code>push</code>到 Remote Repository 就可以了。</p>
-<p>先说如何建 Local Repository。</p>
-<p>选一处“风水宝地”，一般选择<code>/User/home</code>。然后跑到系统默认的 Terminal Emulator 去（ Windows：PowerShell ），输入一下指令：</p>
-<figure class="highlight bash"><table><tr><td class="code"><pre><span class="line"><span class="built_in">mkdir</span> temp <span class="comment"># 建立temp</span></span><br><span class="line"></span><br><span class="line"><span class="built_in">cd</span> temp <span class="comment"># 进入</span></span><br><span class="line"></span><br><span class="line">git init <span class="comment"># 初始化 Local Repository</span></span><br><span class="line"></span><br></pre></td></tr></table></figure>
+    <title>如何使用 GitHub Pages 托管 Hexo 静态博客网站</title>
+    <url>/2023/04/22/%E5%A6%82%E4%BD%95%E4%BD%BF%E7%94%A8%20GitHub%20Pages%20%E6%89%98%E7%AE%A1%20Hexo%20%E9%9D%99%E6%80%81%E5%8D%9A%E5%AE%A2%E7%BD%91%E7%AB%99/</url>
+    <content><![CDATA[<p>– <strong>请先阅读 <a href="/2023/04/22/%E4%BD%BF%E7%94%A8%20Hexo%20%E7%94%9F%E6%88%90%E9%9D%99%E6%80%81%E7%BD%91%E9%A1%B5%E5%8D%9A%E5%AE%A2/index.html">使用 Hexo 生成静态网页博客</a>！</strong></p>
+<h3 id="准备工作"><a href="#准备工作" class="headerlink" title="准备工作"></a>准备工作</h3><p>首先，我们基于完成的博客<code>.md</code>文件生成静态网页：</p>
+<figure class="highlight bash"><table><tr><td class="code"><pre><span class="line"><span class="built_in">cd</span> /path/to/site/</span><br><span class="line"><span class="comment"># 跑到项目路径目录</span></span><br><span class="line"></span><br><span class="line">hexo generate</span><br><span class="line"><span class="comment"># 生成静态网页，存放与 public 文件夹内</span></span><br></pre></td></tr></table></figure>
 
-<p>做完最后一步会看到 Git 生成了一个<code>.git</code>的隐藏文件夹。千万不要把自己的项目文件扔进去！</p>
-<p>初始化完成后，你就可以开始做项目了。等你做完第一个版本，你就可以把项目<code>add</code>到<code>staging area</code>。用如下指令：</p>
-<figure class="highlight bash"><table><tr><td class="code"><pre><span class="line">git add file.. <span class="comment"># add 后可以加入多个文件</span></span><br></pre></td></tr></table></figure>
+<p>接着，我们进入<code>public</code>文件夹。</p>
+<pre><code>.
+├── node_modules
+├── public
+├── scaffolds
+├── source
+└── themes
+</code></pre>
+<p>因为我们是使用 GitHub Pages 托管，所以我们需要在<code>public</code>文件夹内初始化<code>git</code>：</p>
+<figure class="highlight bash"><table><tr><td class="code"><pre><span class="line">git init</span><br><span class="line"></span><br><span class="line">git branch -m main</span><br><span class="line"></span><br><span class="line">git add .</span><br><span class="line"></span><br><span class="line">git commit -m <span class="string">&quot;初始化工作&quot;</span></span><br></pre></td></tr></table></figure>
 
-<p>然后用<code>git status</code>查看 Local Repository 的状态。如果你看到所有想要<code>staged</code>的文件已经在<code>staging area</code>里面了，就可以上传了。</p>
-<blockquote>
-<p>eg:</p>
-</blockquote>
-<figure class="highlight bash"><table><tr><td class="code"><pre><span class="line">git commit -m “message<span class="string">&quot;</span></span><br></pre></td></tr></table></figure>
+<p>其次，我们还需要在 GitHub 上面建立一个远程仓库，格式<strong>必须</strong>为<code>username.github.io</code>，这是硬性要求。</p>
+<h3 id="关联和发布"><a href="#关联和发布" class="headerlink" title="关联和发布"></a>关联和发布</h3><p>我们现在需要关联本地仓库和远程仓库，用例中我们使用<code>https</code>协议，当然也可以使用<code>ssh</code>密钥：</p>
+<figure class="highlight bash"><table><tr><td class="code"><pre><span class="line">git remote add origin https://github.com/username/username.github.io.git</span><br><span class="line"></span><br><span class="line">git push origin main</span><br></pre></td></tr></table></figure>
 
-<p>最后，我们需要创建一个 Remote Repository，过程如下：</p>
-<figure class="highlight bash"><table><tr><td class="code"><pre><span class="line">git remote add origin git@example.git</span><br></pre></td></tr></table></figure>
+<p>我们还需要更改一下远程仓库的 GitHub Pages 的设置，目的是告知它托管文件的地址：</p>
+<div style="display: block; margin-left: auto; margin-right: auto; text-align: center; font-size: 1rem;">
+  
+<p>  <img src="/2023/04/22/%E5%A6%82%E4%BD%95%E4%BD%BF%E7%94%A8%20GitHub%20Pages%20%E6%89%98%E7%AE%A1%20Hexo%20%E9%9D%99%E6%80%81%E5%8D%9A%E5%AE%A2%E7%BD%91%E7%AB%99/images/0001.png" alt="点击 Settings" title="点击 Settings"></p>
+  <div>点击 Settings</div>
+  <br>
 
-<p>然后，我们<code>push</code> Local Repo 到 Remote Repository，过程如下：</p>
-<figure class="highlight bash"><table><tr><td class="code"><pre><span class="line">git push origin temp</span><br></pre></td></tr></table></figure>]]></content>
+<p>  <img src="/2023/04/22/%E5%A6%82%E4%BD%95%E4%BD%BF%E7%94%A8%20GitHub%20Pages%20%E6%89%98%E7%AE%A1%20Hexo%20%E9%9D%99%E6%80%81%E5%8D%9A%E5%AE%A2%E7%BD%91%E7%AB%99/images/0002.png" alt="点击 Pages" title="点击 Pages"></p>
+  <div>点击 Pages</div>
+  <br>
+
+<p>  <img src="/2023/04/22/%E5%A6%82%E4%BD%95%E4%BD%BF%E7%94%A8%20GitHub%20Pages%20%E6%89%98%E7%AE%A1%20Hexo%20%E9%9D%99%E6%80%81%E5%8D%9A%E5%AE%A2%E7%BD%91%E7%AB%99/images/0003.png" alt="修改设置" title="修改设置"></p>
+  <div>修改设置</div>
+  <br>
+
+</div>
+
+<p>最后，我们访问<code>username.github.io</code>就可以来到我们的博客页了 :)</p>
+]]></content>
       <tags>
-        <tag>Bash</tag>
+        <tag>Hexo</tag>
+        <tag>GitHub Pages</tag>
         <tag>Git</tag>
-        <tag>CLI</tag>
-        <tag>File Systems</tag>
       </tags>
   </entry>
   <entry>
@@ -1473,6 +1443,37 @@ Connection to localhost closed.
         <tag>CTF</tag>
         <tag>OverTheWire</tag>
         <tag>Bandit</tag>
+      </tags>
+  </entry>
+  <entry>
+    <title>软件工程 第一周的博客</title>
+    <url>/2023/03/22/%E8%BD%AF%E4%BB%B6%E5%B7%A5%E7%A8%8B%20%E7%AC%AC%E4%B8%80%E5%91%A8%E7%9A%84%E5%8D%9A%E5%AE%A2/</url>
+    <content><![CDATA[<h3 id="使用Git-VCS的一些小技巧"><a href="#使用Git-VCS的一些小技巧" class="headerlink" title="使用Git VCS的一些小技巧"></a><em>使用Git VCS的一些小技巧</em></h3><p>初始化步骤我就大段省略了，大致就是去 Git 官网下载 Binary Dependencies 然后安装就好了，或者是去安装<code>xcode-command-line-tools</code>，其中<code>git</code>自动包含在里面了。</p>
+<p>说白了 Git 就是一个 Distributional VCS ，大体就是结合了 Local VCS和Centralized VCS，因此基本步骤就是本地建立一个 Local Repository，再在 Gitea 上建立一个 Remote Repository，然后把两个库连接一下，最后把本地的改动<code>push</code>到 Remote Repository 就可以了。</p>
+<p>先说如何建 Local Repository。</p>
+<p>选一处“风水宝地”，一般选择<code>/User/home</code>。然后跑到系统默认的 Terminal Emulator 去（ Windows：PowerShell ），输入一下指令：</p>
+<figure class="highlight bash"><table><tr><td class="code"><pre><span class="line"><span class="built_in">mkdir</span> temp <span class="comment"># 建立temp</span></span><br><span class="line"></span><br><span class="line"><span class="built_in">cd</span> temp <span class="comment"># 进入</span></span><br><span class="line"></span><br><span class="line">git init <span class="comment"># 初始化 Local Repository</span></span><br><span class="line"></span><br></pre></td></tr></table></figure>
+
+<p>做完最后一步会看到 Git 生成了一个<code>.git</code>的隐藏文件夹。千万不要把自己的项目文件扔进去！</p>
+<p>初始化完成后，你就可以开始做项目了。等你做完第一个版本，你就可以把项目<code>add</code>到<code>staging area</code>。用如下指令：</p>
+<figure class="highlight bash"><table><tr><td class="code"><pre><span class="line">git add file.. <span class="comment"># add 后可以加入多个文件</span></span><br></pre></td></tr></table></figure>
+
+<p>然后用<code>git status</code>查看 Local Repository 的状态。如果你看到所有想要<code>staged</code>的文件已经在<code>staging area</code>里面了，就可以上传了。</p>
+<blockquote>
+<p>eg:</p>
+</blockquote>
+<figure class="highlight bash"><table><tr><td class="code"><pre><span class="line">git commit -m “message<span class="string">&quot;</span></span><br></pre></td></tr></table></figure>
+
+<p>最后，我们需要创建一个 Remote Repository，过程如下：</p>
+<figure class="highlight bash"><table><tr><td class="code"><pre><span class="line">git remote add origin git@example.git</span><br></pre></td></tr></table></figure>
+
+<p>然后，我们<code>push</code> Local Repo 到 Remote Repository，过程如下：</p>
+<figure class="highlight bash"><table><tr><td class="code"><pre><span class="line">git push origin temp</span><br></pre></td></tr></table></figure>]]></content>
+      <tags>
+        <tag>Bash</tag>
+        <tag>CLI</tag>
+        <tag>File Systems</tag>
+        <tag>Git</tag>
       </tags>
   </entry>
 </search>
