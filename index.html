@@ -152,18 +152,18 @@
   <nav class="site-state">
       <div class="site-state-item site-state-posts">
         <a href="/archives/">
-          <span class="site-state-item-count">25</span>
+          <span class="site-state-item-count">26</span>
           <span class="site-state-item-name">posts</span>
         </a>
       </div>
       <div class="site-state-item site-state-categories">
           <a href="/categories/">
-        <span class="site-state-item-count">11</span>
+        <span class="site-state-item-count">12</span>
         <span class="site-state-item-name">categories</span></a>
       </div>
       <div class="site-state-item site-state-tags">
           <a href="/tags/">
-        <span class="site-state-item-count">35</span>
+        <span class="site-state-item-count">36</span>
         <span class="site-state-item-name">tags</span></a>
       </div>
   </nav>
@@ -188,6 +188,119 @@
     </div>
 
     <div class="main-inner index posts-expand">
+
+    
+
+
+<div class="post-block">
+  
+  
+
+  <article itemscope itemtype="http://schema.org/Article" class="post-content" lang="">
+    <link itemprop="mainEntityOfPage" href="https://mccranky83.github.io/2023/05/14/Path/">
+
+    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
+      <meta itemprop="image" content="/images/icons8-dead-cells-1024.png">
+      <meta itemprop="name" content="Mccranky83">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="Mccranky's Blog">
+      <meta itemprop="description" content=""Bliss it was in that dawn to be alive   But to be young was very heaven."">
+    </span>
+
+    <span hidden itemprop="post" itemscope itemtype="http://schema.org/CreativeWork">
+      <meta itemprop="name" content="undefined | Mccranky's Blog">
+      <meta itemprop="description" content="">
+    </span>
+      <header class="post-header">
+        <h2 class="post-title" itemprop="name headline">
+          <a href="/2023/05/14/Path/" class="post-title-link" itemprop="url">Path</a>
+        </h2>
+
+        <div class="post-meta-container">
+          <div class="post-meta">
+    <span class="post-meta-item">
+      <span class="post-meta-item-icon">
+        <i class="far fa-calendar"></i>
+      </span>
+      <span class="post-meta-item-text">Posted on</span>
+      
+
+      <time title="Created: 2023-05-14 19:26:28 / Modified: 19:27:04" itemprop="dateCreated datePublished" datetime="2023-05-14T19:26:28+08:00">2023-05-14</time>
+    </span>
+    <span class="post-meta-item">
+      <span class="post-meta-item-icon">
+        <i class="far fa-folder"></i>
+      </span>
+      <span class="post-meta-item-text">In</span>
+        <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
+          <a href="/categories/Node-js/" itemprop="url" rel="index"><span itemprop="name">Node.js</span></a>
+        </span>
+          , 
+        <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
+          <a href="/categories/Node-js/Path/" itemprop="url" rel="index"><span itemprop="name">Path</span></a>
+        </span>
+    </span>
+
+  
+</div>
+
+        </div>
+      </header>
+
+    
+    
+    
+    <div class="post-body" itemprop="articleBody">
+          <p>因为本人使用的操作系统是 OS X ，所以一下书写规范均符合 POSIX（Portable Open System Interface ex Tended），Windows 用户请自行查阅资料。</p>
+<h3 id="path-basename-path-suffix"><a href="#path-basename-path-suffix" class="headerlink" title="path.basename(path[, suffix])"></a><code>path.basename(path[, suffix])</code></h3><figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">path.<span class="title function_">basename</span>(<span class="string">&#x27;/path/to/project/index.html&#x27;</span>, <span class="string">&#x27;.html&#x27;</span>)</span><br><span class="line"><span class="comment">// &#x27;index&#x27;</span></span><br></pre></td></tr></table></figure>
+
+<h3 id="path-delimiter"><a href="#path-delimiter" class="headerlink" title="path.delimiter"></a><code>path.delimiter</code></h3><figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line"><span class="variable language_">console</span>.<span class="title function_">log</span>(process.<span class="property">env</span>.<span class="property">PATH</span>)</span><br><span class="line"><span class="comment">// /opt/homebrew/opt/llvm/bin:/opt/homebrew/opt/llvm/bin:/Applications/Sublime Text.app/Contents/SharedSupport/bin/:/Applications/Visual Studio Code.app/Contents/Resources/app/bin/:/Users/Mccranky/.gem/ruby/3.1.3/bin:/Users/Mccranky/.rubies/ruby-3.1.3/lib/ruby/gems/3.1.0/bin:/Users/Mccranky/.rubies/ruby-3.1.3/bin::/opt/local/bin:/opt/homebrew/bin:/opt/homebrew/sbin:/usr/local/bin:/usr/bin:/bin:/usr/sbin:/sbin:/usr/local/mysql/support-files:/usr/local/mysql/bin:/etc/platform-tools:/usr/local/go/bin:/usr/local/MacGPG2/bin:/usr/local/share/dotnet:~/.dotnet/tools:/Library/Apple/usr/bin:/Users/Mccranky/.nami/bin:/Users/Mccranky/.spicetify</span></span><br><span class="line"><span class="comment">// undefined</span></span><br></pre></td></tr></table></figure>
+
+<p>输出第一行为环境变量。<br>输出第二行的<code>undefined</code>示意无返回值。</p>
+<figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br></pre></td><td class="code"><pre><span class="line">process.<span class="property">env</span>.<span class="property">PATH</span>.<span class="title function_">split</span>(path.<span class="property">delimiter</span>)</span><br><span class="line"><span class="comment">/*</span></span><br><span class="line"><span class="comment">[</span></span><br><span class="line"><span class="comment">  &#x27;/opt/homebrew/opt/llvm/bin&#x27;,</span></span><br><span class="line"><span class="comment">  &#x27;/opt/homebrew/opt/llvm/bin&#x27;,</span></span><br><span class="line"><span class="comment">  &#x27;/Applications/Sublime Text.app/Contents/SharedSupport/bin/&#x27;,</span></span><br><span class="line"><span class="comment">  &#x27;/Applications/Visual Studio Code.app/Contents/Resources/app/bin/&#x27;,</span></span><br><span class="line"><span class="comment">  &#x27;/Users/Mccranky/.gem/ruby/3.1.3/bin&#x27;,</span></span><br><span class="line"><span class="comment">  &#x27;/Users/Mccranky/.rubies/ruby-3.1.3/lib/ruby/gems/3.1.0/bin&#x27;,</span></span><br><span class="line"><span class="comment">  &#x27;/Users/Mccranky/.rubies/ruby-3.1.3/bin&#x27;,</span></span><br><span class="line"><span class="comment">  &#x27;&#x27;,</span></span><br><span class="line"><span class="comment">  &#x27;/opt/local/bin&#x27;,</span></span><br><span class="line"><span class="comment">  &#x27;/opt/homebrew/bin&#x27;,</span></span><br><span class="line"><span class="comment">  &#x27;/opt/homebrew/sbin&#x27;,</span></span><br><span class="line"><span class="comment">  &#x27;/usr/local/bin&#x27;,</span></span><br><span class="line"><span class="comment">  &#x27;/usr/bin&#x27;,</span></span><br><span class="line"><span class="comment">  &#x27;/bin&#x27;,</span></span><br><span class="line"><span class="comment">  &#x27;/usr/sbin&#x27;,</span></span><br><span class="line"><span class="comment">  &#x27;/sbin&#x27;,</span></span><br><span class="line"><span class="comment">  &#x27;/usr/local/mysql/support-files&#x27;,</span></span><br><span class="line"><span class="comment">  &#x27;/usr/local/mysql/bin&#x27;,</span></span><br><span class="line"><span class="comment">  &#x27;/etc/platform-tools&#x27;,</span></span><br><span class="line"><span class="comment">  &#x27;/usr/local/go/bin&#x27;,</span></span><br><span class="line"><span class="comment">  &#x27;/usr/local/MacGPG2/bin&#x27;,</span></span><br><span class="line"><span class="comment">  &#x27;/usr/local/share/dotnet&#x27;,</span></span><br><span class="line"><span class="comment">  &#x27;~/.dotnet/tools&#x27;,</span></span><br><span class="line"><span class="comment">  &#x27;/Library/Apple/usr/bin&#x27;,</span></span><br><span class="line"><span class="comment">  &#x27;/Users/Mccranky/.nami/bin&#x27;,</span></span><br><span class="line"><span class="comment">  &#x27;/Users/Mccranky/.spicetify&#x27;</span></span><br><span class="line"><span class="comment">]</span></span><br><span class="line"><span class="comment">*/</span></span><br></pre></td></tr></table></figure>
+
+<p><code>path.delimiter</code>: <code>:</code></p>
+<h3 id="path-dirname"><a href="#path-dirname" class="headerlink" title="path.dirname"></a><code>path.dirname</code></h3><figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">path.<span class="title function_">dirname</span>(<span class="string">&#x27;path/to/file.txt&#x27;</span>)</span><br><span class="line"><span class="comment">// &#x27;path/to&#x27;</span></span><br></pre></td></tr></table></figure>
+
+<h3 id="path-extname"><a href="#path-extname" class="headerlink" title="path.extname"></a><code>path.extname</code></h3><figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br></pre></td><td class="code"><pre><span class="line">path.<span class="title function_">extname</span>(<span class="string">&#x27;index.html&#x27;</span>)</span><br><span class="line"><span class="comment">// &#x27;.html&#x27;</span></span><br><span class="line"></span><br><span class="line">path.<span class="title function_">extname</span>(<span class="string">&#x27;index.foo.md&#x27;</span>)</span><br><span class="line"><span class="comment">// &#x27;.md&#x27;</span></span><br><span class="line"></span><br><span class="line">path.<span class="title function_">extname</span>(<span class="string">&#x27;index.&#x27;</span>)</span><br><span class="line"><span class="comment">// &#x27;.&#x27;</span></span><br><span class="line"></span><br><span class="line">path.<span class="title function_">extname</span>(<span class="string">&#x27;index&#x27;</span>)</span><br><span class="line"><span class="comment">// &#x27;&#x27;</span></span><br><span class="line"></span><br><span class="line">path.<span class="title function_">extname</span>(<span class="string">&#x27;.index&#x27;</span>)</span><br><span class="line"><span class="comment">// &#x27;&#x27;</span></span><br><span class="line"></span><br><span class="line">path.<span class="title function_">extname</span>(<span class="string">&#x27;.index.md&#x27;</span>)</span><br><span class="line"><span class="comment">// &#x27;.md&#x27;</span></span><br></pre></td></tr></table></figure>
+
+<h3 id="path-format-pathObject"><a href="#path-format-pathObject" class="headerlink" title="path.format(pathObject)"></a><code>path.format(pathObject)</code></h3><figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">// `$&#123;dir&#125;$&#123;path.sep&#125;$&#123;base&#125;`</span></span><br><span class="line">path.<span class="title function_">format</span>(&#123;</span><br><span class="line">  <span class="attr">root</span>: <span class="string">&#x27;/ignored&#x27;</span>,</span><br><span class="line">  <span class="attr">dir</span>: <span class="string">&#x27;/home/user/dir&#x27;</span>,</span><br><span class="line">  <span class="attr">base</span>: <span class="string">&#x27;file.txt&#x27;</span>,</span><br><span class="line">&#125;)</span><br><span class="line"><span class="comment">// &#x27;/home/user/dir/file.txt&#x27;</span></span><br><span class="line"></span><br><span class="line">path.<span class="title function_">format</span>(&#123;</span><br><span class="line">  <span class="attr">root</span>: <span class="string">&#x27;/&#x27;</span>,</span><br><span class="line">  <span class="attr">base</span>: <span class="string">&#x27;file.txt&#x27;</span>,</span><br><span class="line">  <span class="attr">ext</span>: <span class="string">&#x27;ignored&#x27;</span>,</span><br><span class="line">&#125;)</span><br><span class="line"><span class="comment">// &#x27;/file.txt&#x27;</span></span><br><span class="line"></span><br><span class="line">path.<span class="title function_">format</span>(&#123;</span><br><span class="line">  <span class="attr">root</span>: <span class="string">&#x27;/&#x27;</span>,</span><br><span class="line">  <span class="attr">name</span>: <span class="string">&#x27;file&#x27;</span>,</span><br><span class="line">  <span class="attr">ext</span>: <span class="string">&#x27;.txt&#x27;</span>,</span><br><span class="line">&#125;)</span><br><span class="line"><span class="comment">// &#x27;/file.txt&#x27;</span></span><br><span class="line"></span><br><span class="line">path.<span class="title function_">format</span>(&#123;</span><br><span class="line">  <span class="attr">root</span>: <span class="string">&#x27;/&#x27;</span>,</span><br><span class="line">  <span class="attr">name</span>: <span class="string">&#x27;file&#x27;</span>,</span><br><span class="line">  <span class="attr">ext</span>: <span class="string">&#x27;txt&#x27;</span>,</span><br><span class="line">&#125;)</span><br><span class="line"><span class="comment">// &#x27;/file.txt&#x27;</span></span><br></pre></td></tr></table></figure>
+
+<h3 id="path-isAbsolute"><a href="#path-isAbsolute" class="headerlink" title="path.isAbsolute"></a><code>path.isAbsolute</code></h3><figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line">path.<span class="title function_">isAbsolute</span>(<span class="string">&#x27;/foo/bar&#x27;</span>) <span class="comment">// true</span></span><br><span class="line">path.<span class="title function_">isAbsolute</span>(<span class="string">&#x27;/baz/..&#x27;</span>)  <span class="comment">// true</span></span><br><span class="line">path.<span class="title function_">isAbsolute</span>(<span class="string">&#x27;qux/&#x27;</span>)     <span class="comment">// false</span></span><br><span class="line">path.<span class="title function_">isAbsolute</span>(<span class="string">&#x27;.&#x27;</span>)        <span class="comment">// false</span></span><br></pre></td></tr></table></figure>
+
+<h3 id="path-join-paths"><a href="#path-join-paths" class="headerlink" title="path.join([...paths])"></a><code>path.join([...paths])</code></h3><figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line">path.<span class="title function_">join</span>(<span class="string">&#x27;&#x27;</span>)</span><br><span class="line"><span class="comment">// &#x27;.&#x27;</span></span><br><span class="line"></span><br><span class="line">path.<span class="title function_">join</span>(<span class="string">&#x27;/&#x27;</span>, <span class="string">&#x27;/foo&#x27;</span>, <span class="string">&#x27;bar&#x27;</span>, <span class="string">&#x27;baz&#x27;</span>, <span class="string">&#x27;..&#x27;</span>)</span><br><span class="line"><span class="comment">// &#x27;/foo/bar&#x27;</span></span><br></pre></td></tr></table></figure>
+
+<h3 id="path-normalize-path"><a href="#path-normalize-path" class="headerlink" title="path.normalize(path)"></a><code>path.normalize(path)</code></h3><figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">path.<span class="title function_">normalize</span>(<span class="string">&#x27;/foo/bar//baz/asdf/quux/..&#x27;</span>)</span><br><span class="line"><span class="comment">// Returns: &#x27;/foo/bar/baz/asdf&#x27;</span></span><br></pre></td></tr></table></figure>
+
+<h3 id="path-parse-path"><a href="#path-parse-path" class="headerlink" title="path.parse(path)"></a><code>path.parse(path)</code></h3><figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br></pre></td><td class="code"><pre><span class="line">path.<span class="title function_">parse</span>(<span class="string">&#x27;/home/user/dir/file.txt&#x27;</span>)</span><br><span class="line"><span class="comment">/*</span></span><br><span class="line"><span class="comment">&#123;</span></span><br><span class="line"><span class="comment">  root: &#x27;/&#x27;,</span></span><br><span class="line"><span class="comment">  dir: &#x27;/home/user/dir&#x27;,</span></span><br><span class="line"><span class="comment">  base: &#x27;file.txt&#x27;,</span></span><br><span class="line"><span class="comment">  ext: &#x27;.txt&#x27;,</span></span><br><span class="line"><span class="comment">  name: &#x27;file&#x27;</span></span><br><span class="line"><span class="comment">&#125;</span></span><br><span class="line"><span class="comment">*/</span></span><br></pre></td></tr></table></figure>
+
+<p>  ┌─────────────────────┬────────────┐<br>  │          dir        │    base    │<br>  ├──────┬              ├──────┬─────┤<br>  │ root │              │ name │ ext │<br>  “  &#x2F;    home&#x2F;user&#x2F;dir &#x2F; file  .txt “<br>  └──────┴──────────────┴──────┴─────┘</p>
+<h3 id="path-posix"><a href="#path-posix" class="headerlink" title="path.posix"></a><code>path.posix</code></h3><p>只是输出一下<code>path</code>模组所有的方法。</p>
+<h3 id="path-relative-from-to"><a href="#path-relative-from-to" class="headerlink" title="path.relative(from, to)"></a><code>path.relative(from, to)</code></h3><figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">path.<span class="title function_">relative</span>(<span class="string">&#x27;/data/orandea/test/aaa&#x27;</span>, <span class="string">&#x27;/data/orandea/impl/bbb&#x27;</span>)</span><br><span class="line"><span class="comment">// &#x27;../../impl/bbb&#x27;</span></span><br></pre></td></tr></table></figure>
+
+<h3 id="path-resolve-paths"><a href="#path-resolve-paths" class="headerlink" title="path.resolve([...paths])"></a><code>path.resolve([...paths])</code></h3><figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line">path.<span class="title function_">resolve</span>(<span class="string">&#x27;&#x27;</span>)</span><br><span class="line"><span class="string">&#x27;/Users/Mccranky&#x27;</span></span><br><span class="line"></span><br><span class="line">path.<span class="title function_">join</span>(<span class="string">&#x27;foo&#x27;</span>, <span class="string">&#x27;bar&#x27;</span>, <span class="string">&#x27;baz&#x27;</span>, <span class="string">&#x27;..&#x27;</span>)</span><br><span class="line"><span class="comment">// &#x27;/Users/Mccranky/foo/bar&#x27;</span></span><br></pre></td></tr></table></figure>
+
+<h3 id="path-sep"><a href="#path-sep" class="headerlink" title="path.sep"></a><code>path.sep</code></h3><p><code>path.sep</code>: <code>/</code></p>
+<figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line"><span class="string">&#x27;foo/bar/baz&#x27;</span>.<span class="title function_">split</span>(path.<span class="property">sep</span>)</span><br><span class="line"><span class="comment">// [&#x27;foo&#x27;, &#x27;bar&#x27;, &#x27;baz&#x27;]</span></span><br></pre></td></tr></table></figure>
+
+      
+    </div>
+
+    
+    
+    
+
+    <footer class="post-footer">
+        <div class="post-eof"></div>
+      
+    </footer>
+  </article>
+</div>
+
+
+
 
     
 
@@ -1116,99 +1229,6 @@ fetch-retry-maxtimeout = 300000
 <pre><code>456
 </code></pre>
 <p>Notice how the function does not reset the value of variable <code>foo</code>? Now that’s something to be mindful of!</p>
-
-      
-    </div>
-
-    
-    
-    
-
-    <footer class="post-footer">
-        <div class="post-eof"></div>
-      
-    </footer>
-  </article>
-</div>
-
-
-
-
-    
-
-
-<div class="post-block">
-  
-  
-
-  <article itemscope itemtype="http://schema.org/Article" class="post-content" lang="">
-    <link itemprop="mainEntityOfPage" href="https://mccranky83.github.io/2023/04/27/Dabbling%20with%20Puppeteer/">
-
-    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
-      <meta itemprop="image" content="/images/icons8-dead-cells-1024.png">
-      <meta itemprop="name" content="Mccranky83">
-    </span>
-
-    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
-      <meta itemprop="name" content="Mccranky's Blog">
-      <meta itemprop="description" content=""Bliss it was in that dawn to be alive   But to be young was very heaven."">
-    </span>
-
-    <span hidden itemprop="post" itemscope itemtype="http://schema.org/CreativeWork">
-      <meta itemprop="name" content="undefined | Mccranky's Blog">
-      <meta itemprop="description" content="">
-    </span>
-      <header class="post-header">
-        <h2 class="post-title" itemprop="name headline">
-          <a href="/2023/04/27/Dabbling%20with%20Puppeteer/" class="post-title-link" itemprop="url">Dabbling with Puppeteer</a>
-        </h2>
-
-        <div class="post-meta-container">
-          <div class="post-meta">
-    <span class="post-meta-item">
-      <span class="post-meta-item-icon">
-        <i class="far fa-calendar"></i>
-      </span>
-      <span class="post-meta-item-text">Posted on</span>
-      
-
-      <time title="Created: 2023-04-27 21:12:03 / Modified: 21:32:54" itemprop="dateCreated datePublished" datetime="2023-04-27T21:12:03+08:00">2023-04-27</time>
-    </span>
-    <span class="post-meta-item">
-      <span class="post-meta-item-icon">
-        <i class="far fa-folder"></i>
-      </span>
-      <span class="post-meta-item-text">In</span>
-        <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
-          <a href="/categories/Puppeteer/" itemprop="url" rel="index"><span itemprop="name">Puppeteer</span></a>
-        </span>
-    </span>
-
-  
-</div>
-
-        </div>
-      </header>
-
-    
-    
-    
-    <div class="post-body" itemprop="articleBody">
-          <p>Puppeteer is a Node.js library that provides a high-level API to control headless Chrome or Chromium browsers. It is widely used for web scraping, testing, and automation, and is an essential tool for many developers who work with web applications.</p>
-<blockquote>
-<p>Note that I’ll be demonstrating on ArchLinux</p>
-</blockquote>
-<p>Because Puppeteer is relys on Node.js, the first thing we do is create a project directory and initiate <code>npm</code>.</p>
-<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br></pre></td><td class="code"><pre><span class="line"><span class="built_in">mkdir</span> puppeteer-project;</span><br><span class="line"></span><br><span class="line"><span class="built_in">cd</span> puppeteer-project;</span><br><span class="line"></span><br><span class="line">npm init -y</span><br><span class="line"></span><br><span class="line">npm i puppeteer --save</span><br><span class="line"></span><br><span class="line">sudo pacman -S libx11 libxcomposite libxdamage libxext libxi libxtst nss freetype2 harfbuzz</span><br><span class="line"></span><br><span class="line"><span class="comment"># Puppeteer requires some additional dependencies to be installed</span></span><br><span class="line"></span><br></pre></td></tr></table></figure>
-
-<p>Now we write our script:</p>
-<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">vim puppeteer.js</span><br></pre></td></tr></table></figure>
-
-<p>The script should be on the lines of this template:</p>
-<figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">const</span> puppeteer = <span class="built_in">require</span>(<span class="string">&#x27;puppeteer&#x27;</span>);</span><br><span class="line"></span><br><span class="line">(<span class="keyword">async</span> () =&gt; &#123;</span><br><span class="line">  <span class="keyword">const</span> browser = <span class="keyword">await</span> puppeteer.<span class="title function_">launch</span>(&#123;</span><br><span class="line">  	<span class="attr">executablePath</span>: <span class="string">&#x27;/usr/bin/chromium&#x27;</span>,</span><br><span class="line"></span><br><span class="line">  	<span class="comment">// We can also drop this line and instead, set an environment variable in Bash.</span></span><br><span class="line"></span><br><span class="line">  	<span class="comment">// `$ export PUPPETEER_EXECUTABLE_PATH=/usr/bin/chromium`</span></span><br><span class="line"></span><br><span class="line">  	<span class="attr">headless</span>: <span class="literal">true</span></span><br><span class="line">  &#125;);</span><br><span class="line">  <span class="keyword">const</span> page = <span class="keyword">await</span> browser.<span class="title function_">newPage</span>();</span><br><span class="line">  <span class="keyword">await</span> page.<span class="title function_">goto</span>(<span class="string">&#x27;https://www.example.com&#x27;</span>);</span><br><span class="line">  <span class="keyword">await</span> page.<span class="title function_">screenshot</span>(&#123; <span class="attr">path</span>: <span class="string">&#x27;example.png&#x27;</span> &#125;);</span><br><span class="line">  <span class="keyword">await</span> browser.<span class="title function_">close</span>();</span><br><span class="line">&#125;)();</span><br><span class="line"></span><br></pre></td></tr></table></figure>
-
-<p>This code will launch Chromium in headless mode and navigate to <code>https://www.example.com</code>, take a screenshot of the page, and then close the browser.</p>
-<p><strong><em>More content about Puppeteer coming up!</em></strong></p>
 
       
     </div>
