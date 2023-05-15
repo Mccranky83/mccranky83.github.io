@@ -1,6 +1,71 @@
 <?xml version="1.0" encoding="utf-8"?>
 <search>
   <entry>
+    <title>Dead Cells：Unlocking Daily Challenge blueprints</title>
+    <url>/2023/05/03/Dead%20Cells%EF%BC%9AUnlocking%20Daily%20Challenge%20blueprints/</url>
+    <content><![CDATA[<p>The Daily Challenge mode boasts a significant player base, even compared to other popular modes, and offers several exclusive weapons to boot. However, this is bad news for us freeloaders who, through various means, gained access to the game without ever paying the publisher a single cent. Some may consider piracy bad practice, but to be honest, I’m broke as f*ck.</p>
+<p>Since we can’t do the challenge runs like the normal person would, I find it not much of a stretch to hack the game a bit further.</p>
+<h3 id="Overview"><a href="#Overview" class="headerlink" title="Overview"></a>Overview</h3><p>The approach we’re taking is to assign the blueprints to a chosen enemy. Naturally we’d want to assign it to an enemy we frequently run into and have a decent drop rate. It so happens that the zombie fits our description perfectly.</p>
+<p>Let us have a look at the relevant part of its JSON description:</p>
+<figure class="highlight json"><table><tr><td class="code"><pre><span class="line"><span class="attr">&quot;name&quot;</span><span class="punctuation">:</span> <span class="string">&quot;Zombie&quot;</span><span class="punctuation">,</span></span><br><span class="line"><span class="attr">&quot;score&quot;</span><span class="punctuation">:</span> <span class="number">2</span><span class="punctuation">,</span></span><br><span class="line"><span class="attr">&quot;maxPerRoom&quot;</span><span class="punctuation">:</span> <span class="number">0</span><span class="punctuation">,</span></span><br><span class="line"><span class="attr">&quot;canBeElite&quot;</span><span class="punctuation">:</span> <span class="literal"><span class="keyword">true</span></span><span class="punctuation">,</span></span><br><span class="line"><span class="attr">&quot;glowInnerColor&quot;</span><span class="punctuation">:</span> <span class="number">11197250</span><span class="punctuation">,</span></span><br><span class="line"><span class="attr">&quot;volteDelay&quot;</span><span class="punctuation">:</span> <span class="number">1</span><span class="punctuation">,</span></span><br><span class="line"><span class="attr">&quot;flesh1&quot;</span><span class="punctuation">:</span> <span class="number">5669211</span><span class="punctuation">,</span></span><br><span class="line"><span class="attr">&quot;flesh2&quot;</span><span class="punctuation">:</span> <span class="number">12303527</span><span class="punctuation">,</span></span><br><span class="line"><span class="attr">&quot;pfCost&quot;</span><span class="punctuation">:</span> <span class="number">0.5</span><span class="punctuation">,</span></span><br><span class="line"><span class="attr">&quot;blueprints&quot;</span><span class="punctuation">:</span> <span class="punctuation">[</span></span><br><span class="line">	<span class="punctuation">&#123;</span></span><br><span class="line">		<span class="attr">&quot;item&quot;</span><span class="punctuation">:</span> <span class="string">&quot;HorizontalTurret&quot;</span><span class="punctuation">,</span></span><br><span class="line">		<span class="attr">&quot;rarity&quot;</span><span class="punctuation">:</span> <span class="string">&quot;Rare&quot;</span><span class="punctuation">,</span></span><br><span class="line">		<span class="attr">&quot;minDifficulty&quot;</span><span class="punctuation">:</span> <span class="number">0</span></span><br><span class="line">	<span class="punctuation">&#125;</span><span class="punctuation">,</span></span><br><span class="line">	<span class="punctuation">&#123;</span></span><br><span class="line">		<span class="attr">&quot;item&quot;</span><span class="punctuation">:</span> <span class="string">&quot;Bleeder&quot;</span><span class="punctuation">,</span></span><br><span class="line">		<span class="attr">&quot;rarity&quot;</span><span class="punctuation">:</span> <span class="string">&quot;Always&quot;</span><span class="punctuation">,</span></span><br><span class="line">		<span class="attr">&quot;minDifficulty&quot;</span><span class="punctuation">:</span> <span class="number">0</span></span><br><span class="line">	<span class="punctuation">&#125;</span><span class="punctuation">,</span></span><br><span class="line">	<span class="punctuation">&#123;</span></span><br><span class="line">		<span class="attr">&quot;rarity&quot;</span><span class="punctuation">:</span> <span class="string">&quot;Rare&quot;</span><span class="punctuation">,</span></span><br><span class="line">		<span class="attr">&quot;minDifficulty&quot;</span><span class="punctuation">:</span> <span class="number">1</span><span class="punctuation">,</span></span><br><span class="line">		<span class="attr">&quot;item&quot;</span><span class="punctuation">:</span> <span class="string">&quot;PrisonerBobby&quot;</span></span><br><span class="line">	<span class="punctuation">&#125;</span></span><br><span class="line"><span class="punctuation">]</span></span><br></pre></td></tr></table></figure>
+
+<p><code>Bleeder</code> is the internal name for <code>Blood Sword</code>, which is typically the first blueprint obtained by Dead Cells players on their initial run. As such, it can be readily exchanged for an item of our preference.</p>
+<div style="display: block; margin-left: auto; margin-right: auto; text-align: center; font-size: 1rem;">
+
+<p><img src="/2023/05/03/Dead%20Cells%EF%BC%9AUnlocking%20Daily%20Challenge%20blueprints/images/Blood%20Sword.png" alt="Blood Sword" title="Blood Sword"></p>
+<p><span>Blood Sword</span></p>
+</div>
+
+<h4 id="Targets"><a href="#Targets" class="headerlink" title="Targets:"></a>Targets:</h4><ol>
+<li><em>Swift Sword</em> (internal name <code>SpeedBlade</code>) - first run</li>
+<li><em>Lacerating Aura</em> (internal name <code>DamageAura</code>) - 5th run</li>
+<li><em>Meat Skewer</em> (internal name <code>DashSword</code>) - 10th run</li>
+</ol>
+<p>Visit <a href="https://deadcells.fandom.com/wiki/Dead_Cells_Wiki">the official wiki page</a> for more information!</p>
+<h3 id="CellPacker"><a href="#CellPacker" class="headerlink" title="CellPacker"></a>CellPacker</h3><p>I use CellPacker to extract the <code>data.cdb</code> file so as to avoid having to read from the hexdump. It is a lot more comfortable to inspect an formatted JSON file!</p>
+<div style="display: block; margin-left: auto; margin-right: auto; text-align: center; font-size: 1rem;">
+
+<p><img src="/2023/05/03/Dead%20Cells%EF%BC%9AUnlocking%20Daily%20Challenge%20blueprints/images/CellPacker.png" alt="CellPacker" title="CellPacker"></p>
+<p><span>CellPacker</span></p>
+</div>
+
+<p>We <em>can</em> open CellPacker by double-clicking <code>CellPacker.jar</code>, however I suggest running the following command to avoid headaches:</p>
+<figure class="highlight bash"><table><tr><td class="code"><pre><span class="line">java -jar /path/to/CellPacker.jar</span><br></pre></td></tr></table></figure>
+
+<p>GitHub Repo: <a href="https://github.com/ReBuilders101/CellPacker" title="ReBuilders101/CellPacker Repo">ReBuilders101&#x2F;CellPacker</a></p>
+<p>Click <a href="https://github.com/ReBuilders101/CellPacker/raw/master/release/CellPacker.jar" title="CellPacker.jar">here</a> to install <code>CellPacker.jar</code>.</p>
+<h3 id="res-pak"><a href="#res-pak" class="headerlink" title="res.pak"></a><em><code>res.pak</code></em></h3><p>As the name suggests, the <code>res.pak</code> is the resource pack for the game itself and contains every aspect of what the graphics and cutscenes require to load. It also contains the <code>json</code> data files which store the underlying logic behind the interactions in the game.</p>
+<p>To hack it, we need a hexdump editor. I use <code>ghex</code> because it’s fairly simple and easy to use. We can install it on our MacBook via Homebrew, using the following command:</p>
+<figure class="highlight bash"><table><tr><td class="code"><pre><span class="line">brew install ghex</span><br></pre></td></tr></table></figure>
+
+<blockquote>
+<p><strong><em>Note:</em></strong><br>Before we begin the actual editing process, make sure you have a copy of your game saves and the resource pack we’re editing on. This is in case we make a mistake and corrupt the files.</p>
+</blockquote>
+<h3 id="ghex"><a href="#ghex" class="headerlink" title="ghex"></a><em><code>ghex</code></em></h3><p>Run <code>ghex</code> in Terminal and open <code>res.pak</code>. Locate <code>Bleeder</code> and replace it with the internal name of any of the three daily challenge blueprints.</p>
+<div style="display: block; margin-left: auto; margin-right: auto; text-align: center; font-size: 1rem;">
+
+<p><img src="/2023/05/03/Dead%20Cells%EF%BC%9AUnlocking%20Daily%20Challenge%20blueprints/images/Before.png" alt="Before" title="Before"></p>
+</div>
+
+<p>Please note that the resulting file must remain the same size as the original. Making significant changes will only complicate matters. For instance, <code>Bleeder</code> has 7 characters, while <code>SpeedBlade</code> and <code>DamageAura</code> have 10, and <code>DashSword</code> has 9. To address this discrepancy, I reduced the length of “Zombie” by the difference. Here’s an example:</p>
+<div style="display: block; margin-left: auto; margin-right: auto; text-align: center; font-size: 1rem;">
+
+<p><img src="/2023/05/03/Dead%20Cells%EF%BC%9AUnlocking%20Daily%20Challenge%20blueprints/images/After.png" alt="After" title="After"></p>
+</div>
+
+<hr>
+<h3 id="References"><a href="#References" class="headerlink" title="References"></a>References</h3><ul>
+<li>Sebadorn’s Blog: <a href="https://sebadorn.de/2021/06/28/dead-cells-unlocking-the-daily-challenge-blueprints-in-the-bugged-linux-gog-version" title="Unlocking the Daily Challenge blueprints in the bugged Linux GOG version">2021.06.28</a></li>
+</ul>
+]]></content>
+      <categories>
+        <category>Games</category>
+      </categories>
+      <tags>
+        <tag>Dead Cells</tag>
+      </tags>
+  </entry>
+  <entry>
     <title>7-2-Java-基本语法-大整数相加</title>
     <url>/2023/04/24/7-2-Java-%E5%9F%BA%E6%9C%AC%E8%AF%AD%E6%B3%95-%E5%A4%A7%E6%95%B4%E6%95%B0%E7%9B%B8%E5%8A%A0/</url>
     <content><![CDATA[<h3 id="题目"><a href="#题目" class="headerlink" title="题目"></a>题目</h3><p>有若干大整数，需要对其进行求和操作。</p>
@@ -33,6 +98,21 @@
         <tag>Tips</tag>
         <tag>Utilities</tag>
       </tags>
+  </entry>
+  <entry>
+    <title>Immediately Executing Function Demo</title>
+    <url>/2023/04/27/Immediately%20Executing%20Function%20Demo/</url>
+    <content><![CDATA[<p>The key aspect of this demo is that the utilization of an immediately executing function in JavaScript generates a fresh variable scope, which distinguishes it from <code>if</code>, <code>else</code>, and <code>while</code>. The code presented below exemplifies this fact.</p>
+<figure class="highlight javascript"><table><tr><td class="code"><pre><span class="line"><span class="keyword">var</span> foo = <span class="number">123</span></span><br><span class="line"></span><br><span class="line"><span class="keyword">if</span> (<span class="number">1</span>) &#123;</span><br><span class="line">    <span class="keyword">var</span> foo = <span class="number">456</span></span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line">(<span class="function"><span class="params">_</span> =&gt;</span> &#123;</span><br><span class="line">    <span class="keyword">var</span> foo = <span class="number">123</span></span><br><span class="line">&#125;)()</span><br><span class="line"></span><br><span class="line"><span class="variable language_">console</span>.<span class="title function_">log</span>(foo)</span><br><span class="line"></span><br></pre></td></tr></table></figure>
+
+<p>Output:</p>
+<pre><code>456
+</code></pre>
+<p>Notice how the function does not reset the value of variable <code>foo</code>? Now that’s something to be mindful of!</p>
+]]></content>
+      <categories>
+        <category>JavaScript</category>
+      </categories>
   </entry>
   <entry>
     <title>Dabbling with Puppeteer</title>
@@ -168,6 +248,59 @@ uid           [ unknown] Puppet, Inc. Release Key (Puppet, Inc. Release Key) &lt
       </tags>
   </entry>
   <entry>
+    <title>JavaScript Method：localeCompare</title>
+    <url>/2023/04/24/JavaScript%20Method%EF%BC%9AlocaleCompare/</url>
+    <content><![CDATA[<p>Lately I’ve been thinking that since Java has an equalsIgnoreCase method, JavaScript must have something similar. This is what I found: the <code>localeCompare</code> method.</p>
+<h3 id="Structure"><a href="#Structure" class="headerlink" title="Structure"></a>Structure</h3><figure class="highlight javascript"><table><tr><td class="code"><pre><span class="line">str1.<span class="title function_">localeCompare</span>(str2, [locales], [options])</span><br></pre></td></tr></table></figure>
+
+<p><strong><em>Note: The Linux commands also has a <code>locale</code> command!</em></strong></p>
+<h3 id="Available-locales"><a href="#Available-locales" class="headerlink" title="Available locales"></a>Available locales</h3><p><strong><em><code>language</code></em></strong></p>
+<pre><code>&#39;en&#39;: English
+&#39;fr&#39;: French
+&#39;de&#39;: German
+&#39;es&#39;: Spanish
+&#39;ja&#39;: Japanese
+&#39;zh&#39;: Chinese
+&#39;ar&#39;: Arabic
+&#39;ru&#39;: Russian
+</code></pre>
+<p>We can also use a combination of <code>language</code> and <code>region</code> subtags to specify a more specific locale. For example:</p>
+<pre><code>&#39;en-US&#39;: English (United States)
+&#39;fr-CA&#39;: French (Canada)
+&#39;de-DE&#39;: German (Germany)
+&#39;es-MX&#39;: Spanish (Mexico)
+&#39;ja-JP&#39;: Japanese (Japan)
+&#39;zh-CN&#39;: Chinese (China)
+&#39;ar-EG&#39;: Arabic (Egypt)
+&#39;ru-RU&#39;: Russian (Russia)
+</code></pre>
+<h3 id="Available-options"><a href="#Available-options" class="headerlink" title="Available options"></a>Available options</h3><p><strong><em><code>numeric</code></em></strong></p>
+<figure class="highlight javascript"><table><tr><td class="code"><pre><span class="line"><span class="variable language_">console</span>.<span class="title function_">log</span>(<span class="string">&quot;60&quot;</span>.<span class="title function_">localeCompare</span>(<span class="string">&quot;40&quot;</span>, <span class="literal">undefined</span>, &#123; <span class="attr">numeric</span>: <span class="literal">true</span> &#125;)) <span class="comment">// 1</span></span><br><span class="line"></span><br><span class="line"><span class="variable language_">console</span>.<span class="title function_">log</span>(<span class="string">&quot;60&quot;</span>.<span class="title function_">localeCompare</span>(<span class="string">&quot;60&quot;</span>, <span class="literal">undefined</span>, &#123; <span class="attr">numeric</span>: <span class="literal">true</span> &#125;)) <span class="comment">// 0</span></span><br><span class="line"></span><br><span class="line"><span class="variable language_">console</span>.<span class="title function_">log</span>(<span class="string">&quot;60&quot;</span>.<span class="title function_">localeCompare</span>(<span class="string">&quot;100&quot;</span>, <span class="literal">undefined</span>, &#123; <span class="attr">numeric</span>: <span class="literal">true</span> &#125;)) <span class="comment">// -1</span></span><br></pre></td></tr></table></figure>
+
+<p><code>numeric</code> can take one of the two values: <code>true</code> and <code>false</code></p>
+<figure class="highlight javascript"><table><tr><td class="code"><pre><span class="line"><span class="variable language_">console</span>.<span class="title function_">log</span>(<span class="string">&quot;60&quot;</span>.<span class="title function_">localeCompare</span>(<span class="string">&quot;100&quot;</span>, <span class="literal">undefined</span>, &#123; <span class="attr">numeric</span>: <span class="literal">false</span> &#125;)) <span class="comment">// 1</span></span><br></pre></td></tr></table></figure>
+
+<p>With <code>false</code>, both <code>60</code> and <code>100</code> are treated as normal String objects.</p>
+<p><strong><em><code>sensitivity</code></em></strong></p>
+<p><code>sensitivity</code> can take one of the three values: <code>base</code>, <code>accent</code>, <code>case</code></p>
+<figure class="highlight javascript"><table><tr><td class="code"><pre><span class="line"><span class="variable language_">console</span>.<span class="title function_">log</span>(<span class="string">&quot;café&quot;</span>.<span class="title function_">localeCompare</span>(<span class="string">&quot;Cafe&quot;</span>, <span class="literal">undefined</span>, &#123; <span class="attr">sensitivity</span>: <span class="string">&quot;base&quot;</span> &#125;)) <span class="comment">// 0</span></span><br><span class="line"></span><br><span class="line"><span class="variable language_">console</span>.<span class="title function_">log</span>(<span class="string">&quot;café&quot;</span>.<span class="title function_">localeCompare</span>(<span class="string">&quot;Cafe&quot;</span>, <span class="literal">undefined</span>, &#123; <span class="attr">sensitivity</span>: <span class="string">&quot;accent&quot;</span> &#125;)) <span class="comment">// 1</span></span><br><span class="line"></span><br><span class="line"><span class="variable language_">console</span>.<span class="title function_">log</span>(<span class="string">&quot;café&quot;</span>.<span class="title function_">localeCompare</span>(<span class="string">&quot;Cafe&quot;</span>, <span class="literal">undefined</span>, &#123; <span class="attr">sensitivity</span>: <span class="string">&quot;case&quot;</span> &#125;)) <span class="comment">// -1</span></span><br></pre></td></tr></table></figure>
+
+<p><strong><em><code>caseFirst</code></em></strong></p>
+<p>The <code>caseFirst</code> option in the <code>localeCompare()</code> method specifies whether uppercase letters should come before or after lowercase letters in the sort order. It can take one of the following two values:</p>
+<p><code>upper</code>: Sort uppercase letters before lowercase letters.</p>
+<p><code>lower</code>: Sort lowercase letters before uppercase letters.</p>
+<figure class="highlight javascript"><table><tr><td class="code"><pre><span class="line"><span class="variable language_">console</span>.<span class="title function_">log</span>(<span class="string">&quot;Ba&quot;</span>.<span class="title function_">localeCompare</span>(<span class="string">&quot;AB&quot;</span>, <span class="literal">undefined</span>, &#123; <span class="attr">sensitivity</span>: <span class="string">&quot;case&quot;</span> &#125;)) <span class="comment">// 1</span></span><br><span class="line"></span><br><span class="line"><span class="variable language_">console</span>.<span class="title function_">log</span>(<span class="string">&quot;aB&quot;</span>.<span class="title function_">localeCompare</span>(<span class="string">&quot;AB&quot;</span>, <span class="literal">undefined</span>, &#123; <span class="attr">sensitivity</span>: <span class="string">&quot;case&quot;</span> &#125;)) <span class="comment">// -1</span></span><br><span class="line"></span><br><span class="line"><span class="variable language_">console</span>.<span class="title function_">log</span>(<span class="string">&quot;aB&quot;</span>.<span class="title function_">localeCompare</span>(<span class="string">&quot;AB&quot;</span>, <span class="literal">undefined</span>, &#123; <span class="attr">sensitivity</span>: <span class="string">&quot;case&quot;</span>, <span class="attr">caseFirst</span>: <span class="string">&quot;upper&quot;</span> &#125;)) <span class="comment">// 1</span></span><br></pre></td></tr></table></figure>
+
+<p><strong><em><code>ignorePunctuation</code></em></strong></p>
+<p>The <code>ignorePunctuation</code> option in the <code>localeCompare()</code> method specifies whether punctuation and other symbols should be ignored during the comparison.</p>
+<p>It can take one of the following two values: <code>true</code> and <code>false</code></p>
+<figure class="highlight javascript"><table><tr><td class="code"><pre><span class="line"><span class="variable language_">console</span>.<span class="title function_">log</span>(<span class="string">&quot;Hello, world!&quot;</span>.<span class="title function_">localeCompare</span>(<span class="string">&quot;Hello world&quot;</span>, <span class="literal">undefined</span>, &#123; <span class="attr">ignorePunctuation</span>: <span class="literal">true</span> &#125;)) <span class="comment">// 0</span></span><br></pre></td></tr></table></figure>]]></content>
+      <tags>
+        <tag>JavaScript</tag>
+        <tag>Methods</tag>
+      </tags>
+  </entry>
+  <entry>
     <title>Intuition</title>
     <url>/2023/05/10/Intuition/</url>
     <content><![CDATA[<p>While a clever person may have a strong intuition, their insights may only benefit themselves. On the other hand, a learned person who has gained knowledge through studies has the ability to express their ideas and contribute to society.</p>
@@ -182,6 +315,103 @@ uid           [ unknown] Puppet, Inc. Release Key (Puppet, Inc. Release Key) &lt
 ]]></content>
       <tags>
         <tag>Revelations</tag>
+      </tags>
+  </entry>
+  <entry>
+    <title>Path</title>
+    <url>/2023/05/14/Path/</url>
+    <content><![CDATA[<p>因为本人使用的操作系统是 OS X ，所以一下书写规范均符合 POSIX（Portable Open System Interface eXtended），Windows 用户请自行查阅资料。</p>
+<h3 id="path-basename-path-suffix"><a href="#path-basename-path-suffix" class="headerlink" title="path.basename(path[, suffix])"></a><code>path.basename(path[, suffix])</code></h3><figure class="highlight javascript"><table><tr><td class="code"><pre><span class="line">path.<span class="title function_">basename</span>(<span class="string">&#x27;/path/to/project/index.html&#x27;</span>, <span class="string">&#x27;.html&#x27;</span>)</span><br><span class="line"><span class="comment">// &#x27;index&#x27;</span></span><br></pre></td></tr></table></figure>
+
+<h3 id="path-delimiter"><a href="#path-delimiter" class="headerlink" title="path.delimiter"></a><code>path.delimiter</code></h3><figure class="highlight javascript"><table><tr><td class="code"><pre><span class="line"><span class="variable language_">console</span>.<span class="title function_">log</span>(process.<span class="property">env</span>.<span class="property">PATH</span>)</span><br><span class="line"><span class="comment">// /opt/homebrew/opt/llvm/bin:/opt/homebrew/opt/llvm/bin:/Applications/Sublime Text.app/Contents/SharedSupport/bin/:/Applications/Visual Studio Code.app/Contents/Resources/app/bin/:/Users/Mccranky/.gem/ruby/3.1.3/bin:/Users/Mccranky/.rubies/ruby-3.1.3/lib/ruby/gems/3.1.0/bin:/Users/Mccranky/.rubies/ruby-3.1.3/bin::/opt/local/bin:/opt/homebrew/bin:/opt/homebrew/sbin:/usr/local/bin:/usr/bin:/bin:/usr/sbin:/sbin:/usr/local/mysql/support-files:/usr/local/mysql/bin:/etc/platform-tools:/usr/local/go/bin:/usr/local/MacGPG2/bin:/usr/local/share/dotnet:~/.dotnet/tools:/Library/Apple/usr/bin:/Users/Mccranky/.nami/bin:/Users/Mccranky/.spicetify</span></span><br><span class="line"><span class="comment">// undefined</span></span><br></pre></td></tr></table></figure>
+
+<p>输出第一行为环境变量。<br>输出第二行的<code>undefined</code>示意无返回值。</p>
+<figure class="highlight javascript"><table><tr><td class="code"><pre><span class="line">process.<span class="property">env</span>.<span class="property">PATH</span>.<span class="title function_">split</span>(path.<span class="property">delimiter</span>)</span><br><span class="line"><span class="comment">/*</span></span><br><span class="line"><span class="comment">[</span></span><br><span class="line"><span class="comment">  &#x27;/opt/homebrew/opt/llvm/bin&#x27;,</span></span><br><span class="line"><span class="comment">  &#x27;/opt/homebrew/opt/llvm/bin&#x27;,</span></span><br><span class="line"><span class="comment">  &#x27;/Applications/Sublime Text.app/Contents/SharedSupport/bin/&#x27;,</span></span><br><span class="line"><span class="comment">  &#x27;/Applications/Visual Studio Code.app/Contents/Resources/app/bin/&#x27;,</span></span><br><span class="line"><span class="comment">  &#x27;/Users/Mccranky/.gem/ruby/3.1.3/bin&#x27;,</span></span><br><span class="line"><span class="comment">  &#x27;/Users/Mccranky/.rubies/ruby-3.1.3/lib/ruby/gems/3.1.0/bin&#x27;,</span></span><br><span class="line"><span class="comment">  &#x27;/Users/Mccranky/.rubies/ruby-3.1.3/bin&#x27;,</span></span><br><span class="line"><span class="comment">  &#x27;&#x27;,</span></span><br><span class="line"><span class="comment">  &#x27;/opt/local/bin&#x27;,</span></span><br><span class="line"><span class="comment">  &#x27;/opt/homebrew/bin&#x27;,</span></span><br><span class="line"><span class="comment">  &#x27;/opt/homebrew/sbin&#x27;,</span></span><br><span class="line"><span class="comment">  &#x27;/usr/local/bin&#x27;,</span></span><br><span class="line"><span class="comment">  &#x27;/usr/bin&#x27;,</span></span><br><span class="line"><span class="comment">  &#x27;/bin&#x27;,</span></span><br><span class="line"><span class="comment">  &#x27;/usr/sbin&#x27;,</span></span><br><span class="line"><span class="comment">  &#x27;/sbin&#x27;,</span></span><br><span class="line"><span class="comment">  &#x27;/usr/local/mysql/support-files&#x27;,</span></span><br><span class="line"><span class="comment">  &#x27;/usr/local/mysql/bin&#x27;,</span></span><br><span class="line"><span class="comment">  &#x27;/etc/platform-tools&#x27;,</span></span><br><span class="line"><span class="comment">  &#x27;/usr/local/go/bin&#x27;,</span></span><br><span class="line"><span class="comment">  &#x27;/usr/local/MacGPG2/bin&#x27;,</span></span><br><span class="line"><span class="comment">  &#x27;/usr/local/share/dotnet&#x27;,</span></span><br><span class="line"><span class="comment">  &#x27;~/.dotnet/tools&#x27;,</span></span><br><span class="line"><span class="comment">  &#x27;/Library/Apple/usr/bin&#x27;,</span></span><br><span class="line"><span class="comment">  &#x27;/Users/Mccranky/.nami/bin&#x27;,</span></span><br><span class="line"><span class="comment">  &#x27;/Users/Mccranky/.spicetify&#x27;</span></span><br><span class="line"><span class="comment">]</span></span><br><span class="line"><span class="comment">*/</span></span><br></pre></td></tr></table></figure>
+
+<p><code>path.delimiter</code>: <code>:</code></p>
+<h3 id="path-dirname"><a href="#path-dirname" class="headerlink" title="path.dirname"></a><code>path.dirname</code></h3><figure class="highlight javascript"><table><tr><td class="code"><pre><span class="line">path.<span class="title function_">dirname</span>(<span class="string">&#x27;path/to/file.txt&#x27;</span>)</span><br><span class="line"><span class="comment">// &#x27;path/to&#x27;</span></span><br></pre></td></tr></table></figure>
+
+<h3 id="path-extname"><a href="#path-extname" class="headerlink" title="path.extname"></a><code>path.extname</code></h3><figure class="highlight javascript"><table><tr><td class="code"><pre><span class="line">path.<span class="title function_">extname</span>(<span class="string">&#x27;index.html&#x27;</span>)</span><br><span class="line"><span class="comment">// &#x27;.html&#x27;</span></span><br><span class="line"></span><br><span class="line">path.<span class="title function_">extname</span>(<span class="string">&#x27;index.foo.md&#x27;</span>)</span><br><span class="line"><span class="comment">// &#x27;.md&#x27;</span></span><br><span class="line"></span><br><span class="line">path.<span class="title function_">extname</span>(<span class="string">&#x27;index.&#x27;</span>)</span><br><span class="line"><span class="comment">// &#x27;.&#x27;</span></span><br><span class="line"></span><br><span class="line">path.<span class="title function_">extname</span>(<span class="string">&#x27;index&#x27;</span>)</span><br><span class="line"><span class="comment">// &#x27;&#x27;</span></span><br><span class="line"></span><br><span class="line">path.<span class="title function_">extname</span>(<span class="string">&#x27;.index&#x27;</span>)</span><br><span class="line"><span class="comment">// &#x27;&#x27;</span></span><br><span class="line"></span><br><span class="line">path.<span class="title function_">extname</span>(<span class="string">&#x27;.index.md&#x27;</span>)</span><br><span class="line"><span class="comment">// &#x27;.md&#x27;</span></span><br></pre></td></tr></table></figure>
+
+<h3 id="path-format-pathObject"><a href="#path-format-pathObject" class="headerlink" title="path.format(pathObject)"></a><code>path.format(pathObject)</code></h3><figure class="highlight javascript"><table><tr><td class="code"><pre><span class="line"><span class="comment">// `$&#123;dir&#125;$&#123;path.sep&#125;$&#123;base&#125;`</span></span><br><span class="line">path.<span class="title function_">format</span>(&#123;</span><br><span class="line">  <span class="attr">root</span>: <span class="string">&#x27;/ignored&#x27;</span>,</span><br><span class="line">  <span class="attr">dir</span>: <span class="string">&#x27;/home/user/dir&#x27;</span>,</span><br><span class="line">  <span class="attr">base</span>: <span class="string">&#x27;file.txt&#x27;</span>,</span><br><span class="line">&#125;)</span><br><span class="line"><span class="comment">// &#x27;/home/user/dir/file.txt&#x27;</span></span><br><span class="line"></span><br><span class="line">path.<span class="title function_">format</span>(&#123;</span><br><span class="line">  <span class="attr">root</span>: <span class="string">&#x27;/&#x27;</span>,</span><br><span class="line">  <span class="attr">base</span>: <span class="string">&#x27;file.txt&#x27;</span>,</span><br><span class="line">  <span class="attr">ext</span>: <span class="string">&#x27;ignored&#x27;</span>,</span><br><span class="line">&#125;)</span><br><span class="line"><span class="comment">// &#x27;/file.txt&#x27;</span></span><br><span class="line"></span><br><span class="line">path.<span class="title function_">format</span>(&#123;</span><br><span class="line">  <span class="attr">root</span>: <span class="string">&#x27;/&#x27;</span>,</span><br><span class="line">  <span class="attr">name</span>: <span class="string">&#x27;file&#x27;</span>,</span><br><span class="line">  <span class="attr">ext</span>: <span class="string">&#x27;.txt&#x27;</span>,</span><br><span class="line">&#125;)</span><br><span class="line"><span class="comment">// &#x27;/file.txt&#x27;</span></span><br><span class="line"></span><br><span class="line">path.<span class="title function_">format</span>(&#123;</span><br><span class="line">  <span class="attr">root</span>: <span class="string">&#x27;/&#x27;</span>,</span><br><span class="line">  <span class="attr">name</span>: <span class="string">&#x27;file&#x27;</span>,</span><br><span class="line">  <span class="attr">ext</span>: <span class="string">&#x27;txt&#x27;</span>,</span><br><span class="line">&#125;)</span><br><span class="line"><span class="comment">// &#x27;/file.txt&#x27;</span></span><br></pre></td></tr></table></figure>
+
+<h3 id="path-isAbsolute"><a href="#path-isAbsolute" class="headerlink" title="path.isAbsolute"></a><code>path.isAbsolute</code></h3><figure class="highlight javascript"><table><tr><td class="code"><pre><span class="line">path.<span class="title function_">isAbsolute</span>(<span class="string">&#x27;/foo/bar&#x27;</span>) <span class="comment">// true</span></span><br><span class="line">path.<span class="title function_">isAbsolute</span>(<span class="string">&#x27;/baz/..&#x27;</span>)  <span class="comment">// true</span></span><br><span class="line">path.<span class="title function_">isAbsolute</span>(<span class="string">&#x27;qux/&#x27;</span>)     <span class="comment">// false</span></span><br><span class="line">path.<span class="title function_">isAbsolute</span>(<span class="string">&#x27;.&#x27;</span>)        <span class="comment">// false</span></span><br></pre></td></tr></table></figure>
+
+<h3 id="path-join-paths"><a href="#path-join-paths" class="headerlink" title="path.join([...paths])"></a><code>path.join([...paths])</code></h3><figure class="highlight javascript"><table><tr><td class="code"><pre><span class="line">path.<span class="title function_">join</span>(<span class="string">&#x27;&#x27;</span>)</span><br><span class="line"><span class="comment">// &#x27;.&#x27;</span></span><br><span class="line"></span><br><span class="line">path.<span class="title function_">join</span>(<span class="string">&#x27;/&#x27;</span>, <span class="string">&#x27;/foo&#x27;</span>, <span class="string">&#x27;bar&#x27;</span>, <span class="string">&#x27;baz&#x27;</span>, <span class="string">&#x27;..&#x27;</span>)</span><br><span class="line"><span class="comment">// &#x27;/foo/bar&#x27;</span></span><br></pre></td></tr></table></figure>
+
+<h3 id="path-normalize-path"><a href="#path-normalize-path" class="headerlink" title="path.normalize(path)"></a><code>path.normalize(path)</code></h3><figure class="highlight javascript"><table><tr><td class="code"><pre><span class="line">path.<span class="title function_">normalize</span>(<span class="string">&#x27;/foo/bar//baz/asdf/quux/..&#x27;</span>)</span><br><span class="line"><span class="comment">// Returns: &#x27;/foo/bar/baz/asdf&#x27;</span></span><br></pre></td></tr></table></figure>
+
+<h3 id="path-parse-path"><a href="#path-parse-path" class="headerlink" title="path.parse(path)"></a><code>path.parse(path)</code></h3><figure class="highlight javascript"><table><tr><td class="code"><pre><span class="line">path.<span class="title function_">parse</span>(<span class="string">&#x27;/home/user/dir/file.txt&#x27;</span>)</span><br><span class="line"><span class="comment">/*</span></span><br><span class="line"><span class="comment">&#123;</span></span><br><span class="line"><span class="comment">  root: &#x27;/&#x27;,</span></span><br><span class="line"><span class="comment">  dir: &#x27;/home/user/dir&#x27;,</span></span><br><span class="line"><span class="comment">  base: &#x27;file.txt&#x27;,</span></span><br><span class="line"><span class="comment">  ext: &#x27;.txt&#x27;,</span></span><br><span class="line"><span class="comment">  name: &#x27;file&#x27;</span></span><br><span class="line"><span class="comment">&#125;</span></span><br><span class="line"><span class="comment">*/</span></span><br></pre></td></tr></table></figure>
+
+<p>  ┌─────────────────────┬────────────┐<br>  │          dir        │    base    │<br>  ├──────┬              ├──────┬─────┤<br>  │ root │              │ name │ ext │<br>  “  &#x2F;    home&#x2F;user&#x2F;dir &#x2F; file  .txt “<br>  └──────┴──────────────┴──────┴─────┘</p>
+<h3 id="path-posix"><a href="#path-posix" class="headerlink" title="path.posix"></a><code>path.posix</code></h3><p>只是输出一下<code>path</code>模组所有的方法。</p>
+<h3 id="path-relative-from-to"><a href="#path-relative-from-to" class="headerlink" title="path.relative(from, to)"></a><code>path.relative(from, to)</code></h3><figure class="highlight javascript"><table><tr><td class="code"><pre><span class="line">path.<span class="title function_">relative</span>(<span class="string">&#x27;/data/orandea/test/aaa&#x27;</span>, <span class="string">&#x27;/data/orandea/impl/bbb&#x27;</span>)</span><br><span class="line"><span class="comment">// &#x27;../../impl/bbb&#x27;</span></span><br></pre></td></tr></table></figure>
+
+<h3 id="path-resolve-paths"><a href="#path-resolve-paths" class="headerlink" title="path.resolve([...paths])"></a><code>path.resolve([...paths])</code></h3><figure class="highlight javascript"><table><tr><td class="code"><pre><span class="line">path.<span class="title function_">resolve</span>(<span class="string">&#x27;&#x27;</span>)</span><br><span class="line"><span class="string">&#x27;/Users/Mccranky&#x27;</span></span><br><span class="line"></span><br><span class="line">path.<span class="title function_">join</span>(<span class="string">&#x27;foo&#x27;</span>, <span class="string">&#x27;bar&#x27;</span>, <span class="string">&#x27;baz&#x27;</span>, <span class="string">&#x27;..&#x27;</span>)</span><br><span class="line"><span class="comment">// &#x27;/Users/Mccranky/foo/bar&#x27;</span></span><br></pre></td></tr></table></figure>
+
+<h3 id="path-sep"><a href="#path-sep" class="headerlink" title="path.sep"></a><code>path.sep</code></h3><p><code>path.sep</code>: <code>/</code></p>
+<figure class="highlight javascript"><table><tr><td class="code"><pre><span class="line"><span class="string">&#x27;foo/bar/baz&#x27;</span>.<span class="title function_">split</span>(path.<span class="property">sep</span>)</span><br><span class="line"><span class="comment">// [&#x27;foo&#x27;, &#x27;bar&#x27;, &#x27;baz&#x27;]</span></span><br></pre></td></tr></table></figure>
+]]></content>
+      <categories>
+        <category>Node.js</category>
+        <category>Path</category>
+      </categories>
+      <tags>
+        <tag>Node.js</tag>
+        <tag>Path</tag>
+      </tags>
+  </entry>
+  <entry>
+    <title>Pointers</title>
+    <url>/2023/04/29/Pointers/</url>
+    <content><![CDATA[<h3 id="Array-of-pointers-to-ints"><a href="#Array-of-pointers-to-ints" class="headerlink" title="Array of pointers to ints"></a>Array of pointers to ints</h3><p><strong>Code:</strong></p>
+<figure class="highlight cpp"><table><tr><td class="code"><pre><span class="line"><span class="meta">#<span class="keyword">include</span> <span class="string">&lt;iostream&gt;</span></span></span><br><span class="line"></span><br><span class="line"><span class="function"><span class="type">int</span> <span class="title">main</span><span class="params">()</span></span></span><br><span class="line"><span class="function"></span>&#123;</span><br><span class="line">    <span class="type">int</span>* ap[<span class="number">15</span>];</span><br><span class="line">    <span class="type">int</span> ai[<span class="number">15</span>] = &#123;&#125;;</span><br><span class="line">    <span class="keyword">for</span> (<span class="type">int</span> i = <span class="number">0</span>; i &lt; <span class="number">15</span>; ++i) &#123;</span><br><span class="line">        ai[i] = i; </span><br><span class="line">        ap[i] = &amp;ai[i];</span><br><span class="line">        std::cout &lt;&lt; *ap[i] &lt;&lt; <span class="string">&quot; &quot;</span> &lt;&lt; ap[i]&lt;&lt; std::endl;</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br><span class="line"></span><br></pre></td></tr></table></figure>
+
+<p><strong>Console:</strong></p>
+<pre><code>0 0x16d296d14
+1 0x16d296d18
+2 0x16d296d1c
+3 0x16d296d20
+4 0x16d296d24
+5 0x16d296d28
+6 0x16d296d2c
+7 0x16d296d30
+8 0x16d296d34
+9 0x16d296d38
+10 0x16d296d3c
+11 0x16d296d40
+12 0x16d296d44
+13 0x16d296d48
+14 0x16d296d4c
+</code></pre>
+<h3 id="Pointer-to-an-array-of-ints"><a href="#Pointer-to-an-array-of-ints" class="headerlink" title="Pointer to an array of ints"></a>Pointer to an array of ints</h3><p><strong>Code:</strong></p>
+<figure class="highlight cpp"><table><tr><td class="code"><pre><span class="line"><span class="meta">#<span class="keyword">include</span> <span class="string">&lt;iostream&gt;</span></span></span><br><span class="line"></span><br><span class="line"><span class="function"><span class="type">int</span> <span class="title">main</span><span class="params">()</span></span></span><br><span class="line"><span class="function"></span>&#123;</span><br><span class="line">    <span class="type">int</span> ai[<span class="number">15</span>];</span><br><span class="line">    <span class="keyword">for</span> (<span class="type">int</span> i = <span class="number">0</span>; i &lt; <span class="number">15</span>; i++) ai[i] = i;</span><br><span class="line">    <span class="built_in">int</span> (*ptr)[] = &amp;ai;</span><br><span class="line">    <span class="keyword">for</span> (<span class="type">int</span> i = <span class="number">0</span>; i &lt; <span class="number">15</span>; i++) &#123;</span><br><span class="line">        std::cout &lt;&lt; (*ptr)[i] &lt;&lt; <span class="string">&quot; &quot;</span>;</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br><span class="line"></span><br></pre></td></tr></table></figure>
+
+<p><strong><em>Console</em></strong></p>
+<pre><code>0 1 2 3 4 5 6 7 8 9 10 11 12 13 14
+</code></pre>
+<blockquote>
+<p><strong><em>Notes</em></strong></p>
+</blockquote>
+<ul>
+<li><p>The parentheses around <code>*ptr</code> are necessary because the <code>[]</code> operator has<br>  higher precedence than the <code>*</code> operator. Without the parentheses, the<br>  declaration would be parsed as an array of pointers to int, like int<br>  <code>*ptr[15]</code>.</p>
+</li>
+<li><p>When I took the address of the array, I got a pointer to the first element<br>  of the array. However, the pointer itself does not contain any information<br>  about the size of the array.</p>
+</li>
+</ul>
+<h3 id="Pointer-to-function-taking-a-string-argument"><a href="#Pointer-to-function-taking-a-string-argument" class="headerlink" title="Pointer to function taking a string argument;"></a>Pointer to function taking a string argument;</h3><h4 id="returns-an-string"><a href="#returns-an-string" class="headerlink" title="returns an string"></a>returns an string</h4><p><strong>Code:</strong></p>
+<figure class="highlight cpp"><table><tr><td class="code"><pre><span class="line"><span class="meta">#<span class="keyword">include</span> <span class="string">&lt;iostream&gt;</span></span></span><br><span class="line"><span class="meta">#<span class="keyword">include</span> <span class="string">&lt;string&gt;</span></span></span><br><span class="line"></span><br><span class="line"><span class="function"><span class="type">void</span> <span class="title">replaceX</span><span class="params">(std::string *str, std::string x)</span></span></span><br><span class="line"><span class="function"></span>&#123;</span><br><span class="line">    <span class="type">size_t</span> pos = (*str).<span class="built_in">find</span>(<span class="string">&quot;$&#123;x&#125;&quot;</span>);</span><br><span class="line">    <span class="keyword">if</span> (pos != std::string::npos)</span><br><span class="line">        (*str).<span class="built_in">replace</span>(pos, <span class="number">4</span>, x);</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"><span class="function">std::string <span class="title">foo</span><span class="params">(std::string x)</span></span></span><br><span class="line"><span class="function"></span>&#123;</span><br><span class="line">    std::string str = <span class="string">&quot;hello this is $&#123;x&#125;&quot;</span>;</span><br><span class="line">    <span class="built_in">replaceX</span>(&amp;str, x);</span><br><span class="line">    <span class="keyword">return</span> str;</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"><span class="function"><span class="type">int</span> <span class="title">main</span><span class="params">()</span></span></span><br><span class="line"><span class="function"></span>&#123;</span><br><span class="line">    std::<span class="built_in">string</span> (*fp)(std::string) = &amp;foo;</span><br><span class="line">    std::cout &lt;&lt; (*fp)(<span class="string">&quot;foo&quot;</span>) &lt;&lt; std::endl;</span><br><span class="line">    std::cout &lt;&lt; (*fp)(<span class="string">&quot;bar&quot;</span>) &lt;&lt; std::endl;</span><br><span class="line">&#125;</span><br><span class="line"></span><br></pre></td></tr></table></figure>
+
+<p><strong>Console:</strong></p>
+<pre><code>hello this is foo
+hello this is bar
+</code></pre>
+]]></content>
+      <categories>
+        <category>C++</category>
+      </categories>
+      <tags>
+        <tag>Pointers</tag>
       </tags>
   </entry>
   <entry>
@@ -305,191 +535,6 @@ r=mccranky)
         <tag>ArchLinux</tag>
         <tag>UTM</tag>
         <tag>Virtual Machine</tag>
-      </tags>
-  </entry>
-  <entry>
-    <title>JavaScript Method：localeCompare</title>
-    <url>/2023/04/24/JavaScript%20Method%EF%BC%9AlocaleCompare/</url>
-    <content><![CDATA[<p>Lately I’ve been thinking that since Java has an equalsIgnoreCase method, JavaScript must have something similar. This is what I found: the <code>localeCompare</code> method.</p>
-<h3 id="Structure"><a href="#Structure" class="headerlink" title="Structure"></a>Structure</h3><figure class="highlight javascript"><table><tr><td class="code"><pre><span class="line">str1.<span class="title function_">localeCompare</span>(str2, [locales], [options])</span><br></pre></td></tr></table></figure>
-
-<p><strong><em>Note: The Linux commands also has a <code>locale</code> command!</em></strong></p>
-<h3 id="Available-locales"><a href="#Available-locales" class="headerlink" title="Available locales"></a>Available locales</h3><p><strong><em><code>language</code></em></strong></p>
-<pre><code>&#39;en&#39;: English
-&#39;fr&#39;: French
-&#39;de&#39;: German
-&#39;es&#39;: Spanish
-&#39;ja&#39;: Japanese
-&#39;zh&#39;: Chinese
-&#39;ar&#39;: Arabic
-&#39;ru&#39;: Russian
-</code></pre>
-<p>We can also use a combination of <code>language</code> and <code>region</code> subtags to specify a more specific locale. For example:</p>
-<pre><code>&#39;en-US&#39;: English (United States)
-&#39;fr-CA&#39;: French (Canada)
-&#39;de-DE&#39;: German (Germany)
-&#39;es-MX&#39;: Spanish (Mexico)
-&#39;ja-JP&#39;: Japanese (Japan)
-&#39;zh-CN&#39;: Chinese (China)
-&#39;ar-EG&#39;: Arabic (Egypt)
-&#39;ru-RU&#39;: Russian (Russia)
-</code></pre>
-<h3 id="Available-options"><a href="#Available-options" class="headerlink" title="Available options"></a>Available options</h3><p><strong><em><code>numeric</code></em></strong></p>
-<figure class="highlight javascript"><table><tr><td class="code"><pre><span class="line"><span class="variable language_">console</span>.<span class="title function_">log</span>(<span class="string">&quot;60&quot;</span>.<span class="title function_">localeCompare</span>(<span class="string">&quot;40&quot;</span>, <span class="literal">undefined</span>, &#123; <span class="attr">numeric</span>: <span class="literal">true</span> &#125;)) <span class="comment">// 1</span></span><br><span class="line"></span><br><span class="line"><span class="variable language_">console</span>.<span class="title function_">log</span>(<span class="string">&quot;60&quot;</span>.<span class="title function_">localeCompare</span>(<span class="string">&quot;60&quot;</span>, <span class="literal">undefined</span>, &#123; <span class="attr">numeric</span>: <span class="literal">true</span> &#125;)) <span class="comment">// 0</span></span><br><span class="line"></span><br><span class="line"><span class="variable language_">console</span>.<span class="title function_">log</span>(<span class="string">&quot;60&quot;</span>.<span class="title function_">localeCompare</span>(<span class="string">&quot;100&quot;</span>, <span class="literal">undefined</span>, &#123; <span class="attr">numeric</span>: <span class="literal">true</span> &#125;)) <span class="comment">// -1</span></span><br></pre></td></tr></table></figure>
-
-<p><code>numeric</code> can take one of the two values: <code>true</code> and <code>false</code></p>
-<figure class="highlight javascript"><table><tr><td class="code"><pre><span class="line"><span class="variable language_">console</span>.<span class="title function_">log</span>(<span class="string">&quot;60&quot;</span>.<span class="title function_">localeCompare</span>(<span class="string">&quot;100&quot;</span>, <span class="literal">undefined</span>, &#123; <span class="attr">numeric</span>: <span class="literal">false</span> &#125;)) <span class="comment">// 1</span></span><br></pre></td></tr></table></figure>
-
-<p>With <code>false</code>, both <code>60</code> and <code>100</code> are treated as normal String objects.</p>
-<p><strong><em><code>sensitivity</code></em></strong></p>
-<p><code>sensitivity</code> can take one of the three values: <code>base</code>, <code>accent</code>, <code>case</code></p>
-<figure class="highlight javascript"><table><tr><td class="code"><pre><span class="line"><span class="variable language_">console</span>.<span class="title function_">log</span>(<span class="string">&quot;café&quot;</span>.<span class="title function_">localeCompare</span>(<span class="string">&quot;Cafe&quot;</span>, <span class="literal">undefined</span>, &#123; <span class="attr">sensitivity</span>: <span class="string">&quot;base&quot;</span> &#125;)) <span class="comment">// 0</span></span><br><span class="line"></span><br><span class="line"><span class="variable language_">console</span>.<span class="title function_">log</span>(<span class="string">&quot;café&quot;</span>.<span class="title function_">localeCompare</span>(<span class="string">&quot;Cafe&quot;</span>, <span class="literal">undefined</span>, &#123; <span class="attr">sensitivity</span>: <span class="string">&quot;accent&quot;</span> &#125;)) <span class="comment">// 1</span></span><br><span class="line"></span><br><span class="line"><span class="variable language_">console</span>.<span class="title function_">log</span>(<span class="string">&quot;café&quot;</span>.<span class="title function_">localeCompare</span>(<span class="string">&quot;Cafe&quot;</span>, <span class="literal">undefined</span>, &#123; <span class="attr">sensitivity</span>: <span class="string">&quot;case&quot;</span> &#125;)) <span class="comment">// -1</span></span><br></pre></td></tr></table></figure>
-
-<p><strong><em><code>caseFirst</code></em></strong></p>
-<p>The <code>caseFirst</code> option in the <code>localeCompare()</code> method specifies whether uppercase letters should come before or after lowercase letters in the sort order. It can take one of the following two values:</p>
-<p><code>upper</code>: Sort uppercase letters before lowercase letters.</p>
-<p><code>lower</code>: Sort lowercase letters before uppercase letters.</p>
-<figure class="highlight javascript"><table><tr><td class="code"><pre><span class="line"><span class="variable language_">console</span>.<span class="title function_">log</span>(<span class="string">&quot;Ba&quot;</span>.<span class="title function_">localeCompare</span>(<span class="string">&quot;AB&quot;</span>, <span class="literal">undefined</span>, &#123; <span class="attr">sensitivity</span>: <span class="string">&quot;case&quot;</span> &#125;)) <span class="comment">// 1</span></span><br><span class="line"></span><br><span class="line"><span class="variable language_">console</span>.<span class="title function_">log</span>(<span class="string">&quot;aB&quot;</span>.<span class="title function_">localeCompare</span>(<span class="string">&quot;AB&quot;</span>, <span class="literal">undefined</span>, &#123; <span class="attr">sensitivity</span>: <span class="string">&quot;case&quot;</span> &#125;)) <span class="comment">// -1</span></span><br><span class="line"></span><br><span class="line"><span class="variable language_">console</span>.<span class="title function_">log</span>(<span class="string">&quot;aB&quot;</span>.<span class="title function_">localeCompare</span>(<span class="string">&quot;AB&quot;</span>, <span class="literal">undefined</span>, &#123; <span class="attr">sensitivity</span>: <span class="string">&quot;case&quot;</span>, <span class="attr">caseFirst</span>: <span class="string">&quot;upper&quot;</span> &#125;)) <span class="comment">// 1</span></span><br></pre></td></tr></table></figure>
-
-<p><strong><em><code>ignorePunctuation</code></em></strong></p>
-<p>The <code>ignorePunctuation</code> option in the <code>localeCompare()</code> method specifies whether punctuation and other symbols should be ignored during the comparison.</p>
-<p>It can take one of the following two values: <code>true</code> and <code>false</code></p>
-<figure class="highlight javascript"><table><tr><td class="code"><pre><span class="line"><span class="variable language_">console</span>.<span class="title function_">log</span>(<span class="string">&quot;Hello, world!&quot;</span>.<span class="title function_">localeCompare</span>(<span class="string">&quot;Hello world&quot;</span>, <span class="literal">undefined</span>, &#123; <span class="attr">ignorePunctuation</span>: <span class="literal">true</span> &#125;)) <span class="comment">// 0</span></span><br></pre></td></tr></table></figure>]]></content>
-      <tags>
-        <tag>JavaScript</tag>
-        <tag>Methods</tag>
-      </tags>
-  </entry>
-  <entry>
-    <title>Positional Parameters</title>
-    <url>/2023/04/29/Positional%20Parameters/</url>
-    <content><![CDATA[<p>In Bash, positional parameters are special variables that hold the arguments passed to a script or function. The positional parameters are numbered from <code>0</code> to <code>9</code>, where <code>$0</code> holds the name of the script or function, and <code>$1</code> through <code>$9</code> hold the first through ninth arguments, respectively.</p>
-<p><code>$@</code> and <code>$*</code> both hold all the arguments passed to the script. Note that <code>$@</code> is an array-like variable that holds all the positional parameters as <em>separate elements</em>, while <code>$*</code> is another variable that holds all the positional parameters as <em>a single string</em>.</p>
-<p>Here’s an example:</p>
-<pre><code>#!/bin/bash
-
-#!/bin/bash
-
-echo &quot;Script Name: $0&quot;
-echo &quot;First Arg: $1&quot;
-echo &quot;Second Arg: $2&quot;
-echo &quot;All args (arr): $@&quot;
-echo &quot;All args (str): $*&quot;
-</code></pre>
-<p>Now let’s run the script with three arguments:</p>
-<figure class="highlight bash"><table><tr><td class="code"><pre><span class="line"><span class="built_in">chmod</span> u+x ./script <span class="comment"># Grant execution privilege for user</span></span><br><span class="line"></span><br><span class="line">./script a b c</span><br><span class="line"></span><br></pre></td></tr></table></figure>
-
-<p>The output should be something like this:</p>
-<pre><code>Script Name: ./script.sh
-First Arg: a
-Second Arg: b
-All args (arr): a b c
-All args (str): a b c
-</code></pre>
-]]></content>
-      <categories>
-        <category>Bash</category>
-      </categories>
-      <tags>
-        <tag>Linux</tag>
-        <tag>Bash</tag>
-      </tags>
-  </entry>
-  <entry>
-    <title>Pointers</title>
-    <url>/2023/04/29/Pointers/</url>
-    <content><![CDATA[<h3 id="Array-of-pointers-to-ints"><a href="#Array-of-pointers-to-ints" class="headerlink" title="Array of pointers to ints"></a>Array of pointers to ints</h3><p><strong>Code:</strong></p>
-<figure class="highlight cpp"><table><tr><td class="code"><pre><span class="line"><span class="meta">#<span class="keyword">include</span> <span class="string">&lt;iostream&gt;</span></span></span><br><span class="line"></span><br><span class="line"><span class="function"><span class="type">int</span> <span class="title">main</span><span class="params">()</span></span></span><br><span class="line"><span class="function"></span>&#123;</span><br><span class="line">    <span class="type">int</span>* ap[<span class="number">15</span>];</span><br><span class="line">    <span class="type">int</span> ai[<span class="number">15</span>] = &#123;&#125;;</span><br><span class="line">    <span class="keyword">for</span> (<span class="type">int</span> i = <span class="number">0</span>; i &lt; <span class="number">15</span>; ++i) &#123;</span><br><span class="line">        ai[i] = i; </span><br><span class="line">        ap[i] = &amp;ai[i];</span><br><span class="line">        std::cout &lt;&lt; *ap[i] &lt;&lt; <span class="string">&quot; &quot;</span> &lt;&lt; ap[i]&lt;&lt; std::endl;</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br><span class="line"></span><br></pre></td></tr></table></figure>
-
-<p><strong>Console:</strong></p>
-<pre><code>0 0x16d296d14
-1 0x16d296d18
-2 0x16d296d1c
-3 0x16d296d20
-4 0x16d296d24
-5 0x16d296d28
-6 0x16d296d2c
-7 0x16d296d30
-8 0x16d296d34
-9 0x16d296d38
-10 0x16d296d3c
-11 0x16d296d40
-12 0x16d296d44
-13 0x16d296d48
-14 0x16d296d4c
-</code></pre>
-<h3 id="Pointer-to-an-array-of-ints"><a href="#Pointer-to-an-array-of-ints" class="headerlink" title="Pointer to an array of ints"></a>Pointer to an array of ints</h3><p><strong>Code:</strong></p>
-<figure class="highlight cpp"><table><tr><td class="code"><pre><span class="line"><span class="meta">#<span class="keyword">include</span> <span class="string">&lt;iostream&gt;</span></span></span><br><span class="line"></span><br><span class="line"><span class="function"><span class="type">int</span> <span class="title">main</span><span class="params">()</span></span></span><br><span class="line"><span class="function"></span>&#123;</span><br><span class="line">    <span class="type">int</span> ai[<span class="number">15</span>];</span><br><span class="line">    <span class="keyword">for</span> (<span class="type">int</span> i = <span class="number">0</span>; i &lt; <span class="number">15</span>; i++) ai[i] = i;</span><br><span class="line">    <span class="built_in">int</span> (*ptr)[] = &amp;ai;</span><br><span class="line">    <span class="keyword">for</span> (<span class="type">int</span> i = <span class="number">0</span>; i &lt; <span class="number">15</span>; i++) &#123;</span><br><span class="line">        std::cout &lt;&lt; (*ptr)[i] &lt;&lt; <span class="string">&quot; &quot;</span>;</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br><span class="line"></span><br></pre></td></tr></table></figure>
-
-<p><strong><em>Console</em></strong></p>
-<pre><code>0 1 2 3 4 5 6 7 8 9 10 11 12 13 14
-</code></pre>
-<blockquote>
-<p><strong><em>Notes</em></strong></p>
-</blockquote>
-<ul>
-<li><p>The parentheses around <code>*ptr</code> are necessary because the <code>[]</code> operator has<br>  higher precedence than the <code>*</code> operator. Without the parentheses, the<br>  declaration would be parsed as an array of pointers to int, like int<br>  <code>*ptr[15]</code>.</p>
-</li>
-<li><p>When I took the address of the array, I got a pointer to the first element<br>  of the array. However, the pointer itself does not contain any information<br>  about the size of the array.</p>
-</li>
-</ul>
-<h3 id="Pointer-to-function-taking-a-string-argument"><a href="#Pointer-to-function-taking-a-string-argument" class="headerlink" title="Pointer to function taking a string argument;"></a>Pointer to function taking a string argument;</h3><h4 id="returns-an-string"><a href="#returns-an-string" class="headerlink" title="returns an string"></a>returns an string</h4><p><strong>Code:</strong></p>
-<figure class="highlight cpp"><table><tr><td class="code"><pre><span class="line"><span class="meta">#<span class="keyword">include</span> <span class="string">&lt;iostream&gt;</span></span></span><br><span class="line"><span class="meta">#<span class="keyword">include</span> <span class="string">&lt;string&gt;</span></span></span><br><span class="line"></span><br><span class="line"><span class="function"><span class="type">void</span> <span class="title">replaceX</span><span class="params">(std::string *str, std::string x)</span></span></span><br><span class="line"><span class="function"></span>&#123;</span><br><span class="line">    <span class="type">size_t</span> pos = (*str).<span class="built_in">find</span>(<span class="string">&quot;$&#123;x&#125;&quot;</span>);</span><br><span class="line">    <span class="keyword">if</span> (pos != std::string::npos)</span><br><span class="line">        (*str).<span class="built_in">replace</span>(pos, <span class="number">4</span>, x);</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"><span class="function">std::string <span class="title">foo</span><span class="params">(std::string x)</span></span></span><br><span class="line"><span class="function"></span>&#123;</span><br><span class="line">    std::string str = <span class="string">&quot;hello this is $&#123;x&#125;&quot;</span>;</span><br><span class="line">    <span class="built_in">replaceX</span>(&amp;str, x);</span><br><span class="line">    <span class="keyword">return</span> str;</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"><span class="function"><span class="type">int</span> <span class="title">main</span><span class="params">()</span></span></span><br><span class="line"><span class="function"></span>&#123;</span><br><span class="line">    std::<span class="built_in">string</span> (*fp)(std::string) = &amp;foo;</span><br><span class="line">    std::cout &lt;&lt; (*fp)(<span class="string">&quot;foo&quot;</span>) &lt;&lt; std::endl;</span><br><span class="line">    std::cout &lt;&lt; (*fp)(<span class="string">&quot;bar&quot;</span>) &lt;&lt; std::endl;</span><br><span class="line">&#125;</span><br><span class="line"></span><br></pre></td></tr></table></figure>
-
-<p><strong>Console:</strong></p>
-<pre><code>hello this is foo
-hello this is bar
-</code></pre>
-]]></content>
-      <categories>
-        <category>C++</category>
-      </categories>
-      <tags>
-        <tag>Pointers</tag>
-      </tags>
-  </entry>
-  <entry>
-    <title>Path</title>
-    <url>/2023/05/14/Path/</url>
-    <content><![CDATA[<p>因为本人使用的操作系统是 OS X ，所以一下书写规范均符合 POSIX（Portable Open System Interface ex Tended），Windows 用户请自行查阅资料。</p>
-<h3 id="path-basename-path-suffix"><a href="#path-basename-path-suffix" class="headerlink" title="path.basename(path[, suffix])"></a><code>path.basename(path[, suffix])</code></h3><figure class="highlight javascript"><table><tr><td class="code"><pre><span class="line">path.<span class="title function_">basename</span>(<span class="string">&#x27;/path/to/project/index.html&#x27;</span>, <span class="string">&#x27;.html&#x27;</span>)</span><br><span class="line"><span class="comment">// &#x27;index&#x27;</span></span><br></pre></td></tr></table></figure>
-
-<h3 id="path-delimiter"><a href="#path-delimiter" class="headerlink" title="path.delimiter"></a><code>path.delimiter</code></h3><figure class="highlight javascript"><table><tr><td class="code"><pre><span class="line"><span class="variable language_">console</span>.<span class="title function_">log</span>(process.<span class="property">env</span>.<span class="property">PATH</span>)</span><br><span class="line"><span class="comment">// /opt/homebrew/opt/llvm/bin:/opt/homebrew/opt/llvm/bin:/Applications/Sublime Text.app/Contents/SharedSupport/bin/:/Applications/Visual Studio Code.app/Contents/Resources/app/bin/:/Users/Mccranky/.gem/ruby/3.1.3/bin:/Users/Mccranky/.rubies/ruby-3.1.3/lib/ruby/gems/3.1.0/bin:/Users/Mccranky/.rubies/ruby-3.1.3/bin::/opt/local/bin:/opt/homebrew/bin:/opt/homebrew/sbin:/usr/local/bin:/usr/bin:/bin:/usr/sbin:/sbin:/usr/local/mysql/support-files:/usr/local/mysql/bin:/etc/platform-tools:/usr/local/go/bin:/usr/local/MacGPG2/bin:/usr/local/share/dotnet:~/.dotnet/tools:/Library/Apple/usr/bin:/Users/Mccranky/.nami/bin:/Users/Mccranky/.spicetify</span></span><br><span class="line"><span class="comment">// undefined</span></span><br></pre></td></tr></table></figure>
-
-<p>输出第一行为环境变量。<br>输出第二行的<code>undefined</code>示意无返回值。</p>
-<figure class="highlight javascript"><table><tr><td class="code"><pre><span class="line">process.<span class="property">env</span>.<span class="property">PATH</span>.<span class="title function_">split</span>(path.<span class="property">delimiter</span>)</span><br><span class="line"><span class="comment">/*</span></span><br><span class="line"><span class="comment">[</span></span><br><span class="line"><span class="comment">  &#x27;/opt/homebrew/opt/llvm/bin&#x27;,</span></span><br><span class="line"><span class="comment">  &#x27;/opt/homebrew/opt/llvm/bin&#x27;,</span></span><br><span class="line"><span class="comment">  &#x27;/Applications/Sublime Text.app/Contents/SharedSupport/bin/&#x27;,</span></span><br><span class="line"><span class="comment">  &#x27;/Applications/Visual Studio Code.app/Contents/Resources/app/bin/&#x27;,</span></span><br><span class="line"><span class="comment">  &#x27;/Users/Mccranky/.gem/ruby/3.1.3/bin&#x27;,</span></span><br><span class="line"><span class="comment">  &#x27;/Users/Mccranky/.rubies/ruby-3.1.3/lib/ruby/gems/3.1.0/bin&#x27;,</span></span><br><span class="line"><span class="comment">  &#x27;/Users/Mccranky/.rubies/ruby-3.1.3/bin&#x27;,</span></span><br><span class="line"><span class="comment">  &#x27;&#x27;,</span></span><br><span class="line"><span class="comment">  &#x27;/opt/local/bin&#x27;,</span></span><br><span class="line"><span class="comment">  &#x27;/opt/homebrew/bin&#x27;,</span></span><br><span class="line"><span class="comment">  &#x27;/opt/homebrew/sbin&#x27;,</span></span><br><span class="line"><span class="comment">  &#x27;/usr/local/bin&#x27;,</span></span><br><span class="line"><span class="comment">  &#x27;/usr/bin&#x27;,</span></span><br><span class="line"><span class="comment">  &#x27;/bin&#x27;,</span></span><br><span class="line"><span class="comment">  &#x27;/usr/sbin&#x27;,</span></span><br><span class="line"><span class="comment">  &#x27;/sbin&#x27;,</span></span><br><span class="line"><span class="comment">  &#x27;/usr/local/mysql/support-files&#x27;,</span></span><br><span class="line"><span class="comment">  &#x27;/usr/local/mysql/bin&#x27;,</span></span><br><span class="line"><span class="comment">  &#x27;/etc/platform-tools&#x27;,</span></span><br><span class="line"><span class="comment">  &#x27;/usr/local/go/bin&#x27;,</span></span><br><span class="line"><span class="comment">  &#x27;/usr/local/MacGPG2/bin&#x27;,</span></span><br><span class="line"><span class="comment">  &#x27;/usr/local/share/dotnet&#x27;,</span></span><br><span class="line"><span class="comment">  &#x27;~/.dotnet/tools&#x27;,</span></span><br><span class="line"><span class="comment">  &#x27;/Library/Apple/usr/bin&#x27;,</span></span><br><span class="line"><span class="comment">  &#x27;/Users/Mccranky/.nami/bin&#x27;,</span></span><br><span class="line"><span class="comment">  &#x27;/Users/Mccranky/.spicetify&#x27;</span></span><br><span class="line"><span class="comment">]</span></span><br><span class="line"><span class="comment">*/</span></span><br></pre></td></tr></table></figure>
-
-<p><code>path.delimiter</code>: <code>:</code></p>
-<h3 id="path-dirname"><a href="#path-dirname" class="headerlink" title="path.dirname"></a><code>path.dirname</code></h3><figure class="highlight javascript"><table><tr><td class="code"><pre><span class="line">path.<span class="title function_">dirname</span>(<span class="string">&#x27;path/to/file.txt&#x27;</span>)</span><br><span class="line"><span class="comment">// &#x27;path/to&#x27;</span></span><br></pre></td></tr></table></figure>
-
-<h3 id="path-extname"><a href="#path-extname" class="headerlink" title="path.extname"></a><code>path.extname</code></h3><figure class="highlight javascript"><table><tr><td class="code"><pre><span class="line">path.<span class="title function_">extname</span>(<span class="string">&#x27;index.html&#x27;</span>)</span><br><span class="line"><span class="comment">// &#x27;.html&#x27;</span></span><br><span class="line"></span><br><span class="line">path.<span class="title function_">extname</span>(<span class="string">&#x27;index.foo.md&#x27;</span>)</span><br><span class="line"><span class="comment">// &#x27;.md&#x27;</span></span><br><span class="line"></span><br><span class="line">path.<span class="title function_">extname</span>(<span class="string">&#x27;index.&#x27;</span>)</span><br><span class="line"><span class="comment">// &#x27;.&#x27;</span></span><br><span class="line"></span><br><span class="line">path.<span class="title function_">extname</span>(<span class="string">&#x27;index&#x27;</span>)</span><br><span class="line"><span class="comment">// &#x27;&#x27;</span></span><br><span class="line"></span><br><span class="line">path.<span class="title function_">extname</span>(<span class="string">&#x27;.index&#x27;</span>)</span><br><span class="line"><span class="comment">// &#x27;&#x27;</span></span><br><span class="line"></span><br><span class="line">path.<span class="title function_">extname</span>(<span class="string">&#x27;.index.md&#x27;</span>)</span><br><span class="line"><span class="comment">// &#x27;.md&#x27;</span></span><br></pre></td></tr></table></figure>
-
-<h3 id="path-format-pathObject"><a href="#path-format-pathObject" class="headerlink" title="path.format(pathObject)"></a><code>path.format(pathObject)</code></h3><figure class="highlight javascript"><table><tr><td class="code"><pre><span class="line"><span class="comment">// `$&#123;dir&#125;$&#123;path.sep&#125;$&#123;base&#125;`</span></span><br><span class="line">path.<span class="title function_">format</span>(&#123;</span><br><span class="line">  <span class="attr">root</span>: <span class="string">&#x27;/ignored&#x27;</span>,</span><br><span class="line">  <span class="attr">dir</span>: <span class="string">&#x27;/home/user/dir&#x27;</span>,</span><br><span class="line">  <span class="attr">base</span>: <span class="string">&#x27;file.txt&#x27;</span>,</span><br><span class="line">&#125;)</span><br><span class="line"><span class="comment">// &#x27;/home/user/dir/file.txt&#x27;</span></span><br><span class="line"></span><br><span class="line">path.<span class="title function_">format</span>(&#123;</span><br><span class="line">  <span class="attr">root</span>: <span class="string">&#x27;/&#x27;</span>,</span><br><span class="line">  <span class="attr">base</span>: <span class="string">&#x27;file.txt&#x27;</span>,</span><br><span class="line">  <span class="attr">ext</span>: <span class="string">&#x27;ignored&#x27;</span>,</span><br><span class="line">&#125;)</span><br><span class="line"><span class="comment">// &#x27;/file.txt&#x27;</span></span><br><span class="line"></span><br><span class="line">path.<span class="title function_">format</span>(&#123;</span><br><span class="line">  <span class="attr">root</span>: <span class="string">&#x27;/&#x27;</span>,</span><br><span class="line">  <span class="attr">name</span>: <span class="string">&#x27;file&#x27;</span>,</span><br><span class="line">  <span class="attr">ext</span>: <span class="string">&#x27;.txt&#x27;</span>,</span><br><span class="line">&#125;)</span><br><span class="line"><span class="comment">// &#x27;/file.txt&#x27;</span></span><br><span class="line"></span><br><span class="line">path.<span class="title function_">format</span>(&#123;</span><br><span class="line">  <span class="attr">root</span>: <span class="string">&#x27;/&#x27;</span>,</span><br><span class="line">  <span class="attr">name</span>: <span class="string">&#x27;file&#x27;</span>,</span><br><span class="line">  <span class="attr">ext</span>: <span class="string">&#x27;txt&#x27;</span>,</span><br><span class="line">&#125;)</span><br><span class="line"><span class="comment">// &#x27;/file.txt&#x27;</span></span><br></pre></td></tr></table></figure>
-
-<h3 id="path-isAbsolute"><a href="#path-isAbsolute" class="headerlink" title="path.isAbsolute"></a><code>path.isAbsolute</code></h3><figure class="highlight javascript"><table><tr><td class="code"><pre><span class="line">path.<span class="title function_">isAbsolute</span>(<span class="string">&#x27;/foo/bar&#x27;</span>) <span class="comment">// true</span></span><br><span class="line">path.<span class="title function_">isAbsolute</span>(<span class="string">&#x27;/baz/..&#x27;</span>)  <span class="comment">// true</span></span><br><span class="line">path.<span class="title function_">isAbsolute</span>(<span class="string">&#x27;qux/&#x27;</span>)     <span class="comment">// false</span></span><br><span class="line">path.<span class="title function_">isAbsolute</span>(<span class="string">&#x27;.&#x27;</span>)        <span class="comment">// false</span></span><br></pre></td></tr></table></figure>
-
-<h3 id="path-join-paths"><a href="#path-join-paths" class="headerlink" title="path.join([...paths])"></a><code>path.join([...paths])</code></h3><figure class="highlight javascript"><table><tr><td class="code"><pre><span class="line">path.<span class="title function_">join</span>(<span class="string">&#x27;&#x27;</span>)</span><br><span class="line"><span class="comment">// &#x27;.&#x27;</span></span><br><span class="line"></span><br><span class="line">path.<span class="title function_">join</span>(<span class="string">&#x27;/&#x27;</span>, <span class="string">&#x27;/foo&#x27;</span>, <span class="string">&#x27;bar&#x27;</span>, <span class="string">&#x27;baz&#x27;</span>, <span class="string">&#x27;..&#x27;</span>)</span><br><span class="line"><span class="comment">// &#x27;/foo/bar&#x27;</span></span><br></pre></td></tr></table></figure>
-
-<h3 id="path-normalize-path"><a href="#path-normalize-path" class="headerlink" title="path.normalize(path)"></a><code>path.normalize(path)</code></h3><figure class="highlight javascript"><table><tr><td class="code"><pre><span class="line">path.<span class="title function_">normalize</span>(<span class="string">&#x27;/foo/bar//baz/asdf/quux/..&#x27;</span>)</span><br><span class="line"><span class="comment">// Returns: &#x27;/foo/bar/baz/asdf&#x27;</span></span><br></pre></td></tr></table></figure>
-
-<h3 id="path-parse-path"><a href="#path-parse-path" class="headerlink" title="path.parse(path)"></a><code>path.parse(path)</code></h3><figure class="highlight javascript"><table><tr><td class="code"><pre><span class="line">path.<span class="title function_">parse</span>(<span class="string">&#x27;/home/user/dir/file.txt&#x27;</span>)</span><br><span class="line"><span class="comment">/*</span></span><br><span class="line"><span class="comment">&#123;</span></span><br><span class="line"><span class="comment">  root: &#x27;/&#x27;,</span></span><br><span class="line"><span class="comment">  dir: &#x27;/home/user/dir&#x27;,</span></span><br><span class="line"><span class="comment">  base: &#x27;file.txt&#x27;,</span></span><br><span class="line"><span class="comment">  ext: &#x27;.txt&#x27;,</span></span><br><span class="line"><span class="comment">  name: &#x27;file&#x27;</span></span><br><span class="line"><span class="comment">&#125;</span></span><br><span class="line"><span class="comment">*/</span></span><br></pre></td></tr></table></figure>
-
-<p>  ┌─────────────────────┬────────────┐<br>  │          dir        │    base    │<br>  ├──────┬              ├──────┬─────┤<br>  │ root │              │ name │ ext │<br>  “  &#x2F;    home&#x2F;user&#x2F;dir &#x2F; file  .txt “<br>  └──────┴──────────────┴──────┴─────┘</p>
-<h3 id="path-posix"><a href="#path-posix" class="headerlink" title="path.posix"></a><code>path.posix</code></h3><p>只是输出一下<code>path</code>模组所有的方法。</p>
-<h3 id="path-relative-from-to"><a href="#path-relative-from-to" class="headerlink" title="path.relative(from, to)"></a><code>path.relative(from, to)</code></h3><figure class="highlight javascript"><table><tr><td class="code"><pre><span class="line">path.<span class="title function_">relative</span>(<span class="string">&#x27;/data/orandea/test/aaa&#x27;</span>, <span class="string">&#x27;/data/orandea/impl/bbb&#x27;</span>)</span><br><span class="line"><span class="comment">// &#x27;../../impl/bbb&#x27;</span></span><br></pre></td></tr></table></figure>
-
-<h3 id="path-resolve-paths"><a href="#path-resolve-paths" class="headerlink" title="path.resolve([...paths])"></a><code>path.resolve([...paths])</code></h3><figure class="highlight javascript"><table><tr><td class="code"><pre><span class="line">path.<span class="title function_">resolve</span>(<span class="string">&#x27;&#x27;</span>)</span><br><span class="line"><span class="string">&#x27;/Users/Mccranky&#x27;</span></span><br><span class="line"></span><br><span class="line">path.<span class="title function_">join</span>(<span class="string">&#x27;foo&#x27;</span>, <span class="string">&#x27;bar&#x27;</span>, <span class="string">&#x27;baz&#x27;</span>, <span class="string">&#x27;..&#x27;</span>)</span><br><span class="line"><span class="comment">// &#x27;/Users/Mccranky/foo/bar&#x27;</span></span><br></pre></td></tr></table></figure>
-
-<h3 id="path-sep"><a href="#path-sep" class="headerlink" title="path.sep"></a><code>path.sep</code></h3><p><code>path.sep</code>: <code>/</code></p>
-<figure class="highlight javascript"><table><tr><td class="code"><pre><span class="line"><span class="string">&#x27;foo/bar/baz&#x27;</span>.<span class="title function_">split</span>(path.<span class="property">sep</span>)</span><br><span class="line"><span class="comment">// [&#x27;foo&#x27;, &#x27;bar&#x27;, &#x27;baz&#x27;]</span></span><br></pre></td></tr></table></figure>
-]]></content>
-      <categories>
-        <category>Node.js</category>
-        <category>Path</category>
-      </categories>
-      <tags>
-        <tag>Node.js</tag>
-        <tag>Path</tag>
       </tags>
   </entry>
   <entry>
@@ -817,6 +862,84 @@ Apr 27 02:45:46 alarm systemd[1]: Failed to mount /mnt/share.
       </tags>
   </entry>
   <entry>
+    <title>`inpath`</title>
+    <url>/2023/04/29/%60inpath%60/</url>
+    <content><![CDATA[<p>Coding along with the book <em>Wicked Cool Shell Scripts- 101 Scripts for Linux, OS X, and UNIX Systems</em>.</p>
+<p>This is the script from Page 11:</p>
+<figure class="highlight bash"><table><tr><td class="code"><pre><span class="line"><span class="meta">#!/bin/bash</span></span><br><span class="line"></span><br><span class="line"><span class="function"><span class="title">in_path</span></span>()</span><br><span class="line">&#123;</span><br><span class="line">        cmd=<span class="variable">$1</span></span><br><span class="line">        ourpath=<span class="variable">$2</span>      </span><br><span class="line">        result=1</span><br><span class="line">        oldIFS=<span class="variable">$IFS</span>     </span><br><span class="line">        IFS=<span class="string">&quot;:&quot;</span></span><br><span class="line"> </span><br><span class="line">        <span class="keyword">for</span> directory <span class="keyword">in</span> <span class="variable">$ourpath</span>; <span class="keyword">do</span></span><br><span class="line"></span><br><span class="line">        <span class="comment"># If i double quoted `$ourpath`, it will not word split, and the loop will only run once.</span></span><br><span class="line"></span><br><span class="line">                <span class="keyword">if</span> [ -x <span class="string">&quot;<span class="variable">$directory</span>/<span class="variable">$cmd</span>&quot;</span> ]; <span class="keyword">then</span></span><br><span class="line">                        result=0</span><br><span class="line">                <span class="keyword">fi</span></span><br><span class="line">        <span class="keyword">done</span></span><br><span class="line"> </span><br><span class="line">        IFS=<span class="variable">$oldIFS</span></span><br><span class="line">        <span class="built_in">return</span> <span class="variable">$result</span></span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"><span class="function"><span class="title">checkForCmdInPath</span></span>()</span><br><span class="line">&#123;</span><br><span class="line">        var=<span class="variable">$1</span></span><br><span class="line"> </span><br><span class="line">        <span class="keyword">if</span> [ ! <span class="string">&quot;<span class="variable">$var</span>&quot;</span> = <span class="string">&quot;&quot;</span> ]; <span class="keyword">then</span></span><br><span class="line">                <span class="keyword">if</span> [ <span class="string">&quot;<span class="variable">$&#123;var:0:1&#125;</span>&quot;</span> = <span class="string">&quot;/&quot;</span> ]; <span class="keyword">then</span></span><br><span class="line">                	<span class="comment"># Checks whether the command represented by the `$var` is an absolute path or not. </span></span><br><span class="line">                        <span class="keyword">if</span> [ ! -x <span class="string">&quot;<span class="variable">$var</span>&quot;</span> ]; <span class="keyword">then</span></span><br><span class="line">                                <span class="built_in">return</span> 1</span><br><span class="line">                        <span class="keyword">fi</span></span><br><span class="line">                <span class="keyword">elif</span> ! in_path <span class="string">&quot;<span class="variable">$var</span>&quot;</span> <span class="string">&quot;<span class="variable">$PATH</span>&quot;</span>; <span class="keyword">then</span></span><br><span class="line">                        <span class="built_in">return</span> 2</span><br><span class="line">                <span class="keyword">fi</span></span><br><span class="line">        <span class="keyword">fi</span></span><br><span class="line">&#125;</span><br><span class="line"></span><br></pre></td></tr></table></figure>
+
+<h3 id="Positional-parameters"><a href="#Positional-parameters" class="headerlink" title="Positional parameters"></a>Positional parameters</h3><p>See <a href="/2023/04/29/Positional%20Parameters/">here</a></p>
+<blockquote>
+<p><strong><em>A Quick Word</em></strong>  </p>
+<p>It is good practice to put double quotes around variables in Bash because it prevents word splitting and globbing.</p>
+<ul>
+<li><p>Word splitting is the process of breaking up a string into separate words based on whitespace. If a variable contains spaces, without quotes, Bash will treat each space-separated word as a separate argument. This can cause unexpected behavior if the variable is used as an argument to a command.</p>
+</li>
+<li><p>Globbing is the process of expanding wildcard characters such as <code>*</code> and <code>?</code> into a list of matching filenames. If a variable contains a glob character, without quotes, Bash will try to expand it into a list of matching filenames. This can also cause unexpected behavior if the variable is used as an argument to a command.</p>
+</li>
+</ul>
+<p>By putting double quotes around variables, Bash treats the variable as a single argument, preserving any whitespace or glob characters within the variable. This helps to ensure that the variable is interpreted correctly and the script behaves as expected.</p>
+</blockquote>
+<h3 id="Special-variables"><a href="#Special-variables" class="headerlink" title="Special variables"></a>Special variables</h3><p><strong><em><code>$IFS</code></em></strong></p>
+<p>The internal field separator (IFS) is a special variable in Bash that specifies the delimiter used to separate fields in a string. By default, the IFS is set to whitespace (i.e., space, tab, and newline characters).</p>
+<p><strong><em>&#96;$?</em></strong></p>
+<p>Display the return values of functions.</p>
+<figure class="highlight bash"><table><tr><td class="code"><pre><span class="line"><span class="built_in">echo</span> $?</span><br></pre></td></tr></table></figure>
+
+<p>You can use it immediately after calling a function with return value.</p>
+<h3 id="Slice"><a href="#Slice" class="headerlink" title="Slice"></a>Slice</h3><pre><code>[ &quot;$&#123;var:0:1&#125;&quot; = &quot;/&quot; ];
+</code></pre>
+<p>The slicing starts at index <code>0</code> and lasts for the duration of a single character.</p>
+<h3 id="Compare"><a href="#Compare" class="headerlink" title="Compare"></a>Compare</h3><p><strong><em>String comparison</em></strong></p>
+<p><code>=</code> tests if two strings are equal. For example, if <code>[ &quot;$string1&quot; = &quot;$string2&quot; ]</code> would be true if <code>$string1</code> and <code>$string2</code> have the same value.</p>
+<p><strong><em>Pattern matching</em></strong></p>
+<p><code>==</code> tests if a string matches a pattern using globbing, which is a way to match filenames based on wildcard characters. For example, if <code>[[ &quot;$string&quot; == a* ]]</code> would be true if <code>$string</code> starts with the letter “a”.</p>
+]]></content>
+      <categories>
+        <category>Wicked Cool Shell Scripts</category>
+      </categories>
+      <tags>
+        <tag>Linux</tag>
+        <tag>ArchLinux</tag>
+        <tag>Bash</tag>
+      </tags>
+  </entry>
+  <entry>
+    <title>Positional Parameters</title>
+    <url>/2023/04/29/Positional%20Parameters/</url>
+    <content><![CDATA[<p>In Bash, positional parameters are special variables that hold the arguments passed to a script or function. The positional parameters are numbered from <code>0</code> to <code>9</code>, where <code>$0</code> holds the name of the script or function, and <code>$1</code> through <code>$9</code> hold the first through ninth arguments, respectively.</p>
+<p><code>$@</code> and <code>$*</code> both hold all the arguments passed to the script. Note that <code>$@</code> is an array-like variable that holds all the positional parameters as <em>separate elements</em>, while <code>$*</code> is another variable that holds all the positional parameters as <em>a single string</em>.</p>
+<p>Here’s an example:</p>
+<pre><code>#!/bin/bash
+
+#!/bin/bash
+
+echo &quot;Script Name: $0&quot;
+echo &quot;First Arg: $1&quot;
+echo &quot;Second Arg: $2&quot;
+echo &quot;All args (arr): $@&quot;
+echo &quot;All args (str): $*&quot;
+</code></pre>
+<p>Now let’s run the script with three arguments:</p>
+<figure class="highlight bash"><table><tr><td class="code"><pre><span class="line"><span class="built_in">chmod</span> u+x ./script <span class="comment"># Grant execution privilege for user</span></span><br><span class="line"></span><br><span class="line">./script a b c</span><br><span class="line"></span><br></pre></td></tr></table></figure>
+
+<p>The output should be something like this:</p>
+<pre><code>Script Name: ./script.sh
+First Arg: a
+Second Arg: b
+All args (arr): a b c
+All args (str): a b c
+</code></pre>
+]]></content>
+      <categories>
+        <category>Bash</category>
+      </categories>
+      <tags>
+        <tag>Linux</tag>
+        <tag>Bash</tag>
+      </tags>
+  </entry>
+  <entry>
     <title>`node` in the command line</title>
     <url>/2023/04/28/%60node%60%20in%20the%20command%20line/</url>
     <content><![CDATA[<p>I ran into this hassle the other day when my <code>npm</code> command failed to work in the command line. It took me a while to sort things out and left me in a foul mood. To prevent something like that from happening again, I decided to write this post. Nothing fancy - just some commands that might prove helpful in the long run.</p>
@@ -888,49 +1011,6 @@ fetch-retry-maxtimeout = 300000
         <tag>Node.js</tag>
         <tag>Express.js</tag>
         <tag>Note</tag>
-      </tags>
-  </entry>
-  <entry>
-    <title>`inpath`</title>
-    <url>/2023/04/29/%60inpath%60/</url>
-    <content><![CDATA[<p>Coding along with the book <em>Wicked Cool Shell Scripts- 101 Scripts for Linux, OS X, and UNIX Systems</em>.</p>
-<p>This is the script from Page 11:</p>
-<figure class="highlight bash"><table><tr><td class="code"><pre><span class="line"><span class="meta">#!/bin/bash</span></span><br><span class="line"></span><br><span class="line"><span class="function"><span class="title">in_path</span></span>()</span><br><span class="line">&#123;</span><br><span class="line">        cmd=<span class="variable">$1</span></span><br><span class="line">        ourpath=<span class="variable">$2</span>      </span><br><span class="line">        result=1</span><br><span class="line">        oldIFS=<span class="variable">$IFS</span>     </span><br><span class="line">        IFS=<span class="string">&quot;:&quot;</span></span><br><span class="line"> </span><br><span class="line">        <span class="keyword">for</span> directory <span class="keyword">in</span> <span class="variable">$ourpath</span>; <span class="keyword">do</span></span><br><span class="line"></span><br><span class="line">        <span class="comment"># If i double quoted `$ourpath`, it will not word split, and the loop will only run once.</span></span><br><span class="line"></span><br><span class="line">                <span class="keyword">if</span> [ -x <span class="string">&quot;<span class="variable">$directory</span>/<span class="variable">$cmd</span>&quot;</span> ]; <span class="keyword">then</span></span><br><span class="line">                        result=0</span><br><span class="line">                <span class="keyword">fi</span></span><br><span class="line">        <span class="keyword">done</span></span><br><span class="line"> </span><br><span class="line">        IFS=<span class="variable">$oldIFS</span></span><br><span class="line">        <span class="built_in">return</span> <span class="variable">$result</span></span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"><span class="function"><span class="title">checkForCmdInPath</span></span>()</span><br><span class="line">&#123;</span><br><span class="line">        var=<span class="variable">$1</span></span><br><span class="line"> </span><br><span class="line">        <span class="keyword">if</span> [ ! <span class="string">&quot;<span class="variable">$var</span>&quot;</span> = <span class="string">&quot;&quot;</span> ]; <span class="keyword">then</span></span><br><span class="line">                <span class="keyword">if</span> [ <span class="string">&quot;<span class="variable">$&#123;var:0:1&#125;</span>&quot;</span> = <span class="string">&quot;/&quot;</span> ]; <span class="keyword">then</span></span><br><span class="line">                	<span class="comment"># Checks whether the command represented by the `$var` is an absolute path or not. </span></span><br><span class="line">                        <span class="keyword">if</span> [ ! -x <span class="string">&quot;<span class="variable">$var</span>&quot;</span> ]; <span class="keyword">then</span></span><br><span class="line">                                <span class="built_in">return</span> 1</span><br><span class="line">                        <span class="keyword">fi</span></span><br><span class="line">                <span class="keyword">elif</span> ! in_path <span class="string">&quot;<span class="variable">$var</span>&quot;</span> <span class="string">&quot;<span class="variable">$PATH</span>&quot;</span>; <span class="keyword">then</span></span><br><span class="line">                        <span class="built_in">return</span> 2</span><br><span class="line">                <span class="keyword">fi</span></span><br><span class="line">        <span class="keyword">fi</span></span><br><span class="line">&#125;</span><br><span class="line"></span><br></pre></td></tr></table></figure>
-
-<h3 id="Positional-parameters"><a href="#Positional-parameters" class="headerlink" title="Positional parameters"></a>Positional parameters</h3><p>See <a href="/2023/04/29/Positional%20Parameters/">here</a></p>
-<blockquote>
-<p><strong><em>A Quick Word</em></strong>  </p>
-<p>It is good practice to put double quotes around variables in Bash because it prevents word splitting and globbing.</p>
-<ul>
-<li><p>Word splitting is the process of breaking up a string into separate words based on whitespace. If a variable contains spaces, without quotes, Bash will treat each space-separated word as a separate argument. This can cause unexpected behavior if the variable is used as an argument to a command.</p>
-</li>
-<li><p>Globbing is the process of expanding wildcard characters such as <code>*</code> and <code>?</code> into a list of matching filenames. If a variable contains a glob character, without quotes, Bash will try to expand it into a list of matching filenames. This can also cause unexpected behavior if the variable is used as an argument to a command.</p>
-</li>
-</ul>
-<p>By putting double quotes around variables, Bash treats the variable as a single argument, preserving any whitespace or glob characters within the variable. This helps to ensure that the variable is interpreted correctly and the script behaves as expected.</p>
-</blockquote>
-<h3 id="Special-variables"><a href="#Special-variables" class="headerlink" title="Special variables"></a>Special variables</h3><p><strong><em><code>$IFS</code></em></strong></p>
-<p>The internal field separator (IFS) is a special variable in Bash that specifies the delimiter used to separate fields in a string. By default, the IFS is set to whitespace (i.e., space, tab, and newline characters).</p>
-<p><strong><em>&#96;$?</em></strong></p>
-<p>Display the return values of functions.</p>
-<figure class="highlight bash"><table><tr><td class="code"><pre><span class="line"><span class="built_in">echo</span> $?</span><br></pre></td></tr></table></figure>
-
-<p>You can use it immediately after calling a function with return value.</p>
-<h3 id="Slice"><a href="#Slice" class="headerlink" title="Slice"></a>Slice</h3><pre><code>[ &quot;$&#123;var:0:1&#125;&quot; = &quot;/&quot; ];
-</code></pre>
-<p>The slicing starts at index <code>0</code> and lasts for the duration of a single character.</p>
-<h3 id="Compare"><a href="#Compare" class="headerlink" title="Compare"></a>Compare</h3><p><strong><em>String comparison</em></strong></p>
-<p><code>=</code> tests if two strings are equal. For example, if <code>[ &quot;$string1&quot; = &quot;$string2&quot; ]</code> would be true if <code>$string1</code> and <code>$string2</code> have the same value.</p>
-<p><strong><em>Pattern matching</em></strong></p>
-<p><code>==</code> tests if a string matches a pattern using globbing, which is a way to match filenames based on wildcard characters. For example, if <code>[[ &quot;$string&quot; == a* ]]</code> would be true if <code>$string</code> starts with the letter “a”.</p>
-]]></content>
-      <categories>
-        <category>Wicked Cool Shell Scripts</category>
-      </categories>
-      <tags>
-        <tag>Linux</tag>
-        <tag>ArchLinux</tag>
-        <tag>Bash</tag>
       </tags>
   </entry>
   <entry>
@@ -1106,6 +1186,55 @@ S: 221 /0:0:0:0:0:0:0:1 Service closing transmission channel
       </tags>
   </entry>
   <entry>
+    <title>如何生成项目树状结构图</title>
+    <url>/2023/04/22/%E5%A6%82%E4%BD%95%E7%94%9F%E6%88%90%E9%A1%B9%E7%9B%AE%E6%A0%91%E7%8A%B6%E7%BB%93%E6%9E%84%E5%9B%BE/</url>
+    <content><![CDATA[<h3 id="Prerequisites"><a href="#Prerequisites" class="headerlink" title="Prerequisites"></a>Prerequisites</h3><ul>
+<li><p>Install <code>tree</code> command via Homebrew by running <code>brew install tree</code></p>
+</li>
+<li><p>run <code>brew</code> to check if Homebrew is currently installed on your computer</p>
+</li>
+<li><p>if not, run the following to install Homebrew:</p>
+</li>
+</ul>
+<figure class="highlight bash"><table><tr><td class="code"><pre><span class="line">$ /bin/bash -c <span class="string">&quot;<span class="subst">$(curl -fsSL https://raw.githubusercontent.com/Homebrew/install/HEAD/install.sh)</span>&quot;</span></span><br></pre></td></tr></table></figure>
+
+<h3 id="Basic-Syntax"><a href="#Basic-Syntax" class="headerlink" title="Basic Syntax"></a>Basic Syntax</h3><figure class="highlight bash"><table><tr><td class="code"><pre><span class="line">tree [directory-path]</span><br></pre></td></tr></table></figure>
+
+<blockquote>
+<p><code>[directory-path]</code> is an optional argument that specifies the directory you want to display as a tree structure. If you don’t specify a directory path, tree will display the tree structure for the current directory.</p>
+</blockquote>
+<p>Here are some useful options you can add to the tree command:</p>
+<blockquote>
+<p><code>-L</code> <code>[level]</code>: Limit the depth of the tree to <code>[level]</code> directories.</p>
+</blockquote>
+<blockquote>
+<p><code>-I</code> <code>[pattern]</code>: Exclude files and directories that match the <code>[pattern]</code>.</p>
+</blockquote>
+<blockquote>
+<p><code>-P</code> <code>[pattern]</code>: <code>[pattern]</code> is used to match files or directories that you want to include in the output.</p>
+</blockquote>
+<blockquote>
+<p><code>-a</code>: Show hidden files and directories.</p>
+</blockquote>
+<blockquote>
+<p><code>-f</code>: Print the full path prefix for each file or directory.</p>
+</blockquote>
+<blockquote>
+<p><code>-h</code>: Print the size of each file or directory in a human-readable format.</p>
+</blockquote>
+<h3 id="Example"><a href="#Example" class="headerlink" title="Example"></a>Example</h3><figure class="highlight bash"><table><tr><td class="code"><pre><span class="line">$ tree -L 1 -P <span class="string">&quot;source/*&quot;</span> -I <span class="string">&quot;_drafts|_pages&quot;</span> <span class="built_in">source</span></span><br><span class="line"></span><br><span class="line"><span class="built_in">source</span></span><br><span class="line">└── _posts</span><br><span class="line"></span><br><span class="line">2 directories, 0 files</span><br></pre></td></tr></table></figure>
+
+<blockquote>
+<p>You can omit the report on the last line with option <code>--noreport</code> if it bothers you.</p>
+</blockquote>
+]]></content>
+      <tags>
+        <tag>Bash</tag>
+        <tag>CLI</tag>
+        <tag>File Systems</tag>
+      </tags>
+  </entry>
+  <entry>
     <title>如何使用 GitHub Pages 托管 Hexo 静态博客网站</title>
     <url>/2023/04/22/%E5%A6%82%E4%BD%95%E4%BD%BF%E7%94%A8%20GitHub%20Pages%20%E6%89%98%E7%AE%A1%20Hexo%20%E9%9D%99%E6%80%81%E5%8D%9A%E5%AE%A2%E7%BD%91%E7%AB%99/</url>
     <content><![CDATA[<p>– <strong>请先阅读 <a href="/2023/04/22/%E4%BD%BF%E7%94%A8%20Hexo%20%E7%94%9F%E6%88%90%E9%9D%99%E6%80%81%E7%BD%91%E9%A1%B5%E5%8D%9A%E5%AE%A2/index.html">使用 Hexo 生成静态网页博客</a>！</strong></p>
@@ -1178,58 +1307,88 @@ S: 221 /0:0:0:0:0:0:0:1 Service closing transmission channel
 <figure class="highlight bash"><table><tr><td class="code"><pre><span class="line">git push origin temp</span><br></pre></td></tr></table></figure>]]></content>
       <tags>
         <tag>Bash</tag>
-        <tag>Git</tag>
         <tag>CLI</tag>
         <tag>File Systems</tag>
+        <tag>Git</tag>
       </tags>
   </entry>
   <entry>
-    <title>如何生成项目树状结构图</title>
-    <url>/2023/04/22/%E5%A6%82%E4%BD%95%E7%94%9F%E6%88%90%E9%A1%B9%E7%9B%AE%E6%A0%91%E7%8A%B6%E7%BB%93%E6%9E%84%E5%9B%BE/</url>
-    <content><![CDATA[<h3 id="Prerequisites"><a href="#Prerequisites" class="headerlink" title="Prerequisites"></a>Prerequisites</h3><ul>
-<li><p>Install <code>tree</code> command via Homebrew by running <code>brew install tree</code></p>
-</li>
-<li><p>run <code>brew</code> to check if Homebrew is currently installed on your computer</p>
-</li>
-<li><p>if not, run the following to install Homebrew:</p>
-</li>
+    <title>软件工程 第三周的博客</title>
+    <url>/2023/04/07/%E8%BD%AF%E4%BB%B6%E5%B7%A5%E7%A8%8B%20%E7%AC%AC%E4%B8%89%E5%91%A8%E7%9A%84%E5%8D%9A%E5%AE%A2/</url>
+    <content><![CDATA[<h2 id="简要概述-CTF-OverTheWire-Bandit-Level-24"><a href="#简要概述-CTF-OverTheWire-Bandit-Level-24" class="headerlink" title="简要概述 CTF OverTheWire Bandit Level 24"></a><em>简要概述 CTF OverTheWire Bandit Level 24</em></h2><h3 id="题目"><a href="#题目" class="headerlink" title="题目"></a><em>题目</em></h3><blockquote>
+<p>在端口 30002 上有一个守护进程正在监听，如果提供了 bandit24 的密码和一个秘密的 4 位数的数字密码，它将为您提供 bandit25 的密码。除了通过穷举全部 10000 种组合的方式以外，没有其他获得 pincode 的方法，这被称为暴力破解。</p>
+</blockquote>
+<p>大致思路如下：</p>
+<ul>
+<li>先写一个<code>script</code>，按要求进行排版输出到<code>stdout</code></li>
+<li>把输出的 10000 种组合<code>pipe</code>到<code>netcat</code>监视的<code>localhost:30002</code>进行测试</li>
+<li>直接输出到<code>stdout</code>可能会<code>timeout</code>打断进程，所以我们输出到<code>output.txt</code></li>
+<li>最后<code>cat</code>文本内容拿到密码</li>
 </ul>
-<figure class="highlight bash"><table><tr><td class="code"><pre><span class="line">$ /bin/bash -c <span class="string">&quot;<span class="subst">$(curl -fsSL https://raw.githubusercontent.com/Homebrew/install/HEAD/install.sh)</span>&quot;</span></span><br></pre></td></tr></table></figure>
+<p>先利用<code>ssh</code>连接到<code>bandit.labs.overthewire.org</code>的服务器，端口号<code>2220</code>，为此我们需要<code>bandit24</code>的密码。</p>
+<figure class="highlight bash"><table><tr><td class="code"><pre><span class="line">ssh bandit24@bandit.labs.overthewire.org -p 2220</span><br><span class="line"><span class="comment">#					VAfGXJ1PBSsPSnvsjI8p759leLZ9GGar</span></span><br></pre></td></tr></table></figure>
 
-<h3 id="Basic-Syntax"><a href="#Basic-Syntax" class="headerlink" title="Basic Syntax"></a>Basic Syntax</h3><figure class="highlight bash"><table><tr><td class="code"><pre><span class="line">tree [directory-path]</span><br></pre></td></tr></table></figure>
-
-<blockquote>
-<p><code>[directory-path]</code> is an optional argument that specifies the directory you want to display as a tree structure. If you don’t specify a directory path, tree will display the tree structure for the current directory.</p>
-</blockquote>
-<p>Here are some useful options you can add to the tree command:</p>
-<blockquote>
-<p><code>-L</code> <code>[level]</code>: Limit the depth of the tree to <code>[level]</code> directories.</p>
-</blockquote>
-<blockquote>
-<p><code>-I</code> <code>[pattern]</code>: Exclude files and directories that match the <code>[pattern]</code>.</p>
-</blockquote>
-<blockquote>
-<p><code>-P</code> <code>[pattern]</code>: <code>[pattern]</code> is used to match files or directories that you want to include in the output.</p>
-</blockquote>
-<blockquote>
-<p><code>-a</code>: Show hidden files and directories.</p>
-</blockquote>
-<blockquote>
-<p><code>-f</code>: Print the full path prefix for each file or directory.</p>
-</blockquote>
-<blockquote>
-<p><code>-h</code>: Print the size of each file or directory in a human-readable format.</p>
-</blockquote>
-<h3 id="Example"><a href="#Example" class="headerlink" title="Example"></a>Example</h3><figure class="highlight bash"><table><tr><td class="code"><pre><span class="line">$ tree -L 1 -P <span class="string">&quot;source/*&quot;</span> -I <span class="string">&quot;_drafts|_pages&quot;</span> <span class="built_in">source</span></span><br><span class="line"></span><br><span class="line"><span class="built_in">source</span></span><br><span class="line">└── _posts</span><br><span class="line"></span><br><span class="line">2 directories, 0 files</span><br></pre></td></tr></table></figure>
+<p>以<code>bandit24</code>进入 Level 24 之后先到系统文件夹<code>/tmp</code>下建立本关的临时文件夹。</p>
+<figure class="highlight bash"><table><tr><td class="code"><pre><span class="line"><span class="built_in">cd</span> /tmp; <span class="built_in">mktemp</span> -d</span><br><span class="line"></span><br><span class="line"><span class="comment"># /tmp/tmp.u4oQlmpmWL</span></span><br><span class="line"></span><br><span class="line"><span class="built_in">cd</span> /tmp/tmp.u4oQlmpmWL</span><br><span class="line"></span><br><span class="line"><span class="comment"># bandit24@bandit:/tmp/tmp.u4oQlmpmWL$</span></span><br></pre></td></tr></table></figure>
 
 <blockquote>
-<p>You can omit the report on the last line with option <code>--noreport</code> if it bothers you.</p>
+<p><code>-d</code>代表<code>directory</code>，即告诉<code>mktemp</code>指令创建的临时文件属性为文件夹</p>
 </blockquote>
+<figure class="highlight bash"><table><tr><td class="code"><pre><span class="line"><span class="built_in">touch</span> script.sh</span><br><span class="line"></span><br><span class="line"><span class="built_in">chmod</span> 777 script.sh</span><br><span class="line"></span><br><span class="line">vim script.sh</span><br></pre></td></tr></table></figure>
+
+<blockquote>
+<p><code>touch</code>: 创建文件</p>
+</blockquote>
+<blockquote>
+<p><code>chmod</code> - <code>change mode</code>: 改变文档<code>rwx</code>权限</p>
+</blockquote>
+<ul>
+<li><code>r</code> - <code>read</code>: 读取权限<code>status code</code>为 4</li>
+<li><code>w</code> - <code>write</code>: 书写权限<code>status code</code>为 2</li>
+<li><code>x</code> - <code>execute</code>: 执行权限<code>status code</code>为 1</li>
+</ul>
+<p>进入文本编辑器之后，选定”插入“模式，按<code>i</code>键</p>
+<p>首行书写<code>shebang</code>行，选定使用哪个<code>shell</code>来执行该<code>script</code> - 我们选用<code>bash</code></p>
+<p>然后写我们的<code>entity body</code>的代码：</p>
+<figure class="highlight bash"><table><tr><td class="code"><pre><span class="line"><span class="meta">#!/bin/bash</span></span><br><span class="line"></span><br><span class="line"><span class="keyword">for</span> i <span class="keyword">in</span> &#123;0000..9999&#125;; <span class="keyword">do</span></span><br><span class="line">        <span class="built_in">echo</span> <span class="variable">$i</span></span><br><span class="line">        <span class="built_in">printf</span> <span class="string">&quot;%s %s\n&quot;</span> <span class="string">&quot;VAfGXJ1PBSsPSnvsjI8p759leLZ9GGar&quot;</span> <span class="string">&quot;<span class="variable">$i</span>&quot;</span></span><br><span class="line"><span class="keyword">done</span></span><br><span class="line"></span><br><span class="line"><span class="built_in">exit</span> 0</span><br><span class="line"></span><br></pre></td></tr></table></figure>
+
+<p>除了语法上微小的一点差异，该题的<code>syntax</code>和<code>C</code>的语法很相像，所以不赘述了。</p>
+<p>大致格式就是<code>for [ test statement]; do &lt;command&gt;; done</code></p>
+<p>编辑结束按<code>ESC</code>键回到普通模式，按<code>:</code>,然后输入指令<code>wq</code>，回车保存并退出。</p>
+<p>执行<code>script.sh</code>，并把结果<code>pipe</code>到<code>netcat</code>:</p>
+<figure class="highlight bash"><table><tr><td class="code"><pre><span class="line">./script.sh | nc localhost 30002 &gt; output.txt</span><br></pre></td></tr></table></figure>
+
+<p>然后<code>cat output.txt</code>读取文本内容，这是其中的一小部分：</p>
+<pre>
+        Fail! You did not supply enough data. Try again.
+        Wrong! Please enter the correct pincode. Try again.
+        Fail! You did not supply enough data. Try again.
+        Wrong! Please enter the correct pincode. Try again.
+        Fail! You did not supply enough data. Try again.
+        Wrong! Please enter the correct pincode. Try again.
+        Fail! You did not supply enough data. Try again.
+        Wrong! Please enter the correct pincode. Try again.
+        Fail! You did not supply enough data. Try again.
+        Wrong! Please enter the correct pincode. Try again.
+        Fail! You did not supply enough data. Try again.
+        Wrong! Please enter the correct pincode. Try again.
+        Fail! You did not supply enough data. Try again.
+        Wrong! Please enter the correct pincode. Try again.
+        Fail! You did not supply enough data. Try again.
+        Wrong! Please enter the correct pincode. Try again.
+        Fail! You did not supply enough data. Try again.
+        Correct!
+        The password of user bandit25 is p7TaowMYrmu23Ol8hiZh9UvD0O9hpx8d
+
+        Exiting.
+</pre>
+
 ]]></content>
       <tags>
         <tag>Bash</tag>
-        <tag>CLI</tag>
-        <tag>File Systems</tag>
+        <tag>CTF</tag>
+        <tag>OverTheWire</tag>
+        <tag>Bandit</tag>
       </tags>
   </entry>
   <entry>
@@ -1319,100 +1478,6 @@ Connection to localhost closed.
       </tags>
   </entry>
   <entry>
-    <title>软件工程 第三周的博客</title>
-    <url>/2023/04/07/%E8%BD%AF%E4%BB%B6%E5%B7%A5%E7%A8%8B%20%E7%AC%AC%E4%B8%89%E5%91%A8%E7%9A%84%E5%8D%9A%E5%AE%A2/</url>
-    <content><![CDATA[<h2 id="简要概述-CTF-OverTheWire-Bandit-Level-24"><a href="#简要概述-CTF-OverTheWire-Bandit-Level-24" class="headerlink" title="简要概述 CTF OverTheWire Bandit Level 24"></a><em>简要概述 CTF OverTheWire Bandit Level 24</em></h2><h3 id="题目"><a href="#题目" class="headerlink" title="题目"></a><em>题目</em></h3><blockquote>
-<p>在端口 30002 上有一个守护进程正在监听，如果提供了 bandit24 的密码和一个秘密的 4 位数的数字密码，它将为您提供 bandit25 的密码。除了通过穷举全部 10000 种组合的方式以外，没有其他获得 pincode 的方法，这被称为暴力破解。</p>
-</blockquote>
-<p>大致思路如下：</p>
-<ul>
-<li>先写一个<code>script</code>，按要求进行排版输出到<code>stdout</code></li>
-<li>把输出的 10000 种组合<code>pipe</code>到<code>netcat</code>监视的<code>localhost:30002</code>进行测试</li>
-<li>直接输出到<code>stdout</code>可能会<code>timeout</code>打断进程，所以我们输出到<code>output.txt</code></li>
-<li>最后<code>cat</code>文本内容拿到密码</li>
-</ul>
-<p>先利用<code>ssh</code>连接到<code>bandit.labs.overthewire.org</code>的服务器，端口号<code>2220</code>，为此我们需要<code>bandit24</code>的密码。</p>
-<figure class="highlight bash"><table><tr><td class="code"><pre><span class="line">ssh bandit24@bandit.labs.overthewire.org -p 2220</span><br><span class="line"><span class="comment">#					VAfGXJ1PBSsPSnvsjI8p759leLZ9GGar</span></span><br></pre></td></tr></table></figure>
-
-<p>以<code>bandit24</code>进入 Level 24 之后先到系统文件夹<code>/tmp</code>下建立本关的临时文件夹。</p>
-<figure class="highlight bash"><table><tr><td class="code"><pre><span class="line"><span class="built_in">cd</span> /tmp; <span class="built_in">mktemp</span> -d</span><br><span class="line"></span><br><span class="line"><span class="comment"># /tmp/tmp.u4oQlmpmWL</span></span><br><span class="line"></span><br><span class="line"><span class="built_in">cd</span> /tmp/tmp.u4oQlmpmWL</span><br><span class="line"></span><br><span class="line"><span class="comment"># bandit24@bandit:/tmp/tmp.u4oQlmpmWL$</span></span><br></pre></td></tr></table></figure>
-
-<blockquote>
-<p><code>-d</code>代表<code>directory</code>，即告诉<code>mktemp</code>指令创建的临时文件属性为文件夹</p>
-</blockquote>
-<figure class="highlight bash"><table><tr><td class="code"><pre><span class="line"><span class="built_in">touch</span> script.sh</span><br><span class="line"></span><br><span class="line"><span class="built_in">chmod</span> 777 script.sh</span><br><span class="line"></span><br><span class="line">vim script.sh</span><br></pre></td></tr></table></figure>
-
-<blockquote>
-<p><code>touch</code>: 创建文件</p>
-</blockquote>
-<blockquote>
-<p><code>chmod</code> - <code>change mode</code>: 改变文档<code>rwx</code>权限</p>
-</blockquote>
-<ul>
-<li><code>r</code> - <code>read</code>: 读取权限<code>status code</code>为 4</li>
-<li><code>w</code> - <code>write</code>: 书写权限<code>status code</code>为 2</li>
-<li><code>x</code> - <code>execute</code>: 执行权限<code>status code</code>为 1</li>
-</ul>
-<p>进入文本编辑器之后，选定”插入“模式，按<code>i</code>键</p>
-<p>首行书写<code>shebang</code>行，选定使用哪个<code>shell</code>来执行该<code>script</code> - 我们选用<code>bash</code></p>
-<p>然后写我们的<code>entity body</code>的代码：</p>
-<figure class="highlight bash"><table><tr><td class="code"><pre><span class="line"><span class="meta">#!/bin/bash</span></span><br><span class="line"></span><br><span class="line"><span class="keyword">for</span> i <span class="keyword">in</span> &#123;0000..9999&#125;; <span class="keyword">do</span></span><br><span class="line">        <span class="built_in">echo</span> <span class="variable">$i</span></span><br><span class="line">        <span class="built_in">printf</span> <span class="string">&quot;%s %s\n&quot;</span> <span class="string">&quot;VAfGXJ1PBSsPSnvsjI8p759leLZ9GGar&quot;</span> <span class="string">&quot;<span class="variable">$i</span>&quot;</span></span><br><span class="line"><span class="keyword">done</span></span><br><span class="line"></span><br><span class="line"><span class="built_in">exit</span> 0</span><br><span class="line"></span><br></pre></td></tr></table></figure>
-
-<p>除了语法上微小的一点差异，该题的<code>syntax</code>和<code>C</code>的语法很相像，所以不赘述了。</p>
-<p>大致格式就是<code>for [ test statement]; do &lt;command&gt;; done</code></p>
-<p>编辑结束按<code>ESC</code>键回到普通模式，按<code>:</code>,然后输入指令<code>wq</code>，回车保存并退出。</p>
-<p>执行<code>script.sh</code>，并把结果<code>pipe</code>到<code>netcat</code>:</p>
-<figure class="highlight bash"><table><tr><td class="code"><pre><span class="line">./script.sh | nc localhost 30002 &gt; output.txt</span><br></pre></td></tr></table></figure>
-
-<p>然后<code>cat output.txt</code>读取文本内容，这是其中的一小部分：</p>
-<pre>
-        Fail! You did not supply enough data. Try again.
-        Wrong! Please enter the correct pincode. Try again.
-        Fail! You did not supply enough data. Try again.
-        Wrong! Please enter the correct pincode. Try again.
-        Fail! You did not supply enough data. Try again.
-        Wrong! Please enter the correct pincode. Try again.
-        Fail! You did not supply enough data. Try again.
-        Wrong! Please enter the correct pincode. Try again.
-        Fail! You did not supply enough data. Try again.
-        Wrong! Please enter the correct pincode. Try again.
-        Fail! You did not supply enough data. Try again.
-        Wrong! Please enter the correct pincode. Try again.
-        Fail! You did not supply enough data. Try again.
-        Wrong! Please enter the correct pincode. Try again.
-        Fail! You did not supply enough data. Try again.
-        Wrong! Please enter the correct pincode. Try again.
-        Fail! You did not supply enough data. Try again.
-        Correct!
-        The password of user bandit25 is p7TaowMYrmu23Ol8hiZh9UvD0O9hpx8d
-
-        Exiting.
-</pre>
-
-]]></content>
-      <tags>
-        <tag>Bash</tag>
-        <tag>CTF</tag>
-        <tag>OverTheWire</tag>
-        <tag>Bandit</tag>
-      </tags>
-  </entry>
-  <entry>
-    <title>Immediately Executing Function Demo</title>
-    <url>/2023/04/27/Immediately%20Executing%20Function%20Demo/</url>
-    <content><![CDATA[<p>The key aspect of this demo is that the utilization of an immediately executing function in JavaScript generates a fresh variable scope, which distinguishes it from <code>if</code>, <code>else</code>, and <code>while</code>. The code presented below exemplifies this fact.</p>
-<figure class="highlight javascript"><table><tr><td class="code"><pre><span class="line"><span class="keyword">var</span> foo = <span class="number">123</span></span><br><span class="line"></span><br><span class="line"><span class="keyword">if</span> (<span class="number">1</span>) &#123;</span><br><span class="line">    <span class="keyword">var</span> foo = <span class="number">456</span></span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line">(<span class="function"><span class="params">_</span> =&gt;</span> &#123;</span><br><span class="line">    <span class="keyword">var</span> foo = <span class="number">123</span></span><br><span class="line">&#125;)()</span><br><span class="line"></span><br><span class="line"><span class="variable language_">console</span>.<span class="title function_">log</span>(foo)</span><br><span class="line"></span><br></pre></td></tr></table></figure>
-
-<p>Output:</p>
-<pre><code>456
-</code></pre>
-<p>Notice how the function does not reset the value of variable <code>foo</code>? Now that’s something to be mindful of!</p>
-]]></content>
-      <categories>
-        <category>JavaScript</category>
-      </categories>
-  </entry>
-  <entry>
     <title>软件工程 第二周的博客</title>
     <url>/2023/03/29/%E8%BD%AF%E4%BB%B6%E5%B7%A5%E7%A8%8B%20%E7%AC%AC%E4%BA%8C%E5%91%A8%E7%9A%84%E5%8D%9A%E5%AE%A2/</url>
     <content><![CDATA[<h3 id="使用-Node-js-的-Express-js-模组-Host-自己的静态网页"><a href="#使用-Node-js-的-Express-js-模组-Host-自己的静态网页" class="headerlink" title="使用 Node.js 的 Express.js 模组 Host 自己的静态网页"></a><em>使用 Node.js 的 Express.js 模组 Host 自己的静态网页</em></h3><p>首先创建项目文件夹:</p>
@@ -1452,71 +1517,6 @@ Connection to localhost closed.
         <tag>JavaScript</tag>
         <tag>Node.js</tag>
         <tag>Express.js</tag>
-      </tags>
-  </entry>
-  <entry>
-    <title>Dead Cells：Unlocking Daily Challenge blueprints</title>
-    <url>/2023/05/03/Dead%20Cells%EF%BC%9AUnlocking%20Daily%20Challenge%20blueprints/</url>
-    <content><![CDATA[<p>The Daily Challenge mode boasts a significant player base, even compared to other popular modes, and offers several exclusive weapons to boot. However, this is bad news for us freeloaders who, through various means, gained access to the game without ever paying the publisher a single cent. Some may consider piracy bad practice, but to be honest, I’m broke as f*ck.</p>
-<p>Since we can’t do the challenge runs like the normal person would, I find it not much of a stretch to hack the game a bit further.</p>
-<h3 id="Overview"><a href="#Overview" class="headerlink" title="Overview"></a>Overview</h3><p>The approach we’re taking is to assign the blueprints to a chosen enemy. Naturally we’d want to assign it to an enemy we frequently run into and have a decent drop rate. It so happens that the zombie fits our description perfectly.</p>
-<p>Let us have a look at the relevant part of its JSON description:</p>
-<figure class="highlight json"><table><tr><td class="code"><pre><span class="line"><span class="attr">&quot;name&quot;</span><span class="punctuation">:</span> <span class="string">&quot;Zombie&quot;</span><span class="punctuation">,</span></span><br><span class="line"><span class="attr">&quot;score&quot;</span><span class="punctuation">:</span> <span class="number">2</span><span class="punctuation">,</span></span><br><span class="line"><span class="attr">&quot;maxPerRoom&quot;</span><span class="punctuation">:</span> <span class="number">0</span><span class="punctuation">,</span></span><br><span class="line"><span class="attr">&quot;canBeElite&quot;</span><span class="punctuation">:</span> <span class="literal"><span class="keyword">true</span></span><span class="punctuation">,</span></span><br><span class="line"><span class="attr">&quot;glowInnerColor&quot;</span><span class="punctuation">:</span> <span class="number">11197250</span><span class="punctuation">,</span></span><br><span class="line"><span class="attr">&quot;volteDelay&quot;</span><span class="punctuation">:</span> <span class="number">1</span><span class="punctuation">,</span></span><br><span class="line"><span class="attr">&quot;flesh1&quot;</span><span class="punctuation">:</span> <span class="number">5669211</span><span class="punctuation">,</span></span><br><span class="line"><span class="attr">&quot;flesh2&quot;</span><span class="punctuation">:</span> <span class="number">12303527</span><span class="punctuation">,</span></span><br><span class="line"><span class="attr">&quot;pfCost&quot;</span><span class="punctuation">:</span> <span class="number">0.5</span><span class="punctuation">,</span></span><br><span class="line"><span class="attr">&quot;blueprints&quot;</span><span class="punctuation">:</span> <span class="punctuation">[</span></span><br><span class="line">	<span class="punctuation">&#123;</span></span><br><span class="line">		<span class="attr">&quot;item&quot;</span><span class="punctuation">:</span> <span class="string">&quot;HorizontalTurret&quot;</span><span class="punctuation">,</span></span><br><span class="line">		<span class="attr">&quot;rarity&quot;</span><span class="punctuation">:</span> <span class="string">&quot;Rare&quot;</span><span class="punctuation">,</span></span><br><span class="line">		<span class="attr">&quot;minDifficulty&quot;</span><span class="punctuation">:</span> <span class="number">0</span></span><br><span class="line">	<span class="punctuation">&#125;</span><span class="punctuation">,</span></span><br><span class="line">	<span class="punctuation">&#123;</span></span><br><span class="line">		<span class="attr">&quot;item&quot;</span><span class="punctuation">:</span> <span class="string">&quot;Bleeder&quot;</span><span class="punctuation">,</span></span><br><span class="line">		<span class="attr">&quot;rarity&quot;</span><span class="punctuation">:</span> <span class="string">&quot;Always&quot;</span><span class="punctuation">,</span></span><br><span class="line">		<span class="attr">&quot;minDifficulty&quot;</span><span class="punctuation">:</span> <span class="number">0</span></span><br><span class="line">	<span class="punctuation">&#125;</span><span class="punctuation">,</span></span><br><span class="line">	<span class="punctuation">&#123;</span></span><br><span class="line">		<span class="attr">&quot;rarity&quot;</span><span class="punctuation">:</span> <span class="string">&quot;Rare&quot;</span><span class="punctuation">,</span></span><br><span class="line">		<span class="attr">&quot;minDifficulty&quot;</span><span class="punctuation">:</span> <span class="number">1</span><span class="punctuation">,</span></span><br><span class="line">		<span class="attr">&quot;item&quot;</span><span class="punctuation">:</span> <span class="string">&quot;PrisonerBobby&quot;</span></span><br><span class="line">	<span class="punctuation">&#125;</span></span><br><span class="line"><span class="punctuation">]</span></span><br></pre></td></tr></table></figure>
-
-<p><code>Bleeder</code> is the internal name for <code>Blood Sword</code>, which is typically the first blueprint obtained by Dead Cells players on their initial run. As such, it can be readily exchanged for an item of our preference.</p>
-<div style="display: block; margin-left: auto; margin-right: auto; text-align: center; font-size: 1rem;">
-
-<p><img src="/2023/05/03/Dead%20Cells%EF%BC%9AUnlocking%20Daily%20Challenge%20blueprints/images/Blood%20Sword.png" alt="Blood Sword" title="Blood Sword"></p>
-<p><span>Blood Sword</span></p>
-</div>
-
-<h4 id="Targets"><a href="#Targets" class="headerlink" title="Targets:"></a>Targets:</h4><ol>
-<li><em>Swift Sword</em> (internal name <code>SpeedBlade</code>) - first run</li>
-<li><em>Lacerating Aura</em> (internal name <code>DamageAura</code>) - 5th run</li>
-<li><em>Meat Skewer</em> (internal name <code>DashSword</code>) - 10th run</li>
-</ol>
-<p>Visit <a href="https://deadcells.fandom.com/wiki/Dead_Cells_Wiki">the official wiki page</a> for more information!</p>
-<h3 id="CellPacker"><a href="#CellPacker" class="headerlink" title="CellPacker"></a>CellPacker</h3><p>I use CellPacker to extract the <code>data.cdb</code> file so as to avoid having to read from the hexdump. It is a lot more comfortable to inspect an formatted JSON file!</p>
-<div style="display: block; margin-left: auto; margin-right: auto; text-align: center; font-size: 1rem;">
-
-<p><img src="/2023/05/03/Dead%20Cells%EF%BC%9AUnlocking%20Daily%20Challenge%20blueprints/images/CellPacker.png" alt="CellPacker" title="CellPacker"></p>
-<p><span>CellPacker</span></p>
-</div>
-
-<p>We <em>can</em> open CellPacker by double-clicking <code>CellPacker.jar</code>, however I suggest running the following command to avoid headaches:</p>
-<figure class="highlight bash"><table><tr><td class="code"><pre><span class="line">java -jar /path/to/CellPacker.jar</span><br></pre></td></tr></table></figure>
-
-<p>GitHub Repo: <a href="https://github.com/ReBuilders101/CellPacker" title="ReBuilders101/CellPacker Repo">ReBuilders101&#x2F;CellPacker</a></p>
-<p>Click <a href="https://github.com/ReBuilders101/CellPacker/raw/master/release/CellPacker.jar" title="CellPacker.jar">here</a> to install <code>CellPacker.jar</code>.</p>
-<h3 id="res-pak"><a href="#res-pak" class="headerlink" title="res.pak"></a><em><code>res.pak</code></em></h3><p>As the name suggests, the <code>res.pak</code> is the resource pack for the game itself and contains every aspect of what the graphics and cutscenes require to load. It also contains the <code>json</code> data files which store the underlying logic behind the interactions in the game.</p>
-<p>To hack it, we need a hexdump editor. I use <code>ghex</code> because it’s fairly simple and easy to use. We can install it on our MacBook via Homebrew, using the following command:</p>
-<figure class="highlight bash"><table><tr><td class="code"><pre><span class="line">brew install ghex</span><br></pre></td></tr></table></figure>
-
-<blockquote>
-<p><strong><em>Note:</em></strong><br>Before we begin the actual editing process, make sure you have a copy of your game saves and the resource pack we’re editing on. This is in case we make a mistake and corrupt the files.</p>
-</blockquote>
-<h3 id="ghex"><a href="#ghex" class="headerlink" title="ghex"></a><em><code>ghex</code></em></h3><p>Run <code>ghex</code> in Terminal and open <code>res.pak</code>. Locate <code>Bleeder</code> and replace it with the internal name of any of the three daily challenge blueprints.</p>
-<div style="display: block; margin-left: auto; margin-right: auto; text-align: center; font-size: 1rem;">
-
-<p><img src="/2023/05/03/Dead%20Cells%EF%BC%9AUnlocking%20Daily%20Challenge%20blueprints/images/Before.png" alt="Before" title="Before"></p>
-</div>
-
-<p>Please note that the resulting file must remain the same size as the original. Making significant changes will only complicate matters. For instance, <code>Bleeder</code> has 7 characters, while <code>SpeedBlade</code> and <code>DamageAura</code> have 10, and <code>DashSword</code> has 9. To address this discrepancy, I reduced the length of “Zombie” by the difference. Here’s an example:</p>
-<div style="display: block; margin-left: auto; margin-right: auto; text-align: center; font-size: 1rem;">
-
-<p><img src="/2023/05/03/Dead%20Cells%EF%BC%9AUnlocking%20Daily%20Challenge%20blueprints/images/After.png" alt="After" title="After"></p>
-</div>
-
-<hr>
-<h3 id="References"><a href="#References" class="headerlink" title="References"></a>References</h3><ul>
-<li>Sebadorn’s Blog: <a href="https://sebadorn.de/2021/06/28/dead-cells-unlocking-the-daily-challenge-blueprints-in-the-bugged-linux-gog-version" title="Unlocking the Daily Challenge blueprints in the bugged Linux GOG version">2021.06.28</a></li>
-</ul>
-]]></content>
-      <categories>
-        <category>Games</category>
-      </categories>
-      <tags>
-        <tag>Dead Cells</tag>
       </tags>
   </entry>
 </search>
