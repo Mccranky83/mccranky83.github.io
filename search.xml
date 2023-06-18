@@ -1,6 +1,25 @@
 <?xml version="1.0" encoding="utf-8"?>
 <search>
   <entry>
+    <title>7-2-Java-基本语法-大整数相加</title>
+    <url>/2023/04/24/7-2-Java-%E5%9F%BA%E6%9C%AC%E8%AF%AD%E6%B3%95-%E5%A4%A7%E6%95%B4%E6%95%B0%E7%9B%B8%E5%8A%A0/</url>
+    <content><![CDATA[<h3 id="题目"><a href="#题目" class="headerlink" title="题目"></a>题目</h3><p>有若干大整数，需要对其进行求和操作。</p>
+<h3 id="输入格式"><a href="#输入格式" class="headerlink" title="输入格式"></a>输入格式</h3><p>每行输入一个字符串代表一个大整数，连续输入若干行，当某行字符为e或E时退出。</p>
+<h3 id="输入样例"><a href="#输入样例" class="headerlink" title="输入样例:"></a>输入样例:</h3><figure class="highlight plaintext"><table><tr><td class="code"><pre><span class="line">42846280183517070527831839425882145521227251250327</span><br><span class="line">55121603546981200581762165212827652751691296897789</span><br><span class="line">e</span><br></pre></td></tr></table></figure>
+
+<h3 id="输出样例"><a href="#输出样例" class="headerlink" title="输出样例:"></a>输出样例:</h3><figure class="highlight plaintext"><table><tr><td class="code"><pre><span class="line">97967883730498271109594004638709798272918548148116</span><br></pre></td></tr></table></figure>
+
+<h3 id="JavaScript"><a href="#JavaScript" class="headerlink" title="JavaScript"></a>JavaScript</h3><figure class="highlight javascript"><table><tr><td class="code"><pre><span class="line"><span class="keyword">const</span> readline = <span class="built_in">require</span>(<span class="string">&#x27;readline&#x27;</span>)</span><br><span class="line"><span class="keyword">const</span> rl = readline.<span class="title function_">createInterface</span>(&#123;</span><br><span class="line">    <span class="attr">input</span>: process.<span class="property">stdin</span>,</span><br><span class="line">    <span class="attr">output</span>: process.<span class="property">stdout</span></span><br><span class="line">&#125;)</span><br><span class="line"></span><br><span class="line"><span class="keyword">let</span> sum = <span class="title class_">BigInt</span>(<span class="number">0</span>)</span><br><span class="line"></span><br><span class="line">rl.<span class="title function_">on</span>(<span class="string">&#x27;line&#x27;</span>, <span class="function"><span class="params">line</span> =&gt;</span> &#123;</span><br><span class="line">    <span class="keyword">if</span> (!line.<span class="title function_">localeCompare</span>(<span class="string">&quot;e&quot;</span>, <span class="literal">undefined</span>, &#123; <span class="attr">sensitivity</span>: <span class="string">&quot;base&quot;</span> &#125;)) &#123;</span><br><span class="line">        <span class="variable language_">console</span>.<span class="title function_">log</span>(sum.<span class="title function_">toString</span>())</span><br><span class="line">        rl.<span class="title function_">close</span>()</span><br><span class="line">    &#125; <span class="keyword">else</span> &#123;</span><br><span class="line">        sum += <span class="title class_">BigInt</span>(line)</span><br><span class="line">    &#125;</span><br><span class="line">&#125;)</span><br></pre></td></tr></table></figure>
+
+<h3 id="Java"><a href="#Java" class="headerlink" title="Java"></a>Java</h3><figure class="highlight java"><table><tr><td class="code"><pre><span class="line"><span class="keyword">import</span> java.util.Scanner;</span><br><span class="line"><span class="keyword">import</span> java.math.BigInteger;</span><br><span class="line"></span><br><span class="line"><span class="keyword">public</span> <span class="keyword">class</span> <span class="title class_">Main</span> &#123;</span><br><span class="line">    <span class="keyword">public</span> <span class="keyword">static</span> <span class="keyword">void</span> <span class="title function_">main</span> <span class="params">(String[] args)</span> &#123;</span><br><span class="line">        <span class="type">Scanner</span> <span class="variable">scanner</span> <span class="operator">=</span> <span class="keyword">new</span> <span class="title class_">Scanner</span>(System.in);</span><br><span class="line">        <span class="type">BigInteger</span> <span class="variable">sum</span> <span class="operator">=</span> BigInteger.ZERO;</span><br><span class="line"></span><br><span class="line">        <span class="keyword">while</span> (scanner.hasNextLine()) &#123;</span><br><span class="line">            <span class="type">String</span> <span class="variable">line</span> <span class="operator">=</span> scanner.nextLine();</span><br><span class="line">            <span class="keyword">if</span> (line.equalsIgnoreCase(<span class="string">&quot;e&quot;</span>)) &#123;</span><br><span class="line">                System.out.println(sum.toString());</span><br><span class="line">                <span class="keyword">break</span>;</span><br><span class="line">            &#125; <span class="keyword">else</span> &#123;</span><br><span class="line">                sum = sum.add(<span class="keyword">new</span> <span class="title class_">BigInteger</span>(line));</span><br><span class="line">            &#125;</span><br><span class="line">        &#125;</span><br><span class="line">        scanner.close();</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>]]></content>
+      <tags>
+        <tag>Java</tag>
+        <tag>JavaScript</tag>
+        <tag>BigInt</tag>
+        <tag>readline</tag>
+      </tags>
+  </entry>
+  <entry>
     <title>C++ Pointers</title>
     <url>/2023/04/29/C++%20Pointers/</url>
     <content><![CDATA[<h3 id="Array-of-pointers-to-ints"><a href="#Array-of-pointers-to-ints" class="headerlink" title="Array of pointers to ints"></a>Array of pointers to ints</h3><p><strong>Code:</strong></p>
@@ -54,22 +73,31 @@ hello this is bar
       </tags>
   </entry>
   <entry>
-    <title>7-2-Java-基本语法-大整数相加</title>
-    <url>/2023/04/24/7-2-Java-%E5%9F%BA%E6%9C%AC%E8%AF%AD%E6%B3%95-%E5%A4%A7%E6%95%B4%E6%95%B0%E7%9B%B8%E5%8A%A0/</url>
-    <content><![CDATA[<h3 id="题目"><a href="#题目" class="headerlink" title="题目"></a>题目</h3><p>有若干大整数，需要对其进行求和操作。</p>
-<h3 id="输入格式"><a href="#输入格式" class="headerlink" title="输入格式"></a>输入格式</h3><p>每行输入一个字符串代表一个大整数，连续输入若干行，当某行字符为e或E时退出。</p>
-<h3 id="输入样例"><a href="#输入样例" class="headerlink" title="输入样例:"></a>输入样例:</h3><figure class="highlight plaintext"><table><tr><td class="code"><pre><span class="line">42846280183517070527831839425882145521227251250327</span><br><span class="line">55121603546981200581762165212827652751691296897789</span><br><span class="line">e</span><br></pre></td></tr></table></figure>
+    <title>Dabbling with Puppeteer</title>
+    <url>/2023/04/27/Dabbling%20with%20Puppeteer/</url>
+    <content><![CDATA[<p>Puppeteer is a Node.js library that provides a high-level API to control headless Chrome or Chromium browsers. It is widely used for web scraping, testing, and automation, and is an essential tool for many developers who work with web applications.</p>
+<blockquote>
+<p>Note that I’ll be demonstrating on ArchLinux</p>
+</blockquote>
+<p>Because Puppeteer relys on Node.js, the first thing we do is create a project directory and initiate <code>npm</code>.</p>
+<figure class="highlight bash"><table><tr><td class="code"><pre><span class="line"><span class="built_in">mkdir</span> puppeteer-project;</span><br><span class="line"></span><br><span class="line"><span class="built_in">cd</span> puppeteer-project;</span><br><span class="line"></span><br><span class="line">npm init -y</span><br><span class="line"></span><br><span class="line">npm i puppeteer --save</span><br><span class="line"></span><br><span class="line">sudo pacman -S libx11 libxcomposite libxdamage libxext libxi libxtst nss freetype2 harfbuzz</span><br><span class="line"></span><br><span class="line"><span class="comment"># Puppeteer requires some additional dependencies to be installed</span></span><br><span class="line"></span><br></pre></td></tr></table></figure>
 
-<h3 id="输出样例"><a href="#输出样例" class="headerlink" title="输出样例:"></a>输出样例:</h3><figure class="highlight plaintext"><table><tr><td class="code"><pre><span class="line">97967883730498271109594004638709798272918548148116</span><br></pre></td></tr></table></figure>
+<p>Now we write our script:</p>
+<figure class="highlight bash"><table><tr><td class="code"><pre><span class="line">vim puppeteer.js</span><br></pre></td></tr></table></figure>
 
-<h3 id="JavaScript"><a href="#JavaScript" class="headerlink" title="JavaScript"></a>JavaScript</h3><figure class="highlight javascript"><table><tr><td class="code"><pre><span class="line"><span class="keyword">const</span> readline = <span class="built_in">require</span>(<span class="string">&#x27;readline&#x27;</span>)</span><br><span class="line"><span class="keyword">const</span> rl = readline.<span class="title function_">createInterface</span>(&#123;</span><br><span class="line">    <span class="attr">input</span>: process.<span class="property">stdin</span>,</span><br><span class="line">    <span class="attr">output</span>: process.<span class="property">stdout</span></span><br><span class="line">&#125;)</span><br><span class="line"></span><br><span class="line"><span class="keyword">let</span> sum = <span class="title class_">BigInt</span>(<span class="number">0</span>)</span><br><span class="line"></span><br><span class="line">rl.<span class="title function_">on</span>(<span class="string">&#x27;line&#x27;</span>, <span class="function"><span class="params">line</span> =&gt;</span> &#123;</span><br><span class="line">    <span class="keyword">if</span> (!line.<span class="title function_">localeCompare</span>(<span class="string">&quot;e&quot;</span>, <span class="literal">undefined</span>, &#123; <span class="attr">sensitivity</span>: <span class="string">&quot;base&quot;</span> &#125;)) &#123;</span><br><span class="line">        <span class="variable language_">console</span>.<span class="title function_">log</span>(sum.<span class="title function_">toString</span>())</span><br><span class="line">        rl.<span class="title function_">close</span>()</span><br><span class="line">    &#125; <span class="keyword">else</span> &#123;</span><br><span class="line">        sum += <span class="title class_">BigInt</span>(line)</span><br><span class="line">    &#125;</span><br><span class="line">&#125;)</span><br></pre></td></tr></table></figure>
+<p>The script should be on the lines of this template:</p>
+<figure class="highlight javascript"><table><tr><td class="code"><pre><span class="line"><span class="keyword">const</span> puppeteer = <span class="built_in">require</span>(<span class="string">&#x27;puppeteer&#x27;</span>);</span><br><span class="line"></span><br><span class="line">(<span class="keyword">async</span> () =&gt; &#123;</span><br><span class="line">  <span class="keyword">const</span> browser = <span class="keyword">await</span> puppeteer.<span class="title function_">launch</span>(&#123;</span><br><span class="line">  	<span class="attr">executablePath</span>: <span class="string">&#x27;/usr/bin/chromium&#x27;</span>,</span><br><span class="line"></span><br><span class="line">  	<span class="comment">// We can also drop this line and instead, set an environment variable in Bash.</span></span><br><span class="line"></span><br><span class="line">  	<span class="comment">// `$ export PUPPETEER_EXECUTABLE_PATH=/usr/bin/chromium`</span></span><br><span class="line"></span><br><span class="line">  	<span class="attr">headless</span>: <span class="literal">true</span></span><br><span class="line">  &#125;);</span><br><span class="line">  <span class="keyword">const</span> page = <span class="keyword">await</span> browser.<span class="title function_">newPage</span>();</span><br><span class="line">  <span class="keyword">await</span> page.<span class="title function_">goto</span>(<span class="string">&#x27;https://www.example.com&#x27;</span>);</span><br><span class="line">  <span class="keyword">await</span> page.<span class="title function_">screenshot</span>(&#123; <span class="attr">path</span>: <span class="string">&#x27;example.png&#x27;</span> &#125;);</span><br><span class="line">  <span class="keyword">await</span> browser.<span class="title function_">close</span>();</span><br><span class="line">&#125;)();</span><br><span class="line"></span><br></pre></td></tr></table></figure>
 
-<h3 id="Java"><a href="#Java" class="headerlink" title="Java"></a>Java</h3><figure class="highlight java"><table><tr><td class="code"><pre><span class="line"><span class="keyword">import</span> java.util.Scanner;</span><br><span class="line"><span class="keyword">import</span> java.math.BigInteger;</span><br><span class="line"></span><br><span class="line"><span class="keyword">public</span> <span class="keyword">class</span> <span class="title class_">Main</span> &#123;</span><br><span class="line">    <span class="keyword">public</span> <span class="keyword">static</span> <span class="keyword">void</span> <span class="title function_">main</span> <span class="params">(String[] args)</span> &#123;</span><br><span class="line">        <span class="type">Scanner</span> <span class="variable">scanner</span> <span class="operator">=</span> <span class="keyword">new</span> <span class="title class_">Scanner</span>(System.in);</span><br><span class="line">        <span class="type">BigInteger</span> <span class="variable">sum</span> <span class="operator">=</span> BigInteger.ZERO;</span><br><span class="line"></span><br><span class="line">        <span class="keyword">while</span> (scanner.hasNextLine()) &#123;</span><br><span class="line">            <span class="type">String</span> <span class="variable">line</span> <span class="operator">=</span> scanner.nextLine();</span><br><span class="line">            <span class="keyword">if</span> (line.equalsIgnoreCase(<span class="string">&quot;e&quot;</span>)) &#123;</span><br><span class="line">                System.out.println(sum.toString());</span><br><span class="line">                <span class="keyword">break</span>;</span><br><span class="line">            &#125; <span class="keyword">else</span> &#123;</span><br><span class="line">                sum = sum.add(<span class="keyword">new</span> <span class="title class_">BigInteger</span>(line));</span><br><span class="line">            &#125;</span><br><span class="line">        &#125;</span><br><span class="line">        scanner.close();</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>]]></content>
+<p>This code will launch Chromium in headless mode and navigate to <code>https://www.example.com</code>, take a screenshot of the page, and then close the browser.</p>
+<p><strong><em>More content about Puppeteer coming up!</em></strong></p>
+]]></content>
+      <categories>
+        <category>Puppeteer</category>
+      </categories>
       <tags>
-        <tag>Java</tag>
-        <tag>JavaScript</tag>
-        <tag>BigInt</tag>
-        <tag>readline</tag>
+        <tag>Linux</tag>
+        <tag>ArchLinux</tag>
+        <tag>Headless Browser</tag>
       </tags>
   </entry>
   <entry>
@@ -138,46 +166,36 @@ hello this is bar
       </tags>
   </entry>
   <entry>
-    <title>Dabbling with Puppeteer</title>
-    <url>/2023/04/27/Dabbling%20with%20Puppeteer/</url>
-    <content><![CDATA[<p>Puppeteer is a Node.js library that provides a high-level API to control headless Chrome or Chromium browsers. It is widely used for web scraping, testing, and automation, and is an essential tool for many developers who work with web applications.</p>
-<blockquote>
-<p>Note that I’ll be demonstrating on ArchLinux</p>
-</blockquote>
-<p>Because Puppeteer is relys on Node.js, the first thing we do is create a project directory and initiate <code>npm</code>.</p>
-<figure class="highlight bash"><table><tr><td class="code"><pre><span class="line"><span class="built_in">mkdir</span> puppeteer-project;</span><br><span class="line"></span><br><span class="line"><span class="built_in">cd</span> puppeteer-project;</span><br><span class="line"></span><br><span class="line">npm init -y</span><br><span class="line"></span><br><span class="line">npm i puppeteer --save</span><br><span class="line"></span><br><span class="line">sudo pacman -S libx11 libxcomposite libxdamage libxext libxi libxtst nss freetype2 harfbuzz</span><br><span class="line"></span><br><span class="line"><span class="comment"># Puppeteer requires some additional dependencies to be installed</span></span><br><span class="line"></span><br></pre></td></tr></table></figure>
-
-<p>Now we write our script:</p>
-<figure class="highlight bash"><table><tr><td class="code"><pre><span class="line">vim puppeteer.js</span><br></pre></td></tr></table></figure>
-
-<p>The script should be on the lines of this template:</p>
-<figure class="highlight javascript"><table><tr><td class="code"><pre><span class="line"><span class="keyword">const</span> puppeteer = <span class="built_in">require</span>(<span class="string">&#x27;puppeteer&#x27;</span>);</span><br><span class="line"></span><br><span class="line">(<span class="keyword">async</span> () =&gt; &#123;</span><br><span class="line">  <span class="keyword">const</span> browser = <span class="keyword">await</span> puppeteer.<span class="title function_">launch</span>(&#123;</span><br><span class="line">  	<span class="attr">executablePath</span>: <span class="string">&#x27;/usr/bin/chromium&#x27;</span>,</span><br><span class="line"></span><br><span class="line">  	<span class="comment">// We can also drop this line and instead, set an environment variable in Bash.</span></span><br><span class="line"></span><br><span class="line">  	<span class="comment">// `$ export PUPPETEER_EXECUTABLE_PATH=/usr/bin/chromium`</span></span><br><span class="line"></span><br><span class="line">  	<span class="attr">headless</span>: <span class="literal">true</span></span><br><span class="line">  &#125;);</span><br><span class="line">  <span class="keyword">const</span> page = <span class="keyword">await</span> browser.<span class="title function_">newPage</span>();</span><br><span class="line">  <span class="keyword">await</span> page.<span class="title function_">goto</span>(<span class="string">&#x27;https://www.example.com&#x27;</span>);</span><br><span class="line">  <span class="keyword">await</span> page.<span class="title function_">screenshot</span>(&#123; <span class="attr">path</span>: <span class="string">&#x27;example.png&#x27;</span> &#125;);</span><br><span class="line">  <span class="keyword">await</span> browser.<span class="title function_">close</span>();</span><br><span class="line">&#125;)();</span><br><span class="line"></span><br></pre></td></tr></table></figure>
-
-<p>This code will launch Chromium in headless mode and navigate to <code>https://www.example.com</code>, take a screenshot of the page, and then close the browser.</p>
-<p><strong><em>More content about Puppeteer coming up!</em></strong></p>
+    <title>Delete a superuser in Django</title>
+    <url>/2023/06/09/Delete%20a%20superuser%20in%20Django/</url>
+    <content><![CDATA[<p>To delete a superuser in Django, you can use the Django shell to query and delete the user model instance. Here are the steps to delete a superuser using the Django shell:</p>
+<ol>
+<li><p>Open a terminal and navigate to the root directory of your Django project.</p>
+</li>
+<li><p>Activate the virtual environment, if you are using one.</p>
+</li>
+<li><p>Run the following command to open the Django shell: <code>python manage.py shell</code>.</p>
+</li>
+<li><p>Import the User model by running the following command: <code>from django.contrib.auth.models import User</code>.</p>
+</li>
+<li><p>Query the User model for the superuser you want to delete using the <code>get()</code> method. For example, if the username of the superuser you want to delete is “admin”, you would run: <code>user = User.objects.get(username=&#39;admin&#39;)</code>.</p>
+</li>
+<li><p>Call the <code>delete()</code> method on the user instance to delete the superuser. For example, you would run: <code>user.delete()</code>.</p>
+</li>
+<li><p>Exit the Django shell by typing <code>exit()</code> or pressing <code>Ctrl+D</code>.</p>
+</li>
+</ol>
+<p>After following these steps, the superuser will be deleted from the Django project.</p>
+<p>It’s important to note that deleting a superuser will also delete all related data, such as blog posts or comments, if those models are related to the User model with a foreign key. If you want to preserve this data, you should first transfer ownership of the data to another user before deleting the superuser.</p>
+<p>Another way to delete a superuser is to use the Django admin. To do this, log in as a superuser in the Django admin, navigate to the “Users” section, and click the “Delete” button next to the superuser you want to delete. Confirm the deletion in the next screen.</p>
+<p>In summary, you can delete a superuser in Django by using the Django shell to query and delete the user model instance. Alternatively, you can use the Django admin to delete the superuser. Keep in mind that deleting a superuser will also delete any related data.</p>
 ]]></content>
       <categories>
-        <category>Puppeteer</category>
+        <category>Django</category>
       </categories>
       <tags>
-        <tag>Linux</tag>
-        <tag>ArchLinux</tag>
-        <tag>Headless Browser</tag>
-      </tags>
-  </entry>
-  <entry>
-    <title>How to re-center Spotlight search bar on Mac?</title>
-    <url>/2023/05/06/How%20to%20re-center%20Spotlight%20search%20bar%20on%20Mac?/</url>
-    <content><![CDATA[<p>Click and hold the Spotlight icon on the menu bar, until the Spotlight window has returned to its original location.</p>
-]]></content>
-      <categories>
-        <category>Tips</category>
-      </categories>
-      <tags>
-        <tag>MacOS</tag>
-        <tag>Spotlight</tag>
-        <tag>Tips</tag>
-        <tag>Utilities</tag>
+        <tag>Django</tag>
+        <tag>Python</tag>
       </tags>
   </entry>
   <entry>
@@ -194,6 +212,21 @@ hello this is bar
       <categories>
         <category>JavaScript</category>
       </categories>
+  </entry>
+  <entry>
+    <title>How to re-center Spotlight search bar on Mac?</title>
+    <url>/2023/05/06/How%20to%20re-center%20Spotlight%20search%20bar%20on%20Mac?/</url>
+    <content><![CDATA[<p>Click and hold the Spotlight icon on the menu bar, until the Spotlight window has returned to its original location.</p>
+]]></content>
+      <categories>
+        <category>Tips</category>
+      </categories>
+      <tags>
+        <tag>MacOS</tag>
+        <tag>Spotlight</tag>
+        <tag>Tips</tag>
+        <tag>Utilities</tag>
+      </tags>
   </entry>
   <entry>
     <title>Initialize shared directory with SPICE WebDAV</title>
@@ -255,36 +288,20 @@ hello this is bar
       </categories>
   </entry>
   <entry>
-    <title>Delete a superuser in Django</title>
-    <url>/2023/06/09/Delete%20a%20superuser%20in%20Django/</url>
-    <content><![CDATA[<p>To delete a superuser in Django, you can use the Django shell to query and delete the user model instance. Here are the steps to delete a superuser using the Django shell:</p>
-<ol>
-<li><p>Open a terminal and navigate to the root directory of your Django project.</p>
+    <title>Intuition</title>
+    <url>/2023/05/10/Intuition/</url>
+    <content><![CDATA[<p>While a clever person may have a strong intuition, their insights may only benefit themselves. On the other hand, a learned person who has gained knowledge through studies has the ability to express their ideas and contribute to society.</p>
+<p>Intuition is often described as a gut feeling or a hunch that arises without conscious reasoning. It is a valuable skill, but it can be limited by personal biases and experiences. In contrast, knowledge gained through education and study is based on evidence and critical thinking. This allows learned individuals to make informed decisions and contribute to the advancement of society.</p>
+<p><strong><em>References:</em></strong></p>
+<ul>
+<li><p>The Catcher in the Rye: Mr. Antolini Quotes in Chapter 24</p>
 </li>
-<li><p>Activate the virtual environment, if you are using one.</p>
+<li><p>Steve Jobs: “Intuition is a very powerful thing, more powerful than intellect, in my opinion.”</p>
 </li>
-<li><p>Run the following command to open the Django shell: <code>python manage.py shell</code>.</p>
-</li>
-<li><p>Import the User model by running the following command: <code>from django.contrib.auth.models import User</code>.</p>
-</li>
-<li><p>Query the User model for the superuser you want to delete using the <code>get()</code> method. For example, if the username of the superuser you want to delete is “admin”, you would run: <code>user = User.objects.get(username=&#39;admin&#39;)</code>.</p>
-</li>
-<li><p>Call the <code>delete()</code> method on the user instance to delete the superuser. For example, you would run: <code>user.delete()</code>.</p>
-</li>
-<li><p>Exit the Django shell by typing <code>exit()</code> or pressing <code>Ctrl+D</code>.</p>
-</li>
-</ol>
-<p>After following these steps, the superuser will be deleted from the Django project.</p>
-<p>It’s important to note that deleting a superuser will also delete all related data, such as blog posts or comments, if those models are related to the User model with a foreign key. If you want to preserve this data, you should first transfer ownership of the data to another user before deleting the superuser.</p>
-<p>Another way to delete a superuser is to use the Django admin. To do this, log in as a superuser in the Django admin, navigate to the “Users” section, and click the “Delete” button next to the superuser you want to delete. Confirm the deletion in the next screen.</p>
-<p>In summary, you can delete a superuser in Django by using the Django shell to query and delete the user model instance. Alternatively, you can use the Django admin to delete the superuser. Keep in mind that deleting a superuser will also delete any related data.</p>
+</ul>
 ]]></content>
-      <categories>
-        <category>Django</category>
-      </categories>
       <tags>
-        <tag>Django</tag>
-        <tag>Python</tag>
+        <tag>Revelations</tag>
       </tags>
   </entry>
   <entry>
@@ -331,120 +348,6 @@ uid           [ unknown] Puppet, Inc. Release Key (Puppet, Inc. Release Key) &lt
         <tag>Puppet</tag>
         <tag>server</tag>
         <tag>GPG key</tag>
-      </tags>
-  </entry>
-  <entry>
-    <title>JavaScript Method：localeCompare</title>
-    <url>/2023/04/24/JavaScript%20Method%EF%BC%9AlocaleCompare/</url>
-    <content><![CDATA[<p>Lately I’ve been thinking that since Java has an equalsIgnoreCase method, JavaScript must have something similar. This is what I found: the <code>localeCompare</code> method.</p>
-<h3 id="Structure"><a href="#Structure" class="headerlink" title="Structure"></a>Structure</h3><figure class="highlight javascript"><table><tr><td class="code"><pre><span class="line">str1.<span class="title function_">localeCompare</span>(str2, [locales], [options])</span><br></pre></td></tr></table></figure>
-
-<p><strong><em>Note: The Linux commands also has a <code>locale</code> command!</em></strong></p>
-<h3 id="Available-locales"><a href="#Available-locales" class="headerlink" title="Available locales"></a>Available locales</h3><p><strong><em><code>language</code></em></strong></p>
-<pre><code>&#39;en&#39;: English
-&#39;fr&#39;: French
-&#39;de&#39;: German
-&#39;es&#39;: Spanish
-&#39;ja&#39;: Japanese
-&#39;zh&#39;: Chinese
-&#39;ar&#39;: Arabic
-&#39;ru&#39;: Russian
-</code></pre>
-<p>We can also use a combination of <code>language</code> and <code>region</code> subtags to specify a more specific locale. For example:</p>
-<pre><code>&#39;en-US&#39;: English (United States)
-&#39;fr-CA&#39;: French (Canada)
-&#39;de-DE&#39;: German (Germany)
-&#39;es-MX&#39;: Spanish (Mexico)
-&#39;ja-JP&#39;: Japanese (Japan)
-&#39;zh-CN&#39;: Chinese (China)
-&#39;ar-EG&#39;: Arabic (Egypt)
-&#39;ru-RU&#39;: Russian (Russia)
-</code></pre>
-<h3 id="Available-options"><a href="#Available-options" class="headerlink" title="Available options"></a>Available options</h3><p><strong><em><code>numeric</code></em></strong></p>
-<figure class="highlight javascript"><table><tr><td class="code"><pre><span class="line"><span class="variable language_">console</span>.<span class="title function_">log</span>(<span class="string">&quot;60&quot;</span>.<span class="title function_">localeCompare</span>(<span class="string">&quot;40&quot;</span>, <span class="literal">undefined</span>, &#123; <span class="attr">numeric</span>: <span class="literal">true</span> &#125;)) <span class="comment">// 1</span></span><br><span class="line"></span><br><span class="line"><span class="variable language_">console</span>.<span class="title function_">log</span>(<span class="string">&quot;60&quot;</span>.<span class="title function_">localeCompare</span>(<span class="string">&quot;60&quot;</span>, <span class="literal">undefined</span>, &#123; <span class="attr">numeric</span>: <span class="literal">true</span> &#125;)) <span class="comment">// 0</span></span><br><span class="line"></span><br><span class="line"><span class="variable language_">console</span>.<span class="title function_">log</span>(<span class="string">&quot;60&quot;</span>.<span class="title function_">localeCompare</span>(<span class="string">&quot;100&quot;</span>, <span class="literal">undefined</span>, &#123; <span class="attr">numeric</span>: <span class="literal">true</span> &#125;)) <span class="comment">// -1</span></span><br></pre></td></tr></table></figure>
-
-<p><code>numeric</code> can take one of the two values: <code>true</code> and <code>false</code></p>
-<figure class="highlight javascript"><table><tr><td class="code"><pre><span class="line"><span class="variable language_">console</span>.<span class="title function_">log</span>(<span class="string">&quot;60&quot;</span>.<span class="title function_">localeCompare</span>(<span class="string">&quot;100&quot;</span>, <span class="literal">undefined</span>, &#123; <span class="attr">numeric</span>: <span class="literal">false</span> &#125;)) <span class="comment">// 1</span></span><br></pre></td></tr></table></figure>
-
-<p>With <code>false</code>, both <code>60</code> and <code>100</code> are treated as normal String objects.</p>
-<p><strong><em><code>sensitivity</code></em></strong></p>
-<p><code>sensitivity</code> can take one of the three values: <code>base</code>, <code>accent</code>, <code>case</code></p>
-<figure class="highlight javascript"><table><tr><td class="code"><pre><span class="line"><span class="variable language_">console</span>.<span class="title function_">log</span>(<span class="string">&quot;café&quot;</span>.<span class="title function_">localeCompare</span>(<span class="string">&quot;Cafe&quot;</span>, <span class="literal">undefined</span>, &#123; <span class="attr">sensitivity</span>: <span class="string">&quot;base&quot;</span> &#125;)) <span class="comment">// 0</span></span><br><span class="line"></span><br><span class="line"><span class="variable language_">console</span>.<span class="title function_">log</span>(<span class="string">&quot;café&quot;</span>.<span class="title function_">localeCompare</span>(<span class="string">&quot;Cafe&quot;</span>, <span class="literal">undefined</span>, &#123; <span class="attr">sensitivity</span>: <span class="string">&quot;accent&quot;</span> &#125;)) <span class="comment">// 1</span></span><br><span class="line"></span><br><span class="line"><span class="variable language_">console</span>.<span class="title function_">log</span>(<span class="string">&quot;café&quot;</span>.<span class="title function_">localeCompare</span>(<span class="string">&quot;Cafe&quot;</span>, <span class="literal">undefined</span>, &#123; <span class="attr">sensitivity</span>: <span class="string">&quot;case&quot;</span> &#125;)) <span class="comment">// -1</span></span><br></pre></td></tr></table></figure>
-
-<p><strong><em><code>caseFirst</code></em></strong></p>
-<p>The <code>caseFirst</code> option in the <code>localeCompare()</code> method specifies whether uppercase letters should come before or after lowercase letters in the sort order. It can take one of the following two values:</p>
-<p><code>upper</code>: Sort uppercase letters before lowercase letters.</p>
-<p><code>lower</code>: Sort lowercase letters before uppercase letters.</p>
-<figure class="highlight javascript"><table><tr><td class="code"><pre><span class="line"><span class="variable language_">console</span>.<span class="title function_">log</span>(<span class="string">&quot;Ba&quot;</span>.<span class="title function_">localeCompare</span>(<span class="string">&quot;AB&quot;</span>, <span class="literal">undefined</span>, &#123; <span class="attr">sensitivity</span>: <span class="string">&quot;case&quot;</span> &#125;)) <span class="comment">// 1</span></span><br><span class="line"></span><br><span class="line"><span class="variable language_">console</span>.<span class="title function_">log</span>(<span class="string">&quot;aB&quot;</span>.<span class="title function_">localeCompare</span>(<span class="string">&quot;AB&quot;</span>, <span class="literal">undefined</span>, &#123; <span class="attr">sensitivity</span>: <span class="string">&quot;case&quot;</span> &#125;)) <span class="comment">// -1</span></span><br><span class="line"></span><br><span class="line"><span class="variable language_">console</span>.<span class="title function_">log</span>(<span class="string">&quot;aB&quot;</span>.<span class="title function_">localeCompare</span>(<span class="string">&quot;AB&quot;</span>, <span class="literal">undefined</span>, &#123; <span class="attr">sensitivity</span>: <span class="string">&quot;case&quot;</span>, <span class="attr">caseFirst</span>: <span class="string">&quot;upper&quot;</span> &#125;)) <span class="comment">// 1</span></span><br></pre></td></tr></table></figure>
-
-<p><strong><em><code>ignorePunctuation</code></em></strong></p>
-<p>The <code>ignorePunctuation</code> option in the <code>localeCompare()</code> method specifies whether punctuation and other symbols should be ignored during the comparison.</p>
-<p>It can take one of the following two values: <code>true</code> and <code>false</code></p>
-<figure class="highlight javascript"><table><tr><td class="code"><pre><span class="line"><span class="variable language_">console</span>.<span class="title function_">log</span>(<span class="string">&quot;Hello, world!&quot;</span>.<span class="title function_">localeCompare</span>(<span class="string">&quot;Hello world&quot;</span>, <span class="literal">undefined</span>, &#123; <span class="attr">ignorePunctuation</span>: <span class="literal">true</span> &#125;)) <span class="comment">// 0</span></span><br></pre></td></tr></table></figure>]]></content>
-      <tags>
-        <tag>JavaScript</tag>
-        <tag>Methods</tag>
-      </tags>
-  </entry>
-  <entry>
-    <title>Intuition</title>
-    <url>/2023/05/10/Intuition/</url>
-    <content><![CDATA[<p>While a clever person may have a strong intuition, their insights may only benefit themselves. On the other hand, a learned person who has gained knowledge through studies has the ability to express their ideas and contribute to society.</p>
-<p>Intuition is often described as a gut feeling or a hunch that arises without conscious reasoning. It is a valuable skill, but it can be limited by personal biases and experiences. In contrast, knowledge gained through education and study is based on evidence and critical thinking. This allows learned individuals to make informed decisions and contribute to the advancement of society.</p>
-<p><strong><em>References:</em></strong></p>
-<ul>
-<li><p>The Catcher in the Rye: Mr. Antolini Quotes in Chapter 24</p>
-</li>
-<li><p>Steve Jobs: “Intuition is a very powerful thing, more powerful than intellect, in my opinion.”</p>
-</li>
-</ul>
-]]></content>
-      <tags>
-        <tag>Revelations</tag>
-      </tags>
-  </entry>
-  <entry>
-    <title>`Path` module - Node.js</title>
-    <url>/2023/05/14/Path%20module%20-%20Node.js/</url>
-    <content><![CDATA[<p>因为本人使用的操作系统是 OS X ，所以一下书写规范均符合 POSIX（Portable Open System Interface eXtended），Windows 用户请自行查阅资料。</p>
-<h3 id="path-basename-path-suffix"><a href="#path-basename-path-suffix" class="headerlink" title="path.basename(path[, suffix])"></a><code>path.basename(path[, suffix])</code></h3><figure class="highlight javascript"><table><tr><td class="code"><pre><span class="line">path.<span class="title function_">basename</span>(<span class="string">&#x27;/path/to/project/index.html&#x27;</span>, <span class="string">&#x27;.html&#x27;</span>)</span><br><span class="line"><span class="comment">// &#x27;index&#x27;</span></span><br></pre></td></tr></table></figure>
-
-<h3 id="path-delimiter"><a href="#path-delimiter" class="headerlink" title="path.delimiter"></a><code>path.delimiter</code></h3><figure class="highlight javascript"><table><tr><td class="code"><pre><span class="line"><span class="variable language_">console</span>.<span class="title function_">log</span>(process.<span class="property">env</span>.<span class="property">PATH</span>)</span><br><span class="line"><span class="comment">// /opt/homebrew/opt/llvm/bin:/opt/homebrew/opt/llvm/bin:/Applications/Sublime Text.app/Contents/SharedSupport/bin/:/Applications/Visual Studio Code.app/Contents/Resources/app/bin/:/Users/Mccranky/.gem/ruby/3.1.3/bin:/Users/Mccranky/.rubies/ruby-3.1.3/lib/ruby/gems/3.1.0/bin:/Users/Mccranky/.rubies/ruby-3.1.3/bin::/opt/local/bin:/opt/homebrew/bin:/opt/homebrew/sbin:/usr/local/bin:/usr/bin:/bin:/usr/sbin:/sbin:/usr/local/mysql/support-files:/usr/local/mysql/bin:/etc/platform-tools:/usr/local/go/bin:/usr/local/MacGPG2/bin:/usr/local/share/dotnet:~/.dotnet/tools:/Library/Apple/usr/bin:/Users/Mccranky/.nami/bin:/Users/Mccranky/.spicetify</span></span><br><span class="line"><span class="comment">// undefined</span></span><br></pre></td></tr></table></figure>
-
-<p>输出第一行为环境变量。<br>输出第二行的<code>undefined</code>示意无返回值。</p>
-<figure class="highlight javascript"><table><tr><td class="code"><pre><span class="line">process.<span class="property">env</span>.<span class="property">PATH</span>.<span class="title function_">split</span>(path.<span class="property">delimiter</span>)</span><br><span class="line"><span class="comment">/*</span></span><br><span class="line"><span class="comment">[</span></span><br><span class="line"><span class="comment">  &#x27;/opt/homebrew/opt/llvm/bin&#x27;,</span></span><br><span class="line"><span class="comment">  &#x27;/opt/homebrew/opt/llvm/bin&#x27;,</span></span><br><span class="line"><span class="comment">  &#x27;/Applications/Sublime Text.app/Contents/SharedSupport/bin/&#x27;,</span></span><br><span class="line"><span class="comment">  &#x27;/Applications/Visual Studio Code.app/Contents/Resources/app/bin/&#x27;,</span></span><br><span class="line"><span class="comment">  &#x27;/Users/Mccranky/.gem/ruby/3.1.3/bin&#x27;,</span></span><br><span class="line"><span class="comment">  &#x27;/Users/Mccranky/.rubies/ruby-3.1.3/lib/ruby/gems/3.1.0/bin&#x27;,</span></span><br><span class="line"><span class="comment">  &#x27;/Users/Mccranky/.rubies/ruby-3.1.3/bin&#x27;,</span></span><br><span class="line"><span class="comment">  &#x27;&#x27;,</span></span><br><span class="line"><span class="comment">  &#x27;/opt/local/bin&#x27;,</span></span><br><span class="line"><span class="comment">  &#x27;/opt/homebrew/bin&#x27;,</span></span><br><span class="line"><span class="comment">  &#x27;/opt/homebrew/sbin&#x27;,</span></span><br><span class="line"><span class="comment">  &#x27;/usr/local/bin&#x27;,</span></span><br><span class="line"><span class="comment">  &#x27;/usr/bin&#x27;,</span></span><br><span class="line"><span class="comment">  &#x27;/bin&#x27;,</span></span><br><span class="line"><span class="comment">  &#x27;/usr/sbin&#x27;,</span></span><br><span class="line"><span class="comment">  &#x27;/sbin&#x27;,</span></span><br><span class="line"><span class="comment">  &#x27;/usr/local/mysql/support-files&#x27;,</span></span><br><span class="line"><span class="comment">  &#x27;/usr/local/mysql/bin&#x27;,</span></span><br><span class="line"><span class="comment">  &#x27;/etc/platform-tools&#x27;,</span></span><br><span class="line"><span class="comment">  &#x27;/usr/local/go/bin&#x27;,</span></span><br><span class="line"><span class="comment">  &#x27;/usr/local/MacGPG2/bin&#x27;,</span></span><br><span class="line"><span class="comment">  &#x27;/usr/local/share/dotnet&#x27;,</span></span><br><span class="line"><span class="comment">  &#x27;~/.dotnet/tools&#x27;,</span></span><br><span class="line"><span class="comment">  &#x27;/Library/Apple/usr/bin&#x27;,</span></span><br><span class="line"><span class="comment">  &#x27;/Users/Mccranky/.nami/bin&#x27;,</span></span><br><span class="line"><span class="comment">  &#x27;/Users/Mccranky/.spicetify&#x27;</span></span><br><span class="line"><span class="comment">]</span></span><br><span class="line"><span class="comment">*/</span></span><br></pre></td></tr></table></figure>
-
-<p><code>path.delimiter</code>: <code>:</code></p>
-<h3 id="path-dirname"><a href="#path-dirname" class="headerlink" title="path.dirname"></a><code>path.dirname</code></h3><figure class="highlight javascript"><table><tr><td class="code"><pre><span class="line">path.<span class="title function_">dirname</span>(<span class="string">&#x27;path/to/file.txt&#x27;</span>)</span><br><span class="line"><span class="comment">// &#x27;path/to&#x27;</span></span><br></pre></td></tr></table></figure>
-
-<h3 id="path-extname"><a href="#path-extname" class="headerlink" title="path.extname"></a><code>path.extname</code></h3><figure class="highlight javascript"><table><tr><td class="code"><pre><span class="line">path.<span class="title function_">extname</span>(<span class="string">&#x27;index.html&#x27;</span>)</span><br><span class="line"><span class="comment">// &#x27;.html&#x27;</span></span><br><span class="line"></span><br><span class="line">path.<span class="title function_">extname</span>(<span class="string">&#x27;index.foo.md&#x27;</span>)</span><br><span class="line"><span class="comment">// &#x27;.md&#x27;</span></span><br><span class="line"></span><br><span class="line">path.<span class="title function_">extname</span>(<span class="string">&#x27;index.&#x27;</span>)</span><br><span class="line"><span class="comment">// &#x27;.&#x27;</span></span><br><span class="line"></span><br><span class="line">path.<span class="title function_">extname</span>(<span class="string">&#x27;index&#x27;</span>)</span><br><span class="line"><span class="comment">// &#x27;&#x27;</span></span><br><span class="line"></span><br><span class="line">path.<span class="title function_">extname</span>(<span class="string">&#x27;.index&#x27;</span>)</span><br><span class="line"><span class="comment">// &#x27;&#x27;</span></span><br><span class="line"></span><br><span class="line">path.<span class="title function_">extname</span>(<span class="string">&#x27;.index.md&#x27;</span>)</span><br><span class="line"><span class="comment">// &#x27;.md&#x27;</span></span><br></pre></td></tr></table></figure>
-
-<h3 id="path-format-pathObject"><a href="#path-format-pathObject" class="headerlink" title="path.format(pathObject)"></a><code>path.format(pathObject)</code></h3><figure class="highlight javascript"><table><tr><td class="code"><pre><span class="line"><span class="comment">// `$&#123;dir&#125;$&#123;path.sep&#125;$&#123;base&#125;`</span></span><br><span class="line">path.<span class="title function_">format</span>(&#123;</span><br><span class="line">  <span class="attr">root</span>: <span class="string">&#x27;/ignored&#x27;</span>,</span><br><span class="line">  <span class="attr">dir</span>: <span class="string">&#x27;/home/user/dir&#x27;</span>,</span><br><span class="line">  <span class="attr">base</span>: <span class="string">&#x27;file.txt&#x27;</span>,</span><br><span class="line">&#125;)</span><br><span class="line"><span class="comment">// &#x27;/home/user/dir/file.txt&#x27;</span></span><br><span class="line"></span><br><span class="line">path.<span class="title function_">format</span>(&#123;</span><br><span class="line">  <span class="attr">root</span>: <span class="string">&#x27;/&#x27;</span>,</span><br><span class="line">  <span class="attr">base</span>: <span class="string">&#x27;file.txt&#x27;</span>,</span><br><span class="line">  <span class="attr">ext</span>: <span class="string">&#x27;ignored&#x27;</span>,</span><br><span class="line">&#125;)</span><br><span class="line"><span class="comment">// &#x27;/file.txt&#x27;</span></span><br><span class="line"></span><br><span class="line">path.<span class="title function_">format</span>(&#123;</span><br><span class="line">  <span class="attr">root</span>: <span class="string">&#x27;/&#x27;</span>,</span><br><span class="line">  <span class="attr">name</span>: <span class="string">&#x27;file&#x27;</span>,</span><br><span class="line">  <span class="attr">ext</span>: <span class="string">&#x27;.txt&#x27;</span>,</span><br><span class="line">&#125;)</span><br><span class="line"><span class="comment">// &#x27;/file.txt&#x27;</span></span><br><span class="line"></span><br><span class="line">path.<span class="title function_">format</span>(&#123;</span><br><span class="line">  <span class="attr">root</span>: <span class="string">&#x27;/&#x27;</span>,</span><br><span class="line">  <span class="attr">name</span>: <span class="string">&#x27;file&#x27;</span>,</span><br><span class="line">  <span class="attr">ext</span>: <span class="string">&#x27;txt&#x27;</span>,</span><br><span class="line">&#125;)</span><br><span class="line"><span class="comment">// &#x27;/file.txt&#x27;</span></span><br></pre></td></tr></table></figure>
-
-<h3 id="path-isAbsolute"><a href="#path-isAbsolute" class="headerlink" title="path.isAbsolute"></a><code>path.isAbsolute</code></h3><figure class="highlight javascript"><table><tr><td class="code"><pre><span class="line">path.<span class="title function_">isAbsolute</span>(<span class="string">&#x27;/foo/bar&#x27;</span>) <span class="comment">// true</span></span><br><span class="line">path.<span class="title function_">isAbsolute</span>(<span class="string">&#x27;/baz/..&#x27;</span>)  <span class="comment">// true</span></span><br><span class="line">path.<span class="title function_">isAbsolute</span>(<span class="string">&#x27;qux/&#x27;</span>)     <span class="comment">// false</span></span><br><span class="line">path.<span class="title function_">isAbsolute</span>(<span class="string">&#x27;.&#x27;</span>)        <span class="comment">// false</span></span><br></pre></td></tr></table></figure>
-
-<h3 id="path-join-paths"><a href="#path-join-paths" class="headerlink" title="path.join([...paths])"></a><code>path.join([...paths])</code></h3><figure class="highlight javascript"><table><tr><td class="code"><pre><span class="line">path.<span class="title function_">join</span>(<span class="string">&#x27;&#x27;</span>)</span><br><span class="line"><span class="comment">// &#x27;.&#x27;</span></span><br><span class="line"></span><br><span class="line">path.<span class="title function_">join</span>(<span class="string">&#x27;/&#x27;</span>, <span class="string">&#x27;/foo&#x27;</span>, <span class="string">&#x27;bar&#x27;</span>, <span class="string">&#x27;baz&#x27;</span>, <span class="string">&#x27;..&#x27;</span>)</span><br><span class="line"><span class="comment">// &#x27;/foo/bar&#x27;</span></span><br></pre></td></tr></table></figure>
-
-<h3 id="path-normalize-path"><a href="#path-normalize-path" class="headerlink" title="path.normalize(path)"></a><code>path.normalize(path)</code></h3><figure class="highlight javascript"><table><tr><td class="code"><pre><span class="line">path.<span class="title function_">normalize</span>(<span class="string">&#x27;/foo/bar//baz/asdf/quux/..&#x27;</span>)</span><br><span class="line"><span class="comment">// Returns: &#x27;/foo/bar/baz/asdf&#x27;</span></span><br></pre></td></tr></table></figure>
-
-<h3 id="path-parse-path"><a href="#path-parse-path" class="headerlink" title="path.parse(path)"></a><code>path.parse(path)</code></h3><figure class="highlight javascript"><table><tr><td class="code"><pre><span class="line">path.<span class="title function_">parse</span>(<span class="string">&#x27;/home/user/dir/file.txt&#x27;</span>)</span><br><span class="line"><span class="comment">/*</span></span><br><span class="line"><span class="comment">&#123;</span></span><br><span class="line"><span class="comment">  root: &#x27;/&#x27;,</span></span><br><span class="line"><span class="comment">  dir: &#x27;/home/user/dir&#x27;,</span></span><br><span class="line"><span class="comment">  base: &#x27;file.txt&#x27;,</span></span><br><span class="line"><span class="comment">  ext: &#x27;.txt&#x27;,</span></span><br><span class="line"><span class="comment">  name: &#x27;file&#x27;</span></span><br><span class="line"><span class="comment">&#125;</span></span><br><span class="line"><span class="comment">*/</span></span><br></pre></td></tr></table></figure>
-
-<figure class="highlight plaintext"><table><tr><td class="code"><pre><span class="line">┌─────────────────────┬────────────┐</span><br><span class="line">│          dir        │    base    │</span><br><span class="line">├──────┬              ├──────┬─────┤</span><br><span class="line">│ root │              │ name │ ext │</span><br><span class="line">&quot;  /    home/user/dir / file  .txt &quot;</span><br><span class="line">└──────┴──────────────┴──────┴─────┘</span><br></pre></td></tr></table></figure>
-
-<h3 id="path-posix"><a href="#path-posix" class="headerlink" title="path.posix"></a><code>path.posix</code></h3><p>只是输出一下<code>path</code>模组所有的方法。</p>
-<h3 id="path-relative-from-to"><a href="#path-relative-from-to" class="headerlink" title="path.relative(from, to)"></a><code>path.relative(from, to)</code></h3><figure class="highlight javascript"><table><tr><td class="code"><pre><span class="line">path.<span class="title function_">relative</span>(<span class="string">&#x27;/data/orandea/test/aaa&#x27;</span>, <span class="string">&#x27;/data/orandea/impl/bbb&#x27;</span>)</span><br><span class="line"><span class="comment">// &#x27;../../impl/bbb&#x27;</span></span><br></pre></td></tr></table></figure>
-
-<h3 id="path-resolve-paths"><a href="#path-resolve-paths" class="headerlink" title="path.resolve([...paths])"></a><code>path.resolve([...paths])</code></h3><figure class="highlight javascript"><table><tr><td class="code"><pre><span class="line">path.<span class="title function_">resolve</span>(<span class="string">&#x27;&#x27;</span>)</span><br><span class="line"><span class="string">&#x27;/Users/Mccranky&#x27;</span></span><br><span class="line"></span><br><span class="line">path.<span class="title function_">join</span>(<span class="string">&#x27;foo&#x27;</span>, <span class="string">&#x27;bar&#x27;</span>, <span class="string">&#x27;baz&#x27;</span>, <span class="string">&#x27;..&#x27;</span>)</span><br><span class="line"><span class="comment">// &#x27;/Users/Mccranky/foo/bar&#x27;</span></span><br></pre></td></tr></table></figure>
-
-<h3 id="path-sep"><a href="#path-sep" class="headerlink" title="path.sep"></a><code>path.sep</code></h3><p><code>path.sep</code>: <code>/</code></p>
-<figure class="highlight javascript"><table><tr><td class="code"><pre><span class="line"><span class="string">&#x27;foo/bar/baz&#x27;</span>.<span class="title function_">split</span>(path.<span class="property">sep</span>)</span><br><span class="line"><span class="comment">// [&#x27;foo&#x27;, &#x27;bar&#x27;, &#x27;baz&#x27;]</span></span><br></pre></td></tr></table></figure>
-]]></content>
-      <categories>
-        <category>Node.js</category>
-      </categories>
-      <tags>
-        <tag>Node.js</tag>
-        <tag>Path</tag>
       </tags>
   </entry>
   <entry>
@@ -817,6 +720,201 @@ Possible reasons for having this kind of units are:
       </tags>
   </entry>
   <entry>
+    <title>JavaScript Method：localeCompare</title>
+    <url>/2023/04/24/JavaScript%20Method%EF%BC%9AlocaleCompare/</url>
+    <content><![CDATA[<p>Lately I’ve been thinking that since Java has an equalsIgnoreCase method, JavaScript must have something similar. This is what I found: the <code>localeCompare</code> method.</p>
+<h3 id="Structure"><a href="#Structure" class="headerlink" title="Structure"></a>Structure</h3><figure class="highlight javascript"><table><tr><td class="code"><pre><span class="line">str1.<span class="title function_">localeCompare</span>(str2, [locales], [options])</span><br></pre></td></tr></table></figure>
+
+<p><strong><em>Note: The Linux commands also has a <code>locale</code> command!</em></strong></p>
+<h3 id="Available-locales"><a href="#Available-locales" class="headerlink" title="Available locales"></a>Available locales</h3><p><strong><em><code>language</code></em></strong></p>
+<pre><code>&#39;en&#39;: English
+&#39;fr&#39;: French
+&#39;de&#39;: German
+&#39;es&#39;: Spanish
+&#39;ja&#39;: Japanese
+&#39;zh&#39;: Chinese
+&#39;ar&#39;: Arabic
+&#39;ru&#39;: Russian
+</code></pre>
+<p>We can also use a combination of <code>language</code> and <code>region</code> subtags to specify a more specific locale. For example:</p>
+<pre><code>&#39;en-US&#39;: English (United States)
+&#39;fr-CA&#39;: French (Canada)
+&#39;de-DE&#39;: German (Germany)
+&#39;es-MX&#39;: Spanish (Mexico)
+&#39;ja-JP&#39;: Japanese (Japan)
+&#39;zh-CN&#39;: Chinese (China)
+&#39;ar-EG&#39;: Arabic (Egypt)
+&#39;ru-RU&#39;: Russian (Russia)
+</code></pre>
+<h3 id="Available-options"><a href="#Available-options" class="headerlink" title="Available options"></a>Available options</h3><p><strong><em><code>numeric</code></em></strong></p>
+<figure class="highlight javascript"><table><tr><td class="code"><pre><span class="line"><span class="variable language_">console</span>.<span class="title function_">log</span>(<span class="string">&quot;60&quot;</span>.<span class="title function_">localeCompare</span>(<span class="string">&quot;40&quot;</span>, <span class="literal">undefined</span>, &#123; <span class="attr">numeric</span>: <span class="literal">true</span> &#125;)) <span class="comment">// 1</span></span><br><span class="line"></span><br><span class="line"><span class="variable language_">console</span>.<span class="title function_">log</span>(<span class="string">&quot;60&quot;</span>.<span class="title function_">localeCompare</span>(<span class="string">&quot;60&quot;</span>, <span class="literal">undefined</span>, &#123; <span class="attr">numeric</span>: <span class="literal">true</span> &#125;)) <span class="comment">// 0</span></span><br><span class="line"></span><br><span class="line"><span class="variable language_">console</span>.<span class="title function_">log</span>(<span class="string">&quot;60&quot;</span>.<span class="title function_">localeCompare</span>(<span class="string">&quot;100&quot;</span>, <span class="literal">undefined</span>, &#123; <span class="attr">numeric</span>: <span class="literal">true</span> &#125;)) <span class="comment">// -1</span></span><br></pre></td></tr></table></figure>
+
+<p><code>numeric</code> can take one of the two values: <code>true</code> and <code>false</code></p>
+<figure class="highlight javascript"><table><tr><td class="code"><pre><span class="line"><span class="variable language_">console</span>.<span class="title function_">log</span>(<span class="string">&quot;60&quot;</span>.<span class="title function_">localeCompare</span>(<span class="string">&quot;100&quot;</span>, <span class="literal">undefined</span>, &#123; <span class="attr">numeric</span>: <span class="literal">false</span> &#125;)) <span class="comment">// 1</span></span><br></pre></td></tr></table></figure>
+
+<p>With <code>false</code>, both <code>60</code> and <code>100</code> are treated as normal String objects.</p>
+<p><strong><em><code>sensitivity</code></em></strong></p>
+<p><code>sensitivity</code> can take one of the three values: <code>base</code>, <code>accent</code>, <code>case</code></p>
+<figure class="highlight javascript"><table><tr><td class="code"><pre><span class="line"><span class="variable language_">console</span>.<span class="title function_">log</span>(<span class="string">&quot;café&quot;</span>.<span class="title function_">localeCompare</span>(<span class="string">&quot;Cafe&quot;</span>, <span class="literal">undefined</span>, &#123; <span class="attr">sensitivity</span>: <span class="string">&quot;base&quot;</span> &#125;)) <span class="comment">// 0</span></span><br><span class="line"></span><br><span class="line"><span class="variable language_">console</span>.<span class="title function_">log</span>(<span class="string">&quot;café&quot;</span>.<span class="title function_">localeCompare</span>(<span class="string">&quot;Cafe&quot;</span>, <span class="literal">undefined</span>, &#123; <span class="attr">sensitivity</span>: <span class="string">&quot;accent&quot;</span> &#125;)) <span class="comment">// 1</span></span><br><span class="line"></span><br><span class="line"><span class="variable language_">console</span>.<span class="title function_">log</span>(<span class="string">&quot;café&quot;</span>.<span class="title function_">localeCompare</span>(<span class="string">&quot;Cafe&quot;</span>, <span class="literal">undefined</span>, &#123; <span class="attr">sensitivity</span>: <span class="string">&quot;case&quot;</span> &#125;)) <span class="comment">// -1</span></span><br></pre></td></tr></table></figure>
+
+<p><strong><em><code>caseFirst</code></em></strong></p>
+<p>The <code>caseFirst</code> option in the <code>localeCompare()</code> method specifies whether uppercase letters should come before or after lowercase letters in the sort order. It can take one of the following two values:</p>
+<p><code>upper</code>: Sort uppercase letters before lowercase letters.</p>
+<p><code>lower</code>: Sort lowercase letters before uppercase letters.</p>
+<figure class="highlight javascript"><table><tr><td class="code"><pre><span class="line"><span class="variable language_">console</span>.<span class="title function_">log</span>(<span class="string">&quot;Ba&quot;</span>.<span class="title function_">localeCompare</span>(<span class="string">&quot;AB&quot;</span>, <span class="literal">undefined</span>, &#123; <span class="attr">sensitivity</span>: <span class="string">&quot;case&quot;</span> &#125;)) <span class="comment">// 1</span></span><br><span class="line"></span><br><span class="line"><span class="variable language_">console</span>.<span class="title function_">log</span>(<span class="string">&quot;aB&quot;</span>.<span class="title function_">localeCompare</span>(<span class="string">&quot;AB&quot;</span>, <span class="literal">undefined</span>, &#123; <span class="attr">sensitivity</span>: <span class="string">&quot;case&quot;</span> &#125;)) <span class="comment">// -1</span></span><br><span class="line"></span><br><span class="line"><span class="variable language_">console</span>.<span class="title function_">log</span>(<span class="string">&quot;aB&quot;</span>.<span class="title function_">localeCompare</span>(<span class="string">&quot;AB&quot;</span>, <span class="literal">undefined</span>, &#123; <span class="attr">sensitivity</span>: <span class="string">&quot;case&quot;</span>, <span class="attr">caseFirst</span>: <span class="string">&quot;upper&quot;</span> &#125;)) <span class="comment">// 1</span></span><br></pre></td></tr></table></figure>
+
+<p><strong><em><code>ignorePunctuation</code></em></strong></p>
+<p>The <code>ignorePunctuation</code> option in the <code>localeCompare()</code> method specifies whether punctuation and other symbols should be ignored during the comparison.</p>
+<p>It can take one of the following two values: <code>true</code> and <code>false</code></p>
+<figure class="highlight javascript"><table><tr><td class="code"><pre><span class="line"><span class="variable language_">console</span>.<span class="title function_">log</span>(<span class="string">&quot;Hello, world!&quot;</span>.<span class="title function_">localeCompare</span>(<span class="string">&quot;Hello world&quot;</span>, <span class="literal">undefined</span>, &#123; <span class="attr">ignorePunctuation</span>: <span class="literal">true</span> &#125;)) <span class="comment">// 0</span></span><br></pre></td></tr></table></figure>]]></content>
+      <tags>
+        <tag>JavaScript</tag>
+        <tag>Methods</tag>
+      </tags>
+  </entry>
+  <entry>
+    <title>`Path` module - Node.js</title>
+    <url>/2023/05/14/Path%20module%20-%20Node.js/</url>
+    <content><![CDATA[<p>因为本人使用的操作系统是 OS X ，所以一下书写规范均符合 POSIX（Portable Open System Interface eXtended），Windows 用户请自行查阅资料。</p>
+<h3 id="path-basename-path-suffix"><a href="#path-basename-path-suffix" class="headerlink" title="path.basename(path[, suffix])"></a><code>path.basename(path[, suffix])</code></h3><figure class="highlight javascript"><table><tr><td class="code"><pre><span class="line">path.<span class="title function_">basename</span>(<span class="string">&#x27;/path/to/project/index.html&#x27;</span>, <span class="string">&#x27;.html&#x27;</span>)</span><br><span class="line"><span class="comment">// &#x27;index&#x27;</span></span><br></pre></td></tr></table></figure>
+
+<h3 id="path-delimiter"><a href="#path-delimiter" class="headerlink" title="path.delimiter"></a><code>path.delimiter</code></h3><figure class="highlight javascript"><table><tr><td class="code"><pre><span class="line"><span class="variable language_">console</span>.<span class="title function_">log</span>(process.<span class="property">env</span>.<span class="property">PATH</span>)</span><br><span class="line"><span class="comment">// /opt/homebrew/opt/llvm/bin:/opt/homebrew/opt/llvm/bin:/Applications/Sublime Text.app/Contents/SharedSupport/bin/:/Applications/Visual Studio Code.app/Contents/Resources/app/bin/:/Users/Mccranky/.gem/ruby/3.1.3/bin:/Users/Mccranky/.rubies/ruby-3.1.3/lib/ruby/gems/3.1.0/bin:/Users/Mccranky/.rubies/ruby-3.1.3/bin::/opt/local/bin:/opt/homebrew/bin:/opt/homebrew/sbin:/usr/local/bin:/usr/bin:/bin:/usr/sbin:/sbin:/usr/local/mysql/support-files:/usr/local/mysql/bin:/etc/platform-tools:/usr/local/go/bin:/usr/local/MacGPG2/bin:/usr/local/share/dotnet:~/.dotnet/tools:/Library/Apple/usr/bin:/Users/Mccranky/.nami/bin:/Users/Mccranky/.spicetify</span></span><br><span class="line"><span class="comment">// undefined</span></span><br></pre></td></tr></table></figure>
+
+<p>输出第一行为环境变量。<br>输出第二行的<code>undefined</code>示意无返回值。</p>
+<figure class="highlight javascript"><table><tr><td class="code"><pre><span class="line">process.<span class="property">env</span>.<span class="property">PATH</span>.<span class="title function_">split</span>(path.<span class="property">delimiter</span>)</span><br><span class="line"><span class="comment">/*</span></span><br><span class="line"><span class="comment">[</span></span><br><span class="line"><span class="comment">  &#x27;/opt/homebrew/opt/llvm/bin&#x27;,</span></span><br><span class="line"><span class="comment">  &#x27;/opt/homebrew/opt/llvm/bin&#x27;,</span></span><br><span class="line"><span class="comment">  &#x27;/Applications/Sublime Text.app/Contents/SharedSupport/bin/&#x27;,</span></span><br><span class="line"><span class="comment">  &#x27;/Applications/Visual Studio Code.app/Contents/Resources/app/bin/&#x27;,</span></span><br><span class="line"><span class="comment">  &#x27;/Users/Mccranky/.gem/ruby/3.1.3/bin&#x27;,</span></span><br><span class="line"><span class="comment">  &#x27;/Users/Mccranky/.rubies/ruby-3.1.3/lib/ruby/gems/3.1.0/bin&#x27;,</span></span><br><span class="line"><span class="comment">  &#x27;/Users/Mccranky/.rubies/ruby-3.1.3/bin&#x27;,</span></span><br><span class="line"><span class="comment">  &#x27;&#x27;,</span></span><br><span class="line"><span class="comment">  &#x27;/opt/local/bin&#x27;,</span></span><br><span class="line"><span class="comment">  &#x27;/opt/homebrew/bin&#x27;,</span></span><br><span class="line"><span class="comment">  &#x27;/opt/homebrew/sbin&#x27;,</span></span><br><span class="line"><span class="comment">  &#x27;/usr/local/bin&#x27;,</span></span><br><span class="line"><span class="comment">  &#x27;/usr/bin&#x27;,</span></span><br><span class="line"><span class="comment">  &#x27;/bin&#x27;,</span></span><br><span class="line"><span class="comment">  &#x27;/usr/sbin&#x27;,</span></span><br><span class="line"><span class="comment">  &#x27;/sbin&#x27;,</span></span><br><span class="line"><span class="comment">  &#x27;/usr/local/mysql/support-files&#x27;,</span></span><br><span class="line"><span class="comment">  &#x27;/usr/local/mysql/bin&#x27;,</span></span><br><span class="line"><span class="comment">  &#x27;/etc/platform-tools&#x27;,</span></span><br><span class="line"><span class="comment">  &#x27;/usr/local/go/bin&#x27;,</span></span><br><span class="line"><span class="comment">  &#x27;/usr/local/MacGPG2/bin&#x27;,</span></span><br><span class="line"><span class="comment">  &#x27;/usr/local/share/dotnet&#x27;,</span></span><br><span class="line"><span class="comment">  &#x27;~/.dotnet/tools&#x27;,</span></span><br><span class="line"><span class="comment">  &#x27;/Library/Apple/usr/bin&#x27;,</span></span><br><span class="line"><span class="comment">  &#x27;/Users/Mccranky/.nami/bin&#x27;,</span></span><br><span class="line"><span class="comment">  &#x27;/Users/Mccranky/.spicetify&#x27;</span></span><br><span class="line"><span class="comment">]</span></span><br><span class="line"><span class="comment">*/</span></span><br></pre></td></tr></table></figure>
+
+<p><code>path.delimiter</code>: <code>:</code></p>
+<h3 id="path-dirname"><a href="#path-dirname" class="headerlink" title="path.dirname"></a><code>path.dirname</code></h3><figure class="highlight javascript"><table><tr><td class="code"><pre><span class="line">path.<span class="title function_">dirname</span>(<span class="string">&#x27;path/to/file.txt&#x27;</span>)</span><br><span class="line"><span class="comment">// &#x27;path/to&#x27;</span></span><br></pre></td></tr></table></figure>
+
+<h3 id="path-extname"><a href="#path-extname" class="headerlink" title="path.extname"></a><code>path.extname</code></h3><figure class="highlight javascript"><table><tr><td class="code"><pre><span class="line">path.<span class="title function_">extname</span>(<span class="string">&#x27;index.html&#x27;</span>)</span><br><span class="line"><span class="comment">// &#x27;.html&#x27;</span></span><br><span class="line"></span><br><span class="line">path.<span class="title function_">extname</span>(<span class="string">&#x27;index.foo.md&#x27;</span>)</span><br><span class="line"><span class="comment">// &#x27;.md&#x27;</span></span><br><span class="line"></span><br><span class="line">path.<span class="title function_">extname</span>(<span class="string">&#x27;index.&#x27;</span>)</span><br><span class="line"><span class="comment">// &#x27;.&#x27;</span></span><br><span class="line"></span><br><span class="line">path.<span class="title function_">extname</span>(<span class="string">&#x27;index&#x27;</span>)</span><br><span class="line"><span class="comment">// &#x27;&#x27;</span></span><br><span class="line"></span><br><span class="line">path.<span class="title function_">extname</span>(<span class="string">&#x27;.index&#x27;</span>)</span><br><span class="line"><span class="comment">// &#x27;&#x27;</span></span><br><span class="line"></span><br><span class="line">path.<span class="title function_">extname</span>(<span class="string">&#x27;.index.md&#x27;</span>)</span><br><span class="line"><span class="comment">// &#x27;.md&#x27;</span></span><br></pre></td></tr></table></figure>
+
+<h3 id="path-format-pathObject"><a href="#path-format-pathObject" class="headerlink" title="path.format(pathObject)"></a><code>path.format(pathObject)</code></h3><figure class="highlight javascript"><table><tr><td class="code"><pre><span class="line"><span class="comment">// `$&#123;dir&#125;$&#123;path.sep&#125;$&#123;base&#125;`</span></span><br><span class="line">path.<span class="title function_">format</span>(&#123;</span><br><span class="line">  <span class="attr">root</span>: <span class="string">&#x27;/ignored&#x27;</span>,</span><br><span class="line">  <span class="attr">dir</span>: <span class="string">&#x27;/home/user/dir&#x27;</span>,</span><br><span class="line">  <span class="attr">base</span>: <span class="string">&#x27;file.txt&#x27;</span>,</span><br><span class="line">&#125;)</span><br><span class="line"><span class="comment">// &#x27;/home/user/dir/file.txt&#x27;</span></span><br><span class="line"></span><br><span class="line">path.<span class="title function_">format</span>(&#123;</span><br><span class="line">  <span class="attr">root</span>: <span class="string">&#x27;/&#x27;</span>,</span><br><span class="line">  <span class="attr">base</span>: <span class="string">&#x27;file.txt&#x27;</span>,</span><br><span class="line">  <span class="attr">ext</span>: <span class="string">&#x27;ignored&#x27;</span>,</span><br><span class="line">&#125;)</span><br><span class="line"><span class="comment">// &#x27;/file.txt&#x27;</span></span><br><span class="line"></span><br><span class="line">path.<span class="title function_">format</span>(&#123;</span><br><span class="line">  <span class="attr">root</span>: <span class="string">&#x27;/&#x27;</span>,</span><br><span class="line">  <span class="attr">name</span>: <span class="string">&#x27;file&#x27;</span>,</span><br><span class="line">  <span class="attr">ext</span>: <span class="string">&#x27;.txt&#x27;</span>,</span><br><span class="line">&#125;)</span><br><span class="line"><span class="comment">// &#x27;/file.txt&#x27;</span></span><br><span class="line"></span><br><span class="line">path.<span class="title function_">format</span>(&#123;</span><br><span class="line">  <span class="attr">root</span>: <span class="string">&#x27;/&#x27;</span>,</span><br><span class="line">  <span class="attr">name</span>: <span class="string">&#x27;file&#x27;</span>,</span><br><span class="line">  <span class="attr">ext</span>: <span class="string">&#x27;txt&#x27;</span>,</span><br><span class="line">&#125;)</span><br><span class="line"><span class="comment">// &#x27;/file.txt&#x27;</span></span><br></pre></td></tr></table></figure>
+
+<h3 id="path-isAbsolute"><a href="#path-isAbsolute" class="headerlink" title="path.isAbsolute"></a><code>path.isAbsolute</code></h3><figure class="highlight javascript"><table><tr><td class="code"><pre><span class="line">path.<span class="title function_">isAbsolute</span>(<span class="string">&#x27;/foo/bar&#x27;</span>) <span class="comment">// true</span></span><br><span class="line">path.<span class="title function_">isAbsolute</span>(<span class="string">&#x27;/baz/..&#x27;</span>)  <span class="comment">// true</span></span><br><span class="line">path.<span class="title function_">isAbsolute</span>(<span class="string">&#x27;qux/&#x27;</span>)     <span class="comment">// false</span></span><br><span class="line">path.<span class="title function_">isAbsolute</span>(<span class="string">&#x27;.&#x27;</span>)        <span class="comment">// false</span></span><br></pre></td></tr></table></figure>
+
+<h3 id="path-join-paths"><a href="#path-join-paths" class="headerlink" title="path.join([...paths])"></a><code>path.join([...paths])</code></h3><figure class="highlight javascript"><table><tr><td class="code"><pre><span class="line">path.<span class="title function_">join</span>(<span class="string">&#x27;&#x27;</span>)</span><br><span class="line"><span class="comment">// &#x27;.&#x27;</span></span><br><span class="line"></span><br><span class="line">path.<span class="title function_">join</span>(<span class="string">&#x27;/&#x27;</span>, <span class="string">&#x27;/foo&#x27;</span>, <span class="string">&#x27;bar&#x27;</span>, <span class="string">&#x27;baz&#x27;</span>, <span class="string">&#x27;..&#x27;</span>)</span><br><span class="line"><span class="comment">// &#x27;/foo/bar&#x27;</span></span><br></pre></td></tr></table></figure>
+
+<h3 id="path-normalize-path"><a href="#path-normalize-path" class="headerlink" title="path.normalize(path)"></a><code>path.normalize(path)</code></h3><figure class="highlight javascript"><table><tr><td class="code"><pre><span class="line">path.<span class="title function_">normalize</span>(<span class="string">&#x27;/foo/bar//baz/asdf/quux/..&#x27;</span>)</span><br><span class="line"><span class="comment">// Returns: &#x27;/foo/bar/baz/asdf&#x27;</span></span><br></pre></td></tr></table></figure>
+
+<h3 id="path-parse-path"><a href="#path-parse-path" class="headerlink" title="path.parse(path)"></a><code>path.parse(path)</code></h3><figure class="highlight javascript"><table><tr><td class="code"><pre><span class="line">path.<span class="title function_">parse</span>(<span class="string">&#x27;/home/user/dir/file.txt&#x27;</span>)</span><br><span class="line"><span class="comment">/*</span></span><br><span class="line"><span class="comment">&#123;</span></span><br><span class="line"><span class="comment">  root: &#x27;/&#x27;,</span></span><br><span class="line"><span class="comment">  dir: &#x27;/home/user/dir&#x27;,</span></span><br><span class="line"><span class="comment">  base: &#x27;file.txt&#x27;,</span></span><br><span class="line"><span class="comment">  ext: &#x27;.txt&#x27;,</span></span><br><span class="line"><span class="comment">  name: &#x27;file&#x27;</span></span><br><span class="line"><span class="comment">&#125;</span></span><br><span class="line"><span class="comment">*/</span></span><br></pre></td></tr></table></figure>
+
+<figure class="highlight plaintext"><table><tr><td class="code"><pre><span class="line">┌─────────────────────┬────────────┐</span><br><span class="line">│          dir        │    base    │</span><br><span class="line">├──────┬              ├──────┬─────┤</span><br><span class="line">│ root │              │ name │ ext │</span><br><span class="line">&quot;  /    home/user/dir / file  .txt &quot;</span><br><span class="line">└──────┴──────────────┴──────┴─────┘</span><br></pre></td></tr></table></figure>
+
+<h3 id="path-posix"><a href="#path-posix" class="headerlink" title="path.posix"></a><code>path.posix</code></h3><p>只是输出一下<code>path</code>模组所有的方法。</p>
+<h3 id="path-relative-from-to"><a href="#path-relative-from-to" class="headerlink" title="path.relative(from, to)"></a><code>path.relative(from, to)</code></h3><figure class="highlight javascript"><table><tr><td class="code"><pre><span class="line">path.<span class="title function_">relative</span>(<span class="string">&#x27;/data/orandea/test/aaa&#x27;</span>, <span class="string">&#x27;/data/orandea/impl/bbb&#x27;</span>)</span><br><span class="line"><span class="comment">// &#x27;../../impl/bbb&#x27;</span></span><br></pre></td></tr></table></figure>
+
+<h3 id="path-resolve-paths"><a href="#path-resolve-paths" class="headerlink" title="path.resolve([...paths])"></a><code>path.resolve([...paths])</code></h3><figure class="highlight javascript"><table><tr><td class="code"><pre><span class="line">path.<span class="title function_">resolve</span>(<span class="string">&#x27;&#x27;</span>)</span><br><span class="line"><span class="string">&#x27;/Users/Mccranky&#x27;</span></span><br><span class="line"></span><br><span class="line">path.<span class="title function_">join</span>(<span class="string">&#x27;foo&#x27;</span>, <span class="string">&#x27;bar&#x27;</span>, <span class="string">&#x27;baz&#x27;</span>, <span class="string">&#x27;..&#x27;</span>)</span><br><span class="line"><span class="comment">// &#x27;/Users/Mccranky/foo/bar&#x27;</span></span><br></pre></td></tr></table></figure>
+
+<h3 id="path-sep"><a href="#path-sep" class="headerlink" title="path.sep"></a><code>path.sep</code></h3><p><code>path.sep</code>: <code>/</code></p>
+<figure class="highlight javascript"><table><tr><td class="code"><pre><span class="line"><span class="string">&#x27;foo/bar/baz&#x27;</span>.<span class="title function_">split</span>(path.<span class="property">sep</span>)</span><br><span class="line"><span class="comment">// [&#x27;foo&#x27;, &#x27;bar&#x27;, &#x27;baz&#x27;]</span></span><br></pre></td></tr></table></figure>
+]]></content>
+      <categories>
+        <category>Node.js</category>
+      </categories>
+      <tags>
+        <tag>Node.js</tag>
+        <tag>Path</tag>
+      </tags>
+  </entry>
+  <entry>
+    <title>The Shanghai Lockdown Diary</title>
+    <url>/2023/05/05/The%20Shanghai%20Lockdown%20Diary/</url>
+    <content><![CDATA[<p>A late addition to the stack, but by all accounts no less authentic. This is a real account of what transpired in Shanghai during the great lockdown. I, for one, was away at the time, locked up at school in a different city. Nonetheless, ripples of the cataclysmic effects had reached me in that northern coast-lined city, sending waves of shock and grief, piercing my heart like daggers.</p>
+<p>My mom’s account of those three months is a testament to her talent with words and positive outlook on life in general. She describes the despair and hopelessness that consumed many during that time, but also the resilience and strength of the human spirit. Her words paint a vivid picture of what life was like during the lockdown, and the following account is for anyone interested in gaining a deeper understanding of this human experience.</p>
+<p>2022年4月8日，是丈夫和我因上海疫情在家禁足的第十一天。</p>
+<p>微信群每天都有几百上千条信息：朝阳群众雪亮的双眼把偷溜下楼的人拍照发群，让其 “见光死”，果然后面几天下楼溜达的人几乎绝迹；把各区发放的食品发群，让群众们点评到底哪个区更“豪横”？将各种荒唐离谱的防疫搞笑视频发群，对其极尽调侃之能事；最重要的是，街道居委的各类通知也由楼组长发布在群里，实施无漏洞的网格化管理。每天每日每个楼洞排着队整齐划一去做核酸检测，真乃“威武之师”也！</p>
+<p>随着封控天数的增加，每家每户存粮逐渐耗尽。微信群里搞笑调侃的少了，群情激昂点评时事的少了，取而代之的是各种团购群组。从米面油蔬菜水果到婴儿奶粉纸尿裤，应有尽有。此时此刻，没有什么比一桶油一盒鸡蛋更重要的了。也有幸运儿在群里炫耀自己在各类APP上拼手速抢到的食物图片，普普通通的一块奶油蛋糕就足以让人垂涎欲滴。望着每日重复的食物和日渐的清空冰箱，我有点心动了。</p>
+<p>当晚，我就在手机上下载了四个外卖应用：美团、叮咚买菜、每日优鲜、盒马。先看美团，发现“你所在的小区不在配送范围”。再看每日优鲜，很多东西是“缺货”，好不容易找到有货的，鸡蛋10个29.8元，狠狠心把它加入购物车，点击购买时，发现仍然需要在早上六点抢，当下不能生成订单，我如释重负，毫不犹豫将这“绿色有机”的鸡蛋删除了。叮咚买菜、盒马鲜生也都是需要在早上六点拼手速抢下单，浏览了一遍，东西普遍价格高，也谈不到质优，本就抱着试试看心态的我干脆放弃了。</p>
+<p>回过来审视我自己的情况：目前家中存粮还够吃，挨饿是肯定不会的。这得益于我的一个好习惯：经常清点家中存货，一旦缺少，马上补足三个月的量。2020年武汉疫情时，由于对病毒的无知而产生的恐惧，我有过大半个月没有下楼的经历，一切全靠网购，且放足了余量。现在看来，未雨绸缪，广积粮是必要的。</p>
+<p>如今，八旬老父老母在故乡身体健康，自强自立的两位老人把自己的生活安排得妥妥帖帖，不要子女操半点心；儿子离开上海在大学正常地学习生活，为着自己的目标在每天努力；海外的家人们安居乐业，捷报频传。身无后顾之忧的我俩一身轻松：我精打细算烧菜做饭，丈夫风花雪月吟诗作对，禁足的日子过得并不乏味且充满诗意。</p>
+<p>惟愿疫情的阴霾尽快散去，我爱的家人们能很快相聚，上海重现东方明珠的风采！</p>
+<hr>
+<p>On April 8th, 2022, it was the eleventh day of being confined at home in Shanghai due to the pandemic. Every day, there were hundreds or even thousands of messages in our WeChat groups. Some groups had photos of people sneaking out of their homes, which were then shared to shame them. This resulted in fewer people sneaking out in the following days. Other groups shared information about food distribution in different districts, and we would compare which district had better supplies. There were also many funny videos related to the pandemic that were shared, which made us laugh and helped to relieve some of the stress.</p>
+<p>As the days went by, our food supplies began to dwindle. The funny videos and discussions about current events became less frequent in the groups, and were replaced by various group-buying options. Everything from rice, noodles, oil, vegetables, fruits, to baby formula and diapers were available. At this time, nothing was more important than having a bucket of oil and a box of eggs. Some lucky people would show off the food they had managed to buy from various apps, and even a simple piece of cake would make us drool.</p>
+<p>That night, I downloaded four food delivery apps on my phone: Meituan, Dingdong Maicai, MissFresh, and Hema. I checked Meituan first, but my neighborhood was not within their delivery range. Then I tried MissFresh, but many items were out of stock. I finally found eggs, but they were priced at 29.8 yuan for a pack of 10. When I tried to purchase them, I found out that I still needed to compete with others at 6am to place my order. I felt relieved that I didn’t have to buy them and deleted them from my cart. Dingdong Maicai and Hema also required me to compete with others at 6am to place my order, and the prices were generally high with no guarantee of quality. I decided to give up on them altogether.</p>
+<p>Looking back at my situation, I realized that we still had enough food to eat, and we wouldn’t go hungry. This was thanks to my good habit of regularly checking our food supplies and stocking up on a three-month supply when we were running low. During the Wuhan pandemic in 2020, I was afraid of the virus and didn’t leave my home for almost two weeks. All of our supplies were ordered online and we had extra just in case. Now, it’s clear that preparing ahead of time and stocking up on food is necessary.</p>
+<p>Currently, my elderly parents are healthy and living in their hometown, and they are self-sufficient and don’t require any assistance from their children. My son is away at university, working hard towards his goals, and my family members who live abroad are doing well. With no worries, my husband and I are enjoying our time at home during the lockdown. I cook and budget carefully, while my husband writes poetry and enjoys his hobbies. Although we are confined to our home, it’s not boring and we find joy in simple things.</p>
+<p>We hope that the pandemic will soon be over, and that we can be reunited with our loved ones. We also hope that Shanghai can once again thrive and shine like the Oriental Pearl it is.</p>
+]]></content>
+      <tags>
+        <tag>Life</tag>
+      </tags>
+  </entry>
+  <entry>
+    <title>`node` in the command line</title>
+    <url>/2023/04/28/%60node%60%20in%20the%20command%20line/</url>
+    <content><![CDATA[<p>I ran into this hassle the other day when my <code>npm</code> command failed to work in the command line. It took me a while to sort things out and left me in a foul mood. To prevent something like that from happening again, I decided to write this post. Nothing fancy - just some commands that might prove helpful in the long run.</p>
+<h3 id="node"><a href="#node" class="headerlink" title="node"></a><em><code>node</code></em></h3><h4 id="Display-global-installation-directory"><a href="#Display-global-installation-directory" class="headerlink" title="Display global installation directory"></a>Display global installation directory</h4><figure class="highlight bash"><table><tr><td class="code"><pre><span class="line">npm root -g</span><br></pre></td></tr></table></figure>
+
+<p>If you installed <code>node</code> using the official package installer, the global installation directory for <code>npm</code> packages would be:</p>
+<pre><code>/usr/local/lib/node_modules
+</code></pre>
+<p>Or you could’ve installed it using Homebrew. In that case, the global installation directory would be:</p>
+<pre><code>/opt/homebrew/lib/node_modules
+</code></pre>
+<h4 id="View-global-installation"><a href="#View-global-installation" class="headerlink" title="View global installation"></a>View global installation</h4><figure class="highlight bash"><table><tr><td class="code"><pre><span class="line">npm <span class="built_in">ls</span> -g</span><br></pre></td></tr></table></figure>
+
+<pre><code>/opt/homebrew/lib
+├── @e-hentai/home@1.6.0-alpha.9
+├── express-generator@4.16.1
+├── nodemon@2.0.22
+└── npm@9.6.5
+</code></pre>
+<h4 id="Update-global-installation"><a href="#Update-global-installation" class="headerlink" title="Update global installation"></a>Update global installation</h4><figure class="highlight bash"><table><tr><td class="code"><pre><span class="line">npm update -g</span><br></pre></td></tr></table></figure>
+
+<h4 id="View-global-configuration"><a href="#View-global-configuration" class="headerlink" title="View global configuration"></a>View global configuration</h4><figure class="highlight bash"><table><tr><td class="code"><pre><span class="line">npm config list</span><br></pre></td></tr></table></figure>
+
+<p>The output should be on the lines of this:</p>
+<pre><code>; &quot;builtin&quot; config from /opt/homebrew/lib/node_modules/npm/npmrc
+
+prefix = &quot;/opt/homebrew&quot; 
+
+; &quot;user&quot; config from /Users/Mccranky/.npmrc
+
+fetch-retry-maxtimeout = 300000 
+
+; node bin location = /opt/homebrew/Cellar/node/20.0.0/bin/node
+; node version = v20.0.0
+; npm local prefix = /Users/Mccranky
+; npm version = 9.6.5
+; cwd = /Users/Mccranky
+; HOME = /Users/Mccranky
+; Run `npm config ls -l` to show all defaults.
+</code></pre>
+<p>From it, we can discern a few key instances that might prove helpful.</p>
+<blockquote>
+<p>“builtin” config is stored at <code>/opt/homebrew/lib/node_modules/npm/npmrc</code></p>
+</blockquote>
+<blockquote>
+<p>“user” config is stored at <code>/Users/Mccranky/.npmrc</code></p>
+</blockquote>
+<h4 id="Add-x2F-remove-configuration"><a href="#Add-x2F-remove-configuration" class="headerlink" title="Add&#x2F;remove configuration"></a>Add&#x2F;remove configuration</h4><figure class="highlight bash"><table><tr><td class="code"><pre><span class="line">npm config <span class="built_in">set</span> &lt;name&gt; &lt;value&gt;</span><br></pre></td></tr></table></figure>
+
+<p>For example, if I want to specify a range of time before timeout occurs, I can use the following command:</p>
+<figure class="highlight bash"><table><tr><td class="code"><pre><span class="line">npm config <span class="built_in">set</span> fetch-retry-maxtimeout 300000 // 5 minutes</span><br><span class="line"></span><br><span class="line">npm config <span class="built_in">set</span> fetch-retry-mintimeout 60000 // 1 minute</span><br><span class="line"></span><br></pre></td></tr></table></figure>
+
+<p>The same mechanism applys when it comes to how we delete configurations:</p>
+<figure class="highlight bash"><table><tr><td class="code"><pre><span class="line">npm config delete fetch-retry-maxtimeout</span><br><span class="line"></span><br><span class="line">npm config delete fetch-retry-mintimeout</span><br><span class="line"></span><br></pre></td></tr></table></figure>
+
+<h3 id="express"><a href="#express" class="headerlink" title="express"></a><em><code>express</code></em></h3><p>I’ve only just started dabbling with <code>express</code> and my expertise is cut pretty thin, but the rule of thumb I tend to follow is:</p>
+<ol>
+<li><p>If you’re installing something that you want to use in <strong>your program</strong> using <code>require(&#39;something&#39;)</code>, then install it locally, at the root of your project.</p>
+</li>
+<li><p>If you’re installing something that you want to use on the <strong>command line</strong> or something, install it globally, so that its binaries end up in your <code>$PATH</code> environment variable.</p>
+</li>
+</ol>
+<p>Based on this, you would want to install <code>express-generator</code> using the <code>-g</code> flag as you will use it as a command line tool, but you’d want to install <code>express</code> without this flag as it’s a module you will want to <code>require()</code> it in your application.</p>
+]]></content>
+      <categories>
+        <category>Node.js</category>
+      </categories>
+      <tags>
+        <tag>Node.js</tag>
+        <tag>Express.js</tag>
+        <tag>Note</tag>
+      </tags>
+  </entry>
+  <entry>
     <title>[Fix] Failed to mount /mnt/share</title>
     <url>/2023/04/27/%5BFix%5D%20Failed%20to%20mount%20:mnt:share/</url>
     <content><![CDATA[<h3 id="Solution"><a href="#Solution" class="headerlink" title="Solution"></a>Solution</h3><p>Our fix to the problem is to remove <code>/mnt/share</code> entirely and mount something else in its place.</p>
@@ -903,104 +1001,6 @@ Apr 27 02:45:46 alarm systemd[1]: Failed to mount /mnt/share.
         <tag>ArchLinux</tag>
         <tag>Virtual Machine</tag>
         <tag>Issue</tag>
-      </tags>
-  </entry>
-  <entry>
-    <title>`node` in the command line</title>
-    <url>/2023/04/28/%60node%60%20in%20the%20command%20line/</url>
-    <content><![CDATA[<p>I ran into this hassle the other day when my <code>npm</code> command failed to work in the command line. It took me a while to sort things out and left me in a foul mood. To prevent something like that from happening again, I decided to write this post. Nothing fancy - just some commands that might prove helpful in the long run.</p>
-<h3 id="node"><a href="#node" class="headerlink" title="node"></a><em><code>node</code></em></h3><h4 id="Display-global-installation-directory"><a href="#Display-global-installation-directory" class="headerlink" title="Display global installation directory"></a>Display global installation directory</h4><figure class="highlight bash"><table><tr><td class="code"><pre><span class="line">npm root -g</span><br></pre></td></tr></table></figure>
-
-<p>If you installed <code>node</code> using the official package installer, the global installation directory for <code>npm</code> packages would be:</p>
-<pre><code>/usr/local/lib/node_modules
-</code></pre>
-<p>Or you could’ve installed it using Homebrew. In that case, the global installation directory would be:</p>
-<pre><code>/opt/homebrew/lib/node_modules
-</code></pre>
-<h4 id="View-global-installation"><a href="#View-global-installation" class="headerlink" title="View global installation"></a>View global installation</h4><figure class="highlight bash"><table><tr><td class="code"><pre><span class="line">npm <span class="built_in">ls</span> -g</span><br></pre></td></tr></table></figure>
-
-<pre><code>/opt/homebrew/lib
-├── @e-hentai/home@1.6.0-alpha.9
-├── express-generator@4.16.1
-├── nodemon@2.0.22
-└── npm@9.6.5
-</code></pre>
-<h4 id="Update-global-installation"><a href="#Update-global-installation" class="headerlink" title="Update global installation"></a>Update global installation</h4><figure class="highlight bash"><table><tr><td class="code"><pre><span class="line">npm update -g</span><br></pre></td></tr></table></figure>
-
-<h4 id="View-global-configuration"><a href="#View-global-configuration" class="headerlink" title="View global configuration"></a>View global configuration</h4><figure class="highlight bash"><table><tr><td class="code"><pre><span class="line">npm config list</span><br></pre></td></tr></table></figure>
-
-<p>The output should be on the lines of this:</p>
-<pre><code>; &quot;builtin&quot; config from /opt/homebrew/lib/node_modules/npm/npmrc
-
-prefix = &quot;/opt/homebrew&quot; 
-
-; &quot;user&quot; config from /Users/Mccranky/.npmrc
-
-fetch-retry-maxtimeout = 300000 
-
-; node bin location = /opt/homebrew/Cellar/node/20.0.0/bin/node
-; node version = v20.0.0
-; npm local prefix = /Users/Mccranky
-; npm version = 9.6.5
-; cwd = /Users/Mccranky
-; HOME = /Users/Mccranky
-; Run `npm config ls -l` to show all defaults.
-</code></pre>
-<p>From it, we can discern a few key instances that might prove helpful.</p>
-<blockquote>
-<p>“builtin” config is stored at <code>/opt/homebrew/lib/node_modules/npm/npmrc</code></p>
-</blockquote>
-<blockquote>
-<p>“user” config is stored at <code>/Users/Mccranky/.npmrc</code></p>
-</blockquote>
-<h4 id="Add-x2F-remove-configuration"><a href="#Add-x2F-remove-configuration" class="headerlink" title="Add&#x2F;remove configuration"></a>Add&#x2F;remove configuration</h4><figure class="highlight bash"><table><tr><td class="code"><pre><span class="line">npm config <span class="built_in">set</span> &lt;name&gt; &lt;value&gt;</span><br></pre></td></tr></table></figure>
-
-<p>For example, if I want to specify a range of time before timeout occurs, I can use the following command:</p>
-<figure class="highlight bash"><table><tr><td class="code"><pre><span class="line">npm config <span class="built_in">set</span> fetch-retry-maxtimeout 300000 // 5 minutes</span><br><span class="line"></span><br><span class="line">npm config <span class="built_in">set</span> fetch-retry-mintimeout 60000 // 1 minute</span><br><span class="line"></span><br></pre></td></tr></table></figure>
-
-<p>The same mechanism applys when it comes to how we delete configurations:</p>
-<figure class="highlight bash"><table><tr><td class="code"><pre><span class="line">npm config delete fetch-retry-maxtimeout</span><br><span class="line"></span><br><span class="line">npm config delete fetch-retry-mintimeout</span><br><span class="line"></span><br></pre></td></tr></table></figure>
-
-<h3 id="express"><a href="#express" class="headerlink" title="express"></a><em><code>express</code></em></h3><p>I’ve only just started dabbling with <code>express</code> and my expertise is cut pretty thin, but the rule of thumb I tend to follow is:</p>
-<ol>
-<li><p>If you’re installing something that you want to use in <strong>your program</strong> using <code>require(&#39;something&#39;)</code>, then install it locally, at the root of your project.</p>
-</li>
-<li><p>If you’re installing something that you want to use on the <strong>command line</strong> or something, install it globally, so that its binaries end up in your <code>$PATH</code> environment variable.</p>
-</li>
-</ol>
-<p>Based on this, you would want to install <code>express-generator</code> using the <code>-g</code> flag as you will use it as a command line tool, but you’d want to install <code>express</code> without this flag as it’s a module you will want to <code>require()</code> it in your application.</p>
-]]></content>
-      <categories>
-        <category>Node.js</category>
-      </categories>
-      <tags>
-        <tag>Node.js</tag>
-        <tag>Express.js</tag>
-        <tag>Note</tag>
-      </tags>
-  </entry>
-  <entry>
-    <title>The Shanghai Lockdown Diary</title>
-    <url>/2023/05/05/The%20Shanghai%20Lockdown%20Diary/</url>
-    <content><![CDATA[<p>A late addition to the stack, but by all accounts no less authentic. This is a real account of what transpired in Shanghai during the great lockdown. I, for one, was away at the time, locked up at school in a different city. Nonetheless, ripples of the cataclysmic effects had reached me in that northern coast-lined city, sending waves of shock and grief, piercing my heart like daggers.</p>
-<p>My mom’s account of those three months is a testament to her talent with words and positive outlook on life in general. She describes the despair and hopelessness that consumed many during that time, but also the resilience and strength of the human spirit. Her words paint a vivid picture of what life was like during the lockdown, and the following account is for anyone interested in gaining a deeper understanding of this human experience.</p>
-<p>2022年4月8日，是丈夫和我因上海疫情在家禁足的第十一天。</p>
-<p>微信群每天都有几百上千条信息：朝阳群众雪亮的双眼把偷溜下楼的人拍照发群，让其 “见光死”，果然后面几天下楼溜达的人几乎绝迹；把各区发放的食品发群，让群众们点评到底哪个区更“豪横”？将各种荒唐离谱的防疫搞笑视频发群，对其极尽调侃之能事；最重要的是，街道居委的各类通知也由楼组长发布在群里，实施无漏洞的网格化管理。每天每日每个楼洞排着队整齐划一去做核酸检测，真乃“威武之师”也！</p>
-<p>随着封控天数的增加，每家每户存粮逐渐耗尽。微信群里搞笑调侃的少了，群情激昂点评时事的少了，取而代之的是各种团购群组。从米面油蔬菜水果到婴儿奶粉纸尿裤，应有尽有。此时此刻，没有什么比一桶油一盒鸡蛋更重要的了。也有幸运儿在群里炫耀自己在各类APP上拼手速抢到的食物图片，普普通通的一块奶油蛋糕就足以让人垂涎欲滴。望着每日重复的食物和日渐的清空冰箱，我有点心动了。</p>
-<p>当晚，我就在手机上下载了四个外卖应用：美团、叮咚买菜、每日优鲜、盒马。先看美团，发现“你所在的小区不在配送范围”。再看每日优鲜，很多东西是“缺货”，好不容易找到有货的，鸡蛋10个29.8元，狠狠心把它加入购物车，点击购买时，发现仍然需要在早上六点抢，当下不能生成订单，我如释重负，毫不犹豫将这“绿色有机”的鸡蛋删除了。叮咚买菜、盒马鲜生也都是需要在早上六点拼手速抢下单，浏览了一遍，东西普遍价格高，也谈不到质优，本就抱着试试看心态的我干脆放弃了。</p>
-<p>回过来审视我自己的情况：目前家中存粮还够吃，挨饿是肯定不会的。这得益于我的一个好习惯：经常清点家中存货，一旦缺少，马上补足三个月的量。2020年武汉疫情时，由于对病毒的无知而产生的恐惧，我有过大半个月没有下楼的经历，一切全靠网购，且放足了余量。现在看来，未雨绸缪，广积粮是必要的。</p>
-<p>如今，八旬老父老母在故乡身体健康，自强自立的两位老人把自己的生活安排得妥妥帖帖，不要子女操半点心；儿子离开上海在大学正常地学习生活，为着自己的目标在每天努力；海外的家人们安居乐业，捷报频传。身无后顾之忧的我俩一身轻松：我精打细算烧菜做饭，丈夫风花雪月吟诗作对，禁足的日子过得并不乏味且充满诗意。</p>
-<p>惟愿疫情的阴霾尽快散去，我爱的家人们能很快相聚，上海重现东方明珠的风采！</p>
-<hr>
-<p>On April 8th, 2022, it was the eleventh day of being confined at home in Shanghai due to the pandemic. Every day, there were hundreds or even thousands of messages in our WeChat groups. Some groups had photos of people sneaking out of their homes, which were then shared to shame them. This resulted in fewer people sneaking out in the following days. Other groups shared information about food distribution in different districts, and we would compare which district had better supplies. There were also many funny videos related to the pandemic that were shared, which made us laugh and helped to relieve some of the stress.</p>
-<p>As the days went by, our food supplies began to dwindle. The funny videos and discussions about current events became less frequent in the groups, and were replaced by various group-buying options. Everything from rice, noodles, oil, vegetables, fruits, to baby formula and diapers were available. At this time, nothing was more important than having a bucket of oil and a box of eggs. Some lucky people would show off the food they had managed to buy from various apps, and even a simple piece of cake would make us drool.</p>
-<p>That night, I downloaded four food delivery apps on my phone: Meituan, Dingdong Maicai, MissFresh, and Hema. I checked Meituan first, but my neighborhood was not within their delivery range. Then I tried MissFresh, but many items were out of stock. I finally found eggs, but they were priced at 29.8 yuan for a pack of 10. When I tried to purchase them, I found out that I still needed to compete with others at 6am to place my order. I felt relieved that I didn’t have to buy them and deleted them from my cart. Dingdong Maicai and Hema also required me to compete with others at 6am to place my order, and the prices were generally high with no guarantee of quality. I decided to give up on them altogether.</p>
-<p>Looking back at my situation, I realized that we still had enough food to eat, and we wouldn’t go hungry. This was thanks to my good habit of regularly checking our food supplies and stocking up on a three-month supply when we were running low. During the Wuhan pandemic in 2020, I was afraid of the virus and didn’t leave my home for almost two weeks. All of our supplies were ordered online and we had extra just in case. Now, it’s clear that preparing ahead of time and stocking up on food is necessary.</p>
-<p>Currently, my elderly parents are healthy and living in their hometown, and they are self-sufficient and don’t require any assistance from their children. My son is away at university, working hard towards his goals, and my family members who live abroad are doing well. With no worries, my husband and I are enjoying our time at home during the lockdown. I cook and budget carefully, while my husband writes poetry and enjoys his hobbies. Although we are confined to our home, it’s not boring and we find joy in simple things.</p>
-<p>We hope that the pandemic will soon be over, and that we can be reunited with our loved ones. We also hope that Shanghai can once again thrive and shine like the Oriental Pearl it is.</p>
-]]></content>
-      <tags>
-        <tag>Life</tag>
       </tags>
   </entry>
   <entry>
@@ -1219,53 +1219,6 @@ S: 221 /0:0:0:0:0:0:0:1 Service closing transmission channel
       </tags>
   </entry>
   <entry>
-    <title>如何使用 GitHub Pages 托管 Hexo 静态博客网站</title>
-    <url>/2023/04/22/%E5%A6%82%E4%BD%95%E4%BD%BF%E7%94%A8%20GitHub%20Pages%20%E6%89%98%E7%AE%A1%20Hexo%20%E9%9D%99%E6%80%81%E5%8D%9A%E5%AE%A2%E7%BD%91%E7%AB%99/</url>
-    <content><![CDATA[<p>– <strong>请先阅读 <a href="/2023/04/22/%E4%BD%BF%E7%94%A8%20Hexo%20%E7%94%9F%E6%88%90%E9%9D%99%E6%80%81%E7%BD%91%E9%A1%B5%E5%8D%9A%E5%AE%A2/index.html">使用 Hexo 生成静态网页博客</a>！</strong></p>
-<h3 id="准备工作"><a href="#准备工作" class="headerlink" title="准备工作"></a>准备工作</h3><p>首先，我们基于完成的博客<code>.md</code>文件生成静态网页：</p>
-<figure class="highlight bash"><table><tr><td class="code"><pre><span class="line"><span class="built_in">cd</span> /path/to/site/</span><br><span class="line"><span class="comment"># 跑到项目路径目录</span></span><br><span class="line"></span><br><span class="line">hexo generate</span><br><span class="line"><span class="comment"># 生成静态网页，存放与 public 文件夹内</span></span><br></pre></td></tr></table></figure>
-
-<p>接着，我们进入<code>public</code>文件夹。</p>
-<pre><code>.
-├── node_modules
-├── public
-├── scaffolds
-├── source
-└── themes
-</code></pre>
-<p>因为我们是使用 GitHub Pages 托管，所以我们需要在<code>public</code>文件夹内初始化<code>git</code>：</p>
-<figure class="highlight bash"><table><tr><td class="code"><pre><span class="line">git init</span><br><span class="line"></span><br><span class="line">git branch -m main</span><br><span class="line"></span><br><span class="line">git add .</span><br><span class="line"></span><br><span class="line">git commit -m <span class="string">&quot;初始化工作&quot;</span></span><br></pre></td></tr></table></figure>
-
-<p>其次，我们还需要在 GitHub 上面建立一个远程仓库，格式<strong>必须</strong>为<code>username.github.io</code>，这是硬性要求。</p>
-<h3 id="关联和发布"><a href="#关联和发布" class="headerlink" title="关联和发布"></a>关联和发布</h3><p>我们现在需要关联本地仓库和远程仓库，用例中我们使用<code>https</code>协议，当然也可以使用<code>ssh</code>密钥：</p>
-<figure class="highlight bash"><table><tr><td class="code"><pre><span class="line">git remote add origin https://github.com/username/username.github.io.git</span><br><span class="line"></span><br><span class="line">git push origin main</span><br></pre></td></tr></table></figure>
-
-<p>我们还需要更改一下远程仓库的 GitHub Pages 的设置，目的是告知它托管文件的地址：</p>
-<div style="display: block; margin-left: auto; margin-right: auto; text-align: center; font-size: 1rem;">
-  
-<p>  <img src="/2023/04/22/%E5%A6%82%E4%BD%95%E4%BD%BF%E7%94%A8%20GitHub%20Pages%20%E6%89%98%E7%AE%A1%20Hexo%20%E9%9D%99%E6%80%81%E5%8D%9A%E5%AE%A2%E7%BD%91%E7%AB%99/images/0001.png" alt="点击 Settings" title="点击 Settings"></p>
-  <div>点击 Settings</div>
-  <br>
-
-<p>  <img src="/2023/04/22/%E5%A6%82%E4%BD%95%E4%BD%BF%E7%94%A8%20GitHub%20Pages%20%E6%89%98%E7%AE%A1%20Hexo%20%E9%9D%99%E6%80%81%E5%8D%9A%E5%AE%A2%E7%BD%91%E7%AB%99/images/0002.png" alt="点击 Pages" title="点击 Pages"></p>
-  <div>点击 Pages</div>
-  <br>
-
-<p>  <img src="/2023/04/22/%E5%A6%82%E4%BD%95%E4%BD%BF%E7%94%A8%20GitHub%20Pages%20%E6%89%98%E7%AE%A1%20Hexo%20%E9%9D%99%E6%80%81%E5%8D%9A%E5%AE%A2%E7%BD%91%E7%AB%99/images/0003.png" alt="修改设置" title="修改设置"></p>
-  <div>修改设置</div>
-  <br>
-
-</div>
-
-<p>最后，我们访问<code>username.github.io</code>就可以来到我们的博客页了 :)</p>
-]]></content>
-      <tags>
-        <tag>Hexo</tag>
-        <tag>GitHub Pages</tag>
-        <tag>Git</tag>
-      </tags>
-  </entry>
-  <entry>
     <title>如何生成项目树状结构图</title>
     <url>/2023/04/22/%E5%A6%82%E4%BD%95%E7%94%9F%E6%88%90%E9%A1%B9%E7%9B%AE%E6%A0%91%E7%8A%B6%E7%BB%93%E6%9E%84%E5%9B%BE/</url>
     <content><![CDATA[<h3 id="Prerequisites"><a href="#Prerequisites" class="headerlink" title="Prerequisites"></a>Prerequisites</h3><ul>
@@ -1394,6 +1347,84 @@ S: 221 /0:0:0:0:0:0:0:1 Service closing transmission channel
       </tags>
   </entry>
   <entry>
+    <title>如何使用 GitHub Pages 托管 Hexo 静态博客网站</title>
+    <url>/2023/04/22/%E5%A6%82%E4%BD%95%E4%BD%BF%E7%94%A8%20GitHub%20Pages%20%E6%89%98%E7%AE%A1%20Hexo%20%E9%9D%99%E6%80%81%E5%8D%9A%E5%AE%A2%E7%BD%91%E7%AB%99/</url>
+    <content><![CDATA[<p>– <strong>请先阅读 <a href="/2023/04/22/%E4%BD%BF%E7%94%A8%20Hexo%20%E7%94%9F%E6%88%90%E9%9D%99%E6%80%81%E7%BD%91%E9%A1%B5%E5%8D%9A%E5%AE%A2/index.html">使用 Hexo 生成静态网页博客</a>！</strong></p>
+<h3 id="准备工作"><a href="#准备工作" class="headerlink" title="准备工作"></a>准备工作</h3><p>首先，我们基于完成的博客<code>.md</code>文件生成静态网页：</p>
+<figure class="highlight bash"><table><tr><td class="code"><pre><span class="line"><span class="built_in">cd</span> /path/to/site/</span><br><span class="line"><span class="comment"># 跑到项目路径目录</span></span><br><span class="line"></span><br><span class="line">hexo generate</span><br><span class="line"><span class="comment"># 生成静态网页，存放与 public 文件夹内</span></span><br></pre></td></tr></table></figure>
+
+<p>接着，我们进入<code>public</code>文件夹。</p>
+<pre><code>.
+├── node_modules
+├── public
+├── scaffolds
+├── source
+└── themes
+</code></pre>
+<p>因为我们是使用 GitHub Pages 托管，所以我们需要在<code>public</code>文件夹内初始化<code>git</code>：</p>
+<figure class="highlight bash"><table><tr><td class="code"><pre><span class="line">git init</span><br><span class="line"></span><br><span class="line">git branch -m main</span><br><span class="line"></span><br><span class="line">git add .</span><br><span class="line"></span><br><span class="line">git commit -m <span class="string">&quot;初始化工作&quot;</span></span><br></pre></td></tr></table></figure>
+
+<p>其次，我们还需要在 GitHub 上面建立一个远程仓库，格式<strong>必须</strong>为<code>username.github.io</code>，这是硬性要求。</p>
+<h3 id="关联和发布"><a href="#关联和发布" class="headerlink" title="关联和发布"></a>关联和发布</h3><p>我们现在需要关联本地仓库和远程仓库，用例中我们使用<code>https</code>协议，当然也可以使用<code>ssh</code>密钥：</p>
+<figure class="highlight bash"><table><tr><td class="code"><pre><span class="line">git remote add origin https://github.com/username/username.github.io.git</span><br><span class="line"></span><br><span class="line">git push origin main</span><br></pre></td></tr></table></figure>
+
+<p>我们还需要更改一下远程仓库的 GitHub Pages 的设置，目的是告知它托管文件的地址：</p>
+<div style="display: block; margin-left: auto; margin-right: auto; text-align: center; font-size: 1rem;">
+  
+<p>  <img src="/2023/04/22/%E5%A6%82%E4%BD%95%E4%BD%BF%E7%94%A8%20GitHub%20Pages%20%E6%89%98%E7%AE%A1%20Hexo%20%E9%9D%99%E6%80%81%E5%8D%9A%E5%AE%A2%E7%BD%91%E7%AB%99/images/0001.png" alt="点击 Settings" title="点击 Settings"></p>
+  <div>点击 Settings</div>
+  <br>
+
+<p>  <img src="/2023/04/22/%E5%A6%82%E4%BD%95%E4%BD%BF%E7%94%A8%20GitHub%20Pages%20%E6%89%98%E7%AE%A1%20Hexo%20%E9%9D%99%E6%80%81%E5%8D%9A%E5%AE%A2%E7%BD%91%E7%AB%99/images/0002.png" alt="点击 Pages" title="点击 Pages"></p>
+  <div>点击 Pages</div>
+  <br>
+
+<p>  <img src="/2023/04/22/%E5%A6%82%E4%BD%95%E4%BD%BF%E7%94%A8%20GitHub%20Pages%20%E6%89%98%E7%AE%A1%20Hexo%20%E9%9D%99%E6%80%81%E5%8D%9A%E5%AE%A2%E7%BD%91%E7%AB%99/images/0003.png" alt="修改设置" title="修改设置"></p>
+  <div>修改设置</div>
+  <br>
+
+</div>
+
+<p>最后，我们访问<code>username.github.io</code>就可以来到我们的博客页了 :)</p>
+]]></content>
+      <tags>
+        <tag>Hexo</tag>
+        <tag>GitHub Pages</tag>
+        <tag>Git</tag>
+      </tags>
+  </entry>
+  <entry>
+    <title>软件工程 第一周的博客</title>
+    <url>/2023/03/22/%E8%BD%AF%E4%BB%B6%E5%B7%A5%E7%A8%8B%20%E7%AC%AC%E4%B8%80%E5%91%A8%E7%9A%84%E5%8D%9A%E5%AE%A2/</url>
+    <content><![CDATA[<h3 id="使用Git-VCS的一些小技巧"><a href="#使用Git-VCS的一些小技巧" class="headerlink" title="使用Git VCS的一些小技巧"></a><em>使用Git VCS的一些小技巧</em></h3><p>初始化步骤我就大段省略了，大致就是去 Git 官网下载 Binary Dependencies 然后安装就好了，或者是去安装<code>xcode-command-line-tools</code>，其中<code>git</code>自动包含在里面了。</p>
+<p>说白了 Git 就是一个 Distributional VCS ，大体就是结合了 Local VCS和Centralized VCS，因此基本步骤就是本地建立一个 Local Repository，再在 Gitea 上建立一个 Remote Repository，然后把两个库连接一下，最后把本地的改动<code>push</code>到 Remote Repository 就可以了。</p>
+<p>先说如何建 Local Repository。</p>
+<p>选一处“风水宝地”，一般选择<code>/User/home</code>。然后跑到系统默认的 Terminal Emulator 去（ Windows：PowerShell ），输入一下指令：</p>
+<figure class="highlight bash"><table><tr><td class="code"><pre><span class="line"><span class="built_in">mkdir</span> temp <span class="comment"># 建立temp</span></span><br><span class="line"></span><br><span class="line"><span class="built_in">cd</span> temp <span class="comment"># 进入</span></span><br><span class="line"></span><br><span class="line">git init <span class="comment"># 初始化 Local Repository</span></span><br><span class="line"></span><br></pre></td></tr></table></figure>
+
+<p>做完最后一步会看到 Git 生成了一个<code>.git</code>的隐藏文件夹。千万不要把自己的项目文件扔进去！</p>
+<p>初始化完成后，你就可以开始做项目了。等你做完第一个版本，你就可以把项目<code>add</code>到<code>staging area</code>。用如下指令：</p>
+<figure class="highlight bash"><table><tr><td class="code"><pre><span class="line">git add file.. <span class="comment"># add 后可以加入多个文件</span></span><br></pre></td></tr></table></figure>
+
+<p>然后用<code>git status</code>查看 Local Repository 的状态。如果你看到所有想要<code>staged</code>的文件已经在<code>staging area</code>里面了，就可以上传了。</p>
+<blockquote>
+<p>eg:</p>
+</blockquote>
+<figure class="highlight bash"><table><tr><td class="code"><pre><span class="line">git commit -m “message<span class="string">&quot;</span></span><br></pre></td></tr></table></figure>
+
+<p>最后，我们需要创建一个 Remote Repository，过程如下：</p>
+<figure class="highlight bash"><table><tr><td class="code"><pre><span class="line">git remote add origin git@example.git</span><br></pre></td></tr></table></figure>
+
+<p>然后，我们<code>push</code> Local Repo 到 Remote Repository，过程如下：</p>
+<figure class="highlight bash"><table><tr><td class="code"><pre><span class="line">git push origin temp</span><br></pre></td></tr></table></figure>]]></content>
+      <tags>
+        <tag>Bash</tag>
+        <tag>CLI</tag>
+        <tag>File Systems</tag>
+        <tag>Git</tag>
+      </tags>
+  </entry>
+  <entry>
     <title>软件工程 第四周的博客</title>
     <url>/2023/04/14/%E8%BD%AF%E4%BB%B6%E5%B7%A5%E7%A8%8B%20%E7%AC%AC%E5%9B%9B%E5%91%A8%E7%9A%84%E5%8D%9A%E5%AE%A2/</url>
     <content><![CDATA[<h2 id="简要概述-CTF-OverTheWire-Bandit-Level-25"><a href="#简要概述-CTF-OverTheWire-Bandit-Level-25" class="headerlink" title="简要概述 CTF OverTheWire Bandit Level 25"></a><em>简要概述 CTF OverTheWire Bandit Level 25</em></h2><h3 id="题目"><a href="#题目" class="headerlink" title="题目"></a><em>题目</em></h3><blockquote>
@@ -1477,37 +1508,6 @@ Connection to localhost closed.
         <tag>CTF</tag>
         <tag>OverTheWire</tag>
         <tag>Bandit</tag>
-      </tags>
-  </entry>
-  <entry>
-    <title>软件工程 第一周的博客</title>
-    <url>/2023/03/22/%E8%BD%AF%E4%BB%B6%E5%B7%A5%E7%A8%8B%20%E7%AC%AC%E4%B8%80%E5%91%A8%E7%9A%84%E5%8D%9A%E5%AE%A2/</url>
-    <content><![CDATA[<h3 id="使用Git-VCS的一些小技巧"><a href="#使用Git-VCS的一些小技巧" class="headerlink" title="使用Git VCS的一些小技巧"></a><em>使用Git VCS的一些小技巧</em></h3><p>初始化步骤我就大段省略了，大致就是去 Git 官网下载 Binary Dependencies 然后安装就好了，或者是去安装<code>xcode-command-line-tools</code>，其中<code>git</code>自动包含在里面了。</p>
-<p>说白了 Git 就是一个 Distributional VCS ，大体就是结合了 Local VCS和Centralized VCS，因此基本步骤就是本地建立一个 Local Repository，再在 Gitea 上建立一个 Remote Repository，然后把两个库连接一下，最后把本地的改动<code>push</code>到 Remote Repository 就可以了。</p>
-<p>先说如何建 Local Repository。</p>
-<p>选一处“风水宝地”，一般选择<code>/User/home</code>。然后跑到系统默认的 Terminal Emulator 去（ Windows：PowerShell ），输入一下指令：</p>
-<figure class="highlight bash"><table><tr><td class="code"><pre><span class="line"><span class="built_in">mkdir</span> temp <span class="comment"># 建立temp</span></span><br><span class="line"></span><br><span class="line"><span class="built_in">cd</span> temp <span class="comment"># 进入</span></span><br><span class="line"></span><br><span class="line">git init <span class="comment"># 初始化 Local Repository</span></span><br><span class="line"></span><br></pre></td></tr></table></figure>
-
-<p>做完最后一步会看到 Git 生成了一个<code>.git</code>的隐藏文件夹。千万不要把自己的项目文件扔进去！</p>
-<p>初始化完成后，你就可以开始做项目了。等你做完第一个版本，你就可以把项目<code>add</code>到<code>staging area</code>。用如下指令：</p>
-<figure class="highlight bash"><table><tr><td class="code"><pre><span class="line">git add file.. <span class="comment"># add 后可以加入多个文件</span></span><br></pre></td></tr></table></figure>
-
-<p>然后用<code>git status</code>查看 Local Repository 的状态。如果你看到所有想要<code>staged</code>的文件已经在<code>staging area</code>里面了，就可以上传了。</p>
-<blockquote>
-<p>eg:</p>
-</blockquote>
-<figure class="highlight bash"><table><tr><td class="code"><pre><span class="line">git commit -m “message<span class="string">&quot;</span></span><br></pre></td></tr></table></figure>
-
-<p>最后，我们需要创建一个 Remote Repository，过程如下：</p>
-<figure class="highlight bash"><table><tr><td class="code"><pre><span class="line">git remote add origin git@example.git</span><br></pre></td></tr></table></figure>
-
-<p>然后，我们<code>push</code> Local Repo 到 Remote Repository，过程如下：</p>
-<figure class="highlight bash"><table><tr><td class="code"><pre><span class="line">git push origin temp</span><br></pre></td></tr></table></figure>]]></content>
-      <tags>
-        <tag>Bash</tag>
-        <tag>Git</tag>
-        <tag>CLI</tag>
-        <tag>File Systems</tag>
       </tags>
   </entry>
   <entry>
