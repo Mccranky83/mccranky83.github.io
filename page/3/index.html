@@ -483,7 +483,7 @@
         <i class="far fa-calendar-check"></i>
       </span>
       <span class="post-meta-item-text">Edited on</span>
-      <time title="Modified: 2023-04-23 12:21:58" itemprop="dateModified" datetime="2023-04-23T12:21:58+08:00">2023-04-23</time>
+      <time title="Modified: 2023-10-09 15:13:09" itemprop="dateModified" datetime="2023-10-09T15:13:09+08:00">2023-10-09</time>
     </span>
 
   
@@ -525,7 +525,7 @@
 <h3 id="连接-SMTP-服务器"><a href="#连接-SMTP-服务器" class="headerlink" title="连接 SMTP 服务器"></a>连接 SMTP 服务器</h3><p>开启 Telnet 进程，连接到 SMTP 服务器的 3025 端口：</p>
 <figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">telent localhost 3025</span><br><span class="line"></span><br><span class="line"><span class="comment"># 因为是模拟握手，所以服务器地址就是本地域名</span></span><br></pre></td></tr></table></figure>
 
-<pre><code>telnet localhost 3025
+<pre><code>$ telnet localhost 3025
 Trying ::1...
 Connected to localhost.
 Escape character is &#39;^]&#39;.
@@ -562,11 +562,13 @@ S: 221 /0:0:0:0:0:0:0:1 Service closing transmission channel
 </blockquote>
 <hr>
 <h3 id="连接-IMAP-服务器"><a href="#连接-IMAP-服务器" class="headerlink" title="连接 IMAP 服务器"></a>连接 IMAP 服务器</h3><p><strong><em>认证阶段</em></strong></p>
-<pre><code>  telnet mailServer 110
+<pre><code>  2023-10-09 14:59:25,387 INFO user.UserManager| Created user login example@email.com for address example@email.com with password example@email.com because it didn&#39;t exist before.
+
+  $ telnet localhost 3110
   +OK POP3 server ready
-  user bob
+  user example@email.com
   +OK
-  pass hungry
+  pass example@email.com
   +OK user successfully logged on
 </code></pre>
 <p><strong><em>交易阶段</em></strong></p>
