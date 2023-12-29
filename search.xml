@@ -1,56 +1,22 @@
 <?xml version="1.0" encoding="utf-8"?>
 <search>
   <entry>
-    <title>C++ Pointers</title>
-    <url>/2023/04/29/C++%20Pointers/</url>
-    <content><![CDATA[<h3 id="Array-of-pointers-to-ints"><a href="#Array-of-pointers-to-ints" class="headerlink" title="Array of pointers to ints"></a>Array of pointers to ints</h3><p><strong>Code:</strong></p>
-<figure class="highlight cpp"><table><tr><td class="code"><pre><span class="line"><span class="meta">#<span class="keyword">include</span> <span class="string">&lt;iostream&gt;</span></span></span><br><span class="line"></span><br><span class="line"><span class="function"><span class="type">int</span> <span class="title">main</span><span class="params">()</span></span></span><br><span class="line"><span class="function"></span>&#123;</span><br><span class="line">    <span class="type">int</span>* ap[<span class="number">15</span>];</span><br><span class="line">    <span class="type">int</span> ai[<span class="number">15</span>] = &#123;&#125;;</span><br><span class="line">    <span class="keyword">for</span> (<span class="type">int</span> i = <span class="number">0</span>; i &lt; <span class="number">15</span>; ++i) &#123;</span><br><span class="line">        ai[i] = i; </span><br><span class="line">        ap[i] = &amp;ai[i];</span><br><span class="line">        std::cout &lt;&lt; *ap[i] &lt;&lt; <span class="string">&quot; &quot;</span> &lt;&lt; ap[i]&lt;&lt; std::endl;</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br><span class="line"></span><br></pre></td></tr></table></figure>
+    <title>7-2-Java-基本语法-大整数相加</title>
+    <url>/2023/04/24/7-2-Java-%E5%9F%BA%E6%9C%AC%E8%AF%AD%E6%B3%95-%E5%A4%A7%E6%95%B4%E6%95%B0%E7%9B%B8%E5%8A%A0/</url>
+    <content><![CDATA[<h3 id="题目"><a href="#题目" class="headerlink" title="题目"></a>题目</h3><p>有若干大整数，需要对其进行求和操作。</p>
+<h3 id="输入格式"><a href="#输入格式" class="headerlink" title="输入格式"></a>输入格式</h3><p>每行输入一个字符串代表一个大整数，连续输入若干行，当某行字符为e或E时退出。</p>
+<h3 id="输入样例"><a href="#输入样例" class="headerlink" title="输入样例:"></a>输入样例:</h3><figure class="highlight plaintext"><table><tr><td class="code"><pre><span class="line">42846280183517070527831839425882145521227251250327</span><br><span class="line">55121603546981200581762165212827652751691296897789</span><br><span class="line">e</span><br></pre></td></tr></table></figure>
 
-<p><strong>Console:</strong></p>
-<pre><code>0 0x16d296d14
-1 0x16d296d18
-2 0x16d296d1c
-3 0x16d296d20
-4 0x16d296d24
-5 0x16d296d28
-6 0x16d296d2c
-7 0x16d296d30
-8 0x16d296d34
-9 0x16d296d38
-10 0x16d296d3c
-11 0x16d296d40
-12 0x16d296d44
-13 0x16d296d48
-14 0x16d296d4c
-</code></pre>
-<h3 id="Pointer-to-an-array-of-ints"><a href="#Pointer-to-an-array-of-ints" class="headerlink" title="Pointer to an array of ints"></a>Pointer to an array of ints</h3><p><strong>Code:</strong></p>
-<figure class="highlight cpp"><table><tr><td class="code"><pre><span class="line"><span class="meta">#<span class="keyword">include</span> <span class="string">&lt;iostream&gt;</span></span></span><br><span class="line"></span><br><span class="line"><span class="function"><span class="type">int</span> <span class="title">main</span><span class="params">()</span></span></span><br><span class="line"><span class="function"></span>&#123;</span><br><span class="line">    <span class="type">int</span> ai[<span class="number">15</span>];</span><br><span class="line">    <span class="keyword">for</span> (<span class="type">int</span> i = <span class="number">0</span>; i &lt; <span class="number">15</span>; i++) ai[i] = i;</span><br><span class="line">    <span class="built_in">int</span> (*ptr)[] = &amp;ai;</span><br><span class="line">    <span class="keyword">for</span> (<span class="type">int</span> i = <span class="number">0</span>; i &lt; <span class="number">15</span>; i++) &#123;</span><br><span class="line">        std::cout &lt;&lt; (*ptr)[i] &lt;&lt; <span class="string">&quot; &quot;</span>;</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br><span class="line"></span><br></pre></td></tr></table></figure>
+<h3 id="输出样例"><a href="#输出样例" class="headerlink" title="输出样例:"></a>输出样例:</h3><figure class="highlight plaintext"><table><tr><td class="code"><pre><span class="line">97967883730498271109594004638709798272918548148116</span><br></pre></td></tr></table></figure>
 
-<p><strong><em>Console</em></strong></p>
-<pre><code>0 1 2 3 4 5 6 7 8 9 10 11 12 13 14
-</code></pre>
-<blockquote>
-<p><strong><em>Notes</em></strong></p>
-</blockquote>
-<ul>
-<li><p>The parentheses around <code>*ptr</code> are necessary because the <code>[]</code> operator has<br>  higher precedence than the <code>*</code> operator. Without the parentheses, the<br>  declaration would be parsed as an array of pointers to int, like int<br>  <code>*ptr[15]</code>.</p>
-</li>
-<li><p>When I took the address of the array, I got a pointer to the first element<br>  of the array. However, the pointer itself does not contain any information<br>  about the size of the array.</p>
-</li>
-</ul>
-<h3 id="Pointer-to-function-taking-a-string-argument"><a href="#Pointer-to-function-taking-a-string-argument" class="headerlink" title="Pointer to function taking a string argument;"></a>Pointer to function taking a string argument;</h3><h4 id="returns-an-string"><a href="#returns-an-string" class="headerlink" title="returns an string"></a>returns an string</h4><p><strong>Code:</strong></p>
-<figure class="highlight cpp"><table><tr><td class="code"><pre><span class="line"><span class="meta">#<span class="keyword">include</span> <span class="string">&lt;iostream&gt;</span></span></span><br><span class="line"><span class="meta">#<span class="keyword">include</span> <span class="string">&lt;string&gt;</span></span></span><br><span class="line"></span><br><span class="line"><span class="function"><span class="type">void</span> <span class="title">replaceX</span><span class="params">(std::string *str, std::string x)</span></span></span><br><span class="line"><span class="function"></span>&#123;</span><br><span class="line">    <span class="type">size_t</span> pos = (*str).<span class="built_in">find</span>(<span class="string">&quot;$&#123;x&#125;&quot;</span>);</span><br><span class="line">    <span class="keyword">if</span> (pos != std::string::npos)</span><br><span class="line">        (*str).<span class="built_in">replace</span>(pos, <span class="number">4</span>, x);</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"><span class="function">std::string <span class="title">foo</span><span class="params">(std::string x)</span></span></span><br><span class="line"><span class="function"></span>&#123;</span><br><span class="line">    std::string str = <span class="string">&quot;hello this is $&#123;x&#125;&quot;</span>;</span><br><span class="line">    <span class="built_in">replaceX</span>(&amp;str, x);</span><br><span class="line">    <span class="keyword">return</span> str;</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"><span class="function"><span class="type">int</span> <span class="title">main</span><span class="params">()</span></span></span><br><span class="line"><span class="function"></span>&#123;</span><br><span class="line">    std::<span class="built_in">string</span> (*fp)(std::string) = &amp;foo;</span><br><span class="line">    std::cout &lt;&lt; (*fp)(<span class="string">&quot;foo&quot;</span>) &lt;&lt; std::endl;</span><br><span class="line">    std::cout &lt;&lt; (*fp)(<span class="string">&quot;bar&quot;</span>) &lt;&lt; std::endl;</span><br><span class="line">&#125;</span><br><span class="line"></span><br></pre></td></tr></table></figure>
+<h3 id="JavaScript"><a href="#JavaScript" class="headerlink" title="JavaScript"></a>JavaScript</h3><figure class="highlight javascript"><table><tr><td class="code"><pre><span class="line"><span class="keyword">const</span> readline = <span class="built_in">require</span>(<span class="string">&#x27;readline&#x27;</span>)</span><br><span class="line"><span class="keyword">const</span> rl = readline.<span class="title function_">createInterface</span>(&#123;</span><br><span class="line">    <span class="attr">input</span>: process.<span class="property">stdin</span>,</span><br><span class="line">    <span class="attr">output</span>: process.<span class="property">stdout</span></span><br><span class="line">&#125;)</span><br><span class="line"></span><br><span class="line"><span class="keyword">let</span> sum = <span class="title class_">BigInt</span>(<span class="number">0</span>)</span><br><span class="line"></span><br><span class="line">rl.<span class="title function_">on</span>(<span class="string">&#x27;line&#x27;</span>, <span class="function"><span class="params">line</span> =&gt;</span> &#123;</span><br><span class="line">    <span class="keyword">if</span> (!line.<span class="title function_">localeCompare</span>(<span class="string">&quot;e&quot;</span>, <span class="literal">undefined</span>, &#123; <span class="attr">sensitivity</span>: <span class="string">&quot;base&quot;</span> &#125;)) &#123;</span><br><span class="line">        <span class="variable language_">console</span>.<span class="title function_">log</span>(sum.<span class="title function_">toString</span>())</span><br><span class="line">        rl.<span class="title function_">close</span>()</span><br><span class="line">    &#125; <span class="keyword">else</span> &#123;</span><br><span class="line">        sum += <span class="title class_">BigInt</span>(line)</span><br><span class="line">    &#125;</span><br><span class="line">&#125;)</span><br></pre></td></tr></table></figure>
 
-<p><strong>Console:</strong></p>
-<pre><code>hello this is foo
-hello this is bar
-</code></pre>
-]]></content>
-      <categories>
-        <category>C++</category>
-      </categories>
+<h3 id="Java"><a href="#Java" class="headerlink" title="Java"></a>Java</h3><figure class="highlight java"><table><tr><td class="code"><pre><span class="line"><span class="keyword">import</span> java.util.Scanner;</span><br><span class="line"><span class="keyword">import</span> java.math.BigInteger;</span><br><span class="line"></span><br><span class="line"><span class="keyword">public</span> <span class="keyword">class</span> <span class="title class_">Main</span> &#123;</span><br><span class="line">    <span class="keyword">public</span> <span class="keyword">static</span> <span class="keyword">void</span> <span class="title function_">main</span> <span class="params">(String[] args)</span> &#123;</span><br><span class="line">        <span class="type">Scanner</span> <span class="variable">scanner</span> <span class="operator">=</span> <span class="keyword">new</span> <span class="title class_">Scanner</span>(System.in);</span><br><span class="line">        <span class="type">BigInteger</span> <span class="variable">sum</span> <span class="operator">=</span> BigInteger.ZERO;</span><br><span class="line"></span><br><span class="line">        <span class="keyword">while</span> (scanner.hasNextLine()) &#123;</span><br><span class="line">            <span class="type">String</span> <span class="variable">line</span> <span class="operator">=</span> scanner.nextLine();</span><br><span class="line">            <span class="keyword">if</span> (line.equalsIgnoreCase(<span class="string">&quot;e&quot;</span>)) &#123;</span><br><span class="line">                System.out.println(sum.toString());</span><br><span class="line">                <span class="keyword">break</span>;</span><br><span class="line">            &#125; <span class="keyword">else</span> &#123;</span><br><span class="line">                sum = sum.add(<span class="keyword">new</span> <span class="title class_">BigInteger</span>(line));</span><br><span class="line">            &#125;</span><br><span class="line">        &#125;</span><br><span class="line">        scanner.close();</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>]]></content>
       <tags>
-        <tag>Pointers</tag>
+        <tag>Java</tag>
+        <tag>JavaScript</tag>
+        <tag>BigInt</tag>
+        <tag>readline</tag>
       </tags>
   </entry>
   <entry>
@@ -79,25 +45,6 @@ hello this is bar
         <tag>Linux</tag>
         <tag>ArchLinux</tag>
         <tag>Headless Browser</tag>
-      </tags>
-  </entry>
-  <entry>
-    <title>7-2-Java-基本语法-大整数相加</title>
-    <url>/2023/04/24/7-2-Java-%E5%9F%BA%E6%9C%AC%E8%AF%AD%E6%B3%95-%E5%A4%A7%E6%95%B4%E6%95%B0%E7%9B%B8%E5%8A%A0/</url>
-    <content><![CDATA[<h3 id="题目"><a href="#题目" class="headerlink" title="题目"></a>题目</h3><p>有若干大整数，需要对其进行求和操作。</p>
-<h3 id="输入格式"><a href="#输入格式" class="headerlink" title="输入格式"></a>输入格式</h3><p>每行输入一个字符串代表一个大整数，连续输入若干行，当某行字符为e或E时退出。</p>
-<h3 id="输入样例"><a href="#输入样例" class="headerlink" title="输入样例:"></a>输入样例:</h3><figure class="highlight plaintext"><table><tr><td class="code"><pre><span class="line">42846280183517070527831839425882145521227251250327</span><br><span class="line">55121603546981200581762165212827652751691296897789</span><br><span class="line">e</span><br></pre></td></tr></table></figure>
-
-<h3 id="输出样例"><a href="#输出样例" class="headerlink" title="输出样例:"></a>输出样例:</h3><figure class="highlight plaintext"><table><tr><td class="code"><pre><span class="line">97967883730498271109594004638709798272918548148116</span><br></pre></td></tr></table></figure>
-
-<h3 id="JavaScript"><a href="#JavaScript" class="headerlink" title="JavaScript"></a>JavaScript</h3><figure class="highlight javascript"><table><tr><td class="code"><pre><span class="line"><span class="keyword">const</span> readline = <span class="built_in">require</span>(<span class="string">&#x27;readline&#x27;</span>)</span><br><span class="line"><span class="keyword">const</span> rl = readline.<span class="title function_">createInterface</span>(&#123;</span><br><span class="line">    <span class="attr">input</span>: process.<span class="property">stdin</span>,</span><br><span class="line">    <span class="attr">output</span>: process.<span class="property">stdout</span></span><br><span class="line">&#125;)</span><br><span class="line"></span><br><span class="line"><span class="keyword">let</span> sum = <span class="title class_">BigInt</span>(<span class="number">0</span>)</span><br><span class="line"></span><br><span class="line">rl.<span class="title function_">on</span>(<span class="string">&#x27;line&#x27;</span>, <span class="function"><span class="params">line</span> =&gt;</span> &#123;</span><br><span class="line">    <span class="keyword">if</span> (!line.<span class="title function_">localeCompare</span>(<span class="string">&quot;e&quot;</span>, <span class="literal">undefined</span>, &#123; <span class="attr">sensitivity</span>: <span class="string">&quot;base&quot;</span> &#125;)) &#123;</span><br><span class="line">        <span class="variable language_">console</span>.<span class="title function_">log</span>(sum.<span class="title function_">toString</span>())</span><br><span class="line">        rl.<span class="title function_">close</span>()</span><br><span class="line">    &#125; <span class="keyword">else</span> &#123;</span><br><span class="line">        sum += <span class="title class_">BigInt</span>(line)</span><br><span class="line">    &#125;</span><br><span class="line">&#125;)</span><br></pre></td></tr></table></figure>
-
-<h3 id="Java"><a href="#Java" class="headerlink" title="Java"></a>Java</h3><figure class="highlight java"><table><tr><td class="code"><pre><span class="line"><span class="keyword">import</span> java.util.Scanner;</span><br><span class="line"><span class="keyword">import</span> java.math.BigInteger;</span><br><span class="line"></span><br><span class="line"><span class="keyword">public</span> <span class="keyword">class</span> <span class="title class_">Main</span> &#123;</span><br><span class="line">    <span class="keyword">public</span> <span class="keyword">static</span> <span class="keyword">void</span> <span class="title function_">main</span> <span class="params">(String[] args)</span> &#123;</span><br><span class="line">        <span class="type">Scanner</span> <span class="variable">scanner</span> <span class="operator">=</span> <span class="keyword">new</span> <span class="title class_">Scanner</span>(System.in);</span><br><span class="line">        <span class="type">BigInteger</span> <span class="variable">sum</span> <span class="operator">=</span> BigInteger.ZERO;</span><br><span class="line"></span><br><span class="line">        <span class="keyword">while</span> (scanner.hasNextLine()) &#123;</span><br><span class="line">            <span class="type">String</span> <span class="variable">line</span> <span class="operator">=</span> scanner.nextLine();</span><br><span class="line">            <span class="keyword">if</span> (line.equalsIgnoreCase(<span class="string">&quot;e&quot;</span>)) &#123;</span><br><span class="line">                System.out.println(sum.toString());</span><br><span class="line">                <span class="keyword">break</span>;</span><br><span class="line">            &#125; <span class="keyword">else</span> &#123;</span><br><span class="line">                sum = sum.add(<span class="keyword">new</span> <span class="title class_">BigInteger</span>(line));</span><br><span class="line">            &#125;</span><br><span class="line">        &#125;</span><br><span class="line">        scanner.close();</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>]]></content>
-      <tags>
-        <tag>Java</tag>
-        <tag>JavaScript</tag>
-        <tag>BigInt</tag>
-        <tag>readline</tag>
       </tags>
   </entry>
   <entry>
@@ -163,6 +110,185 @@ hello this is bar
       </categories>
       <tags>
         <tag>Dead Cells</tag>
+      </tags>
+  </entry>
+  <entry>
+    <title>Delete a superuser in Django</title>
+    <url>/2023/06/09/Delete%20a%20superuser%20in%20Django/</url>
+    <content><![CDATA[<p>To delete a superuser in Django, you can use the Django shell to query and delete the user model instance. Here are the steps to delete a superuser using the Django shell:</p>
+<ol>
+<li><p>Open a terminal and navigate to the root directory of your Django project.</p>
+</li>
+<li><p>Activate the virtual environment, if you are using one.</p>
+</li>
+<li><p>Run the following command to open the Django shell: <code>python manage.py shell</code>.</p>
+</li>
+<li><p>Import the User model by running the following command: <code>from django.contrib.auth.models import User</code>.</p>
+</li>
+<li><p>Query the User model for the superuser you want to delete using the <code>get()</code> method. For example, if the username of the superuser you want to delete is “admin”, you would run: <code>user = User.objects.get(username=&#39;admin&#39;)</code>.</p>
+</li>
+<li><p>Call the <code>delete()</code> method on the user instance to delete the superuser. For example, you would run: <code>user.delete()</code>.</p>
+</li>
+<li><p>Exit the Django shell by typing <code>exit()</code> or pressing <code>Ctrl+D</code>.</p>
+</li>
+</ol>
+<p>After following these steps, the superuser will be deleted from the Django project.</p>
+<p>It’s important to note that deleting a superuser will also delete all related data, such as blog posts or comments, if those models are related to the User model with a foreign key. If you want to preserve this data, you should first transfer ownership of the data to another user before deleting the superuser.</p>
+<p>Another way to delete a superuser is to use the Django admin. To do this, log in as a superuser in the Django admin, navigate to the “Users” section, and click the “Delete” button next to the superuser you want to delete. Confirm the deletion in the next screen.</p>
+<p>In summary, you can delete a superuser in Django by using the Django shell to query and delete the user model instance. Alternatively, you can use the Django admin to delete the superuser. Keep in mind that deleting a superuser will also delete any related data.</p>
+]]></content>
+      <categories>
+        <category>Django</category>
+      </categories>
+      <tags>
+        <tag>Django</tag>
+        <tag>Python</tag>
+      </tags>
+  </entry>
+  <entry>
+    <title>C++ Pointers</title>
+    <url>/2023/04/29/C++%20Pointers/</url>
+    <content><![CDATA[<h3 id="Array-of-pointers-to-ints"><a href="#Array-of-pointers-to-ints" class="headerlink" title="Array of pointers to ints"></a>Array of pointers to ints</h3><p><strong>Code:</strong></p>
+<figure class="highlight cpp"><table><tr><td class="code"><pre><span class="line"><span class="meta">#<span class="keyword">include</span> <span class="string">&lt;iostream&gt;</span></span></span><br><span class="line"></span><br><span class="line"><span class="function"><span class="type">int</span> <span class="title">main</span><span class="params">()</span></span></span><br><span class="line"><span class="function"></span>&#123;</span><br><span class="line">    <span class="type">int</span>* ap[<span class="number">15</span>];</span><br><span class="line">    <span class="type">int</span> ai[<span class="number">15</span>] = &#123;&#125;;</span><br><span class="line">    <span class="keyword">for</span> (<span class="type">int</span> i = <span class="number">0</span>; i &lt; <span class="number">15</span>; ++i) &#123;</span><br><span class="line">        ai[i] = i; </span><br><span class="line">        ap[i] = &amp;ai[i];</span><br><span class="line">        std::cout &lt;&lt; *ap[i] &lt;&lt; <span class="string">&quot; &quot;</span> &lt;&lt; ap[i]&lt;&lt; std::endl;</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br><span class="line"></span><br></pre></td></tr></table></figure>
+
+<p><strong>Console:</strong></p>
+<pre><code>0 0x16d296d14
+1 0x16d296d18
+2 0x16d296d1c
+3 0x16d296d20
+4 0x16d296d24
+5 0x16d296d28
+6 0x16d296d2c
+7 0x16d296d30
+8 0x16d296d34
+9 0x16d296d38
+10 0x16d296d3c
+11 0x16d296d40
+12 0x16d296d44
+13 0x16d296d48
+14 0x16d296d4c
+</code></pre>
+<h3 id="Pointer-to-an-array-of-ints"><a href="#Pointer-to-an-array-of-ints" class="headerlink" title="Pointer to an array of ints"></a>Pointer to an array of ints</h3><p><strong>Code:</strong></p>
+<figure class="highlight cpp"><table><tr><td class="code"><pre><span class="line"><span class="meta">#<span class="keyword">include</span> <span class="string">&lt;iostream&gt;</span></span></span><br><span class="line"></span><br><span class="line"><span class="function"><span class="type">int</span> <span class="title">main</span><span class="params">()</span></span></span><br><span class="line"><span class="function"></span>&#123;</span><br><span class="line">    <span class="type">int</span> ai[<span class="number">15</span>];</span><br><span class="line">    <span class="keyword">for</span> (<span class="type">int</span> i = <span class="number">0</span>; i &lt; <span class="number">15</span>; i++) ai[i] = i;</span><br><span class="line">    <span class="built_in">int</span> (*ptr)[] = &amp;ai;</span><br><span class="line">    <span class="keyword">for</span> (<span class="type">int</span> i = <span class="number">0</span>; i &lt; <span class="number">15</span>; i++) &#123;</span><br><span class="line">        std::cout &lt;&lt; (*ptr)[i] &lt;&lt; <span class="string">&quot; &quot;</span>;</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br><span class="line"></span><br></pre></td></tr></table></figure>
+
+<p><strong><em>Console</em></strong></p>
+<pre><code>0 1 2 3 4 5 6 7 8 9 10 11 12 13 14
+</code></pre>
+<blockquote>
+<p><strong><em>Notes</em></strong></p>
+</blockquote>
+<ul>
+<li><p>The parentheses around <code>*ptr</code> are necessary because the <code>[]</code> operator has<br>  higher precedence than the <code>*</code> operator. Without the parentheses, the<br>  declaration would be parsed as an array of pointers to int, like int<br>  <code>*ptr[15]</code>.</p>
+</li>
+<li><p>When I took the address of the array, I got a pointer to the first element<br>  of the array. However, the pointer itself does not contain any information<br>  about the size of the array.</p>
+</li>
+</ul>
+<h3 id="Pointer-to-function-taking-a-string-argument"><a href="#Pointer-to-function-taking-a-string-argument" class="headerlink" title="Pointer to function taking a string argument;"></a>Pointer to function taking a string argument;</h3><h4 id="returns-an-string"><a href="#returns-an-string" class="headerlink" title="returns an string"></a>returns an string</h4><p><strong>Code:</strong></p>
+<figure class="highlight cpp"><table><tr><td class="code"><pre><span class="line"><span class="meta">#<span class="keyword">include</span> <span class="string">&lt;iostream&gt;</span></span></span><br><span class="line"><span class="meta">#<span class="keyword">include</span> <span class="string">&lt;string&gt;</span></span></span><br><span class="line"></span><br><span class="line"><span class="function"><span class="type">void</span> <span class="title">replaceX</span><span class="params">(std::string *str, std::string x)</span></span></span><br><span class="line"><span class="function"></span>&#123;</span><br><span class="line">    <span class="type">size_t</span> pos = (*str).<span class="built_in">find</span>(<span class="string">&quot;$&#123;x&#125;&quot;</span>);</span><br><span class="line">    <span class="keyword">if</span> (pos != std::string::npos)</span><br><span class="line">        (*str).<span class="built_in">replace</span>(pos, <span class="number">4</span>, x);</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"><span class="function">std::string <span class="title">foo</span><span class="params">(std::string x)</span></span></span><br><span class="line"><span class="function"></span>&#123;</span><br><span class="line">    std::string str = <span class="string">&quot;hello this is $&#123;x&#125;&quot;</span>;</span><br><span class="line">    <span class="built_in">replaceX</span>(&amp;str, x);</span><br><span class="line">    <span class="keyword">return</span> str;</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"><span class="function"><span class="type">int</span> <span class="title">main</span><span class="params">()</span></span></span><br><span class="line"><span class="function"></span>&#123;</span><br><span class="line">    std::<span class="built_in">string</span> (*fp)(std::string) = &amp;foo;</span><br><span class="line">    std::cout &lt;&lt; (*fp)(<span class="string">&quot;foo&quot;</span>) &lt;&lt; std::endl;</span><br><span class="line">    std::cout &lt;&lt; (*fp)(<span class="string">&quot;bar&quot;</span>) &lt;&lt; std::endl;</span><br><span class="line">&#125;</span><br><span class="line"></span><br></pre></td></tr></table></figure>
+
+<p><strong>Console:</strong></p>
+<pre><code>hello this is foo
+hello this is bar
+</code></pre>
+]]></content>
+      <categories>
+        <category>C++</category>
+      </categories>
+      <tags>
+        <tag>Pointers</tag>
+      </tags>
+  </entry>
+  <entry>
+    <title>How to re-center Spotlight search bar on Mac?</title>
+    <url>/2023/05/06/How%20to%20re-center%20Spotlight%20search%20bar%20on%20Mac?/</url>
+    <content><![CDATA[<p>Click and hold the Spotlight icon on the menu bar, until the Spotlight window has returned to its original location.</p>
+]]></content>
+      <categories>
+        <category>Tips</category>
+      </categories>
+      <tags>
+        <tag>MacOS</tag>
+        <tag>Spotlight</tag>
+        <tag>Tips</tag>
+        <tag>Utilities</tag>
+      </tags>
+  </entry>
+  <entry>
+    <title>Installing Puppet server on ArchLinux</title>
+    <url>/2023/04/27/Installing%20Puppet%20server%20on%20ArchLinux/</url>
+    <content><![CDATA[<h3 id="Installation"><a href="#Installation" class="headerlink" title="Installation"></a>Installation</h3><p>To install puppet server first add the upstream GPG key:</p>
+<pre><code>$ gpg --fetch-keys https://yum.puppetlabs.com/RPM-GPG-KEY-puppet-20250406
+</code></pre>
+<div>
+    Then install the <a href="https://aur.archlinux.org/packages/puppetserver"><b>puppetserver</b></a><sup>AUR</sup> package.
+</div>
+
+<figure class="highlight bash"><table><tr><td class="code"><pre><span class="line">git <span class="built_in">clone</span> https://aur.archlinux.org/puppetserver.git</span><br><span class="line"></span><br><span class="line"><span class="built_in">cd</span> puppetserver/</span><br><span class="line"></span><br><span class="line">makepkg -si</span><br><span class="line"></span><br></pre></td></tr></table></figure>
+
+<p>Having questions about the <code>makepkg</code> command? Visit <a href="/2023/04/25/Running%20ArchLinux%20ARM%20in%20UTM%20on%20a%20M1%20MacBook%20Air/#yay" title="makepkg">here</a>!</p>
+<div>
+    Afterwards, enable and start the <b>puppetserver</b> service.
+</div>
+
+<figure class="highlight bash"><table><tr><td class="code"><pre><span class="line">sudo systemctl <span class="built_in">enable</span> puppetserver.service</span><br><span class="line"></span><br><span class="line"><span class="comment"># Add to &quot;/etc/systemd/system/multi-user.target.wants&quot;.</span></span><br><span class="line"></span><br><span class="line">sudo systemctl start puppetserver.service</span><br><span class="line"></span><br></pre></td></tr></table></figure>
+
+<h3 id="Delete-a-key"><a href="#Delete-a-key" class="headerlink" title="Delete a key"></a>Delete a key</h3><p>List the keys in your keyring using the command <code>gpg --list-keys</code>:</p>
+<pre><code>$ gpg --list-keys
+/root/.gnupg/pubring.kbx
+------------------------
+pub   rsa4096 2019-04-08 [SC] [expires: 2025-04-06]
+      D6811ED3ADEEB8441AF5AA8F4528B6CD9E61EF26
+uid           [ unknown] Puppet, Inc. Release Key (Puppet, Inc. Release Key) &lt;release@puppet.com&gt;
+</code></pre>
+<p>For example, the key ID of the instance above is “D6811ED3ADEEB8441AF5AA8F4528B6CD9E61EF26”.</p>
+<p>Delete the key using the command <code>gpg --delete-keys [key ID]</code>.</p>
+<p>Note that deleting a key from your keyring will prevent you from verifying any signatures made with that key in the future. If you need to use the key again later, you will need to fetch it again using the <code>gpg --fetch-keys</code> command.</p>
+<blockquote>
+<p>Configuration</p>
+</blockquote>
+<p>The Puppet Server’s configuration files are stored in <code>/etc/puppetlabs/puppetserver/</code>.</p>
+]]></content>
+      <categories>
+        <category>Puppet</category>
+      </categories>
+      <tags>
+        <tag>Linux</tag>
+        <tag>ArchLinux</tag>
+        <tag>Puppet</tag>
+        <tag>server</tag>
+        <tag>GPG key</tag>
+      </tags>
+  </entry>
+  <entry>
+    <title>Immediately Executing Function Demo</title>
+    <url>/2023/04/27/Immediately%20Executing%20Function%20Demo/</url>
+    <content><![CDATA[<p>The key aspect of this demo is that the utilization of an immediately executing function in JavaScript generates a fresh variable scope, which distinguishes it from <code>if</code>, <code>else</code>, and <code>while</code>. The code presented below exemplifies this fact.</p>
+<figure class="highlight javascript"><table><tr><td class="code"><pre><span class="line"><span class="keyword">var</span> foo = <span class="number">123</span></span><br><span class="line"></span><br><span class="line"><span class="keyword">if</span> (<span class="number">1</span>) &#123;</span><br><span class="line">    <span class="keyword">var</span> foo = <span class="number">456</span></span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line">(<span class="function"><span class="params">_</span> =&gt;</span> &#123;</span><br><span class="line">    <span class="keyword">var</span> foo = <span class="number">123</span></span><br><span class="line">&#125;)()</span><br><span class="line"></span><br><span class="line"><span class="variable language_">console</span>.<span class="title function_">log</span>(foo)</span><br><span class="line"></span><br></pre></td></tr></table></figure>
+
+<p>Output:</p>
+<pre><code>456
+</code></pre>
+<p>Notice how the function does not reset the value of variable <code>foo</code>? Now that’s something to be mindful of!</p>
+]]></content>
+      <categories>
+        <category>JavaScript</category>
+      </categories>
+  </entry>
+  <entry>
+    <title>Intuition</title>
+    <url>/2023/05/10/Intuition/</url>
+    <content><![CDATA[<p>While a clever person may have a strong intuition, their insights may only benefit themselves. On the other hand, a learned person who has gained knowledge through studies has the ability to express their ideas and contribute to society.</p>
+<p>Intuition is often described as a gut feeling or a hunch that arises without conscious reasoning. It is a valuable skill, but it can be limited by personal biases and experiences. In contrast, knowledge gained through education and study is based on evidence and critical thinking. This allows learned individuals to make informed decisions and contribute to the advancement of society.</p>
+<p><strong><em>References:</em></strong></p>
+<ul>
+<li><p>The Catcher in the Rye: Mr. Antolini Quotes in Chapter 24</p>
+</li>
+<li><p>Steve Jobs: “Intuition is a very powerful thing, more powerful than intellect, in my opinion.”</p>
+</li>
+</ul>
+]]></content>
+      <tags>
+        <tag>Revelations</tag>
       </tags>
   </entry>
   <entry>
@@ -278,113 +404,106 @@ hello this is bar
       </tags>
   </entry>
   <entry>
-    <title>Delete a superuser in Django</title>
-    <url>/2023/06/09/Delete%20a%20superuser%20in%20Django/</url>
-    <content><![CDATA[<p>To delete a superuser in Django, you can use the Django shell to query and delete the user model instance. Here are the steps to delete a superuser using the Django shell:</p>
-<ol>
-<li><p>Open a terminal and navigate to the root directory of your Django project.</p>
-</li>
-<li><p>Activate the virtual environment, if you are using one.</p>
-</li>
-<li><p>Run the following command to open the Django shell: <code>python manage.py shell</code>.</p>
-</li>
-<li><p>Import the User model by running the following command: <code>from django.contrib.auth.models import User</code>.</p>
-</li>
-<li><p>Query the User model for the superuser you want to delete using the <code>get()</code> method. For example, if the username of the superuser you want to delete is “admin”, you would run: <code>user = User.objects.get(username=&#39;admin&#39;)</code>.</p>
-</li>
-<li><p>Call the <code>delete()</code> method on the user instance to delete the superuser. For example, you would run: <code>user.delete()</code>.</p>
-</li>
-<li><p>Exit the Django shell by typing <code>exit()</code> or pressing <code>Ctrl+D</code>.</p>
-</li>
-</ol>
-<p>After following these steps, the superuser will be deleted from the Django project.</p>
-<p>It’s important to note that deleting a superuser will also delete all related data, such as blog posts or comments, if those models are related to the User model with a foreign key. If you want to preserve this data, you should first transfer ownership of the data to another user before deleting the superuser.</p>
-<p>Another way to delete a superuser is to use the Django admin. To do this, log in as a superuser in the Django admin, navigate to the “Users” section, and click the “Delete” button next to the superuser you want to delete. Confirm the deletion in the next screen.</p>
-<p>In summary, you can delete a superuser in Django by using the Django shell to query and delete the user model instance. Alternatively, you can use the Django admin to delete the superuser. Keep in mind that deleting a superuser will also delete any related data.</p>
-]]></content>
-      <categories>
-        <category>Django</category>
-      </categories>
-      <tags>
-        <tag>Django</tag>
-        <tag>Python</tag>
-      </tags>
-  </entry>
-  <entry>
-    <title>How to re-center Spotlight search bar on Mac?</title>
-    <url>/2023/05/06/How%20to%20re-center%20Spotlight%20search%20bar%20on%20Mac?/</url>
-    <content><![CDATA[<p>Click and hold the Spotlight icon on the menu bar, until the Spotlight window has returned to its original location.</p>
-]]></content>
-      <categories>
-        <category>Tips</category>
-      </categories>
-      <tags>
-        <tag>MacOS</tag>
-        <tag>Spotlight</tag>
-        <tag>Tips</tag>
-        <tag>Utilities</tag>
-      </tags>
-  </entry>
-  <entry>
-    <title>Installing Puppet server on ArchLinux</title>
-    <url>/2023/04/27/Installing%20Puppet%20server%20on%20ArchLinux/</url>
-    <content><![CDATA[<h3 id="Installation"><a href="#Installation" class="headerlink" title="Installation"></a>Installation</h3><p>To install puppet server first add the upstream GPG key:</p>
-<pre><code>$ gpg --fetch-keys https://yum.puppetlabs.com/RPM-GPG-KEY-puppet-20250406
-</code></pre>
-<div>
-    Then install the <a href="https://aur.archlinux.org/packages/puppetserver"><b>puppetserver</b></a><sup>AUR</sup> package.
-</div>
-
-<figure class="highlight bash"><table><tr><td class="code"><pre><span class="line">git <span class="built_in">clone</span> https://aur.archlinux.org/puppetserver.git</span><br><span class="line"></span><br><span class="line"><span class="built_in">cd</span> puppetserver/</span><br><span class="line"></span><br><span class="line">makepkg -si</span><br><span class="line"></span><br></pre></td></tr></table></figure>
-
-<p>Having questions about the <code>makepkg</code> command? Visit <a href="/2023/04/25/Running%20ArchLinux%20ARM%20in%20UTM%20on%20a%20M1%20MacBook%20Air/#yay" title="makepkg">here</a>!</p>
-<div>
-    Afterwards, enable and start the <b>puppetserver</b> service.
-</div>
-
-<figure class="highlight bash"><table><tr><td class="code"><pre><span class="line">sudo systemctl <span class="built_in">enable</span> puppetserver.service</span><br><span class="line"></span><br><span class="line"><span class="comment"># Add to &quot;/etc/systemd/system/multi-user.target.wants&quot;.</span></span><br><span class="line"></span><br><span class="line">sudo systemctl start puppetserver.service</span><br><span class="line"></span><br></pre></td></tr></table></figure>
-
-<h3 id="Delete-a-key"><a href="#Delete-a-key" class="headerlink" title="Delete a key"></a>Delete a key</h3><p>List the keys in your keyring using the command <code>gpg --list-keys</code>:</p>
-<pre><code>$ gpg --list-keys
-/root/.gnupg/pubring.kbx
-------------------------
-pub   rsa4096 2019-04-08 [SC] [expires: 2025-04-06]
-      D6811ED3ADEEB8441AF5AA8F4528B6CD9E61EF26
-uid           [ unknown] Puppet, Inc. Release Key (Puppet, Inc. Release Key) &lt;release@puppet.com&gt;
-</code></pre>
-<p>For example, the key ID of the instance above is “D6811ED3ADEEB8441AF5AA8F4528B6CD9E61EF26”.</p>
-<p>Delete the key using the command <code>gpg --delete-keys [key ID]</code>.</p>
-<p>Note that deleting a key from your keyring will prevent you from verifying any signatures made with that key in the future. If you need to use the key again later, you will need to fetch it again using the <code>gpg --fetch-keys</code> command.</p>
-<blockquote>
-<p>Configuration</p>
+    <title>Minor adjustment from Bash to Zsh</title>
+    <url>/2023/12/29/Minor%20adjustment%20from%20Bash%20to%20Zsh/</url>
+    <content><![CDATA[<blockquote>
+<p>Converting characters to uppercase(&#x2F;lowercase)</p>
 </blockquote>
-<p>The Puppet Server’s configuration files are stored in <code>/etc/puppetlabs/puppetserver/</code>.</p>
+<p>Take variable <code>sayhi</code> for example:</p>
+<figure class="highlight bash"><table><tr><td class="code"><pre><span class="line">sayhi=<span class="string">&quot;hello there&quot;</span></span><br><span class="line"><span class="built_in">echo</span> <span class="variable">$&#123;sayhi^^[eo]&#125;</span></span><br></pre></td></tr></table></figure>
+
+<p>This method of converting lowercase letters to uppercase only works in Bash and will throw and “Bad substitution” error if you try it in Zsh.<br>Instead, you should use general replacement for this in Zsh:</p>
+<figure class="highlight plaintext"><table><tr><td class="code"><pre><span class="line">echo $&#123;sayhi//[eo]/[EO]&#125;</span><br></pre></td></tr></table></figure>
+
+<p>Or, for a more Zsh native method, we can try out substitution flags, which comes in two formats:</p>
+<figure class="highlight plaintext"><table><tr><td class="code"><pre><span class="line">echo $&#123;sayhi:u&#125;</span><br><span class="line"># Or use it as a prefix:</span><br><span class="line">echo $&#123;(U):sayhi&#125;</span><br></pre></td></tr></table></figure>
 ]]></content>
       <categories>
-        <category>Puppet</category>
+        <category>CLI</category>
+      </categories>
+      <tags>
+        <tag>Bash</tag>
+        <tag>Zsh</tag>
+      </tags>
+  </entry>
+  <entry>
+    <title>Positional Parameters</title>
+    <url>/2023/04/29/Positional%20Parameters/</url>
+    <content><![CDATA[<p>In Bash, positional parameters are special variables that hold the arguments passed to a script or function. The positional parameters are numbered from <code>0</code> to <code>9</code>, where <code>$0</code> holds the name of the script or function, and <code>$1</code> through <code>$9</code> hold the first through ninth arguments, respectively.</p>
+<p><code>$@</code> and <code>$*</code> both hold all the arguments passed to the script. Note that <code>$@</code> is an array-like variable that holds all the positional parameters as <em>separate elements</em>, while <code>$*</code> is another variable that holds all the positional parameters as <em>a single string</em>.</p>
+<p>Here’s an example:</p>
+<pre><code>#!/bin/bash
+
+#!/bin/bash
+
+echo &quot;Script Name: $0&quot;
+echo &quot;First Arg: $1&quot;
+echo &quot;Second Arg: $2&quot;
+echo &quot;All args (arr): $@&quot;
+echo &quot;All args (str): $*&quot;
+</code></pre>
+<p>Now let’s run the script with three arguments:</p>
+<figure class="highlight bash"><table><tr><td class="code"><pre><span class="line"><span class="built_in">chmod</span> u+x ./script <span class="comment"># Grant execution privilege for user</span></span><br><span class="line"></span><br><span class="line">./script a b c</span><br><span class="line"></span><br></pre></td></tr></table></figure>
+
+<p>The output should be something like this:</p>
+<pre><code>Script Name: ./script.sh
+First Arg: a
+Second Arg: b
+All args (arr): a b c
+All args (str): a b c
+</code></pre>
+]]></content>
+      <categories>
+        <category>Bash</category>
       </categories>
       <tags>
         <tag>Linux</tag>
-        <tag>ArchLinux</tag>
-        <tag>Puppet</tag>
-        <tag>server</tag>
-        <tag>GPG key</tag>
+        <tag>Bash</tag>
       </tags>
   </entry>
   <entry>
-    <title>Immediately Executing Function Demo</title>
-    <url>/2023/04/27/Immediately%20Executing%20Function%20Demo/</url>
-    <content><![CDATA[<p>The key aspect of this demo is that the utilization of an immediately executing function in JavaScript generates a fresh variable scope, which distinguishes it from <code>if</code>, <code>else</code>, and <code>while</code>. The code presented below exemplifies this fact.</p>
-<figure class="highlight javascript"><table><tr><td class="code"><pre><span class="line"><span class="keyword">var</span> foo = <span class="number">123</span></span><br><span class="line"></span><br><span class="line"><span class="keyword">if</span> (<span class="number">1</span>) &#123;</span><br><span class="line">    <span class="keyword">var</span> foo = <span class="number">456</span></span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line">(<span class="function"><span class="params">_</span> =&gt;</span> &#123;</span><br><span class="line">    <span class="keyword">var</span> foo = <span class="number">123</span></span><br><span class="line">&#125;)()</span><br><span class="line"></span><br><span class="line"><span class="variable language_">console</span>.<span class="title function_">log</span>(foo)</span><br><span class="line"></span><br></pre></td></tr></table></figure>
+    <title>`Path` module - Node.js</title>
+    <url>/2023/05/14/Path%20module%20-%20Node.js/</url>
+    <content><![CDATA[<p>因为本人使用的操作系统是 OS X ，所以一下书写规范均符合 POSIX（Portable Open System Interface eXtended），Windows 用户请自行查阅资料。</p>
+<h3 id="path-basename-path-suffix"><a href="#path-basename-path-suffix" class="headerlink" title="path.basename(path[, suffix])"></a><code>path.basename(path[, suffix])</code></h3><figure class="highlight javascript"><table><tr><td class="code"><pre><span class="line">path.<span class="title function_">basename</span>(<span class="string">&#x27;/path/to/project/index.html&#x27;</span>, <span class="string">&#x27;.html&#x27;</span>)</span><br><span class="line"><span class="comment">// &#x27;index&#x27;</span></span><br></pre></td></tr></table></figure>
 
-<p>Output:</p>
-<pre><code>456
-</code></pre>
-<p>Notice how the function does not reset the value of variable <code>foo</code>? Now that’s something to be mindful of!</p>
+<h3 id="path-delimiter"><a href="#path-delimiter" class="headerlink" title="path.delimiter"></a><code>path.delimiter</code></h3><figure class="highlight javascript"><table><tr><td class="code"><pre><span class="line"><span class="variable language_">console</span>.<span class="title function_">log</span>(process.<span class="property">env</span>.<span class="property">PATH</span>)</span><br><span class="line"><span class="comment">// /opt/homebrew/opt/llvm/bin:/opt/homebrew/opt/llvm/bin:/Applications/Sublime Text.app/Contents/SharedSupport/bin/:/Applications/Visual Studio Code.app/Contents/Resources/app/bin/:/Users/Mccranky/.gem/ruby/3.1.3/bin:/Users/Mccranky/.rubies/ruby-3.1.3/lib/ruby/gems/3.1.0/bin:/Users/Mccranky/.rubies/ruby-3.1.3/bin::/opt/local/bin:/opt/homebrew/bin:/opt/homebrew/sbin:/usr/local/bin:/usr/bin:/bin:/usr/sbin:/sbin:/usr/local/mysql/support-files:/usr/local/mysql/bin:/etc/platform-tools:/usr/local/go/bin:/usr/local/MacGPG2/bin:/usr/local/share/dotnet:~/.dotnet/tools:/Library/Apple/usr/bin:/Users/Mccranky/.nami/bin:/Users/Mccranky/.spicetify</span></span><br><span class="line"><span class="comment">// undefined</span></span><br></pre></td></tr></table></figure>
+
+<p>输出第一行为环境变量。<br>输出第二行的<code>undefined</code>示意无返回值。</p>
+<figure class="highlight javascript"><table><tr><td class="code"><pre><span class="line">process.<span class="property">env</span>.<span class="property">PATH</span>.<span class="title function_">split</span>(path.<span class="property">delimiter</span>)</span><br><span class="line"><span class="comment">/*</span></span><br><span class="line"><span class="comment">[</span></span><br><span class="line"><span class="comment">  &#x27;/opt/homebrew/opt/llvm/bin&#x27;,</span></span><br><span class="line"><span class="comment">  &#x27;/opt/homebrew/opt/llvm/bin&#x27;,</span></span><br><span class="line"><span class="comment">  &#x27;/Applications/Sublime Text.app/Contents/SharedSupport/bin/&#x27;,</span></span><br><span class="line"><span class="comment">  &#x27;/Applications/Visual Studio Code.app/Contents/Resources/app/bin/&#x27;,</span></span><br><span class="line"><span class="comment">  &#x27;/Users/Mccranky/.gem/ruby/3.1.3/bin&#x27;,</span></span><br><span class="line"><span class="comment">  &#x27;/Users/Mccranky/.rubies/ruby-3.1.3/lib/ruby/gems/3.1.0/bin&#x27;,</span></span><br><span class="line"><span class="comment">  &#x27;/Users/Mccranky/.rubies/ruby-3.1.3/bin&#x27;,</span></span><br><span class="line"><span class="comment">  &#x27;&#x27;,</span></span><br><span class="line"><span class="comment">  &#x27;/opt/local/bin&#x27;,</span></span><br><span class="line"><span class="comment">  &#x27;/opt/homebrew/bin&#x27;,</span></span><br><span class="line"><span class="comment">  &#x27;/opt/homebrew/sbin&#x27;,</span></span><br><span class="line"><span class="comment">  &#x27;/usr/local/bin&#x27;,</span></span><br><span class="line"><span class="comment">  &#x27;/usr/bin&#x27;,</span></span><br><span class="line"><span class="comment">  &#x27;/bin&#x27;,</span></span><br><span class="line"><span class="comment">  &#x27;/usr/sbin&#x27;,</span></span><br><span class="line"><span class="comment">  &#x27;/sbin&#x27;,</span></span><br><span class="line"><span class="comment">  &#x27;/usr/local/mysql/support-files&#x27;,</span></span><br><span class="line"><span class="comment">  &#x27;/usr/local/mysql/bin&#x27;,</span></span><br><span class="line"><span class="comment">  &#x27;/etc/platform-tools&#x27;,</span></span><br><span class="line"><span class="comment">  &#x27;/usr/local/go/bin&#x27;,</span></span><br><span class="line"><span class="comment">  &#x27;/usr/local/MacGPG2/bin&#x27;,</span></span><br><span class="line"><span class="comment">  &#x27;/usr/local/share/dotnet&#x27;,</span></span><br><span class="line"><span class="comment">  &#x27;~/.dotnet/tools&#x27;,</span></span><br><span class="line"><span class="comment">  &#x27;/Library/Apple/usr/bin&#x27;,</span></span><br><span class="line"><span class="comment">  &#x27;/Users/Mccranky/.nami/bin&#x27;,</span></span><br><span class="line"><span class="comment">  &#x27;/Users/Mccranky/.spicetify&#x27;</span></span><br><span class="line"><span class="comment">]</span></span><br><span class="line"><span class="comment">*/</span></span><br></pre></td></tr></table></figure>
+
+<p><code>path.delimiter</code>: <code>:</code></p>
+<h3 id="path-dirname"><a href="#path-dirname" class="headerlink" title="path.dirname"></a><code>path.dirname</code></h3><figure class="highlight javascript"><table><tr><td class="code"><pre><span class="line">path.<span class="title function_">dirname</span>(<span class="string">&#x27;path/to/file.txt&#x27;</span>)</span><br><span class="line"><span class="comment">// &#x27;path/to&#x27;</span></span><br></pre></td></tr></table></figure>
+
+<h3 id="path-extname"><a href="#path-extname" class="headerlink" title="path.extname"></a><code>path.extname</code></h3><figure class="highlight javascript"><table><tr><td class="code"><pre><span class="line">path.<span class="title function_">extname</span>(<span class="string">&#x27;index.html&#x27;</span>)</span><br><span class="line"><span class="comment">// &#x27;.html&#x27;</span></span><br><span class="line"></span><br><span class="line">path.<span class="title function_">extname</span>(<span class="string">&#x27;index.foo.md&#x27;</span>)</span><br><span class="line"><span class="comment">// &#x27;.md&#x27;</span></span><br><span class="line"></span><br><span class="line">path.<span class="title function_">extname</span>(<span class="string">&#x27;index.&#x27;</span>)</span><br><span class="line"><span class="comment">// &#x27;.&#x27;</span></span><br><span class="line"></span><br><span class="line">path.<span class="title function_">extname</span>(<span class="string">&#x27;index&#x27;</span>)</span><br><span class="line"><span class="comment">// &#x27;&#x27;</span></span><br><span class="line"></span><br><span class="line">path.<span class="title function_">extname</span>(<span class="string">&#x27;.index&#x27;</span>)</span><br><span class="line"><span class="comment">// &#x27;&#x27;</span></span><br><span class="line"></span><br><span class="line">path.<span class="title function_">extname</span>(<span class="string">&#x27;.index.md&#x27;</span>)</span><br><span class="line"><span class="comment">// &#x27;.md&#x27;</span></span><br></pre></td></tr></table></figure>
+
+<h3 id="path-format-pathObject"><a href="#path-format-pathObject" class="headerlink" title="path.format(pathObject)"></a><code>path.format(pathObject)</code></h3><figure class="highlight javascript"><table><tr><td class="code"><pre><span class="line"><span class="comment">// `$&#123;dir&#125;$&#123;path.sep&#125;$&#123;base&#125;`</span></span><br><span class="line">path.<span class="title function_">format</span>(&#123;</span><br><span class="line">  <span class="attr">root</span>: <span class="string">&#x27;/ignored&#x27;</span>,</span><br><span class="line">  <span class="attr">dir</span>: <span class="string">&#x27;/home/user/dir&#x27;</span>,</span><br><span class="line">  <span class="attr">base</span>: <span class="string">&#x27;file.txt&#x27;</span>,</span><br><span class="line">&#125;)</span><br><span class="line"><span class="comment">// &#x27;/home/user/dir/file.txt&#x27;</span></span><br><span class="line"></span><br><span class="line">path.<span class="title function_">format</span>(&#123;</span><br><span class="line">  <span class="attr">root</span>: <span class="string">&#x27;/&#x27;</span>,</span><br><span class="line">  <span class="attr">base</span>: <span class="string">&#x27;file.txt&#x27;</span>,</span><br><span class="line">  <span class="attr">ext</span>: <span class="string">&#x27;ignored&#x27;</span>,</span><br><span class="line">&#125;)</span><br><span class="line"><span class="comment">// &#x27;/file.txt&#x27;</span></span><br><span class="line"></span><br><span class="line">path.<span class="title function_">format</span>(&#123;</span><br><span class="line">  <span class="attr">root</span>: <span class="string">&#x27;/&#x27;</span>,</span><br><span class="line">  <span class="attr">name</span>: <span class="string">&#x27;file&#x27;</span>,</span><br><span class="line">  <span class="attr">ext</span>: <span class="string">&#x27;.txt&#x27;</span>,</span><br><span class="line">&#125;)</span><br><span class="line"><span class="comment">// &#x27;/file.txt&#x27;</span></span><br><span class="line"></span><br><span class="line">path.<span class="title function_">format</span>(&#123;</span><br><span class="line">  <span class="attr">root</span>: <span class="string">&#x27;/&#x27;</span>,</span><br><span class="line">  <span class="attr">name</span>: <span class="string">&#x27;file&#x27;</span>,</span><br><span class="line">  <span class="attr">ext</span>: <span class="string">&#x27;txt&#x27;</span>,</span><br><span class="line">&#125;)</span><br><span class="line"><span class="comment">// &#x27;/file.txt&#x27;</span></span><br></pre></td></tr></table></figure>
+
+<h3 id="path-isAbsolute"><a href="#path-isAbsolute" class="headerlink" title="path.isAbsolute"></a><code>path.isAbsolute</code></h3><figure class="highlight javascript"><table><tr><td class="code"><pre><span class="line">path.<span class="title function_">isAbsolute</span>(<span class="string">&#x27;/foo/bar&#x27;</span>) <span class="comment">// true</span></span><br><span class="line">path.<span class="title function_">isAbsolute</span>(<span class="string">&#x27;/baz/..&#x27;</span>)  <span class="comment">// true</span></span><br><span class="line">path.<span class="title function_">isAbsolute</span>(<span class="string">&#x27;qux/&#x27;</span>)     <span class="comment">// false</span></span><br><span class="line">path.<span class="title function_">isAbsolute</span>(<span class="string">&#x27;.&#x27;</span>)        <span class="comment">// false</span></span><br></pre></td></tr></table></figure>
+
+<h3 id="path-join-paths"><a href="#path-join-paths" class="headerlink" title="path.join([...paths])"></a><code>path.join([...paths])</code></h3><figure class="highlight javascript"><table><tr><td class="code"><pre><span class="line">path.<span class="title function_">join</span>(<span class="string">&#x27;&#x27;</span>)</span><br><span class="line"><span class="comment">// &#x27;.&#x27;</span></span><br><span class="line"></span><br><span class="line">path.<span class="title function_">join</span>(<span class="string">&#x27;/&#x27;</span>, <span class="string">&#x27;/foo&#x27;</span>, <span class="string">&#x27;bar&#x27;</span>, <span class="string">&#x27;baz&#x27;</span>, <span class="string">&#x27;..&#x27;</span>)</span><br><span class="line"><span class="comment">// &#x27;/foo/bar&#x27;</span></span><br></pre></td></tr></table></figure>
+
+<h3 id="path-normalize-path"><a href="#path-normalize-path" class="headerlink" title="path.normalize(path)"></a><code>path.normalize(path)</code></h3><figure class="highlight javascript"><table><tr><td class="code"><pre><span class="line">path.<span class="title function_">normalize</span>(<span class="string">&#x27;/foo/bar//baz/asdf/quux/..&#x27;</span>)</span><br><span class="line"><span class="comment">// Returns: &#x27;/foo/bar/baz/asdf&#x27;</span></span><br></pre></td></tr></table></figure>
+
+<h3 id="path-parse-path"><a href="#path-parse-path" class="headerlink" title="path.parse(path)"></a><code>path.parse(path)</code></h3><figure class="highlight javascript"><table><tr><td class="code"><pre><span class="line">path.<span class="title function_">parse</span>(<span class="string">&#x27;/home/user/dir/file.txt&#x27;</span>)</span><br><span class="line"><span class="comment">/*</span></span><br><span class="line"><span class="comment">&#123;</span></span><br><span class="line"><span class="comment">  root: &#x27;/&#x27;,</span></span><br><span class="line"><span class="comment">  dir: &#x27;/home/user/dir&#x27;,</span></span><br><span class="line"><span class="comment">  base: &#x27;file.txt&#x27;,</span></span><br><span class="line"><span class="comment">  ext: &#x27;.txt&#x27;,</span></span><br><span class="line"><span class="comment">  name: &#x27;file&#x27;</span></span><br><span class="line"><span class="comment">&#125;</span></span><br><span class="line"><span class="comment">*/</span></span><br></pre></td></tr></table></figure>
+
+<figure class="highlight plaintext"><table><tr><td class="code"><pre><span class="line">┌─────────────────────┬────────────┐</span><br><span class="line">│          dir        │    base    │</span><br><span class="line">├──────┬              ├──────┬─────┤</span><br><span class="line">│ root │              │ name │ ext │</span><br><span class="line">&quot;  /    home/user/dir / file  .txt &quot;</span><br><span class="line">└──────┴──────────────┴──────┴─────┘</span><br></pre></td></tr></table></figure>
+
+<h3 id="path-posix"><a href="#path-posix" class="headerlink" title="path.posix"></a><code>path.posix</code></h3><p>只是输出一下<code>path</code>模组所有的方法。</p>
+<h3 id="path-relative-from-to"><a href="#path-relative-from-to" class="headerlink" title="path.relative(from, to)"></a><code>path.relative(from, to)</code></h3><figure class="highlight javascript"><table><tr><td class="code"><pre><span class="line">path.<span class="title function_">relative</span>(<span class="string">&#x27;/data/orandea/test/aaa&#x27;</span>, <span class="string">&#x27;/data/orandea/impl/bbb&#x27;</span>)</span><br><span class="line"><span class="comment">// &#x27;../../impl/bbb&#x27;</span></span><br></pre></td></tr></table></figure>
+
+<h3 id="path-resolve-paths"><a href="#path-resolve-paths" class="headerlink" title="path.resolve([...paths])"></a><code>path.resolve([...paths])</code></h3><figure class="highlight javascript"><table><tr><td class="code"><pre><span class="line">path.<span class="title function_">resolve</span>(<span class="string">&#x27;&#x27;</span>)</span><br><span class="line"><span class="string">&#x27;/Users/Mccranky&#x27;</span></span><br><span class="line"></span><br><span class="line">path.<span class="title function_">join</span>(<span class="string">&#x27;foo&#x27;</span>, <span class="string">&#x27;bar&#x27;</span>, <span class="string">&#x27;baz&#x27;</span>, <span class="string">&#x27;..&#x27;</span>)</span><br><span class="line"><span class="comment">// &#x27;/Users/Mccranky/foo/bar&#x27;</span></span><br></pre></td></tr></table></figure>
+
+<h3 id="path-sep"><a href="#path-sep" class="headerlink" title="path.sep"></a><code>path.sep</code></h3><p><code>path.sep</code>: <code>/</code></p>
+<figure class="highlight javascript"><table><tr><td class="code"><pre><span class="line"><span class="string">&#x27;foo/bar/baz&#x27;</span>.<span class="title function_">split</span>(path.<span class="property">sep</span>)</span><br><span class="line"><span class="comment">// [&#x27;foo&#x27;, &#x27;bar&#x27;, &#x27;baz&#x27;]</span></span><br></pre></td></tr></table></figure>
 ]]></content>
       <categories>
-        <category>JavaScript</category>
+        <category>Node.js</category>
       </categories>
+      <tags>
+        <tag>Node.js</tag>
+        <tag>Path</tag>
+      </tags>
   </entry>
   <entry>
     <title>Mounting a shared folder on ArchLinux VM</title>
@@ -510,101 +629,6 @@ r=mccranky)
       </tags>
   </entry>
   <entry>
-    <title>Positional Parameters</title>
-    <url>/2023/04/29/Positional%20Parameters/</url>
-    <content><![CDATA[<p>In Bash, positional parameters are special variables that hold the arguments passed to a script or function. The positional parameters are numbered from <code>0</code> to <code>9</code>, where <code>$0</code> holds the name of the script or function, and <code>$1</code> through <code>$9</code> hold the first through ninth arguments, respectively.</p>
-<p><code>$@</code> and <code>$*</code> both hold all the arguments passed to the script. Note that <code>$@</code> is an array-like variable that holds all the positional parameters as <em>separate elements</em>, while <code>$*</code> is another variable that holds all the positional parameters as <em>a single string</em>.</p>
-<p>Here’s an example:</p>
-<pre><code>#!/bin/bash
-
-#!/bin/bash
-
-echo &quot;Script Name: $0&quot;
-echo &quot;First Arg: $1&quot;
-echo &quot;Second Arg: $2&quot;
-echo &quot;All args (arr): $@&quot;
-echo &quot;All args (str): $*&quot;
-</code></pre>
-<p>Now let’s run the script with three arguments:</p>
-<figure class="highlight bash"><table><tr><td class="code"><pre><span class="line"><span class="built_in">chmod</span> u+x ./script <span class="comment"># Grant execution privilege for user</span></span><br><span class="line"></span><br><span class="line">./script a b c</span><br><span class="line"></span><br></pre></td></tr></table></figure>
-
-<p>The output should be something like this:</p>
-<pre><code>Script Name: ./script.sh
-First Arg: a
-Second Arg: b
-All args (arr): a b c
-All args (str): a b c
-</code></pre>
-]]></content>
-      <categories>
-        <category>Bash</category>
-      </categories>
-      <tags>
-        <tag>Linux</tag>
-        <tag>Bash</tag>
-      </tags>
-  </entry>
-  <entry>
-    <title>Intuition</title>
-    <url>/2023/05/10/Intuition/</url>
-    <content><![CDATA[<p>While a clever person may have a strong intuition, their insights may only benefit themselves. On the other hand, a learned person who has gained knowledge through studies has the ability to express their ideas and contribute to society.</p>
-<p>Intuition is often described as a gut feeling or a hunch that arises without conscious reasoning. It is a valuable skill, but it can be limited by personal biases and experiences. In contrast, knowledge gained through education and study is based on evidence and critical thinking. This allows learned individuals to make informed decisions and contribute to the advancement of society.</p>
-<p><strong><em>References:</em></strong></p>
-<ul>
-<li><p>The Catcher in the Rye: Mr. Antolini Quotes in Chapter 24</p>
-</li>
-<li><p>Steve Jobs: “Intuition is a very powerful thing, more powerful than intellect, in my opinion.”</p>
-</li>
-</ul>
-]]></content>
-      <tags>
-        <tag>Revelations</tag>
-      </tags>
-  </entry>
-  <entry>
-    <title>`inpath`</title>
-    <url>/2023/04/29/%60inpath%60/</url>
-    <content><![CDATA[<p>Coding along with the book <em>Wicked Cool Shell Scripts- 101 Scripts for Linux, OS X, and UNIX Systems</em>.</p>
-<p>This is the script from Page 11:</p>
-<figure class="highlight bash"><table><tr><td class="code"><pre><span class="line"><span class="meta">#!/bin/bash</span></span><br><span class="line"></span><br><span class="line"><span class="function"><span class="title">in_path</span></span>()</span><br><span class="line">&#123;</span><br><span class="line">        cmd=<span class="variable">$1</span></span><br><span class="line">        ourpath=<span class="variable">$2</span>      </span><br><span class="line">        result=1</span><br><span class="line">        oldIFS=<span class="variable">$IFS</span>     </span><br><span class="line">        IFS=<span class="string">&quot;:&quot;</span></span><br><span class="line"> </span><br><span class="line">        <span class="keyword">for</span> directory <span class="keyword">in</span> <span class="variable">$ourpath</span>; <span class="keyword">do</span></span><br><span class="line"></span><br><span class="line">        <span class="comment"># If i double quoted `$ourpath`, it will not word split, and the loop will only run once.</span></span><br><span class="line"></span><br><span class="line">                <span class="keyword">if</span> [ -x <span class="string">&quot;<span class="variable">$directory</span>/<span class="variable">$cmd</span>&quot;</span> ]; <span class="keyword">then</span></span><br><span class="line">                        result=0</span><br><span class="line">                <span class="keyword">fi</span></span><br><span class="line">        <span class="keyword">done</span></span><br><span class="line"> </span><br><span class="line">        IFS=<span class="variable">$oldIFS</span></span><br><span class="line">        <span class="built_in">return</span> <span class="variable">$result</span></span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"><span class="function"><span class="title">checkForCmdInPath</span></span>()</span><br><span class="line">&#123;</span><br><span class="line">        var=<span class="variable">$1</span></span><br><span class="line"> </span><br><span class="line">        <span class="keyword">if</span> [ ! <span class="string">&quot;<span class="variable">$var</span>&quot;</span> = <span class="string">&quot;&quot;</span> ]; <span class="keyword">then</span></span><br><span class="line">                <span class="keyword">if</span> [ <span class="string">&quot;<span class="variable">$&#123;var:0:1&#125;</span>&quot;</span> = <span class="string">&quot;/&quot;</span> ]; <span class="keyword">then</span></span><br><span class="line">                	<span class="comment"># Checks whether the command represented by the `$var` is an absolute path or not. </span></span><br><span class="line">                        <span class="keyword">if</span> [ ! -x <span class="string">&quot;<span class="variable">$var</span>&quot;</span> ]; <span class="keyword">then</span></span><br><span class="line">                                <span class="built_in">return</span> 1</span><br><span class="line">                        <span class="keyword">fi</span></span><br><span class="line">                <span class="keyword">elif</span> ! in_path <span class="string">&quot;<span class="variable">$var</span>&quot;</span> <span class="string">&quot;<span class="variable">$PATH</span>&quot;</span>; <span class="keyword">then</span></span><br><span class="line">                        <span class="built_in">return</span> 2</span><br><span class="line">                <span class="keyword">fi</span></span><br><span class="line">        <span class="keyword">fi</span></span><br><span class="line">&#125;</span><br><span class="line"></span><br></pre></td></tr></table></figure>
-
-<h3 id="Positional-parameters"><a href="#Positional-parameters" class="headerlink" title="Positional parameters"></a>Positional parameters</h3><p>See <a href="/2023/04/29/Positional%20Parameters/">here</a></p>
-<blockquote>
-<p><strong><em>A Quick Word</em></strong>  </p>
-<p>It is good practice to put double quotes around variables in Bash because it prevents word splitting and globbing.</p>
-<ul>
-<li><p>Word splitting is the process of breaking up a string into separate words based on whitespace. If a variable contains spaces, without quotes, Bash will treat each space-separated word as a separate argument. This can cause unexpected behavior if the variable is used as an argument to a command.</p>
-</li>
-<li><p>Globbing is the process of expanding wildcard characters such as <code>*</code> and <code>?</code> into a list of matching filenames. If a variable contains a glob character, without quotes, Bash will try to expand it into a list of matching filenames. This can also cause unexpected behavior if the variable is used as an argument to a command.</p>
-</li>
-</ul>
-<p>By putting double quotes around variables, Bash treats the variable as a single argument, preserving any whitespace or glob characters within the variable. This helps to ensure that the variable is interpreted correctly and the script behaves as expected.</p>
-</blockquote>
-<h3 id="Special-variables"><a href="#Special-variables" class="headerlink" title="Special variables"></a>Special variables</h3><p><strong><em><code>$IFS</code></em></strong></p>
-<p>The internal field separator (IFS) is a special variable in Bash that specifies the delimiter used to separate fields in a string. By default, the IFS is set to whitespace (i.e., space, tab, and newline characters).</p>
-<p><strong><em>&#96;$?</em></strong></p>
-<p>Display the return values of functions.</p>
-<figure class="highlight bash"><table><tr><td class="code"><pre><span class="line"><span class="built_in">echo</span> $?</span><br></pre></td></tr></table></figure>
-
-<p>You can use it immediately after calling a function with return value.</p>
-<h3 id="Slice"><a href="#Slice" class="headerlink" title="Slice"></a>Slice</h3><pre><code>[ &quot;$&#123;var:0:1&#125;&quot; = &quot;/&quot; ];
-</code></pre>
-<p>The slicing starts at index <code>0</code> and lasts for the duration of a single character.</p>
-<h3 id="Compare"><a href="#Compare" class="headerlink" title="Compare"></a>Compare</h3><p><strong><em>String comparison</em></strong></p>
-<p><code>=</code> tests if two strings are equal. For example, if <code>[ &quot;$string1&quot; = &quot;$string2&quot; ]</code> would be true if <code>$string1</code> and <code>$string2</code> have the same value.</p>
-<p><strong><em>Pattern matching</em></strong></p>
-<p><code>==</code> tests if a string matches a pattern using globbing, which is a way to match filenames based on wildcard characters. For example, if <code>[[ &quot;$string&quot; == a* ]]</code> would be true if <code>$string</code> starts with the letter “a”.</p>
-]]></content>
-      <categories>
-        <category>Wicked Cool Shell Scripts</category>
-      </categories>
-      <tags>
-        <tag>Linux</tag>
-        <tag>ArchLinux</tag>
-        <tag>Bash</tag>
-      </tags>
-  </entry>
-  <entry>
     <title>The Shanghai Lockdown Diary</title>
     <url>/2023/05/05/The%20Shanghai%20Lockdown%20Diary/</url>
     <content><![CDATA[<p>A late addition to the stack, but by all accounts no less authentic. This is a real account of what transpired in Shanghai during the great lockdown. I, for one, was away at the time, locked up at school in a different city. Nonetheless, ripples of the cataclysmic effects had reached me in that northern coast-lined city, sending waves of shock and grief, piercing my heart like daggers.</p>
@@ -626,76 +650,6 @@ All args (str): a b c
 ]]></content>
       <tags>
         <tag>Life</tag>
-      </tags>
-  </entry>
-  <entry>
-    <title>使用 Hexo 生成静态网页博客</title>
-    <url>/2023/04/22/%E4%BD%BF%E7%94%A8%20Hexo%20%E7%94%9F%E6%88%90%E9%9D%99%E6%80%81%E7%BD%91%E9%A1%B5%E5%8D%9A%E5%AE%A2/</url>
-    <content><![CDATA[<h3 id="要求"><a href="#要求" class="headerlink" title="要求"></a><em>要求</em></h3><ul>
-<li><p>Node.js</p>
-</li>
-<li><p>Git</p>
-</li>
-</ul>
-<h3 id="下载"><a href="#下载" class="headerlink" title="下载"></a><em>下载</em></h3><ul>
-<li><p><a href="https://nodejs.org/dist/v18.15.0/node-v18.15.0.pkg" title="Download Node (LTS)">官网下载 Node.js 安装包</a></p>
-</li>
-<li><p><a href="https://git-scm.com/downloads" title="Download Git">官网下载 Git</a></p>
-</li>
-</ul>
-<p>– <strong>请注意参考个人电脑的操作系统！</strong></p>
-<p>进入 Terminal 查看安装的版本：</p>
-<figure class="highlight bash"><table><tr><td class="code"><pre><span class="line">node --version <span class="comment"># v18.16.0</span></span><br><span class="line"></span><br><span class="line">git --version <span class="comment"># git version 2.40.0</span></span><br></pre></td></tr></table></figure>
-
-<h3 id="Quick-Start"><a href="#Quick-Start" class="headerlink" title="Quick Start"></a>Quick Start</h3><figure class="highlight bash"><table><tr><td class="code"><pre><span class="line">hexo init my-blog</span><br><span class="line"></span><br><span class="line"><span class="built_in">cd</span> my-blog</span><br><span class="line"></span><br><span class="line"><span class="comment"># 因为 hexo 是基于 Node.js 完成的框架，所以完成第一步之后无需再执行 `npm init -y` 生成 package.json 文件</span></span><br><span class="line"></span><br><span class="line">npm i </span><br><span class="line"></span><br><span class="line">hexo server</span><br></pre></td></tr></table></figure>
-
-<p>接着我们去 <code>localhost:4000</code> 就能看到我们的博客了！</p>
-<h3 id="项目树状结构图"><a href="#项目树状结构图" class="headerlink" title="项目树状结构图"></a>项目树状结构图</h3><p>我们首先来了解一下我们的项目文件夹下面有些什么：</p>
-<figure class="highlight plaintext"><table><tr><td class="code"><pre><span class="line">.</span><br><span class="line">├── _config.landscape.yml</span><br><span class="line">├── _config.yml</span><br><span class="line">├── db.json</span><br><span class="line">├── node_modules</span><br><span class="line">├── package-lock.json</span><br><span class="line">├── package.json</span><br><span class="line">├── public</span><br><span class="line">├── scaffolds</span><br><span class="line">├── source</span><br><span class="line">├── themes</span><br><span class="line">└── yarn.lock</span><br></pre></td></tr></table></figure>
-
-<ul>
-<li><a href="/2023/04/22/%E5%A6%82%E4%BD%95%E7%94%9F%E6%88%90%E9%A1%B9%E7%9B%AE%E6%A0%91%E7%8A%B6%E7%BB%93%E6%9E%84%E5%9B%BE/index.html">如何生成项目树状结构图</a></li>
-</ul>
-<blockquote>
-<p><code>_config.yml</code>：Hexo 博客设置</p>
-</blockquote>
-<blockquote>
-<p><code>node_modules</code>：存放启动需要使用的模组</p>
-</blockquote>
-<blockquote>
-<p><code>public</code>：存放生成的静态网页</p>
-</blockquote>
-<figure class="highlight plaintext"><table><tr><td class="code"><pre><span class="line">public</span><br><span class="line">├── 2023</span><br><span class="line">├── README.md</span><br><span class="line">├── archives</span><br><span class="line">├── assets</span><br><span class="line">├── css</span><br><span class="line">├── fontawesome</span><br><span class="line">├── fonts</span><br><span class="line">├── images</span><br><span class="line">├── index.html</span><br><span class="line">├── js</span><br><span class="line">├── tags</span><br><span class="line">└── webfonts</span><br></pre></td></tr></table></figure>
-
-<blockquote>
-<p><code>scaffolds</code>：存放 Hexo 个人博客的 3 种模版：page (白页)，post (博客)，draft (草稿)</p>
-</blockquote>
-<figure class="highlight plaintext"><table><tr><td class="code"><pre><span class="line">scaffolds</span><br><span class="line">├── draft.md</span><br><span class="line">├── page.md</span><br><span class="line">└── post.md</span><br></pre></td></tr></table></figure>
-
-<blockquote>
-<p><code>source</code>：存放博客<code>.md</code>文件</p>
-</blockquote>
-<blockquote>
-<p><code>themes</code>：存放<code>Custom</code>主题，从<code>npm</code>下载的主题存放在<code>node_modules</code>里</p>
-</blockquote>
-<h3 id="第一篇博客"><a href="#第一篇博客" class="headerlink" title="第一篇博客"></a>第一篇博客</h3><p>我们先从草稿开始：</p>
-<figure class="highlight bash"><table><tr><td class="code"><pre><span class="line">hexo new draft first-draft</span><br></pre></td></tr></table></figure>
-
-<p>Hexo 会帮我们在<code>/source/_drafts/</code>文件夹里创建我们的第一篇草稿。</p>
-<p>如果觉得写得差不多了，我们可以：</p>
-<figure class="highlight bash"><table><tr><td class="code"><pre><span class="line">hexo publish first-draft</span><br></pre></td></tr></table></figure>
-
-<p>Hexo 会自动帮我们把<code>first-draft.md</code>移动到<code>/source/_posts/</code>文件夹里，这样当我们打开服务器的时候就能看到这篇博客了。</p>
-<p>当然我们也可以带参数运行<code>hexo server</code>：</p>
-<figure class="highlight bash"><table><tr><td class="code"><pre><span class="line">hexo server --draft</span><br></pre></td></tr></table></figure>
-<p>这样我们在写草稿时也能看到最终的布局，方便我们对内容排版进行修改。</p>
-<h3 id="修改-config-yml文件"><a href="#修改-config-yml文件" class="headerlink" title="修改_config.yml文件"></a>修改<code>_config.yml</code>文件</h3><p>我们可以通过修改设置文件来改变 Hexo 的一些初始行为，比如说在 Writing 一栏里改变<code>default_layout</code>变量的参数可以改变<code>hexo new</code>创建的文件类型。</p>
-<figure class="highlight yml"><table><tr><td class="code"><pre><span class="line"><span class="comment"># Writing</span></span><br><span class="line"><span class="attr">default_layout:</span> <span class="string">post</span></span><br></pre></td></tr></table></figure>
-<p>这样我们就不用每次<code>hexo new</code>时还需要特地指定创建的文件类型了。</p>
-]]></content>
-      <tags>
-        <tag>Bash</tag>
-        <tag>Hexo</tag>
       </tags>
   </entry>
   <entry>
@@ -910,6 +864,193 @@ Possible reasons for having this kind of units are:
       </tags>
   </entry>
   <entry>
+    <title>`inpath`</title>
+    <url>/2023/04/29/%60inpath%60/</url>
+    <content><![CDATA[<p>Coding along with the book <em>Wicked Cool Shell Scripts- 101 Scripts for Linux, OS X, and UNIX Systems</em>.</p>
+<p>This is the script from Page 11:</p>
+<figure class="highlight bash"><table><tr><td class="code"><pre><span class="line"><span class="meta">#!/bin/bash</span></span><br><span class="line"></span><br><span class="line"><span class="function"><span class="title">in_path</span></span>()</span><br><span class="line">&#123;</span><br><span class="line">        cmd=<span class="variable">$1</span></span><br><span class="line">        ourpath=<span class="variable">$2</span>      </span><br><span class="line">        result=1</span><br><span class="line">        oldIFS=<span class="variable">$IFS</span>     </span><br><span class="line">        IFS=<span class="string">&quot;:&quot;</span></span><br><span class="line"> </span><br><span class="line">        <span class="keyword">for</span> directory <span class="keyword">in</span> <span class="variable">$ourpath</span>; <span class="keyword">do</span></span><br><span class="line"></span><br><span class="line">        <span class="comment"># If i double quoted `$ourpath`, it will not word split, and the loop will only run once.</span></span><br><span class="line"></span><br><span class="line">                <span class="keyword">if</span> [ -x <span class="string">&quot;<span class="variable">$directory</span>/<span class="variable">$cmd</span>&quot;</span> ]; <span class="keyword">then</span></span><br><span class="line">                        result=0</span><br><span class="line">                <span class="keyword">fi</span></span><br><span class="line">        <span class="keyword">done</span></span><br><span class="line"> </span><br><span class="line">        IFS=<span class="variable">$oldIFS</span></span><br><span class="line">        <span class="built_in">return</span> <span class="variable">$result</span></span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"><span class="function"><span class="title">checkForCmdInPath</span></span>()</span><br><span class="line">&#123;</span><br><span class="line">        var=<span class="variable">$1</span></span><br><span class="line"> </span><br><span class="line">        <span class="keyword">if</span> [ ! <span class="string">&quot;<span class="variable">$var</span>&quot;</span> = <span class="string">&quot;&quot;</span> ]; <span class="keyword">then</span></span><br><span class="line">                <span class="keyword">if</span> [ <span class="string">&quot;<span class="variable">$&#123;var:0:1&#125;</span>&quot;</span> = <span class="string">&quot;/&quot;</span> ]; <span class="keyword">then</span></span><br><span class="line">                	<span class="comment"># Checks whether the command represented by the `$var` is an absolute path or not. </span></span><br><span class="line">                        <span class="keyword">if</span> [ ! -x <span class="string">&quot;<span class="variable">$var</span>&quot;</span> ]; <span class="keyword">then</span></span><br><span class="line">                                <span class="built_in">return</span> 1</span><br><span class="line">                        <span class="keyword">fi</span></span><br><span class="line">                <span class="keyword">elif</span> ! in_path <span class="string">&quot;<span class="variable">$var</span>&quot;</span> <span class="string">&quot;<span class="variable">$PATH</span>&quot;</span>; <span class="keyword">then</span></span><br><span class="line">                        <span class="built_in">return</span> 2</span><br><span class="line">                <span class="keyword">fi</span></span><br><span class="line">        <span class="keyword">fi</span></span><br><span class="line">&#125;</span><br><span class="line"></span><br></pre></td></tr></table></figure>
+
+<h3 id="Positional-parameters"><a href="#Positional-parameters" class="headerlink" title="Positional parameters"></a>Positional parameters</h3><p>See <a href="/2023/04/29/Positional%20Parameters/">here</a></p>
+<blockquote>
+<p><strong><em>A Quick Word</em></strong>  </p>
+<p>It is good practice to put double quotes around variables in Bash because it prevents word splitting and globbing.</p>
+<ul>
+<li><p>Word splitting is the process of breaking up a string into separate words based on whitespace. If a variable contains spaces, without quotes, Bash will treat each space-separated word as a separate argument. This can cause unexpected behavior if the variable is used as an argument to a command.</p>
+</li>
+<li><p>Globbing is the process of expanding wildcard characters such as <code>*</code> and <code>?</code> into a list of matching filenames. If a variable contains a glob character, without quotes, Bash will try to expand it into a list of matching filenames. This can also cause unexpected behavior if the variable is used as an argument to a command.</p>
+</li>
+</ul>
+<p>By putting double quotes around variables, Bash treats the variable as a single argument, preserving any whitespace or glob characters within the variable. This helps to ensure that the variable is interpreted correctly and the script behaves as expected.</p>
+</blockquote>
+<h3 id="Special-variables"><a href="#Special-variables" class="headerlink" title="Special variables"></a>Special variables</h3><p><strong><em><code>$IFS</code></em></strong></p>
+<p>The internal field separator (IFS) is a special variable in Bash that specifies the delimiter used to separate fields in a string. By default, the IFS is set to whitespace (i.e., space, tab, and newline characters).</p>
+<p><strong><em>&#96;$?</em></strong></p>
+<p>Display the return values of functions.</p>
+<figure class="highlight bash"><table><tr><td class="code"><pre><span class="line"><span class="built_in">echo</span> $?</span><br></pre></td></tr></table></figure>
+
+<p>You can use it immediately after calling a function with return value.</p>
+<h3 id="Slice"><a href="#Slice" class="headerlink" title="Slice"></a>Slice</h3><pre><code>[ &quot;$&#123;var:0:1&#125;&quot; = &quot;/&quot; ];
+</code></pre>
+<p>The slicing starts at index <code>0</code> and lasts for the duration of a single character.</p>
+<h3 id="Compare"><a href="#Compare" class="headerlink" title="Compare"></a>Compare</h3><p><strong><em>String comparison</em></strong></p>
+<p><code>=</code> tests if two strings are equal. For example, if <code>[ &quot;$string1&quot; = &quot;$string2&quot; ]</code> would be true if <code>$string1</code> and <code>$string2</code> have the same value.</p>
+<p><strong><em>Pattern matching</em></strong></p>
+<p><code>==</code> tests if a string matches a pattern using globbing, which is a way to match filenames based on wildcard characters. For example, if <code>[[ &quot;$string&quot; == a* ]]</code> would be true if <code>$string</code> starts with the letter “a”.</p>
+]]></content>
+      <categories>
+        <category>Wicked Cool Shell Scripts</category>
+      </categories>
+      <tags>
+        <tag>Linux</tag>
+        <tag>ArchLinux</tag>
+        <tag>Bash</tag>
+      </tags>
+  </entry>
+  <entry>
+    <title>`node` in the command line</title>
+    <url>/2023/04/28/%60node%60%20in%20the%20command%20line/</url>
+    <content><![CDATA[<p>I ran into this hassle the other day when my <code>npm</code> command failed to work in the command line. It took me a while to sort things out and left me in a foul mood. To prevent something like that from happening again, I decided to write this post. Nothing fancy - just some commands that might prove helpful in the long run.</p>
+<h3 id="node"><a href="#node" class="headerlink" title="node"></a><em><code>node</code></em></h3><h4 id="Display-global-installation-directory"><a href="#Display-global-installation-directory" class="headerlink" title="Display global installation directory"></a>Display global installation directory</h4><figure class="highlight bash"><table><tr><td class="code"><pre><span class="line">npm root -g</span><br></pre></td></tr></table></figure>
+
+<p>If you installed <code>node</code> using the official package installer, the global installation directory for <code>npm</code> packages would be:</p>
+<pre><code>/usr/local/lib/node_modules
+</code></pre>
+<p>Or you could’ve installed it using Homebrew. In that case, the global installation directory would be:</p>
+<pre><code>/opt/homebrew/lib/node_modules
+</code></pre>
+<h4 id="View-global-installation"><a href="#View-global-installation" class="headerlink" title="View global installation"></a>View global installation</h4><figure class="highlight bash"><table><tr><td class="code"><pre><span class="line">npm <span class="built_in">ls</span> -g</span><br></pre></td></tr></table></figure>
+
+<pre><code>/opt/homebrew/lib
+├── @e-hentai/home@1.6.0-alpha.9
+├── express-generator@4.16.1
+├── nodemon@2.0.22
+└── npm@9.6.5
+</code></pre>
+<h4 id="Update-global-installation"><a href="#Update-global-installation" class="headerlink" title="Update global installation"></a>Update global installation</h4><figure class="highlight bash"><table><tr><td class="code"><pre><span class="line">npm update -g</span><br></pre></td></tr></table></figure>
+
+<h4 id="View-global-configuration"><a href="#View-global-configuration" class="headerlink" title="View global configuration"></a>View global configuration</h4><figure class="highlight bash"><table><tr><td class="code"><pre><span class="line">npm config list</span><br></pre></td></tr></table></figure>
+
+<p>The output should be on the lines of this:</p>
+<pre><code>; &quot;builtin&quot; config from /opt/homebrew/lib/node_modules/npm/npmrc
+
+prefix = &quot;/opt/homebrew&quot; 
+
+; &quot;user&quot; config from /Users/Mccranky/.npmrc
+
+fetch-retry-maxtimeout = 300000 
+
+; node bin location = /opt/homebrew/Cellar/node/20.0.0/bin/node
+; node version = v20.0.0
+; npm local prefix = /Users/Mccranky
+; npm version = 9.6.5
+; cwd = /Users/Mccranky
+; HOME = /Users/Mccranky
+; Run `npm config ls -l` to show all defaults.
+</code></pre>
+<p>From it, we can discern a few key instances that might prove helpful.</p>
+<blockquote>
+<p>“builtin” config is stored at <code>/opt/homebrew/lib/node_modules/npm/npmrc</code></p>
+</blockquote>
+<blockquote>
+<p>“user” config is stored at <code>/Users/Mccranky/.npmrc</code></p>
+</blockquote>
+<h4 id="Add-x2F-remove-configuration"><a href="#Add-x2F-remove-configuration" class="headerlink" title="Add&#x2F;remove configuration"></a>Add&#x2F;remove configuration</h4><figure class="highlight bash"><table><tr><td class="code"><pre><span class="line">npm config <span class="built_in">set</span> &lt;name&gt; &lt;value&gt;</span><br></pre></td></tr></table></figure>
+
+<p>For example, if I want to specify a range of time before timeout occurs, I can use the following command:</p>
+<figure class="highlight bash"><table><tr><td class="code"><pre><span class="line">npm config <span class="built_in">set</span> fetch-retry-maxtimeout 300000 // 5 minutes</span><br><span class="line"></span><br><span class="line">npm config <span class="built_in">set</span> fetch-retry-mintimeout 60000 // 1 minute</span><br><span class="line"></span><br></pre></td></tr></table></figure>
+
+<p>The same mechanism applys when it comes to how we delete configurations:</p>
+<figure class="highlight bash"><table><tr><td class="code"><pre><span class="line">npm config delete fetch-retry-maxtimeout</span><br><span class="line"></span><br><span class="line">npm config delete fetch-retry-mintimeout</span><br><span class="line"></span><br></pre></td></tr></table></figure>
+
+<h3 id="express"><a href="#express" class="headerlink" title="express"></a><em><code>express</code></em></h3><p>I’ve only just started dabbling with <code>express</code> and my expertise is cut pretty thin, but the rule of thumb I tend to follow is:</p>
+<ol>
+<li><p>If you’re installing something that you want to use in <strong>your program</strong> using <code>require(&#39;something&#39;)</code>, then install it locally, at the root of your project.</p>
+</li>
+<li><p>If you’re installing something that you want to use on the <strong>command line</strong> or something, install it globally, so that its binaries end up in your <code>$PATH</code> environment variable.</p>
+</li>
+</ol>
+<p>Based on this, you would want to install <code>express-generator</code> using the <code>-g</code> flag as you will use it as a command line tool, but you’d want to install <code>express</code> without this flag as it’s a module you will want to <code>require()</code> it in your application.</p>
+]]></content>
+      <categories>
+        <category>Node.js</category>
+      </categories>
+      <tags>
+        <tag>Node.js</tag>
+        <tag>Express.js</tag>
+        <tag>Note</tag>
+      </tags>
+  </entry>
+  <entry>
+    <title>使用 Hexo 生成静态网页博客</title>
+    <url>/2023/04/22/%E4%BD%BF%E7%94%A8%20Hexo%20%E7%94%9F%E6%88%90%E9%9D%99%E6%80%81%E7%BD%91%E9%A1%B5%E5%8D%9A%E5%AE%A2/</url>
+    <content><![CDATA[<h3 id="要求"><a href="#要求" class="headerlink" title="要求"></a><em>要求</em></h3><ul>
+<li><p>Node.js</p>
+</li>
+<li><p>Git</p>
+</li>
+</ul>
+<h3 id="下载"><a href="#下载" class="headerlink" title="下载"></a><em>下载</em></h3><ul>
+<li><p><a href="https://nodejs.org/dist/v18.15.0/node-v18.15.0.pkg" title="Download Node (LTS)">官网下载 Node.js 安装包</a></p>
+</li>
+<li><p><a href="https://git-scm.com/downloads" title="Download Git">官网下载 Git</a></p>
+</li>
+</ul>
+<p>– <strong>请注意参考个人电脑的操作系统！</strong></p>
+<p>进入 Terminal 查看安装的版本：</p>
+<figure class="highlight bash"><table><tr><td class="code"><pre><span class="line">node --version <span class="comment"># v18.16.0</span></span><br><span class="line"></span><br><span class="line">git --version <span class="comment"># git version 2.40.0</span></span><br></pre></td></tr></table></figure>
+
+<h3 id="Quick-Start"><a href="#Quick-Start" class="headerlink" title="Quick Start"></a>Quick Start</h3><figure class="highlight bash"><table><tr><td class="code"><pre><span class="line">hexo init my-blog</span><br><span class="line"></span><br><span class="line"><span class="built_in">cd</span> my-blog</span><br><span class="line"></span><br><span class="line"><span class="comment"># 因为 hexo 是基于 Node.js 完成的框架，所以完成第一步之后无需再执行 `npm init -y` 生成 package.json 文件</span></span><br><span class="line"></span><br><span class="line">npm i </span><br><span class="line"></span><br><span class="line">hexo server</span><br></pre></td></tr></table></figure>
+
+<p>接着我们去 <code>localhost:4000</code> 就能看到我们的博客了！</p>
+<h3 id="项目树状结构图"><a href="#项目树状结构图" class="headerlink" title="项目树状结构图"></a>项目树状结构图</h3><p>我们首先来了解一下我们的项目文件夹下面有些什么：</p>
+<figure class="highlight plaintext"><table><tr><td class="code"><pre><span class="line">.</span><br><span class="line">├── _config.landscape.yml</span><br><span class="line">├── _config.yml</span><br><span class="line">├── db.json</span><br><span class="line">├── node_modules</span><br><span class="line">├── package-lock.json</span><br><span class="line">├── package.json</span><br><span class="line">├── public</span><br><span class="line">├── scaffolds</span><br><span class="line">├── source</span><br><span class="line">├── themes</span><br><span class="line">└── yarn.lock</span><br></pre></td></tr></table></figure>
+
+<ul>
+<li><a href="/2023/04/22/%E5%A6%82%E4%BD%95%E7%94%9F%E6%88%90%E9%A1%B9%E7%9B%AE%E6%A0%91%E7%8A%B6%E7%BB%93%E6%9E%84%E5%9B%BE/index.html">如何生成项目树状结构图</a></li>
+</ul>
+<blockquote>
+<p><code>_config.yml</code>：Hexo 博客设置</p>
+</blockquote>
+<blockquote>
+<p><code>node_modules</code>：存放启动需要使用的模组</p>
+</blockquote>
+<blockquote>
+<p><code>public</code>：存放生成的静态网页</p>
+</blockquote>
+<figure class="highlight plaintext"><table><tr><td class="code"><pre><span class="line">public</span><br><span class="line">├── 2023</span><br><span class="line">├── README.md</span><br><span class="line">├── archives</span><br><span class="line">├── assets</span><br><span class="line">├── css</span><br><span class="line">├── fontawesome</span><br><span class="line">├── fonts</span><br><span class="line">├── images</span><br><span class="line">├── index.html</span><br><span class="line">├── js</span><br><span class="line">├── tags</span><br><span class="line">└── webfonts</span><br></pre></td></tr></table></figure>
+
+<blockquote>
+<p><code>scaffolds</code>：存放 Hexo 个人博客的 3 种模版：page (白页)，post (博客)，draft (草稿)</p>
+</blockquote>
+<figure class="highlight plaintext"><table><tr><td class="code"><pre><span class="line">scaffolds</span><br><span class="line">├── draft.md</span><br><span class="line">├── page.md</span><br><span class="line">└── post.md</span><br></pre></td></tr></table></figure>
+
+<blockquote>
+<p><code>source</code>：存放博客<code>.md</code>文件</p>
+</blockquote>
+<blockquote>
+<p><code>themes</code>：存放<code>Custom</code>主题，从<code>npm</code>下载的主题存放在<code>node_modules</code>里</p>
+</blockquote>
+<h3 id="第一篇博客"><a href="#第一篇博客" class="headerlink" title="第一篇博客"></a>第一篇博客</h3><p>我们先从草稿开始：</p>
+<figure class="highlight bash"><table><tr><td class="code"><pre><span class="line">hexo new draft first-draft</span><br></pre></td></tr></table></figure>
+
+<p>Hexo 会帮我们在<code>/source/_drafts/</code>文件夹里创建我们的第一篇草稿。</p>
+<p>如果觉得写得差不多了，我们可以：</p>
+<figure class="highlight bash"><table><tr><td class="code"><pre><span class="line">hexo publish first-draft</span><br></pre></td></tr></table></figure>
+
+<p>Hexo 会自动帮我们把<code>first-draft.md</code>移动到<code>/source/_posts/</code>文件夹里，这样当我们打开服务器的时候就能看到这篇博客了。</p>
+<p>当然我们也可以带参数运行<code>hexo server</code>：</p>
+<figure class="highlight bash"><table><tr><td class="code"><pre><span class="line">hexo server --draft</span><br></pre></td></tr></table></figure>
+<p>这样我们在写草稿时也能看到最终的布局，方便我们对内容排版进行修改。</p>
+<h3 id="修改-config-yml文件"><a href="#修改-config-yml文件" class="headerlink" title="修改_config.yml文件"></a>修改<code>_config.yml</code>文件</h3><p>我们可以通过修改设置文件来改变 Hexo 的一些初始行为，比如说在 Writing 一栏里改变<code>default_layout</code>变量的参数可以改变<code>hexo new</code>创建的文件类型。</p>
+<figure class="highlight yml"><table><tr><td class="code"><pre><span class="line"><span class="comment"># Writing</span></span><br><span class="line"><span class="attr">default_layout:</span> <span class="string">post</span></span><br></pre></td></tr></table></figure>
+<p>这样我们就不用每次<code>hexo new</code>时还需要特地指定创建的文件类型了。</p>
+]]></content>
+      <tags>
+        <tag>Bash</tag>
+        <tag>Hexo</tag>
+      </tags>
+  </entry>
+  <entry>
     <title>[Fix] Failed to mount /mnt/share</title>
     <url>/2023/04/27/%5BFix%5D%20Failed%20to%20mount%20:mnt:share/</url>
     <content><![CDATA[<h3 id="Solution"><a href="#Solution" class="headerlink" title="Solution"></a>Solution</h3><p>Our fix to the problem is to remove <code>/mnt/share</code> entirely and mount something else in its place.</p>
@@ -999,47 +1140,50 @@ Apr 27 02:45:46 alarm systemd[1]: Failed to mount /mnt/share.
       </tags>
   </entry>
   <entry>
-    <title>`Path` module - Node.js</title>
-    <url>/2023/05/14/Path%20module%20-%20Node.js/</url>
-    <content><![CDATA[<p>因为本人使用的操作系统是 OS X ，所以一下书写规范均符合 POSIX（Portable Open System Interface eXtended），Windows 用户请自行查阅资料。</p>
-<h3 id="path-basename-path-suffix"><a href="#path-basename-path-suffix" class="headerlink" title="path.basename(path[, suffix])"></a><code>path.basename(path[, suffix])</code></h3><figure class="highlight javascript"><table><tr><td class="code"><pre><span class="line">path.<span class="title function_">basename</span>(<span class="string">&#x27;/path/to/project/index.html&#x27;</span>, <span class="string">&#x27;.html&#x27;</span>)</span><br><span class="line"><span class="comment">// &#x27;index&#x27;</span></span><br></pre></td></tr></table></figure>
+    <title>如何使用 GitHub Pages 托管 Hexo 静态博客网站</title>
+    <url>/2023/04/22/%E5%A6%82%E4%BD%95%E4%BD%BF%E7%94%A8%20GitHub%20Pages%20%E6%89%98%E7%AE%A1%20Hexo%20%E9%9D%99%E6%80%81%E5%8D%9A%E5%AE%A2%E7%BD%91%E7%AB%99/</url>
+    <content><![CDATA[<p>– <strong>请先阅读 <a href="/2023/04/22/%E4%BD%BF%E7%94%A8%20Hexo%20%E7%94%9F%E6%88%90%E9%9D%99%E6%80%81%E7%BD%91%E9%A1%B5%E5%8D%9A%E5%AE%A2/index.html">使用 Hexo 生成静态网页博客</a>！</strong></p>
+<h3 id="准备工作"><a href="#准备工作" class="headerlink" title="准备工作"></a>准备工作</h3><p>首先，我们基于完成的博客<code>.md</code>文件生成静态网页：</p>
+<figure class="highlight bash"><table><tr><td class="code"><pre><span class="line"><span class="built_in">cd</span> /path/to/site/</span><br><span class="line"><span class="comment"># 跑到项目路径目录</span></span><br><span class="line"></span><br><span class="line">hexo generate</span><br><span class="line"><span class="comment"># 生成静态网页，存放与 public 文件夹内</span></span><br></pre></td></tr></table></figure>
 
-<h3 id="path-delimiter"><a href="#path-delimiter" class="headerlink" title="path.delimiter"></a><code>path.delimiter</code></h3><figure class="highlight javascript"><table><tr><td class="code"><pre><span class="line"><span class="variable language_">console</span>.<span class="title function_">log</span>(process.<span class="property">env</span>.<span class="property">PATH</span>)</span><br><span class="line"><span class="comment">// /opt/homebrew/opt/llvm/bin:/opt/homebrew/opt/llvm/bin:/Applications/Sublime Text.app/Contents/SharedSupport/bin/:/Applications/Visual Studio Code.app/Contents/Resources/app/bin/:/Users/Mccranky/.gem/ruby/3.1.3/bin:/Users/Mccranky/.rubies/ruby-3.1.3/lib/ruby/gems/3.1.0/bin:/Users/Mccranky/.rubies/ruby-3.1.3/bin::/opt/local/bin:/opt/homebrew/bin:/opt/homebrew/sbin:/usr/local/bin:/usr/bin:/bin:/usr/sbin:/sbin:/usr/local/mysql/support-files:/usr/local/mysql/bin:/etc/platform-tools:/usr/local/go/bin:/usr/local/MacGPG2/bin:/usr/local/share/dotnet:~/.dotnet/tools:/Library/Apple/usr/bin:/Users/Mccranky/.nami/bin:/Users/Mccranky/.spicetify</span></span><br><span class="line"><span class="comment">// undefined</span></span><br></pre></td></tr></table></figure>
+<p>接着，我们进入<code>public</code>文件夹。</p>
+<pre><code>.
+├── node_modules
+├── public
+├── scaffolds
+├── source
+└── themes
+</code></pre>
+<p>因为我们是使用 GitHub Pages 托管，所以我们需要在<code>public</code>文件夹内初始化<code>git</code>：</p>
+<figure class="highlight bash"><table><tr><td class="code"><pre><span class="line">git init</span><br><span class="line"></span><br><span class="line">git branch -m main</span><br><span class="line"></span><br><span class="line">git add .</span><br><span class="line"></span><br><span class="line">git commit -m <span class="string">&quot;初始化工作&quot;</span></span><br></pre></td></tr></table></figure>
 
-<p>输出第一行为环境变量。<br>输出第二行的<code>undefined</code>示意无返回值。</p>
-<figure class="highlight javascript"><table><tr><td class="code"><pre><span class="line">process.<span class="property">env</span>.<span class="property">PATH</span>.<span class="title function_">split</span>(path.<span class="property">delimiter</span>)</span><br><span class="line"><span class="comment">/*</span></span><br><span class="line"><span class="comment">[</span></span><br><span class="line"><span class="comment">  &#x27;/opt/homebrew/opt/llvm/bin&#x27;,</span></span><br><span class="line"><span class="comment">  &#x27;/opt/homebrew/opt/llvm/bin&#x27;,</span></span><br><span class="line"><span class="comment">  &#x27;/Applications/Sublime Text.app/Contents/SharedSupport/bin/&#x27;,</span></span><br><span class="line"><span class="comment">  &#x27;/Applications/Visual Studio Code.app/Contents/Resources/app/bin/&#x27;,</span></span><br><span class="line"><span class="comment">  &#x27;/Users/Mccranky/.gem/ruby/3.1.3/bin&#x27;,</span></span><br><span class="line"><span class="comment">  &#x27;/Users/Mccranky/.rubies/ruby-3.1.3/lib/ruby/gems/3.1.0/bin&#x27;,</span></span><br><span class="line"><span class="comment">  &#x27;/Users/Mccranky/.rubies/ruby-3.1.3/bin&#x27;,</span></span><br><span class="line"><span class="comment">  &#x27;&#x27;,</span></span><br><span class="line"><span class="comment">  &#x27;/opt/local/bin&#x27;,</span></span><br><span class="line"><span class="comment">  &#x27;/opt/homebrew/bin&#x27;,</span></span><br><span class="line"><span class="comment">  &#x27;/opt/homebrew/sbin&#x27;,</span></span><br><span class="line"><span class="comment">  &#x27;/usr/local/bin&#x27;,</span></span><br><span class="line"><span class="comment">  &#x27;/usr/bin&#x27;,</span></span><br><span class="line"><span class="comment">  &#x27;/bin&#x27;,</span></span><br><span class="line"><span class="comment">  &#x27;/usr/sbin&#x27;,</span></span><br><span class="line"><span class="comment">  &#x27;/sbin&#x27;,</span></span><br><span class="line"><span class="comment">  &#x27;/usr/local/mysql/support-files&#x27;,</span></span><br><span class="line"><span class="comment">  &#x27;/usr/local/mysql/bin&#x27;,</span></span><br><span class="line"><span class="comment">  &#x27;/etc/platform-tools&#x27;,</span></span><br><span class="line"><span class="comment">  &#x27;/usr/local/go/bin&#x27;,</span></span><br><span class="line"><span class="comment">  &#x27;/usr/local/MacGPG2/bin&#x27;,</span></span><br><span class="line"><span class="comment">  &#x27;/usr/local/share/dotnet&#x27;,</span></span><br><span class="line"><span class="comment">  &#x27;~/.dotnet/tools&#x27;,</span></span><br><span class="line"><span class="comment">  &#x27;/Library/Apple/usr/bin&#x27;,</span></span><br><span class="line"><span class="comment">  &#x27;/Users/Mccranky/.nami/bin&#x27;,</span></span><br><span class="line"><span class="comment">  &#x27;/Users/Mccranky/.spicetify&#x27;</span></span><br><span class="line"><span class="comment">]</span></span><br><span class="line"><span class="comment">*/</span></span><br></pre></td></tr></table></figure>
+<p>其次，我们还需要在 GitHub 上面建立一个远程仓库，格式<strong>必须</strong>为<code>username.github.io</code>，这是硬性要求。</p>
+<h3 id="关联和发布"><a href="#关联和发布" class="headerlink" title="关联和发布"></a>关联和发布</h3><p>我们现在需要关联本地仓库和远程仓库，用例中我们使用<code>https</code>协议，当然也可以使用<code>ssh</code>密钥：</p>
+<figure class="highlight bash"><table><tr><td class="code"><pre><span class="line">git remote add origin https://github.com/username/username.github.io.git</span><br><span class="line"></span><br><span class="line">git push origin main</span><br></pre></td></tr></table></figure>
 
-<p><code>path.delimiter</code>: <code>:</code></p>
-<h3 id="path-dirname"><a href="#path-dirname" class="headerlink" title="path.dirname"></a><code>path.dirname</code></h3><figure class="highlight javascript"><table><tr><td class="code"><pre><span class="line">path.<span class="title function_">dirname</span>(<span class="string">&#x27;path/to/file.txt&#x27;</span>)</span><br><span class="line"><span class="comment">// &#x27;path/to&#x27;</span></span><br></pre></td></tr></table></figure>
+<p>我们还需要更改一下远程仓库的 GitHub Pages 的设置，目的是告知它托管文件的地址：</p>
+<div style="display: block; margin-left: auto; margin-right: auto; text-align: center; font-size: 1rem;">
+  
+<p>  <img src="/2023/04/22/%E5%A6%82%E4%BD%95%E4%BD%BF%E7%94%A8%20GitHub%20Pages%20%E6%89%98%E7%AE%A1%20Hexo%20%E9%9D%99%E6%80%81%E5%8D%9A%E5%AE%A2%E7%BD%91%E7%AB%99/images/0001.png" alt="点击 Settings" title="点击 Settings"></p>
+  <div>点击 Settings</div>
+  <br>
 
-<h3 id="path-extname"><a href="#path-extname" class="headerlink" title="path.extname"></a><code>path.extname</code></h3><figure class="highlight javascript"><table><tr><td class="code"><pre><span class="line">path.<span class="title function_">extname</span>(<span class="string">&#x27;index.html&#x27;</span>)</span><br><span class="line"><span class="comment">// &#x27;.html&#x27;</span></span><br><span class="line"></span><br><span class="line">path.<span class="title function_">extname</span>(<span class="string">&#x27;index.foo.md&#x27;</span>)</span><br><span class="line"><span class="comment">// &#x27;.md&#x27;</span></span><br><span class="line"></span><br><span class="line">path.<span class="title function_">extname</span>(<span class="string">&#x27;index.&#x27;</span>)</span><br><span class="line"><span class="comment">// &#x27;.&#x27;</span></span><br><span class="line"></span><br><span class="line">path.<span class="title function_">extname</span>(<span class="string">&#x27;index&#x27;</span>)</span><br><span class="line"><span class="comment">// &#x27;&#x27;</span></span><br><span class="line"></span><br><span class="line">path.<span class="title function_">extname</span>(<span class="string">&#x27;.index&#x27;</span>)</span><br><span class="line"><span class="comment">// &#x27;&#x27;</span></span><br><span class="line"></span><br><span class="line">path.<span class="title function_">extname</span>(<span class="string">&#x27;.index.md&#x27;</span>)</span><br><span class="line"><span class="comment">// &#x27;.md&#x27;</span></span><br></pre></td></tr></table></figure>
+<p>  <img src="/2023/04/22/%E5%A6%82%E4%BD%95%E4%BD%BF%E7%94%A8%20GitHub%20Pages%20%E6%89%98%E7%AE%A1%20Hexo%20%E9%9D%99%E6%80%81%E5%8D%9A%E5%AE%A2%E7%BD%91%E7%AB%99/images/0002.png" alt="点击 Pages" title="点击 Pages"></p>
+  <div>点击 Pages</div>
+  <br>
 
-<h3 id="path-format-pathObject"><a href="#path-format-pathObject" class="headerlink" title="path.format(pathObject)"></a><code>path.format(pathObject)</code></h3><figure class="highlight javascript"><table><tr><td class="code"><pre><span class="line"><span class="comment">// `$&#123;dir&#125;$&#123;path.sep&#125;$&#123;base&#125;`</span></span><br><span class="line">path.<span class="title function_">format</span>(&#123;</span><br><span class="line">  <span class="attr">root</span>: <span class="string">&#x27;/ignored&#x27;</span>,</span><br><span class="line">  <span class="attr">dir</span>: <span class="string">&#x27;/home/user/dir&#x27;</span>,</span><br><span class="line">  <span class="attr">base</span>: <span class="string">&#x27;file.txt&#x27;</span>,</span><br><span class="line">&#125;)</span><br><span class="line"><span class="comment">// &#x27;/home/user/dir/file.txt&#x27;</span></span><br><span class="line"></span><br><span class="line">path.<span class="title function_">format</span>(&#123;</span><br><span class="line">  <span class="attr">root</span>: <span class="string">&#x27;/&#x27;</span>,</span><br><span class="line">  <span class="attr">base</span>: <span class="string">&#x27;file.txt&#x27;</span>,</span><br><span class="line">  <span class="attr">ext</span>: <span class="string">&#x27;ignored&#x27;</span>,</span><br><span class="line">&#125;)</span><br><span class="line"><span class="comment">// &#x27;/file.txt&#x27;</span></span><br><span class="line"></span><br><span class="line">path.<span class="title function_">format</span>(&#123;</span><br><span class="line">  <span class="attr">root</span>: <span class="string">&#x27;/&#x27;</span>,</span><br><span class="line">  <span class="attr">name</span>: <span class="string">&#x27;file&#x27;</span>,</span><br><span class="line">  <span class="attr">ext</span>: <span class="string">&#x27;.txt&#x27;</span>,</span><br><span class="line">&#125;)</span><br><span class="line"><span class="comment">// &#x27;/file.txt&#x27;</span></span><br><span class="line"></span><br><span class="line">path.<span class="title function_">format</span>(&#123;</span><br><span class="line">  <span class="attr">root</span>: <span class="string">&#x27;/&#x27;</span>,</span><br><span class="line">  <span class="attr">name</span>: <span class="string">&#x27;file&#x27;</span>,</span><br><span class="line">  <span class="attr">ext</span>: <span class="string">&#x27;txt&#x27;</span>,</span><br><span class="line">&#125;)</span><br><span class="line"><span class="comment">// &#x27;/file.txt&#x27;</span></span><br></pre></td></tr></table></figure>
+<p>  <img src="/2023/04/22/%E5%A6%82%E4%BD%95%E4%BD%BF%E7%94%A8%20GitHub%20Pages%20%E6%89%98%E7%AE%A1%20Hexo%20%E9%9D%99%E6%80%81%E5%8D%9A%E5%AE%A2%E7%BD%91%E7%AB%99/images/0003.png" alt="修改设置" title="修改设置"></p>
+  <div>修改设置</div>
+  <br>
 
-<h3 id="path-isAbsolute"><a href="#path-isAbsolute" class="headerlink" title="path.isAbsolute"></a><code>path.isAbsolute</code></h3><figure class="highlight javascript"><table><tr><td class="code"><pre><span class="line">path.<span class="title function_">isAbsolute</span>(<span class="string">&#x27;/foo/bar&#x27;</span>) <span class="comment">// true</span></span><br><span class="line">path.<span class="title function_">isAbsolute</span>(<span class="string">&#x27;/baz/..&#x27;</span>)  <span class="comment">// true</span></span><br><span class="line">path.<span class="title function_">isAbsolute</span>(<span class="string">&#x27;qux/&#x27;</span>)     <span class="comment">// false</span></span><br><span class="line">path.<span class="title function_">isAbsolute</span>(<span class="string">&#x27;.&#x27;</span>)        <span class="comment">// false</span></span><br></pre></td></tr></table></figure>
+</div>
 
-<h3 id="path-join-paths"><a href="#path-join-paths" class="headerlink" title="path.join([...paths])"></a><code>path.join([...paths])</code></h3><figure class="highlight javascript"><table><tr><td class="code"><pre><span class="line">path.<span class="title function_">join</span>(<span class="string">&#x27;&#x27;</span>)</span><br><span class="line"><span class="comment">// &#x27;.&#x27;</span></span><br><span class="line"></span><br><span class="line">path.<span class="title function_">join</span>(<span class="string">&#x27;/&#x27;</span>, <span class="string">&#x27;/foo&#x27;</span>, <span class="string">&#x27;bar&#x27;</span>, <span class="string">&#x27;baz&#x27;</span>, <span class="string">&#x27;..&#x27;</span>)</span><br><span class="line"><span class="comment">// &#x27;/foo/bar&#x27;</span></span><br></pre></td></tr></table></figure>
-
-<h3 id="path-normalize-path"><a href="#path-normalize-path" class="headerlink" title="path.normalize(path)"></a><code>path.normalize(path)</code></h3><figure class="highlight javascript"><table><tr><td class="code"><pre><span class="line">path.<span class="title function_">normalize</span>(<span class="string">&#x27;/foo/bar//baz/asdf/quux/..&#x27;</span>)</span><br><span class="line"><span class="comment">// Returns: &#x27;/foo/bar/baz/asdf&#x27;</span></span><br></pre></td></tr></table></figure>
-
-<h3 id="path-parse-path"><a href="#path-parse-path" class="headerlink" title="path.parse(path)"></a><code>path.parse(path)</code></h3><figure class="highlight javascript"><table><tr><td class="code"><pre><span class="line">path.<span class="title function_">parse</span>(<span class="string">&#x27;/home/user/dir/file.txt&#x27;</span>)</span><br><span class="line"><span class="comment">/*</span></span><br><span class="line"><span class="comment">&#123;</span></span><br><span class="line"><span class="comment">  root: &#x27;/&#x27;,</span></span><br><span class="line"><span class="comment">  dir: &#x27;/home/user/dir&#x27;,</span></span><br><span class="line"><span class="comment">  base: &#x27;file.txt&#x27;,</span></span><br><span class="line"><span class="comment">  ext: &#x27;.txt&#x27;,</span></span><br><span class="line"><span class="comment">  name: &#x27;file&#x27;</span></span><br><span class="line"><span class="comment">&#125;</span></span><br><span class="line"><span class="comment">*/</span></span><br></pre></td></tr></table></figure>
-
-<figure class="highlight plaintext"><table><tr><td class="code"><pre><span class="line">┌─────────────────────┬────────────┐</span><br><span class="line">│          dir        │    base    │</span><br><span class="line">├──────┬              ├──────┬─────┤</span><br><span class="line">│ root │              │ name │ ext │</span><br><span class="line">&quot;  /    home/user/dir / file  .txt &quot;</span><br><span class="line">└──────┴──────────────┴──────┴─────┘</span><br></pre></td></tr></table></figure>
-
-<h3 id="path-posix"><a href="#path-posix" class="headerlink" title="path.posix"></a><code>path.posix</code></h3><p>只是输出一下<code>path</code>模组所有的方法。</p>
-<h3 id="path-relative-from-to"><a href="#path-relative-from-to" class="headerlink" title="path.relative(from, to)"></a><code>path.relative(from, to)</code></h3><figure class="highlight javascript"><table><tr><td class="code"><pre><span class="line">path.<span class="title function_">relative</span>(<span class="string">&#x27;/data/orandea/test/aaa&#x27;</span>, <span class="string">&#x27;/data/orandea/impl/bbb&#x27;</span>)</span><br><span class="line"><span class="comment">// &#x27;../../impl/bbb&#x27;</span></span><br></pre></td></tr></table></figure>
-
-<h3 id="path-resolve-paths"><a href="#path-resolve-paths" class="headerlink" title="path.resolve([...paths])"></a><code>path.resolve([...paths])</code></h3><figure class="highlight javascript"><table><tr><td class="code"><pre><span class="line">path.<span class="title function_">resolve</span>(<span class="string">&#x27;&#x27;</span>)</span><br><span class="line"><span class="string">&#x27;/Users/Mccranky&#x27;</span></span><br><span class="line"></span><br><span class="line">path.<span class="title function_">join</span>(<span class="string">&#x27;foo&#x27;</span>, <span class="string">&#x27;bar&#x27;</span>, <span class="string">&#x27;baz&#x27;</span>, <span class="string">&#x27;..&#x27;</span>)</span><br><span class="line"><span class="comment">// &#x27;/Users/Mccranky/foo/bar&#x27;</span></span><br></pre></td></tr></table></figure>
-
-<h3 id="path-sep"><a href="#path-sep" class="headerlink" title="path.sep"></a><code>path.sep</code></h3><p><code>path.sep</code>: <code>/</code></p>
-<figure class="highlight javascript"><table><tr><td class="code"><pre><span class="line"><span class="string">&#x27;foo/bar/baz&#x27;</span>.<span class="title function_">split</span>(path.<span class="property">sep</span>)</span><br><span class="line"><span class="comment">// [&#x27;foo&#x27;, &#x27;bar&#x27;, &#x27;baz&#x27;]</span></span><br></pre></td></tr></table></figure>
+<p>最后，我们访问<code>username.github.io</code>就可以来到我们的博客页了 :)</p>
 ]]></content>
-      <categories>
-        <category>Node.js</category>
-      </categories>
       <tags>
-        <tag>Node.js</tag>
-        <tag>Path</tag>
+        <tag>Hexo</tag>
+        <tag>GitHub Pages</tag>
+        <tag>Git</tag>
       </tags>
   </entry>
   <entry>
@@ -1089,365 +1233,6 @@ Apr 27 02:45:46 alarm systemd[1]: Failed to mount /mnt/share.
         <tag>Bash</tag>
         <tag>CLI</tag>
         <tag>File Systems</tag>
-      </tags>
-  </entry>
-  <entry>
-    <title>软件工程 第二周的博客</title>
-    <url>/2023/03/29/%E8%BD%AF%E4%BB%B6%E5%B7%A5%E7%A8%8B%20%E7%AC%AC%E4%BA%8C%E5%91%A8%E7%9A%84%E5%8D%9A%E5%AE%A2/</url>
-    <content><![CDATA[<h3 id="使用-Node-js-的-Express-js-模组-Host-自己的静态网页"><a href="#使用-Node-js-的-Express-js-模组-Host-自己的静态网页" class="headerlink" title="使用 Node.js 的 Express.js 模组 Host 自己的静态网页"></a><em>使用 Node.js 的 Express.js 模组 Host 自己的静态网页</em></h3><p>首先创建项目文件夹:</p>
-<figure class="highlight plaintext"><table><tr><td class="code"><pre><span class="line"></span><br><span class="line">mkdir project01; cd project01</span><br><span class="line"></span><br></pre></td></tr></table></figure>
-
-<p>然后创建app.js文件：</p>
-<figure class="highlight plaintext"><table><tr><td class="code"><pre><span class="line"></span><br><span class="line">touch app.js; sudo nano app.js</span><br><span class="line"></span><br></pre></td></tr></table></figure>
-
-<blockquote>
-<p>差点忘了，没下载Node.js的先去这个地址下载一下：<a href="https://nodejs.org/en/download/">https://nodejs.org/en/download/</a></p>
-</blockquote>
-<p>下载完初始化一下：</p>
-<figure class="highlight plaintext"><table><tr><td class="code"><pre><span class="line"></span><br><span class="line">node init -y</span><br><span class="line"></span><br></pre></td></tr></table></figure>
-
-<p>到生成的package.json文件里 script object 里加个参数：</p>
-<figure class="highlight plaintext"><table><tr><td class="code"><pre><span class="line"></span><br><span class="line">‘start&#x27;：‘node app’</span><br><span class="line"></span><br></pre></td></tr></table></figure>
-
-<p>好的，非常完美。</p>
-<p>然后下载express：</p>
-<figure class="highlight plaintext"><table><tr><td class="code"><pre><span class="line"></span><br><span class="line">npm i express --save</span><br><span class="line"></span><br></pre></td></tr></table></figure>
-
-<p>这里不建议把它下载为–global，因为会和别的模组冲突。</p>
-<p>面对空白页，先导入express模组并初始化app（关于http模组的基础不做赘述，因为用那个太麻烦了）：</p>
-<figure class="highlight plaintext"><table><tr><td class="code"><pre><span class="line"></span><br><span class="line">const app = require(&#x27;express&#x27;)()</span><br><span class="line"></span><br></pre></td></tr></table></figure>
-
-<p>然后省略几千字，直接上代码，不懂看注释 : )</p>
-<figure class="highlight plaintext"><table><tr><td class="code"><pre><span class="line"></span><br><span class="line">app.use(express.static(&#x27;./public&#x27;))     // 把静态网页需要的资源全扔 public 文件夹里就好了</span><br><span class="line"></span><br><span class="line">app.all(&#x27;*&#x27;, (req, res) =&gt; &#123;</span><br><span class="line">  res.status(404).send(&#x27;resource not found&#x27;)</span><br><span class="line">&#125;)                                                           // 这个是用来处理404 Bad Request 的</span><br><span class="line"></span><br><span class="line">app.listen(5000, () =&gt; &#123;</span><br><span class="line">  console.log(&#x27;server is listening on port 5000....&#x27;)</span><br><span class="line">&#125;)                                                          // 这个是选择端口</span><br><span class="line"></span><br></pre></td></tr></table></figure>
-
-<p>最后在 console 里输入：</p>
-<figure class="highlight plaintext"><table><tr><td class="code"><pre><span class="line"></span><br><span class="line">npm start</span><br><span class="line"></span><br></pre></td></tr></table></figure>
-
-<p>完成！唯一的问题是我们用的还是 localhost， 也就是只有自己可以在端口 5000 看到自己的网页。</p>
-<p>想让别人看到的话就去使用 Git Pages 的免费服务。</p>
-<p>是不是很简单，开自己动手试一试吧！</p>
-]]></content>
-      <tags>
-        <tag>JavaScript</tag>
-        <tag>Node.js</tag>
-        <tag>Express.js</tag>
-      </tags>
-  </entry>
-  <entry>
-    <title>软件工程 第三周的博客</title>
-    <url>/2023/04/07/%E8%BD%AF%E4%BB%B6%E5%B7%A5%E7%A8%8B%20%E7%AC%AC%E4%B8%89%E5%91%A8%E7%9A%84%E5%8D%9A%E5%AE%A2/</url>
-    <content><![CDATA[<h2 id="简要概述-CTF-OverTheWire-Bandit-Level-24"><a href="#简要概述-CTF-OverTheWire-Bandit-Level-24" class="headerlink" title="简要概述 CTF OverTheWire Bandit Level 24"></a><em>简要概述 CTF OverTheWire Bandit Level 24</em></h2><h3 id="题目"><a href="#题目" class="headerlink" title="题目"></a><em>题目</em></h3><blockquote>
-<p>在端口 30002 上有一个守护进程正在监听，如果提供了 bandit24 的密码和一个秘密的 4 位数的数字密码，它将为您提供 bandit25 的密码。除了通过穷举全部 10000 种组合的方式以外，没有其他获得 pincode 的方法，这被称为暴力破解。</p>
-</blockquote>
-<p>大致思路如下：</p>
-<ul>
-<li>先写一个<code>script</code>，按要求进行排版输出到<code>stdout</code></li>
-<li>把输出的 10000 种组合<code>pipe</code>到<code>netcat</code>监视的<code>localhost:30002</code>进行测试</li>
-<li>直接输出到<code>stdout</code>可能会<code>timeout</code>打断进程，所以我们输出到<code>output.txt</code></li>
-<li>最后<code>cat</code>文本内容拿到密码</li>
-</ul>
-<p>先利用<code>ssh</code>连接到<code>bandit.labs.overthewire.org</code>的服务器，端口号<code>2220</code>，为此我们需要<code>bandit24</code>的密码。</p>
-<figure class="highlight bash"><table><tr><td class="code"><pre><span class="line">ssh bandit24@bandit.labs.overthewire.org -p 2220</span><br><span class="line"><span class="comment">#					VAfGXJ1PBSsPSnvsjI8p759leLZ9GGar</span></span><br></pre></td></tr></table></figure>
-
-<p>以<code>bandit24</code>进入 Level 24 之后先到系统文件夹<code>/tmp</code>下建立本关的临时文件夹。</p>
-<figure class="highlight bash"><table><tr><td class="code"><pre><span class="line"><span class="built_in">cd</span> /tmp; <span class="built_in">mktemp</span> -d</span><br><span class="line"></span><br><span class="line"><span class="comment"># /tmp/tmp.u4oQlmpmWL</span></span><br><span class="line"></span><br><span class="line"><span class="built_in">cd</span> /tmp/tmp.u4oQlmpmWL</span><br><span class="line"></span><br><span class="line"><span class="comment"># bandit24@bandit:/tmp/tmp.u4oQlmpmWL$</span></span><br></pre></td></tr></table></figure>
-
-<blockquote>
-<p><code>-d</code>代表<code>directory</code>，即告诉<code>mktemp</code>指令创建的临时文件属性为文件夹</p>
-</blockquote>
-<figure class="highlight bash"><table><tr><td class="code"><pre><span class="line"><span class="built_in">touch</span> script.sh</span><br><span class="line"></span><br><span class="line"><span class="built_in">chmod</span> 777 script.sh</span><br><span class="line"></span><br><span class="line">vim script.sh</span><br></pre></td></tr></table></figure>
-
-<blockquote>
-<p><code>touch</code>: 创建文件</p>
-</blockquote>
-<blockquote>
-<p><code>chmod</code> - <code>change mode</code>: 改变文档<code>rwx</code>权限</p>
-</blockquote>
-<ul>
-<li><code>r</code> - <code>read</code>: 读取权限<code>status code</code>为 4</li>
-<li><code>w</code> - <code>write</code>: 书写权限<code>status code</code>为 2</li>
-<li><code>x</code> - <code>execute</code>: 执行权限<code>status code</code>为 1</li>
-</ul>
-<p>进入文本编辑器之后，选定”插入“模式，按<code>i</code>键</p>
-<p>首行书写<code>shebang</code>行，选定使用哪个<code>shell</code>来执行该<code>script</code> - 我们选用<code>bash</code></p>
-<p>然后写我们的<code>entity body</code>的代码：</p>
-<figure class="highlight bash"><table><tr><td class="code"><pre><span class="line"><span class="meta">#!/bin/bash</span></span><br><span class="line"></span><br><span class="line"><span class="keyword">for</span> i <span class="keyword">in</span> &#123;0000..9999&#125;; <span class="keyword">do</span></span><br><span class="line">        <span class="built_in">echo</span> <span class="variable">$i</span></span><br><span class="line">        <span class="built_in">printf</span> <span class="string">&quot;%s %s\n&quot;</span> <span class="string">&quot;VAfGXJ1PBSsPSnvsjI8p759leLZ9GGar&quot;</span> <span class="string">&quot;<span class="variable">$i</span>&quot;</span></span><br><span class="line"><span class="keyword">done</span></span><br><span class="line"></span><br><span class="line"><span class="built_in">exit</span> 0</span><br><span class="line"></span><br></pre></td></tr></table></figure>
-
-<p>除了语法上微小的一点差异，该题的<code>syntax</code>和<code>C</code>的语法很相像，所以不赘述了。</p>
-<p>大致格式就是<code>for [ test statement]; do &lt;command&gt;; done</code></p>
-<p>编辑结束按<code>ESC</code>键回到普通模式，按<code>:</code>,然后输入指令<code>wq</code>，回车保存并退出。</p>
-<p>执行<code>script.sh</code>，并把结果<code>pipe</code>到<code>netcat</code>:</p>
-<figure class="highlight bash"><table><tr><td class="code"><pre><span class="line">./script.sh | nc localhost 30002 &gt; output.txt</span><br></pre></td></tr></table></figure>
-
-<p>然后<code>cat output.txt</code>读取文本内容，这是其中的一小部分：</p>
-<pre>
-        Fail! You did not supply enough data. Try again.
-        Wrong! Please enter the correct pincode. Try again.
-        Fail! You did not supply enough data. Try again.
-        Wrong! Please enter the correct pincode. Try again.
-        Fail! You did not supply enough data. Try again.
-        Wrong! Please enter the correct pincode. Try again.
-        Fail! You did not supply enough data. Try again.
-        Wrong! Please enter the correct pincode. Try again.
-        Fail! You did not supply enough data. Try again.
-        Wrong! Please enter the correct pincode. Try again.
-        Fail! You did not supply enough data. Try again.
-        Wrong! Please enter the correct pincode. Try again.
-        Fail! You did not supply enough data. Try again.
-        Wrong! Please enter the correct pincode. Try again.
-        Fail! You did not supply enough data. Try again.
-        Wrong! Please enter the correct pincode. Try again.
-        Fail! You did not supply enough data. Try again.
-        Correct!
-        The password of user bandit25 is p7TaowMYrmu23Ol8hiZh9UvD0O9hpx8d
-
-        Exiting.
-</pre>
-
-]]></content>
-      <tags>
-        <tag>Bash</tag>
-        <tag>CTF</tag>
-        <tag>OverTheWire</tag>
-        <tag>Bandit</tag>
-      </tags>
-  </entry>
-  <entry>
-    <title>软件工程 第四周的博客</title>
-    <url>/2023/04/14/%E8%BD%AF%E4%BB%B6%E5%B7%A5%E7%A8%8B%20%E7%AC%AC%E5%9B%9B%E5%91%A8%E7%9A%84%E5%8D%9A%E5%AE%A2/</url>
-    <content><![CDATA[<h2 id="简要概述-CTF-OverTheWire-Bandit-Level-25"><a href="#简要概述-CTF-OverTheWire-Bandit-Level-25" class="headerlink" title="简要概述 CTF OverTheWire Bandit Level 25"></a><em>简要概述 CTF OverTheWire Bandit Level 25</em></h2><h3 id="题目"><a href="#题目" class="headerlink" title="题目"></a><em>题目</em></h3><blockquote>
-<p>从<code>bandit25</code>登录到<code>bandit26</code>，用户<code>bandit26</code>的<code>shell</code>不是<code>/bin/bash</code>，而是其他东西。找出它是什么，它是如何工作的，以及如何打破它。</p>
-</blockquote>
-<hr>
-<p>先利用<code>ssh</code>连接到<code>bandit.labs.overthewire.org</code>的服务器，端口号<code>2220</code>，为此我们需要<code>bandit25</code>的密码。</p>
-<figure class="highlight bash"><table><tr><td class="code"><pre><span class="line">ssh bandit25@bandit.labs.overthewire.org -p 2220</span><br><span class="line"><span class="comment">#					p7TaowMYrmu23Ol8hiZh9UvD0O9hpx8d</span></span><br></pre></td></tr></table></figure>
-
-<p>以<code>bandit25</code>进入 Level 25 之后先列举<code>/home/bandit25</code>有什么可以帮助通关的东西：</p>
-<figure class="highlight bash"><table><tr><td class="code"><pre><span class="line">find . -maxdepth 1 -<span class="built_in">exec</span> file &#123;&#125; 2&gt;/dev/null \;</span><br></pre></td></tr></table></figure>
-<pre><code>    .: directory
-    ./.bash_logout: ASCII text
-    ./.bashrc: ASCII text
-    ./bandit26.sshkey: PEM RSA private key
-    ./.profile: ASCII text
-    ./.pin: ASCII text, with no line terminators
-    ./.bandit24.password: ASCII text
-</code></pre>
-<blockquote>
-<p><code>find</code>: 查找指令</p>
-</blockquote>
-<blockquote>
-<p><code>.</code></p>
-</blockquote>
-<blockquote>
-<p><code>-maxdepth 1</code>: 类似于<code>lodash.js</code>中的<code>flattenDepth</code>的功能，用于拓展平铺树状结构，<code>1</code>代表一层</p>
-</blockquote>
-<blockquote>
-<p><code>-exec &lt;...&gt; \;</code>: 代表执行，和<code>ps</code>，<code>kill</code>，<code>id</code>，<code>stat</code>属于一类指令，多用于管理系统进程，这里我图方便用来替代<code>for</code>用一下。注意一定要在运行完<code>&lt;...&gt;</code>用<code>;</code>结束进程，<code>;</code>前面用<code>\</code>取消原本的意义</p>
-</blockquote>
-<blockquote>
-<p><code>file</code>: 查询文件类型，<code>&#123;&#125;</code>是<code>placeholder</code>，和 HTML 里的那个<code>placeholder</code>一个意思</p>
-</blockquote>
-<blockquote>
-<p><code>2&gt;/dev/null</code>: <code>2</code>是报错信息的<code>status code</code>，<code>/dev/null</code>是系统的<code>bit dump</code>，因此这句的完整的意思就是不让报错信息输出到<code>stdout</code></p>
-</blockquote>
-<p>很明显<code>bandit26.sshkey</code>有用，是<code>bandit26</code>的 SSH 密钥。</p>
-<p>我们就用它来连接<code>bandit26</code>:</p>
-<figure class="highlight bash"><table><tr><td class="code"><pre><span class="line">ssh -i bandit26.sshkey -p 2220 bandit26@localhost</span><br></pre></td></tr></table></figure>
-
-<p><code>-i</code>代表<code>identifier</code>，就是身份验证</p>
-<p>接着，在<code>handshake</code>阶段选’yes’</p>
-<p>然后，我们就被踢出来了。。。</p>
-<pre>
-  _                     _ _ _   ___   __  
- | |                   | (_) | |__ \ / /  
- | |__   __ _ _ __   __| |_| |_   ) / /_  
- | '_ \ / _` | '_ \ / _` | | __| / / '_ \ 
- | |_) | (_| | | | | (_| | | |_ / /| (_) |
- |_.__/ \__,_|_| |_|\__,_|_|\__|____\___/ 
-Connection to localhost closed.
-</pre>
-
-<p>不急，去看看<code>bandit26</code>的用户信息。</p>
-<blockquote>
-<p>在类Unix系统中(包括GNU - GNU’s Not Unix，也就是Linux)，用户信息在系统文件<code>/etc/passwd</code>里 - 这是常识，要记住！</p>
-</blockquote>
-<figure class="highlight bash"><table><tr><td class="code"><pre><span class="line"><span class="built_in">cat</span> /etc/passwd | grep <span class="string">&quot;bandit26&quot;</span></span><br><span class="line"></span><br><span class="line"><span class="comment"># bandit26:x:11026:11026:bandit level 26:/home/bandit26:/usr/bin/showtext</span></span><br></pre></td></tr></table></figure>
-
-<p>先不用管别的，我们要找的是最后一列，也就是代表每个用户的初始<code>shell</code>。</p>
-<p>一开始有说过，<code>bandit26</code>用的<code>shell</code>不是<code>bash</code>，是别的东西。众所周知，因为<code>shell</code>负责翻译所有的指令成机码并输出给<code>kernel</code>执行，所以<code>shell</code>是开启终端进程时运行的第一个程序。因此，我们登陆不上<code>bandit26</code>肯定和这个用户修改了他的<code>default shell</code>有关。</p>
-<p>先<code>cat /usr/bin/showtext</code>看一下他的初始<code>shell</code>是什么。</p>
-<figure class="highlight bash"><table><tr><td class="code"><pre><span class="line"><span class="meta">#!/bin/sh</span></span><br><span class="line"></span><br><span class="line"><span class="built_in">export</span> TERM=linux</span><br><span class="line"></span><br><span class="line"><span class="built_in">exec</span> more ~/text.txt</span><br><span class="line"><span class="built_in">exit</span> 0</span><br><span class="line"></span><br></pre></td></tr></table></figure>
-
-<p>好家伙，改了个参数，打印了个图标就退出了，怪不得登录不上。</p>
-<p>不过因为<code>bandit26</code>用的是<code>more</code>指令，而<code>more</code>指令如果在一个窗口里打印不出文本就会卡壳，我们可以钻这个漏洞，就是把窗口缩到特别小，然后再尝试登陆。</p>
-<p>完美，它卡了。。。</p>
-<figure class="highlight bash"><table><tr><td class="code"><pre><span class="line"><span class="comment">#</span></span><br><span class="line"><span class="comment">#   _                     _ _ _   ___ </span></span><br><span class="line"><span class="comment">#   __  </span></span><br><span class="line"><span class="comment">#  | |                   | (_) | |__ \</span></span><br><span class="line"><span class="comment">#  / /  </span></span><br><span class="line"><span class="comment"># --More--(33%)</span></span><br></pre></td></tr></table></figure>
-
-<p>我们可以在<code>more</code>的窗口里用<code>!</code>加任何指令开启一个<code>subshell</code>，也可以直接<code>v</code>打开<code>vim</code>编辑器。</p>
-<p>我们选择后者。</p>
-<p>进入<code>vim</code>之后按老规矩先<code>ESC</code>进入普通模式，然后按<code>:</code>键，跟在后面输入指令就可以改<code>shell</code>了</p>
-<figure class="highlight bash"><table><tr><td class="code"><pre><span class="line"><span class="built_in">set</span> shell=/bin/bash</span><br><span class="line"></span><br><span class="line"><span class="comment"># 改成bash</span></span><br><span class="line"></span><br><span class="line">shell</span><br><span class="line"></span><br><span class="line"><span class="comment"># 刷新并重新登陆</span></span><br></pre></td></tr></table></figure>
-
-<p>我们现在应该是以<code>bandit26</code>的身份登陆了。</p>
-<p>然后需要做的就是去取下一关的密码了。</p>
-<figure class="highlight bash"><table><tr><td class="code"><pre><span class="line"><span class="built_in">cat</span> /etc/bandit_pass/bandit26</span><br><span class="line"><span class="comment"># c7GvcKlw9mC7aUQaPx7nwFstuAIBw1o1</span></span><br></pre></td></tr></table></figure>]]></content>
-      <tags>
-        <tag>Bash</tag>
-        <tag>CTF</tag>
-        <tag>OverTheWire</tag>
-        <tag>Bandit</tag>
-      </tags>
-  </entry>
-  <entry>
-    <title>`node` in the command line</title>
-    <url>/2023/04/28/%60node%60%20in%20the%20command%20line/</url>
-    <content><![CDATA[<p>I ran into this hassle the other day when my <code>npm</code> command failed to work in the command line. It took me a while to sort things out and left me in a foul mood. To prevent something like that from happening again, I decided to write this post. Nothing fancy - just some commands that might prove helpful in the long run.</p>
-<h3 id="node"><a href="#node" class="headerlink" title="node"></a><em><code>node</code></em></h3><h4 id="Display-global-installation-directory"><a href="#Display-global-installation-directory" class="headerlink" title="Display global installation directory"></a>Display global installation directory</h4><figure class="highlight bash"><table><tr><td class="code"><pre><span class="line">npm root -g</span><br></pre></td></tr></table></figure>
-
-<p>If you installed <code>node</code> using the official package installer, the global installation directory for <code>npm</code> packages would be:</p>
-<pre><code>/usr/local/lib/node_modules
-</code></pre>
-<p>Or you could’ve installed it using Homebrew. In that case, the global installation directory would be:</p>
-<pre><code>/opt/homebrew/lib/node_modules
-</code></pre>
-<h4 id="View-global-installation"><a href="#View-global-installation" class="headerlink" title="View global installation"></a>View global installation</h4><figure class="highlight bash"><table><tr><td class="code"><pre><span class="line">npm <span class="built_in">ls</span> -g</span><br></pre></td></tr></table></figure>
-
-<pre><code>/opt/homebrew/lib
-├── @e-hentai/home@1.6.0-alpha.9
-├── express-generator@4.16.1
-├── nodemon@2.0.22
-└── npm@9.6.5
-</code></pre>
-<h4 id="Update-global-installation"><a href="#Update-global-installation" class="headerlink" title="Update global installation"></a>Update global installation</h4><figure class="highlight bash"><table><tr><td class="code"><pre><span class="line">npm update -g</span><br></pre></td></tr></table></figure>
-
-<h4 id="View-global-configuration"><a href="#View-global-configuration" class="headerlink" title="View global configuration"></a>View global configuration</h4><figure class="highlight bash"><table><tr><td class="code"><pre><span class="line">npm config list</span><br></pre></td></tr></table></figure>
-
-<p>The output should be on the lines of this:</p>
-<pre><code>; &quot;builtin&quot; config from /opt/homebrew/lib/node_modules/npm/npmrc
-
-prefix = &quot;/opt/homebrew&quot; 
-
-; &quot;user&quot; config from /Users/Mccranky/.npmrc
-
-fetch-retry-maxtimeout = 300000 
-
-; node bin location = /opt/homebrew/Cellar/node/20.0.0/bin/node
-; node version = v20.0.0
-; npm local prefix = /Users/Mccranky
-; npm version = 9.6.5
-; cwd = /Users/Mccranky
-; HOME = /Users/Mccranky
-; Run `npm config ls -l` to show all defaults.
-</code></pre>
-<p>From it, we can discern a few key instances that might prove helpful.</p>
-<blockquote>
-<p>“builtin” config is stored at <code>/opt/homebrew/lib/node_modules/npm/npmrc</code></p>
-</blockquote>
-<blockquote>
-<p>“user” config is stored at <code>/Users/Mccranky/.npmrc</code></p>
-</blockquote>
-<h4 id="Add-x2F-remove-configuration"><a href="#Add-x2F-remove-configuration" class="headerlink" title="Add&#x2F;remove configuration"></a>Add&#x2F;remove configuration</h4><figure class="highlight bash"><table><tr><td class="code"><pre><span class="line">npm config <span class="built_in">set</span> &lt;name&gt; &lt;value&gt;</span><br></pre></td></tr></table></figure>
-
-<p>For example, if I want to specify a range of time before timeout occurs, I can use the following command:</p>
-<figure class="highlight bash"><table><tr><td class="code"><pre><span class="line">npm config <span class="built_in">set</span> fetch-retry-maxtimeout 300000 // 5 minutes</span><br><span class="line"></span><br><span class="line">npm config <span class="built_in">set</span> fetch-retry-mintimeout 60000 // 1 minute</span><br><span class="line"></span><br></pre></td></tr></table></figure>
-
-<p>The same mechanism applys when it comes to how we delete configurations:</p>
-<figure class="highlight bash"><table><tr><td class="code"><pre><span class="line">npm config delete fetch-retry-maxtimeout</span><br><span class="line"></span><br><span class="line">npm config delete fetch-retry-mintimeout</span><br><span class="line"></span><br></pre></td></tr></table></figure>
-
-<h3 id="express"><a href="#express" class="headerlink" title="express"></a><em><code>express</code></em></h3><p>I’ve only just started dabbling with <code>express</code> and my expertise is cut pretty thin, but the rule of thumb I tend to follow is:</p>
-<ol>
-<li><p>If you’re installing something that you want to use in <strong>your program</strong> using <code>require(&#39;something&#39;)</code>, then install it locally, at the root of your project.</p>
-</li>
-<li><p>If you’re installing something that you want to use on the <strong>command line</strong> or something, install it globally, so that its binaries end up in your <code>$PATH</code> environment variable.</p>
-</li>
-</ol>
-<p>Based on this, you would want to install <code>express-generator</code> using the <code>-g</code> flag as you will use it as a command line tool, but you’d want to install <code>express</code> without this flag as it’s a module you will want to <code>require()</code> it in your application.</p>
-]]></content>
-      <categories>
-        <category>Node.js</category>
-      </categories>
-      <tags>
-        <tag>Node.js</tag>
-        <tag>Express.js</tag>
-        <tag>Note</tag>
-      </tags>
-  </entry>
-  <entry>
-    <title>软件工程 第一周的博客</title>
-    <url>/2023/03/22/%E8%BD%AF%E4%BB%B6%E5%B7%A5%E7%A8%8B%20%E7%AC%AC%E4%B8%80%E5%91%A8%E7%9A%84%E5%8D%9A%E5%AE%A2/</url>
-    <content><![CDATA[<h3 id="使用Git-VCS的一些小技巧"><a href="#使用Git-VCS的一些小技巧" class="headerlink" title="使用Git VCS的一些小技巧"></a><em>使用Git VCS的一些小技巧</em></h3><p>初始化步骤我就大段省略了，大致就是去 Git 官网下载 Binary Dependencies 然后安装就好了，或者是去安装<code>xcode-command-line-tools</code>，其中<code>git</code>自动包含在里面了。</p>
-<p>说白了 Git 就是一个 Distributional VCS ，大体就是结合了 Local VCS和Centralized VCS，因此基本步骤就是本地建立一个 Local Repository，再在 Gitea 上建立一个 Remote Repository，然后把两个库连接一下，最后把本地的改动<code>push</code>到 Remote Repository 就可以了。</p>
-<p>先说如何建 Local Repository。</p>
-<p>选一处“风水宝地”，一般选择<code>/User/home</code>。然后跑到系统默认的 Terminal Emulator 去（ Windows：PowerShell ），输入一下指令：</p>
-<figure class="highlight bash"><table><tr><td class="code"><pre><span class="line"><span class="built_in">mkdir</span> temp <span class="comment"># 建立temp</span></span><br><span class="line"></span><br><span class="line"><span class="built_in">cd</span> temp <span class="comment"># 进入</span></span><br><span class="line"></span><br><span class="line">git init <span class="comment"># 初始化 Local Repository</span></span><br><span class="line"></span><br></pre></td></tr></table></figure>
-
-<p>做完最后一步会看到 Git 生成了一个<code>.git</code>的隐藏文件夹。千万不要把自己的项目文件扔进去！</p>
-<p>初始化完成后，你就可以开始做项目了。等你做完第一个版本，你就可以把项目<code>add</code>到<code>staging area</code>。用如下指令：</p>
-<figure class="highlight bash"><table><tr><td class="code"><pre><span class="line">git add file.. <span class="comment"># add 后可以加入多个文件</span></span><br></pre></td></tr></table></figure>
-
-<p>然后用<code>git status</code>查看 Local Repository 的状态。如果你看到所有想要<code>staged</code>的文件已经在<code>staging area</code>里面了，就可以上传了。</p>
-<blockquote>
-<p>eg:</p>
-</blockquote>
-<figure class="highlight bash"><table><tr><td class="code"><pre><span class="line">git commit -m “message<span class="string">&quot;</span></span><br></pre></td></tr></table></figure>
-
-<p>最后，我们需要创建一个 Remote Repository，过程如下：</p>
-<figure class="highlight bash"><table><tr><td class="code"><pre><span class="line">git remote add origin git@example.git</span><br></pre></td></tr></table></figure>
-
-<p>然后，我们<code>push</code> Local Repo 到 Remote Repository，过程如下：</p>
-<figure class="highlight bash"><table><tr><td class="code"><pre><span class="line">git push origin temp</span><br></pre></td></tr></table></figure>]]></content>
-      <tags>
-        <tag>Bash</tag>
-        <tag>CLI</tag>
-        <tag>File Systems</tag>
-        <tag>Git</tag>
-      </tags>
-  </entry>
-  <entry>
-    <title>如何使用 GitHub Pages 托管 Hexo 静态博客网站</title>
-    <url>/2023/04/22/%E5%A6%82%E4%BD%95%E4%BD%BF%E7%94%A8%20GitHub%20Pages%20%E6%89%98%E7%AE%A1%20Hexo%20%E9%9D%99%E6%80%81%E5%8D%9A%E5%AE%A2%E7%BD%91%E7%AB%99/</url>
-    <content><![CDATA[<p>– <strong>请先阅读 <a href="/2023/04/22/%E4%BD%BF%E7%94%A8%20Hexo%20%E7%94%9F%E6%88%90%E9%9D%99%E6%80%81%E7%BD%91%E9%A1%B5%E5%8D%9A%E5%AE%A2/index.html">使用 Hexo 生成静态网页博客</a>！</strong></p>
-<h3 id="准备工作"><a href="#准备工作" class="headerlink" title="准备工作"></a>准备工作</h3><p>首先，我们基于完成的博客<code>.md</code>文件生成静态网页：</p>
-<figure class="highlight bash"><table><tr><td class="code"><pre><span class="line"><span class="built_in">cd</span> /path/to/site/</span><br><span class="line"><span class="comment"># 跑到项目路径目录</span></span><br><span class="line"></span><br><span class="line">hexo generate</span><br><span class="line"><span class="comment"># 生成静态网页，存放与 public 文件夹内</span></span><br></pre></td></tr></table></figure>
-
-<p>接着，我们进入<code>public</code>文件夹。</p>
-<pre><code>.
-├── node_modules
-├── public
-├── scaffolds
-├── source
-└── themes
-</code></pre>
-<p>因为我们是使用 GitHub Pages 托管，所以我们需要在<code>public</code>文件夹内初始化<code>git</code>：</p>
-<figure class="highlight bash"><table><tr><td class="code"><pre><span class="line">git init</span><br><span class="line"></span><br><span class="line">git branch -m main</span><br><span class="line"></span><br><span class="line">git add .</span><br><span class="line"></span><br><span class="line">git commit -m <span class="string">&quot;初始化工作&quot;</span></span><br></pre></td></tr></table></figure>
-
-<p>其次，我们还需要在 GitHub 上面建立一个远程仓库，格式<strong>必须</strong>为<code>username.github.io</code>，这是硬性要求。</p>
-<h3 id="关联和发布"><a href="#关联和发布" class="headerlink" title="关联和发布"></a>关联和发布</h3><p>我们现在需要关联本地仓库和远程仓库，用例中我们使用<code>https</code>协议，当然也可以使用<code>ssh</code>密钥：</p>
-<figure class="highlight bash"><table><tr><td class="code"><pre><span class="line">git remote add origin https://github.com/username/username.github.io.git</span><br><span class="line"></span><br><span class="line">git push origin main</span><br></pre></td></tr></table></figure>
-
-<p>我们还需要更改一下远程仓库的 GitHub Pages 的设置，目的是告知它托管文件的地址：</p>
-<div style="display: block; margin-left: auto; margin-right: auto; text-align: center; font-size: 1rem;">
-  
-<p>  <img src="/2023/04/22/%E5%A6%82%E4%BD%95%E4%BD%BF%E7%94%A8%20GitHub%20Pages%20%E6%89%98%E7%AE%A1%20Hexo%20%E9%9D%99%E6%80%81%E5%8D%9A%E5%AE%A2%E7%BD%91%E7%AB%99/images/0001.png" alt="点击 Settings" title="点击 Settings"></p>
-  <div>点击 Settings</div>
-  <br>
-
-<p>  <img src="/2023/04/22/%E5%A6%82%E4%BD%95%E4%BD%BF%E7%94%A8%20GitHub%20Pages%20%E6%89%98%E7%AE%A1%20Hexo%20%E9%9D%99%E6%80%81%E5%8D%9A%E5%AE%A2%E7%BD%91%E7%AB%99/images/0002.png" alt="点击 Pages" title="点击 Pages"></p>
-  <div>点击 Pages</div>
-  <br>
-
-<p>  <img src="/2023/04/22/%E5%A6%82%E4%BD%95%E4%BD%BF%E7%94%A8%20GitHub%20Pages%20%E6%89%98%E7%AE%A1%20Hexo%20%E9%9D%99%E6%80%81%E5%8D%9A%E5%AE%A2%E7%BD%91%E7%AB%99/images/0003.png" alt="修改设置" title="修改设置"></p>
-  <div>修改设置</div>
-  <br>
-
-</div>
-
-<p>最后，我们访问<code>username.github.io</code>就可以来到我们的博客页了 :)</p>
-]]></content>
-      <tags>
-        <tag>Hexo</tag>
-        <tag>Git</tag>
-        <tag>GitHub Pages</tag>
       </tags>
   </entry>
   <entry>
@@ -1554,6 +1339,244 @@ S: 221 /0:0:0:0:0:0:0:1 Service closing transmission channel
 ]]></content>
       <tags>
         <tag>Computer Networking</tag>
+      </tags>
+  </entry>
+  <entry>
+    <title>软件工程 第三周的博客</title>
+    <url>/2023/04/07/%E8%BD%AF%E4%BB%B6%E5%B7%A5%E7%A8%8B%20%E7%AC%AC%E4%B8%89%E5%91%A8%E7%9A%84%E5%8D%9A%E5%AE%A2/</url>
+    <content><![CDATA[<h2 id="简要概述-CTF-OverTheWire-Bandit-Level-24"><a href="#简要概述-CTF-OverTheWire-Bandit-Level-24" class="headerlink" title="简要概述 CTF OverTheWire Bandit Level 24"></a><em>简要概述 CTF OverTheWire Bandit Level 24</em></h2><h3 id="题目"><a href="#题目" class="headerlink" title="题目"></a><em>题目</em></h3><blockquote>
+<p>在端口 30002 上有一个守护进程正在监听，如果提供了 bandit24 的密码和一个秘密的 4 位数的数字密码，它将为您提供 bandit25 的密码。除了通过穷举全部 10000 种组合的方式以外，没有其他获得 pincode 的方法，这被称为暴力破解。</p>
+</blockquote>
+<p>大致思路如下：</p>
+<ul>
+<li>先写一个<code>script</code>，按要求进行排版输出到<code>stdout</code></li>
+<li>把输出的 10000 种组合<code>pipe</code>到<code>netcat</code>监视的<code>localhost:30002</code>进行测试</li>
+<li>直接输出到<code>stdout</code>可能会<code>timeout</code>打断进程，所以我们输出到<code>output.txt</code></li>
+<li>最后<code>cat</code>文本内容拿到密码</li>
+</ul>
+<p>先利用<code>ssh</code>连接到<code>bandit.labs.overthewire.org</code>的服务器，端口号<code>2220</code>，为此我们需要<code>bandit24</code>的密码。</p>
+<figure class="highlight bash"><table><tr><td class="code"><pre><span class="line">ssh bandit24@bandit.labs.overthewire.org -p 2220</span><br><span class="line"><span class="comment">#					VAfGXJ1PBSsPSnvsjI8p759leLZ9GGar</span></span><br></pre></td></tr></table></figure>
+
+<p>以<code>bandit24</code>进入 Level 24 之后先到系统文件夹<code>/tmp</code>下建立本关的临时文件夹。</p>
+<figure class="highlight bash"><table><tr><td class="code"><pre><span class="line"><span class="built_in">cd</span> /tmp; <span class="built_in">mktemp</span> -d</span><br><span class="line"></span><br><span class="line"><span class="comment"># /tmp/tmp.u4oQlmpmWL</span></span><br><span class="line"></span><br><span class="line"><span class="built_in">cd</span> /tmp/tmp.u4oQlmpmWL</span><br><span class="line"></span><br><span class="line"><span class="comment"># bandit24@bandit:/tmp/tmp.u4oQlmpmWL$</span></span><br></pre></td></tr></table></figure>
+
+<blockquote>
+<p><code>-d</code>代表<code>directory</code>，即告诉<code>mktemp</code>指令创建的临时文件属性为文件夹</p>
+</blockquote>
+<figure class="highlight bash"><table><tr><td class="code"><pre><span class="line"><span class="built_in">touch</span> script.sh</span><br><span class="line"></span><br><span class="line"><span class="built_in">chmod</span> 777 script.sh</span><br><span class="line"></span><br><span class="line">vim script.sh</span><br></pre></td></tr></table></figure>
+
+<blockquote>
+<p><code>touch</code>: 创建文件</p>
+</blockquote>
+<blockquote>
+<p><code>chmod</code> - <code>change mode</code>: 改变文档<code>rwx</code>权限</p>
+</blockquote>
+<ul>
+<li><code>r</code> - <code>read</code>: 读取权限<code>status code</code>为 4</li>
+<li><code>w</code> - <code>write</code>: 书写权限<code>status code</code>为 2</li>
+<li><code>x</code> - <code>execute</code>: 执行权限<code>status code</code>为 1</li>
+</ul>
+<p>进入文本编辑器之后，选定”插入“模式，按<code>i</code>键</p>
+<p>首行书写<code>shebang</code>行，选定使用哪个<code>shell</code>来执行该<code>script</code> - 我们选用<code>bash</code></p>
+<p>然后写我们的<code>entity body</code>的代码：</p>
+<figure class="highlight bash"><table><tr><td class="code"><pre><span class="line"><span class="meta">#!/bin/bash</span></span><br><span class="line"></span><br><span class="line"><span class="keyword">for</span> i <span class="keyword">in</span> &#123;0000..9999&#125;; <span class="keyword">do</span></span><br><span class="line">        <span class="built_in">echo</span> <span class="variable">$i</span></span><br><span class="line">        <span class="built_in">printf</span> <span class="string">&quot;%s %s\n&quot;</span> <span class="string">&quot;VAfGXJ1PBSsPSnvsjI8p759leLZ9GGar&quot;</span> <span class="string">&quot;<span class="variable">$i</span>&quot;</span></span><br><span class="line"><span class="keyword">done</span></span><br><span class="line"></span><br><span class="line"><span class="built_in">exit</span> 0</span><br><span class="line"></span><br></pre></td></tr></table></figure>
+
+<p>除了语法上微小的一点差异，该题的<code>syntax</code>和<code>C</code>的语法很相像，所以不赘述了。</p>
+<p>大致格式就是<code>for [ test statement]; do &lt;command&gt;; done</code></p>
+<p>编辑结束按<code>ESC</code>键回到普通模式，按<code>:</code>,然后输入指令<code>wq</code>，回车保存并退出。</p>
+<p>执行<code>script.sh</code>，并把结果<code>pipe</code>到<code>netcat</code>:</p>
+<figure class="highlight bash"><table><tr><td class="code"><pre><span class="line">./script.sh | nc localhost 30002 &gt; output.txt</span><br></pre></td></tr></table></figure>
+
+<p>然后<code>cat output.txt</code>读取文本内容，这是其中的一小部分：</p>
+<pre>
+        Fail! You did not supply enough data. Try again.
+        Wrong! Please enter the correct pincode. Try again.
+        Fail! You did not supply enough data. Try again.
+        Wrong! Please enter the correct pincode. Try again.
+        Fail! You did not supply enough data. Try again.
+        Wrong! Please enter the correct pincode. Try again.
+        Fail! You did not supply enough data. Try again.
+        Wrong! Please enter the correct pincode. Try again.
+        Fail! You did not supply enough data. Try again.
+        Wrong! Please enter the correct pincode. Try again.
+        Fail! You did not supply enough data. Try again.
+        Wrong! Please enter the correct pincode. Try again.
+        Fail! You did not supply enough data. Try again.
+        Wrong! Please enter the correct pincode. Try again.
+        Fail! You did not supply enough data. Try again.
+        Wrong! Please enter the correct pincode. Try again.
+        Fail! You did not supply enough data. Try again.
+        Correct!
+        The password of user bandit25 is p7TaowMYrmu23Ol8hiZh9UvD0O9hpx8d
+
+        Exiting.
+</pre>
+
+]]></content>
+      <tags>
+        <tag>Bash</tag>
+        <tag>CTF</tag>
+        <tag>OverTheWire</tag>
+        <tag>Bandit</tag>
+      </tags>
+  </entry>
+  <entry>
+    <title>软件工程 第二周的博客</title>
+    <url>/2023/03/29/%E8%BD%AF%E4%BB%B6%E5%B7%A5%E7%A8%8B%20%E7%AC%AC%E4%BA%8C%E5%91%A8%E7%9A%84%E5%8D%9A%E5%AE%A2/</url>
+    <content><![CDATA[<h3 id="使用-Node-js-的-Express-js-模组-Host-自己的静态网页"><a href="#使用-Node-js-的-Express-js-模组-Host-自己的静态网页" class="headerlink" title="使用 Node.js 的 Express.js 模组 Host 自己的静态网页"></a><em>使用 Node.js 的 Express.js 模组 Host 自己的静态网页</em></h3><p>首先创建项目文件夹:</p>
+<figure class="highlight plaintext"><table><tr><td class="code"><pre><span class="line"></span><br><span class="line">mkdir project01; cd project01</span><br><span class="line"></span><br></pre></td></tr></table></figure>
+
+<p>然后创建app.js文件：</p>
+<figure class="highlight plaintext"><table><tr><td class="code"><pre><span class="line"></span><br><span class="line">touch app.js; sudo nano app.js</span><br><span class="line"></span><br></pre></td></tr></table></figure>
+
+<blockquote>
+<p>差点忘了，没下载Node.js的先去这个地址下载一下：<a href="https://nodejs.org/en/download/">https://nodejs.org/en/download/</a></p>
+</blockquote>
+<p>下载完初始化一下：</p>
+<figure class="highlight plaintext"><table><tr><td class="code"><pre><span class="line"></span><br><span class="line">node init -y</span><br><span class="line"></span><br></pre></td></tr></table></figure>
+
+<p>到生成的package.json文件里 script object 里加个参数：</p>
+<figure class="highlight plaintext"><table><tr><td class="code"><pre><span class="line"></span><br><span class="line">‘start&#x27;：‘node app’</span><br><span class="line"></span><br></pre></td></tr></table></figure>
+
+<p>好的，非常完美。</p>
+<p>然后下载express：</p>
+<figure class="highlight plaintext"><table><tr><td class="code"><pre><span class="line"></span><br><span class="line">npm i express --save</span><br><span class="line"></span><br></pre></td></tr></table></figure>
+
+<p>这里不建议把它下载为–global，因为会和别的模组冲突。</p>
+<p>面对空白页，先导入express模组并初始化app（关于http模组的基础不做赘述，因为用那个太麻烦了）：</p>
+<figure class="highlight plaintext"><table><tr><td class="code"><pre><span class="line"></span><br><span class="line">const app = require(&#x27;express&#x27;)()</span><br><span class="line"></span><br></pre></td></tr></table></figure>
+
+<p>然后省略几千字，直接上代码，不懂看注释 : )</p>
+<figure class="highlight plaintext"><table><tr><td class="code"><pre><span class="line"></span><br><span class="line">app.use(express.static(&#x27;./public&#x27;))     // 把静态网页需要的资源全扔 public 文件夹里就好了</span><br><span class="line"></span><br><span class="line">app.all(&#x27;*&#x27;, (req, res) =&gt; &#123;</span><br><span class="line">  res.status(404).send(&#x27;resource not found&#x27;)</span><br><span class="line">&#125;)                                                           // 这个是用来处理404 Bad Request 的</span><br><span class="line"></span><br><span class="line">app.listen(5000, () =&gt; &#123;</span><br><span class="line">  console.log(&#x27;server is listening on port 5000....&#x27;)</span><br><span class="line">&#125;)                                                          // 这个是选择端口</span><br><span class="line"></span><br></pre></td></tr></table></figure>
+
+<p>最后在 console 里输入：</p>
+<figure class="highlight plaintext"><table><tr><td class="code"><pre><span class="line"></span><br><span class="line">npm start</span><br><span class="line"></span><br></pre></td></tr></table></figure>
+
+<p>完成！唯一的问题是我们用的还是 localhost， 也就是只有自己可以在端口 5000 看到自己的网页。</p>
+<p>想让别人看到的话就去使用 Git Pages 的免费服务。</p>
+<p>是不是很简单，开自己动手试一试吧！</p>
+]]></content>
+      <tags>
+        <tag>JavaScript</tag>
+        <tag>Node.js</tag>
+        <tag>Express.js</tag>
+      </tags>
+  </entry>
+  <entry>
+    <title>软件工程 第四周的博客</title>
+    <url>/2023/04/14/%E8%BD%AF%E4%BB%B6%E5%B7%A5%E7%A8%8B%20%E7%AC%AC%E5%9B%9B%E5%91%A8%E7%9A%84%E5%8D%9A%E5%AE%A2/</url>
+    <content><![CDATA[<h2 id="简要概述-CTF-OverTheWire-Bandit-Level-25"><a href="#简要概述-CTF-OverTheWire-Bandit-Level-25" class="headerlink" title="简要概述 CTF OverTheWire Bandit Level 25"></a><em>简要概述 CTF OverTheWire Bandit Level 25</em></h2><h3 id="题目"><a href="#题目" class="headerlink" title="题目"></a><em>题目</em></h3><blockquote>
+<p>从<code>bandit25</code>登录到<code>bandit26</code>，用户<code>bandit26</code>的<code>shell</code>不是<code>/bin/bash</code>，而是其他东西。找出它是什么，它是如何工作的，以及如何打破它。</p>
+</blockquote>
+<hr>
+<p>先利用<code>ssh</code>连接到<code>bandit.labs.overthewire.org</code>的服务器，端口号<code>2220</code>，为此我们需要<code>bandit25</code>的密码。</p>
+<figure class="highlight bash"><table><tr><td class="code"><pre><span class="line">ssh bandit25@bandit.labs.overthewire.org -p 2220</span><br><span class="line"><span class="comment">#					p7TaowMYrmu23Ol8hiZh9UvD0O9hpx8d</span></span><br></pre></td></tr></table></figure>
+
+<p>以<code>bandit25</code>进入 Level 25 之后先列举<code>/home/bandit25</code>有什么可以帮助通关的东西：</p>
+<figure class="highlight bash"><table><tr><td class="code"><pre><span class="line">find . -maxdepth 1 -<span class="built_in">exec</span> file &#123;&#125; 2&gt;/dev/null \;</span><br></pre></td></tr></table></figure>
+<pre><code>    .: directory
+    ./.bash_logout: ASCII text
+    ./.bashrc: ASCII text
+    ./bandit26.sshkey: PEM RSA private key
+    ./.profile: ASCII text
+    ./.pin: ASCII text, with no line terminators
+    ./.bandit24.password: ASCII text
+</code></pre>
+<blockquote>
+<p><code>find</code>: 查找指令</p>
+</blockquote>
+<blockquote>
+<p><code>.</code></p>
+</blockquote>
+<blockquote>
+<p><code>-maxdepth 1</code>: 类似于<code>lodash.js</code>中的<code>flattenDepth</code>的功能，用于拓展平铺树状结构，<code>1</code>代表一层</p>
+</blockquote>
+<blockquote>
+<p><code>-exec &lt;...&gt; \;</code>: 代表执行，和<code>ps</code>，<code>kill</code>，<code>id</code>，<code>stat</code>属于一类指令，多用于管理系统进程，这里我图方便用来替代<code>for</code>用一下。注意一定要在运行完<code>&lt;...&gt;</code>用<code>;</code>结束进程，<code>;</code>前面用<code>\</code>取消原本的意义</p>
+</blockquote>
+<blockquote>
+<p><code>file</code>: 查询文件类型，<code>&#123;&#125;</code>是<code>placeholder</code>，和 HTML 里的那个<code>placeholder</code>一个意思</p>
+</blockquote>
+<blockquote>
+<p><code>2&gt;/dev/null</code>: <code>2</code>是报错信息的<code>status code</code>，<code>/dev/null</code>是系统的<code>bit dump</code>，因此这句的完整的意思就是不让报错信息输出到<code>stdout</code></p>
+</blockquote>
+<p>很明显<code>bandit26.sshkey</code>有用，是<code>bandit26</code>的 SSH 密钥。</p>
+<p>我们就用它来连接<code>bandit26</code>:</p>
+<figure class="highlight bash"><table><tr><td class="code"><pre><span class="line">ssh -i bandit26.sshkey -p 2220 bandit26@localhost</span><br></pre></td></tr></table></figure>
+
+<p><code>-i</code>代表<code>identifier</code>，就是身份验证</p>
+<p>接着，在<code>handshake</code>阶段选’yes’</p>
+<p>然后，我们就被踢出来了。。。</p>
+<pre>
+  _                     _ _ _   ___   __  
+ | |                   | (_) | |__ \ / /  
+ | |__   __ _ _ __   __| |_| |_   ) / /_  
+ | '_ \ / _` | '_ \ / _` | | __| / / '_ \ 
+ | |_) | (_| | | | | (_| | | |_ / /| (_) |
+ |_.__/ \__,_|_| |_|\__,_|_|\__|____\___/ 
+Connection to localhost closed.
+</pre>
+
+<p>不急，去看看<code>bandit26</code>的用户信息。</p>
+<blockquote>
+<p>在类Unix系统中(包括GNU - GNU’s Not Unix，也就是Linux)，用户信息在系统文件<code>/etc/passwd</code>里 - 这是常识，要记住！</p>
+</blockquote>
+<figure class="highlight bash"><table><tr><td class="code"><pre><span class="line"><span class="built_in">cat</span> /etc/passwd | grep <span class="string">&quot;bandit26&quot;</span></span><br><span class="line"></span><br><span class="line"><span class="comment"># bandit26:x:11026:11026:bandit level 26:/home/bandit26:/usr/bin/showtext</span></span><br></pre></td></tr></table></figure>
+
+<p>先不用管别的，我们要找的是最后一列，也就是代表每个用户的初始<code>shell</code>。</p>
+<p>一开始有说过，<code>bandit26</code>用的<code>shell</code>不是<code>bash</code>，是别的东西。众所周知，因为<code>shell</code>负责翻译所有的指令成机码并输出给<code>kernel</code>执行，所以<code>shell</code>是开启终端进程时运行的第一个程序。因此，我们登陆不上<code>bandit26</code>肯定和这个用户修改了他的<code>default shell</code>有关。</p>
+<p>先<code>cat /usr/bin/showtext</code>看一下他的初始<code>shell</code>是什么。</p>
+<figure class="highlight bash"><table><tr><td class="code"><pre><span class="line"><span class="meta">#!/bin/sh</span></span><br><span class="line"></span><br><span class="line"><span class="built_in">export</span> TERM=linux</span><br><span class="line"></span><br><span class="line"><span class="built_in">exec</span> more ~/text.txt</span><br><span class="line"><span class="built_in">exit</span> 0</span><br><span class="line"></span><br></pre></td></tr></table></figure>
+
+<p>好家伙，改了个参数，打印了个图标就退出了，怪不得登录不上。</p>
+<p>不过因为<code>bandit26</code>用的是<code>more</code>指令，而<code>more</code>指令如果在一个窗口里打印不出文本就会卡壳，我们可以钻这个漏洞，就是把窗口缩到特别小，然后再尝试登陆。</p>
+<p>完美，它卡了。。。</p>
+<figure class="highlight bash"><table><tr><td class="code"><pre><span class="line"><span class="comment">#</span></span><br><span class="line"><span class="comment">#   _                     _ _ _   ___ </span></span><br><span class="line"><span class="comment">#   __  </span></span><br><span class="line"><span class="comment">#  | |                   | (_) | |__ \</span></span><br><span class="line"><span class="comment">#  / /  </span></span><br><span class="line"><span class="comment"># --More--(33%)</span></span><br></pre></td></tr></table></figure>
+
+<p>我们可以在<code>more</code>的窗口里用<code>!</code>加任何指令开启一个<code>subshell</code>，也可以直接<code>v</code>打开<code>vim</code>编辑器。</p>
+<p>我们选择后者。</p>
+<p>进入<code>vim</code>之后按老规矩先<code>ESC</code>进入普通模式，然后按<code>:</code>键，跟在后面输入指令就可以改<code>shell</code>了</p>
+<figure class="highlight bash"><table><tr><td class="code"><pre><span class="line"><span class="built_in">set</span> shell=/bin/bash</span><br><span class="line"></span><br><span class="line"><span class="comment"># 改成bash</span></span><br><span class="line"></span><br><span class="line">shell</span><br><span class="line"></span><br><span class="line"><span class="comment"># 刷新并重新登陆</span></span><br></pre></td></tr></table></figure>
+
+<p>我们现在应该是以<code>bandit26</code>的身份登陆了。</p>
+<p>然后需要做的就是去取下一关的密码了。</p>
+<figure class="highlight bash"><table><tr><td class="code"><pre><span class="line"><span class="built_in">cat</span> /etc/bandit_pass/bandit26</span><br><span class="line"><span class="comment"># c7GvcKlw9mC7aUQaPx7nwFstuAIBw1o1</span></span><br></pre></td></tr></table></figure>]]></content>
+      <tags>
+        <tag>Bash</tag>
+        <tag>CTF</tag>
+        <tag>OverTheWire</tag>
+        <tag>Bandit</tag>
+      </tags>
+  </entry>
+  <entry>
+    <title>软件工程 第一周的博客</title>
+    <url>/2023/03/22/%E8%BD%AF%E4%BB%B6%E5%B7%A5%E7%A8%8B%20%E7%AC%AC%E4%B8%80%E5%91%A8%E7%9A%84%E5%8D%9A%E5%AE%A2/</url>
+    <content><![CDATA[<h3 id="使用Git-VCS的一些小技巧"><a href="#使用Git-VCS的一些小技巧" class="headerlink" title="使用Git VCS的一些小技巧"></a><em>使用Git VCS的一些小技巧</em></h3><p>初始化步骤我就大段省略了，大致就是去 Git 官网下载 Binary Dependencies 然后安装就好了，或者是去安装<code>xcode-command-line-tools</code>，其中<code>git</code>自动包含在里面了。</p>
+<p>说白了 Git 就是一个 Distributional VCS ，大体就是结合了 Local VCS和Centralized VCS，因此基本步骤就是本地建立一个 Local Repository，再在 Gitea 上建立一个 Remote Repository，然后把两个库连接一下，最后把本地的改动<code>push</code>到 Remote Repository 就可以了。</p>
+<p>先说如何建 Local Repository。</p>
+<p>选一处“风水宝地”，一般选择<code>/User/home</code>。然后跑到系统默认的 Terminal Emulator 去（ Windows：PowerShell ），输入一下指令：</p>
+<figure class="highlight bash"><table><tr><td class="code"><pre><span class="line"><span class="built_in">mkdir</span> temp <span class="comment"># 建立temp</span></span><br><span class="line"></span><br><span class="line"><span class="built_in">cd</span> temp <span class="comment"># 进入</span></span><br><span class="line"></span><br><span class="line">git init <span class="comment"># 初始化 Local Repository</span></span><br><span class="line"></span><br></pre></td></tr></table></figure>
+
+<p>做完最后一步会看到 Git 生成了一个<code>.git</code>的隐藏文件夹。千万不要把自己的项目文件扔进去！</p>
+<p>初始化完成后，你就可以开始做项目了。等你做完第一个版本，你就可以把项目<code>add</code>到<code>staging area</code>。用如下指令：</p>
+<figure class="highlight bash"><table><tr><td class="code"><pre><span class="line">git add file.. <span class="comment"># add 后可以加入多个文件</span></span><br></pre></td></tr></table></figure>
+
+<p>然后用<code>git status</code>查看 Local Repository 的状态。如果你看到所有想要<code>staged</code>的文件已经在<code>staging area</code>里面了，就可以上传了。</p>
+<blockquote>
+<p>eg:</p>
+</blockquote>
+<figure class="highlight bash"><table><tr><td class="code"><pre><span class="line">git commit -m “message<span class="string">&quot;</span></span><br></pre></td></tr></table></figure>
+
+<p>最后，我们需要创建一个 Remote Repository，过程如下：</p>
+<figure class="highlight bash"><table><tr><td class="code"><pre><span class="line">git remote add origin git@example.git</span><br></pre></td></tr></table></figure>
+
+<p>然后，我们<code>push</code> Local Repo 到 Remote Repository，过程如下：</p>
+<figure class="highlight bash"><table><tr><td class="code"><pre><span class="line">git push origin temp</span><br></pre></td></tr></table></figure>]]></content>
+      <tags>
+        <tag>Bash</tag>
+        <tag>Git</tag>
+        <tag>CLI</tag>
+        <tag>File Systems</tag>
       </tags>
   </entry>
 </search>
