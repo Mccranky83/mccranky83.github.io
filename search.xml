@@ -73,6 +73,67 @@ hello this is bar
       </tags>
   </entry>
   <entry>
+    <title>Dabbling with Puppeteer</title>
+    <url>/2023/04/27/Dabbling%20with%20Puppeteer/</url>
+    <content><![CDATA[<p>Puppeteer is a Node.js library that provides a high-level API to control headless Chrome or Chromium browsers. It is widely used for web scraping, testing, and automation, and is an essential tool for many developers who work with web applications.</p>
+<blockquote>
+<p>Note that I’ll be demonstrating on ArchLinux</p>
+</blockquote>
+<p>Because Puppeteer relies on Node.js, the first thing we do is create a project directory and initiate <code>npm</code>.</p>
+<figure class="highlight bash"><table><tr><td class="code"><pre><span class="line"><span class="built_in">mkdir</span> puppeteer-project;</span><br><span class="line"></span><br><span class="line"><span class="built_in">cd</span> puppeteer-project;</span><br><span class="line"></span><br><span class="line">npm init -y</span><br><span class="line"></span><br><span class="line">npm i puppeteer --save</span><br><span class="line"></span><br><span class="line">sudo pacman -S libx11 libxcomposite libxdamage libxext libxi libxtst nss freetype2 harfbuzz</span><br><span class="line"></span><br><span class="line"><span class="comment"># Puppeteer requires some additional dependencies to be installed</span></span><br><span class="line"></span><br></pre></td></tr></table></figure>
+
+<p>Now we write our script:</p>
+<figure class="highlight bash"><table><tr><td class="code"><pre><span class="line">vim puppeteer.js</span><br></pre></td></tr></table></figure>
+
+<p>The script should be on the lines of this template:</p>
+<figure class="highlight javascript"><table><tr><td class="code"><pre><span class="line"><span class="keyword">const</span> puppeteer = <span class="built_in">require</span>(<span class="string">&#x27;puppeteer&#x27;</span>);</span><br><span class="line"></span><br><span class="line">(<span class="keyword">async</span> () =&gt; &#123;</span><br><span class="line">  <span class="keyword">const</span> browser = <span class="keyword">await</span> puppeteer.<span class="title function_">launch</span>(&#123;</span><br><span class="line">  	<span class="attr">executablePath</span>: <span class="string">&#x27;/usr/bin/chromium&#x27;</span>,</span><br><span class="line"></span><br><span class="line">  	<span class="comment">// We can also drop this line and instead, set an environment variable in Bash.</span></span><br><span class="line"></span><br><span class="line">  	<span class="comment">// `$ export PUPPETEER_EXECUTABLE_PATH=/usr/bin/chromium`</span></span><br><span class="line"></span><br><span class="line">  	<span class="attr">headless</span>: <span class="literal">true</span></span><br><span class="line">  &#125;);</span><br><span class="line">  <span class="keyword">const</span> page = <span class="keyword">await</span> browser.<span class="title function_">newPage</span>();</span><br><span class="line">  <span class="keyword">await</span> page.<span class="title function_">goto</span>(<span class="string">&#x27;https://www.example.com&#x27;</span>);</span><br><span class="line">  <span class="keyword">await</span> page.<span class="title function_">screenshot</span>(&#123; <span class="attr">path</span>: <span class="string">&#x27;example.png&#x27;</span> &#125;);</span><br><span class="line">  <span class="keyword">await</span> browser.<span class="title function_">close</span>();</span><br><span class="line">&#125;)();</span><br><span class="line"></span><br></pre></td></tr></table></figure>
+
+<p>This code will launch Chromium in headless mode and navigate to <code>https://www.example.com</code>, take a screenshot of the page, and then close the browser.</p>
+<p><strong><em>More content about Puppeteer coming up!</em></strong></p>
+]]></content>
+      <categories>
+        <category>Puppeteer</category>
+      </categories>
+      <tags>
+        <tag>Linux</tag>
+        <tag>ArchLinux</tag>
+        <tag>Headless Browser</tag>
+      </tags>
+  </entry>
+  <entry>
+    <title>Delete a superuser in Django</title>
+    <url>/2023/06/09/Delete%20a%20superuser%20in%20Django/</url>
+    <content><![CDATA[<p>To delete a superuser in Django, you can use the Django shell to query and delete the user model instance. Here are the steps to delete a superuser using the Django shell:</p>
+<ol>
+<li><p>Open a terminal and navigate to the root directory of your Django project.</p>
+</li>
+<li><p>Activate the virtual environment, if you are using one.</p>
+</li>
+<li><p>Run the following command to open the Django shell: <code>python manage.py shell</code>.</p>
+</li>
+<li><p>Import the User model by running the following command: <code>from django.contrib.auth.models import User</code>.</p>
+</li>
+<li><p>Query the User model for the superuser you want to delete using the <code>get()</code> method. For example, if the username of the superuser you want to delete is “admin”, you would run: <code>user = User.objects.get(username=&#39;admin&#39;)</code>.</p>
+</li>
+<li><p>Call the <code>delete()</code> method on the user instance to delete the superuser. For example, you would run: <code>user.delete()</code>.</p>
+</li>
+<li><p>Exit the Django shell by typing <code>exit()</code> or pressing <code>Ctrl+D</code>.</p>
+</li>
+</ol>
+<p>After following these steps, the superuser will be deleted from the Django project.</p>
+<p>It’s important to note that deleting a superuser will also delete all related data, such as blog posts or comments, if those models are related to the User model with a foreign key. If you want to preserve this data, you should first transfer ownership of the data to another user before deleting the superuser.</p>
+<p>Another way to delete a superuser is to use the Django admin. To do this, log in as a superuser in the Django admin, navigate to the “Users” section, and click the “Delete” button next to the superuser you want to delete. Confirm the deletion in the next screen.</p>
+<p>In summary, you can delete a superuser in Django by using the Django shell to query and delete the user model instance. Alternatively, you can use the Django admin to delete the superuser. Keep in mind that deleting a superuser will also delete any related data.</p>
+]]></content>
+      <categories>
+        <category>Django</category>
+      </categories>
+      <tags>
+        <tag>Django</tag>
+        <tag>Python</tag>
+      </tags>
+  </entry>
+  <entry>
     <title>Dead Cells：Unlocking Daily Challenge blueprints</title>
     <url>/2023/05/03/Dead%20Cells%EF%BC%9AUnlocking%20Daily%20Challenge%20blueprints/</url>
     <content><![CDATA[<p>The Daily Challenge mode boasts a significant player base, even compared to other popular modes, and offers several exclusive weapons to boot. However, this is bad news for us freeloaders who, through various means, gained access to the game without ever paying the publisher a single cent. Some may consider piracy bad practice, but to be honest, I’m broke as f*ck.</p>
@@ -138,39 +199,6 @@ hello this is bar
       </tags>
   </entry>
   <entry>
-    <title>Delete a superuser in Django</title>
-    <url>/2023/06/09/Delete%20a%20superuser%20in%20Django/</url>
-    <content><![CDATA[<p>To delete a superuser in Django, you can use the Django shell to query and delete the user model instance. Here are the steps to delete a superuser using the Django shell:</p>
-<ol>
-<li><p>Open a terminal and navigate to the root directory of your Django project.</p>
-</li>
-<li><p>Activate the virtual environment, if you are using one.</p>
-</li>
-<li><p>Run the following command to open the Django shell: <code>python manage.py shell</code>.</p>
-</li>
-<li><p>Import the User model by running the following command: <code>from django.contrib.auth.models import User</code>.</p>
-</li>
-<li><p>Query the User model for the superuser you want to delete using the <code>get()</code> method. For example, if the username of the superuser you want to delete is “admin”, you would run: <code>user = User.objects.get(username=&#39;admin&#39;)</code>.</p>
-</li>
-<li><p>Call the <code>delete()</code> method on the user instance to delete the superuser. For example, you would run: <code>user.delete()</code>.</p>
-</li>
-<li><p>Exit the Django shell by typing <code>exit()</code> or pressing <code>Ctrl+D</code>.</p>
-</li>
-</ol>
-<p>After following these steps, the superuser will be deleted from the Django project.</p>
-<p>It’s important to note that deleting a superuser will also delete all related data, such as blog posts or comments, if those models are related to the User model with a foreign key. If you want to preserve this data, you should first transfer ownership of the data to another user before deleting the superuser.</p>
-<p>Another way to delete a superuser is to use the Django admin. To do this, log in as a superuser in the Django admin, navigate to the “Users” section, and click the “Delete” button next to the superuser you want to delete. Confirm the deletion in the next screen.</p>
-<p>In summary, you can delete a superuser in Django by using the Django shell to query and delete the user model instance. Alternatively, you can use the Django admin to delete the superuser. Keep in mind that deleting a superuser will also delete any related data.</p>
-]]></content>
-      <categories>
-        <category>Django</category>
-      </categories>
-      <tags>
-        <tag>Django</tag>
-        <tag>Python</tag>
-      </tags>
-  </entry>
-  <entry>
     <title>How to re-center Spotlight search bar on Mac?</title>
     <url>/2023/05/06/How%20to%20re-center%20Spotlight%20search%20bar%20on%20Mac?/</url>
     <content><![CDATA[<p>Click and hold the Spotlight icon on the menu bar, until the Spotlight window has returned to its original location.</p>
@@ -199,52 +227,6 @@ hello this is bar
       <categories>
         <category>JavaScript</category>
       </categories>
-  </entry>
-  <entry>
-    <title>Installing Puppet server on ArchLinux</title>
-    <url>/2023/04/27/Installing%20Puppet%20server%20on%20ArchLinux/</url>
-    <content><![CDATA[<h3 id="Installation"><a href="#Installation" class="headerlink" title="Installation"></a>Installation</h3><p>To install puppet server first add the upstream GPG key:</p>
-<pre><code>$ gpg --fetch-keys https://yum.puppetlabs.com/RPM-GPG-KEY-puppet-20250406
-</code></pre>
-<div>
-    Then install the <a href="https://aur.archlinux.org/packages/puppetserver"><b>puppetserver</b></a><sup>AUR</sup> package.
-</div>
-
-<figure class="highlight bash"><table><tr><td class="code"><pre><span class="line">git <span class="built_in">clone</span> https://aur.archlinux.org/puppetserver.git</span><br><span class="line"></span><br><span class="line"><span class="built_in">cd</span> puppetserver/</span><br><span class="line"></span><br><span class="line">makepkg -si</span><br><span class="line"></span><br></pre></td></tr></table></figure>
-
-<p>Having questions about the <code>makepkg</code> command? Visit <a href="/2023/04/25/Running%20ArchLinux%20ARM%20in%20UTM%20on%20a%20M1%20MacBook%20Air/#yay" title="makepkg">here</a>!</p>
-<div>
-    Afterwards, enable and start the <b>puppetserver</b> service.
-</div>
-
-<figure class="highlight bash"><table><tr><td class="code"><pre><span class="line">sudo systemctl <span class="built_in">enable</span> puppetserver.service</span><br><span class="line"></span><br><span class="line"><span class="comment"># Add to &quot;/etc/systemd/system/multi-user.target.wants&quot;.</span></span><br><span class="line"></span><br><span class="line">sudo systemctl start puppetserver.service</span><br><span class="line"></span><br></pre></td></tr></table></figure>
-
-<h3 id="Delete-a-key"><a href="#Delete-a-key" class="headerlink" title="Delete a key"></a>Delete a key</h3><p>List the keys in your keyring using the command <code>gpg --list-keys</code>:</p>
-<pre><code>$ gpg --list-keys
-/root/.gnupg/pubring.kbx
-------------------------
-pub   rsa4096 2019-04-08 [SC] [expires: 2025-04-06]
-      D6811ED3ADEEB8441AF5AA8F4528B6CD9E61EF26
-uid           [ unknown] Puppet, Inc. Release Key (Puppet, Inc. Release Key) &lt;release@puppet.com&gt;
-</code></pre>
-<p>For example, the key ID of the instance above is “D6811ED3ADEEB8441AF5AA8F4528B6CD9E61EF26”.</p>
-<p>Delete the key using the command <code>gpg --delete-keys [key ID]</code>.</p>
-<p>Note that deleting a key from your keyring will prevent you from verifying any signatures made with that key in the future. If you need to use the key again later, you will need to fetch it again using the <code>gpg --fetch-keys</code> command.</p>
-<blockquote>
-<p>Configuration</p>
-</blockquote>
-<p>The Puppet Server’s configuration files are stored in <code>/etc/puppetlabs/puppetserver/</code>.</p>
-]]></content>
-      <categories>
-        <category>Puppet</category>
-      </categories>
-      <tags>
-        <tag>Linux</tag>
-        <tag>ArchLinux</tag>
-        <tag>Puppet</tag>
-        <tag>server</tag>
-        <tag>GPG key</tag>
-      </tags>
   </entry>
   <entry>
     <title>Initialize shared directory with SPICE WebDAV</title>
@@ -304,6 +286,52 @@ uid           [ unknown] Puppet, Inc. Release Key (Puppet, Inc. Release Key) &lt
         <category>Linux</category>
         <category>ArchLinux</category>
       </categories>
+  </entry>
+  <entry>
+    <title>Installing Puppet server on ArchLinux</title>
+    <url>/2023/04/27/Installing%20Puppet%20server%20on%20ArchLinux/</url>
+    <content><![CDATA[<h3 id="Installation"><a href="#Installation" class="headerlink" title="Installation"></a>Installation</h3><p>To install puppet server first add the upstream GPG key:</p>
+<pre><code>$ gpg --fetch-keys https://yum.puppetlabs.com/RPM-GPG-KEY-puppet-20250406
+</code></pre>
+<div>
+    Then install the <a href="https://aur.archlinux.org/packages/puppetserver"><b>puppetserver</b></a><sup>AUR</sup> package.
+</div>
+
+<figure class="highlight bash"><table><tr><td class="code"><pre><span class="line">git <span class="built_in">clone</span> https://aur.archlinux.org/puppetserver.git</span><br><span class="line"></span><br><span class="line"><span class="built_in">cd</span> puppetserver/</span><br><span class="line"></span><br><span class="line">makepkg -si</span><br><span class="line"></span><br></pre></td></tr></table></figure>
+
+<p>Having questions about the <code>makepkg</code> command? Visit <a href="/2023/04/25/Running%20ArchLinux%20ARM%20in%20UTM%20on%20a%20M1%20MacBook%20Air/#yay" title="makepkg">here</a>!</p>
+<div>
+    Afterwards, enable and start the <b>puppetserver</b> service.
+</div>
+
+<figure class="highlight bash"><table><tr><td class="code"><pre><span class="line">sudo systemctl <span class="built_in">enable</span> puppetserver.service</span><br><span class="line"></span><br><span class="line"><span class="comment"># Add to &quot;/etc/systemd/system/multi-user.target.wants&quot;.</span></span><br><span class="line"></span><br><span class="line">sudo systemctl start puppetserver.service</span><br><span class="line"></span><br></pre></td></tr></table></figure>
+
+<h3 id="Delete-a-key"><a href="#Delete-a-key" class="headerlink" title="Delete a key"></a>Delete a key</h3><p>List the keys in your keyring using the command <code>gpg --list-keys</code>:</p>
+<pre><code>$ gpg --list-keys
+/root/.gnupg/pubring.kbx
+------------------------
+pub   rsa4096 2019-04-08 [SC] [expires: 2025-04-06]
+      D6811ED3ADEEB8441AF5AA8F4528B6CD9E61EF26
+uid           [ unknown] Puppet, Inc. Release Key (Puppet, Inc. Release Key) &lt;release@puppet.com&gt;
+</code></pre>
+<p>For example, the key ID of the instance above is “D6811ED3ADEEB8441AF5AA8F4528B6CD9E61EF26”.</p>
+<p>Delete the key using the command <code>gpg --delete-keys [key ID]</code>.</p>
+<p>Note that deleting a key from your keyring will prevent you from verifying any signatures made with that key in the future. If you need to use the key again later, you will need to fetch it again using the <code>gpg --fetch-keys</code> command.</p>
+<blockquote>
+<p>Configuration</p>
+</blockquote>
+<p>The Puppet Server’s configuration files are stored in <code>/etc/puppetlabs/puppetserver/</code>.</p>
+]]></content>
+      <categories>
+        <category>Puppet</category>
+      </categories>
+      <tags>
+        <tag>Linux</tag>
+        <tag>ArchLinux</tag>
+        <tag>Puppet</tag>
+        <tag>server</tag>
+        <tag>GPG key</tag>
+      </tags>
   </entry>
   <entry>
     <title>Intuition</title>
@@ -373,6 +401,29 @@ uid           [ unknown] Puppet, Inc. Release Key (Puppet, Inc. Release Key) &lt
       <tags>
         <tag>JavaScript</tag>
         <tag>Methods</tag>
+      </tags>
+  </entry>
+  <entry>
+    <title>Minor adjustment from Bash to Zsh</title>
+    <url>/2023/12/29/Minor%20adjustment%20from%20Bash%20to%20Zsh/</url>
+    <content><![CDATA[<blockquote>
+<p>Converting characters to uppercase(&#x2F;lowercase)</p>
+</blockquote>
+<p>Take variable <code>sayhi</code> for example:</p>
+<figure class="highlight bash"><table><tr><td class="code"><pre><span class="line">sayhi=<span class="string">&quot;hello there&quot;</span></span><br><span class="line"><span class="built_in">echo</span> <span class="variable">$&#123;sayhi^^[eo]&#125;</span></span><br></pre></td></tr></table></figure>
+
+<p>This method of converting lowercase letters to uppercase only works in Bash and will throw and “Bad substitution” error if you try it in Zsh.<br>Instead, you should use general replacement for this in Zsh:</p>
+<figure class="highlight plaintext"><table><tr><td class="code"><pre><span class="line">echo $&#123;sayhi//[eo]/[EO]&#125;</span><br></pre></td></tr></table></figure>
+
+<p>Or, for a more Zsh native method, we can try out substitution flags, which comes in two formats:</p>
+<figure class="highlight plaintext"><table><tr><td class="code"><pre><span class="line">echo $&#123;sayhi:u&#125;</span><br><span class="line"># Or use it as a prefix:</span><br><span class="line">echo $&#123;(U):sayhi&#125;</span><br></pre></td></tr></table></figure>
+]]></content>
+      <categories>
+        <category>CLI</category>
+      </categories>
+      <tags>
+        <tag>Bash</tag>
+        <tag>Zsh</tag>
       </tags>
   </entry>
   <entry>
@@ -496,29 +547,6 @@ r=mccranky)
         <tag>ArchLinux</tag>
         <tag>UTM</tag>
         <tag>Virtual Machine</tag>
-      </tags>
-  </entry>
-  <entry>
-    <title>Minor adjustment from Bash to Zsh</title>
-    <url>/2023/12/29/Minor%20adjustment%20from%20Bash%20to%20Zsh/</url>
-    <content><![CDATA[<blockquote>
-<p>Converting characters to uppercase(&#x2F;lowercase)</p>
-</blockquote>
-<p>Take variable <code>sayhi</code> for example:</p>
-<figure class="highlight bash"><table><tr><td class="code"><pre><span class="line">sayhi=<span class="string">&quot;hello there&quot;</span></span><br><span class="line"><span class="built_in">echo</span> <span class="variable">$&#123;sayhi^^[eo]&#125;</span></span><br></pre></td></tr></table></figure>
-
-<p>This method of converting lowercase letters to uppercase only works in Bash and will throw and “Bad substitution” error if you try it in Zsh.<br>Instead, you should use general replacement for this in Zsh:</p>
-<figure class="highlight plaintext"><table><tr><td class="code"><pre><span class="line">echo $&#123;sayhi//[eo]/[EO]&#125;</span><br></pre></td></tr></table></figure>
-
-<p>Or, for a more Zsh native method, we can try out substitution flags, which comes in two formats:</p>
-<figure class="highlight plaintext"><table><tr><td class="code"><pre><span class="line">echo $&#123;sayhi:u&#125;</span><br><span class="line"># Or use it as a prefix:</span><br><span class="line">echo $&#123;(U):sayhi&#125;</span><br></pre></td></tr></table></figure>
-]]></content>
-      <categories>
-        <category>CLI</category>
-      </categories>
-      <tags>
-        <tag>Bash</tag>
-        <tag>Zsh</tag>
       </tags>
   </entry>
   <entry>
@@ -836,34 +864,6 @@ Possible reasons for having this kind of units are:
       </tags>
   </entry>
   <entry>
-    <title>Dabbling with Puppeteer</title>
-    <url>/2023/04/27/Dabbling%20with%20Puppeteer/</url>
-    <content><![CDATA[<p>Puppeteer is a Node.js library that provides a high-level API to control headless Chrome or Chromium browsers. It is widely used for web scraping, testing, and automation, and is an essential tool for many developers who work with web applications.</p>
-<blockquote>
-<p>Note that I’ll be demonstrating on ArchLinux</p>
-</blockquote>
-<p>Because Puppeteer relies on Node.js, the first thing we do is create a project directory and initiate <code>npm</code>.</p>
-<figure class="highlight bash"><table><tr><td class="code"><pre><span class="line"><span class="built_in">mkdir</span> puppeteer-project;</span><br><span class="line"></span><br><span class="line"><span class="built_in">cd</span> puppeteer-project;</span><br><span class="line"></span><br><span class="line">npm init -y</span><br><span class="line"></span><br><span class="line">npm i puppeteer --save</span><br><span class="line"></span><br><span class="line">sudo pacman -S libx11 libxcomposite libxdamage libxext libxi libxtst nss freetype2 harfbuzz</span><br><span class="line"></span><br><span class="line"><span class="comment"># Puppeteer requires some additional dependencies to be installed</span></span><br><span class="line"></span><br></pre></td></tr></table></figure>
-
-<p>Now we write our script:</p>
-<figure class="highlight bash"><table><tr><td class="code"><pre><span class="line">vim puppeteer.js</span><br></pre></td></tr></table></figure>
-
-<p>The script should be on the lines of this template:</p>
-<figure class="highlight javascript"><table><tr><td class="code"><pre><span class="line"><span class="keyword">const</span> puppeteer = <span class="built_in">require</span>(<span class="string">&#x27;puppeteer&#x27;</span>);</span><br><span class="line"></span><br><span class="line">(<span class="keyword">async</span> () =&gt; &#123;</span><br><span class="line">  <span class="keyword">const</span> browser = <span class="keyword">await</span> puppeteer.<span class="title function_">launch</span>(&#123;</span><br><span class="line">  	<span class="attr">executablePath</span>: <span class="string">&#x27;/usr/bin/chromium&#x27;</span>,</span><br><span class="line"></span><br><span class="line">  	<span class="comment">// We can also drop this line and instead, set an environment variable in Bash.</span></span><br><span class="line"></span><br><span class="line">  	<span class="comment">// `$ export PUPPETEER_EXECUTABLE_PATH=/usr/bin/chromium`</span></span><br><span class="line"></span><br><span class="line">  	<span class="attr">headless</span>: <span class="literal">true</span></span><br><span class="line">  &#125;);</span><br><span class="line">  <span class="keyword">const</span> page = <span class="keyword">await</span> browser.<span class="title function_">newPage</span>();</span><br><span class="line">  <span class="keyword">await</span> page.<span class="title function_">goto</span>(<span class="string">&#x27;https://www.example.com&#x27;</span>);</span><br><span class="line">  <span class="keyword">await</span> page.<span class="title function_">screenshot</span>(&#123; <span class="attr">path</span>: <span class="string">&#x27;example.png&#x27;</span> &#125;);</span><br><span class="line">  <span class="keyword">await</span> browser.<span class="title function_">close</span>();</span><br><span class="line">&#125;)();</span><br><span class="line"></span><br></pre></td></tr></table></figure>
-
-<p>This code will launch Chromium in headless mode and navigate to <code>https://www.example.com</code>, take a screenshot of the page, and then close the browser.</p>
-<p><strong><em>More content about Puppeteer coming up!</em></strong></p>
-]]></content>
-      <categories>
-        <category>Puppeteer</category>
-      </categories>
-      <tags>
-        <tag>Linux</tag>
-        <tag>ArchLinux</tag>
-        <tag>Headless Browser</tag>
-      </tags>
-  </entry>
-  <entry>
     <title>[Fix] Failed to mount /mnt/share</title>
     <url>/2023/04/27/%5BFix%5D%20Failed%20to%20mount%20:mnt:share/</url>
     <content><![CDATA[<h3 id="Solution"><a href="#Solution" class="headerlink" title="Solution"></a>Solution</h3><p>Our fix to the problem is to remove <code>/mnt/share</code> entirely and mount something else in its place.</p>
@@ -953,6 +953,123 @@ Apr 27 02:45:46 alarm systemd[1]: Failed to mount /mnt/share.
       </tags>
   </entry>
   <entry>
+    <title>`inpath`</title>
+    <url>/2023/04/29/%60inpath%60/</url>
+    <content><![CDATA[<p>Coding along with the book <em>Wicked Cool Shell Scripts- 101 Scripts for Linux, OS X, and UNIX Systems</em>.</p>
+<p>This is the script from Page 11:</p>
+<figure class="highlight bash"><table><tr><td class="code"><pre><span class="line"><span class="meta">#!/bin/bash</span></span><br><span class="line"></span><br><span class="line"><span class="function"><span class="title">in_path</span></span>()</span><br><span class="line">&#123;</span><br><span class="line">        cmd=<span class="variable">$1</span></span><br><span class="line">        ourpath=<span class="variable">$2</span>      </span><br><span class="line">        result=1</span><br><span class="line">        oldIFS=<span class="variable">$IFS</span>     </span><br><span class="line">        IFS=<span class="string">&quot;:&quot;</span></span><br><span class="line"> </span><br><span class="line">        <span class="keyword">for</span> directory <span class="keyword">in</span> <span class="variable">$ourpath</span>; <span class="keyword">do</span></span><br><span class="line"></span><br><span class="line">        <span class="comment"># If i double quoted `$ourpath`, it will not word split, and the loop will only run once.</span></span><br><span class="line"></span><br><span class="line">                <span class="keyword">if</span> [ -x <span class="string">&quot;<span class="variable">$directory</span>/<span class="variable">$cmd</span>&quot;</span> ]; <span class="keyword">then</span></span><br><span class="line">                        result=0</span><br><span class="line">                <span class="keyword">fi</span></span><br><span class="line">        <span class="keyword">done</span></span><br><span class="line"> </span><br><span class="line">        IFS=<span class="variable">$oldIFS</span></span><br><span class="line">        <span class="built_in">return</span> <span class="variable">$result</span></span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"><span class="function"><span class="title">checkForCmdInPath</span></span>()</span><br><span class="line">&#123;</span><br><span class="line">        var=<span class="variable">$1</span></span><br><span class="line"> </span><br><span class="line">        <span class="keyword">if</span> [ ! <span class="string">&quot;<span class="variable">$var</span>&quot;</span> = <span class="string">&quot;&quot;</span> ]; <span class="keyword">then</span></span><br><span class="line">                <span class="keyword">if</span> [ <span class="string">&quot;<span class="variable">$&#123;var:0:1&#125;</span>&quot;</span> = <span class="string">&quot;/&quot;</span> ]; <span class="keyword">then</span></span><br><span class="line">                	<span class="comment"># Checks whether the command represented by the `$var` is an absolute path or not. </span></span><br><span class="line">                        <span class="keyword">if</span> [ ! -x <span class="string">&quot;<span class="variable">$var</span>&quot;</span> ]; <span class="keyword">then</span></span><br><span class="line">                                <span class="built_in">return</span> 1</span><br><span class="line">                        <span class="keyword">fi</span></span><br><span class="line">                <span class="keyword">elif</span> ! in_path <span class="string">&quot;<span class="variable">$var</span>&quot;</span> <span class="string">&quot;<span class="variable">$PATH</span>&quot;</span>; <span class="keyword">then</span></span><br><span class="line">                        <span class="built_in">return</span> 2</span><br><span class="line">                <span class="keyword">fi</span></span><br><span class="line">        <span class="keyword">fi</span></span><br><span class="line">&#125;</span><br><span class="line"></span><br></pre></td></tr></table></figure>
+
+<h3 id="Positional-parameters"><a href="#Positional-parameters" class="headerlink" title="Positional parameters"></a>Positional parameters</h3><p>See <a href="/2023/04/29/Positional%20Parameters/">here</a></p>
+<blockquote>
+<p><strong><em>A Quick Word</em></strong>  </p>
+<p>It is good practice to put double quotes around variables in Bash because it prevents word splitting and globbing.</p>
+<ul>
+<li><p>Word splitting is the process of breaking up a string into separate words based on whitespace. If a variable contains spaces, without quotes, Bash will treat each space-separated word as a separate argument. This can cause unexpected behavior if the variable is used as an argument to a command.</p>
+</li>
+<li><p>Globbing is the process of expanding wildcard characters such as <code>*</code> and <code>?</code> into a list of matching filenames. If a variable contains a glob character, without quotes, Bash will try to expand it into a list of matching filenames. This can also cause unexpected behavior if the variable is used as an argument to a command.</p>
+</li>
+</ul>
+<p>By putting double quotes around variables, Bash treats the variable as a single argument, preserving any whitespace or glob characters within the variable. This helps to ensure that the variable is interpreted correctly and the script behaves as expected.</p>
+</blockquote>
+<h3 id="Special-variables"><a href="#Special-variables" class="headerlink" title="Special variables"></a>Special variables</h3><p><strong><em><code>$IFS</code></em></strong></p>
+<p>The internal field separator (IFS) is a special variable in Bash that specifies the delimiter used to separate fields in a string. By default, the IFS is set to whitespace (i.e., space, tab, and newline characters).</p>
+<p><strong><em>&#96;$?</em></strong></p>
+<p>Display the return values of functions.</p>
+<figure class="highlight bash"><table><tr><td class="code"><pre><span class="line"><span class="built_in">echo</span> $?</span><br></pre></td></tr></table></figure>
+
+<p>You can use it immediately after calling a function with return value.</p>
+<h3 id="Slice"><a href="#Slice" class="headerlink" title="Slice"></a>Slice</h3><pre><code>[ &quot;$&#123;var:0:1&#125;&quot; = &quot;/&quot; ];
+</code></pre>
+<p>The slicing starts at index <code>0</code> and lasts for the duration of a single character.</p>
+<h3 id="Compare"><a href="#Compare" class="headerlink" title="Compare"></a>Compare</h3><p><strong><em>String comparison</em></strong></p>
+<p><code>=</code> tests if two strings are equal. For example, if <code>[ &quot;$string1&quot; = &quot;$string2&quot; ]</code> would be true if <code>$string1</code> and <code>$string2</code> have the same value.</p>
+<p><strong><em>Pattern matching</em></strong></p>
+<p><code>==</code> tests if a string matches a pattern using globbing, which is a way to match filenames based on wildcard characters. For example, if <code>[[ &quot;$string&quot; == a* ]]</code> would be true if <code>$string</code> starts with the letter “a”.</p>
+]]></content>
+      <categories>
+        <category>Wicked Cool Shell Scripts</category>
+      </categories>
+      <tags>
+        <tag>Linux</tag>
+        <tag>ArchLinux</tag>
+        <tag>Bash</tag>
+      </tags>
+  </entry>
+  <entry>
+    <title>`node` in the command line</title>
+    <url>/2023/04/28/%60node%60%20in%20the%20command%20line/</url>
+    <content><![CDATA[<p>I ran into this hassle the other day when my <code>npm</code> command failed to work in the command line. It took me a while to sort things out and left me in a foul mood. To prevent something like that from happening again, I decided to write this post. Nothing fancy - just some commands that might prove helpful in the long run.</p>
+<h3 id="node"><a href="#node" class="headerlink" title="node"></a><em><code>node</code></em></h3><h4 id="Display-global-installation-directory"><a href="#Display-global-installation-directory" class="headerlink" title="Display global installation directory"></a>Display global installation directory</h4><figure class="highlight bash"><table><tr><td class="code"><pre><span class="line">npm root -g</span><br></pre></td></tr></table></figure>
+
+<p>If you installed <code>node</code> using the official package installer, the global installation directory for <code>npm</code> packages would be:</p>
+<pre><code>/usr/local/lib/node_modules
+</code></pre>
+<p>Or you could’ve installed it using Homebrew. In that case, the global installation directory would be:</p>
+<pre><code>/opt/homebrew/lib/node_modules
+</code></pre>
+<h4 id="View-global-installation"><a href="#View-global-installation" class="headerlink" title="View global installation"></a>View global installation</h4><figure class="highlight bash"><table><tr><td class="code"><pre><span class="line">npm <span class="built_in">ls</span> -g</span><br></pre></td></tr></table></figure>
+
+<pre><code>/opt/homebrew/lib
+├── @e-hentai/home@1.6.0-alpha.9
+├── express-generator@4.16.1
+├── nodemon@2.0.22
+└── npm@9.6.5
+</code></pre>
+<h4 id="Update-global-installation"><a href="#Update-global-installation" class="headerlink" title="Update global installation"></a>Update global installation</h4><figure class="highlight bash"><table><tr><td class="code"><pre><span class="line">npm update -g</span><br></pre></td></tr></table></figure>
+
+<h4 id="View-global-configuration"><a href="#View-global-configuration" class="headerlink" title="View global configuration"></a>View global configuration</h4><figure class="highlight bash"><table><tr><td class="code"><pre><span class="line">npm config list</span><br></pre></td></tr></table></figure>
+
+<p>The output should be on the lines of this:</p>
+<pre><code>; &quot;builtin&quot; config from /opt/homebrew/lib/node_modules/npm/npmrc
+
+prefix = &quot;/opt/homebrew&quot; 
+
+; &quot;user&quot; config from /Users/Mccranky/.npmrc
+
+fetch-retry-maxtimeout = 300000 
+
+; node bin location = /opt/homebrew/Cellar/node/20.0.0/bin/node
+; node version = v20.0.0
+; npm local prefix = /Users/Mccranky
+; npm version = 9.6.5
+; cwd = /Users/Mccranky
+; HOME = /Users/Mccranky
+; Run `npm config ls -l` to show all defaults.
+</code></pre>
+<p>From it, we can discern a few key instances that might prove helpful.</p>
+<blockquote>
+<p>“builtin” config is stored at <code>/opt/homebrew/lib/node_modules/npm/npmrc</code></p>
+</blockquote>
+<blockquote>
+<p>“user” config is stored at <code>/Users/Mccranky/.npmrc</code></p>
+</blockquote>
+<h4 id="Add-x2F-remove-configuration"><a href="#Add-x2F-remove-configuration" class="headerlink" title="Add&#x2F;remove configuration"></a>Add&#x2F;remove configuration</h4><figure class="highlight bash"><table><tr><td class="code"><pre><span class="line">npm config <span class="built_in">set</span> &lt;name&gt; &lt;value&gt;</span><br></pre></td></tr></table></figure>
+
+<p>For example, if I want to specify a range of time before timeout occurs, I can use the following command:</p>
+<figure class="highlight bash"><table><tr><td class="code"><pre><span class="line">npm config <span class="built_in">set</span> fetch-retry-maxtimeout 300000 // 5 minutes</span><br><span class="line"></span><br><span class="line">npm config <span class="built_in">set</span> fetch-retry-mintimeout 60000 // 1 minute</span><br><span class="line"></span><br></pre></td></tr></table></figure>
+
+<p>The same mechanism applys when it comes to how we delete configurations:</p>
+<figure class="highlight bash"><table><tr><td class="code"><pre><span class="line">npm config delete fetch-retry-maxtimeout</span><br><span class="line"></span><br><span class="line">npm config delete fetch-retry-mintimeout</span><br><span class="line"></span><br></pre></td></tr></table></figure>
+
+<h3 id="express"><a href="#express" class="headerlink" title="express"></a><em><code>express</code></em></h3><p>I’ve only just started dabbling with <code>express</code> and my expertise is cut pretty thin, but the rule of thumb I tend to follow is:</p>
+<ol>
+<li><p>If you’re installing something that you want to use in <strong>your program</strong> using <code>require(&#39;something&#39;)</code>, then install it locally, at the root of your project.</p>
+</li>
+<li><p>If you’re installing something that you want to use on the <strong>command line</strong> or something, install it globally, so that its binaries end up in your <code>$PATH</code> environment variable.</p>
+</li>
+</ol>
+<p>Based on this, you would want to install <code>express-generator</code> using the <code>-g</code> flag as you will use it as a command line tool, but you’d want to install <code>express</code> without this flag as it’s a module you will want to <code>require()</code> it in your application.</p>
+]]></content>
+      <categories>
+        <category>Node.js</category>
+      </categories>
+      <tags>
+        <tag>Node.js</tag>
+        <tag>Express.js</tag>
+        <tag>Note</tag>
+      </tags>
+  </entry>
+  <entry>
     <title>使用 Hexo 生成静态网页博客</title>
     <url>/2023/04/22/%E4%BD%BF%E7%94%A8%20Hexo%20%E7%94%9F%E6%88%90%E9%9D%99%E6%80%81%E7%BD%91%E9%A1%B5%E5%8D%9A%E5%AE%A2/</url>
     <content><![CDATA[<h3 id="要求"><a href="#要求" class="headerlink" title="要求"></a><em>要求</em></h3><ul>
@@ -1020,49 +1137,6 @@ Apr 27 02:45:46 alarm systemd[1]: Failed to mount /mnt/share.
       <tags>
         <tag>Bash</tag>
         <tag>Hexo</tag>
-      </tags>
-  </entry>
-  <entry>
-    <title>`inpath`</title>
-    <url>/2023/04/29/%60inpath%60/</url>
-    <content><![CDATA[<p>Coding along with the book <em>Wicked Cool Shell Scripts- 101 Scripts for Linux, OS X, and UNIX Systems</em>.</p>
-<p>This is the script from Page 11:</p>
-<figure class="highlight bash"><table><tr><td class="code"><pre><span class="line"><span class="meta">#!/bin/bash</span></span><br><span class="line"></span><br><span class="line"><span class="function"><span class="title">in_path</span></span>()</span><br><span class="line">&#123;</span><br><span class="line">        cmd=<span class="variable">$1</span></span><br><span class="line">        ourpath=<span class="variable">$2</span>      </span><br><span class="line">        result=1</span><br><span class="line">        oldIFS=<span class="variable">$IFS</span>     </span><br><span class="line">        IFS=<span class="string">&quot;:&quot;</span></span><br><span class="line"> </span><br><span class="line">        <span class="keyword">for</span> directory <span class="keyword">in</span> <span class="variable">$ourpath</span>; <span class="keyword">do</span></span><br><span class="line"></span><br><span class="line">        <span class="comment"># If i double quoted `$ourpath`, it will not word split, and the loop will only run once.</span></span><br><span class="line"></span><br><span class="line">                <span class="keyword">if</span> [ -x <span class="string">&quot;<span class="variable">$directory</span>/<span class="variable">$cmd</span>&quot;</span> ]; <span class="keyword">then</span></span><br><span class="line">                        result=0</span><br><span class="line">                <span class="keyword">fi</span></span><br><span class="line">        <span class="keyword">done</span></span><br><span class="line"> </span><br><span class="line">        IFS=<span class="variable">$oldIFS</span></span><br><span class="line">        <span class="built_in">return</span> <span class="variable">$result</span></span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"><span class="function"><span class="title">checkForCmdInPath</span></span>()</span><br><span class="line">&#123;</span><br><span class="line">        var=<span class="variable">$1</span></span><br><span class="line"> </span><br><span class="line">        <span class="keyword">if</span> [ ! <span class="string">&quot;<span class="variable">$var</span>&quot;</span> = <span class="string">&quot;&quot;</span> ]; <span class="keyword">then</span></span><br><span class="line">                <span class="keyword">if</span> [ <span class="string">&quot;<span class="variable">$&#123;var:0:1&#125;</span>&quot;</span> = <span class="string">&quot;/&quot;</span> ]; <span class="keyword">then</span></span><br><span class="line">                	<span class="comment"># Checks whether the command represented by the `$var` is an absolute path or not. </span></span><br><span class="line">                        <span class="keyword">if</span> [ ! -x <span class="string">&quot;<span class="variable">$var</span>&quot;</span> ]; <span class="keyword">then</span></span><br><span class="line">                                <span class="built_in">return</span> 1</span><br><span class="line">                        <span class="keyword">fi</span></span><br><span class="line">                <span class="keyword">elif</span> ! in_path <span class="string">&quot;<span class="variable">$var</span>&quot;</span> <span class="string">&quot;<span class="variable">$PATH</span>&quot;</span>; <span class="keyword">then</span></span><br><span class="line">                        <span class="built_in">return</span> 2</span><br><span class="line">                <span class="keyword">fi</span></span><br><span class="line">        <span class="keyword">fi</span></span><br><span class="line">&#125;</span><br><span class="line"></span><br></pre></td></tr></table></figure>
-
-<h3 id="Positional-parameters"><a href="#Positional-parameters" class="headerlink" title="Positional parameters"></a>Positional parameters</h3><p>See <a href="/2023/04/29/Positional%20Parameters/">here</a></p>
-<blockquote>
-<p><strong><em>A Quick Word</em></strong>  </p>
-<p>It is good practice to put double quotes around variables in Bash because it prevents word splitting and globbing.</p>
-<ul>
-<li><p>Word splitting is the process of breaking up a string into separate words based on whitespace. If a variable contains spaces, without quotes, Bash will treat each space-separated word as a separate argument. This can cause unexpected behavior if the variable is used as an argument to a command.</p>
-</li>
-<li><p>Globbing is the process of expanding wildcard characters such as <code>*</code> and <code>?</code> into a list of matching filenames. If a variable contains a glob character, without quotes, Bash will try to expand it into a list of matching filenames. This can also cause unexpected behavior if the variable is used as an argument to a command.</p>
-</li>
-</ul>
-<p>By putting double quotes around variables, Bash treats the variable as a single argument, preserving any whitespace or glob characters within the variable. This helps to ensure that the variable is interpreted correctly and the script behaves as expected.</p>
-</blockquote>
-<h3 id="Special-variables"><a href="#Special-variables" class="headerlink" title="Special variables"></a>Special variables</h3><p><strong><em><code>$IFS</code></em></strong></p>
-<p>The internal field separator (IFS) is a special variable in Bash that specifies the delimiter used to separate fields in a string. By default, the IFS is set to whitespace (i.e., space, tab, and newline characters).</p>
-<p><strong><em>&#96;$?</em></strong></p>
-<p>Display the return values of functions.</p>
-<figure class="highlight bash"><table><tr><td class="code"><pre><span class="line"><span class="built_in">echo</span> $?</span><br></pre></td></tr></table></figure>
-
-<p>You can use it immediately after calling a function with return value.</p>
-<h3 id="Slice"><a href="#Slice" class="headerlink" title="Slice"></a>Slice</h3><pre><code>[ &quot;$&#123;var:0:1&#125;&quot; = &quot;/&quot; ];
-</code></pre>
-<p>The slicing starts at index <code>0</code> and lasts for the duration of a single character.</p>
-<h3 id="Compare"><a href="#Compare" class="headerlink" title="Compare"></a>Compare</h3><p><strong><em>String comparison</em></strong></p>
-<p><code>=</code> tests if two strings are equal. For example, if <code>[ &quot;$string1&quot; = &quot;$string2&quot; ]</code> would be true if <code>$string1</code> and <code>$string2</code> have the same value.</p>
-<p><strong><em>Pattern matching</em></strong></p>
-<p><code>==</code> tests if a string matches a pattern using globbing, which is a way to match filenames based on wildcard characters. For example, if <code>[[ &quot;$string&quot; == a* ]]</code> would be true if <code>$string</code> starts with the letter “a”.</p>
-]]></content>
-      <categories>
-        <category>Wicked Cool Shell Scripts</category>
-      </categories>
-      <tags>
-        <tag>Linux</tag>
-        <tag>ArchLinux</tag>
-        <tag>Bash</tag>
       </tags>
   </entry>
   <entry>
@@ -1172,77 +1246,50 @@ S: 221 /0:0:0:0:0:0:0:1 Service closing transmission channel
       </tags>
   </entry>
   <entry>
-    <title>`node` in the command line</title>
-    <url>/2023/04/28/%60node%60%20in%20the%20command%20line/</url>
-    <content><![CDATA[<p>I ran into this hassle the other day when my <code>npm</code> command failed to work in the command line. It took me a while to sort things out and left me in a foul mood. To prevent something like that from happening again, I decided to write this post. Nothing fancy - just some commands that might prove helpful in the long run.</p>
-<h3 id="node"><a href="#node" class="headerlink" title="node"></a><em><code>node</code></em></h3><h4 id="Display-global-installation-directory"><a href="#Display-global-installation-directory" class="headerlink" title="Display global installation directory"></a>Display global installation directory</h4><figure class="highlight bash"><table><tr><td class="code"><pre><span class="line">npm root -g</span><br></pre></td></tr></table></figure>
+    <title>如何使用 GitHub Pages 托管 Hexo 静态博客网站</title>
+    <url>/2023/04/22/%E5%A6%82%E4%BD%95%E4%BD%BF%E7%94%A8%20GitHub%20Pages%20%E6%89%98%E7%AE%A1%20Hexo%20%E9%9D%99%E6%80%81%E5%8D%9A%E5%AE%A2%E7%BD%91%E7%AB%99/</url>
+    <content><![CDATA[<p>– <strong>请先阅读 <a href="/2023/04/22/%E4%BD%BF%E7%94%A8%20Hexo%20%E7%94%9F%E6%88%90%E9%9D%99%E6%80%81%E7%BD%91%E9%A1%B5%E5%8D%9A%E5%AE%A2/index.html">使用 Hexo 生成静态网页博客</a>！</strong></p>
+<h3 id="准备工作"><a href="#准备工作" class="headerlink" title="准备工作"></a>准备工作</h3><p>首先，我们基于完成的博客<code>.md</code>文件生成静态网页：</p>
+<figure class="highlight bash"><table><tr><td class="code"><pre><span class="line"><span class="built_in">cd</span> /path/to/site/</span><br><span class="line"><span class="comment"># 跑到项目路径目录</span></span><br><span class="line"></span><br><span class="line">hexo generate</span><br><span class="line"><span class="comment"># 生成静态网页，存放与 public 文件夹内</span></span><br></pre></td></tr></table></figure>
 
-<p>If you installed <code>node</code> using the official package installer, the global installation directory for <code>npm</code> packages would be:</p>
-<pre><code>/usr/local/lib/node_modules
+<p>接着，我们进入<code>public</code>文件夹。</p>
+<pre><code>.
+├── node_modules
+├── public
+├── scaffolds
+├── source
+└── themes
 </code></pre>
-<p>Or you could’ve installed it using Homebrew. In that case, the global installation directory would be:</p>
-<pre><code>/opt/homebrew/lib/node_modules
-</code></pre>
-<h4 id="View-global-installation"><a href="#View-global-installation" class="headerlink" title="View global installation"></a>View global installation</h4><figure class="highlight bash"><table><tr><td class="code"><pre><span class="line">npm <span class="built_in">ls</span> -g</span><br></pre></td></tr></table></figure>
+<p>因为我们是使用 GitHub Pages 托管，所以我们需要在<code>public</code>文件夹内初始化<code>git</code>：</p>
+<figure class="highlight bash"><table><tr><td class="code"><pre><span class="line">git init</span><br><span class="line"></span><br><span class="line">git branch -m main</span><br><span class="line"></span><br><span class="line">git add .</span><br><span class="line"></span><br><span class="line">git commit -m <span class="string">&quot;初始化工作&quot;</span></span><br></pre></td></tr></table></figure>
 
-<pre><code>/opt/homebrew/lib
-├── @e-hentai/home@1.6.0-alpha.9
-├── express-generator@4.16.1
-├── nodemon@2.0.22
-└── npm@9.6.5
-</code></pre>
-<h4 id="Update-global-installation"><a href="#Update-global-installation" class="headerlink" title="Update global installation"></a>Update global installation</h4><figure class="highlight bash"><table><tr><td class="code"><pre><span class="line">npm update -g</span><br></pre></td></tr></table></figure>
+<p>其次，我们还需要在 GitHub 上面建立一个远程仓库，格式<strong>必须</strong>为<code>username.github.io</code>，这是硬性要求。</p>
+<h3 id="关联和发布"><a href="#关联和发布" class="headerlink" title="关联和发布"></a>关联和发布</h3><p>我们现在需要关联本地仓库和远程仓库，用例中我们使用<code>https</code>协议，当然也可以使用<code>ssh</code>密钥：</p>
+<figure class="highlight bash"><table><tr><td class="code"><pre><span class="line">git remote add origin https://github.com/username/username.github.io.git</span><br><span class="line"></span><br><span class="line">git push origin main</span><br></pre></td></tr></table></figure>
 
-<h4 id="View-global-configuration"><a href="#View-global-configuration" class="headerlink" title="View global configuration"></a>View global configuration</h4><figure class="highlight bash"><table><tr><td class="code"><pre><span class="line">npm config list</span><br></pre></td></tr></table></figure>
+<p>我们还需要更改一下远程仓库的 GitHub Pages 的设置，目的是告知它托管文件的地址：</p>
+<div style="display: block; margin-left: auto; margin-right: auto; text-align: center; font-size: 1rem;">
+  
+<p>  <img src="/2023/04/22/%E5%A6%82%E4%BD%95%E4%BD%BF%E7%94%A8%20GitHub%20Pages%20%E6%89%98%E7%AE%A1%20Hexo%20%E9%9D%99%E6%80%81%E5%8D%9A%E5%AE%A2%E7%BD%91%E7%AB%99/images/0001.png" alt="点击 Settings" title="点击 Settings"></p>
+  <div>点击 Settings</div>
+  <br>
 
-<p>The output should be on the lines of this:</p>
-<pre><code>; &quot;builtin&quot; config from /opt/homebrew/lib/node_modules/npm/npmrc
+<p>  <img src="/2023/04/22/%E5%A6%82%E4%BD%95%E4%BD%BF%E7%94%A8%20GitHub%20Pages%20%E6%89%98%E7%AE%A1%20Hexo%20%E9%9D%99%E6%80%81%E5%8D%9A%E5%AE%A2%E7%BD%91%E7%AB%99/images/0002.png" alt="点击 Pages" title="点击 Pages"></p>
+  <div>点击 Pages</div>
+  <br>
 
-prefix = &quot;/opt/homebrew&quot; 
+<p>  <img src="/2023/04/22/%E5%A6%82%E4%BD%95%E4%BD%BF%E7%94%A8%20GitHub%20Pages%20%E6%89%98%E7%AE%A1%20Hexo%20%E9%9D%99%E6%80%81%E5%8D%9A%E5%AE%A2%E7%BD%91%E7%AB%99/images/0003.png" alt="修改设置" title="修改设置"></p>
+  <div>修改设置</div>
+  <br>
 
-; &quot;user&quot; config from /Users/Mccranky/.npmrc
+</div>
 
-fetch-retry-maxtimeout = 300000 
-
-; node bin location = /opt/homebrew/Cellar/node/20.0.0/bin/node
-; node version = v20.0.0
-; npm local prefix = /Users/Mccranky
-; npm version = 9.6.5
-; cwd = /Users/Mccranky
-; HOME = /Users/Mccranky
-; Run `npm config ls -l` to show all defaults.
-</code></pre>
-<p>From it, we can discern a few key instances that might prove helpful.</p>
-<blockquote>
-<p>“builtin” config is stored at <code>/opt/homebrew/lib/node_modules/npm/npmrc</code></p>
-</blockquote>
-<blockquote>
-<p>“user” config is stored at <code>/Users/Mccranky/.npmrc</code></p>
-</blockquote>
-<h4 id="Add-x2F-remove-configuration"><a href="#Add-x2F-remove-configuration" class="headerlink" title="Add&#x2F;remove configuration"></a>Add&#x2F;remove configuration</h4><figure class="highlight bash"><table><tr><td class="code"><pre><span class="line">npm config <span class="built_in">set</span> &lt;name&gt; &lt;value&gt;</span><br></pre></td></tr></table></figure>
-
-<p>For example, if I want to specify a range of time before timeout occurs, I can use the following command:</p>
-<figure class="highlight bash"><table><tr><td class="code"><pre><span class="line">npm config <span class="built_in">set</span> fetch-retry-maxtimeout 300000 // 5 minutes</span><br><span class="line"></span><br><span class="line">npm config <span class="built_in">set</span> fetch-retry-mintimeout 60000 // 1 minute</span><br><span class="line"></span><br></pre></td></tr></table></figure>
-
-<p>The same mechanism applys when it comes to how we delete configurations:</p>
-<figure class="highlight bash"><table><tr><td class="code"><pre><span class="line">npm config delete fetch-retry-maxtimeout</span><br><span class="line"></span><br><span class="line">npm config delete fetch-retry-mintimeout</span><br><span class="line"></span><br></pre></td></tr></table></figure>
-
-<h3 id="express"><a href="#express" class="headerlink" title="express"></a><em><code>express</code></em></h3><p>I’ve only just started dabbling with <code>express</code> and my expertise is cut pretty thin, but the rule of thumb I tend to follow is:</p>
-<ol>
-<li><p>If you’re installing something that you want to use in <strong>your program</strong> using <code>require(&#39;something&#39;)</code>, then install it locally, at the root of your project.</p>
-</li>
-<li><p>If you’re installing something that you want to use on the <strong>command line</strong> or something, install it globally, so that its binaries end up in your <code>$PATH</code> environment variable.</p>
-</li>
-</ol>
-<p>Based on this, you would want to install <code>express-generator</code> using the <code>-g</code> flag as you will use it as a command line tool, but you’d want to install <code>express</code> without this flag as it’s a module you will want to <code>require()</code> it in your application.</p>
+<p>最后，我们访问<code>username.github.io</code>就可以来到我们的博客页了 :)</p>
 ]]></content>
-      <categories>
-        <category>Node.js</category>
-      </categories>
       <tags>
-        <tag>Node.js</tag>
-        <tag>Express.js</tag>
-        <tag>Note</tag>
+        <tag>Hexo</tag>
+        <tag>GitHub Pages</tag>
+        <tag>Git</tag>
       </tags>
   </entry>
   <entry>
@@ -1320,9 +1367,9 @@ fetch-retry-maxtimeout = 300000
 <figure class="highlight bash"><table><tr><td class="code"><pre><span class="line">git push origin temp</span><br></pre></td></tr></table></figure>]]></content>
       <tags>
         <tag>Bash</tag>
+        <tag>Git</tag>
         <tag>CLI</tag>
         <tag>File Systems</tag>
-        <tag>Git</tag>
       </tags>
   </entry>
   <entry>
@@ -1444,53 +1491,6 @@ fetch-retry-maxtimeout = 300000
         <tag>JavaScript</tag>
         <tag>Node.js</tag>
         <tag>Express.js</tag>
-      </tags>
-  </entry>
-  <entry>
-    <title>如何使用 GitHub Pages 托管 Hexo 静态博客网站</title>
-    <url>/2023/04/22/%E5%A6%82%E4%BD%95%E4%BD%BF%E7%94%A8%20GitHub%20Pages%20%E6%89%98%E7%AE%A1%20Hexo%20%E9%9D%99%E6%80%81%E5%8D%9A%E5%AE%A2%E7%BD%91%E7%AB%99/</url>
-    <content><![CDATA[<p>– <strong>请先阅读 <a href="/2023/04/22/%E4%BD%BF%E7%94%A8%20Hexo%20%E7%94%9F%E6%88%90%E9%9D%99%E6%80%81%E7%BD%91%E9%A1%B5%E5%8D%9A%E5%AE%A2/index.html">使用 Hexo 生成静态网页博客</a>！</strong></p>
-<h3 id="准备工作"><a href="#准备工作" class="headerlink" title="准备工作"></a>准备工作</h3><p>首先，我们基于完成的博客<code>.md</code>文件生成静态网页：</p>
-<figure class="highlight bash"><table><tr><td class="code"><pre><span class="line"><span class="built_in">cd</span> /path/to/site/</span><br><span class="line"><span class="comment"># 跑到项目路径目录</span></span><br><span class="line"></span><br><span class="line">hexo generate</span><br><span class="line"><span class="comment"># 生成静态网页，存放与 public 文件夹内</span></span><br></pre></td></tr></table></figure>
-
-<p>接着，我们进入<code>public</code>文件夹。</p>
-<pre><code>.
-├── node_modules
-├── public
-├── scaffolds
-├── source
-└── themes
-</code></pre>
-<p>因为我们是使用 GitHub Pages 托管，所以我们需要在<code>public</code>文件夹内初始化<code>git</code>：</p>
-<figure class="highlight bash"><table><tr><td class="code"><pre><span class="line">git init</span><br><span class="line"></span><br><span class="line">git branch -m main</span><br><span class="line"></span><br><span class="line">git add .</span><br><span class="line"></span><br><span class="line">git commit -m <span class="string">&quot;初始化工作&quot;</span></span><br></pre></td></tr></table></figure>
-
-<p>其次，我们还需要在 GitHub 上面建立一个远程仓库，格式<strong>必须</strong>为<code>username.github.io</code>，这是硬性要求。</p>
-<h3 id="关联和发布"><a href="#关联和发布" class="headerlink" title="关联和发布"></a>关联和发布</h3><p>我们现在需要关联本地仓库和远程仓库，用例中我们使用<code>https</code>协议，当然也可以使用<code>ssh</code>密钥：</p>
-<figure class="highlight bash"><table><tr><td class="code"><pre><span class="line">git remote add origin https://github.com/username/username.github.io.git</span><br><span class="line"></span><br><span class="line">git push origin main</span><br></pre></td></tr></table></figure>
-
-<p>我们还需要更改一下远程仓库的 GitHub Pages 的设置，目的是告知它托管文件的地址：</p>
-<div style="display: block; margin-left: auto; margin-right: auto; text-align: center; font-size: 1rem;">
-  
-<p>  <img src="/2023/04/22/%E5%A6%82%E4%BD%95%E4%BD%BF%E7%94%A8%20GitHub%20Pages%20%E6%89%98%E7%AE%A1%20Hexo%20%E9%9D%99%E6%80%81%E5%8D%9A%E5%AE%A2%E7%BD%91%E7%AB%99/images/0001.png" alt="点击 Settings" title="点击 Settings"></p>
-  <div>点击 Settings</div>
-  <br>
-
-<p>  <img src="/2023/04/22/%E5%A6%82%E4%BD%95%E4%BD%BF%E7%94%A8%20GitHub%20Pages%20%E6%89%98%E7%AE%A1%20Hexo%20%E9%9D%99%E6%80%81%E5%8D%9A%E5%AE%A2%E7%BD%91%E7%AB%99/images/0002.png" alt="点击 Pages" title="点击 Pages"></p>
-  <div>点击 Pages</div>
-  <br>
-
-<p>  <img src="/2023/04/22/%E5%A6%82%E4%BD%95%E4%BD%BF%E7%94%A8%20GitHub%20Pages%20%E6%89%98%E7%AE%A1%20Hexo%20%E9%9D%99%E6%80%81%E5%8D%9A%E5%AE%A2%E7%BD%91%E7%AB%99/images/0003.png" alt="修改设置" title="修改设置"></p>
-  <div>修改设置</div>
-  <br>
-
-</div>
-
-<p>最后，我们访问<code>username.github.io</code>就可以来到我们的博客页了 :)</p>
-]]></content>
-      <tags>
-        <tag>Hexo</tag>
-        <tag>Git</tag>
-        <tag>GitHub Pages</tag>
       </tags>
   </entry>
   <entry>
