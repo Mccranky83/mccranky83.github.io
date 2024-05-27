@@ -152,7 +152,7 @@
   <nav class="site-state">
       <div class="site-state-item site-state-posts">
         <a href="/archives/">
-          <span class="site-state-item-count">28</span>
+          <span class="site-state-item-count">29</span>
           <span class="site-state-item-name">posts</span>
         </a>
       </div>
@@ -197,7 +197,7 @@
   
 
   <article itemscope itemtype="http://schema.org/Article" class="post-content" lang="">
-    <link itemprop="mainEntityOfPage" href="https://mccranky83.github.io/2023/12/29/Minor%20adjustment%20from%20Bash%20to%20Zsh/">
+    <link itemprop="mainEntityOfPage" href="https://mccranky83.github.io/2024/05/27/Notes%20on%20word%20splitting/">
 
     <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
       <meta itemprop="image" content="/images/icons8-dead-cells-1024.png">
@@ -215,7 +215,7 @@
     </span>
       <header class="post-header">
         <h2 class="post-title" itemprop="name headline">
-          <a href="/2023/12/29/Minor%20adjustment%20from%20Bash%20to%20Zsh/" class="post-title-link" itemprop="url">Minor adjustment from Bash to Zsh</a>
+          <a href="/2024/05/27/Notes%20on%20word%20splitting/" class="post-title-link" itemprop="url">Notes on word splitting</a>
         </h2>
 
         <div class="post-meta-container">
@@ -226,7 +226,142 @@
       </span>
       <span class="post-meta-item-text">Posted on</span>
 
-      <time title="Created: 2023-12-29 15:48:39" itemprop="dateCreated datePublished" datetime="2023-12-29T15:48:39+08:00">2023-12-29</time>
+      <time title="Created: 2024-05-27 21:48:22" itemprop="dateCreated datePublished" datetime="2024-05-27T21:48:22+08:00">2024-05-27</time>
+    </span>
+    <span class="post-meta-item">
+      <span class="post-meta-item-icon">
+        <i class="far fa-folder"></i>
+      </span>
+      <span class="post-meta-item-text">In</span>
+        <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
+          <a href="/categories/CLI/" itemprop="url" rel="index"><span itemprop="name">CLI</span></a>
+        </span>
+    </span>
+
+  
+</div>
+
+        </div>
+      </header>
+
+    
+    
+    
+    <div class="post-body" itemprop="articleBody">
+          <p>Code snippet:</p>
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br></pre></td><td class="code"><pre><span class="line"><span class="meta">#!/usr/bin/env -S bash</span></span><br><span class="line"></span><br><span class="line">hello=<span class="string">&quot;hello:world:hello:world:hello&quot;</span></span><br><span class="line"></span><br><span class="line">IFS=<span class="string">&quot;lo:&quot;</span></span><br><span class="line"></span><br><span class="line"><span class="built_in">read</span> -ra list &lt;&lt;&lt;<span class="string">&quot;<span class="variable">$hello</span>&quot;</span></span><br><span class="line"></span><br><span class="line"><span class="built_in">printf</span> <span class="string">&quot;%s*&quot;</span> <span class="string">&quot;<span class="variable">$&#123;list[*]&#125;</span>&quot;</span></span><br></pre></td></tr></table></figure>
+
+<ol>
+<li><a href="#Double-quotes">Double quotes</a></li>
+<li><a href="#Bundling-into-an-array">Bundling into an array</a></li>
+<li><a href="#Array-expansion-re-splitting">Array expansion re-splitting</a></li>
+</ol>
+<h4 id="Double-quotes"><a href="#Double-quotes" class="headerlink" title="Double quotes"></a>Double quotes</h4><p>If <code>$hello</code> is wrapped with <code>&quot;&quot;</code>, its literal value will be preserved. Without them, IFS characters will be displayed as blanks spots.</p>
+<table>
+<thead>
+<tr>
+<th align="center">With</th>
+<th align="center">Without</th>
+</tr>
+</thead>
+<tbody><tr>
+<td align="center"><code>hello:world:hello:world:hello</code></td>
+<td align="center"><code>he    w r d he    w r d he   </code></td>
+</tr>
+</tbody></table>
+<h4 id="Bundling-into-an-array"><a href="#Bundling-into-an-array" class="headerlink" title="Bundling into an array"></a>Bundling into an array</h4><p><code>read -ra list</code> cares not for whether the string is wrapped in quotes. It will split the string into an array regardless.</p>
+<p>However, mind that the <code>read</code> command reads one line at a time. If the string is multiline, <code>read</code> will only read the first line.</p>
+<h4 id="Array-expansion-re-splitting"><a href="#Array-expansion-re-splitting" class="headerlink" title="Array expansion re-splitting"></a>Array expansion re-splitting</h4><p>Both <code>$&#123;list[*]&#125;</code> and <code>$&#123;list[@]&#125;</code> are prone to re-splitting the array.</p>
+<table>
+<thead>
+<tr>
+<th align="center"><code>IFS</code> \ <code>printf &quot;%s*&quot; &lt;..&gt;</code></th>
+<th align="center"><code>$&#123;list[*]&#125;</code></th>
+<th align="center"><code>$&#123;list[@]&#125;</code></th>
+<th><code>&quot;$&#123;list[*]&#125;&quot;</code></th>
+<th align="center"><code>&quot;$&#123;list[@]&#125;&quot;</code></th>
+</tr>
+</thead>
+<tbody><tr>
+<td align="center"><code>IFS=&quot;lo:&quot;</code></td>
+<td align="center"><code>he****w*r*d*he****w*r*d*he**</code> <a href="#Observation">(1)</a></td>
+<td align="center"><a href="#Observation">(1)</a></td>
+<td><code>hellllwlrldlhellllwlrldlhell*</code> <a href="#Observation">(2)</a></td>
+<td align="center"><code>he****w*r*d*he****w*r*d*he***</code> <a href="#Observation">(3)</a></td>
+</tr>
+<tr>
+<td align="center"><code>IFS=</code></td>
+<td align="center"><code>he*w*r*d*he*w*r*d*he*</code> <a href="#Observation">(4)</a></td>
+<td align="center"><a href="#Observation">(4)</a></td>
+<td><a href="#Observation">(2)</a></td>
+<td align="center"><a href="#Observation">(3)</a></td>
+</tr>
+</tbody></table>
+<h5 id="Observation"><a href="#Observation" class="headerlink" title="Observation"></a>Observation</h5><ul>
+<li><code>IFS=&quot;lo:&quot;</code><ol>
+<li><code>*</code> acts like a delimiter, and fills the gap between each array element. Eg: he<del>l</del> * <del>l</del> * <del>o</del></li>
+<li>The first character of <code>IFS</code>, which happens to be <code>l</code>, serves as the delimiter for the array elements. The whole string is treated as one element, thus <code>*</code> is appended to the very end.</li>
+<li><code>*</code> acts normally and is appended to each array element. Eg: he<del>l</del> * <del>l</del> * <del>o</del> *</li>
+</ol>
+</li>
+<li><code>IFS=</code>: The effect this has on word splitting seems to be that it squeezes multiple blank arguments into one.</li>
+</ul>
+
+      
+    </div>
+
+    
+    
+    
+
+    <footer class="post-footer">
+        <div class="post-eof"></div>
+      
+    </footer>
+  </article>
+</div>
+
+
+
+
+    
+
+
+<div class="post-block">
+  
+  
+
+  <article itemscope itemtype="http://schema.org/Article" class="post-content" lang="">
+    <link itemprop="mainEntityOfPage" href="https://mccranky83.github.io/2024/05/27/Minor%20adjustment%20from%20Bash%20to%20Zsh/">
+
+    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
+      <meta itemprop="image" content="/images/icons8-dead-cells-1024.png">
+      <meta itemprop="name" content="Mccranky83">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="Mccranky's Blog">
+      <meta itemprop="description" content=""Bliss was it in that dawn to be alive But to be young was very heaven!"">
+    </span>
+
+    <span hidden itemprop="post" itemscope itemtype="http://schema.org/CreativeWork">
+      <meta itemprop="name" content="undefined | Mccranky's Blog">
+      <meta itemprop="description" content="">
+    </span>
+      <header class="post-header">
+        <h2 class="post-title" itemprop="name headline">
+          <a href="/2024/05/27/Minor%20adjustment%20from%20Bash%20to%20Zsh/" class="post-title-link" itemprop="url">Minor adjustment from Bash to Zsh</a>
+        </h2>
+
+        <div class="post-meta-container">
+          <div class="post-meta">
+    <span class="post-meta-item">
+      <span class="post-meta-item-icon">
+        <i class="far fa-calendar"></i>
+      </span>
+      <span class="post-meta-item-text">Posted on</span>
+
+      <time title="Created: 2024-05-27 21:44:13" itemprop="dateCreated datePublished" datetime="2024-05-27T21:44:13+08:00">2024-05-27</time>
     </span>
     <span class="post-meta-item">
       <span class="post-meta-item-icon">
@@ -1081,114 +1216,6 @@ Second Arg: b
 All args (arr): a b c
 All args (str): a b c
 </code></pre>
-
-      
-    </div>
-
-    
-    
-    
-
-    <footer class="post-footer">
-        <div class="post-eof"></div>
-      
-    </footer>
-  </article>
-</div>
-
-
-
-
-    
-
-
-<div class="post-block">
-  
-  
-
-  <article itemscope itemtype="http://schema.org/Article" class="post-content" lang="">
-    <link itemprop="mainEntityOfPage" href="https://mccranky83.github.io/2023/04/29/%60inpath%60/">
-
-    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
-      <meta itemprop="image" content="/images/icons8-dead-cells-1024.png">
-      <meta itemprop="name" content="Mccranky83">
-    </span>
-
-    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
-      <meta itemprop="name" content="Mccranky's Blog">
-      <meta itemprop="description" content=""Bliss was it in that dawn to be alive But to be young was very heaven!"">
-    </span>
-
-    <span hidden itemprop="post" itemscope itemtype="http://schema.org/CreativeWork">
-      <meta itemprop="name" content="undefined | Mccranky's Blog">
-      <meta itemprop="description" content="">
-    </span>
-      <header class="post-header">
-        <h2 class="post-title" itemprop="name headline">
-          <a href="/2023/04/29/%60inpath%60/" class="post-title-link" itemprop="url">`inpath`</a>
-        </h2>
-
-        <div class="post-meta-container">
-          <div class="post-meta">
-    <span class="post-meta-item">
-      <span class="post-meta-item-icon">
-        <i class="far fa-calendar"></i>
-      </span>
-      <span class="post-meta-item-text">Posted on</span>
-      
-
-      <time title="Created: 2023-04-29 09:53:34 / Modified: 12:27:25" itemprop="dateCreated datePublished" datetime="2023-04-29T09:53:34+08:00">2023-04-29</time>
-    </span>
-    <span class="post-meta-item">
-      <span class="post-meta-item-icon">
-        <i class="far fa-folder"></i>
-      </span>
-      <span class="post-meta-item-text">In</span>
-        <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
-          <a href="/categories/Wicked-Cool-Shell-Scripts/" itemprop="url" rel="index"><span itemprop="name">Wicked Cool Shell Scripts</span></a>
-        </span>
-    </span>
-
-  
-</div>
-
-        </div>
-      </header>
-
-    
-    
-    
-    <div class="post-body" itemprop="articleBody">
-          <p>Coding along with the book <em>Wicked Cool Shell Scripts- 101 Scripts for Linux, OS X, and UNIX Systems</em>.</p>
-<p>This is the script from Page 11:</p>
-<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br></pre></td><td class="code"><pre><span class="line"><span class="meta">#!/bin/bash</span></span><br><span class="line"></span><br><span class="line"><span class="function"><span class="title">in_path</span></span>()</span><br><span class="line">&#123;</span><br><span class="line">        cmd=<span class="variable">$1</span></span><br><span class="line">        ourpath=<span class="variable">$2</span>      </span><br><span class="line">        result=1</span><br><span class="line">        oldIFS=<span class="variable">$IFS</span>     </span><br><span class="line">        IFS=<span class="string">&quot;:&quot;</span></span><br><span class="line"> </span><br><span class="line">        <span class="keyword">for</span> directory <span class="keyword">in</span> <span class="variable">$ourpath</span>; <span class="keyword">do</span></span><br><span class="line"></span><br><span class="line">        <span class="comment"># If i double quoted `$ourpath`, it will not word split, and the loop will only run once.</span></span><br><span class="line"></span><br><span class="line">                <span class="keyword">if</span> [ -x <span class="string">&quot;<span class="variable">$directory</span>/<span class="variable">$cmd</span>&quot;</span> ]; <span class="keyword">then</span></span><br><span class="line">                        result=0</span><br><span class="line">                <span class="keyword">fi</span></span><br><span class="line">        <span class="keyword">done</span></span><br><span class="line"> </span><br><span class="line">        IFS=<span class="variable">$oldIFS</span></span><br><span class="line">        <span class="built_in">return</span> <span class="variable">$result</span></span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"><span class="function"><span class="title">checkForCmdInPath</span></span>()</span><br><span class="line">&#123;</span><br><span class="line">        var=<span class="variable">$1</span></span><br><span class="line"> </span><br><span class="line">        <span class="keyword">if</span> [ ! <span class="string">&quot;<span class="variable">$var</span>&quot;</span> = <span class="string">&quot;&quot;</span> ]; <span class="keyword">then</span></span><br><span class="line">                <span class="keyword">if</span> [ <span class="string">&quot;<span class="variable">$&#123;var:0:1&#125;</span>&quot;</span> = <span class="string">&quot;/&quot;</span> ]; <span class="keyword">then</span></span><br><span class="line">                	<span class="comment"># Checks whether the command represented by the `$var` is an absolute path or not. </span></span><br><span class="line">                        <span class="keyword">if</span> [ ! -x <span class="string">&quot;<span class="variable">$var</span>&quot;</span> ]; <span class="keyword">then</span></span><br><span class="line">                                <span class="built_in">return</span> 1</span><br><span class="line">                        <span class="keyword">fi</span></span><br><span class="line">                <span class="keyword">elif</span> ! in_path <span class="string">&quot;<span class="variable">$var</span>&quot;</span> <span class="string">&quot;<span class="variable">$PATH</span>&quot;</span>; <span class="keyword">then</span></span><br><span class="line">                        <span class="built_in">return</span> 2</span><br><span class="line">                <span class="keyword">fi</span></span><br><span class="line">        <span class="keyword">fi</span></span><br><span class="line">&#125;</span><br><span class="line"></span><br></pre></td></tr></table></figure>
-
-<h3 id="Positional-parameters"><a href="#Positional-parameters" class="headerlink" title="Positional parameters"></a>Positional parameters</h3><p>See <a href="/2023/04/29/Positional%20Parameters/">here</a></p>
-<blockquote>
-<p><strong><em>A Quick Word</em></strong>  </p>
-<p>It is good practice to put double quotes around variables in Bash because it prevents word splitting and globbing.</p>
-<ul>
-<li><p>Word splitting is the process of breaking up a string into separate words based on whitespace. If a variable contains spaces, without quotes, Bash will treat each space-separated word as a separate argument. This can cause unexpected behavior if the variable is used as an argument to a command.</p>
-</li>
-<li><p>Globbing is the process of expanding wildcard characters such as <code>*</code> and <code>?</code> into a list of matching filenames. If a variable contains a glob character, without quotes, Bash will try to expand it into a list of matching filenames. This can also cause unexpected behavior if the variable is used as an argument to a command.</p>
-</li>
-</ul>
-<p>By putting double quotes around variables, Bash treats the variable as a single argument, preserving any whitespace or glob characters within the variable. This helps to ensure that the variable is interpreted correctly and the script behaves as expected.</p>
-</blockquote>
-<h3 id="Special-variables"><a href="#Special-variables" class="headerlink" title="Special variables"></a>Special variables</h3><p><strong><em><code>$IFS</code></em></strong></p>
-<p>The internal field separator (IFS) is a special variable in Bash that specifies the delimiter used to separate fields in a string. By default, the IFS is set to whitespace (i.e., space, tab, and newline characters).</p>
-<p><strong><em>&#96;$?</em></strong></p>
-<p>Display the return values of functions.</p>
-<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line"><span class="built_in">echo</span> $?</span><br></pre></td></tr></table></figure>
-
-<p>You can use it immediately after calling a function with return value.</p>
-<h3 id="Slice"><a href="#Slice" class="headerlink" title="Slice"></a>Slice</h3><pre><code>[ &quot;$&#123;var:0:1&#125;&quot; = &quot;/&quot; ];
-</code></pre>
-<p>The slicing starts at index <code>0</code> and lasts for the duration of a single character.</p>
-<h3 id="Compare"><a href="#Compare" class="headerlink" title="Compare"></a>Compare</h3><p><strong><em>String comparison</em></strong></p>
-<p><code>=</code> tests if two strings are equal. For example, if <code>[ &quot;$string1&quot; = &quot;$string2&quot; ]</code> would be true if <code>$string1</code> and <code>$string2</code> have the same value.</p>
-<p><strong><em>Pattern matching</em></strong></p>
-<p><code>==</code> tests if a string matches a pattern using globbing, which is a way to match filenames based on wildcard characters. For example, if <code>[[ &quot;$string&quot; == a* ]]</code> would be true if <code>$string</code> starts with the letter “a”.</p>
 
       
     </div>

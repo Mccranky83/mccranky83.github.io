@@ -152,7 +152,7 @@
   <nav class="site-state">
       <div class="site-state-item site-state-posts">
         <a href="/archives/">
-          <span class="site-state-item-count">28</span>
+          <span class="site-state-item-count">29</span>
           <span class="site-state-item-name">posts</span>
         </a>
       </div>
@@ -188,6 +188,119 @@
     </div>
 
     <div class="main-inner index posts-expand">
+
+    
+
+
+<div class="post-block">
+  
+  
+
+  <article itemscope itemtype="http://schema.org/Article" class="post-content" lang="">
+    <link itemprop="mainEntityOfPage" href="https://mccranky83.github.io/2023/04/24/JavaScript%20Method%EF%BC%9AlocaleCompare/">
+
+    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
+      <meta itemprop="image" content="/images/icons8-dead-cells-1024.png">
+      <meta itemprop="name" content="Mccranky83">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="Mccranky's Blog">
+      <meta itemprop="description" content=""Bliss was it in that dawn to be alive But to be young was very heaven!"">
+    </span>
+
+    <span hidden itemprop="post" itemscope itemtype="http://schema.org/CreativeWork">
+      <meta itemprop="name" content="undefined | Mccranky's Blog">
+      <meta itemprop="description" content="">
+    </span>
+      <header class="post-header">
+        <h2 class="post-title" itemprop="name headline">
+          <a href="/2023/04/24/JavaScript%20Method%EF%BC%9AlocaleCompare/" class="post-title-link" itemprop="url">JavaScript Method：localeCompare</a>
+        </h2>
+
+        <div class="post-meta-container">
+          <div class="post-meta">
+    <span class="post-meta-item">
+      <span class="post-meta-item-icon">
+        <i class="far fa-calendar"></i>
+      </span>
+      <span class="post-meta-item-text">Posted on</span>
+      
+
+      <time title="Created: 2023-04-24 18:30:41 / Modified: 20:57:02" itemprop="dateCreated datePublished" datetime="2023-04-24T18:30:41+08:00">2023-04-24</time>
+    </span>
+
+  
+</div>
+
+        </div>
+      </header>
+
+    
+    
+    
+    <div class="post-body" itemprop="articleBody">
+          <p>Lately I’ve been thinking that since Java has an equalsIgnoreCase method, JavaScript must have something similar. This is what I found: the <code>localeCompare</code> method.</p>
+<h3 id="Structure"><a href="#Structure" class="headerlink" title="Structure"></a>Structure</h3><figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">str1.<span class="title function_">localeCompare</span>(str2, [locales], [options])</span><br></pre></td></tr></table></figure>
+
+<p><strong><em>Note: The Linux commands also has a <code>locale</code> command!</em></strong></p>
+<h3 id="Available-locales"><a href="#Available-locales" class="headerlink" title="Available locales"></a>Available locales</h3><p><strong><em><code>language</code></em></strong></p>
+<pre><code>&#39;en&#39;: English
+&#39;fr&#39;: French
+&#39;de&#39;: German
+&#39;es&#39;: Spanish
+&#39;ja&#39;: Japanese
+&#39;zh&#39;: Chinese
+&#39;ar&#39;: Arabic
+&#39;ru&#39;: Russian
+</code></pre>
+<p>We can also use a combination of <code>language</code> and <code>region</code> subtags to specify a more specific locale. For example:</p>
+<pre><code>&#39;en-US&#39;: English (United States)
+&#39;fr-CA&#39;: French (Canada)
+&#39;de-DE&#39;: German (Germany)
+&#39;es-MX&#39;: Spanish (Mexico)
+&#39;ja-JP&#39;: Japanese (Japan)
+&#39;zh-CN&#39;: Chinese (China)
+&#39;ar-EG&#39;: Arabic (Egypt)
+&#39;ru-RU&#39;: Russian (Russia)
+</code></pre>
+<h3 id="Available-options"><a href="#Available-options" class="headerlink" title="Available options"></a>Available options</h3><p><strong><em><code>numeric</code></em></strong></p>
+<figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line"><span class="variable language_">console</span>.<span class="title function_">log</span>(<span class="string">&quot;60&quot;</span>.<span class="title function_">localeCompare</span>(<span class="string">&quot;40&quot;</span>, <span class="literal">undefined</span>, &#123; <span class="attr">numeric</span>: <span class="literal">true</span> &#125;)) <span class="comment">// 1</span></span><br><span class="line"></span><br><span class="line"><span class="variable language_">console</span>.<span class="title function_">log</span>(<span class="string">&quot;60&quot;</span>.<span class="title function_">localeCompare</span>(<span class="string">&quot;60&quot;</span>, <span class="literal">undefined</span>, &#123; <span class="attr">numeric</span>: <span class="literal">true</span> &#125;)) <span class="comment">// 0</span></span><br><span class="line"></span><br><span class="line"><span class="variable language_">console</span>.<span class="title function_">log</span>(<span class="string">&quot;60&quot;</span>.<span class="title function_">localeCompare</span>(<span class="string">&quot;100&quot;</span>, <span class="literal">undefined</span>, &#123; <span class="attr">numeric</span>: <span class="literal">true</span> &#125;)) <span class="comment">// -1</span></span><br></pre></td></tr></table></figure>
+
+<p><code>numeric</code> can take one of the two values: <code>true</code> and <code>false</code></p>
+<figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line"><span class="variable language_">console</span>.<span class="title function_">log</span>(<span class="string">&quot;60&quot;</span>.<span class="title function_">localeCompare</span>(<span class="string">&quot;100&quot;</span>, <span class="literal">undefined</span>, &#123; <span class="attr">numeric</span>: <span class="literal">false</span> &#125;)) <span class="comment">// 1</span></span><br></pre></td></tr></table></figure>
+
+<p>With <code>false</code>, both <code>60</code> and <code>100</code> are treated as normal String objects.</p>
+<p><strong><em><code>sensitivity</code></em></strong></p>
+<p><code>sensitivity</code> can take one of the three values: <code>base</code>, <code>accent</code>, <code>case</code></p>
+<figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line"><span class="variable language_">console</span>.<span class="title function_">log</span>(<span class="string">&quot;café&quot;</span>.<span class="title function_">localeCompare</span>(<span class="string">&quot;Cafe&quot;</span>, <span class="literal">undefined</span>, &#123; <span class="attr">sensitivity</span>: <span class="string">&quot;base&quot;</span> &#125;)) <span class="comment">// 0</span></span><br><span class="line"></span><br><span class="line"><span class="variable language_">console</span>.<span class="title function_">log</span>(<span class="string">&quot;café&quot;</span>.<span class="title function_">localeCompare</span>(<span class="string">&quot;Cafe&quot;</span>, <span class="literal">undefined</span>, &#123; <span class="attr">sensitivity</span>: <span class="string">&quot;accent&quot;</span> &#125;)) <span class="comment">// 1</span></span><br><span class="line"></span><br><span class="line"><span class="variable language_">console</span>.<span class="title function_">log</span>(<span class="string">&quot;café&quot;</span>.<span class="title function_">localeCompare</span>(<span class="string">&quot;Cafe&quot;</span>, <span class="literal">undefined</span>, &#123; <span class="attr">sensitivity</span>: <span class="string">&quot;case&quot;</span> &#125;)) <span class="comment">// -1</span></span><br></pre></td></tr></table></figure>
+
+<p><strong><em><code>caseFirst</code></em></strong></p>
+<p>The <code>caseFirst</code> option in the <code>localeCompare()</code> method specifies whether uppercase letters should come before or after lowercase letters in the sort order. It can take one of the following two values:</p>
+<p><code>upper</code>: Sort uppercase letters before lowercase letters.</p>
+<p><code>lower</code>: Sort lowercase letters before uppercase letters.</p>
+<figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line"><span class="variable language_">console</span>.<span class="title function_">log</span>(<span class="string">&quot;Ba&quot;</span>.<span class="title function_">localeCompare</span>(<span class="string">&quot;AB&quot;</span>, <span class="literal">undefined</span>, &#123; <span class="attr">sensitivity</span>: <span class="string">&quot;case&quot;</span> &#125;)) <span class="comment">// 1</span></span><br><span class="line"></span><br><span class="line"><span class="variable language_">console</span>.<span class="title function_">log</span>(<span class="string">&quot;aB&quot;</span>.<span class="title function_">localeCompare</span>(<span class="string">&quot;AB&quot;</span>, <span class="literal">undefined</span>, &#123; <span class="attr">sensitivity</span>: <span class="string">&quot;case&quot;</span> &#125;)) <span class="comment">// -1</span></span><br><span class="line"></span><br><span class="line"><span class="variable language_">console</span>.<span class="title function_">log</span>(<span class="string">&quot;aB&quot;</span>.<span class="title function_">localeCompare</span>(<span class="string">&quot;AB&quot;</span>, <span class="literal">undefined</span>, &#123; <span class="attr">sensitivity</span>: <span class="string">&quot;case&quot;</span>, <span class="attr">caseFirst</span>: <span class="string">&quot;upper&quot;</span> &#125;)) <span class="comment">// 1</span></span><br></pre></td></tr></table></figure>
+
+<p><strong><em><code>ignorePunctuation</code></em></strong></p>
+<p>The <code>ignorePunctuation</code> option in the <code>localeCompare()</code> method specifies whether punctuation and other symbols should be ignored during the comparison.</p>
+<p>It can take one of the following two values: <code>true</code> and <code>false</code></p>
+<figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line"><span class="variable language_">console</span>.<span class="title function_">log</span>(<span class="string">&quot;Hello, world!&quot;</span>.<span class="title function_">localeCompare</span>(<span class="string">&quot;Hello world&quot;</span>, <span class="literal">undefined</span>, &#123; <span class="attr">ignorePunctuation</span>: <span class="literal">true</span> &#125;)) <span class="comment">// 0</span></span><br></pre></td></tr></table></figure>
+      
+    </div>
+
+    
+    
+    
+
+    <footer class="post-footer">
+        <div class="post-eof"></div>
+      
+    </footer>
+  </article>
+</div>
+
+
+
 
     
 
