@@ -226,7 +226,7 @@
       </span>
       <span class="post-meta-item-text">Posted on</span>
 
-      <time title="Created: 2024-06-15 20:33:21" itemprop="dateCreated datePublished" datetime="2024-06-15T20:33:21+08:00">2024-06-15</time>
+      <time title="Created: 2024-06-15 21:16:25" itemprop="dateCreated datePublished" datetime="2024-06-15T21:16:25+08:00">2024-06-15</time>
     </span>
     <span class="post-meta-item">
       <span class="post-meta-item-icon">
@@ -299,7 +299,7 @@
 </tbody></table>
 <h5 id="Observation"><a href="#Observation" class="headerlink" title="Observation"></a>Observation</h5><ul>
 <li><code>IFS=&quot;lo:&quot;</code><ol>
-<li><code>*</code> acts like a delimiter, and fills the gap between each array element. Eg: he<del>l</del> * <del>l</del> * <del>o</del></li>
+<li><code>*</code> acts like a delimiter, and fills the gap between each array element. Eg: he<del>l</del> * <del>l</del> * <del>o</del>. Only behaves like this when the last element contains a single delimiter, else the result is the same as <a href="#Observation">(3)</a>.</li>
 <li>The first character of <code>IFS</code>, which happens to be <code>l</code>, serves as the delimiter for the array elements. The whole string is treated as one element, thus <code>*</code> is appended to the very end.</li>
 <li><code>*</code> acts normally and is appended to each array element. Eg: he<del>l</del> * <del>l</del> * <del>o</del> *</li>
 </ol>
