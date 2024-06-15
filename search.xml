@@ -20,6 +20,87 @@
       </tags>
   </entry>
   <entry>
+    <title>C++ Pointers</title>
+    <url>/2023/04/29/C++%20Pointers/</url>
+    <content><![CDATA[<h3 id="Array-of-pointers-to-ints"><a href="#Array-of-pointers-to-ints" class="headerlink" title="Array of pointers to ints"></a>Array of pointers to ints</h3><p><strong>Code:</strong></p>
+<figure class="highlight cpp"><table><tr><td class="code"><pre><span class="line"><span class="meta">#<span class="keyword">include</span> <span class="string">&lt;iostream&gt;</span></span></span><br><span class="line"></span><br><span class="line"><span class="function"><span class="type">int</span> <span class="title">main</span><span class="params">()</span></span></span><br><span class="line"><span class="function"></span>&#123;</span><br><span class="line">    <span class="type">int</span>* ap[<span class="number">15</span>];</span><br><span class="line">    <span class="type">int</span> ai[<span class="number">15</span>] = &#123;&#125;;</span><br><span class="line">    <span class="keyword">for</span> (<span class="type">int</span> i = <span class="number">0</span>; i &lt; <span class="number">15</span>; ++i) &#123;</span><br><span class="line">        ai[i] = i; </span><br><span class="line">        ap[i] = &amp;ai[i];</span><br><span class="line">        std::cout &lt;&lt; *ap[i] &lt;&lt; <span class="string">&quot; &quot;</span> &lt;&lt; ap[i]&lt;&lt; std::endl;</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br><span class="line"></span><br></pre></td></tr></table></figure>
+
+<p><strong>Console:</strong></p>
+<pre><code>0 0x16d296d14
+1 0x16d296d18
+2 0x16d296d1c
+3 0x16d296d20
+4 0x16d296d24
+5 0x16d296d28
+6 0x16d296d2c
+7 0x16d296d30
+8 0x16d296d34
+9 0x16d296d38
+10 0x16d296d3c
+11 0x16d296d40
+12 0x16d296d44
+13 0x16d296d48
+14 0x16d296d4c
+</code></pre>
+<h3 id="Pointer-to-an-array-of-ints"><a href="#Pointer-to-an-array-of-ints" class="headerlink" title="Pointer to an array of ints"></a>Pointer to an array of ints</h3><p><strong>Code:</strong></p>
+<figure class="highlight cpp"><table><tr><td class="code"><pre><span class="line"><span class="meta">#<span class="keyword">include</span> <span class="string">&lt;iostream&gt;</span></span></span><br><span class="line"></span><br><span class="line"><span class="function"><span class="type">int</span> <span class="title">main</span><span class="params">()</span></span></span><br><span class="line"><span class="function"></span>&#123;</span><br><span class="line">    <span class="type">int</span> ai[<span class="number">15</span>];</span><br><span class="line">    <span class="keyword">for</span> (<span class="type">int</span> i = <span class="number">0</span>; i &lt; <span class="number">15</span>; i++) ai[i] = i;</span><br><span class="line">    <span class="built_in">int</span> (*ptr)[] = &amp;ai;</span><br><span class="line">    <span class="keyword">for</span> (<span class="type">int</span> i = <span class="number">0</span>; i &lt; <span class="number">15</span>; i++) &#123;</span><br><span class="line">        std::cout &lt;&lt; (*ptr)[i] &lt;&lt; <span class="string">&quot; &quot;</span>;</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br><span class="line"></span><br></pre></td></tr></table></figure>
+
+<p><strong><em>Console</em></strong></p>
+<pre><code>0 1 2 3 4 5 6 7 8 9 10 11 12 13 14
+</code></pre>
+<blockquote>
+<p><strong><em>Notes</em></strong></p>
+</blockquote>
+<ul>
+<li><p>The parentheses around <code>*ptr</code> are necessary because the <code>[]</code> operator has<br>  higher precedence than the <code>*</code> operator. Without the parentheses, the<br>  declaration would be parsed as an array of pointers to int, like int<br>  <code>*ptr[15]</code>.</p>
+</li>
+<li><p>When I took the address of the array, I got a pointer to the first element<br>  of the array. However, the pointer itself does not contain any information<br>  about the size of the array.</p>
+</li>
+</ul>
+<h3 id="Pointer-to-function-taking-a-string-argument"><a href="#Pointer-to-function-taking-a-string-argument" class="headerlink" title="Pointer to function taking a string argument;"></a>Pointer to function taking a string argument;</h3><h4 id="returns-an-string"><a href="#returns-an-string" class="headerlink" title="returns an string"></a>returns an string</h4><p><strong>Code:</strong></p>
+<figure class="highlight cpp"><table><tr><td class="code"><pre><span class="line"><span class="meta">#<span class="keyword">include</span> <span class="string">&lt;iostream&gt;</span></span></span><br><span class="line"><span class="meta">#<span class="keyword">include</span> <span class="string">&lt;string&gt;</span></span></span><br><span class="line"></span><br><span class="line"><span class="function"><span class="type">void</span> <span class="title">replaceX</span><span class="params">(std::string *str, std::string x)</span></span></span><br><span class="line"><span class="function"></span>&#123;</span><br><span class="line">    <span class="type">size_t</span> pos = (*str).<span class="built_in">find</span>(<span class="string">&quot;$&#123;x&#125;&quot;</span>);</span><br><span class="line">    <span class="keyword">if</span> (pos != std::string::npos)</span><br><span class="line">        (*str).<span class="built_in">replace</span>(pos, <span class="number">4</span>, x);</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"><span class="function">std::string <span class="title">foo</span><span class="params">(std::string x)</span></span></span><br><span class="line"><span class="function"></span>&#123;</span><br><span class="line">    std::string str = <span class="string">&quot;hello this is $&#123;x&#125;&quot;</span>;</span><br><span class="line">    <span class="built_in">replaceX</span>(&amp;str, x);</span><br><span class="line">    <span class="keyword">return</span> str;</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"><span class="function"><span class="type">int</span> <span class="title">main</span><span class="params">()</span></span></span><br><span class="line"><span class="function"></span>&#123;</span><br><span class="line">    std::<span class="built_in">string</span> (*fp)(std::string) = &amp;foo;</span><br><span class="line">    std::cout &lt;&lt; (*fp)(<span class="string">&quot;foo&quot;</span>) &lt;&lt; std::endl;</span><br><span class="line">    std::cout &lt;&lt; (*fp)(<span class="string">&quot;bar&quot;</span>) &lt;&lt; std::endl;</span><br><span class="line">&#125;</span><br><span class="line"></span><br></pre></td></tr></table></figure>
+
+<p><strong>Console:</strong></p>
+<pre><code>hello this is foo
+hello this is bar
+</code></pre>
+]]></content>
+      <categories>
+        <category>C++</category>
+      </categories>
+      <tags>
+        <tag>Pointers</tag>
+      </tags>
+  </entry>
+  <entry>
+    <title>Dabbling with Puppeteer</title>
+    <url>/2023/04/27/Dabbling%20with%20Puppeteer/</url>
+    <content><![CDATA[<p>Puppeteer is a Node.js library that provides a high-level API to control headless Chrome or Chromium browsers. It is widely used for web scraping, testing, and automation, and is an essential tool for many developers who work with web applications.</p>
+<blockquote>
+<p>Note that I’ll be demonstrating on ArchLinux</p>
+</blockquote>
+<p>Because Puppeteer relies on Node.js, the first thing we do is create a project directory and initiate <code>npm</code>.</p>
+<figure class="highlight bash"><table><tr><td class="code"><pre><span class="line"><span class="built_in">mkdir</span> puppeteer-project;</span><br><span class="line"></span><br><span class="line"><span class="built_in">cd</span> puppeteer-project;</span><br><span class="line"></span><br><span class="line">npm init -y</span><br><span class="line"></span><br><span class="line">npm i puppeteer --save</span><br><span class="line"></span><br><span class="line">sudo pacman -S libx11 libxcomposite libxdamage libxext libxi libxtst nss freetype2 harfbuzz</span><br><span class="line"></span><br><span class="line"><span class="comment"># Puppeteer requires some additional dependencies to be installed</span></span><br><span class="line"></span><br></pre></td></tr></table></figure>
+
+<p>Now we write our script:</p>
+<figure class="highlight bash"><table><tr><td class="code"><pre><span class="line">vim puppeteer.js</span><br></pre></td></tr></table></figure>
+
+<p>The script should be on the lines of this template:</p>
+<figure class="highlight javascript"><table><tr><td class="code"><pre><span class="line"><span class="keyword">const</span> puppeteer = <span class="built_in">require</span>(<span class="string">&#x27;puppeteer&#x27;</span>);</span><br><span class="line"></span><br><span class="line">(<span class="keyword">async</span> () =&gt; &#123;</span><br><span class="line">  <span class="keyword">const</span> browser = <span class="keyword">await</span> puppeteer.<span class="title function_">launch</span>(&#123;</span><br><span class="line">  	<span class="attr">executablePath</span>: <span class="string">&#x27;/usr/bin/chromium&#x27;</span>,</span><br><span class="line"></span><br><span class="line">  	<span class="comment">// We can also drop this line and instead, set an environment variable in Bash.</span></span><br><span class="line"></span><br><span class="line">  	<span class="comment">// `$ export PUPPETEER_EXECUTABLE_PATH=/usr/bin/chromium`</span></span><br><span class="line"></span><br><span class="line">  	<span class="attr">headless</span>: <span class="literal">true</span></span><br><span class="line">  &#125;);</span><br><span class="line">  <span class="keyword">const</span> page = <span class="keyword">await</span> browser.<span class="title function_">newPage</span>();</span><br><span class="line">  <span class="keyword">await</span> page.<span class="title function_">goto</span>(<span class="string">&#x27;https://www.example.com&#x27;</span>);</span><br><span class="line">  <span class="keyword">await</span> page.<span class="title function_">screenshot</span>(&#123; <span class="attr">path</span>: <span class="string">&#x27;example.png&#x27;</span> &#125;);</span><br><span class="line">  <span class="keyword">await</span> browser.<span class="title function_">close</span>();</span><br><span class="line">&#125;)();</span><br><span class="line"></span><br></pre></td></tr></table></figure>
+
+<p>This code will launch Chromium in headless mode and navigate to <code>https://www.example.com</code>, take a screenshot of the page, and then close the browser.</p>
+<p><strong><em>More content about Puppeteer coming up!</em></strong></p>
+]]></content>
+      <categories>
+        <category>Puppeteer</category>
+      </categories>
+      <tags>
+        <tag>Linux</tag>
+        <tag>ArchLinux</tag>
+        <tag>Headless Browser</tag>
+      </tags>
+  </entry>
+  <entry>
     <title>Dead Cells：Unlocking Daily Challenge blueprints</title>
     <url>/2023/05/03/Dead%20Cells%EF%BC%9AUnlocking%20Daily%20Challenge%20blueprints/</url>
     <content><![CDATA[<p>The Daily Challenge mode boasts a significant player base, even compared to other popular modes, and offers several exclusive weapons to boot. However, this is bad news for us freeloaders who, through various means, gained access to the game without ever paying the publisher a single cent. Some may consider piracy bad practice, but to be honest, I’m broke as f*ck.</p>
@@ -82,59 +163,6 @@
       </categories>
       <tags>
         <tag>Dead Cells</tag>
-      </tags>
-  </entry>
-  <entry>
-    <title>C++ Pointers</title>
-    <url>/2023/04/29/C++%20Pointers/</url>
-    <content><![CDATA[<h3 id="Array-of-pointers-to-ints"><a href="#Array-of-pointers-to-ints" class="headerlink" title="Array of pointers to ints"></a>Array of pointers to ints</h3><p><strong>Code:</strong></p>
-<figure class="highlight cpp"><table><tr><td class="code"><pre><span class="line"><span class="meta">#<span class="keyword">include</span> <span class="string">&lt;iostream&gt;</span></span></span><br><span class="line"></span><br><span class="line"><span class="function"><span class="type">int</span> <span class="title">main</span><span class="params">()</span></span></span><br><span class="line"><span class="function"></span>&#123;</span><br><span class="line">    <span class="type">int</span>* ap[<span class="number">15</span>];</span><br><span class="line">    <span class="type">int</span> ai[<span class="number">15</span>] = &#123;&#125;;</span><br><span class="line">    <span class="keyword">for</span> (<span class="type">int</span> i = <span class="number">0</span>; i &lt; <span class="number">15</span>; ++i) &#123;</span><br><span class="line">        ai[i] = i; </span><br><span class="line">        ap[i] = &amp;ai[i];</span><br><span class="line">        std::cout &lt;&lt; *ap[i] &lt;&lt; <span class="string">&quot; &quot;</span> &lt;&lt; ap[i]&lt;&lt; std::endl;</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br><span class="line"></span><br></pre></td></tr></table></figure>
-
-<p><strong>Console:</strong></p>
-<pre><code>0 0x16d296d14
-1 0x16d296d18
-2 0x16d296d1c
-3 0x16d296d20
-4 0x16d296d24
-5 0x16d296d28
-6 0x16d296d2c
-7 0x16d296d30
-8 0x16d296d34
-9 0x16d296d38
-10 0x16d296d3c
-11 0x16d296d40
-12 0x16d296d44
-13 0x16d296d48
-14 0x16d296d4c
-</code></pre>
-<h3 id="Pointer-to-an-array-of-ints"><a href="#Pointer-to-an-array-of-ints" class="headerlink" title="Pointer to an array of ints"></a>Pointer to an array of ints</h3><p><strong>Code:</strong></p>
-<figure class="highlight cpp"><table><tr><td class="code"><pre><span class="line"><span class="meta">#<span class="keyword">include</span> <span class="string">&lt;iostream&gt;</span></span></span><br><span class="line"></span><br><span class="line"><span class="function"><span class="type">int</span> <span class="title">main</span><span class="params">()</span></span></span><br><span class="line"><span class="function"></span>&#123;</span><br><span class="line">    <span class="type">int</span> ai[<span class="number">15</span>];</span><br><span class="line">    <span class="keyword">for</span> (<span class="type">int</span> i = <span class="number">0</span>; i &lt; <span class="number">15</span>; i++) ai[i] = i;</span><br><span class="line">    <span class="built_in">int</span> (*ptr)[] = &amp;ai;</span><br><span class="line">    <span class="keyword">for</span> (<span class="type">int</span> i = <span class="number">0</span>; i &lt; <span class="number">15</span>; i++) &#123;</span><br><span class="line">        std::cout &lt;&lt; (*ptr)[i] &lt;&lt; <span class="string">&quot; &quot;</span>;</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br><span class="line"></span><br></pre></td></tr></table></figure>
-
-<p><strong><em>Console</em></strong></p>
-<pre><code>0 1 2 3 4 5 6 7 8 9 10 11 12 13 14
-</code></pre>
-<blockquote>
-<p><strong><em>Notes</em></strong></p>
-</blockquote>
-<ul>
-<li><p>The parentheses around <code>*ptr</code> are necessary because the <code>[]</code> operator has<br>  higher precedence than the <code>*</code> operator. Without the parentheses, the<br>  declaration would be parsed as an array of pointers to int, like int<br>  <code>*ptr[15]</code>.</p>
-</li>
-<li><p>When I took the address of the array, I got a pointer to the first element<br>  of the array. However, the pointer itself does not contain any information<br>  about the size of the array.</p>
-</li>
-</ul>
-<h3 id="Pointer-to-function-taking-a-string-argument"><a href="#Pointer-to-function-taking-a-string-argument" class="headerlink" title="Pointer to function taking a string argument;"></a>Pointer to function taking a string argument;</h3><h4 id="returns-an-string"><a href="#returns-an-string" class="headerlink" title="returns an string"></a>returns an string</h4><p><strong>Code:</strong></p>
-<figure class="highlight cpp"><table><tr><td class="code"><pre><span class="line"><span class="meta">#<span class="keyword">include</span> <span class="string">&lt;iostream&gt;</span></span></span><br><span class="line"><span class="meta">#<span class="keyword">include</span> <span class="string">&lt;string&gt;</span></span></span><br><span class="line"></span><br><span class="line"><span class="function"><span class="type">void</span> <span class="title">replaceX</span><span class="params">(std::string *str, std::string x)</span></span></span><br><span class="line"><span class="function"></span>&#123;</span><br><span class="line">    <span class="type">size_t</span> pos = (*str).<span class="built_in">find</span>(<span class="string">&quot;$&#123;x&#125;&quot;</span>);</span><br><span class="line">    <span class="keyword">if</span> (pos != std::string::npos)</span><br><span class="line">        (*str).<span class="built_in">replace</span>(pos, <span class="number">4</span>, x);</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"><span class="function">std::string <span class="title">foo</span><span class="params">(std::string x)</span></span></span><br><span class="line"><span class="function"></span>&#123;</span><br><span class="line">    std::string str = <span class="string">&quot;hello this is $&#123;x&#125;&quot;</span>;</span><br><span class="line">    <span class="built_in">replaceX</span>(&amp;str, x);</span><br><span class="line">    <span class="keyword">return</span> str;</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"><span class="function"><span class="type">int</span> <span class="title">main</span><span class="params">()</span></span></span><br><span class="line"><span class="function"></span>&#123;</span><br><span class="line">    std::<span class="built_in">string</span> (*fp)(std::string) = &amp;foo;</span><br><span class="line">    std::cout &lt;&lt; (*fp)(<span class="string">&quot;foo&quot;</span>) &lt;&lt; std::endl;</span><br><span class="line">    std::cout &lt;&lt; (*fp)(<span class="string">&quot;bar&quot;</span>) &lt;&lt; std::endl;</span><br><span class="line">&#125;</span><br><span class="line"></span><br></pre></td></tr></table></figure>
-
-<p><strong>Console:</strong></p>
-<pre><code>hello this is foo
-hello this is bar
-</code></pre>
-]]></content>
-      <categories>
-        <category>C++</category>
-      </categories>
-      <tags>
-        <tag>Pointers</tag>
       </tags>
   </entry>
   <entry>
@@ -201,34 +229,6 @@ hello this is bar
       </categories>
   </entry>
   <entry>
-    <title>Dabbling with Puppeteer</title>
-    <url>/2023/04/27/Dabbling%20with%20Puppeteer/</url>
-    <content><![CDATA[<p>Puppeteer is a Node.js library that provides a high-level API to control headless Chrome or Chromium browsers. It is widely used for web scraping, testing, and automation, and is an essential tool for many developers who work with web applications.</p>
-<blockquote>
-<p>Note that I’ll be demonstrating on ArchLinux</p>
-</blockquote>
-<p>Because Puppeteer relies on Node.js, the first thing we do is create a project directory and initiate <code>npm</code>.</p>
-<figure class="highlight bash"><table><tr><td class="code"><pre><span class="line"><span class="built_in">mkdir</span> puppeteer-project;</span><br><span class="line"></span><br><span class="line"><span class="built_in">cd</span> puppeteer-project;</span><br><span class="line"></span><br><span class="line">npm init -y</span><br><span class="line"></span><br><span class="line">npm i puppeteer --save</span><br><span class="line"></span><br><span class="line">sudo pacman -S libx11 libxcomposite libxdamage libxext libxi libxtst nss freetype2 harfbuzz</span><br><span class="line"></span><br><span class="line"><span class="comment"># Puppeteer requires some additional dependencies to be installed</span></span><br><span class="line"></span><br></pre></td></tr></table></figure>
-
-<p>Now we write our script:</p>
-<figure class="highlight bash"><table><tr><td class="code"><pre><span class="line">vim puppeteer.js</span><br></pre></td></tr></table></figure>
-
-<p>The script should be on the lines of this template:</p>
-<figure class="highlight javascript"><table><tr><td class="code"><pre><span class="line"><span class="keyword">const</span> puppeteer = <span class="built_in">require</span>(<span class="string">&#x27;puppeteer&#x27;</span>);</span><br><span class="line"></span><br><span class="line">(<span class="keyword">async</span> () =&gt; &#123;</span><br><span class="line">  <span class="keyword">const</span> browser = <span class="keyword">await</span> puppeteer.<span class="title function_">launch</span>(&#123;</span><br><span class="line">  	<span class="attr">executablePath</span>: <span class="string">&#x27;/usr/bin/chromium&#x27;</span>,</span><br><span class="line"></span><br><span class="line">  	<span class="comment">// We can also drop this line and instead, set an environment variable in Bash.</span></span><br><span class="line"></span><br><span class="line">  	<span class="comment">// `$ export PUPPETEER_EXECUTABLE_PATH=/usr/bin/chromium`</span></span><br><span class="line"></span><br><span class="line">  	<span class="attr">headless</span>: <span class="literal">true</span></span><br><span class="line">  &#125;);</span><br><span class="line">  <span class="keyword">const</span> page = <span class="keyword">await</span> browser.<span class="title function_">newPage</span>();</span><br><span class="line">  <span class="keyword">await</span> page.<span class="title function_">goto</span>(<span class="string">&#x27;https://www.example.com&#x27;</span>);</span><br><span class="line">  <span class="keyword">await</span> page.<span class="title function_">screenshot</span>(&#123; <span class="attr">path</span>: <span class="string">&#x27;example.png&#x27;</span> &#125;);</span><br><span class="line">  <span class="keyword">await</span> browser.<span class="title function_">close</span>();</span><br><span class="line">&#125;)();</span><br><span class="line"></span><br></pre></td></tr></table></figure>
-
-<p>This code will launch Chromium in headless mode and navigate to <code>https://www.example.com</code>, take a screenshot of the page, and then close the browser.</p>
-<p><strong><em>More content about Puppeteer coming up!</em></strong></p>
-]]></content>
-      <categories>
-        <category>Puppeteer</category>
-      </categories>
-      <tags>
-        <tag>Linux</tag>
-        <tag>ArchLinux</tag>
-        <tag>Headless Browser</tag>
-      </tags>
-  </entry>
-  <entry>
     <title>Initialize shared directory with SPICE WebDAV</title>
     <url>/2023/04/26/Initialize%20shared%20directory%20with%20SPICE%20WebDAV/</url>
     <content><![CDATA[<h3 id="Install-Dependencies"><a href="#Install-Dependencies" class="headerlink" title="Install Dependencies"></a>Install Dependencies</h3><h4 id="SPICE-guest-tools"><a href="#SPICE-guest-tools" class="headerlink" title="SPICE guest tools"></a><em><code>SPICE guest tools</code></em></h4><p>See <a href="/2023/04/25/Running%20ArchLinux%20ARM%20in%20UTM%20on%20a%20M1%20MacBook%20Air/#SPICE-guest-tools"><code>SPICE guest tools</code></a></p>
@@ -288,56 +288,49 @@ hello this is bar
       </categories>
   </entry>
   <entry>
-    <title>JavaScript Method：localeCompare</title>
-    <url>/2023/04/24/JavaScript%20Method%EF%BC%9AlocaleCompare/</url>
-    <content><![CDATA[<p>Lately I’ve been thinking that since Java has an equalsIgnoreCase method, JavaScript must have something similar. This is what I found: the <code>localeCompare</code> method.</p>
-<h3 id="Structure"><a href="#Structure" class="headerlink" title="Structure"></a>Structure</h3><figure class="highlight javascript"><table><tr><td class="code"><pre><span class="line">str1.<span class="title function_">localeCompare</span>(str2, [locales], [options])</span><br></pre></td></tr></table></figure>
-
-<p><strong><em>Note: The Linux commands also has a <code>locale</code> command!</em></strong></p>
-<h3 id="Available-locales"><a href="#Available-locales" class="headerlink" title="Available locales"></a>Available locales</h3><p><strong><em><code>language</code></em></strong></p>
-<pre><code>&#39;en&#39;: English
-&#39;fr&#39;: French
-&#39;de&#39;: German
-&#39;es&#39;: Spanish
-&#39;ja&#39;: Japanese
-&#39;zh&#39;: Chinese
-&#39;ar&#39;: Arabic
-&#39;ru&#39;: Russian
+    <title>Installing Puppet server on ArchLinux</title>
+    <url>/2023/04/27/Installing%20Puppet%20server%20on%20ArchLinux/</url>
+    <content><![CDATA[<h3 id="Installation"><a href="#Installation" class="headerlink" title="Installation"></a>Installation</h3><p>To install puppet server first add the upstream GPG key:</p>
+<pre><code>$ gpg --fetch-keys https://yum.puppetlabs.com/RPM-GPG-KEY-puppet-20250406
 </code></pre>
-<p>We can also use a combination of <code>language</code> and <code>region</code> subtags to specify a more specific locale. For example:</p>
-<pre><code>&#39;en-US&#39;: English (United States)
-&#39;fr-CA&#39;: French (Canada)
-&#39;de-DE&#39;: German (Germany)
-&#39;es-MX&#39;: Spanish (Mexico)
-&#39;ja-JP&#39;: Japanese (Japan)
-&#39;zh-CN&#39;: Chinese (China)
-&#39;ar-EG&#39;: Arabic (Egypt)
-&#39;ru-RU&#39;: Russian (Russia)
+<div>
+    Then install the <a href="https://aur.archlinux.org/packages/puppetserver"><b>puppetserver</b></a><sup>AUR</sup> package.
+</div>
+
+<figure class="highlight bash"><table><tr><td class="code"><pre><span class="line">git <span class="built_in">clone</span> https://aur.archlinux.org/puppetserver.git</span><br><span class="line"></span><br><span class="line"><span class="built_in">cd</span> puppetserver/</span><br><span class="line"></span><br><span class="line">makepkg -si</span><br><span class="line"></span><br></pre></td></tr></table></figure>
+
+<p>Having questions about the <code>makepkg</code> command? Visit <a href="/2023/04/25/Running%20ArchLinux%20ARM%20in%20UTM%20on%20a%20M1%20MacBook%20Air/#yay" title="makepkg">here</a>!</p>
+<div>
+    Afterwards, enable and start the <b>puppetserver</b> service.
+</div>
+
+<figure class="highlight bash"><table><tr><td class="code"><pre><span class="line">sudo systemctl <span class="built_in">enable</span> puppetserver.service</span><br><span class="line"></span><br><span class="line"><span class="comment"># Add to &quot;/etc/systemd/system/multi-user.target.wants&quot;.</span></span><br><span class="line"></span><br><span class="line">sudo systemctl start puppetserver.service</span><br><span class="line"></span><br></pre></td></tr></table></figure>
+
+<h3 id="Delete-a-key"><a href="#Delete-a-key" class="headerlink" title="Delete a key"></a>Delete a key</h3><p>List the keys in your keyring using the command <code>gpg --list-keys</code>:</p>
+<pre><code>$ gpg --list-keys
+/root/.gnupg/pubring.kbx
+------------------------
+pub   rsa4096 2019-04-08 [SC] [expires: 2025-04-06]
+      D6811ED3ADEEB8441AF5AA8F4528B6CD9E61EF26
+uid           [ unknown] Puppet, Inc. Release Key (Puppet, Inc. Release Key) &lt;release@puppet.com&gt;
 </code></pre>
-<h3 id="Available-options"><a href="#Available-options" class="headerlink" title="Available options"></a>Available options</h3><p><strong><em><code>numeric</code></em></strong></p>
-<figure class="highlight javascript"><table><tr><td class="code"><pre><span class="line"><span class="variable language_">console</span>.<span class="title function_">log</span>(<span class="string">&quot;60&quot;</span>.<span class="title function_">localeCompare</span>(<span class="string">&quot;40&quot;</span>, <span class="literal">undefined</span>, &#123; <span class="attr">numeric</span>: <span class="literal">true</span> &#125;)) <span class="comment">// 1</span></span><br><span class="line"></span><br><span class="line"><span class="variable language_">console</span>.<span class="title function_">log</span>(<span class="string">&quot;60&quot;</span>.<span class="title function_">localeCompare</span>(<span class="string">&quot;60&quot;</span>, <span class="literal">undefined</span>, &#123; <span class="attr">numeric</span>: <span class="literal">true</span> &#125;)) <span class="comment">// 0</span></span><br><span class="line"></span><br><span class="line"><span class="variable language_">console</span>.<span class="title function_">log</span>(<span class="string">&quot;60&quot;</span>.<span class="title function_">localeCompare</span>(<span class="string">&quot;100&quot;</span>, <span class="literal">undefined</span>, &#123; <span class="attr">numeric</span>: <span class="literal">true</span> &#125;)) <span class="comment">// -1</span></span><br></pre></td></tr></table></figure>
-
-<p><code>numeric</code> can take one of the two values: <code>true</code> and <code>false</code></p>
-<figure class="highlight javascript"><table><tr><td class="code"><pre><span class="line"><span class="variable language_">console</span>.<span class="title function_">log</span>(<span class="string">&quot;60&quot;</span>.<span class="title function_">localeCompare</span>(<span class="string">&quot;100&quot;</span>, <span class="literal">undefined</span>, &#123; <span class="attr">numeric</span>: <span class="literal">false</span> &#125;)) <span class="comment">// 1</span></span><br></pre></td></tr></table></figure>
-
-<p>With <code>false</code>, both <code>60</code> and <code>100</code> are treated as normal String objects.</p>
-<p><strong><em><code>sensitivity</code></em></strong></p>
-<p><code>sensitivity</code> can take one of the three values: <code>base</code>, <code>accent</code>, <code>case</code></p>
-<figure class="highlight javascript"><table><tr><td class="code"><pre><span class="line"><span class="variable language_">console</span>.<span class="title function_">log</span>(<span class="string">&quot;café&quot;</span>.<span class="title function_">localeCompare</span>(<span class="string">&quot;Cafe&quot;</span>, <span class="literal">undefined</span>, &#123; <span class="attr">sensitivity</span>: <span class="string">&quot;base&quot;</span> &#125;)) <span class="comment">// 0</span></span><br><span class="line"></span><br><span class="line"><span class="variable language_">console</span>.<span class="title function_">log</span>(<span class="string">&quot;café&quot;</span>.<span class="title function_">localeCompare</span>(<span class="string">&quot;Cafe&quot;</span>, <span class="literal">undefined</span>, &#123; <span class="attr">sensitivity</span>: <span class="string">&quot;accent&quot;</span> &#125;)) <span class="comment">// 1</span></span><br><span class="line"></span><br><span class="line"><span class="variable language_">console</span>.<span class="title function_">log</span>(<span class="string">&quot;café&quot;</span>.<span class="title function_">localeCompare</span>(<span class="string">&quot;Cafe&quot;</span>, <span class="literal">undefined</span>, &#123; <span class="attr">sensitivity</span>: <span class="string">&quot;case&quot;</span> &#125;)) <span class="comment">// -1</span></span><br></pre></td></tr></table></figure>
-
-<p><strong><em><code>caseFirst</code></em></strong></p>
-<p>The <code>caseFirst</code> option in the <code>localeCompare()</code> method specifies whether uppercase letters should come before or after lowercase letters in the sort order. It can take one of the following two values:</p>
-<p><code>upper</code>: Sort uppercase letters before lowercase letters.</p>
-<p><code>lower</code>: Sort lowercase letters before uppercase letters.</p>
-<figure class="highlight javascript"><table><tr><td class="code"><pre><span class="line"><span class="variable language_">console</span>.<span class="title function_">log</span>(<span class="string">&quot;Ba&quot;</span>.<span class="title function_">localeCompare</span>(<span class="string">&quot;AB&quot;</span>, <span class="literal">undefined</span>, &#123; <span class="attr">sensitivity</span>: <span class="string">&quot;case&quot;</span> &#125;)) <span class="comment">// 1</span></span><br><span class="line"></span><br><span class="line"><span class="variable language_">console</span>.<span class="title function_">log</span>(<span class="string">&quot;aB&quot;</span>.<span class="title function_">localeCompare</span>(<span class="string">&quot;AB&quot;</span>, <span class="literal">undefined</span>, &#123; <span class="attr">sensitivity</span>: <span class="string">&quot;case&quot;</span> &#125;)) <span class="comment">// -1</span></span><br><span class="line"></span><br><span class="line"><span class="variable language_">console</span>.<span class="title function_">log</span>(<span class="string">&quot;aB&quot;</span>.<span class="title function_">localeCompare</span>(<span class="string">&quot;AB&quot;</span>, <span class="literal">undefined</span>, &#123; <span class="attr">sensitivity</span>: <span class="string">&quot;case&quot;</span>, <span class="attr">caseFirst</span>: <span class="string">&quot;upper&quot;</span> &#125;)) <span class="comment">// 1</span></span><br></pre></td></tr></table></figure>
-
-<p><strong><em><code>ignorePunctuation</code></em></strong></p>
-<p>The <code>ignorePunctuation</code> option in the <code>localeCompare()</code> method specifies whether punctuation and other symbols should be ignored during the comparison.</p>
-<p>It can take one of the following two values: <code>true</code> and <code>false</code></p>
-<figure class="highlight javascript"><table><tr><td class="code"><pre><span class="line"><span class="variable language_">console</span>.<span class="title function_">log</span>(<span class="string">&quot;Hello, world!&quot;</span>.<span class="title function_">localeCompare</span>(<span class="string">&quot;Hello world&quot;</span>, <span class="literal">undefined</span>, &#123; <span class="attr">ignorePunctuation</span>: <span class="literal">true</span> &#125;)) <span class="comment">// 0</span></span><br></pre></td></tr></table></figure>]]></content>
+<p>For example, the key ID of the instance above is “D6811ED3ADEEB8441AF5AA8F4528B6CD9E61EF26”.</p>
+<p>Delete the key using the command <code>gpg --delete-keys [key ID]</code>.</p>
+<p>Note that deleting a key from your keyring will prevent you from verifying any signatures made with that key in the future. If you need to use the key again later, you will need to fetch it again using the <code>gpg --fetch-keys</code> command.</p>
+<blockquote>
+<p>Configuration</p>
+</blockquote>
+<p>The Puppet Server’s configuration files are stored in <code>/etc/puppetlabs/puppetserver/</code>.</p>
+]]></content>
+      <categories>
+        <category>Puppet</category>
+      </categories>
       <tags>
-        <tag>JavaScript</tag>
-        <tag>Methods</tag>
+        <tag>Linux</tag>
+        <tag>ArchLinux</tag>
+        <tag>Puppet</tag>
+        <tag>server</tag>
+        <tag>GPG key</tag>
       </tags>
   </entry>
   <entry>
@@ -358,72 +351,26 @@ hello this is bar
       </tags>
   </entry>
   <entry>
-    <title>Notes on word splitting</title>
-    <url>/2024/05/27/Notes%20on%20word%20splitting/</url>
-    <content><![CDATA[<p>Code snippet:</p>
-<figure class="highlight bash"><table><tr><td class="code"><pre><span class="line"><span class="meta">#!/usr/bin/env -S bash</span></span><br><span class="line"></span><br><span class="line">hello=<span class="string">&quot;hello:world:hello:world:hello&quot;</span></span><br><span class="line"></span><br><span class="line">IFS=<span class="string">&quot;lo:&quot;</span></span><br><span class="line"></span><br><span class="line"><span class="built_in">read</span> -ra list &lt;&lt;&lt;<span class="string">&quot;<span class="variable">$hello</span>&quot;</span></span><br><span class="line"></span><br><span class="line"><span class="built_in">printf</span> <span class="string">&quot;%s*&quot;</span> <span class="string">&quot;<span class="variable">$&#123;list[*]&#125;</span>&quot;</span></span><br></pre></td></tr></table></figure>
+    <title>Minor adjustment from Bash to Zsh</title>
+    <url>/2024/05/27/Minor%20adjustment%20from%20Bash%20to%20Zsh/</url>
+    <content><![CDATA[<blockquote>
+<p>Converting characters to uppercase(&#x2F;lowercase)</p>
+</blockquote>
+<p>Take variable <code>sayhi</code> for example:</p>
+<figure class="highlight bash"><table><tr><td class="code"><pre><span class="line">sayhi=<span class="string">&quot;hello there&quot;</span></span><br><span class="line"><span class="built_in">echo</span> <span class="variable">$&#123;sayhi^^[eo]&#125;</span></span><br></pre></td></tr></table></figure>
 
-<ol>
-<li><a href="#Double-quotes">Double quotes</a></li>
-<li><a href="#Bundling-into-an-array">Bundling into an array</a></li>
-<li><a href="#Array-expansion-re-splitting">Array expansion re-splitting</a></li>
-</ol>
-<h4 id="Double-quotes"><a href="#Double-quotes" class="headerlink" title="Double quotes"></a>Double quotes</h4><p>If <code>$hello</code> is wrapped with <code>&quot;&quot;</code>, its literal value will be preserved. Without them, IFS characters will be displayed as blanks spots.</p>
-<table>
-<thead>
-<tr>
-<th align="center">With</th>
-<th align="center">Without</th>
-</tr>
-</thead>
-<tbody><tr>
-<td align="center"><code>hello:world:hello:world:hello</code></td>
-<td align="center"><code>he    w r d he    w r d he   </code></td>
-</tr>
-</tbody></table>
-<h4 id="Bundling-into-an-array"><a href="#Bundling-into-an-array" class="headerlink" title="Bundling into an array"></a>Bundling into an array</h4><p><code>read -ra list</code> cares not for whether the string is wrapped in quotes. It will split the string into an array regardless.</p>
-<p>However, mind that the <code>read</code> command reads one line at a time. If the string is multiline, <code>read</code> will only read the first line.</p>
-<h4 id="Array-expansion-re-splitting"><a href="#Array-expansion-re-splitting" class="headerlink" title="Array expansion re-splitting"></a>Array expansion re-splitting</h4><p>Both <code>$&#123;list[*]&#125;</code> and <code>$&#123;list[@]&#125;</code> are prone to re-splitting the array.</p>
-<table>
-<thead>
-<tr>
-<th align="center"><code>IFS</code> \ <code>printf &quot;%s*&quot; &lt;..&gt;</code></th>
-<th align="center"><code>$&#123;list[*]&#125;</code></th>
-<th align="center"><code>$&#123;list[@]&#125;</code></th>
-<th><code>&quot;$&#123;list[*]&#125;&quot;</code></th>
-<th align="center"><code>&quot;$&#123;list[@]&#125;&quot;</code></th>
-</tr>
-</thead>
-<tbody><tr>
-<td align="center"><code>IFS=&quot;lo:&quot;</code></td>
-<td align="center"><code>he****w*r*d*he****w*r*d*he**</code> <a href="#Observation">(1)</a></td>
-<td align="center"><a href="#Observation">(1)</a></td>
-<td><code>hellllwlrldlhellllwlrldlhell*</code> <a href="#Observation">(2)</a></td>
-<td align="center"><code>he****w*r*d*he****w*r*d*he***</code> <a href="#Observation">(3)</a></td>
-</tr>
-<tr>
-<td align="center"><code>IFS=</code></td>
-<td align="center"><code>he*w*r*d*he*w*r*d*he*</code> <a href="#Observation">(4)</a></td>
-<td align="center"><a href="#Observation">(4)</a></td>
-<td><a href="#Observation">(2)</a></td>
-<td align="center"><a href="#Observation">(3)</a></td>
-</tr>
-</tbody></table>
-<h5 id="Observation"><a href="#Observation" class="headerlink" title="Observation"></a>Observation</h5><ul>
-<li><code>IFS=&quot;lo:&quot;</code><ol>
-<li><code>*</code> acts like a delimiter, and fills the gap between each array element. Eg: he<del>l</del> * <del>l</del> * <del>o</del></li>
-<li>The first character of <code>IFS</code>, which happens to be <code>l</code>, serves as the delimiter for the array elements. The whole string is treated as one element, thus <code>*</code> is appended to the very end.</li>
-<li><code>*</code> acts normally and is appended to each array element. Eg: he<del>l</del> * <del>l</del> * <del>o</del> *</li>
-</ol>
-</li>
-<li><code>IFS=</code>: The effect this has on word splitting seems to be that it squeezes multiple blank arguments into one.</li>
-</ul>
+<p>This method of converting lowercase letters to uppercase only works in Bash and will throw and “Bad substitution” error if you try it in Zsh.<br>Instead, you should use general replacement for this in Zsh:</p>
+<figure class="highlight plaintext"><table><tr><td class="code"><pre><span class="line">echo $&#123;sayhi//[eo]/[EO]&#125;</span><br></pre></td></tr></table></figure>
+
+<p>Or, for a more Zsh native method, we can try out substitution flags, which comes in two formats:</p>
+<figure class="highlight plaintext"><table><tr><td class="code"><pre><span class="line">echo $&#123;sayhi:u&#125;</span><br><span class="line"># Or use it as a prefix:</span><br><span class="line">echo $&#123;(U):sayhi&#125;</span><br></pre></td></tr></table></figure>
 ]]></content>
       <categories>
         <category>CLI</category>
       </categories>
       <tags>
         <tag>Bash</tag>
+        <tag>Zsh</tag>
       </tags>
   </entry>
   <entry>
@@ -550,6 +497,75 @@ r=mccranky)
       </tags>
   </entry>
   <entry>
+    <title>Notes on word splitting</title>
+    <url>/2024/06/15/Notes%20on%20word%20splitting/</url>
+    <content><![CDATA[<p>Code snippet:</p>
+<figure class="highlight bash"><table><tr><td class="code"><pre><span class="line"><span class="meta">#!/usr/bin/env -S bash</span></span><br><span class="line"></span><br><span class="line">hello=<span class="string">&quot;hello:world:hello:world:hello&quot;</span></span><br><span class="line"></span><br><span class="line">IFS=<span class="string">&quot;lo:&quot;</span></span><br><span class="line"></span><br><span class="line"><span class="built_in">read</span> -ra list &lt;&lt;&lt;<span class="string">&quot;<span class="variable">$hello</span>&quot;</span></span><br><span class="line"></span><br><span class="line"><span class="built_in">printf</span> <span class="string">&quot;%s*&quot;</span> <span class="string">&quot;<span class="variable">$&#123;list[*]&#125;</span>&quot;</span></span><br></pre></td></tr></table></figure>
+
+<ol>
+<li><a href="#Double-quotes">Double quotes</a></li>
+<li><a href="#Bundling-into-an-array">Bundling into an array</a></li>
+<li><a href="#Array-expansion-re-splitting">Array expansion re-splitting</a></li>
+</ol>
+<h4 id="Double-quotes"><a href="#Double-quotes" class="headerlink" title="Double quotes"></a>Double quotes</h4><p>If <code>$hello</code> is wrapped with <code>&quot;&quot;</code>, its literal value will be preserved. Without them, IFS characters will be displayed as blanks spots.</p>
+<table>
+<thead>
+<tr>
+<th align="center">With</th>
+<th align="center">Without</th>
+</tr>
+</thead>
+<tbody><tr>
+<td align="center"><code>hello:world:hello:world:hello</code></td>
+<td align="center"><code>he(4 spaces)w r d he(4 spaces)w r d he   </code></td>
+</tr>
+</tbody></table>
+<h4 id="Bundling-into-an-array"><a href="#Bundling-into-an-array" class="headerlink" title="Bundling into an array"></a>Bundling into an array</h4><p><code>read -ra list</code> cares not for whether the string is wrapped in quotes. It will split the string into an array regardless.</p>
+<p>However, mind that the <code>read</code> command reads one line at a time. If the string is multiline, <code>read</code> will only read the first line.</p>
+<h4 id="Array-expansion-re-splitting"><a href="#Array-expansion-re-splitting" class="headerlink" title="Array expansion re-splitting"></a>Array expansion re-splitting</h4><p>Both <code>$&#123;list[*]&#125;</code> and <code>$&#123;list[@]&#125;</code> are prone to re-splitting the array.</p>
+<table>
+<thead>
+<tr>
+<th align="center"><code>IFS</code> \ <code>printf &quot;%s*&quot; &lt;..&gt;</code></th>
+<th align="center"><code>$&#123;list[*]&#125;</code></th>
+<th align="center"><code>$&#123;list[@]&#125;</code></th>
+<th><code>&quot;$&#123;list[*]&#125;&quot;</code></th>
+<th align="center"><code>&quot;$&#123;list[@]&#125;&quot;</code></th>
+</tr>
+</thead>
+<tbody><tr>
+<td align="center"><code>IFS=&quot;lo:&quot;</code></td>
+<td align="center"><code>he****w*r*d*he****w*r*d*he**</code> <a href="#Observation">(1)</a></td>
+<td align="center"><a href="#Observation">(1)</a></td>
+<td><code>hellllwlrldlhellllwlrldlhell*</code> <a href="#Observation">(2)</a></td>
+<td align="center"><code>he****w*r*d*he****w*r*d*he***</code> <a href="#Observation">(3)</a></td>
+</tr>
+<tr>
+<td align="center"><code>IFS=</code></td>
+<td align="center"><code>he*w*r*d*he*w*r*d*he*</code> <a href="#Observation">(4)</a></td>
+<td align="center"><a href="#Observation">(4)</a></td>
+<td><a href="#Observation">(2)</a></td>
+<td align="center"><a href="#Observation">(3)</a></td>
+</tr>
+</tbody></table>
+<h5 id="Observation"><a href="#Observation" class="headerlink" title="Observation"></a>Observation</h5><ul>
+<li><code>IFS=&quot;lo:&quot;</code><ol>
+<li><code>*</code> acts like a delimiter, and fills the gap between each array element. Eg: he<del>l</del> * <del>l</del> * <del>o</del></li>
+<li>The first character of <code>IFS</code>, which happens to be <code>l</code>, serves as the delimiter for the array elements. The whole string is treated as one element, thus <code>*</code> is appended to the very end.</li>
+<li><code>*</code> acts normally and is appended to each array element. Eg: he<del>l</del> * <del>l</del> * <del>o</del> *</li>
+</ol>
+</li>
+<li><code>IFS=</code>: The effect this has on word splitting seems to be that it squeezes multiple blank arguments into one.</li>
+</ul>
+]]></content>
+      <categories>
+        <category>CLI</category>
+      </categories>
+      <tags>
+        <tag>Bash</tag>
+      </tags>
+  </entry>
+  <entry>
     <title>`Path` module - Node.js</title>
     <url>/2023/05/14/Path%20module%20-%20Node.js/</url>
     <content><![CDATA[<p>因为本人使用的操作系统是 OS X ，所以一下书写规范均符合 POSIX（Portable Open System Interface eXtended），Windows 用户请自行查阅资料。</p>
@@ -594,131 +610,56 @@ r=mccranky)
       </tags>
   </entry>
   <entry>
-    <title>Positional Parameters</title>
-    <url>/2023/04/29/Positional%20Parameters/</url>
-    <content><![CDATA[<p>In Bash, positional parameters are special variables that hold the arguments passed to a script or function. The positional parameters are numbered from <code>0</code> to <code>9</code>, where <code>$0</code> holds the name of the script or function, and <code>$1</code> through <code>$9</code> hold the first through ninth arguments, respectively.</p>
-<p><code>$@</code> and <code>$*</code> both hold all the arguments passed to the script. Note that <code>$@</code> is an array-like variable that holds all the positional parameters as <em>separate elements</em>, while <code>$*</code> is another variable that holds all the positional parameters as <em>a single string</em>.</p>
-<p>Here’s an example:</p>
-<pre><code>#!/bin/bash
+    <title>JavaScript Method：localeCompare</title>
+    <url>/2023/04/24/JavaScript%20Method%EF%BC%9AlocaleCompare/</url>
+    <content><![CDATA[<p>Lately I’ve been thinking that since Java has an equalsIgnoreCase method, JavaScript must have something similar. This is what I found: the <code>localeCompare</code> method.</p>
+<h3 id="Structure"><a href="#Structure" class="headerlink" title="Structure"></a>Structure</h3><figure class="highlight javascript"><table><tr><td class="code"><pre><span class="line">str1.<span class="title function_">localeCompare</span>(str2, [locales], [options])</span><br></pre></td></tr></table></figure>
 
-#!/bin/bash
-
-echo &quot;Script Name: $0&quot;
-echo &quot;First Arg: $1&quot;
-echo &quot;Second Arg: $2&quot;
-echo &quot;All args (arr): $@&quot;
-echo &quot;All args (str): $*&quot;
+<p><strong><em>Note: The Linux commands also has a <code>locale</code> command!</em></strong></p>
+<h3 id="Available-locales"><a href="#Available-locales" class="headerlink" title="Available locales"></a>Available locales</h3><p><strong><em><code>language</code></em></strong></p>
+<pre><code>&#39;en&#39;: English
+&#39;fr&#39;: French
+&#39;de&#39;: German
+&#39;es&#39;: Spanish
+&#39;ja&#39;: Japanese
+&#39;zh&#39;: Chinese
+&#39;ar&#39;: Arabic
+&#39;ru&#39;: Russian
 </code></pre>
-<p>Now let’s run the script with three arguments:</p>
-<figure class="highlight bash"><table><tr><td class="code"><pre><span class="line"><span class="built_in">chmod</span> u+x ./script <span class="comment"># Grant execution privilege for user</span></span><br><span class="line"></span><br><span class="line">./script a b c</span><br><span class="line"></span><br></pre></td></tr></table></figure>
-
-<p>The output should be something like this:</p>
-<pre><code>Script Name: ./script.sh
-First Arg: a
-Second Arg: b
-All args (arr): a b c
-All args (str): a b c
+<p>We can also use a combination of <code>language</code> and <code>region</code> subtags to specify a more specific locale. For example:</p>
+<pre><code>&#39;en-US&#39;: English (United States)
+&#39;fr-CA&#39;: French (Canada)
+&#39;de-DE&#39;: German (Germany)
+&#39;es-MX&#39;: Spanish (Mexico)
+&#39;ja-JP&#39;: Japanese (Japan)
+&#39;zh-CN&#39;: Chinese (China)
+&#39;ar-EG&#39;: Arabic (Egypt)
+&#39;ru-RU&#39;: Russian (Russia)
 </code></pre>
-]]></content>
-      <categories>
-        <category>Bash</category>
-      </categories>
+<h3 id="Available-options"><a href="#Available-options" class="headerlink" title="Available options"></a>Available options</h3><p><strong><em><code>numeric</code></em></strong></p>
+<figure class="highlight javascript"><table><tr><td class="code"><pre><span class="line"><span class="variable language_">console</span>.<span class="title function_">log</span>(<span class="string">&quot;60&quot;</span>.<span class="title function_">localeCompare</span>(<span class="string">&quot;40&quot;</span>, <span class="literal">undefined</span>, &#123; <span class="attr">numeric</span>: <span class="literal">true</span> &#125;)) <span class="comment">// 1</span></span><br><span class="line"></span><br><span class="line"><span class="variable language_">console</span>.<span class="title function_">log</span>(<span class="string">&quot;60&quot;</span>.<span class="title function_">localeCompare</span>(<span class="string">&quot;60&quot;</span>, <span class="literal">undefined</span>, &#123; <span class="attr">numeric</span>: <span class="literal">true</span> &#125;)) <span class="comment">// 0</span></span><br><span class="line"></span><br><span class="line"><span class="variable language_">console</span>.<span class="title function_">log</span>(<span class="string">&quot;60&quot;</span>.<span class="title function_">localeCompare</span>(<span class="string">&quot;100&quot;</span>, <span class="literal">undefined</span>, &#123; <span class="attr">numeric</span>: <span class="literal">true</span> &#125;)) <span class="comment">// -1</span></span><br></pre></td></tr></table></figure>
+
+<p><code>numeric</code> can take one of the two values: <code>true</code> and <code>false</code></p>
+<figure class="highlight javascript"><table><tr><td class="code"><pre><span class="line"><span class="variable language_">console</span>.<span class="title function_">log</span>(<span class="string">&quot;60&quot;</span>.<span class="title function_">localeCompare</span>(<span class="string">&quot;100&quot;</span>, <span class="literal">undefined</span>, &#123; <span class="attr">numeric</span>: <span class="literal">false</span> &#125;)) <span class="comment">// 1</span></span><br></pre></td></tr></table></figure>
+
+<p>With <code>false</code>, both <code>60</code> and <code>100</code> are treated as normal String objects.</p>
+<p><strong><em><code>sensitivity</code></em></strong></p>
+<p><code>sensitivity</code> can take one of the three values: <code>base</code>, <code>accent</code>, <code>case</code></p>
+<figure class="highlight javascript"><table><tr><td class="code"><pre><span class="line"><span class="variable language_">console</span>.<span class="title function_">log</span>(<span class="string">&quot;café&quot;</span>.<span class="title function_">localeCompare</span>(<span class="string">&quot;Cafe&quot;</span>, <span class="literal">undefined</span>, &#123; <span class="attr">sensitivity</span>: <span class="string">&quot;base&quot;</span> &#125;)) <span class="comment">// 0</span></span><br><span class="line"></span><br><span class="line"><span class="variable language_">console</span>.<span class="title function_">log</span>(<span class="string">&quot;café&quot;</span>.<span class="title function_">localeCompare</span>(<span class="string">&quot;Cafe&quot;</span>, <span class="literal">undefined</span>, &#123; <span class="attr">sensitivity</span>: <span class="string">&quot;accent&quot;</span> &#125;)) <span class="comment">// 1</span></span><br><span class="line"></span><br><span class="line"><span class="variable language_">console</span>.<span class="title function_">log</span>(<span class="string">&quot;café&quot;</span>.<span class="title function_">localeCompare</span>(<span class="string">&quot;Cafe&quot;</span>, <span class="literal">undefined</span>, &#123; <span class="attr">sensitivity</span>: <span class="string">&quot;case&quot;</span> &#125;)) <span class="comment">// -1</span></span><br></pre></td></tr></table></figure>
+
+<p><strong><em><code>caseFirst</code></em></strong></p>
+<p>The <code>caseFirst</code> option in the <code>localeCompare()</code> method specifies whether uppercase letters should come before or after lowercase letters in the sort order. It can take one of the following two values:</p>
+<p><code>upper</code>: Sort uppercase letters before lowercase letters.</p>
+<p><code>lower</code>: Sort lowercase letters before uppercase letters.</p>
+<figure class="highlight javascript"><table><tr><td class="code"><pre><span class="line"><span class="variable language_">console</span>.<span class="title function_">log</span>(<span class="string">&quot;Ba&quot;</span>.<span class="title function_">localeCompare</span>(<span class="string">&quot;AB&quot;</span>, <span class="literal">undefined</span>, &#123; <span class="attr">sensitivity</span>: <span class="string">&quot;case&quot;</span> &#125;)) <span class="comment">// 1</span></span><br><span class="line"></span><br><span class="line"><span class="variable language_">console</span>.<span class="title function_">log</span>(<span class="string">&quot;aB&quot;</span>.<span class="title function_">localeCompare</span>(<span class="string">&quot;AB&quot;</span>, <span class="literal">undefined</span>, &#123; <span class="attr">sensitivity</span>: <span class="string">&quot;case&quot;</span> &#125;)) <span class="comment">// -1</span></span><br><span class="line"></span><br><span class="line"><span class="variable language_">console</span>.<span class="title function_">log</span>(<span class="string">&quot;aB&quot;</span>.<span class="title function_">localeCompare</span>(<span class="string">&quot;AB&quot;</span>, <span class="literal">undefined</span>, &#123; <span class="attr">sensitivity</span>: <span class="string">&quot;case&quot;</span>, <span class="attr">caseFirst</span>: <span class="string">&quot;upper&quot;</span> &#125;)) <span class="comment">// 1</span></span><br></pre></td></tr></table></figure>
+
+<p><strong><em><code>ignorePunctuation</code></em></strong></p>
+<p>The <code>ignorePunctuation</code> option in the <code>localeCompare()</code> method specifies whether punctuation and other symbols should be ignored during the comparison.</p>
+<p>It can take one of the following two values: <code>true</code> and <code>false</code></p>
+<figure class="highlight javascript"><table><tr><td class="code"><pre><span class="line"><span class="variable language_">console</span>.<span class="title function_">log</span>(<span class="string">&quot;Hello, world!&quot;</span>.<span class="title function_">localeCompare</span>(<span class="string">&quot;Hello world&quot;</span>, <span class="literal">undefined</span>, &#123; <span class="attr">ignorePunctuation</span>: <span class="literal">true</span> &#125;)) <span class="comment">// 0</span></span><br></pre></td></tr></table></figure>]]></content>
       <tags>
-        <tag>Linux</tag>
-        <tag>Bash</tag>
-      </tags>
-  </entry>
-  <entry>
-    <title>Installing Puppet server on ArchLinux</title>
-    <url>/2023/04/27/Installing%20Puppet%20server%20on%20ArchLinux/</url>
-    <content><![CDATA[<h3 id="Installation"><a href="#Installation" class="headerlink" title="Installation"></a>Installation</h3><p>To install puppet server first add the upstream GPG key:</p>
-<pre><code>$ gpg --fetch-keys https://yum.puppetlabs.com/RPM-GPG-KEY-puppet-20250406
-</code></pre>
-<div>
-    Then install the <a href="https://aur.archlinux.org/packages/puppetserver"><b>puppetserver</b></a><sup>AUR</sup> package.
-</div>
-
-<figure class="highlight bash"><table><tr><td class="code"><pre><span class="line">git <span class="built_in">clone</span> https://aur.archlinux.org/puppetserver.git</span><br><span class="line"></span><br><span class="line"><span class="built_in">cd</span> puppetserver/</span><br><span class="line"></span><br><span class="line">makepkg -si</span><br><span class="line"></span><br></pre></td></tr></table></figure>
-
-<p>Having questions about the <code>makepkg</code> command? Visit <a href="/2023/04/25/Running%20ArchLinux%20ARM%20in%20UTM%20on%20a%20M1%20MacBook%20Air/#yay" title="makepkg">here</a>!</p>
-<div>
-    Afterwards, enable and start the <b>puppetserver</b> service.
-</div>
-
-<figure class="highlight bash"><table><tr><td class="code"><pre><span class="line">sudo systemctl <span class="built_in">enable</span> puppetserver.service</span><br><span class="line"></span><br><span class="line"><span class="comment"># Add to &quot;/etc/systemd/system/multi-user.target.wants&quot;.</span></span><br><span class="line"></span><br><span class="line">sudo systemctl start puppetserver.service</span><br><span class="line"></span><br></pre></td></tr></table></figure>
-
-<h3 id="Delete-a-key"><a href="#Delete-a-key" class="headerlink" title="Delete a key"></a>Delete a key</h3><p>List the keys in your keyring using the command <code>gpg --list-keys</code>:</p>
-<pre><code>$ gpg --list-keys
-/root/.gnupg/pubring.kbx
-------------------------
-pub   rsa4096 2019-04-08 [SC] [expires: 2025-04-06]
-      D6811ED3ADEEB8441AF5AA8F4528B6CD9E61EF26
-uid           [ unknown] Puppet, Inc. Release Key (Puppet, Inc. Release Key) &lt;release@puppet.com&gt;
-</code></pre>
-<p>For example, the key ID of the instance above is “D6811ED3ADEEB8441AF5AA8F4528B6CD9E61EF26”.</p>
-<p>Delete the key using the command <code>gpg --delete-keys [key ID]</code>.</p>
-<p>Note that deleting a key from your keyring will prevent you from verifying any signatures made with that key in the future. If you need to use the key again later, you will need to fetch it again using the <code>gpg --fetch-keys</code> command.</p>
-<blockquote>
-<p>Configuration</p>
-</blockquote>
-<p>The Puppet Server’s configuration files are stored in <code>/etc/puppetlabs/puppetserver/</code>.</p>
-]]></content>
-      <categories>
-        <category>Puppet</category>
-      </categories>
-      <tags>
-        <tag>Linux</tag>
-        <tag>ArchLinux</tag>
-        <tag>Puppet</tag>
-        <tag>server</tag>
-        <tag>GPG key</tag>
-      </tags>
-  </entry>
-  <entry>
-    <title>The Shanghai Lockdown Diary</title>
-    <url>/2023/05/05/The%20Shanghai%20Lockdown%20Diary/</url>
-    <content><![CDATA[<p>A late addition to the stack, but by all accounts no less authentic. This is a real account of what transpired in Shanghai during the great lockdown. I, for one, was away at the time, locked up at school in a different city. Nonetheless, ripples of the cataclysmic effects had reached me in that northern coast-lined city, sending waves of shock and grief, piercing my heart like daggers.</p>
-<p>My mom’s account of those three months is a testament to her talent with words and positive outlook on life in general. She describes the despair and hopelessness that consumed many during that time, but also the resilience and strength of the human spirit. Her words paint a vivid picture of what life was like during the lockdown, and the following account is for anyone interested in gaining a deeper understanding of this human experience.</p>
-<p>2022年4月8日，是丈夫和我因上海疫情在家禁足的第十一天。</p>
-<p>微信群每天都有几百上千条信息：朝阳群众雪亮的双眼把偷溜下楼的人拍照发群，让其 “见光死”，果然后面几天下楼溜达的人几乎绝迹；把各区发放的食品发群，让群众们点评到底哪个区更“豪横”？将各种荒唐离谱的防疫搞笑视频发群，对其极尽调侃之能事；最重要的是，街道居委的各类通知也由楼组长发布在群里，实施无漏洞的网格化管理。每天每日每个楼洞排着队整齐划一去做核酸检测，真乃“威武之师”也！</p>
-<p>随着封控天数的增加，每家每户存粮逐渐耗尽。微信群里搞笑调侃的少了，群情激昂点评时事的少了，取而代之的是各种团购群组。从米面油蔬菜水果到婴儿奶粉纸尿裤，应有尽有。此时此刻，没有什么比一桶油一盒鸡蛋更重要的了。也有幸运儿在群里炫耀自己在各类APP上拼手速抢到的食物图片，普普通通的一块奶油蛋糕就足以让人垂涎欲滴。望着每日重复的食物和日渐的清空冰箱，我有点心动了。</p>
-<p>当晚，我就在手机上下载了四个外卖应用：美团、叮咚买菜、每日优鲜、盒马。先看美团，发现“你所在的小区不在配送范围”。再看每日优鲜，很多东西是“缺货”，好不容易找到有货的，鸡蛋10个29.8元，狠狠心把它加入购物车，点击购买时，发现仍然需要在早上六点抢，当下不能生成订单，我如释重负，毫不犹豫将这“绿色有机”的鸡蛋删除了。叮咚买菜、盒马鲜生也都是需要在早上六点拼手速抢下单，浏览了一遍，东西普遍价格高，也谈不到质优，本就抱着试试看心态的我干脆放弃了。</p>
-<p>回过来审视我自己的情况：目前家中存粮还够吃，挨饿是肯定不会的。这得益于我的一个好习惯：经常清点家中存货，一旦缺少，马上补足三个月的量。2020年武汉疫情时，由于对病毒的无知而产生的恐惧，我有过大半个月没有下楼的经历，一切全靠网购，且放足了余量。现在看来，未雨绸缪，广积粮是必要的。</p>
-<p>如今，八旬老父老母在故乡身体健康，自强自立的两位老人把自己的生活安排得妥妥帖帖，不要子女操半点心；儿子离开上海在大学正常地学习生活，为着自己的目标在每天努力；海外的家人们安居乐业，捷报频传。身无后顾之忧的我俩一身轻松：我精打细算烧菜做饭，丈夫风花雪月吟诗作对，禁足的日子过得并不乏味且充满诗意。</p>
-<p>惟愿疫情的阴霾尽快散去，我爱的家人们能很快相聚，上海重现东方明珠的风采！</p>
-<hr>
-<p>On April 8th, 2022, it was the eleventh day of being confined at home in Shanghai due to the pandemic. Every day, there were hundreds or even thousands of messages in our WeChat groups. Some groups had photos of people sneaking out of their homes, which were then shared to shame them. This resulted in fewer people sneaking out in the following days. Other groups shared information about food distribution in different districts, and we would compare which district had better supplies. There were also many funny videos related to the pandemic that were shared, which made us laugh and helped to relieve some of the stress.</p>
-<p>As the days went by, our food supplies began to dwindle. The funny videos and discussions about current events became less frequent in the groups, and were replaced by various group-buying options. Everything from rice, noodles, oil, vegetables, fruits, to baby formula and diapers were available. At this time, nothing was more important than having a bucket of oil and a box of eggs. Some lucky people would show off the food they had managed to buy from various apps, and even a simple piece of cake would make us drool.</p>
-<p>That night, I downloaded four food delivery apps on my phone: Meituan, Dingdong Maicai, MissFresh, and Hema. I checked Meituan first, but my neighborhood was not within their delivery range. Then I tried MissFresh, but many items were out of stock. I finally found eggs, but they were priced at 29.8 yuan for a pack of 10. When I tried to purchase them, I found out that I still needed to compete with others at 6am to place my order. I felt relieved that I didn’t have to buy them and deleted them from my cart. Dingdong Maicai and Hema also required me to compete with others at 6am to place my order, and the prices were generally high with no guarantee of quality. I decided to give up on them altogether.</p>
-<p>Looking back at my situation, I realized that we still had enough food to eat, and we wouldn’t go hungry. This was thanks to my good habit of regularly checking our food supplies and stocking up on a three-month supply when we were running low. During the Wuhan pandemic in 2020, I was afraid of the virus and didn’t leave my home for almost two weeks. All of our supplies were ordered online and we had extra just in case. Now, it’s clear that preparing ahead of time and stocking up on food is necessary.</p>
-<p>Currently, my elderly parents are healthy and living in their hometown, and they are self-sufficient and don’t require any assistance from their children. My son is away at university, working hard towards his goals, and my family members who live abroad are doing well. With no worries, my husband and I are enjoying our time at home during the lockdown. I cook and budget carefully, while my husband writes poetry and enjoys his hobbies. Although we are confined to our home, it’s not boring and we find joy in simple things.</p>
-<p>We hope that the pandemic will soon be over, and that we can be reunited with our loved ones. We also hope that Shanghai can once again thrive and shine like the Oriental Pearl it is.</p>
-]]></content>
-      <tags>
-        <tag>Life</tag>
-      </tags>
-  </entry>
-  <entry>
-    <title>Minor adjustment from Bash to Zsh</title>
-    <url>/2024/05/27/Minor%20adjustment%20from%20Bash%20to%20Zsh/</url>
-    <content><![CDATA[<blockquote>
-<p>Converting characters to uppercase(&#x2F;lowercase)</p>
-</blockquote>
-<p>Take variable <code>sayhi</code> for example:</p>
-<figure class="highlight bash"><table><tr><td class="code"><pre><span class="line">sayhi=<span class="string">&quot;hello there&quot;</span></span><br><span class="line"><span class="built_in">echo</span> <span class="variable">$&#123;sayhi^^[eo]&#125;</span></span><br></pre></td></tr></table></figure>
-
-<p>This method of converting lowercase letters to uppercase only works in Bash and will throw and “Bad substitution” error if you try it in Zsh.<br>Instead, you should use general replacement for this in Zsh:</p>
-<figure class="highlight plaintext"><table><tr><td class="code"><pre><span class="line">echo $&#123;sayhi//[eo]/[EO]&#125;</span><br></pre></td></tr></table></figure>
-
-<p>Or, for a more Zsh native method, we can try out substitution flags, which comes in two formats:</p>
-<figure class="highlight plaintext"><table><tr><td class="code"><pre><span class="line">echo $&#123;sayhi:u&#125;</span><br><span class="line"># Or use it as a prefix:</span><br><span class="line">echo $&#123;(U):sayhi&#125;</span><br></pre></td></tr></table></figure>
-]]></content>
-      <categories>
-        <category>CLI</category>
-      </categories>
-      <tags>
-        <tag>Bash</tag>
-        <tag>Zsh</tag>
+        <tag>JavaScript</tag>
+        <tag>Methods</tag>
       </tags>
   </entry>
   <entry>
@@ -933,6 +874,65 @@ Possible reasons for having this kind of units are:
       </tags>
   </entry>
   <entry>
+    <title>The Shanghai Lockdown Diary</title>
+    <url>/2023/05/05/The%20Shanghai%20Lockdown%20Diary/</url>
+    <content><![CDATA[<p>A late addition to the stack, but by all accounts no less authentic. This is a real account of what transpired in Shanghai during the great lockdown. I, for one, was away at the time, locked up at school in a different city. Nonetheless, ripples of the cataclysmic effects had reached me in that northern coast-lined city, sending waves of shock and grief, piercing my heart like daggers.</p>
+<p>My mom’s account of those three months is a testament to her talent with words and positive outlook on life in general. She describes the despair and hopelessness that consumed many during that time, but also the resilience and strength of the human spirit. Her words paint a vivid picture of what life was like during the lockdown, and the following account is for anyone interested in gaining a deeper understanding of this human experience.</p>
+<p>2022年4月8日，是丈夫和我因上海疫情在家禁足的第十一天。</p>
+<p>微信群每天都有几百上千条信息：朝阳群众雪亮的双眼把偷溜下楼的人拍照发群，让其 “见光死”，果然后面几天下楼溜达的人几乎绝迹；把各区发放的食品发群，让群众们点评到底哪个区更“豪横”？将各种荒唐离谱的防疫搞笑视频发群，对其极尽调侃之能事；最重要的是，街道居委的各类通知也由楼组长发布在群里，实施无漏洞的网格化管理。每天每日每个楼洞排着队整齐划一去做核酸检测，真乃“威武之师”也！</p>
+<p>随着封控天数的增加，每家每户存粮逐渐耗尽。微信群里搞笑调侃的少了，群情激昂点评时事的少了，取而代之的是各种团购群组。从米面油蔬菜水果到婴儿奶粉纸尿裤，应有尽有。此时此刻，没有什么比一桶油一盒鸡蛋更重要的了。也有幸运儿在群里炫耀自己在各类APP上拼手速抢到的食物图片，普普通通的一块奶油蛋糕就足以让人垂涎欲滴。望着每日重复的食物和日渐的清空冰箱，我有点心动了。</p>
+<p>当晚，我就在手机上下载了四个外卖应用：美团、叮咚买菜、每日优鲜、盒马。先看美团，发现“你所在的小区不在配送范围”。再看每日优鲜，很多东西是“缺货”，好不容易找到有货的，鸡蛋10个29.8元，狠狠心把它加入购物车，点击购买时，发现仍然需要在早上六点抢，当下不能生成订单，我如释重负，毫不犹豫将这“绿色有机”的鸡蛋删除了。叮咚买菜、盒马鲜生也都是需要在早上六点拼手速抢下单，浏览了一遍，东西普遍价格高，也谈不到质优，本就抱着试试看心态的我干脆放弃了。</p>
+<p>回过来审视我自己的情况：目前家中存粮还够吃，挨饿是肯定不会的。这得益于我的一个好习惯：经常清点家中存货，一旦缺少，马上补足三个月的量。2020年武汉疫情时，由于对病毒的无知而产生的恐惧，我有过大半个月没有下楼的经历，一切全靠网购，且放足了余量。现在看来，未雨绸缪，广积粮是必要的。</p>
+<p>如今，八旬老父老母在故乡身体健康，自强自立的两位老人把自己的生活安排得妥妥帖帖，不要子女操半点心；儿子离开上海在大学正常地学习生活，为着自己的目标在每天努力；海外的家人们安居乐业，捷报频传。身无后顾之忧的我俩一身轻松：我精打细算烧菜做饭，丈夫风花雪月吟诗作对，禁足的日子过得并不乏味且充满诗意。</p>
+<p>惟愿疫情的阴霾尽快散去，我爱的家人们能很快相聚，上海重现东方明珠的风采！</p>
+<hr>
+<p>On April 8th, 2022, it was the eleventh day of being confined at home in Shanghai due to the pandemic. Every day, there were hundreds or even thousands of messages in our WeChat groups. Some groups had photos of people sneaking out of their homes, which were then shared to shame them. This resulted in fewer people sneaking out in the following days. Other groups shared information about food distribution in different districts, and we would compare which district had better supplies. There were also many funny videos related to the pandemic that were shared, which made us laugh and helped to relieve some of the stress.</p>
+<p>As the days went by, our food supplies began to dwindle. The funny videos and discussions about current events became less frequent in the groups, and were replaced by various group-buying options. Everything from rice, noodles, oil, vegetables, fruits, to baby formula and diapers were available. At this time, nothing was more important than having a bucket of oil and a box of eggs. Some lucky people would show off the food they had managed to buy from various apps, and even a simple piece of cake would make us drool.</p>
+<p>That night, I downloaded four food delivery apps on my phone: Meituan, Dingdong Maicai, MissFresh, and Hema. I checked Meituan first, but my neighborhood was not within their delivery range. Then I tried MissFresh, but many items were out of stock. I finally found eggs, but they were priced at 29.8 yuan for a pack of 10. When I tried to purchase them, I found out that I still needed to compete with others at 6am to place my order. I felt relieved that I didn’t have to buy them and deleted them from my cart. Dingdong Maicai and Hema also required me to compete with others at 6am to place my order, and the prices were generally high with no guarantee of quality. I decided to give up on them altogether.</p>
+<p>Looking back at my situation, I realized that we still had enough food to eat, and we wouldn’t go hungry. This was thanks to my good habit of regularly checking our food supplies and stocking up on a three-month supply when we were running low. During the Wuhan pandemic in 2020, I was afraid of the virus and didn’t leave my home for almost two weeks. All of our supplies were ordered online and we had extra just in case. Now, it’s clear that preparing ahead of time and stocking up on food is necessary.</p>
+<p>Currently, my elderly parents are healthy and living in their hometown, and they are self-sufficient and don’t require any assistance from their children. My son is away at university, working hard towards his goals, and my family members who live abroad are doing well. With no worries, my husband and I are enjoying our time at home during the lockdown. I cook and budget carefully, while my husband writes poetry and enjoys his hobbies. Although we are confined to our home, it’s not boring and we find joy in simple things.</p>
+<p>We hope that the pandemic will soon be over, and that we can be reunited with our loved ones. We also hope that Shanghai can once again thrive and shine like the Oriental Pearl it is.</p>
+]]></content>
+      <tags>
+        <tag>Life</tag>
+      </tags>
+  </entry>
+  <entry>
+    <title>Positional Parameters</title>
+    <url>/2023/04/29/Positional%20Parameters/</url>
+    <content><![CDATA[<p>In Bash, positional parameters are special variables that hold the arguments passed to a script or function. The positional parameters are numbered from <code>0</code> to <code>9</code>, where <code>$0</code> holds the name of the script or function, and <code>$1</code> through <code>$9</code> hold the first through ninth arguments, respectively.</p>
+<p><code>$@</code> and <code>$*</code> both hold all the arguments passed to the script. Note that <code>$@</code> is an array-like variable that holds all the positional parameters as <em>separate elements</em>, while <code>$*</code> is another variable that holds all the positional parameters as <em>a single string</em>.</p>
+<p>Here’s an example:</p>
+<pre><code>#!/bin/bash
+
+#!/bin/bash
+
+echo &quot;Script Name: $0&quot;
+echo &quot;First Arg: $1&quot;
+echo &quot;Second Arg: $2&quot;
+echo &quot;All args (arr): $@&quot;
+echo &quot;All args (str): $*&quot;
+</code></pre>
+<p>Now let’s run the script with three arguments:</p>
+<figure class="highlight bash"><table><tr><td class="code"><pre><span class="line"><span class="built_in">chmod</span> u+x ./script <span class="comment"># Grant execution privilege for user</span></span><br><span class="line"></span><br><span class="line">./script a b c</span><br><span class="line"></span><br></pre></td></tr></table></figure>
+
+<p>The output should be something like this:</p>
+<pre><code>Script Name: ./script.sh
+First Arg: a
+Second Arg: b
+All args (arr): a b c
+All args (str): a b c
+</code></pre>
+]]></content>
+      <categories>
+        <category>Bash</category>
+      </categories>
+      <tags>
+        <tag>Linux</tag>
+        <tag>Bash</tag>
+      </tags>
+  </entry>
+  <entry>
     <title>[Fix] Failed to mount /mnt/share</title>
     <url>/2023/04/27/%5BFix%5D%20Failed%20to%20mount%20:mnt:share/</url>
     <content><![CDATA[<h3 id="Solution"><a href="#Solution" class="headerlink" title="Solution"></a>Solution</h3><p>Our fix to the problem is to remove <code>/mnt/share</code> entirely and mount something else in its place.</p>
@@ -1019,186 +1019,6 @@ Apr 27 02:45:46 alarm systemd[1]: Failed to mount /mnt/share.
         <tag>ArchLinux</tag>
         <tag>Virtual Machine</tag>
         <tag>Issue</tag>
-      </tags>
-  </entry>
-  <entry>
-    <title>`node` in the command line</title>
-    <url>/2023/04/28/%60node%60%20in%20the%20command%20line/</url>
-    <content><![CDATA[<p>I ran into this hassle the other day when my <code>npm</code> command failed to work in the command line. It took me a while to sort things out and left me in a foul mood. To prevent something like that from happening again, I decided to write this post. Nothing fancy - just some commands that might prove helpful in the long run.</p>
-<h3 id="node"><a href="#node" class="headerlink" title="node"></a><em><code>node</code></em></h3><h4 id="Display-global-installation-directory"><a href="#Display-global-installation-directory" class="headerlink" title="Display global installation directory"></a>Display global installation directory</h4><figure class="highlight bash"><table><tr><td class="code"><pre><span class="line">npm root -g</span><br></pre></td></tr></table></figure>
-
-<p>If you installed <code>node</code> using the official package installer, the global installation directory for <code>npm</code> packages would be:</p>
-<pre><code>/usr/local/lib/node_modules
-</code></pre>
-<p>Or you could’ve installed it using Homebrew. In that case, the global installation directory would be:</p>
-<pre><code>/opt/homebrew/lib/node_modules
-</code></pre>
-<h4 id="View-global-installation"><a href="#View-global-installation" class="headerlink" title="View global installation"></a>View global installation</h4><figure class="highlight bash"><table><tr><td class="code"><pre><span class="line">npm <span class="built_in">ls</span> -g</span><br></pre></td></tr></table></figure>
-
-<pre><code>/opt/homebrew/lib
-├── @e-hentai/home@1.6.0-alpha.9
-├── express-generator@4.16.1
-├── nodemon@2.0.22
-└── npm@9.6.5
-</code></pre>
-<h4 id="Update-global-installation"><a href="#Update-global-installation" class="headerlink" title="Update global installation"></a>Update global installation</h4><figure class="highlight bash"><table><tr><td class="code"><pre><span class="line">npm update -g</span><br></pre></td></tr></table></figure>
-
-<h4 id="View-global-configuration"><a href="#View-global-configuration" class="headerlink" title="View global configuration"></a>View global configuration</h4><figure class="highlight bash"><table><tr><td class="code"><pre><span class="line">npm config list</span><br></pre></td></tr></table></figure>
-
-<p>The output should be on the lines of this:</p>
-<pre><code>; &quot;builtin&quot; config from /opt/homebrew/lib/node_modules/npm/npmrc
-
-prefix = &quot;/opt/homebrew&quot; 
-
-; &quot;user&quot; config from /Users/Mccranky/.npmrc
-
-fetch-retry-maxtimeout = 300000 
-
-; node bin location = /opt/homebrew/Cellar/node/20.0.0/bin/node
-; node version = v20.0.0
-; npm local prefix = /Users/Mccranky
-; npm version = 9.6.5
-; cwd = /Users/Mccranky
-; HOME = /Users/Mccranky
-; Run `npm config ls -l` to show all defaults.
-</code></pre>
-<p>From it, we can discern a few key instances that might prove helpful.</p>
-<blockquote>
-<p>“builtin” config is stored at <code>/opt/homebrew/lib/node_modules/npm/npmrc</code></p>
-</blockquote>
-<blockquote>
-<p>“user” config is stored at <code>/Users/Mccranky/.npmrc</code></p>
-</blockquote>
-<h4 id="Add-x2F-remove-configuration"><a href="#Add-x2F-remove-configuration" class="headerlink" title="Add&#x2F;remove configuration"></a>Add&#x2F;remove configuration</h4><figure class="highlight bash"><table><tr><td class="code"><pre><span class="line">npm config <span class="built_in">set</span> &lt;name&gt; &lt;value&gt;</span><br></pre></td></tr></table></figure>
-
-<p>For example, if I want to specify a range of time before timeout occurs, I can use the following command:</p>
-<figure class="highlight bash"><table><tr><td class="code"><pre><span class="line">npm config <span class="built_in">set</span> fetch-retry-maxtimeout 300000 // 5 minutes</span><br><span class="line"></span><br><span class="line">npm config <span class="built_in">set</span> fetch-retry-mintimeout 60000 // 1 minute</span><br><span class="line"></span><br></pre></td></tr></table></figure>
-
-<p>The same mechanism applys when it comes to how we delete configurations:</p>
-<figure class="highlight bash"><table><tr><td class="code"><pre><span class="line">npm config delete fetch-retry-maxtimeout</span><br><span class="line"></span><br><span class="line">npm config delete fetch-retry-mintimeout</span><br><span class="line"></span><br></pre></td></tr></table></figure>
-
-<h3 id="express"><a href="#express" class="headerlink" title="express"></a><em><code>express</code></em></h3><p>I’ve only just started dabbling with <code>express</code> and my expertise is cut pretty thin, but the rule of thumb I tend to follow is:</p>
-<ol>
-<li><p>If you’re installing something that you want to use in <strong>your program</strong> using <code>require(&#39;something&#39;)</code>, then install it locally, at the root of your project.</p>
-</li>
-<li><p>If you’re installing something that you want to use on the <strong>command line</strong> or something, install it globally, so that its binaries end up in your <code>$PATH</code> environment variable.</p>
-</li>
-</ol>
-<p>Based on this, you would want to install <code>express-generator</code> using the <code>-g</code> flag as you will use it as a command line tool, but you’d want to install <code>express</code> without this flag as it’s a module you will want to <code>require()</code> it in your application.</p>
-]]></content>
-      <categories>
-        <category>Node.js</category>
-      </categories>
-      <tags>
-        <tag>Node.js</tag>
-        <tag>Express.js</tag>
-        <tag>Note</tag>
-      </tags>
-  </entry>
-  <entry>
-    <title>使用 Telnet 连接 GreenMail 模拟邮件服务器 (测试 SMTP / IMAP 连接)</title>
-    <url>/2023/04/21/%E4%BD%BF%E7%94%A8%20Telnet%20%E8%BF%9E%E6%8E%A5%20GreenMail%20%E6%A8%A1%E6%8B%9F%E9%82%AE%E4%BB%B6%E6%9C%8D%E5%8A%A1%E5%99%A8%20(%E6%B5%8B%E8%AF%95%20SMTP%20:%20IMAP%20%E8%BF%9E%E6%8E%A5)/</url>
-    <content><![CDATA[<h3 id="要求"><a href="#要求" class="headerlink" title="要求"></a><em>要求</em></h3><ul>
-<li><p>GreenMail Standalone</p>
-</li>
-<li><p>本地 Apache 服务器</p>
-</li>
-</ul>
-<h3 id="下载"><a href="#下载" class="headerlink" title="下载"></a><em>下载</em></h3><ol>
-<li><p>从<a href="https://greenmail-mail-test.github.io/greenmail/#download" title="GreenMail Download"> GreenMail 官网</a>直接下载</p>
-</li>
-<li><p>使用命令行指令下载：</p>
-</li>
-</ol>
-<figure class="highlight bash"><table><tr><td class="code"><pre><span class="line"><span class="built_in">cd</span> /home/user/</span><br><span class="line"></span><br><span class="line">wget https://repo1.maven.org/maven2/com/icegreen/greenmail-standalone/2.1.0-alpha-1/greenmail-standalone-2.1.0-alpha-1.jar</span><br></pre></td></tr></table></figure>
-
-<p>下载完成以后从终端运行<code>.jar</code>文件：</p>
-<figure class="highlight bash"><table><tr><td class="code"><pre><span class="line">java -Dgreenmail.smtp.timeout=120000 -Dgreenmail.smtp.hostname=0.0.0.0 -Dgreenmail.smtp.port=3025 -Dgreenmail.imap.hostname=0.0.0.0 -Dgreenmail.imap.port=3143 -jar /path/to/file/greenmail-standalone-2.1.0-alpha-1.jar</span><br></pre></td></tr></table></figure>
-
-<blockquote>
-<p><code>-Dgreenmail.smtp.timeout</code>：为防止 SMTP 服务器超时，把超时时常设置为 120000 毫秒</p>
-</blockquote>
-<blockquote>
-<p><code>-Dgreenmail.smtp.hostname</code>, <code>Dgreenmail.smtp.port</code>：设置 SMTP 地址和端口</p>
-</blockquote>
-<blockquote>
-<p><code>-Dgreenmail.imap.hostname</code>, <code>-Dgreenmail.imap.port</code>：设置 IMAP 地址和端口</p>
-</blockquote>
-<h3 id="连接-SMTP-服务器"><a href="#连接-SMTP-服务器" class="headerlink" title="连接 SMTP 服务器"></a>连接 SMTP 服务器</h3><p>开启 Telnet 进程，连接到 SMTP 服务器的 3025 端口：</p>
-<figure class="highlight bash"><table><tr><td class="code"><pre><span class="line">telent localhost 3025</span><br><span class="line"></span><br><span class="line"><span class="comment"># 因为是模拟握手，所以服务器地址就是本地域名</span></span><br></pre></td></tr></table></figure>
-
-<pre><code>$ telnet localhost 3025
-Trying ::1...
-Connected to localhost.
-Escape character is &#39;^]&#39;.
-220 /0:0:0:0:0:0:0:1 GreenMail SMTP Service v2.1.0-alpha-1 ready
-421 Service shutting down and closing transmission channel (socket timeout, SO_TIMEOUT: 30000ms)
-</code></pre>
-<p>握手成功了！接下里可以输入四字指令和 SMTP 服务器交流：</p>
-<pre><code>C: HELO localhost
-S: 250-/0:0:0:0:0:0:0:1
-   250 AUTH PLAIN LOGIN
-C: MAIL FROM: &lt;example@email.com&gt;
-S: 250 OK
-C: RCPT TO: &lt;example@email.com&gt;
-S: 250 OK
-C: DATA
-S: 354 Start mail input; end with &lt;CRLF&gt;.&lt;CRLF&gt;
-C: HELLO THERE
-   THIS IS USER SPEAKING
-   .
-S: 250 OK
-C: QUIT
-S: 221 /0:0:0:0:0:0:0:1 Service closing transmission channel
-   Connection closed by foreign host.
-</code></pre>
-<p>解释一下这些缩写是什么意思：</p>
-<blockquote>
-<p><code>HELO</code>: hello</p>
-</blockquote>
-<blockquote>
-<p><code>RCPT</code>: recipient</p>
-</blockquote>
-<blockquote>
-<p><code>CRLF</code>: carriage return &amp; line feed</p>
-</blockquote>
-<hr>
-<h3 id="连接-IMAP-服务器"><a href="#连接-IMAP-服务器" class="headerlink" title="连接 IMAP 服务器"></a>连接 IMAP 服务器</h3><p><strong><em>认证阶段</em></strong></p>
-<pre><code>  2023-10-09 14:59:25,387 INFO
-  user.UserManager| Created user login example@email.com for address example@email.com with password
-  example@email.com because it didn&#39;t exist before.
-
-  $ telnet localhost 3110
-  +OK POP3 server ready
-  user example@email.com
-  +OK
-  pass example@email.com
-  +OK user successfully logged on
-</code></pre>
-<p><strong><em>交易阶段</em></strong></p>
-<pre><code>  C: list
-  S: 1 498
-  S: 2 912
-  S: .
-  C: retr 1
-  S: (blah blah ...
-  S: .................
-  S: ..........blah)
-  S: .
-  C: dele 1
-  C: retr 2
-  S: (blah blah ...
-  S: .................
-  S: ..........blah)
-  S: .
-  C: dele 2
-  C: quit
-  S: +OK POP3 server signing off
-</code></pre>
-<p>用户在这个阶段可以给邮件添加标记，被添加<strong>删除标记</strong>的邮件将在最后的更新阶段被<strong>删除</strong>。</p>
-]]></content>
-      <tags>
-        <tag>Computer Networking</tag>
       </tags>
   </entry>
   <entry>
@@ -1315,6 +1135,80 @@ S: 221 /0:0:0:0:0:0:0:1 Service closing transmission channel
       </tags>
   </entry>
   <entry>
+    <title>`node` in the command line</title>
+    <url>/2023/04/28/%60node%60%20in%20the%20command%20line/</url>
+    <content><![CDATA[<p>I ran into this hassle the other day when my <code>npm</code> command failed to work in the command line. It took me a while to sort things out and left me in a foul mood. To prevent something like that from happening again, I decided to write this post. Nothing fancy - just some commands that might prove helpful in the long run.</p>
+<h3 id="node"><a href="#node" class="headerlink" title="node"></a><em><code>node</code></em></h3><h4 id="Display-global-installation-directory"><a href="#Display-global-installation-directory" class="headerlink" title="Display global installation directory"></a>Display global installation directory</h4><figure class="highlight bash"><table><tr><td class="code"><pre><span class="line">npm root -g</span><br></pre></td></tr></table></figure>
+
+<p>If you installed <code>node</code> using the official package installer, the global installation directory for <code>npm</code> packages would be:</p>
+<pre><code>/usr/local/lib/node_modules
+</code></pre>
+<p>Or you could’ve installed it using Homebrew. In that case, the global installation directory would be:</p>
+<pre><code>/opt/homebrew/lib/node_modules
+</code></pre>
+<h4 id="View-global-installation"><a href="#View-global-installation" class="headerlink" title="View global installation"></a>View global installation</h4><figure class="highlight bash"><table><tr><td class="code"><pre><span class="line">npm <span class="built_in">ls</span> -g</span><br></pre></td></tr></table></figure>
+
+<pre><code>/opt/homebrew/lib
+├── @e-hentai/home@1.6.0-alpha.9
+├── express-generator@4.16.1
+├── nodemon@2.0.22
+└── npm@9.6.5
+</code></pre>
+<h4 id="Update-global-installation"><a href="#Update-global-installation" class="headerlink" title="Update global installation"></a>Update global installation</h4><figure class="highlight bash"><table><tr><td class="code"><pre><span class="line">npm update -g</span><br></pre></td></tr></table></figure>
+
+<h4 id="View-global-configuration"><a href="#View-global-configuration" class="headerlink" title="View global configuration"></a>View global configuration</h4><figure class="highlight bash"><table><tr><td class="code"><pre><span class="line">npm config list</span><br></pre></td></tr></table></figure>
+
+<p>The output should be on the lines of this:</p>
+<pre><code>; &quot;builtin&quot; config from /opt/homebrew/lib/node_modules/npm/npmrc
+
+prefix = &quot;/opt/homebrew&quot; 
+
+; &quot;user&quot; config from /Users/Mccranky/.npmrc
+
+fetch-retry-maxtimeout = 300000 
+
+; node bin location = /opt/homebrew/Cellar/node/20.0.0/bin/node
+; node version = v20.0.0
+; npm local prefix = /Users/Mccranky
+; npm version = 9.6.5
+; cwd = /Users/Mccranky
+; HOME = /Users/Mccranky
+; Run `npm config ls -l` to show all defaults.
+</code></pre>
+<p>From it, we can discern a few key instances that might prove helpful.</p>
+<blockquote>
+<p>“builtin” config is stored at <code>/opt/homebrew/lib/node_modules/npm/npmrc</code></p>
+</blockquote>
+<blockquote>
+<p>“user” config is stored at <code>/Users/Mccranky/.npmrc</code></p>
+</blockquote>
+<h4 id="Add-x2F-remove-configuration"><a href="#Add-x2F-remove-configuration" class="headerlink" title="Add&#x2F;remove configuration"></a>Add&#x2F;remove configuration</h4><figure class="highlight bash"><table><tr><td class="code"><pre><span class="line">npm config <span class="built_in">set</span> &lt;name&gt; &lt;value&gt;</span><br></pre></td></tr></table></figure>
+
+<p>For example, if I want to specify a range of time before timeout occurs, I can use the following command:</p>
+<figure class="highlight bash"><table><tr><td class="code"><pre><span class="line">npm config <span class="built_in">set</span> fetch-retry-maxtimeout 300000 // 5 minutes</span><br><span class="line"></span><br><span class="line">npm config <span class="built_in">set</span> fetch-retry-mintimeout 60000 // 1 minute</span><br><span class="line"></span><br></pre></td></tr></table></figure>
+
+<p>The same mechanism applys when it comes to how we delete configurations:</p>
+<figure class="highlight bash"><table><tr><td class="code"><pre><span class="line">npm config delete fetch-retry-maxtimeout</span><br><span class="line"></span><br><span class="line">npm config delete fetch-retry-mintimeout</span><br><span class="line"></span><br></pre></td></tr></table></figure>
+
+<h3 id="express"><a href="#express" class="headerlink" title="express"></a><em><code>express</code></em></h3><p>I’ve only just started dabbling with <code>express</code> and my expertise is cut pretty thin, but the rule of thumb I tend to follow is:</p>
+<ol>
+<li><p>If you’re installing something that you want to use in <strong>your program</strong> using <code>require(&#39;something&#39;)</code>, then install it locally, at the root of your project.</p>
+</li>
+<li><p>If you’re installing something that you want to use on the <strong>command line</strong> or something, install it globally, so that its binaries end up in your <code>$PATH</code> environment variable.</p>
+</li>
+</ol>
+<p>Based on this, you would want to install <code>express-generator</code> using the <code>-g</code> flag as you will use it as a command line tool, but you’d want to install <code>express</code> without this flag as it’s a module you will want to <code>require()</code> it in your application.</p>
+]]></content>
+      <categories>
+        <category>Node.js</category>
+      </categories>
+      <tags>
+        <tag>Node.js</tag>
+        <tag>Express.js</tag>
+        <tag>Note</tag>
+      </tags>
+  </entry>
+  <entry>
     <title>如何使用 GitHub Pages 托管 Hexo 静态博客网站</title>
     <url>/2023/04/22/%E5%A6%82%E4%BD%95%E4%BD%BF%E7%94%A8%20GitHub%20Pages%20%E6%89%98%E7%AE%A1%20Hexo%20%E9%9D%99%E6%80%81%E5%8D%9A%E5%AE%A2%E7%BD%91%E7%AB%99/</url>
     <content><![CDATA[<p>– <strong>请先阅读 <a href="/2023/04/22/%E4%BD%BF%E7%94%A8%20Hexo%20%E7%94%9F%E6%88%90%E9%9D%99%E6%80%81%E7%BD%91%E9%A1%B5%E5%8D%9A%E5%AE%A2/index.html">使用 Hexo 生成静态网页博客</a>！</strong></p>
@@ -1362,32 +1256,156 @@ S: 221 /0:0:0:0:0:0:0:1 Service closing transmission channel
       </tags>
   </entry>
   <entry>
-    <title>软件工程 第一周的博客</title>
-    <url>/2023/03/22/%E8%BD%AF%E4%BB%B6%E5%B7%A5%E7%A8%8B%20%E7%AC%AC%E4%B8%80%E5%91%A8%E7%9A%84%E5%8D%9A%E5%AE%A2/</url>
-    <content><![CDATA[<h3 id="使用Git-VCS的一些小技巧"><a href="#使用Git-VCS的一些小技巧" class="headerlink" title="使用Git VCS的一些小技巧"></a><em>使用Git VCS的一些小技巧</em></h3><p>初始化步骤我就大段省略了，大致就是去 Git 官网下载 Binary Dependencies 然后安装就好了，或者是去安装<code>xcode-command-line-tools</code>，其中<code>git</code>自动包含在里面了。</p>
-<p>说白了 Git 就是一个 Distributional VCS ，大体就是结合了 Local VCS和Centralized VCS，因此基本步骤就是本地建立一个 Local Repository，再在 Gitea 上建立一个 Remote Repository，然后把两个库连接一下，最后把本地的改动<code>push</code>到 Remote Repository 就可以了。</p>
-<p>先说如何建 Local Repository。</p>
-<p>选一处“风水宝地”，一般选择<code>/User/home</code>。然后跑到系统默认的 Terminal Emulator 去（ Windows：PowerShell ），输入一下指令：</p>
-<figure class="highlight bash"><table><tr><td class="code"><pre><span class="line"><span class="built_in">mkdir</span> temp <span class="comment"># 建立temp</span></span><br><span class="line"></span><br><span class="line"><span class="built_in">cd</span> temp <span class="comment"># 进入</span></span><br><span class="line"></span><br><span class="line">git init <span class="comment"># 初始化 Local Repository</span></span><br><span class="line"></span><br></pre></td></tr></table></figure>
+    <title>使用 Telnet 连接 GreenMail 模拟邮件服务器 (测试 SMTP / IMAP 连接)</title>
+    <url>/2023/04/21/%E4%BD%BF%E7%94%A8%20Telnet%20%E8%BF%9E%E6%8E%A5%20GreenMail%20%E6%A8%A1%E6%8B%9F%E9%82%AE%E4%BB%B6%E6%9C%8D%E5%8A%A1%E5%99%A8%20(%E6%B5%8B%E8%AF%95%20SMTP%20:%20IMAP%20%E8%BF%9E%E6%8E%A5)/</url>
+    <content><![CDATA[<h3 id="要求"><a href="#要求" class="headerlink" title="要求"></a><em>要求</em></h3><ul>
+<li><p>GreenMail Standalone</p>
+</li>
+<li><p>本地 Apache 服务器</p>
+</li>
+</ul>
+<h3 id="下载"><a href="#下载" class="headerlink" title="下载"></a><em>下载</em></h3><ol>
+<li><p>从<a href="https://greenmail-mail-test.github.io/greenmail/#download" title="GreenMail Download"> GreenMail 官网</a>直接下载</p>
+</li>
+<li><p>使用命令行指令下载：</p>
+</li>
+</ol>
+<figure class="highlight bash"><table><tr><td class="code"><pre><span class="line"><span class="built_in">cd</span> /home/user/</span><br><span class="line"></span><br><span class="line">wget https://repo1.maven.org/maven2/com/icegreen/greenmail-standalone/2.1.0-alpha-1/greenmail-standalone-2.1.0-alpha-1.jar</span><br></pre></td></tr></table></figure>
 
-<p>做完最后一步会看到 Git 生成了一个<code>.git</code>的隐藏文件夹。千万不要把自己的项目文件扔进去！</p>
-<p>初始化完成后，你就可以开始做项目了。等你做完第一个版本，你就可以把项目<code>add</code>到<code>staging area</code>。用如下指令：</p>
-<figure class="highlight bash"><table><tr><td class="code"><pre><span class="line">git add file.. <span class="comment"># add 后可以加入多个文件</span></span><br></pre></td></tr></table></figure>
+<p>下载完成以后从终端运行<code>.jar</code>文件：</p>
+<figure class="highlight bash"><table><tr><td class="code"><pre><span class="line">java -Dgreenmail.smtp.timeout=120000 -Dgreenmail.smtp.hostname=0.0.0.0 -Dgreenmail.smtp.port=3025 -Dgreenmail.imap.hostname=0.0.0.0 -Dgreenmail.imap.port=3143 -jar /path/to/file/greenmail-standalone-2.1.0-alpha-1.jar</span><br></pre></td></tr></table></figure>
 
-<p>然后用<code>git status</code>查看 Local Repository 的状态。如果你看到所有想要<code>staged</code>的文件已经在<code>staging area</code>里面了，就可以上传了。</p>
 <blockquote>
-<p>eg:</p>
+<p><code>-Dgreenmail.smtp.timeout</code>：为防止 SMTP 服务器超时，把超时时常设置为 120000 毫秒</p>
 </blockquote>
-<figure class="highlight bash"><table><tr><td class="code"><pre><span class="line">git commit -m “message<span class="string">&quot;</span></span><br></pre></td></tr></table></figure>
+<blockquote>
+<p><code>-Dgreenmail.smtp.hostname</code>, <code>Dgreenmail.smtp.port</code>：设置 SMTP 地址和端口</p>
+</blockquote>
+<blockquote>
+<p><code>-Dgreenmail.imap.hostname</code>, <code>-Dgreenmail.imap.port</code>：设置 IMAP 地址和端口</p>
+</blockquote>
+<h3 id="连接-SMTP-服务器"><a href="#连接-SMTP-服务器" class="headerlink" title="连接 SMTP 服务器"></a>连接 SMTP 服务器</h3><p>开启 Telnet 进程，连接到 SMTP 服务器的 3025 端口：</p>
+<figure class="highlight bash"><table><tr><td class="code"><pre><span class="line">telent localhost 3025</span><br><span class="line"></span><br><span class="line"><span class="comment"># 因为是模拟握手，所以服务器地址就是本地域名</span></span><br></pre></td></tr></table></figure>
 
-<p>最后，我们需要创建一个 Remote Repository，过程如下：</p>
-<figure class="highlight bash"><table><tr><td class="code"><pre><span class="line">git remote add origin git@example.git</span><br></pre></td></tr></table></figure>
+<pre><code>$ telnet localhost 3025
+Trying ::1...
+Connected to localhost.
+Escape character is &#39;^]&#39;.
+220 /0:0:0:0:0:0:0:1 GreenMail SMTP Service v2.1.0-alpha-1 ready
+421 Service shutting down and closing transmission channel (socket timeout, SO_TIMEOUT: 30000ms)
+</code></pre>
+<p>握手成功了！接下里可以输入四字指令和 SMTP 服务器交流：</p>
+<pre><code>C: HELO localhost
+S: 250-/0:0:0:0:0:0:0:1
+   250 AUTH PLAIN LOGIN
+C: MAIL FROM: &lt;example@email.com&gt;
+S: 250 OK
+C: RCPT TO: &lt;example@email.com&gt;
+S: 250 OK
+C: DATA
+S: 354 Start mail input; end with &lt;CRLF&gt;.&lt;CRLF&gt;
+C: HELLO THERE
+   THIS IS USER SPEAKING
+   .
+S: 250 OK
+C: QUIT
+S: 221 /0:0:0:0:0:0:0:1 Service closing transmission channel
+   Connection closed by foreign host.
+</code></pre>
+<p>解释一下这些缩写是什么意思：</p>
+<blockquote>
+<p><code>HELO</code>: hello</p>
+</blockquote>
+<blockquote>
+<p><code>RCPT</code>: recipient</p>
+</blockquote>
+<blockquote>
+<p><code>CRLF</code>: carriage return &amp; line feed</p>
+</blockquote>
+<hr>
+<h3 id="连接-IMAP-服务器"><a href="#连接-IMAP-服务器" class="headerlink" title="连接 IMAP 服务器"></a>连接 IMAP 服务器</h3><p><strong><em>认证阶段</em></strong></p>
+<pre><code>  2023-10-09 14:59:25,387 INFO
+  user.UserManager| Created user login example@email.com for address example@email.com with password
+  example@email.com because it didn&#39;t exist before.
 
-<p>然后，我们<code>push</code> Local Repo 到 Remote Repository，过程如下：</p>
-<figure class="highlight bash"><table><tr><td class="code"><pre><span class="line">git push origin temp</span><br></pre></td></tr></table></figure>]]></content>
+  $ telnet localhost 3110
+  +OK POP3 server ready
+  user example@email.com
+  +OK
+  pass example@email.com
+  +OK user successfully logged on
+</code></pre>
+<p><strong><em>交易阶段</em></strong></p>
+<pre><code>  C: list
+  S: 1 498
+  S: 2 912
+  S: .
+  C: retr 1
+  S: (blah blah ...
+  S: .................
+  S: ..........blah)
+  S: .
+  C: dele 1
+  C: retr 2
+  S: (blah blah ...
+  S: .................
+  S: ..........blah)
+  S: .
+  C: dele 2
+  C: quit
+  S: +OK POP3 server signing off
+</code></pre>
+<p>用户在这个阶段可以给邮件添加标记，被添加<strong>删除标记</strong>的邮件将在最后的更新阶段被<strong>删除</strong>。</p>
+]]></content>
+      <tags>
+        <tag>Computer Networking</tag>
+      </tags>
+  </entry>
+  <entry>
+    <title>如何生成项目树状结构图</title>
+    <url>/2023/04/22/%E5%A6%82%E4%BD%95%E7%94%9F%E6%88%90%E9%A1%B9%E7%9B%AE%E6%A0%91%E7%8A%B6%E7%BB%93%E6%9E%84%E5%9B%BE/</url>
+    <content><![CDATA[<h3 id="Prerequisites"><a href="#Prerequisites" class="headerlink" title="Prerequisites"></a>Prerequisites</h3><ul>
+<li><p>Install <code>tree</code> command via Homebrew by running <code>brew install tree</code></p>
+</li>
+<li><p>run <code>brew</code> to check if Homebrew is currently installed on your computer</p>
+</li>
+<li><p>if not, run the following to install Homebrew:</p>
+</li>
+</ul>
+<figure class="highlight bash"><table><tr><td class="code"><pre><span class="line">$ /bin/bash -c <span class="string">&quot;<span class="subst">$(curl -fsSL https://raw.githubusercontent.com/Homebrew/install/HEAD/install.sh)</span>&quot;</span></span><br></pre></td></tr></table></figure>
+
+<h3 id="Basic-Syntax"><a href="#Basic-Syntax" class="headerlink" title="Basic Syntax"></a>Basic Syntax</h3><figure class="highlight bash"><table><tr><td class="code"><pre><span class="line">tree [directory-path]</span><br></pre></td></tr></table></figure>
+
+<blockquote>
+<p><code>[directory-path]</code> is an optional argument that specifies the directory you want to display as a tree structure. If you don’t specify a directory path, tree will display the tree structure for the current directory.</p>
+</blockquote>
+<p>Here are some useful options you can add to the tree command:</p>
+<blockquote>
+<p><code>-L</code> <code>[level]</code>: Limit the depth of the tree to <code>[level]</code> directories.</p>
+</blockquote>
+<blockquote>
+<p><code>-I</code> <code>[pattern]</code>: Exclude files and directories that match the <code>[pattern]</code>.</p>
+</blockquote>
+<blockquote>
+<p><code>-P</code> <code>[pattern]</code>: <code>[pattern]</code> is used to match files or directories that you want to include in the output.</p>
+</blockquote>
+<blockquote>
+<p><code>-a</code>: Show hidden files and directories.</p>
+</blockquote>
+<blockquote>
+<p><code>-f</code>: Print the full path prefix for each file or directory.</p>
+</blockquote>
+<blockquote>
+<p><code>-h</code>: Print the size of each file or directory in a human-readable format.</p>
+</blockquote>
+<h3 id="Example"><a href="#Example" class="headerlink" title="Example"></a>Example</h3><figure class="highlight bash"><table><tr><td class="code"><pre><span class="line">$ tree -L 1 -P <span class="string">&quot;source/*&quot;</span> -I <span class="string">&quot;_drafts|_pages&quot;</span> <span class="built_in">source</span></span><br><span class="line"></span><br><span class="line"><span class="built_in">source</span></span><br><span class="line">└── _posts</span><br><span class="line"></span><br><span class="line">2 directories, 0 files</span><br></pre></td></tr></table></figure>
+
+<blockquote>
+<p>You can omit the report on the last line with option <code>--noreport</code> if it bothers you.</p>
+</blockquote>
+]]></content>
       <tags>
         <tag>Bash</tag>
-        <tag>Git</tag>
         <tag>CLI</tag>
         <tag>File Systems</tag>
       </tags>
@@ -1514,55 +1532,6 @@ S: 221 /0:0:0:0:0:0:0:1 Service closing transmission channel
       </tags>
   </entry>
   <entry>
-    <title>如何生成项目树状结构图</title>
-    <url>/2023/04/22/%E5%A6%82%E4%BD%95%E7%94%9F%E6%88%90%E9%A1%B9%E7%9B%AE%E6%A0%91%E7%8A%B6%E7%BB%93%E6%9E%84%E5%9B%BE/</url>
-    <content><![CDATA[<h3 id="Prerequisites"><a href="#Prerequisites" class="headerlink" title="Prerequisites"></a>Prerequisites</h3><ul>
-<li><p>Install <code>tree</code> command via Homebrew by running <code>brew install tree</code></p>
-</li>
-<li><p>run <code>brew</code> to check if Homebrew is currently installed on your computer</p>
-</li>
-<li><p>if not, run the following to install Homebrew:</p>
-</li>
-</ul>
-<figure class="highlight bash"><table><tr><td class="code"><pre><span class="line">$ /bin/bash -c <span class="string">&quot;<span class="subst">$(curl -fsSL https://raw.githubusercontent.com/Homebrew/install/HEAD/install.sh)</span>&quot;</span></span><br></pre></td></tr></table></figure>
-
-<h3 id="Basic-Syntax"><a href="#Basic-Syntax" class="headerlink" title="Basic Syntax"></a>Basic Syntax</h3><figure class="highlight bash"><table><tr><td class="code"><pre><span class="line">tree [directory-path]</span><br></pre></td></tr></table></figure>
-
-<blockquote>
-<p><code>[directory-path]</code> is an optional argument that specifies the directory you want to display as a tree structure. If you don’t specify a directory path, tree will display the tree structure for the current directory.</p>
-</blockquote>
-<p>Here are some useful options you can add to the tree command:</p>
-<blockquote>
-<p><code>-L</code> <code>[level]</code>: Limit the depth of the tree to <code>[level]</code> directories.</p>
-</blockquote>
-<blockquote>
-<p><code>-I</code> <code>[pattern]</code>: Exclude files and directories that match the <code>[pattern]</code>.</p>
-</blockquote>
-<blockquote>
-<p><code>-P</code> <code>[pattern]</code>: <code>[pattern]</code> is used to match files or directories that you want to include in the output.</p>
-</blockquote>
-<blockquote>
-<p><code>-a</code>: Show hidden files and directories.</p>
-</blockquote>
-<blockquote>
-<p><code>-f</code>: Print the full path prefix for each file or directory.</p>
-</blockquote>
-<blockquote>
-<p><code>-h</code>: Print the size of each file or directory in a human-readable format.</p>
-</blockquote>
-<h3 id="Example"><a href="#Example" class="headerlink" title="Example"></a>Example</h3><figure class="highlight bash"><table><tr><td class="code"><pre><span class="line">$ tree -L 1 -P <span class="string">&quot;source/*&quot;</span> -I <span class="string">&quot;_drafts|_pages&quot;</span> <span class="built_in">source</span></span><br><span class="line"></span><br><span class="line"><span class="built_in">source</span></span><br><span class="line">└── _posts</span><br><span class="line"></span><br><span class="line">2 directories, 0 files</span><br></pre></td></tr></table></figure>
-
-<blockquote>
-<p>You can omit the report on the last line with option <code>--noreport</code> if it bothers you.</p>
-</blockquote>
-]]></content>
-      <tags>
-        <tag>Bash</tag>
-        <tag>CLI</tag>
-        <tag>File Systems</tag>
-      </tags>
-  </entry>
-  <entry>
     <title>软件工程 第四周的博客</title>
     <url>/2023/04/14/%E8%BD%AF%E4%BB%B6%E5%B7%A5%E7%A8%8B%20%E7%AC%AC%E5%9B%9B%E5%91%A8%E7%9A%84%E5%8D%9A%E5%AE%A2/</url>
     <content><![CDATA[<h2 id="简要概述-CTF-OverTheWire-Bandit-Level-25"><a href="#简要概述-CTF-OverTheWire-Bandit-Level-25" class="headerlink" title="简要概述 CTF OverTheWire Bandit Level 25"></a><em>简要概述 CTF OverTheWire Bandit Level 25</em></h2><h3 id="题目"><a href="#题目" class="headerlink" title="题目"></a><em>题目</em></h3><blockquote>
@@ -1646,6 +1615,37 @@ Connection to localhost closed.
         <tag>CTF</tag>
         <tag>OverTheWire</tag>
         <tag>Bandit</tag>
+      </tags>
+  </entry>
+  <entry>
+    <title>软件工程 第一周的博客</title>
+    <url>/2023/03/22/%E8%BD%AF%E4%BB%B6%E5%B7%A5%E7%A8%8B%20%E7%AC%AC%E4%B8%80%E5%91%A8%E7%9A%84%E5%8D%9A%E5%AE%A2/</url>
+    <content><![CDATA[<h3 id="使用Git-VCS的一些小技巧"><a href="#使用Git-VCS的一些小技巧" class="headerlink" title="使用Git VCS的一些小技巧"></a><em>使用Git VCS的一些小技巧</em></h3><p>初始化步骤我就大段省略了，大致就是去 Git 官网下载 Binary Dependencies 然后安装就好了，或者是去安装<code>xcode-command-line-tools</code>，其中<code>git</code>自动包含在里面了。</p>
+<p>说白了 Git 就是一个 Distributional VCS ，大体就是结合了 Local VCS和Centralized VCS，因此基本步骤就是本地建立一个 Local Repository，再在 Gitea 上建立一个 Remote Repository，然后把两个库连接一下，最后把本地的改动<code>push</code>到 Remote Repository 就可以了。</p>
+<p>先说如何建 Local Repository。</p>
+<p>选一处“风水宝地”，一般选择<code>/User/home</code>。然后跑到系统默认的 Terminal Emulator 去（ Windows：PowerShell ），输入一下指令：</p>
+<figure class="highlight bash"><table><tr><td class="code"><pre><span class="line"><span class="built_in">mkdir</span> temp <span class="comment"># 建立temp</span></span><br><span class="line"></span><br><span class="line"><span class="built_in">cd</span> temp <span class="comment"># 进入</span></span><br><span class="line"></span><br><span class="line">git init <span class="comment"># 初始化 Local Repository</span></span><br><span class="line"></span><br></pre></td></tr></table></figure>
+
+<p>做完最后一步会看到 Git 生成了一个<code>.git</code>的隐藏文件夹。千万不要把自己的项目文件扔进去！</p>
+<p>初始化完成后，你就可以开始做项目了。等你做完第一个版本，你就可以把项目<code>add</code>到<code>staging area</code>。用如下指令：</p>
+<figure class="highlight bash"><table><tr><td class="code"><pre><span class="line">git add file.. <span class="comment"># add 后可以加入多个文件</span></span><br></pre></td></tr></table></figure>
+
+<p>然后用<code>git status</code>查看 Local Repository 的状态。如果你看到所有想要<code>staged</code>的文件已经在<code>staging area</code>里面了，就可以上传了。</p>
+<blockquote>
+<p>eg:</p>
+</blockquote>
+<figure class="highlight bash"><table><tr><td class="code"><pre><span class="line">git commit -m “message<span class="string">&quot;</span></span><br></pre></td></tr></table></figure>
+
+<p>最后，我们需要创建一个 Remote Repository，过程如下：</p>
+<figure class="highlight bash"><table><tr><td class="code"><pre><span class="line">git remote add origin git@example.git</span><br></pre></td></tr></table></figure>
+
+<p>然后，我们<code>push</code> Local Repo 到 Remote Repository，过程如下：</p>
+<figure class="highlight bash"><table><tr><td class="code"><pre><span class="line">git push origin temp</span><br></pre></td></tr></table></figure>]]></content>
+      <tags>
+        <tag>Bash</tag>
+        <tag>Git</tag>
+        <tag>CLI</tag>
+        <tag>File Systems</tag>
       </tags>
   </entry>
 </search>
