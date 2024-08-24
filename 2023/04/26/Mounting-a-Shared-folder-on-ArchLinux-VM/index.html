@@ -15,10 +15,10 @@
 
 
 
-<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css" integrity="sha256-HtsXJanqjKTc8vVQjO4YMhiqFoXkfBsjBWcX91T1jr8=" crossorigin="anonymous">
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.2/css/all.min.css" integrity="sha256-XOqroi11tY4EFQMR9ZYwZWKj5ZXiftSx36RRuC3anlA=" crossorigin="anonymous">
   <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/animate.css/3.1.1/animate.min.css" integrity="sha256-PR7ttpcvz8qrF57fur/yAx1qXMFJeJFiA6pSzWi0OIE=" crossorigin="anonymous">
 
-<script class="next-config" data-name="main" type="application/json">{"hostname":"mccranky83.github.io","root":"/","images":"/images","scheme":"Muse","darkmode":true,"version":"8.15.1","exturl":false,"sidebar":{"position":"right","display":"post","padding":18,"offset":12},"copycode":{"enable":true,"style":"flat"},"bookmark":{"enable":false,"color":"#222","save":"auto"},"mediumzoom":false,"lazyload":false,"pangu":false,"comments":{"style":"tabs","active":null,"storage":true,"lazyload":false,"nav":null},"stickytabs":false,"motion":{"enable":true,"async":false,"transition":{"menu_item":"fadeInDown","post_block":"fadeIn","post_header":"fadeInDown","post_body":"fadeInDown","coll_header":"fadeInLeft","sidebar":"fadeInUp"}},"prism":false,"i18n":{"placeholder":"Searching...","empty":"We didn't find any results for the search: ${query}","hits_time":"${hits} results found in ${time} ms","hits":"${hits} results found"},"path":"/search.xml","localsearch":{"enable":true,"trigger":"auto","top_n_per_article":1,"unescape":false,"preload":false}}</script><script src="/js/config.js"></script>
+<script class="next-config" data-name="main" type="application/json">{"hostname":"mccranky83.github.io","root":"/","images":"/images","scheme":"Muse","darkmode":true,"version":"8.20.0","exturl":false,"sidebar":{"position":"right","width_expanded":320,"width_dual_column":240,"display":"post","padding":18,"offset":12},"copycode":{"enable":true,"style":"flat"},"fold":{"enable":false,"height":500},"bookmark":{"enable":false,"color":"#222","save":"auto"},"mediumzoom":false,"lazyload":false,"pangu":false,"comments":{"style":"tabs","active":null,"storage":true,"lazyload":false,"nav":null},"stickytabs":false,"motion":{"enable":true,"async":false,"transition":{"menu_item":"fadeInDown","post_block":"fadeIn","post_header":"fadeInDown","post_body":"fadeInDown","coll_header":"fadeInLeft","sidebar":"fadeInUp"}},"prism":false,"i18n":{"placeholder":"Searching...","empty":"We didn't find any results for the search: ${query}","hits_time":"${hits} results found in ${time} ms","hits":"${hits} results found"},"path":"/search.xml","localsearch":{"enable":true,"trigger":"auto","top_n_per_article":1,"unescape":false,"preload":false}}</script><script src="/js/config.js"></script>
 
     <meta name="description" content="For this tutorial, we’ll be using Samba. As for what Samba really is though, the most I can figure out from my search on Google is that Samba is a free and open-source software that allows files to be">
 <meta property="og:type" content="article">
@@ -265,23 +265,22 @@
     
     
     
-    <div class="post-body" itemprop="articleBody">
-        <p>For this tutorial, we’ll be using <strong>Samba</strong>. As for what Samba really is though, the most I can figure out from my search on Google is that Samba is a free and open-source software that allows files to be shared across Windows and Linux systems simply and easily. To be exact, it is an open-source implementation of the SMB&#x2F;CIFS protocol.</p>
-<h3 id="Setup"><a href="#Setup" class="headerlink" title="Setup"></a>Setup</h3><h4 id="Install-smbclient-util-with-pacman"><a href="#Install-smbclient-util-with-pacman" class="headerlink" title="Install smbclient util with pacman"></a>Install <code>smbclient</code> util with <code>pacman</code></h4><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">sudo pacman -S smbclient</span><br></pre></td></tr></table></figure>
+    <div class="post-body" itemprop="articleBody"><p>For this tutorial, we’ll be using <strong>Samba</strong>. As for what Samba really is though, the most I can figure out from my search on Google is that Samba is a free and open-source software that allows files to be shared across Windows and Linux systems simply and easily. To be exact, it is an open-source implementation of the SMB&#x2F;CIFS protocol.</p>
+<h3 id="Setup"><a href="#Setup" class="headerlink" title="Setup"></a>Setup</h3><h4 id="Install-smbclient-util-with-pacman"><a href="#Install-smbclient-util-with-pacman" class="headerlink" title="Install smbclient util with pacman"></a>Install <code>smbclient</code> util with <code>pacman</code></h4><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line"><span class="built_in">sudo</span> pacman -S smbclient</span><br></pre></td></tr></table></figure>
 
-<h4 id="Create-shared-directory"><a href="#Create-shared-directory" class="headerlink" title="Create shared directory"></a>Create shared directory</h4><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">sudo <span class="built_in">mkdir</span> /home/&lt;user&gt;/share</span><br></pre></td></tr></table></figure>
+<h4 id="Create-shared-directory"><a href="#Create-shared-directory" class="headerlink" title="Create shared directory"></a>Create shared directory</h4><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line"><span class="built_in">sudo</span> <span class="built_in">mkdir</span> /home/&lt;user&gt;/share</span><br></pre></td></tr></table></figure>
 
 <p>This directory is to be shared between the host and guest machines.</p>
 <h4 id="Edit-the-Samba-configuration-file"><a href="#Edit-the-Samba-configuration-file" class="headerlink" title="Edit the Samba configuration file"></a>Edit the Samba configuration file</h4><p>Open up the configuration file for samba:</p>
-<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">sudo nano /etc/samba/smb.conf</span><br></pre></td></tr></table></figure>
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line"><span class="built_in">sudo</span> nano /etc/samba/smb.conf</span><br></pre></td></tr></table></figure>
 
 <p>Add these lines to the configuration file:</p>
 <figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line">[share]</span><br><span class="line">path = /home/&lt;user&gt;/share</span><br><span class="line"><span class="built_in">read</span> only = no</span><br><span class="line">guest ok = <span class="built_in">yes</span></span><br></pre></td></tr></table></figure>
 
-<h4 id="Create-Samba-password"><a href="#Create-Samba-password" class="headerlink" title="Create Samba password"></a>Create Samba password</h4><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">sudo smbpasswd -a &lt;user&gt;</span><br></pre></td></tr></table></figure>
+<h4 id="Create-Samba-password"><a href="#Create-Samba-password" class="headerlink" title="Create Samba password"></a>Create Samba password</h4><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line"><span class="built_in">sudo</span> smbpasswd -a &lt;user&gt;</span><br></pre></td></tr></table></figure>
 
 <p>Restart the Samba service to refresh:</p>
-<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">sudo systemctl restart smb.service</span><br></pre></td></tr></table></figure>
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line"><span class="built_in">sudo</span> systemctl restart smb.service</span><br></pre></td></tr></table></figure>
 
 <h4 id="IP-Configuration"><a href="#IP-Configuration" class="headerlink" title="IP Configuration"></a>IP Configuration</h4><p>In the UTM app on your MacBook, go to the settings for the ArchLinux VM and enable the “Port Forwarding” option. Add a new rule with the following settings:</p>
 <pre><code>Protocol: TCP
@@ -290,7 +289,7 @@ Guest IP: IP address of the ArchLinux VM
 Guest Port: 445
 </code></pre>
 <p>To get Guest IP, run the following line:</p>
-<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">[root@alarm ~]<span class="comment"># ip addr | grep inet</span></span><br></pre></td></tr></table></figure>
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">[root@alarm ~]# ip addr | grep inet</span><br></pre></td></tr></table></figure>
 
 <pre><code>inet 127.0.0.1/8 scope host lo
 inet6 ::1/128 scope host 
@@ -310,20 +309,20 @@ inet6 fe80::e0b4:51ff:fee5:2142/64 scope link
 <pre><code>[FAILED] Failed to mount /mnt/share.
 </code></pre>
 <p>So I have to mount this directory myself, by running:</p>
-<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">sudo mount -t cifs //localhost/share /mnt/share -o user=&lt;Samba username&gt;,password=&lt;Samba password&gt;</span><br></pre></td></tr></table></figure>
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line"><span class="built_in">sudo</span> mount -t cifs //localhost/share /mnt/share -o user=&lt;Samba username&gt;,password=&lt;Samba password&gt;</span><br></pre></td></tr></table></figure>
 
 <p>This command mounts a Samba share located on the local machine (localhost) to a directory (&#x2F;mnt&#x2F;share) using the Common Internet File System (CIFS) protocol.</p>
 <p>The <code>-o</code> option specifies additional mount options, in this case, it provides the Samba username and password to authenticate and access the share.</p>
 <hr>
 <h4 id="Enable-Samba-service"><a href="#Enable-Samba-service" class="headerlink" title="Enable Samba service"></a>Enable Samba service</h4><p>But before we run this command, we have to ensure that Samba service on the ArchLinux VM is up and running.</p>
 <p>Check that the Samba service is running on the ArchLinux VM:</p>
-<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">sudo systemctl status smb.service</span><br></pre></td></tr></table></figure>
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line"><span class="built_in">sudo</span> systemctl status smb.service</span><br></pre></td></tr></table></figure>
 
 <p>If the service is not running, start it using the following command:</p>
-<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">sudo systemctl start smb.service</span><br></pre></td></tr></table></figure>
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line"><span class="built_in">sudo</span> systemctl start smb.service</span><br></pre></td></tr></table></figure>
 
 <p>To automatically start the Samba service on boot, you can enable the <code>smb.service</code> unit running the following command:</p>
-<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">sudo systemctl <span class="built_in">enable</span> smb.service</span><br></pre></td></tr></table></figure>
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line"><span class="built_in">sudo</span> systemctl <span class="built_in">enable</span> smb.service</span><br></pre></td></tr></table></figure>
 
 <blockquote>
 <p><strong><em>Make sure that the Samba username and password are correct.</em></strong></p>
@@ -331,7 +330,7 @@ inet6 fe80::e0b4:51ff:fee5:2142/64 scope link
 <figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">smbclient //localhost/share -U mccranky</span><br></pre></td></tr></table></figure>
 
 <p>Restart the ArchLinux VM to test that the Samba service starts automatically:</p>
-<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">sudo systemctl reboot</span><br></pre></td></tr></table></figure>
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line"><span class="built_in">sudo</span> systemctl reboot</span><br></pre></td></tr></table></figure>
 
 <hr>
 <p>To check whether <code>/mnt/share</code> has been successfully mounted, run the following line:</p>
@@ -344,7 +343,7 @@ no,mapposix,rsize=4194304,wsize=4194304,bsize=1048576,echo_interval=60,actimeo=1
 r=mccranky)
 </code></pre>
 <h4 id="Mount-mnt-share-on-startup"><a href="#Mount-mnt-share-on-startup" class="headerlink" title="Mount /mnt/share on startup"></a>Mount <code>/mnt/share</code> on startup</h4><p>To automatically mount the Samba shared directory on boot, you can add an entry to the <code>/etc/fstab</code> file.</p>
-<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">sudo nano /etc/fstab</span><br></pre></td></tr></table></figure>
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line"><span class="built_in">sudo</span> nano /etc/fstab</span><br></pre></td></tr></table></figure>
 
 <p>Then append the following line to the end of the file:</p>
 <figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">//localhost/share /mnt/share cifs user=mccranky,password=Rogue12 0 0</span><br></pre></td></tr></table></figure>
@@ -356,23 +355,23 @@ r=mccranky)
 <p>The old line mounts a 9p file system onto the same mount point <code>/mnt/share</code>, using the virtio transport and the nofail option.</p>
 <p>Since our old entry gave us much headache, I’ll just swap it for the new one. :)</p>
 <p>Let’s test the mount by running the following command:</p>
-<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">sudo mount -a</span><br></pre></td></tr></table></figure>
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line"><span class="built_in">sudo</span> mount -a</span><br></pre></td></tr></table></figure>
 
 <p>This command will attempt to mount all entries in the <code>/etc/fstab</code> file. If there are any errors, it will display them in the terminal.</p>
 <p>Now we run <code>sudo systemctl reboot</code> to see if everything has been resolved at boot-up. There should be no more failures.</p>
-<h3 id="Rollback"><a href="#Rollback" class="headerlink" title="Rollback"></a>Rollback</h3><h4 id="Disable-Samba-service"><a href="#Disable-Samba-service" class="headerlink" title="Disable Samba service"></a>Disable Samba service</h4><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br></pre></td><td class="code"><pre><span class="line">sudo systemctl stop smb.service</span><br><span class="line"></span><br><span class="line">sudo systemctl <span class="built_in">disable</span> smb.service</span><br><span class="line"></span><br><span class="line">sudo pacman -R samba</span><br><span class="line"></span><br><span class="line">sudo <span class="built_in">rm</span> -rf /etc/samba</span><br><span class="line">sudo <span class="built_in">rm</span> -rf /var/cache/samba</span><br><span class="line">sudo <span class="built_in">rm</span> -rf /var/lib/samba</span><br><span class="line"></span><br><span class="line">sudo userdel -r samba</span><br><span class="line">sudo groupdel samba</span><br><span class="line"></span><br></pre></td></tr></table></figure>
+<h3 id="Rollback"><a href="#Rollback" class="headerlink" title="Rollback"></a>Rollback</h3><h4 id="Disable-Samba-service"><a href="#Disable-Samba-service" class="headerlink" title="Disable Samba service"></a>Disable Samba service</h4><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br></pre></td><td class="code"><pre><span class="line"><span class="built_in">sudo</span> systemctl stop smb.service</span><br><span class="line"></span><br><span class="line"><span class="built_in">sudo</span> systemctl <span class="built_in">disable</span> smb.service</span><br><span class="line"></span><br><span class="line"><span class="built_in">sudo</span> pacman -R samba</span><br><span class="line"></span><br><span class="line"><span class="built_in">sudo</span> <span class="built_in">rm</span> -rf /etc/samba</span><br><span class="line"><span class="built_in">sudo</span> <span class="built_in">rm</span> -rf /var/cache/samba</span><br><span class="line"><span class="built_in">sudo</span> <span class="built_in">rm</span> -rf /var/lib/samba</span><br><span class="line"></span><br><span class="line"><span class="built_in">sudo</span> userdel -r samba</span><br><span class="line"><span class="built_in">sudo</span> groupdel samba</span><br><span class="line"></span><br></pre></td></tr></table></figure>
 
 <h4 id="Unmount-mnt-share"><a href="#Unmount-mnt-share" class="headerlink" title="Unmount /mnt/share"></a>Unmount <code>/mnt/share</code></h4><p>Edit the Samba configuration file <code>/etc/samba/smb.conf</code> using a text editor:</p>
-<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">sudo nano /etc/samba/smb.conf</span><br></pre></td></tr></table></figure>
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line"><span class="built_in">sudo</span> nano /etc/samba/smb.conf</span><br></pre></td></tr></table></figure>
 
 <p>Find the section that defines the <code>/mnt/share</code> share. It should look something like this:</p>
 <figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line">[mnt]</span><br><span class="line">   path = /mnt/share</span><br><span class="line">   <span class="built_in">read</span> only = no</span><br><span class="line">   guest ok = <span class="built_in">yes</span></span><br></pre></td></tr></table></figure>
 
 <p>Remove the entire section, then restart the Samba service:</p>
-<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">sudo systemctl start smb.service</span><br></pre></td></tr></table></figure>
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line"><span class="built_in">sudo</span> systemctl start smb.service</span><br></pre></td></tr></table></figure>
 
 <p>The <code>/mnt/share</code> share should now be removed from Samba on Arch Linux.</p>
-<h4 id="Revoke-Samba-password"><a href="#Revoke-Samba-password" class="headerlink" title="Revoke Samba password"></a>Revoke Samba password</h4><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">sudo smbpasswd -x &lt;user&gt;</span><br></pre></td></tr></table></figure>
+<h4 id="Revoke-Samba-password"><a href="#Revoke-Samba-password" class="headerlink" title="Revoke Samba password"></a>Revoke Samba password</h4><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line"><span class="built_in">sudo</span> smbpasswd -x &lt;user&gt;</span><br></pre></td></tr></table></figure>
 
 <p>This will remove the user’s password from the Samba password database, effectively undoing the <code>sudo smbpasswd -a &lt;user&gt;</code> command.</p>
 
@@ -394,12 +393,12 @@ r=mccranky)
           <div class="post-nav">
             <div class="post-nav-item">
                 <a href="/2023/04/25/Running%20ArchLinux%20ARM%20in%20UTM%20on%20a%20M1%20MacBook%20Air/" rel="prev" title="Running ArchLinux ARM in UTM on a M1 MacBook Air">
-                  <i class="fa fa-chevron-left"></i> Running ArchLinux ARM in UTM on a M1 MacBook Air
+                  <i class="fa fa-angle-left"></i> Running ArchLinux ARM in UTM on a M1 MacBook Air
                 </a>
             </div>
             <div class="post-nav-item">
                 <a href="/2023/04/26/Initialize%20shared%20directory%20with%20SPICE%20WebDAV/" rel="next" title="Initialize shared directory with SPICE WebDAV">
-                  Initialize shared directory with SPICE WebDAV <i class="fa fa-chevron-right"></i>
+                  Initialize shared directory with SPICE WebDAV <i class="fa fa-angle-right"></i>
                 </a>
             </div>
           </div>
@@ -418,15 +417,14 @@ r=mccranky)
   <footer class="footer">
     <div class="footer-inner">
 
-
-<div class="copyright">
-  &copy; 
-  <span itemprop="copyrightYear">2024</span>
-  <span class="with-love">
-    <i class="fa fa-heart"></i>
-  </span>
-  <span class="author" itemprop="copyrightHolder">Mccranky83</span>
-</div>
+  <div class="copyright">
+    &copy; 
+    <span itemprop="copyrightYear">2024</span>
+    <span class="with-love">
+      <i class="fa fa-heart"></i>
+    </span>
+    <span class="author" itemprop="copyrightHolder">Mccranky83</span>
+  </div>
   <div class="powered-by">Powered by <a href="https://hexo.io/" rel="noopener" target="_blank">Hexo</a> & <a href="https://theme-next.js.org/muse/" rel="noopener" target="_blank">NexT.Muse</a>
   </div>
 
@@ -452,10 +450,12 @@ r=mccranky)
 
   
   <script src="https://cdnjs.cloudflare.com/ajax/libs/animejs/3.2.1/anime.min.js" integrity="sha256-XL2inqUJaslATFnHdJOi9GfQ60on8Wx1C2H8DYiN1xY=" crossorigin="anonymous"></script>
-<script src="/js/comments.js"></script><script src="/js/utils.js"></script><script src="/js/motion.js"></script><script src="/js/schemes/muse.js"></script><script src="/js/next-boot.js"></script>
+<script src="/js/comments.js"></script><script src="/js/utils.js"></script><script src="/js/motion.js"></script><script src="/js/schemes/muse.js"></script><script src="/js/sidebar.js"></script><script src="/js/next-boot.js"></script>
 
   <script src="https://cdnjs.cloudflare.com/ajax/libs/hexo-generator-searchdb/1.4.1/search.js" integrity="sha256-1kfA5uHPf65M5cphT2dvymhkuyHPQp5A53EGZOnOLmc=" crossorigin="anonymous"></script>
 <script src="/js/third-party/search/local-search.js"></script>
+
+
 
 
 

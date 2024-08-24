@@ -15,10 +15,10 @@
 
 
 
-<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css" integrity="sha256-HtsXJanqjKTc8vVQjO4YMhiqFoXkfBsjBWcX91T1jr8=" crossorigin="anonymous">
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.2/css/all.min.css" integrity="sha256-XOqroi11tY4EFQMR9ZYwZWKj5ZXiftSx36RRuC3anlA=" crossorigin="anonymous">
   <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/animate.css/3.1.1/animate.min.css" integrity="sha256-PR7ttpcvz8qrF57fur/yAx1qXMFJeJFiA6pSzWi0OIE=" crossorigin="anonymous">
 
-<script class="next-config" data-name="main" type="application/json">{"hostname":"mccranky83.github.io","root":"/","images":"/images","scheme":"Muse","darkmode":true,"version":"8.15.1","exturl":false,"sidebar":{"position":"right","display":"post","padding":18,"offset":12},"copycode":{"enable":true,"style":"flat"},"bookmark":{"enable":false,"color":"#222","save":"auto"},"mediumzoom":false,"lazyload":false,"pangu":false,"comments":{"style":"tabs","active":null,"storage":true,"lazyload":false,"nav":null},"stickytabs":false,"motion":{"enable":true,"async":false,"transition":{"menu_item":"fadeInDown","post_block":"fadeIn","post_header":"fadeInDown","post_body":"fadeInDown","coll_header":"fadeInLeft","sidebar":"fadeInUp"}},"prism":false,"i18n":{"placeholder":"Searching...","empty":"We didn't find any results for the search: ${query}","hits_time":"${hits} results found in ${time} ms","hits":"${hits} results found"},"path":"/search.xml","localsearch":{"enable":true,"trigger":"auto","top_n_per_article":1,"unescape":false,"preload":false}}</script><script src="/js/config.js"></script>
+<script class="next-config" data-name="main" type="application/json">{"hostname":"mccranky83.github.io","root":"/","images":"/images","scheme":"Muse","darkmode":true,"version":"8.20.0","exturl":false,"sidebar":{"position":"right","width_expanded":320,"width_dual_column":240,"display":"post","padding":18,"offset":12},"copycode":{"enable":true,"style":"flat"},"fold":{"enable":false,"height":500},"bookmark":{"enable":false,"color":"#222","save":"auto"},"mediumzoom":false,"lazyload":false,"pangu":false,"comments":{"style":"tabs","active":null,"storage":true,"lazyload":false,"nav":null},"stickytabs":false,"motion":{"enable":true,"async":false,"transition":{"menu_item":"fadeInDown","post_block":"fadeIn","post_header":"fadeInDown","post_body":"fadeInDown","coll_header":"fadeInLeft","sidebar":"fadeInUp"}},"prism":false,"i18n":{"placeholder":"Searching...","empty":"We didn't find any results for the search: ${query}","hits_time":"${hits} results found in ${time} ms","hits":"${hits} results found"},"path":"/search.xml","localsearch":{"enable":true,"trigger":"auto","top_n_per_article":1,"unescape":false,"preload":false}}</script><script src="/js/config.js"></script>
 
     <meta name="description" content="ArchLinux is a text-based operating system that does not come with a graphical interface, and all tasks are performed by running commands in the Command Line Interface (CLI).  SetupThe setting up of">
 <meta property="og:type" content="article">
@@ -265,8 +265,7 @@
     
     
     
-    <div class="post-body" itemprop="articleBody">
-        <blockquote>
+    <div class="post-body" itemprop="articleBody"><blockquote>
 <p>ArchLinux is a text-based operating system that does not come with a graphical interface, and all tasks are performed by running commands in the Command Line Interface (CLI).</p>
 </blockquote>
 <h3 id="Setup"><a href="#Setup" class="headerlink" title="Setup"></a>Setup</h3><p>The setting up of UTM and running virtual machines on it is rather simple. Just follow the steps shown below and you’ll be playing around soon enough.</p>
@@ -278,7 +277,7 @@
 <li><p>(Optional) You can run the VM as is, but feel free to tweak with the settings if you want to.</p>
 </li>
 </ol>
-<h3 id="Install-Dependencies"><a href="#Install-Dependencies" class="headerlink" title="Install Dependencies"></a>Install Dependencies</h3><h4 id="sudo"><a href="#sudo" class="headerlink" title="sudo"></a><em><code>sudo</code></em></h4><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><span class="line">su -</span><br><span class="line"></span><br><span class="line">pacman -Syu</span><br><span class="line"></span><br><span class="line">pacman -S sudo</span><br><span class="line"></span><br></pre></td></tr></table></figure>
+<h3 id="Install-Dependencies"><a href="#Install-Dependencies" class="headerlink" title="Install Dependencies"></a>Install Dependencies</h3><h4 id="sudo"><a href="#sudo" class="headerlink" title="sudo"></a><em><code>sudo</code></em></h4><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><span class="line">su -</span><br><span class="line"></span><br><span class="line">pacman -Syu</span><br><span class="line"></span><br><span class="line">pacman -S <span class="built_in">sudo</span></span><br><span class="line"></span><br></pre></td></tr></table></figure>
 
 <p><code>su</code> is short for “substitute user”, and it is used to switch to another user account in Unix-based operating systems. When you use <code>su</code> without any options, it will switch to the root user account by default.</p>
 <p>The <code>-</code> option used with <code>su</code> is used to simulate a full login for the new user, and it is not specific to the root user. When you use <code>su -</code> followed by a username, it will switch to that user’s account with a login shell.</p>
@@ -357,13 +356,13 @@
 <h4 id="SPICE-guest-tools"><a href="#SPICE-guest-tools" class="headerlink" title="SPICE guest tools"></a><em><code>SPICE guest tools</code></em></h4><p><code>SPICE</code> stands for Simple Protocol for Independent Computing Environments. It is a remote computing solution that allows users to access the desktop of a virtual machine or remote system from a client device. <code>SPICE</code> provides a high-performance, low-latency connection that supports a wide range of features, including audio, video, and USB redirection. It is commonly used in virtualization environments, such as those provided by QEMU and KVM, to provide remote access to virtual machines.</p>
 <p>However, we’re using it for clipboard sharing. With <code>SPICE guest tools</code> installed, the clipboard will be synced between the guest and the host.</p>
 <p>Install the <code>spice-vdagent</code> package by running the following command:</p>
-<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">sudo pacman -S spice-vdagent</span><br></pre></td></tr></table></figure>
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line"><span class="built_in">sudo</span> pacman -S spice-vdagent</span><br></pre></td></tr></table></figure>
 
 <p>Once the installation is complete, start the <code>spice-vdagent</code> service by running the following command:</p>
-<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">sudo systemctl start spice-vdagentd.service</span><br></pre></td></tr></table></figure>
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line"><span class="built_in">sudo</span> systemctl start spice-vdagentd.service</span><br></pre></td></tr></table></figure>
 
 <p>You can also enable the service to start automatically at boot time by running the following command:</p>
-<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">sudo systemctl <span class="built_in">enable</span> spice-vdagentd.service</span><br></pre></td></tr></table></figure>
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line"><span class="built_in">sudo</span> systemctl <span class="built_in">enable</span> spice-vdagentd.service</span><br></pre></td></tr></table></figure>
 
 <p>However, I wasn’t able to enable it on first try.</p>
 <pre><code>The unit files have no installation config (WantedBy=, RequiredBy=, Also=,
@@ -393,17 +392,17 @@ Possible reasons for having this kind of units are:
 </blockquote>
 <p>It’s the first fix for me. My <code>[Install]</code> section had only one line “<code>Also=spice-vdagentd.socket</code>“, so I added a second.</p>
 <h4 id="wget"><a href="#wget" class="headerlink" title="wget"></a><em><code>wget</code></em></h4><p>Install the <code>wget</code> command-line tool:</p>
-<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line">sudo pacman -Syy</span><br><span class="line"></span><br><span class="line"><span class="comment"># Update package database</span></span><br><span class="line"></span><br><span class="line">sudo pacman -S wget</span><br></pre></td></tr></table></figure>
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line"><span class="built_in">sudo</span> pacman -Syy</span><br><span class="line"></span><br><span class="line"><span class="comment"># Update package database</span></span><br><span class="line"></span><br><span class="line"><span class="built_in">sudo</span> pacman -S wget</span><br></pre></td></tr></table></figure>
 
 <blockquote>
 <p>Note: You may need to <a href="#Refresh-keys">refresh your keychains</a> first!</p>
 </blockquote>
 <h4 id="git"><a href="#git" class="headerlink" title="git"></a><em><code>git</code></em></h4><p>Install the <code>git</code> package by running the following command:</p>
-<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">sudo pacman -S git</span><br></pre></td></tr></table></figure>
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line"><span class="built_in">sudo</span> pacman -S git</span><br></pre></td></tr></table></figure>
 
 <h4 id="yay"><a href="#yay" class="headerlink" title="yay"></a><em><code>yay</code></em></h4><p>The reason why we’re not installing <code>apt</code> is because <code>apt</code> is a package manager used in Debian-based Linux distributions like Ubuntu, and it is not available in Arch Linux. Instead, Arch Linux uses its own package manager called <code>pacman</code>, the one we just talked about.</p>
 <p>If you are familiar with <code>apt</code> and want to use a similar package manager in Arch Linux, you can use <code>yay</code>, which is a popular AUR (Arch User Repository) helper that provides a pacman-like interface with added features.</p>
-<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">sudo pacman -S base-devel</span><br></pre></td></tr></table></figure>
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line"><span class="built_in">sudo</span> pacman -S base-devel</span><br></pre></td></tr></table></figure>
 
 <p>Install yay by running the following command:</p>
 <figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><span class="line">git <span class="built_in">clone</span> https://aur.archlinux.org/yay.git</span><br><span class="line"></span><br><span class="line"><span class="built_in">cd</span> yay</span><br><span class="line"></span><br><span class="line">makepkg -si</span><br><span class="line"></span><br></pre></td></tr></table></figure>
@@ -418,7 +417,7 @@ Possible reasons for having this kind of units are:
 <blockquote>
 <p><code>-i</code>: A flag that tells <code>makepkg</code> to install the package after it has been built.</p>
 </blockquote>
-<h4 id="neovim"><a href="#neovim" class="headerlink" title="neovim"></a><em><code>neovim</code></em></h4><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">sudo pacman -S --needed neovim</span><br></pre></td></tr></table></figure>
+<h4 id="neovim"><a href="#neovim" class="headerlink" title="neovim"></a><em><code>neovim</code></em></h4><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line"><span class="built_in">sudo</span> pacman -S --needed neovim</span><br></pre></td></tr></table></figure>
 
 <h4 id="Create-a-non-root-user"><a href="#Create-a-non-root-user" class="headerlink" title="Create a non-root user"></a>Create a non-root user</h4><p>Before we move on to the next step, we have to create an alternative user apart from our current root, otherwise <code>makepkg -si</code> won’t work.</p>
 <p>It’s fairly simple.</p>
@@ -427,7 +426,7 @@ Possible reasons for having this kind of units are:
 <figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">useradd -m -s /bin/bash &lt;username&gt;</span><br></pre></td></tr></table></figure>
 
 <p>Set a password for the new user account:</p>
-<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">sudo passwd &lt;username&gt;</span><br></pre></td></tr></table></figure>
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line"><span class="built_in">sudo</span> passwd &lt;username&gt;</span><br></pre></td></tr></table></figure>
 
 <p>Add the new user to the <code>wheel</code> group to allow them to use <code>sudo</code>:</p>
 <figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">usermod -aG wheel &lt;username&gt;</span><br></pre></td></tr></table></figure>
@@ -448,20 +447,20 @@ Possible reasons for having this kind of units are:
 <hr>
 <h4 id="Refresh-keys"><a href="#Refresh-keys" class="headerlink" title="Refresh keys"></a>Refresh keys</h4><p>PGP keys are used to verify the authenticity of packages in the official Arch Linux repositories.</p>
 <p>Update the keyring package by running the following command:</p>
-<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">sudo pacman -Sy archlinux-keyring</span><br></pre></td></tr></table></figure>
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line"><span class="built_in">sudo</span> pacman -Sy archlinux-keyring</span><br></pre></td></tr></table></figure>
 
 <p>Import the new keys by running the following command:</p>
-<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">sudo pacman-key --populate archlinux</span><br></pre></td></tr></table></figure>
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line"><span class="built_in">sudo</span> pacman-key --populate archlinux</span><br></pre></td></tr></table></figure>
 
 <p>Refresh the keyring by running the following command:</p>
-<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">sudo pacman-key --refresh-keys</span><br><span class="line"></span><br><span class="line"><span class="comment"># This command retrieves the latest keys from the keyserver and update your keyring accordingly.</span></span><br></pre></td></tr></table></figure>
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line"><span class="built_in">sudo</span> pacman-key --refresh-keys</span><br><span class="line"></span><br><span class="line"><span class="comment"># This command retrieves the latest keys from the keyserver and update your keyring accordingly.</span></span><br></pre></td></tr></table></figure>
 
 <p>Now your keychains should be up to date and you should be able to verify the authenticity of packages in the official Arch Linux repositories.</p>
 <h4 id="Poweroff"><a href="#Poweroff" class="headerlink" title="Poweroff"></a>Poweroff</h4><p>Once you had your fun, you’d probably want to poweroff. Here’s what you should do:</p>
-<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">sudo poweroff</span><br></pre></td></tr></table></figure>
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line"><span class="built_in">sudo</span> poweroff</span><br></pre></td></tr></table></figure>
 
 <p>Or:</p>
-<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">sudo shutdown -h now</span><br></pre></td></tr></table></figure>
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line"><span class="built_in">sudo</span> shutdown -h now</span><br></pre></td></tr></table></figure>
 
 
     </div>
@@ -482,12 +481,12 @@ Possible reasons for having this kind of units are:
           <div class="post-nav">
             <div class="post-nav-item">
                 <a href="/2023/04/24/7-2-Java-%E5%9F%BA%E6%9C%AC%E8%AF%AD%E6%B3%95-%E5%A4%A7%E6%95%B4%E6%95%B0%E7%9B%B8%E5%8A%A0/" rel="prev" title="7-2-Java-基本语法-大整数相加">
-                  <i class="fa fa-chevron-left"></i> 7-2-Java-基本语法-大整数相加
+                  <i class="fa fa-angle-left"></i> 7-2-Java-基本语法-大整数相加
                 </a>
             </div>
             <div class="post-nav-item">
                 <a href="/2023/04/26/Mounting-a-Shared-folder-on-ArchLinux-VM/" rel="next" title="Mounting a shared folder on ArchLinux VM">
-                  Mounting a shared folder on ArchLinux VM <i class="fa fa-chevron-right"></i>
+                  Mounting a shared folder on ArchLinux VM <i class="fa fa-angle-right"></i>
                 </a>
             </div>
           </div>
@@ -506,15 +505,14 @@ Possible reasons for having this kind of units are:
   <footer class="footer">
     <div class="footer-inner">
 
-
-<div class="copyright">
-  &copy; 
-  <span itemprop="copyrightYear">2024</span>
-  <span class="with-love">
-    <i class="fa fa-heart"></i>
-  </span>
-  <span class="author" itemprop="copyrightHolder">Mccranky83</span>
-</div>
+  <div class="copyright">
+    &copy; 
+    <span itemprop="copyrightYear">2024</span>
+    <span class="with-love">
+      <i class="fa fa-heart"></i>
+    </span>
+    <span class="author" itemprop="copyrightHolder">Mccranky83</span>
+  </div>
   <div class="powered-by">Powered by <a href="https://hexo.io/" rel="noopener" target="_blank">Hexo</a> & <a href="https://theme-next.js.org/muse/" rel="noopener" target="_blank">NexT.Muse</a>
   </div>
 
@@ -540,10 +538,12 @@ Possible reasons for having this kind of units are:
 
   
   <script src="https://cdnjs.cloudflare.com/ajax/libs/animejs/3.2.1/anime.min.js" integrity="sha256-XL2inqUJaslATFnHdJOi9GfQ60on8Wx1C2H8DYiN1xY=" crossorigin="anonymous"></script>
-<script src="/js/comments.js"></script><script src="/js/utils.js"></script><script src="/js/motion.js"></script><script src="/js/schemes/muse.js"></script><script src="/js/next-boot.js"></script>
+<script src="/js/comments.js"></script><script src="/js/utils.js"></script><script src="/js/motion.js"></script><script src="/js/schemes/muse.js"></script><script src="/js/sidebar.js"></script><script src="/js/next-boot.js"></script>
 
   <script src="https://cdnjs.cloudflare.com/ajax/libs/hexo-generator-searchdb/1.4.1/search.js" integrity="sha256-1kfA5uHPf65M5cphT2dvymhkuyHPQp5A53EGZOnOLmc=" crossorigin="anonymous"></script>
 <script src="/js/third-party/search/local-search.js"></script>
+
+
 
 
 

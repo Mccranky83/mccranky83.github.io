@@ -15,10 +15,10 @@
 
 
 
-<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css" integrity="sha256-HtsXJanqjKTc8vVQjO4YMhiqFoXkfBsjBWcX91T1jr8=" crossorigin="anonymous">
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.2/css/all.min.css" integrity="sha256-XOqroi11tY4EFQMR9ZYwZWKj5ZXiftSx36RRuC3anlA=" crossorigin="anonymous">
   <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/animate.css/3.1.1/animate.min.css" integrity="sha256-PR7ttpcvz8qrF57fur/yAx1qXMFJeJFiA6pSzWi0OIE=" crossorigin="anonymous">
 
-<script class="next-config" data-name="main" type="application/json">{"hostname":"mccranky83.github.io","root":"/","images":"/images","scheme":"Muse","darkmode":true,"version":"8.15.1","exturl":false,"sidebar":{"position":"right","display":"post","padding":18,"offset":12},"copycode":{"enable":true,"style":"flat"},"bookmark":{"enable":false,"color":"#222","save":"auto"},"mediumzoom":false,"lazyload":false,"pangu":false,"comments":{"style":"tabs","active":null,"storage":true,"lazyload":false,"nav":null},"stickytabs":false,"motion":{"enable":true,"async":false,"transition":{"menu_item":"fadeInDown","post_block":"fadeIn","post_header":"fadeInDown","post_body":"fadeInDown","coll_header":"fadeInLeft","sidebar":"fadeInUp"}},"prism":false,"i18n":{"placeholder":"Searching...","empty":"We didn't find any results for the search: ${query}","hits_time":"${hits} results found in ${time} ms","hits":"${hits} results found"},"path":"/search.xml","localsearch":{"enable":true,"trigger":"auto","top_n_per_article":1,"unescape":false,"preload":false}}</script><script src="/js/config.js"></script>
+<script class="next-config" data-name="main" type="application/json">{"hostname":"mccranky83.github.io","root":"/","images":"/images","scheme":"Muse","darkmode":true,"version":"8.20.0","exturl":false,"sidebar":{"position":"right","width_expanded":320,"width_dual_column":240,"display":"post","padding":18,"offset":12},"copycode":{"enable":true,"style":"flat"},"fold":{"enable":false,"height":500},"bookmark":{"enable":false,"color":"#222","save":"auto"},"mediumzoom":false,"lazyload":false,"pangu":false,"comments":{"style":"tabs","active":null,"storage":true,"lazyload":false,"nav":null},"stickytabs":false,"motion":{"enable":true,"async":false,"transition":{"menu_item":"fadeInDown","post_block":"fadeIn","post_header":"fadeInDown","post_body":"fadeInDown","coll_header":"fadeInLeft","sidebar":"fadeInUp"}},"prism":false,"i18n":{"placeholder":"Searching...","empty":"We didn't find any results for the search: ${query}","hits_time":"${hits} results found in ${time} ms","hits":"${hits} results found"},"path":"/search.xml","localsearch":{"enable":true,"trigger":"auto","top_n_per_article":1,"unescape":false,"preload":false}}</script><script src="/js/config.js"></script>
 
     <meta name="description" content="SolutionOur fix to the problem is to remove &#x2F;mnt&#x2F;share entirely and mount something else in its place. This is the portion of the startup process which showed the error: [FAILED] Failed to mount &#x2F;mnt&#x2F;">
 <meta property="og:type" content="article">
@@ -259,8 +259,7 @@
     
     
     
-    <div class="post-body" itemprop="articleBody">
-        <h3 id="Solution"><a href="#Solution" class="headerlink" title="Solution"></a>Solution</h3><p>Our fix to the problem is to remove <code>/mnt/share</code> entirely and mount something else in its place.</p>
+    <div class="post-body" itemprop="articleBody"><h3 id="Solution"><a href="#Solution" class="headerlink" title="Solution"></a>Solution</h3><p>Our fix to the problem is to remove <code>/mnt/share</code> entirely and mount something else in its place.</p>
 <p>This is the portion of the startup process which showed the error:</p>
 <pre><code>[FAILED] Failed to mount /mnt/share.
 See &#39;systemctl status mnt-share.mount&#39; for details
@@ -287,7 +286,7 @@ Apr 27 02:45:46 alarm systemd[1]: mnt-share.mount: Failed with result &#39;exit-
 Apr 27 02:45:46 alarm systemd[1]: Failed to mount /mnt/share.
 </code></pre>
 <h3 id="Side-Content"><a href="#Side-Content" class="headerlink" title="Side Content"></a>Side Content</h3><h4 id="Check-file-system-properties"><a href="#Check-file-system-properties" class="headerlink" title="Check file system properties"></a>Check file system properties</h4><p>Since we’ve decided to remove the mount <code>/mnt/share</code> instead of trying to fix it, we shall proceed to learn a little about how to mount a disk. For instance, if we want to mount an NTFS file system and ensure that the file system is accessible and error-free, we can use the following command to check it for errors:</p>
-<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br></pre></td><td class="code"><pre><span class="line">sudo pacman -S ntfs-3g</span><br><span class="line"></span><br><span class="line"><span class="comment">#  Install the `ntfs-3g` package which provides the `ntfsfix` tool.</span></span><br><span class="line"></span><br><span class="line">sudo ntfsfix /dev/sda1</span><br><span class="line"></span><br><span class="line"><span class="comment"># Replace `/dev/sda1` with the appropriate device and partition.</span></span><br></pre></td></tr></table></figure>
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br></pre></td><td class="code"><pre><span class="line"><span class="built_in">sudo</span> pacman -S ntfs-3g</span><br><span class="line"></span><br><span class="line"><span class="comment">#  Install the `ntfs-3g` package which provides the `ntfsfix` tool.</span></span><br><span class="line"></span><br><span class="line"><span class="built_in">sudo</span> ntfsfix /dev/sda1</span><br><span class="line"></span><br><span class="line"><span class="comment"># Replace `/dev/sda1` with the appropriate device and partition.</span></span><br></pre></td></tr></table></figure>
 
 <p>If the virtual hard disk has multiple partitions, we’ll need to determine which partition contains the NTFS file system we want to mount. Oftentimes we use the <code>lsblk</code> command to list the available storage devices and their partitions, and the <code>blkid</code> command to list the UUIDs of the partitions.</p>
 <pre><code>$ lsblk
@@ -315,10 +314,10 @@ vda    253:0    0  9.8G  0 disk
 </code></pre>
 <p>Since we’ve already removed Samba service on our machine, we have no need of checking whether if the mount options specified in the mount unit are correct. But if you haven’t removed it yet, feel free to edit the mount unit file located at <code>/etc/systemd/system/mnt-share.mount</code> and modify the mount options.</p>
 <p>Remove the mount unit for <code>/mnt/share</code>:</p>
-<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">sudo <span class="built_in">rm</span> /etc/systemd/system/mnt-share.mount</span><br></pre></td></tr></table></figure>
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line"><span class="built_in">sudo</span> <span class="built_in">rm</span> /etc/systemd/system/mnt-share.mount</span><br></pre></td></tr></table></figure>
 
 <p>Reload the systemd daemon to ensure that the changes take effect:</p>
-<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">sudo systemctl daemon-reload</span><br></pre></td></tr></table></figure>
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line"><span class="built_in">sudo</span> systemctl daemon-reload</span><br></pre></td></tr></table></figure>
 
 <p>When we check the status of <code>mnt-share.mount</code>, we should get:</p>
 <pre><code> $ sudo systemctl status mnt-share.mount
@@ -354,12 +353,12 @@ Apr 27 02:45:46 alarm systemd[1]: Failed to mount /mnt/share.
           <div class="post-nav">
             <div class="post-nav-item">
                 <a href="/2023/04/26/Initialize%20shared%20directory%20with%20SPICE%20WebDAV/" rel="prev" title="Initialize shared directory with SPICE WebDAV">
-                  <i class="fa fa-chevron-left"></i> Initialize shared directory with SPICE WebDAV
+                  <i class="fa fa-angle-left"></i> Initialize shared directory with SPICE WebDAV
                 </a>
             </div>
             <div class="post-nav-item">
                 <a href="/2023/04/27/Installing%20Puppet%20server%20on%20ArchLinux/" rel="next" title="Installing Puppet server on ArchLinux">
-                  Installing Puppet server on ArchLinux <i class="fa fa-chevron-right"></i>
+                  Installing Puppet server on ArchLinux <i class="fa fa-angle-right"></i>
                 </a>
             </div>
           </div>
@@ -378,15 +377,14 @@ Apr 27 02:45:46 alarm systemd[1]: Failed to mount /mnt/share.
   <footer class="footer">
     <div class="footer-inner">
 
-
-<div class="copyright">
-  &copy; 
-  <span itemprop="copyrightYear">2024</span>
-  <span class="with-love">
-    <i class="fa fa-heart"></i>
-  </span>
-  <span class="author" itemprop="copyrightHolder">Mccranky83</span>
-</div>
+  <div class="copyright">
+    &copy; 
+    <span itemprop="copyrightYear">2024</span>
+    <span class="with-love">
+      <i class="fa fa-heart"></i>
+    </span>
+    <span class="author" itemprop="copyrightHolder">Mccranky83</span>
+  </div>
   <div class="powered-by">Powered by <a href="https://hexo.io/" rel="noopener" target="_blank">Hexo</a> & <a href="https://theme-next.js.org/muse/" rel="noopener" target="_blank">NexT.Muse</a>
   </div>
 
@@ -412,10 +410,12 @@ Apr 27 02:45:46 alarm systemd[1]: Failed to mount /mnt/share.
 
   
   <script src="https://cdnjs.cloudflare.com/ajax/libs/animejs/3.2.1/anime.min.js" integrity="sha256-XL2inqUJaslATFnHdJOi9GfQ60on8Wx1C2H8DYiN1xY=" crossorigin="anonymous"></script>
-<script src="/js/comments.js"></script><script src="/js/utils.js"></script><script src="/js/motion.js"></script><script src="/js/schemes/muse.js"></script><script src="/js/next-boot.js"></script>
+<script src="/js/comments.js"></script><script src="/js/utils.js"></script><script src="/js/motion.js"></script><script src="/js/schemes/muse.js"></script><script src="/js/sidebar.js"></script><script src="/js/next-boot.js"></script>
 
   <script src="https://cdnjs.cloudflare.com/ajax/libs/hexo-generator-searchdb/1.4.1/search.js" integrity="sha256-1kfA5uHPf65M5cphT2dvymhkuyHPQp5A53EGZOnOLmc=" crossorigin="anonymous"></script>
 <script src="/js/third-party/search/local-search.js"></script>
+
+
 
 
 

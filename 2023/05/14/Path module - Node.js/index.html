@@ -15,10 +15,10 @@
 
 
 
-<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css" integrity="sha256-HtsXJanqjKTc8vVQjO4YMhiqFoXkfBsjBWcX91T1jr8=" crossorigin="anonymous">
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.2/css/all.min.css" integrity="sha256-XOqroi11tY4EFQMR9ZYwZWKj5ZXiftSx36RRuC3anlA=" crossorigin="anonymous">
   <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/animate.css/3.1.1/animate.min.css" integrity="sha256-PR7ttpcvz8qrF57fur/yAx1qXMFJeJFiA6pSzWi0OIE=" crossorigin="anonymous">
 
-<script class="next-config" data-name="main" type="application/json">{"hostname":"mccranky83.github.io","root":"/","images":"/images","scheme":"Muse","darkmode":true,"version":"8.15.1","exturl":false,"sidebar":{"position":"right","display":"post","padding":18,"offset":12},"copycode":{"enable":true,"style":"flat"},"bookmark":{"enable":false,"color":"#222","save":"auto"},"mediumzoom":false,"lazyload":false,"pangu":false,"comments":{"style":"tabs","active":null,"storage":true,"lazyload":false,"nav":null},"stickytabs":false,"motion":{"enable":true,"async":false,"transition":{"menu_item":"fadeInDown","post_block":"fadeIn","post_header":"fadeInDown","post_body":"fadeInDown","coll_header":"fadeInLeft","sidebar":"fadeInUp"}},"prism":false,"i18n":{"placeholder":"Searching...","empty":"We didn't find any results for the search: ${query}","hits_time":"${hits} results found in ${time} ms","hits":"${hits} results found"},"path":"/search.xml","localsearch":{"enable":true,"trigger":"auto","top_n_per_article":1,"unescape":false,"preload":false}}</script><script src="/js/config.js"></script>
+<script class="next-config" data-name="main" type="application/json">{"hostname":"mccranky83.github.io","root":"/","images":"/images","scheme":"Muse","darkmode":true,"version":"8.20.0","exturl":false,"sidebar":{"position":"right","width_expanded":320,"width_dual_column":240,"display":"post","padding":18,"offset":12},"copycode":{"enable":true,"style":"flat"},"fold":{"enable":false,"height":500},"bookmark":{"enable":false,"color":"#222","save":"auto"},"mediumzoom":false,"lazyload":false,"pangu":false,"comments":{"style":"tabs","active":null,"storage":true,"lazyload":false,"nav":null},"stickytabs":false,"motion":{"enable":true,"async":false,"transition":{"menu_item":"fadeInDown","post_block":"fadeIn","post_header":"fadeInDown","post_body":"fadeInDown","coll_header":"fadeInLeft","sidebar":"fadeInUp"}},"prism":false,"i18n":{"placeholder":"Searching...","empty":"We didn't find any results for the search: ${query}","hits_time":"${hits} results found in ${time} ms","hits":"${hits} results found"},"path":"/search.xml","localsearch":{"enable":true,"trigger":"auto","top_n_per_article":1,"unescape":false,"preload":false}}</script><script src="/js/config.js"></script>
 
     <meta name="description" content="因为本人使用的操作系统是 OS X ，所以一下书写规范均符合 POSIX（Portable Open System Interface eXtended），Windows 用户请自行查阅资料。 path.basename(path[, suffix])12path.basename(&amp;#x27;&#x2F;path&#x2F;to&#x2F;project&#x2F;index.html&amp;#x27;, &amp;#x27;.html&amp;#x27;">
 <meta property="og:type" content="article">
@@ -260,8 +260,7 @@
     
     
     
-    <div class="post-body" itemprop="articleBody">
-        <p>因为本人使用的操作系统是 OS X ，所以一下书写规范均符合 POSIX（Portable Open System Interface eXtended），Windows 用户请自行查阅资料。</p>
+    <div class="post-body" itemprop="articleBody"><p>因为本人使用的操作系统是 OS X ，所以一下书写规范均符合 POSIX（Portable Open System Interface eXtended），Windows 用户请自行查阅资料。</p>
 <h3 id="path-basename-path-suffix"><a href="#path-basename-path-suffix" class="headerlink" title="path.basename(path[, suffix])"></a><code>path.basename(path[, suffix])</code></h3><figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">path.<span class="title function_">basename</span>(<span class="string">&#x27;/path/to/project/index.html&#x27;</span>, <span class="string">&#x27;.html&#x27;</span>)</span><br><span class="line"><span class="comment">// &#x27;index&#x27;</span></span><br></pre></td></tr></table></figure>
 
 <h3 id="path-delimiter"><a href="#path-delimiter" class="headerlink" title="path.delimiter"></a><code>path.delimiter</code></h3><figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line"><span class="variable language_">console</span>.<span class="title function_">log</span>(process.<span class="property">env</span>.<span class="property">PATH</span>)</span><br><span class="line"><span class="comment">// /opt/homebrew/opt/llvm/bin:/opt/homebrew/opt/llvm/bin:/Applications/Sublime Text.app/Contents/SharedSupport/bin/:/Applications/Visual Studio Code.app/Contents/Resources/app/bin/:/Users/Mccranky/.gem/ruby/3.1.3/bin:/Users/Mccranky/.rubies/ruby-3.1.3/lib/ruby/gems/3.1.0/bin:/Users/Mccranky/.rubies/ruby-3.1.3/bin::/opt/local/bin:/opt/homebrew/bin:/opt/homebrew/sbin:/usr/local/bin:/usr/bin:/bin:/usr/sbin:/sbin:/usr/local/mysql/support-files:/usr/local/mysql/bin:/etc/platform-tools:/usr/local/go/bin:/usr/local/MacGPG2/bin:/usr/local/share/dotnet:~/.dotnet/tools:/Library/Apple/usr/bin:/Users/Mccranky/.nami/bin:/Users/Mccranky/.spicetify</span></span><br><span class="line"><span class="comment">// undefined</span></span><br></pre></td></tr></table></figure>
@@ -311,12 +310,12 @@
           <div class="post-nav">
             <div class="post-nav-item">
                 <a href="/2023/05/10/Intuition/" rel="prev" title="Intuition">
-                  <i class="fa fa-chevron-left"></i> Intuition
+                  <i class="fa fa-angle-left"></i> Intuition
                 </a>
             </div>
             <div class="post-nav-item">
                 <a href="/2023/06/09/Delete%20a%20superuser%20in%20Django/" rel="next" title="Delete a superuser in Django">
-                  Delete a superuser in Django <i class="fa fa-chevron-right"></i>
+                  Delete a superuser in Django <i class="fa fa-angle-right"></i>
                 </a>
             </div>
           </div>
@@ -335,15 +334,14 @@
   <footer class="footer">
     <div class="footer-inner">
 
-
-<div class="copyright">
-  &copy; 
-  <span itemprop="copyrightYear">2024</span>
-  <span class="with-love">
-    <i class="fa fa-heart"></i>
-  </span>
-  <span class="author" itemprop="copyrightHolder">Mccranky83</span>
-</div>
+  <div class="copyright">
+    &copy; 
+    <span itemprop="copyrightYear">2024</span>
+    <span class="with-love">
+      <i class="fa fa-heart"></i>
+    </span>
+    <span class="author" itemprop="copyrightHolder">Mccranky83</span>
+  </div>
   <div class="powered-by">Powered by <a href="https://hexo.io/" rel="noopener" target="_blank">Hexo</a> & <a href="https://theme-next.js.org/muse/" rel="noopener" target="_blank">NexT.Muse</a>
   </div>
 
@@ -369,10 +367,12 @@
 
   
   <script src="https://cdnjs.cloudflare.com/ajax/libs/animejs/3.2.1/anime.min.js" integrity="sha256-XL2inqUJaslATFnHdJOi9GfQ60on8Wx1C2H8DYiN1xY=" crossorigin="anonymous"></script>
-<script src="/js/comments.js"></script><script src="/js/utils.js"></script><script src="/js/motion.js"></script><script src="/js/schemes/muse.js"></script><script src="/js/next-boot.js"></script>
+<script src="/js/comments.js"></script><script src="/js/utils.js"></script><script src="/js/motion.js"></script><script src="/js/schemes/muse.js"></script><script src="/js/sidebar.js"></script><script src="/js/next-boot.js"></script>
 
   <script src="https://cdnjs.cloudflare.com/ajax/libs/hexo-generator-searchdb/1.4.1/search.js" integrity="sha256-1kfA5uHPf65M5cphT2dvymhkuyHPQp5A53EGZOnOLmc=" crossorigin="anonymous"></script>
 <script src="/js/third-party/search/local-search.js"></script>
+
+
 
 
 
