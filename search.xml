@@ -1,25 +1,6 @@
 <?xml version="1.0" encoding="utf-8"?>
 <search>
   <entry>
-    <title>7-2-Java-基本语法-大整数相加</title>
-    <url>/2023/04/24/7-2-Java-%E5%9F%BA%E6%9C%AC%E8%AF%AD%E6%B3%95-%E5%A4%A7%E6%95%B4%E6%95%B0%E7%9B%B8%E5%8A%A0/</url>
-    <content><![CDATA[<h3 id="题目"><a href="#题目" class="headerlink" title="题目"></a>题目</h3><p>有若干大整数，需要对其进行求和操作。</p>
-<h3 id="输入格式"><a href="#输入格式" class="headerlink" title="输入格式"></a>输入格式</h3><p>每行输入一个字符串代表一个大整数，连续输入若干行，当某行字符为e或E时退出。</p>
-<h3 id="输入样例"><a href="#输入样例" class="headerlink" title="输入样例:"></a>输入样例:</h3><figure class="highlight plaintext"><table><tr><td class="code"><pre><span class="line">42846280183517070527831839425882145521227251250327</span><br><span class="line">55121603546981200581762165212827652751691296897789</span><br><span class="line">e</span><br></pre></td></tr></table></figure>
-
-<h3 id="输出样例"><a href="#输出样例" class="headerlink" title="输出样例:"></a>输出样例:</h3><figure class="highlight plaintext"><table><tr><td class="code"><pre><span class="line">97967883730498271109594004638709798272918548148116</span><br></pre></td></tr></table></figure>
-
-<h3 id="JavaScript"><a href="#JavaScript" class="headerlink" title="JavaScript"></a>JavaScript</h3><figure class="highlight javascript"><table><tr><td class="code"><pre><span class="line"><span class="keyword">const</span> readline = <span class="built_in">require</span>(<span class="string">&#x27;readline&#x27;</span>)</span><br><span class="line"><span class="keyword">const</span> rl = readline.<span class="title function_">createInterface</span>(&#123;</span><br><span class="line">    <span class="attr">input</span>: process.<span class="property">stdin</span>,</span><br><span class="line">    <span class="attr">output</span>: process.<span class="property">stdout</span></span><br><span class="line">&#125;)</span><br><span class="line"></span><br><span class="line"><span class="keyword">let</span> sum = <span class="title class_">BigInt</span>(<span class="number">0</span>)</span><br><span class="line"></span><br><span class="line">rl.<span class="title function_">on</span>(<span class="string">&#x27;line&#x27;</span>, <span class="function"><span class="params">line</span> =&gt;</span> &#123;</span><br><span class="line">    <span class="keyword">if</span> (!line.<span class="title function_">localeCompare</span>(<span class="string">&quot;e&quot;</span>, <span class="literal">undefined</span>, &#123; <span class="attr">sensitivity</span>: <span class="string">&quot;base&quot;</span> &#125;)) &#123;</span><br><span class="line">        <span class="variable language_">console</span>.<span class="title function_">log</span>(sum.<span class="title function_">toString</span>())</span><br><span class="line">        rl.<span class="title function_">close</span>()</span><br><span class="line">    &#125; <span class="keyword">else</span> &#123;</span><br><span class="line">        sum += <span class="title class_">BigInt</span>(line)</span><br><span class="line">    &#125;</span><br><span class="line">&#125;)</span><br></pre></td></tr></table></figure>
-
-<h3 id="Java"><a href="#Java" class="headerlink" title="Java"></a>Java</h3><figure class="highlight java"><table><tr><td class="code"><pre><span class="line"><span class="keyword">import</span> java.util.Scanner;</span><br><span class="line"><span class="keyword">import</span> java.math.BigInteger;</span><br><span class="line"></span><br><span class="line"><span class="keyword">public</span> <span class="keyword">class</span> <span class="title class_">Main</span> &#123;</span><br><span class="line">    <span class="keyword">public</span> <span class="keyword">static</span> <span class="keyword">void</span> <span class="title function_">main</span> <span class="params">(String[] args)</span> &#123;</span><br><span class="line">        <span class="type">Scanner</span> <span class="variable">scanner</span> <span class="operator">=</span> <span class="keyword">new</span> <span class="title class_">Scanner</span>(System.in);</span><br><span class="line">        <span class="type">BigInteger</span> <span class="variable">sum</span> <span class="operator">=</span> BigInteger.ZERO;</span><br><span class="line"></span><br><span class="line">        <span class="keyword">while</span> (scanner.hasNextLine()) &#123;</span><br><span class="line">            <span class="type">String</span> <span class="variable">line</span> <span class="operator">=</span> scanner.nextLine();</span><br><span class="line">            <span class="keyword">if</span> (line.equalsIgnoreCase(<span class="string">&quot;e&quot;</span>)) &#123;</span><br><span class="line">                System.out.println(sum.toString());</span><br><span class="line">                <span class="keyword">break</span>;</span><br><span class="line">            &#125; <span class="keyword">else</span> &#123;</span><br><span class="line">                sum = sum.add(<span class="keyword">new</span> <span class="title class_">BigInteger</span>(line));</span><br><span class="line">            &#125;</span><br><span class="line">        &#125;</span><br><span class="line">        scanner.close();</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>]]></content>
-      <tags>
-        <tag>Java</tag>
-        <tag>JavaScript</tag>
-        <tag>BigInt</tag>
-        <tag>readline</tag>
-      </tags>
-  </entry>
-  <entry>
     <title>C++ Pointers</title>
     <url>/2023/04/29/C++%20Pointers/</url>
     <content><![CDATA[<h3 id="Array-of-pointers-to-ints"><a href="#Array-of-pointers-to-ints" class="headerlink" title="Array of pointers to ints"></a>Array of pointers to ints</h3><p><strong>Code:</strong></p>
@@ -70,143 +51,6 @@ hello this is bar
       </categories>
       <tags>
         <tag>Pointers</tag>
-      </tags>
-  </entry>
-  <entry>
-    <title>Delete a superuser in Django</title>
-    <url>/2023/06/09/Delete%20a%20superuser%20in%20Django/</url>
-    <content><![CDATA[<p>To delete a superuser in Django, you can use the Django shell to query and delete the user model instance. Here are the steps to delete a superuser using the Django shell:</p>
-<ol>
-<li><p>Open a terminal and navigate to the root directory of your Django project.</p>
-</li>
-<li><p>Activate the virtual environment, if you are using one.</p>
-</li>
-<li><p>Run the following command to open the Django shell: <code>python manage.py shell</code>.</p>
-</li>
-<li><p>Import the User model by running the following command: <code>from django.contrib.auth.models import User</code>.</p>
-</li>
-<li><p>Query the User model for the superuser you want to delete using the <code>get()</code> method. For example, if the username of the superuser you want to delete is “admin”, you would run: <code>user = User.objects.get(username=&#39;admin&#39;)</code>.</p>
-</li>
-<li><p>Call the <code>delete()</code> method on the user instance to delete the superuser. For example, you would run: <code>user.delete()</code>.</p>
-</li>
-<li><p>Exit the Django shell by typing <code>exit()</code> or pressing <code>Ctrl+D</code>.</p>
-</li>
-</ol>
-<p>After following these steps, the superuser will be deleted from the Django project.</p>
-<p>It’s important to note that deleting a superuser will also delete all related data, such as blog posts or comments, if those models are related to the User model with a foreign key. If you want to preserve this data, you should first transfer ownership of the data to another user before deleting the superuser.</p>
-<p>Another way to delete a superuser is to use the Django admin. To do this, log in as a superuser in the Django admin, navigate to the “Users” section, and click the “Delete” button next to the superuser you want to delete. Confirm the deletion in the next screen.</p>
-<p>In summary, you can delete a superuser in Django by using the Django shell to query and delete the user model instance. Alternatively, you can use the Django admin to delete the superuser. Keep in mind that deleting a superuser will also delete any related data.</p>
-]]></content>
-      <categories>
-        <category>Django</category>
-      </categories>
-      <tags>
-        <tag>Django</tag>
-        <tag>Python</tag>
-      </tags>
-  </entry>
-  <entry>
-    <title>Dabbling with Puppeteer</title>
-    <url>/2023/04/27/Dabbling%20with%20Puppeteer/</url>
-    <content><![CDATA[<p>Puppeteer is a Node.js library that provides a high-level API to control headless Chrome or Chromium browsers. It is widely used for web scraping, testing, and automation, and is an essential tool for many developers who work with web applications.</p>
-<blockquote>
-<p>Note that I’ll be demonstrating on ArchLinux</p>
-</blockquote>
-<p>Because Puppeteer relies on Node.js, the first thing we do is create a project directory and initiate <code>npm</code>.</p>
-<figure class="highlight bash"><table><tr><td class="code"><pre><span class="line"><span class="built_in">mkdir</span> puppeteer-project;</span><br><span class="line"></span><br><span class="line"><span class="built_in">cd</span> puppeteer-project;</span><br><span class="line"></span><br><span class="line">npm init -y</span><br><span class="line"></span><br><span class="line">npm i puppeteer --save</span><br><span class="line"></span><br><span class="line"><span class="built_in">sudo</span> pacman -S libx11 libxcomposite libxdamage libxext libxi libxtst nss freetype2 harfbuzz</span><br><span class="line"></span><br><span class="line"><span class="comment"># Puppeteer requires some additional dependencies to be installed</span></span><br><span class="line"></span><br></pre></td></tr></table></figure>
-
-<p>Now we write our script:</p>
-<figure class="highlight bash"><table><tr><td class="code"><pre><span class="line">vim puppeteer.js</span><br></pre></td></tr></table></figure>
-
-<p>The script should be on the lines of this template:</p>
-<figure class="highlight javascript"><table><tr><td class="code"><pre><span class="line"><span class="keyword">const</span> puppeteer = <span class="built_in">require</span>(<span class="string">&#x27;puppeteer&#x27;</span>);</span><br><span class="line"></span><br><span class="line">(<span class="title function_">async</span> () =&gt; &#123;</span><br><span class="line">  <span class="keyword">const</span> browser = <span class="keyword">await</span> puppeteer.<span class="title function_">launch</span>(&#123;</span><br><span class="line">  	<span class="attr">executablePath</span>: <span class="string">&#x27;/usr/bin/chromium&#x27;</span>,</span><br><span class="line"></span><br><span class="line">  	<span class="comment">// We can also drop this line and instead, set an environment variable in Bash.</span></span><br><span class="line"></span><br><span class="line">  	<span class="comment">// `$ export PUPPETEER_EXECUTABLE_PATH=/usr/bin/chromium`</span></span><br><span class="line"></span><br><span class="line">  	<span class="attr">headless</span>: <span class="literal">true</span></span><br><span class="line">  &#125;);</span><br><span class="line">  <span class="keyword">const</span> page = <span class="keyword">await</span> browser.<span class="title function_">newPage</span>();</span><br><span class="line">  <span class="keyword">await</span> page.<span class="title function_">goto</span>(<span class="string">&#x27;https://www.example.com&#x27;</span>);</span><br><span class="line">  <span class="keyword">await</span> page.<span class="title function_">screenshot</span>(&#123; <span class="attr">path</span>: <span class="string">&#x27;example.png&#x27;</span> &#125;);</span><br><span class="line">  <span class="keyword">await</span> browser.<span class="title function_">close</span>();</span><br><span class="line">&#125;)();</span><br><span class="line"></span><br></pre></td></tr></table></figure>
-
-<p>This code will launch Chromium in headless mode and navigate to <code>https://www.example.com</code>, take a screenshot of the page, and then close the browser.</p>
-<p><strong><em>More content about Puppeteer coming up!</em></strong></p>
-]]></content>
-      <categories>
-        <category>Puppeteer</category>
-      </categories>
-      <tags>
-        <tag>Linux</tag>
-        <tag>ArchLinux</tag>
-        <tag>Headless Browser</tag>
-      </tags>
-  </entry>
-  <entry>
-    <title>Immediately Executing Function Demo</title>
-    <url>/2023/04/27/Immediately%20Executing%20Function%20Demo/</url>
-    <content><![CDATA[<p>The key aspect of this demo is that the utilization of an immediately executing function in JavaScript generates a fresh variable scope, which distinguishes it from <code>if</code>, <code>else</code>, and <code>while</code>. The code presented below exemplifies this fact.</p>
-<figure class="highlight javascript"><table><tr><td class="code"><pre><span class="line"><span class="keyword">var</span> foo = <span class="number">123</span></span><br><span class="line"></span><br><span class="line"><span class="keyword">if</span> (<span class="number">1</span>) &#123;</span><br><span class="line">    <span class="keyword">var</span> foo = <span class="number">456</span></span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line">(<span class="function"><span class="params">_</span> =&gt;</span> &#123;</span><br><span class="line">    <span class="keyword">var</span> foo = <span class="number">123</span></span><br><span class="line">&#125;)()</span><br><span class="line"></span><br><span class="line"><span class="variable language_">console</span>.<span class="title function_">log</span>(foo)</span><br><span class="line"></span><br></pre></td></tr></table></figure>
-
-<p>Output:</p>
-<pre><code>456
-</code></pre>
-<p>Notice how the function does not reset the value of variable <code>foo</code>? Now that’s something to be mindful of!</p>
-]]></content>
-      <categories>
-        <category>JavaScript</category>
-      </categories>
-  </entry>
-  <entry>
-    <title>Installing Puppet server on ArchLinux</title>
-    <url>/2023/04/27/Installing%20Puppet%20server%20on%20ArchLinux/</url>
-    <content><![CDATA[<h3 id="Installation"><a href="#Installation" class="headerlink" title="Installation"></a>Installation</h3><p>To install puppet server first add the upstream GPG key:</p>
-<pre><code>$ gpg --fetch-keys https://yum.puppetlabs.com/RPM-GPG-KEY-puppet-20250406
-</code></pre>
-<div>
-    Then install the <a href="https://aur.archlinux.org/packages/puppetserver"><b>puppetserver</b></a><sup>AUR</sup> package.
-</div>
-
-<figure class="highlight bash"><table><tr><td class="code"><pre><span class="line">git <span class="built_in">clone</span> https://aur.archlinux.org/puppetserver.git</span><br><span class="line"></span><br><span class="line"><span class="built_in">cd</span> puppetserver/</span><br><span class="line"></span><br><span class="line">makepkg -si</span><br><span class="line"></span><br></pre></td></tr></table></figure>
-
-<p>Having questions about the <code>makepkg</code> command? Visit <a href="/2023/04/25/Running%20ArchLinux%20ARM%20in%20UTM%20on%20a%20M1%20MacBook%20Air/#yay" title="makepkg">here</a>!</p>
-<div>
-    Afterwards, enable and start the <b>puppetserver</b> service.
-</div>
-
-<figure class="highlight bash"><table><tr><td class="code"><pre><span class="line"><span class="built_in">sudo</span> systemctl <span class="built_in">enable</span> puppetserver.service</span><br><span class="line"></span><br><span class="line"><span class="comment"># Add to &quot;/etc/systemd/system/multi-user.target.wants&quot;.</span></span><br><span class="line"></span><br><span class="line"><span class="built_in">sudo</span> systemctl start puppetserver.service</span><br><span class="line"></span><br></pre></td></tr></table></figure>
-
-<h3 id="Delete-a-key"><a href="#Delete-a-key" class="headerlink" title="Delete a key"></a>Delete a key</h3><p>List the keys in your keyring using the command <code>gpg --list-keys</code>:</p>
-<pre><code>$ gpg --list-keys
-/root/.gnupg/pubring.kbx
-------------------------
-pub   rsa4096 2019-04-08 [SC] [expires: 2025-04-06]
-      D6811ED3ADEEB8441AF5AA8F4528B6CD9E61EF26
-uid           [ unknown] Puppet, Inc. Release Key (Puppet, Inc. Release Key) &lt;release@puppet.com&gt;
-</code></pre>
-<p>For example, the key ID of the instance above is “D6811ED3ADEEB8441AF5AA8F4528B6CD9E61EF26”.</p>
-<p>Delete the key using the command <code>gpg --delete-keys [key ID]</code>.</p>
-<p>Note that deleting a key from your keyring will prevent you from verifying any signatures made with that key in the future. If you need to use the key again later, you will need to fetch it again using the <code>gpg --fetch-keys</code> command.</p>
-<blockquote>
-<p>Configuration</p>
-</blockquote>
-<p>The Puppet Server’s configuration files are stored in <code>/etc/puppetlabs/puppetserver/</code>.</p>
-]]></content>
-      <categories>
-        <category>Puppet</category>
-      </categories>
-      <tags>
-        <tag>Linux</tag>
-        <tag>ArchLinux</tag>
-        <tag>Puppet</tag>
-        <tag>server</tag>
-        <tag>GPG key</tag>
-      </tags>
-  </entry>
-  <entry>
-    <title>How to re-center Spotlight search bar on Mac?</title>
-    <url>/2023/05/06/How%20to%20re-center%20Spotlight%20search%20bar%20on%20Mac?/</url>
-    <content><![CDATA[<p>Click and hold the Spotlight icon on the menu bar, until the Spotlight window has returned to its original location.</p>
-]]></content>
-      <categories>
-        <category>Tips</category>
-      </categories>
-      <tags>
-        <tag>MacOS</tag>
-        <tag>Spotlight</tag>
-        <tag>Tips</tag>
-        <tag>Utilities</tag>
       </tags>
   </entry>
   <entry>
@@ -275,21 +119,95 @@ uid           [ unknown] Puppet, Inc. Release Key (Puppet, Inc. Release Key) &lt
       </tags>
   </entry>
   <entry>
-    <title>Intuition</title>
-    <url>/2023/05/10/Intuition/</url>
-    <content><![CDATA[<p>While a clever person may have a strong intuition, their insights may only benefit themselves. On the other hand, a learned person who has gained knowledge through studies has the ability to express their ideas and contribute to society.</p>
-<p>Intuition is often described as a gut feeling or a hunch that arises without conscious reasoning. It is a valuable skill, but it can be limited by personal biases and experiences. In contrast, knowledge gained through education and study is based on evidence and critical thinking. This allows learned individuals to make informed decisions and contribute to the advancement of society.</p>
-<p><strong><em>References:</em></strong></p>
-<ul>
-<li><p>The Catcher in the Rye: Mr. Antolini Quotes in Chapter 24</p>
-</li>
-<li><p>Steve Jobs: “Intuition is a very powerful thing, more powerful than intellect, in my opinion.”</p>
-</li>
-</ul>
+    <title>Dabbling with Puppeteer</title>
+    <url>/2023/04/27/Dabbling%20with%20Puppeteer/</url>
+    <content><![CDATA[<p>Puppeteer is a Node.js library that provides a high-level API to control headless Chrome or Chromium browsers. It is widely used for web scraping, testing, and automation, and is an essential tool for many developers who work with web applications.</p>
+<blockquote>
+<p>Note that I’ll be demonstrating on ArchLinux</p>
+</blockquote>
+<p>Because Puppeteer relies on Node.js, the first thing we do is create a project directory and initiate <code>npm</code>.</p>
+<figure class="highlight bash"><table><tr><td class="code"><pre><span class="line"><span class="built_in">mkdir</span> puppeteer-project;</span><br><span class="line"></span><br><span class="line"><span class="built_in">cd</span> puppeteer-project;</span><br><span class="line"></span><br><span class="line">npm init -y</span><br><span class="line"></span><br><span class="line">npm i puppeteer --save</span><br><span class="line"></span><br><span class="line"><span class="built_in">sudo</span> pacman -S libx11 libxcomposite libxdamage libxext libxi libxtst nss freetype2 harfbuzz</span><br><span class="line"></span><br><span class="line"><span class="comment"># Puppeteer requires some additional dependencies to be installed</span></span><br><span class="line"></span><br></pre></td></tr></table></figure>
+
+<p>Now we write our script:</p>
+<figure class="highlight bash"><table><tr><td class="code"><pre><span class="line">vim puppeteer.js</span><br></pre></td></tr></table></figure>
+
+<p>The script should be on the lines of this template:</p>
+<figure class="highlight javascript"><table><tr><td class="code"><pre><span class="line"><span class="keyword">const</span> puppeteer = <span class="built_in">require</span>(<span class="string">&#x27;puppeteer&#x27;</span>);</span><br><span class="line"></span><br><span class="line">(<span class="title function_">async</span> () =&gt; &#123;</span><br><span class="line">  <span class="keyword">const</span> browser = <span class="keyword">await</span> puppeteer.<span class="title function_">launch</span>(&#123;</span><br><span class="line">  	<span class="attr">executablePath</span>: <span class="string">&#x27;/usr/bin/chromium&#x27;</span>,</span><br><span class="line"></span><br><span class="line">  	<span class="comment">// We can also drop this line and instead, set an environment variable in Bash.</span></span><br><span class="line"></span><br><span class="line">  	<span class="comment">// `$ export PUPPETEER_EXECUTABLE_PATH=/usr/bin/chromium`</span></span><br><span class="line"></span><br><span class="line">  	<span class="attr">headless</span>: <span class="literal">true</span></span><br><span class="line">  &#125;);</span><br><span class="line">  <span class="keyword">const</span> page = <span class="keyword">await</span> browser.<span class="title function_">newPage</span>();</span><br><span class="line">  <span class="keyword">await</span> page.<span class="title function_">goto</span>(<span class="string">&#x27;https://www.example.com&#x27;</span>);</span><br><span class="line">  <span class="keyword">await</span> page.<span class="title function_">screenshot</span>(&#123; <span class="attr">path</span>: <span class="string">&#x27;example.png&#x27;</span> &#125;);</span><br><span class="line">  <span class="keyword">await</span> browser.<span class="title function_">close</span>();</span><br><span class="line">&#125;)();</span><br><span class="line"></span><br></pre></td></tr></table></figure>
+
+<p>This code will launch Chromium in headless mode and navigate to <code>https://www.example.com</code>, take a screenshot of the page, and then close the browser.</p>
+<p><strong><em>More content about Puppeteer coming up!</em></strong></p>
 ]]></content>
+      <categories>
+        <category>Puppeteer</category>
+      </categories>
       <tags>
-        <tag>Revelations</tag>
+        <tag>Linux</tag>
+        <tag>ArchLinux</tag>
+        <tag>Headless Browser</tag>
       </tags>
+  </entry>
+  <entry>
+    <title>How to re-center Spotlight search bar on Mac?</title>
+    <url>/2023/05/06/How%20to%20re-center%20Spotlight%20search%20bar%20on%20Mac?/</url>
+    <content><![CDATA[<p>Click and hold the Spotlight icon on the menu bar, until the Spotlight window has returned to its original location.</p>
+]]></content>
+      <categories>
+        <category>Tips</category>
+      </categories>
+      <tags>
+        <tag>MacOS</tag>
+        <tag>Spotlight</tag>
+        <tag>Tips</tag>
+        <tag>Utilities</tag>
+      </tags>
+  </entry>
+  <entry>
+    <title>Delete a superuser in Django</title>
+    <url>/2023/06/09/Delete%20a%20superuser%20in%20Django/</url>
+    <content><![CDATA[<p>To delete a superuser in Django, you can use the Django shell to query and delete the user model instance. Here are the steps to delete a superuser using the Django shell:</p>
+<ol>
+<li><p>Open a terminal and navigate to the root directory of your Django project.</p>
+</li>
+<li><p>Activate the virtual environment, if you are using one.</p>
+</li>
+<li><p>Run the following command to open the Django shell: <code>python manage.py shell</code>.</p>
+</li>
+<li><p>Import the User model by running the following command: <code>from django.contrib.auth.models import User</code>.</p>
+</li>
+<li><p>Query the User model for the superuser you want to delete using the <code>get()</code> method. For example, if the username of the superuser you want to delete is “admin”, you would run: <code>user = User.objects.get(username=&#39;admin&#39;)</code>.</p>
+</li>
+<li><p>Call the <code>delete()</code> method on the user instance to delete the superuser. For example, you would run: <code>user.delete()</code>.</p>
+</li>
+<li><p>Exit the Django shell by typing <code>exit()</code> or pressing <code>Ctrl+D</code>.</p>
+</li>
+</ol>
+<p>After following these steps, the superuser will be deleted from the Django project.</p>
+<p>It’s important to note that deleting a superuser will also delete all related data, such as blog posts or comments, if those models are related to the User model with a foreign key. If you want to preserve this data, you should first transfer ownership of the data to another user before deleting the superuser.</p>
+<p>Another way to delete a superuser is to use the Django admin. To do this, log in as a superuser in the Django admin, navigate to the “Users” section, and click the “Delete” button next to the superuser you want to delete. Confirm the deletion in the next screen.</p>
+<p>In summary, you can delete a superuser in Django by using the Django shell to query and delete the user model instance. Alternatively, you can use the Django admin to delete the superuser. Keep in mind that deleting a superuser will also delete any related data.</p>
+]]></content>
+      <categories>
+        <category>Django</category>
+      </categories>
+      <tags>
+        <tag>Django</tag>
+        <tag>Python</tag>
+      </tags>
+  </entry>
+  <entry>
+    <title>Immediately Executing Function Demo</title>
+    <url>/2023/04/27/Immediately%20Executing%20Function%20Demo/</url>
+    <content><![CDATA[<p>The key aspect of this demo is that the utilization of an immediately executing function in JavaScript generates a fresh variable scope, which distinguishes it from <code>if</code>, <code>else</code>, and <code>while</code>. The code presented below exemplifies this fact.</p>
+<figure class="highlight javascript"><table><tr><td class="code"><pre><span class="line"><span class="keyword">var</span> foo = <span class="number">123</span></span><br><span class="line"></span><br><span class="line"><span class="keyword">if</span> (<span class="number">1</span>) &#123;</span><br><span class="line">    <span class="keyword">var</span> foo = <span class="number">456</span></span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line">(<span class="function"><span class="params">_</span> =&gt;</span> &#123;</span><br><span class="line">    <span class="keyword">var</span> foo = <span class="number">123</span></span><br><span class="line">&#125;)()</span><br><span class="line"></span><br><span class="line"><span class="variable language_">console</span>.<span class="title function_">log</span>(foo)</span><br><span class="line"></span><br></pre></td></tr></table></figure>
+
+<p>Output:</p>
+<pre><code>456
+</code></pre>
+<p>Notice how the function does not reset the value of variable <code>foo</code>? Now that’s something to be mindful of!</p>
+]]></content>
+      <categories>
+        <category>JavaScript</category>
+      </categories>
   </entry>
   <entry>
     <title>Initialize shared directory with SPICE WebDAV</title>
@@ -351,6 +269,23 @@ uid           [ unknown] Puppet, Inc. Release Key (Puppet, Inc. Release Key) &lt
       </categories>
   </entry>
   <entry>
+    <title>Intuition</title>
+    <url>/2023/05/10/Intuition/</url>
+    <content><![CDATA[<p>While a clever person may have a strong intuition, their insights may only benefit themselves. On the other hand, a learned person who has gained knowledge through studies has the ability to express their ideas and contribute to society.</p>
+<p>Intuition is often described as a gut feeling or a hunch that arises without conscious reasoning. It is a valuable skill, but it can be limited by personal biases and experiences. In contrast, knowledge gained through education and study is based on evidence and critical thinking. This allows learned individuals to make informed decisions and contribute to the advancement of society.</p>
+<p><strong><em>References:</em></strong></p>
+<ul>
+<li><p>The Catcher in the Rye: Mr. Antolini Quotes in Chapter 24</p>
+</li>
+<li><p>Steve Jobs: “Intuition is a very powerful thing, more powerful than intellect, in my opinion.”</p>
+</li>
+</ul>
+]]></content>
+      <tags>
+        <tag>Revelations</tag>
+      </tags>
+  </entry>
+  <entry>
     <title>JavaScript Method：localeCompare</title>
     <url>/2023/04/24/JavaScript%20Method%EF%BC%9AlocaleCompare/</url>
     <content><![CDATA[<p>Lately I’ve been thinking that since Java has an equalsIgnoreCase method, JavaScript must have something similar. This is what I found: the <code>localeCompare</code> method.</p>
@@ -401,6 +336,52 @@ uid           [ unknown] Puppet, Inc. Release Key (Puppet, Inc. Release Key) &lt
       <tags>
         <tag>JavaScript</tag>
         <tag>Methods</tag>
+      </tags>
+  </entry>
+  <entry>
+    <title>Installing Puppet server on ArchLinux</title>
+    <url>/2023/04/27/Installing%20Puppet%20server%20on%20ArchLinux/</url>
+    <content><![CDATA[<h3 id="Installation"><a href="#Installation" class="headerlink" title="Installation"></a>Installation</h3><p>To install puppet server first add the upstream GPG key:</p>
+<pre><code>$ gpg --fetch-keys https://yum.puppetlabs.com/RPM-GPG-KEY-puppet-20250406
+</code></pre>
+<div>
+    Then install the <a href="https://aur.archlinux.org/packages/puppetserver"><b>puppetserver</b></a><sup>AUR</sup> package.
+</div>
+
+<figure class="highlight bash"><table><tr><td class="code"><pre><span class="line">git <span class="built_in">clone</span> https://aur.archlinux.org/puppetserver.git</span><br><span class="line"></span><br><span class="line"><span class="built_in">cd</span> puppetserver/</span><br><span class="line"></span><br><span class="line">makepkg -si</span><br><span class="line"></span><br></pre></td></tr></table></figure>
+
+<p>Having questions about the <code>makepkg</code> command? Visit <a href="/2023/04/25/Running%20ArchLinux%20ARM%20in%20UTM%20on%20a%20M1%20MacBook%20Air/#yay" title="makepkg">here</a>!</p>
+<div>
+    Afterwards, enable and start the <b>puppetserver</b> service.
+</div>
+
+<figure class="highlight bash"><table><tr><td class="code"><pre><span class="line"><span class="built_in">sudo</span> systemctl <span class="built_in">enable</span> puppetserver.service</span><br><span class="line"></span><br><span class="line"><span class="comment"># Add to &quot;/etc/systemd/system/multi-user.target.wants&quot;.</span></span><br><span class="line"></span><br><span class="line"><span class="built_in">sudo</span> systemctl start puppetserver.service</span><br><span class="line"></span><br></pre></td></tr></table></figure>
+
+<h3 id="Delete-a-key"><a href="#Delete-a-key" class="headerlink" title="Delete a key"></a>Delete a key</h3><p>List the keys in your keyring using the command <code>gpg --list-keys</code>:</p>
+<pre><code>$ gpg --list-keys
+/root/.gnupg/pubring.kbx
+------------------------
+pub   rsa4096 2019-04-08 [SC] [expires: 2025-04-06]
+      D6811ED3ADEEB8441AF5AA8F4528B6CD9E61EF26
+uid           [ unknown] Puppet, Inc. Release Key (Puppet, Inc. Release Key) &lt;release@puppet.com&gt;
+</code></pre>
+<p>For example, the key ID of the instance above is “D6811ED3ADEEB8441AF5AA8F4528B6CD9E61EF26”.</p>
+<p>Delete the key using the command <code>gpg --delete-keys [key ID]</code>.</p>
+<p>Note that deleting a key from your keyring will prevent you from verifying any signatures made with that key in the future. If you need to use the key again later, you will need to fetch it again using the <code>gpg --fetch-keys</code> command.</p>
+<blockquote>
+<p>Configuration</p>
+</blockquote>
+<p>The Puppet Server’s configuration files are stored in <code>/etc/puppetlabs/puppetserver/</code>.</p>
+]]></content>
+      <categories>
+        <category>Puppet</category>
+      </categories>
+      <tags>
+        <tag>Linux</tag>
+        <tag>ArchLinux</tag>
+        <tag>Puppet</tag>
+        <tag>server</tag>
+        <tag>GPG key</tag>
       </tags>
   </entry>
   <entry>
@@ -496,38 +477,126 @@ uid           [ unknown] Puppet, Inc. Release Key (Puppet, Inc. Release Key) &lt
       </tags>
   </entry>
   <entry>
-    <title>Positional Parameters</title>
-    <url>/2023/04/29/Positional%20Parameters/</url>
-    <content><![CDATA[<p>In Bash, positional parameters are special variables that hold the arguments passed to a script or function. The positional parameters are numbered from <code>0</code> to <code>9</code>, where <code>$0</code> holds the name of the script or function, and <code>$1</code> through <code>$9</code> hold the first through ninth arguments, respectively.</p>
-<p><code>$@</code> and <code>$*</code> both hold all the arguments passed to the script. Note that <code>$@</code> is an array-like variable that holds all the positional parameters as <em>separate elements</em>, while <code>$*</code> is another variable that holds all the positional parameters as <em>a single string</em>.</p>
-<p>Here’s an example:</p>
-<pre><code>#!/bin/bash
+    <title>Mounting a shared folder on ArchLinux VM</title>
+    <url>/2023/04/26/Mounting-a-Shared-folder-on-ArchLinux-VM/</url>
+    <content><![CDATA[<p>For this tutorial, we’ll be using <strong>Samba</strong>. As for what Samba really is though, the most I can figure out from my search on Google is that Samba is a free and open-source software that allows files to be shared across Windows and Linux systems simply and easily. To be exact, it is an open-source implementation of the SMB&#x2F;CIFS protocol.</p>
+<h3 id="Setup"><a href="#Setup" class="headerlink" title="Setup"></a>Setup</h3><h4 id="Install-smbclient-util-with-pacman"><a href="#Install-smbclient-util-with-pacman" class="headerlink" title="Install smbclient util with pacman"></a>Install <code>smbclient</code> util with <code>pacman</code></h4><figure class="highlight bash"><table><tr><td class="code"><pre><span class="line"><span class="built_in">sudo</span> pacman -S smbclient</span><br></pre></td></tr></table></figure>
 
-#!/bin/bash
+<h4 id="Create-shared-directory"><a href="#Create-shared-directory" class="headerlink" title="Create shared directory"></a>Create shared directory</h4><figure class="highlight bash"><table><tr><td class="code"><pre><span class="line"><span class="built_in">sudo</span> <span class="built_in">mkdir</span> /home/&lt;user&gt;/share</span><br></pre></td></tr></table></figure>
 
-echo &quot;Script Name: $0&quot;
-echo &quot;First Arg: $1&quot;
-echo &quot;Second Arg: $2&quot;
-echo &quot;All args (arr): $@&quot;
-echo &quot;All args (str): $*&quot;
+<p>This directory is to be shared between the host and guest machines.</p>
+<h4 id="Edit-the-Samba-configuration-file"><a href="#Edit-the-Samba-configuration-file" class="headerlink" title="Edit the Samba configuration file"></a>Edit the Samba configuration file</h4><p>Open up the configuration file for samba:</p>
+<figure class="highlight bash"><table><tr><td class="code"><pre><span class="line"><span class="built_in">sudo</span> nano /etc/samba/smb.conf</span><br></pre></td></tr></table></figure>
+
+<p>Add these lines to the configuration file:</p>
+<figure class="highlight bash"><table><tr><td class="code"><pre><span class="line">[share]</span><br><span class="line">path = /home/&lt;user&gt;/share</span><br><span class="line"><span class="built_in">read</span> only = no</span><br><span class="line">guest ok = <span class="built_in">yes</span></span><br></pre></td></tr></table></figure>
+
+<h4 id="Create-Samba-password"><a href="#Create-Samba-password" class="headerlink" title="Create Samba password"></a>Create Samba password</h4><figure class="highlight bash"><table><tr><td class="code"><pre><span class="line"><span class="built_in">sudo</span> smbpasswd -a &lt;user&gt;</span><br></pre></td></tr></table></figure>
+
+<p>Restart the Samba service to refresh:</p>
+<figure class="highlight bash"><table><tr><td class="code"><pre><span class="line"><span class="built_in">sudo</span> systemctl restart smb.service</span><br></pre></td></tr></table></figure>
+
+<h4 id="IP-Configuration"><a href="#IP-Configuration" class="headerlink" title="IP Configuration"></a>IP Configuration</h4><p>In the UTM app on your MacBook, go to the settings for the ArchLinux VM and enable the “Port Forwarding” option. Add a new rule with the following settings:</p>
+<pre><code>Protocol: TCP
+Host Port: 445
+Guest IP: IP address of the ArchLinux VM
+Guest Port: 445
 </code></pre>
-<p>Now let’s run the script with three arguments:</p>
-<figure class="highlight bash"><table><tr><td class="code"><pre><span class="line"><span class="built_in">chmod</span> u+x ./script <span class="comment"># Grant execution privilege for user</span></span><br><span class="line"></span><br><span class="line">./script a b c</span><br><span class="line"></span><br></pre></td></tr></table></figure>
+<p>To get Guest IP, run the following line:</p>
+<figure class="highlight bash"><table><tr><td class="code"><pre><span class="line">[root@alarm ~]# ip addr | grep inet</span><br></pre></td></tr></table></figure>
 
-<p>The output should be something like this:</p>
-<pre><code>Script Name: ./script.sh
-First Arg: a
-Second Arg: b
-All args (arr): a b c
-All args (str): a b c
+<pre><code>inet 127.0.0.1/8 scope host lo
+inet6 ::1/128 scope host 
+inet 192.168.65.3/24 metric 1024 brd 192.168.65.255 scope global dynamic enp0s1
+inet6 fde3:e977:b4d3:5c13:e0b4:51ff:fee5:2142/64 scope global dynamic mngtmpaddr noprefixroute 
+inet6 fe80::e0b4:51ff:fee5:2142/64 scope link
 </code></pre>
+<p>In this case, it’s <code>192.168.65.3</code>.</p>
+<p>To get Host IP, run the following line:</p>
+<figure class="highlight bash"><table><tr><td class="code"><pre><span class="line">ipconfig getifaddr en0</span><br><span class="line"></span><br><span class="line"><span class="comment"># 10.8.189.52</span></span><br></pre></td></tr></table></figure>
+
+<p>On your MacBook, open Finder and click “Go” &gt; “Connect to Server” (Cmd + K). </p>
+<p>Enter this address: <code>smb://localhost:445/share</code></p>
+<p>Enter the Samba username and password when prompted.</p>
+<p>You can now access the shared directory and transfer files between the host and guest operating systems.</p>
+<h3 id="Mount-mnt-share"><a href="#Mount-mnt-share" class="headerlink" title="Mount /mnt/share"></a>Mount <code>/mnt/share</code></h3><p>Normally during the boot-up process of our machines, the mounting up of disks and folders are done for us. However, I keep getting this error telling me:</p>
+<pre><code>[FAILED] Failed to mount /mnt/share.
+</code></pre>
+<p>So I have to mount this directory myself, by running:</p>
+<figure class="highlight bash"><table><tr><td class="code"><pre><span class="line"><span class="built_in">sudo</span> mount -t cifs //localhost/share /mnt/share -o user=&lt;Samba username&gt;,password=&lt;Samba password&gt;</span><br></pre></td></tr></table></figure>
+
+<p>This command mounts a Samba share located on the local machine (localhost) to a directory (&#x2F;mnt&#x2F;share) using the Common Internet File System (CIFS) protocol.</p>
+<p>The <code>-o</code> option specifies additional mount options, in this case, it provides the Samba username and password to authenticate and access the share.</p>
+<hr>
+<h4 id="Enable-Samba-service"><a href="#Enable-Samba-service" class="headerlink" title="Enable Samba service"></a>Enable Samba service</h4><p>But before we run this command, we have to ensure that Samba service on the ArchLinux VM is up and running.</p>
+<p>Check that the Samba service is running on the ArchLinux VM:</p>
+<figure class="highlight bash"><table><tr><td class="code"><pre><span class="line"><span class="built_in">sudo</span> systemctl status smb.service</span><br></pre></td></tr></table></figure>
+
+<p>If the service is not running, start it using the following command:</p>
+<figure class="highlight bash"><table><tr><td class="code"><pre><span class="line"><span class="built_in">sudo</span> systemctl start smb.service</span><br></pre></td></tr></table></figure>
+
+<p>To automatically start the Samba service on boot, you can enable the <code>smb.service</code> unit running the following command:</p>
+<figure class="highlight bash"><table><tr><td class="code"><pre><span class="line"><span class="built_in">sudo</span> systemctl <span class="built_in">enable</span> smb.service</span><br></pre></td></tr></table></figure>
+
+<blockquote>
+<p><strong><em>Make sure that the Samba username and password are correct.</em></strong></p>
+</blockquote>
+<figure class="highlight bash"><table><tr><td class="code"><pre><span class="line">smbclient //localhost/share -U mccranky</span><br></pre></td></tr></table></figure>
+
+<p>Restart the ArchLinux VM to test that the Samba service starts automatically:</p>
+<figure class="highlight bash"><table><tr><td class="code"><pre><span class="line"><span class="built_in">sudo</span> systemctl reboot</span><br></pre></td></tr></table></figure>
+
+<hr>
+<p>To check whether <code>/mnt/share</code> has been successfully mounted, run the following line:</p>
+<figure class="highlight bash"><table><tr><td class="code"><pre><span class="line">mount | grep /mnt/share</span><br></pre></td></tr></table></figure>
+
+<p>If the directory is mounted, we should be able to see something similar to this:</p>
+<pre><code>//localhost/share on /mnt/share type cifs (rw,relatime,vers=3.1.1,cache=strict,username=mccranky,
+uid=0,noforceuid,gid=0,noforcegid,addr=127.0.0.1,file_mode=0755,dir_mode=0755,soft,nounix,serveri
+no,mapposix,rsize=4194304,wsize=4194304,bsize=1048576,echo_interval=60,actimeo=1,closetimeo=1,use
+r=mccranky)
+</code></pre>
+<h4 id="Mount-mnt-share-on-startup"><a href="#Mount-mnt-share-on-startup" class="headerlink" title="Mount /mnt/share on startup"></a>Mount <code>/mnt/share</code> on startup</h4><p>To automatically mount the Samba shared directory on boot, you can add an entry to the <code>/etc/fstab</code> file.</p>
+<figure class="highlight bash"><table><tr><td class="code"><pre><span class="line"><span class="built_in">sudo</span> nano /etc/fstab</span><br></pre></td></tr></table></figure>
+
+<p>Then append the following line to the end of the file:</p>
+<figure class="highlight bash"><table><tr><td class="code"><pre><span class="line">//localhost/share /mnt/share cifs user=mccranky,password=Rogue12 0 0</span><br></pre></td></tr></table></figure>
+
+<p>However, it seems that our new input comflicts with this line:</p>
+<figure class="highlight bash"><table><tr><td class="code"><pre><span class="line">share /mnt/share 9p trans=virtio,nofail 0 0</span><br></pre></td></tr></table></figure>
+
+<p>The reason for this is because our new line mounts a CIFS file system from <code>localhost</code> onto the mount point <code>/mnt/share</code>, using the username <code>mccranky</code> and password <code>Rogue12</code>.</p>
+<p>The old line mounts a 9p file system onto the same mount point <code>/mnt/share</code>, using the virtio transport and the nofail option.</p>
+<p>Since our old entry gave us much headache, I’ll just swap it for the new one. :)</p>
+<p>Let’s test the mount by running the following command:</p>
+<figure class="highlight bash"><table><tr><td class="code"><pre><span class="line"><span class="built_in">sudo</span> mount -a</span><br></pre></td></tr></table></figure>
+
+<p>This command will attempt to mount all entries in the <code>/etc/fstab</code> file. If there are any errors, it will display them in the terminal.</p>
+<p>Now we run <code>sudo systemctl reboot</code> to see if everything has been resolved at boot-up. There should be no more failures.</p>
+<h3 id="Rollback"><a href="#Rollback" class="headerlink" title="Rollback"></a>Rollback</h3><h4 id="Disable-Samba-service"><a href="#Disable-Samba-service" class="headerlink" title="Disable Samba service"></a>Disable Samba service</h4><figure class="highlight bash"><table><tr><td class="code"><pre><span class="line"><span class="built_in">sudo</span> systemctl stop smb.service</span><br><span class="line"></span><br><span class="line"><span class="built_in">sudo</span> systemctl <span class="built_in">disable</span> smb.service</span><br><span class="line"></span><br><span class="line"><span class="built_in">sudo</span> pacman -R samba</span><br><span class="line"></span><br><span class="line"><span class="built_in">sudo</span> <span class="built_in">rm</span> -rf /etc/samba</span><br><span class="line"><span class="built_in">sudo</span> <span class="built_in">rm</span> -rf /var/cache/samba</span><br><span class="line"><span class="built_in">sudo</span> <span class="built_in">rm</span> -rf /var/lib/samba</span><br><span class="line"></span><br><span class="line"><span class="built_in">sudo</span> userdel -r samba</span><br><span class="line"><span class="built_in">sudo</span> groupdel samba</span><br><span class="line"></span><br></pre></td></tr></table></figure>
+
+<h4 id="Unmount-mnt-share"><a href="#Unmount-mnt-share" class="headerlink" title="Unmount /mnt/share"></a>Unmount <code>/mnt/share</code></h4><p>Edit the Samba configuration file <code>/etc/samba/smb.conf</code> using a text editor:</p>
+<figure class="highlight bash"><table><tr><td class="code"><pre><span class="line"><span class="built_in">sudo</span> nano /etc/samba/smb.conf</span><br></pre></td></tr></table></figure>
+
+<p>Find the section that defines the <code>/mnt/share</code> share. It should look something like this:</p>
+<figure class="highlight bash"><table><tr><td class="code"><pre><span class="line">[mnt]</span><br><span class="line">   path = /mnt/share</span><br><span class="line">   <span class="built_in">read</span> only = no</span><br><span class="line">   guest ok = <span class="built_in">yes</span></span><br></pre></td></tr></table></figure>
+
+<p>Remove the entire section, then restart the Samba service:</p>
+<figure class="highlight bash"><table><tr><td class="code"><pre><span class="line"><span class="built_in">sudo</span> systemctl start smb.service</span><br></pre></td></tr></table></figure>
+
+<p>The <code>/mnt/share</code> share should now be removed from Samba on Arch Linux.</p>
+<h4 id="Revoke-Samba-password"><a href="#Revoke-Samba-password" class="headerlink" title="Revoke Samba password"></a>Revoke Samba password</h4><figure class="highlight bash"><table><tr><td class="code"><pre><span class="line"><span class="built_in">sudo</span> smbpasswd -x &lt;user&gt;</span><br></pre></td></tr></table></figure>
+
+<p>This will remove the user’s password from the Samba password database, effectively undoing the <code>sudo smbpasswd -a &lt;user&gt;</code> command.</p>
 ]]></content>
       <categories>
-        <category>Bash</category>
+        <category>Linux</category>
+        <category>ArchLinux</category>
       </categories>
       <tags>
-        <tag>Linux</tag>
-        <tag>Bash</tag>
+        <tag>ArchLinux</tag>
+        <tag>UTM</tag>
+        <tag>Virtual Machine</tag>
       </tags>
   </entry>
   <entry>
@@ -572,162 +641,6 @@ All args (str): a b c
       <tags>
         <tag>Node.js</tag>
         <tag>Path</tag>
-      </tags>
-  </entry>
-  <entry>
-    <title>The Shanghai Lockdown Diary</title>
-    <url>/2023/05/05/The%20Shanghai%20Lockdown%20Diary/</url>
-    <content><![CDATA[<p>A late addition to the stack, but by all accounts no less authentic. This is a real account of what transpired in Shanghai during the great lockdown. I, for one, was away at the time, locked up at school in a different city. Nonetheless, ripples of the cataclysmic effects had reached me in that northern coast-lined city, sending waves of shock and grief, piercing my heart like daggers.</p>
-<p>My mom’s account of those three months is a testament to her talent with words and positive outlook on life in general. She describes the despair and hopelessness that consumed many during that time, but also the resilience and strength of the human spirit. Her words paint a vivid picture of what life was like during the lockdown, and the following account is for anyone interested in gaining a deeper understanding of this human experience.</p>
-<p>2022年4月8日，是丈夫和我因上海疫情在家禁足的第十一天。</p>
-<p>微信群每天都有几百上千条信息：朝阳群众雪亮的双眼把偷溜下楼的人拍照发群，让其 “见光死”，果然后面几天下楼溜达的人几乎绝迹；把各区发放的食品发群，让群众们点评到底哪个区更“豪横”？将各种荒唐离谱的防疫搞笑视频发群，对其极尽调侃之能事；最重要的是，街道居委的各类通知也由楼组长发布在群里，实施无漏洞的网格化管理。每天每日每个楼洞排着队整齐划一去做核酸检测，真乃“威武之师”也！</p>
-<p>随着封控天数的增加，每家每户存粮逐渐耗尽。微信群里搞笑调侃的少了，群情激昂点评时事的少了，取而代之的是各种团购群组。从米面油蔬菜水果到婴儿奶粉纸尿裤，应有尽有。此时此刻，没有什么比一桶油一盒鸡蛋更重要的了。也有幸运儿在群里炫耀自己在各类APP上拼手速抢到的食物图片，普普通通的一块奶油蛋糕就足以让人垂涎欲滴。望着每日重复的食物和日渐的清空冰箱，我有点心动了。</p>
-<p>当晚，我就在手机上下载了四个外卖应用：美团、叮咚买菜、每日优鲜、盒马。先看美团，发现“你所在的小区不在配送范围”。再看每日优鲜，很多东西是“缺货”，好不容易找到有货的，鸡蛋10个29.8元，狠狠心把它加入购物车，点击购买时，发现仍然需要在早上六点抢，当下不能生成订单，我如释重负，毫不犹豫将这“绿色有机”的鸡蛋删除了。叮咚买菜、盒马鲜生也都是需要在早上六点拼手速抢下单，浏览了一遍，东西普遍价格高，也谈不到质优，本就抱着试试看心态的我干脆放弃了。</p>
-<p>回过来审视我自己的情况：目前家中存粮还够吃，挨饿是肯定不会的。这得益于我的一个好习惯：经常清点家中存货，一旦缺少，马上补足三个月的量。2020年武汉疫情时，由于对病毒的无知而产生的恐惧，我有过大半个月没有下楼的经历，一切全靠网购，且放足了余量。现在看来，未雨绸缪，广积粮是必要的。</p>
-<p>如今，八旬老父老母在故乡身体健康，自强自立的两位老人把自己的生活安排得妥妥帖帖，不要子女操半点心；儿子离开上海在大学正常地学习生活，为着自己的目标在每天努力；海外的家人们安居乐业，捷报频传。身无后顾之忧的我俩一身轻松：我精打细算烧菜做饭，丈夫风花雪月吟诗作对，禁足的日子过得并不乏味且充满诗意。</p>
-<p>惟愿疫情的阴霾尽快散去，我爱的家人们能很快相聚，上海重现东方明珠的风采！</p>
-<hr>
-<p>On April 8th, 2022, it was the eleventh day of being confined at home in Shanghai due to the pandemic. Every day, there were hundreds or even thousands of messages in our WeChat groups. Some groups had photos of people sneaking out of their homes, which were then shared to shame them. This resulted in fewer people sneaking out in the following days. Other groups shared information about food distribution in different districts, and we would compare which district had better supplies. There were also many funny videos related to the pandemic that were shared, which made us laugh and helped to relieve some of the stress.</p>
-<p>As the days went by, our food supplies began to dwindle. The funny videos and discussions about current events became less frequent in the groups, and were replaced by various group-buying options. Everything from rice, noodles, oil, vegetables, fruits, to baby formula and diapers were available. At this time, nothing was more important than having a bucket of oil and a box of eggs. Some lucky people would show off the food they had managed to buy from various apps, and even a simple piece of cake would make us drool.</p>
-<p>That night, I downloaded four food delivery apps on my phone: Meituan, Dingdong Maicai, MissFresh, and Hema. I checked Meituan first, but my neighborhood was not within their delivery range. Then I tried MissFresh, but many items were out of stock. I finally found eggs, but they were priced at 29.8 yuan for a pack of 10. When I tried to purchase them, I found out that I still needed to compete with others at 6am to place my order. I felt relieved that I didn’t have to buy them and deleted them from my cart. Dingdong Maicai and Hema also required me to compete with others at 6am to place my order, and the prices were generally high with no guarantee of quality. I decided to give up on them altogether.</p>
-<p>Looking back at my situation, I realized that we still had enough food to eat, and we wouldn’t go hungry. This was thanks to my good habit of regularly checking our food supplies and stocking up on a three-month supply when we were running low. During the Wuhan pandemic in 2020, I was afraid of the virus and didn’t leave my home for almost two weeks. All of our supplies were ordered online and we had extra just in case. Now, it’s clear that preparing ahead of time and stocking up on food is necessary.</p>
-<p>Currently, my elderly parents are healthy and living in their hometown, and they are self-sufficient and don’t require any assistance from their children. My son is away at university, working hard towards his goals, and my family members who live abroad are doing well. With no worries, my husband and I are enjoying our time at home during the lockdown. I cook and budget carefully, while my husband writes poetry and enjoys his hobbies. Although we are confined to our home, it’s not boring and we find joy in simple things.</p>
-<p>We hope that the pandemic will soon be over, and that we can be reunited with our loved ones. We also hope that Shanghai can once again thrive and shine like the Oriental Pearl it is.</p>
-]]></content>
-      <tags>
-        <tag>Life</tag>
-      </tags>
-  </entry>
-  <entry>
-    <title>`inpath`</title>
-    <url>/2023/04/29/%60inpath%60/</url>
-    <content><![CDATA[<p>Coding along with the book <em>Wicked Cool Shell Scripts- 101 Scripts for Linux, OS X, and UNIX Systems</em>.</p>
-<p>This is the script from Page 11:</p>
-<figure class="highlight bash"><table><tr><td class="code"><pre><span class="line"><span class="meta">#!/bin/bash</span></span><br><span class="line"></span><br><span class="line"><span class="function"><span class="title">in_path</span></span>()</span><br><span class="line">&#123;</span><br><span class="line">        cmd=<span class="variable">$1</span></span><br><span class="line">        ourpath=<span class="variable">$2</span>      </span><br><span class="line">        result=1</span><br><span class="line">        oldIFS=<span class="variable">$IFS</span>     </span><br><span class="line">        IFS=<span class="string">&quot;:&quot;</span></span><br><span class="line"> </span><br><span class="line">        <span class="keyword">for</span> directory <span class="keyword">in</span> <span class="variable">$ourpath</span>; <span class="keyword">do</span></span><br><span class="line"></span><br><span class="line">        <span class="comment"># If i double quoted `$ourpath`, it will not word split, and the loop will only run once.</span></span><br><span class="line"></span><br><span class="line">                <span class="keyword">if</span> [ -x <span class="string">&quot;<span class="variable">$directory</span>/<span class="variable">$cmd</span>&quot;</span> ]; <span class="keyword">then</span></span><br><span class="line">                        result=0</span><br><span class="line">                <span class="keyword">fi</span></span><br><span class="line">        <span class="keyword">done</span></span><br><span class="line"> </span><br><span class="line">        IFS=<span class="variable">$oldIFS</span></span><br><span class="line">        <span class="built_in">return</span> <span class="variable">$result</span></span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"><span class="function"><span class="title">checkForCmdInPath</span></span>()</span><br><span class="line">&#123;</span><br><span class="line">        var=<span class="variable">$1</span></span><br><span class="line"> </span><br><span class="line">        <span class="keyword">if</span> [ ! <span class="string">&quot;<span class="variable">$var</span>&quot;</span> = <span class="string">&quot;&quot;</span> ]; <span class="keyword">then</span></span><br><span class="line">                <span class="keyword">if</span> [ <span class="string">&quot;<span class="variable">$&#123;var:0:1&#125;</span>&quot;</span> = <span class="string">&quot;/&quot;</span> ]; <span class="keyword">then</span></span><br><span class="line">                	<span class="comment"># Checks whether the command represented by the `$var` is an absolute path or not. </span></span><br><span class="line">                        <span class="keyword">if</span> [ ! -x <span class="string">&quot;<span class="variable">$var</span>&quot;</span> ]; <span class="keyword">then</span></span><br><span class="line">                                <span class="built_in">return</span> 1</span><br><span class="line">                        <span class="keyword">fi</span></span><br><span class="line">                <span class="keyword">elif</span> ! in_path <span class="string">&quot;<span class="variable">$var</span>&quot;</span> <span class="string">&quot;<span class="variable">$PATH</span>&quot;</span>; <span class="keyword">then</span></span><br><span class="line">                        <span class="built_in">return</span> 2</span><br><span class="line">                <span class="keyword">fi</span></span><br><span class="line">        <span class="keyword">fi</span></span><br><span class="line">&#125;</span><br><span class="line"></span><br></pre></td></tr></table></figure>
-
-<h3 id="Positional-parameters"><a href="#Positional-parameters" class="headerlink" title="Positional parameters"></a>Positional parameters</h3><p>See <a href="/2023/04/29/Positional%20Parameters/">here</a></p>
-<blockquote>
-<p><strong><em>A Quick Word</em></strong>  </p>
-<p>It is good practice to put double quotes around variables in Bash because it prevents word splitting and globbing.</p>
-<ul>
-<li><p>Word splitting is the process of breaking up a string into separate words based on whitespace. If a variable contains spaces, without quotes, Bash will treat each space-separated word as a separate argument. This can cause unexpected behavior if the variable is used as an argument to a command.</p>
-</li>
-<li><p>Globbing is the process of expanding wildcard characters such as <code>*</code> and <code>?</code> into a list of matching filenames. If a variable contains a glob character, without quotes, Bash will try to expand it into a list of matching filenames. This can also cause unexpected behavior if the variable is used as an argument to a command.</p>
-</li>
-</ul>
-<p>By putting double quotes around variables, Bash treats the variable as a single argument, preserving any whitespace or glob characters within the variable. This helps to ensure that the variable is interpreted correctly and the script behaves as expected.</p>
-</blockquote>
-<h3 id="Special-variables"><a href="#Special-variables" class="headerlink" title="Special variables"></a>Special variables</h3><p><strong><em><code>$IFS</code></em></strong></p>
-<p>The internal field separator (IFS) is a special variable in Bash that specifies the delimiter used to separate fields in a string. By default, the IFS is set to whitespace (i.e., space, tab, and newline characters).</p>
-<p><strong><em>&#96;$?</em></strong></p>
-<p>Display the return values of functions.</p>
-<figure class="highlight bash"><table><tr><td class="code"><pre><span class="line"><span class="built_in">echo</span> $?</span><br></pre></td></tr></table></figure>
-
-<p>You can use it immediately after calling a function with return value.</p>
-<h3 id="Slice"><a href="#Slice" class="headerlink" title="Slice"></a>Slice</h3><pre><code>[ &quot;$&#123;var:0:1&#125;&quot; = &quot;/&quot; ];
-</code></pre>
-<p>The slicing starts at index <code>0</code> and lasts for the duration of a single character.</p>
-<h3 id="Compare"><a href="#Compare" class="headerlink" title="Compare"></a>Compare</h3><p><strong><em>String comparison</em></strong></p>
-<p><code>=</code> tests if two strings are equal. For example, if <code>[ &quot;$string1&quot; = &quot;$string2&quot; ]</code> would be true if <code>$string1</code> and <code>$string2</code> have the same value.</p>
-<p><strong><em>Pattern matching</em></strong></p>
-<p><code>==</code> tests if a string matches a pattern using globbing, which is a way to match filenames based on wildcard characters. For example, if <code>[[ &quot;$string&quot; == a* ]]</code> would be true if <code>$string</code> starts with the letter “a”.</p>
-]]></content>
-      <categories>
-        <category>Wicked Cool Shell Scripts</category>
-      </categories>
-      <tags>
-        <tag>Linux</tag>
-        <tag>ArchLinux</tag>
-        <tag>Bash</tag>
-      </tags>
-  </entry>
-  <entry>
-    <title>[Fix] Failed to mount /mnt/share</title>
-    <url>/2023/04/27/%5BFix%5D%20Failed%20to%20mount%20:mnt:share/</url>
-    <content><![CDATA[<h3 id="Solution"><a href="#Solution" class="headerlink" title="Solution"></a>Solution</h3><p>Our fix to the problem is to remove <code>/mnt/share</code> entirely and mount something else in its place.</p>
-<p>This is the portion of the startup process which showed the error:</p>
-<pre><code>[FAILED] Failed to mount /mnt/share.
-See &#39;systemctl status mnt-share.mount&#39; for details
-</code></pre>
-<p>By the way, this post is for those who followed <a href="/2023/04/26/Mounting-a-Shared-folder-on-ArchLinux-VM/#Rollback">my last tutorial</a> on using Samba service to mount a shared directory on ArchLinux VM.</p>
-<h3 id="Check-mount-unit-status"><a href="#Check-mount-unit-status" class="headerlink" title="Check mount unit status"></a>Check mount unit status</h3><p>We’ll start by following the instruction to check the status of the mount unit by running the suggested command:</p>
-<figure class="highlight bash"><table><tr><td class="code"><pre><span class="line">systemctl status mnt-share.mount</span><br></pre></td></tr></table></figure>
-
-<p>This will give us more information about the specific error that occurred.</p>
-<pre><code>Warning: The unit file, source configuration file or drop-ins of mnt-share.moun&gt;
-x mnt-share.mount - /mnt/share
-     Loaded: loaded (/etc/fstab; generated)
-     Active: failed (Result: exit-code) since Thu 2023-04-27 02:45:46 UTC; 40mi&gt;
-      Where: /mnt/share
-       What: //localhost/share
-       Docs: man:fstab(5)
-             man:systemd-fstab-generator(8)
-        CPU: 28ms
-
-Apr 27 02:45:46 alarm systemd[1]: Mounting /mnt/share...
-Apr 27 02:45:46 alarm mount[379]: mount error(111): could not connect to ::1mou&gt;
-Apr 27 02:45:46 alarm systemd[1]: mnt-share.mount: Mount process exited, code=e&gt;
-Apr 27 02:45:46 alarm systemd[1]: mnt-share.mount: Failed with result &#39;exit-cod&gt;
-Apr 27 02:45:46 alarm systemd[1]: Failed to mount /mnt/share.
-</code></pre>
-<h3 id="Side-Content"><a href="#Side-Content" class="headerlink" title="Side Content"></a>Side Content</h3><h4 id="Check-file-system-properties"><a href="#Check-file-system-properties" class="headerlink" title="Check file system properties"></a>Check file system properties</h4><p>Since we’ve decided to remove the mount <code>/mnt/share</code> instead of trying to fix it, we shall proceed to learn a little about how to mount a disk. For instance, if we want to mount an NTFS file system and ensure that the file system is accessible and error-free, we can use the following command to check it for errors:</p>
-<figure class="highlight bash"><table><tr><td class="code"><pre><span class="line"><span class="built_in">sudo</span> pacman -S ntfs-3g</span><br><span class="line"></span><br><span class="line"><span class="comment">#  Install the `ntfs-3g` package which provides the `ntfsfix` tool.</span></span><br><span class="line"></span><br><span class="line"><span class="built_in">sudo</span> ntfsfix /dev/sda1</span><br><span class="line"></span><br><span class="line"><span class="comment"># Replace `/dev/sda1` with the appropriate device and partition.</span></span><br></pre></td></tr></table></figure>
-
-<p>If the virtual hard disk has multiple partitions, we’ll need to determine which partition contains the NTFS file system we want to mount. Oftentimes we use the <code>lsblk</code> command to list the available storage devices and their partitions, and the <code>blkid</code> command to list the UUIDs of the partitions.</p>
-<pre><code>$ lsblk
-NAME   MAJ:MIN RM  SIZE RO TYPE MOUNTPOINTS
-sr0     11:0    1 1024M  0 rom  
-vda    253:0    0  9.8G  0 disk 
-|-vda1 253:1    0  200M  0 part /boot
-`-vda2 253:2    0  9.6G  0 part /
-</code></pre>
-<p>In my case, the virtual machine has a single virtual hard disk, which is identified as <code>/dev/vda</code>. This virtual hard disk has two partitions, <code>/dev/vda1</code> and <code>/dev/vda2</code>, which are mounted at <code>/boot</code> and <code>/</code>, respectively.</p>
-<p><code>/dev/vda1</code> is a 200MB partition formatted as a Linux file system such as <code>ext4</code> or <code>xfs</code>, and contains the kernel and other boot files.</p>
-<p><code>/dev/vda2</code> is a 9.6GB partition also formatted as a Linux file system, and contains the root file system for the Arch Linux operating system.</p>
-<h4 id="Mount-NTFS-file-system"><a href="#Mount-NTFS-file-system" class="headerlink" title="Mount NTFS file system"></a>Mount NTFS file system</h4><p>If we want to mount an additional NTFS file system on our virtual machine, we can create a new directory to use as the mount point, such as <code>/mnt/ntfs</code>, and then add an entry to the <code>/etc/fstab</code> file to mount the NTFS file system at that mount point.</p>
-<p>For example, if the NTFS file system is located on <code>/dev/vda3</code>, we can add the following line to the <code>/etc/fstab</code> file:</p>
-<figure class="highlight bash"><table><tr><td class="code"><pre><span class="line">/dev/vda3 /mnt/ntfs ntfs-3g defaults 0 0</span><br></pre></td></tr></table></figure>
-
-<p>Or if you’ve run <code>blkid</code> and looked up the UUID of the file system you wanted to mount, you can also swap the line above for the following one:</p>
-<figure class="highlight bash"><table><tr><td class="code"><pre><span class="line">UUID=12345678-1234-1234-1234-1234567890ab /mnt/ntfs ntfs-3g defaults 0 0</span><br><span class="line"></span><br><span class="line"><span class="comment"># Pretend for a sec that the UUID of `/dev/vda3` is &quot;12345678-1234-1234-1234-1234567890ab&quot;</span></span><br></pre></td></tr></table></figure>
-
-<p>After adding the entry to the <code>/etc/fstab</code> file, we need to run <code>sudo mount -a</code>. This should mount the NTFS file system at the specified mount point, and the mount point should be automatically mounted at boot time.</p>
-<h4 id="Remove-Samba-entries"><a href="#Remove-Samba-entries" class="headerlink" title="Remove Samba entries"></a>Remove Samba entries</h4><p>Edit Samba’s configuration file <code>/etc/samba/smb.conf</code> and remove everything in the <code>[mnt]</code> field.</p>
-<p>Then, navigate to <code>/etc/fstab</code> and comment out anything associated with <code>/mnt/share</code>:</p>
-<pre><code># share /mnt/share 9p trans=virtio,nofail 0 0
-# //localhost/share /mnt/share cifs user=mccranky,password=Rogue12 0 0
-</code></pre>
-<p>Since we’ve already removed Samba service on our machine, we have no need of checking whether if the mount options specified in the mount unit are correct. But if you haven’t removed it yet, feel free to edit the mount unit file located at <code>/etc/systemd/system/mnt-share.mount</code> and modify the mount options.</p>
-<p>Remove the mount unit for <code>/mnt/share</code>:</p>
-<figure class="highlight bash"><table><tr><td class="code"><pre><span class="line"><span class="built_in">sudo</span> <span class="built_in">rm</span> /etc/systemd/system/mnt-share.mount</span><br></pre></td></tr></table></figure>
-
-<p>Reload the systemd daemon to ensure that the changes take effect:</p>
-<figure class="highlight bash"><table><tr><td class="code"><pre><span class="line"><span class="built_in">sudo</span> systemctl daemon-reload</span><br></pre></td></tr></table></figure>
-
-<p>When we check the status of <code>mnt-share.mount</code>, we should get:</p>
-<pre><code> $ sudo systemctl status mnt-share.mount
-x mnt-share.mount
-     Loaded: not-found (Reason: Unit mnt-share.mount not found.)
-     Active: failed (Result: exit-code) since Thu 2023-04-27 02:45:46 UTC; 1h 5&gt;
-        CPU: 28ms
-
-Apr 27 02:45:46 alarm systemd[1]: Mounting /mnt/share...
-Apr 27 02:45:46 alarm mount[379]: mount error(111): could not connect to ::1mou&gt;
-Apr 27 02:45:46 alarm systemd[1]: mnt-share.mount: Mount process exited, code=e&gt;
-Apr 27 02:45:46 alarm systemd[1]: mnt-share.mount: Failed with result &#39;exit-cod&gt;
-Apr 27 02:45:46 alarm systemd[1]: Failed to mount /mnt/share.
-</code></pre>
-<p>Last we can finally run <code>sudo rm -r /mnt/share</code> to remove <code>/mnt/share</code> from our machine.</p>
-<p>Perfect! Now when we <code>reboot</code> again we should receive no errors.</p>
-]]></content>
-      <categories>
-        <category>Linux</category>
-        <category>ArchLinux</category>
-      </categories>
-      <tags>
-        <tag>ArchLinux</tag>
-        <tag>Issue</tag>
-        <tag>Virtual Machine</tag>
       </tags>
   </entry>
   <entry>
@@ -937,8 +850,218 @@ Possible reasons for having this kind of units are:
       </categories>
       <tags>
         <tag>ArchLinux</tag>
-        <tag>Virtual Machine</tag>
         <tag>UTM</tag>
+        <tag>Virtual Machine</tag>
+      </tags>
+  </entry>
+  <entry>
+    <title>Positional Parameters</title>
+    <url>/2023/04/29/Positional%20Parameters/</url>
+    <content><![CDATA[<p>In Bash, positional parameters are special variables that hold the arguments passed to a script or function. The positional parameters are numbered from <code>0</code> to <code>9</code>, where <code>$0</code> holds the name of the script or function, and <code>$1</code> through <code>$9</code> hold the first through ninth arguments, respectively.</p>
+<p><code>$@</code> and <code>$*</code> both hold all the arguments passed to the script. Note that <code>$@</code> is an array-like variable that holds all the positional parameters as <em>separate elements</em>, while <code>$*</code> is another variable that holds all the positional parameters as <em>a single string</em>.</p>
+<p>Here’s an example:</p>
+<pre><code>#!/bin/bash
+
+#!/bin/bash
+
+echo &quot;Script Name: $0&quot;
+echo &quot;First Arg: $1&quot;
+echo &quot;Second Arg: $2&quot;
+echo &quot;All args (arr): $@&quot;
+echo &quot;All args (str): $*&quot;
+</code></pre>
+<p>Now let’s run the script with three arguments:</p>
+<figure class="highlight bash"><table><tr><td class="code"><pre><span class="line"><span class="built_in">chmod</span> u+x ./script <span class="comment"># Grant execution privilege for user</span></span><br><span class="line"></span><br><span class="line">./script a b c</span><br><span class="line"></span><br></pre></td></tr></table></figure>
+
+<p>The output should be something like this:</p>
+<pre><code>Script Name: ./script.sh
+First Arg: a
+Second Arg: b
+All args (arr): a b c
+All args (str): a b c
+</code></pre>
+]]></content>
+      <categories>
+        <category>Bash</category>
+      </categories>
+      <tags>
+        <tag>Linux</tag>
+        <tag>Bash</tag>
+      </tags>
+  </entry>
+  <entry>
+    <title>The Shanghai Lockdown Diary</title>
+    <url>/2023/05/05/The%20Shanghai%20Lockdown%20Diary/</url>
+    <content><![CDATA[<p>A late addition to the stack, but by all accounts no less authentic. This is a real account of what transpired in Shanghai during the great lockdown. I, for one, was away at the time, locked up at school in a different city. Nonetheless, ripples of the cataclysmic effects had reached me in that northern coast-lined city, sending waves of shock and grief, piercing my heart like daggers.</p>
+<p>My mom’s account of those three months is a testament to her talent with words and positive outlook on life in general. She describes the despair and hopelessness that consumed many during that time, but also the resilience and strength of the human spirit. Her words paint a vivid picture of what life was like during the lockdown, and the following account is for anyone interested in gaining a deeper understanding of this human experience.</p>
+<p>2022年4月8日，是丈夫和我因上海疫情在家禁足的第十一天。</p>
+<p>微信群每天都有几百上千条信息：朝阳群众雪亮的双眼把偷溜下楼的人拍照发群，让其 “见光死”，果然后面几天下楼溜达的人几乎绝迹；把各区发放的食品发群，让群众们点评到底哪个区更“豪横”？将各种荒唐离谱的防疫搞笑视频发群，对其极尽调侃之能事；最重要的是，街道居委的各类通知也由楼组长发布在群里，实施无漏洞的网格化管理。每天每日每个楼洞排着队整齐划一去做核酸检测，真乃“威武之师”也！</p>
+<p>随着封控天数的增加，每家每户存粮逐渐耗尽。微信群里搞笑调侃的少了，群情激昂点评时事的少了，取而代之的是各种团购群组。从米面油蔬菜水果到婴儿奶粉纸尿裤，应有尽有。此时此刻，没有什么比一桶油一盒鸡蛋更重要的了。也有幸运儿在群里炫耀自己在各类APP上拼手速抢到的食物图片，普普通通的一块奶油蛋糕就足以让人垂涎欲滴。望着每日重复的食物和日渐的清空冰箱，我有点心动了。</p>
+<p>当晚，我就在手机上下载了四个外卖应用：美团、叮咚买菜、每日优鲜、盒马。先看美团，发现“你所在的小区不在配送范围”。再看每日优鲜，很多东西是“缺货”，好不容易找到有货的，鸡蛋10个29.8元，狠狠心把它加入购物车，点击购买时，发现仍然需要在早上六点抢，当下不能生成订单，我如释重负，毫不犹豫将这“绿色有机”的鸡蛋删除了。叮咚买菜、盒马鲜生也都是需要在早上六点拼手速抢下单，浏览了一遍，东西普遍价格高，也谈不到质优，本就抱着试试看心态的我干脆放弃了。</p>
+<p>回过来审视我自己的情况：目前家中存粮还够吃，挨饿是肯定不会的。这得益于我的一个好习惯：经常清点家中存货，一旦缺少，马上补足三个月的量。2020年武汉疫情时，由于对病毒的无知而产生的恐惧，我有过大半个月没有下楼的经历，一切全靠网购，且放足了余量。现在看来，未雨绸缪，广积粮是必要的。</p>
+<p>如今，八旬老父老母在故乡身体健康，自强自立的两位老人把自己的生活安排得妥妥帖帖，不要子女操半点心；儿子离开上海在大学正常地学习生活，为着自己的目标在每天努力；海外的家人们安居乐业，捷报频传。身无后顾之忧的我俩一身轻松：我精打细算烧菜做饭，丈夫风花雪月吟诗作对，禁足的日子过得并不乏味且充满诗意。</p>
+<p>惟愿疫情的阴霾尽快散去，我爱的家人们能很快相聚，上海重现东方明珠的风采！</p>
+<hr>
+<p>On April 8th, 2022, it was the eleventh day of being confined at home in Shanghai due to the pandemic. Every day, there were hundreds or even thousands of messages in our WeChat groups. Some groups had photos of people sneaking out of their homes, which were then shared to shame them. This resulted in fewer people sneaking out in the following days. Other groups shared information about food distribution in different districts, and we would compare which district had better supplies. There were also many funny videos related to the pandemic that were shared, which made us laugh and helped to relieve some of the stress.</p>
+<p>As the days went by, our food supplies began to dwindle. The funny videos and discussions about current events became less frequent in the groups, and were replaced by various group-buying options. Everything from rice, noodles, oil, vegetables, fruits, to baby formula and diapers were available. At this time, nothing was more important than having a bucket of oil and a box of eggs. Some lucky people would show off the food they had managed to buy from various apps, and even a simple piece of cake would make us drool.</p>
+<p>That night, I downloaded four food delivery apps on my phone: Meituan, Dingdong Maicai, MissFresh, and Hema. I checked Meituan first, but my neighborhood was not within their delivery range. Then I tried MissFresh, but many items were out of stock. I finally found eggs, but they were priced at 29.8 yuan for a pack of 10. When I tried to purchase them, I found out that I still needed to compete with others at 6am to place my order. I felt relieved that I didn’t have to buy them and deleted them from my cart. Dingdong Maicai and Hema also required me to compete with others at 6am to place my order, and the prices were generally high with no guarantee of quality. I decided to give up on them altogether.</p>
+<p>Looking back at my situation, I realized that we still had enough food to eat, and we wouldn’t go hungry. This was thanks to my good habit of regularly checking our food supplies and stocking up on a three-month supply when we were running low. During the Wuhan pandemic in 2020, I was afraid of the virus and didn’t leave my home for almost two weeks. All of our supplies were ordered online and we had extra just in case. Now, it’s clear that preparing ahead of time and stocking up on food is necessary.</p>
+<p>Currently, my elderly parents are healthy and living in their hometown, and they are self-sufficient and don’t require any assistance from their children. My son is away at university, working hard towards his goals, and my family members who live abroad are doing well. With no worries, my husband and I are enjoying our time at home during the lockdown. I cook and budget carefully, while my husband writes poetry and enjoys his hobbies. Although we are confined to our home, it’s not boring and we find joy in simple things.</p>
+<p>We hope that the pandemic will soon be over, and that we can be reunited with our loved ones. We also hope that Shanghai can once again thrive and shine like the Oriental Pearl it is.</p>
+]]></content>
+      <tags>
+        <tag>Life</tag>
+      </tags>
+  </entry>
+  <entry>
+    <title>7-2-Java-基本语法-大整数相加</title>
+    <url>/2023/04/24/7-2-Java-%E5%9F%BA%E6%9C%AC%E8%AF%AD%E6%B3%95-%E5%A4%A7%E6%95%B4%E6%95%B0%E7%9B%B8%E5%8A%A0/</url>
+    <content><![CDATA[<h3 id="题目"><a href="#题目" class="headerlink" title="题目"></a>题目</h3><p>有若干大整数，需要对其进行求和操作。</p>
+<h3 id="输入格式"><a href="#输入格式" class="headerlink" title="输入格式"></a>输入格式</h3><p>每行输入一个字符串代表一个大整数，连续输入若干行，当某行字符为e或E时退出。</p>
+<h3 id="输入样例"><a href="#输入样例" class="headerlink" title="输入样例:"></a>输入样例:</h3><figure class="highlight plaintext"><table><tr><td class="code"><pre><span class="line">42846280183517070527831839425882145521227251250327</span><br><span class="line">55121603546981200581762165212827652751691296897789</span><br><span class="line">e</span><br></pre></td></tr></table></figure>
+
+<h3 id="输出样例"><a href="#输出样例" class="headerlink" title="输出样例:"></a>输出样例:</h3><figure class="highlight plaintext"><table><tr><td class="code"><pre><span class="line">97967883730498271109594004638709798272918548148116</span><br></pre></td></tr></table></figure>
+
+<h3 id="JavaScript"><a href="#JavaScript" class="headerlink" title="JavaScript"></a>JavaScript</h3><figure class="highlight javascript"><table><tr><td class="code"><pre><span class="line"><span class="keyword">const</span> readline = <span class="built_in">require</span>(<span class="string">&#x27;readline&#x27;</span>)</span><br><span class="line"><span class="keyword">const</span> rl = readline.<span class="title function_">createInterface</span>(&#123;</span><br><span class="line">    <span class="attr">input</span>: process.<span class="property">stdin</span>,</span><br><span class="line">    <span class="attr">output</span>: process.<span class="property">stdout</span></span><br><span class="line">&#125;)</span><br><span class="line"></span><br><span class="line"><span class="keyword">let</span> sum = <span class="title class_">BigInt</span>(<span class="number">0</span>)</span><br><span class="line"></span><br><span class="line">rl.<span class="title function_">on</span>(<span class="string">&#x27;line&#x27;</span>, <span class="function"><span class="params">line</span> =&gt;</span> &#123;</span><br><span class="line">    <span class="keyword">if</span> (!line.<span class="title function_">localeCompare</span>(<span class="string">&quot;e&quot;</span>, <span class="literal">undefined</span>, &#123; <span class="attr">sensitivity</span>: <span class="string">&quot;base&quot;</span> &#125;)) &#123;</span><br><span class="line">        <span class="variable language_">console</span>.<span class="title function_">log</span>(sum.<span class="title function_">toString</span>())</span><br><span class="line">        rl.<span class="title function_">close</span>()</span><br><span class="line">    &#125; <span class="keyword">else</span> &#123;</span><br><span class="line">        sum += <span class="title class_">BigInt</span>(line)</span><br><span class="line">    &#125;</span><br><span class="line">&#125;)</span><br></pre></td></tr></table></figure>
+
+<h3 id="Java"><a href="#Java" class="headerlink" title="Java"></a>Java</h3><figure class="highlight java"><table><tr><td class="code"><pre><span class="line"><span class="keyword">import</span> java.util.Scanner;</span><br><span class="line"><span class="keyword">import</span> java.math.BigInteger;</span><br><span class="line"></span><br><span class="line"><span class="keyword">public</span> <span class="keyword">class</span> <span class="title class_">Main</span> &#123;</span><br><span class="line">    <span class="keyword">public</span> <span class="keyword">static</span> <span class="keyword">void</span> <span class="title function_">main</span> <span class="params">(String[] args)</span> &#123;</span><br><span class="line">        <span class="type">Scanner</span> <span class="variable">scanner</span> <span class="operator">=</span> <span class="keyword">new</span> <span class="title class_">Scanner</span>(System.in);</span><br><span class="line">        <span class="type">BigInteger</span> <span class="variable">sum</span> <span class="operator">=</span> BigInteger.ZERO;</span><br><span class="line"></span><br><span class="line">        <span class="keyword">while</span> (scanner.hasNextLine()) &#123;</span><br><span class="line">            <span class="type">String</span> <span class="variable">line</span> <span class="operator">=</span> scanner.nextLine();</span><br><span class="line">            <span class="keyword">if</span> (line.equalsIgnoreCase(<span class="string">&quot;e&quot;</span>)) &#123;</span><br><span class="line">                System.out.println(sum.toString());</span><br><span class="line">                <span class="keyword">break</span>;</span><br><span class="line">            &#125; <span class="keyword">else</span> &#123;</span><br><span class="line">                sum = sum.add(<span class="keyword">new</span> <span class="title class_">BigInteger</span>(line));</span><br><span class="line">            &#125;</span><br><span class="line">        &#125;</span><br><span class="line">        scanner.close();</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>]]></content>
+      <tags>
+        <tag>JavaScript</tag>
+        <tag>Java</tag>
+        <tag>BigInt</tag>
+        <tag>readline</tag>
+      </tags>
+  </entry>
+  <entry>
+    <title>[Fix] Failed to mount /mnt/share</title>
+    <url>/2023/04/27/%5BFix%5D%20Failed%20to%20mount%20:mnt:share/</url>
+    <content><![CDATA[<h3 id="Solution"><a href="#Solution" class="headerlink" title="Solution"></a>Solution</h3><p>Our fix to the problem is to remove <code>/mnt/share</code> entirely and mount something else in its place.</p>
+<p>This is the portion of the startup process which showed the error:</p>
+<pre><code>[FAILED] Failed to mount /mnt/share.
+See &#39;systemctl status mnt-share.mount&#39; for details
+</code></pre>
+<p>By the way, this post is for those who followed <a href="/2023/04/26/Mounting-a-Shared-folder-on-ArchLinux-VM/#Rollback">my last tutorial</a> on using Samba service to mount a shared directory on ArchLinux VM.</p>
+<h3 id="Check-mount-unit-status"><a href="#Check-mount-unit-status" class="headerlink" title="Check mount unit status"></a>Check mount unit status</h3><p>We’ll start by following the instruction to check the status of the mount unit by running the suggested command:</p>
+<figure class="highlight bash"><table><tr><td class="code"><pre><span class="line">systemctl status mnt-share.mount</span><br></pre></td></tr></table></figure>
+
+<p>This will give us more information about the specific error that occurred.</p>
+<pre><code>Warning: The unit file, source configuration file or drop-ins of mnt-share.moun&gt;
+x mnt-share.mount - /mnt/share
+     Loaded: loaded (/etc/fstab; generated)
+     Active: failed (Result: exit-code) since Thu 2023-04-27 02:45:46 UTC; 40mi&gt;
+      Where: /mnt/share
+       What: //localhost/share
+       Docs: man:fstab(5)
+             man:systemd-fstab-generator(8)
+        CPU: 28ms
+
+Apr 27 02:45:46 alarm systemd[1]: Mounting /mnt/share...
+Apr 27 02:45:46 alarm mount[379]: mount error(111): could not connect to ::1mou&gt;
+Apr 27 02:45:46 alarm systemd[1]: mnt-share.mount: Mount process exited, code=e&gt;
+Apr 27 02:45:46 alarm systemd[1]: mnt-share.mount: Failed with result &#39;exit-cod&gt;
+Apr 27 02:45:46 alarm systemd[1]: Failed to mount /mnt/share.
+</code></pre>
+<h3 id="Side-Content"><a href="#Side-Content" class="headerlink" title="Side Content"></a>Side Content</h3><h4 id="Check-file-system-properties"><a href="#Check-file-system-properties" class="headerlink" title="Check file system properties"></a>Check file system properties</h4><p>Since we’ve decided to remove the mount <code>/mnt/share</code> instead of trying to fix it, we shall proceed to learn a little about how to mount a disk. For instance, if we want to mount an NTFS file system and ensure that the file system is accessible and error-free, we can use the following command to check it for errors:</p>
+<figure class="highlight bash"><table><tr><td class="code"><pre><span class="line"><span class="built_in">sudo</span> pacman -S ntfs-3g</span><br><span class="line"></span><br><span class="line"><span class="comment">#  Install the `ntfs-3g` package which provides the `ntfsfix` tool.</span></span><br><span class="line"></span><br><span class="line"><span class="built_in">sudo</span> ntfsfix /dev/sda1</span><br><span class="line"></span><br><span class="line"><span class="comment"># Replace `/dev/sda1` with the appropriate device and partition.</span></span><br></pre></td></tr></table></figure>
+
+<p>If the virtual hard disk has multiple partitions, we’ll need to determine which partition contains the NTFS file system we want to mount. Oftentimes we use the <code>lsblk</code> command to list the available storage devices and their partitions, and the <code>blkid</code> command to list the UUIDs of the partitions.</p>
+<pre><code>$ lsblk
+NAME   MAJ:MIN RM  SIZE RO TYPE MOUNTPOINTS
+sr0     11:0    1 1024M  0 rom  
+vda    253:0    0  9.8G  0 disk 
+|-vda1 253:1    0  200M  0 part /boot
+`-vda2 253:2    0  9.6G  0 part /
+</code></pre>
+<p>In my case, the virtual machine has a single virtual hard disk, which is identified as <code>/dev/vda</code>. This virtual hard disk has two partitions, <code>/dev/vda1</code> and <code>/dev/vda2</code>, which are mounted at <code>/boot</code> and <code>/</code>, respectively.</p>
+<p><code>/dev/vda1</code> is a 200MB partition formatted as a Linux file system such as <code>ext4</code> or <code>xfs</code>, and contains the kernel and other boot files.</p>
+<p><code>/dev/vda2</code> is a 9.6GB partition also formatted as a Linux file system, and contains the root file system for the Arch Linux operating system.</p>
+<h4 id="Mount-NTFS-file-system"><a href="#Mount-NTFS-file-system" class="headerlink" title="Mount NTFS file system"></a>Mount NTFS file system</h4><p>If we want to mount an additional NTFS file system on our virtual machine, we can create a new directory to use as the mount point, such as <code>/mnt/ntfs</code>, and then add an entry to the <code>/etc/fstab</code> file to mount the NTFS file system at that mount point.</p>
+<p>For example, if the NTFS file system is located on <code>/dev/vda3</code>, we can add the following line to the <code>/etc/fstab</code> file:</p>
+<figure class="highlight bash"><table><tr><td class="code"><pre><span class="line">/dev/vda3 /mnt/ntfs ntfs-3g defaults 0 0</span><br></pre></td></tr></table></figure>
+
+<p>Or if you’ve run <code>blkid</code> and looked up the UUID of the file system you wanted to mount, you can also swap the line above for the following one:</p>
+<figure class="highlight bash"><table><tr><td class="code"><pre><span class="line">UUID=12345678-1234-1234-1234-1234567890ab /mnt/ntfs ntfs-3g defaults 0 0</span><br><span class="line"></span><br><span class="line"><span class="comment"># Pretend for a sec that the UUID of `/dev/vda3` is &quot;12345678-1234-1234-1234-1234567890ab&quot;</span></span><br></pre></td></tr></table></figure>
+
+<p>After adding the entry to the <code>/etc/fstab</code> file, we need to run <code>sudo mount -a</code>. This should mount the NTFS file system at the specified mount point, and the mount point should be automatically mounted at boot time.</p>
+<h4 id="Remove-Samba-entries"><a href="#Remove-Samba-entries" class="headerlink" title="Remove Samba entries"></a>Remove Samba entries</h4><p>Edit Samba’s configuration file <code>/etc/samba/smb.conf</code> and remove everything in the <code>[mnt]</code> field.</p>
+<p>Then, navigate to <code>/etc/fstab</code> and comment out anything associated with <code>/mnt/share</code>:</p>
+<pre><code># share /mnt/share 9p trans=virtio,nofail 0 0
+# //localhost/share /mnt/share cifs user=mccranky,password=Rogue12 0 0
+</code></pre>
+<p>Since we’ve already removed Samba service on our machine, we have no need of checking whether if the mount options specified in the mount unit are correct. But if you haven’t removed it yet, feel free to edit the mount unit file located at <code>/etc/systemd/system/mnt-share.mount</code> and modify the mount options.</p>
+<p>Remove the mount unit for <code>/mnt/share</code>:</p>
+<figure class="highlight bash"><table><tr><td class="code"><pre><span class="line"><span class="built_in">sudo</span> <span class="built_in">rm</span> /etc/systemd/system/mnt-share.mount</span><br></pre></td></tr></table></figure>
+
+<p>Reload the systemd daemon to ensure that the changes take effect:</p>
+<figure class="highlight bash"><table><tr><td class="code"><pre><span class="line"><span class="built_in">sudo</span> systemctl daemon-reload</span><br></pre></td></tr></table></figure>
+
+<p>When we check the status of <code>mnt-share.mount</code>, we should get:</p>
+<pre><code> $ sudo systemctl status mnt-share.mount
+x mnt-share.mount
+     Loaded: not-found (Reason: Unit mnt-share.mount not found.)
+     Active: failed (Result: exit-code) since Thu 2023-04-27 02:45:46 UTC; 1h 5&gt;
+        CPU: 28ms
+
+Apr 27 02:45:46 alarm systemd[1]: Mounting /mnt/share...
+Apr 27 02:45:46 alarm mount[379]: mount error(111): could not connect to ::1mou&gt;
+Apr 27 02:45:46 alarm systemd[1]: mnt-share.mount: Mount process exited, code=e&gt;
+Apr 27 02:45:46 alarm systemd[1]: mnt-share.mount: Failed with result &#39;exit-cod&gt;
+Apr 27 02:45:46 alarm systemd[1]: Failed to mount /mnt/share.
+</code></pre>
+<p>Last we can finally run <code>sudo rm -r /mnt/share</code> to remove <code>/mnt/share</code> from our machine.</p>
+<p>Perfect! Now when we <code>reboot</code> again we should receive no errors.</p>
+]]></content>
+      <categories>
+        <category>Linux</category>
+        <category>ArchLinux</category>
+      </categories>
+      <tags>
+        <tag>ArchLinux</tag>
+        <tag>Virtual Machine</tag>
+        <tag>Issue</tag>
+      </tags>
+  </entry>
+  <entry>
+    <title>`inpath`</title>
+    <url>/2023/04/29/%60inpath%60/</url>
+    <content><![CDATA[<p>Coding along with the book <em>Wicked Cool Shell Scripts- 101 Scripts for Linux, OS X, and UNIX Systems</em>.</p>
+<p>This is the script from Page 11:</p>
+<figure class="highlight bash"><table><tr><td class="code"><pre><span class="line"><span class="meta">#!/bin/bash</span></span><br><span class="line"></span><br><span class="line"><span class="function"><span class="title">in_path</span></span>()</span><br><span class="line">&#123;</span><br><span class="line">        cmd=<span class="variable">$1</span></span><br><span class="line">        ourpath=<span class="variable">$2</span>      </span><br><span class="line">        result=1</span><br><span class="line">        oldIFS=<span class="variable">$IFS</span>     </span><br><span class="line">        IFS=<span class="string">&quot;:&quot;</span></span><br><span class="line"> </span><br><span class="line">        <span class="keyword">for</span> directory <span class="keyword">in</span> <span class="variable">$ourpath</span>; <span class="keyword">do</span></span><br><span class="line"></span><br><span class="line">        <span class="comment"># If i double quoted `$ourpath`, it will not word split, and the loop will only run once.</span></span><br><span class="line"></span><br><span class="line">                <span class="keyword">if</span> [ -x <span class="string">&quot;<span class="variable">$directory</span>/<span class="variable">$cmd</span>&quot;</span> ]; <span class="keyword">then</span></span><br><span class="line">                        result=0</span><br><span class="line">                <span class="keyword">fi</span></span><br><span class="line">        <span class="keyword">done</span></span><br><span class="line"> </span><br><span class="line">        IFS=<span class="variable">$oldIFS</span></span><br><span class="line">        <span class="built_in">return</span> <span class="variable">$result</span></span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"><span class="function"><span class="title">checkForCmdInPath</span></span>()</span><br><span class="line">&#123;</span><br><span class="line">        var=<span class="variable">$1</span></span><br><span class="line"> </span><br><span class="line">        <span class="keyword">if</span> [ ! <span class="string">&quot;<span class="variable">$var</span>&quot;</span> = <span class="string">&quot;&quot;</span> ]; <span class="keyword">then</span></span><br><span class="line">                <span class="keyword">if</span> [ <span class="string">&quot;<span class="variable">$&#123;var:0:1&#125;</span>&quot;</span> = <span class="string">&quot;/&quot;</span> ]; <span class="keyword">then</span></span><br><span class="line">                	<span class="comment"># Checks whether the command represented by the `$var` is an absolute path or not. </span></span><br><span class="line">                        <span class="keyword">if</span> [ ! -x <span class="string">&quot;<span class="variable">$var</span>&quot;</span> ]; <span class="keyword">then</span></span><br><span class="line">                                <span class="built_in">return</span> 1</span><br><span class="line">                        <span class="keyword">fi</span></span><br><span class="line">                <span class="keyword">elif</span> ! in_path <span class="string">&quot;<span class="variable">$var</span>&quot;</span> <span class="string">&quot;<span class="variable">$PATH</span>&quot;</span>; <span class="keyword">then</span></span><br><span class="line">                        <span class="built_in">return</span> 2</span><br><span class="line">                <span class="keyword">fi</span></span><br><span class="line">        <span class="keyword">fi</span></span><br><span class="line">&#125;</span><br><span class="line"></span><br></pre></td></tr></table></figure>
+
+<h3 id="Positional-parameters"><a href="#Positional-parameters" class="headerlink" title="Positional parameters"></a>Positional parameters</h3><p>See <a href="/2023/04/29/Positional%20Parameters/">here</a></p>
+<blockquote>
+<p><strong><em>A Quick Word</em></strong>  </p>
+<p>It is good practice to put double quotes around variables in Bash because it prevents word splitting and globbing.</p>
+<ul>
+<li><p>Word splitting is the process of breaking up a string into separate words based on whitespace. If a variable contains spaces, without quotes, Bash will treat each space-separated word as a separate argument. This can cause unexpected behavior if the variable is used as an argument to a command.</p>
+</li>
+<li><p>Globbing is the process of expanding wildcard characters such as <code>*</code> and <code>?</code> into a list of matching filenames. If a variable contains a glob character, without quotes, Bash will try to expand it into a list of matching filenames. This can also cause unexpected behavior if the variable is used as an argument to a command.</p>
+</li>
+</ul>
+<p>By putting double quotes around variables, Bash treats the variable as a single argument, preserving any whitespace or glob characters within the variable. This helps to ensure that the variable is interpreted correctly and the script behaves as expected.</p>
+</blockquote>
+<h3 id="Special-variables"><a href="#Special-variables" class="headerlink" title="Special variables"></a>Special variables</h3><p><strong><em><code>$IFS</code></em></strong></p>
+<p>The internal field separator (IFS) is a special variable in Bash that specifies the delimiter used to separate fields in a string. By default, the IFS is set to whitespace (i.e., space, tab, and newline characters).</p>
+<p><strong><em>&#96;$?</em></strong></p>
+<p>Display the return values of functions.</p>
+<figure class="highlight bash"><table><tr><td class="code"><pre><span class="line"><span class="built_in">echo</span> $?</span><br></pre></td></tr></table></figure>
+
+<p>You can use it immediately after calling a function with return value.</p>
+<h3 id="Slice"><a href="#Slice" class="headerlink" title="Slice"></a>Slice</h3><pre><code>[ &quot;$&#123;var:0:1&#125;&quot; = &quot;/&quot; ];
+</code></pre>
+<p>The slicing starts at index <code>0</code> and lasts for the duration of a single character.</p>
+<h3 id="Compare"><a href="#Compare" class="headerlink" title="Compare"></a>Compare</h3><p><strong><em>String comparison</em></strong></p>
+<p><code>=</code> tests if two strings are equal. For example, if <code>[ &quot;$string1&quot; = &quot;$string2&quot; ]</code> would be true if <code>$string1</code> and <code>$string2</code> have the same value.</p>
+<p><strong><em>Pattern matching</em></strong></p>
+<p><code>==</code> tests if a string matches a pattern using globbing, which is a way to match filenames based on wildcard characters. For example, if <code>[[ &quot;$string&quot; == a* ]]</code> would be true if <code>$string</code> starts with the letter “a”.</p>
+]]></content>
+      <categories>
+        <category>Wicked Cool Shell Scripts</category>
+      </categories>
+      <tags>
+        <tag>Linux</tag>
+        <tag>ArchLinux</tag>
+        <tag>Bash</tag>
       </tags>
   </entry>
   <entry>
@@ -1086,176 +1209,6 @@ fetch-retry-maxtimeout = 300000
       </tags>
   </entry>
   <entry>
-    <title>如何使用 GitHub Pages 托管 Hexo 静态博客网站</title>
-    <url>/2023/04/22/%E5%A6%82%E4%BD%95%E4%BD%BF%E7%94%A8%20GitHub%20Pages%20%E6%89%98%E7%AE%A1%20Hexo%20%E9%9D%99%E6%80%81%E5%8D%9A%E5%AE%A2%E7%BD%91%E7%AB%99/</url>
-    <content><![CDATA[<p>– <strong>请先阅读 <a href="/2023/04/22/%E4%BD%BF%E7%94%A8%20Hexo%20%E7%94%9F%E6%88%90%E9%9D%99%E6%80%81%E7%BD%91%E9%A1%B5%E5%8D%9A%E5%AE%A2/index.html">使用 Hexo 生成静态网页博客</a>！</strong></p>
-<h3 id="准备工作"><a href="#准备工作" class="headerlink" title="准备工作"></a>准备工作</h3><p>首先，我们基于完成的博客<code>.md</code>文件生成静态网页：</p>
-<figure class="highlight bash"><table><tr><td class="code"><pre><span class="line"><span class="built_in">cd</span> /path/to/site/</span><br><span class="line"><span class="comment"># 跑到项目路径目录</span></span><br><span class="line"></span><br><span class="line">hexo generate</span><br><span class="line"><span class="comment"># 生成静态网页，存放与 public 文件夹内</span></span><br></pre></td></tr></table></figure>
-
-<p>接着，我们进入<code>public</code>文件夹。</p>
-<pre><code>.
-├── node_modules
-├── public
-├── scaffolds
-├── source
-└── themes
-</code></pre>
-<p>因为我们是使用 GitHub Pages 托管，所以我们需要在<code>public</code>文件夹内初始化<code>git</code>：</p>
-<figure class="highlight bash"><table><tr><td class="code"><pre><span class="line">git init</span><br><span class="line"></span><br><span class="line">git branch -m main</span><br><span class="line"></span><br><span class="line">git add .</span><br><span class="line"></span><br><span class="line">git commit -m <span class="string">&quot;初始化工作&quot;</span></span><br></pre></td></tr></table></figure>
-
-<p>其次，我们还需要在 GitHub 上面建立一个远程仓库，格式<strong>必须</strong>为<code>username.github.io</code>，这是硬性要求。</p>
-<h3 id="关联和发布"><a href="#关联和发布" class="headerlink" title="关联和发布"></a>关联和发布</h3><p>我们现在需要关联本地仓库和远程仓库，用例中我们使用<code>https</code>协议，当然也可以使用<code>ssh</code>密钥：</p>
-<figure class="highlight bash"><table><tr><td class="code"><pre><span class="line">git remote add origin https://github.com/username/username.github.io.git</span><br><span class="line"></span><br><span class="line">git push origin main</span><br></pre></td></tr></table></figure>
-
-<p>我们还需要更改一下远程仓库的 GitHub Pages 的设置，目的是告知它托管文件的地址：</p>
-<div style="display: block; margin-left: auto; margin-right: auto; text-align: center; font-size: 1rem;">
-  
-<p>  <img src="/2023/04/22/%E5%A6%82%E4%BD%95%E4%BD%BF%E7%94%A8%20GitHub%20Pages%20%E6%89%98%E7%AE%A1%20Hexo%20%E9%9D%99%E6%80%81%E5%8D%9A%E5%AE%A2%E7%BD%91%E7%AB%99/images/0001.png" alt="点击 Settings" title="点击 Settings"></p>
-  <div>点击 Settings</div>
-  <br>
-
-<p>  <img src="/2023/04/22/%E5%A6%82%E4%BD%95%E4%BD%BF%E7%94%A8%20GitHub%20Pages%20%E6%89%98%E7%AE%A1%20Hexo%20%E9%9D%99%E6%80%81%E5%8D%9A%E5%AE%A2%E7%BD%91%E7%AB%99/images/0002.png" alt="点击 Pages" title="点击 Pages"></p>
-  <div>点击 Pages</div>
-  <br>
-
-<p>  <img src="/2023/04/22/%E5%A6%82%E4%BD%95%E4%BD%BF%E7%94%A8%20GitHub%20Pages%20%E6%89%98%E7%AE%A1%20Hexo%20%E9%9D%99%E6%80%81%E5%8D%9A%E5%AE%A2%E7%BD%91%E7%AB%99/images/0003.png" alt="修改设置" title="修改设置"></p>
-  <div>修改设置</div>
-  <br>
-
-</div>
-
-<p>最后，我们访问<code>username.github.io</code>就可以来到我们的博客页了 :)</p>
-]]></content>
-      <tags>
-        <tag>Hexo</tag>
-        <tag>GitHub Pages</tag>
-        <tag>Git</tag>
-      </tags>
-  </entry>
-  <entry>
-    <title>Mounting a shared folder on ArchLinux VM</title>
-    <url>/2023/04/26/Mounting-a-Shared-folder-on-ArchLinux-VM/</url>
-    <content><![CDATA[<p>For this tutorial, we’ll be using <strong>Samba</strong>. As for what Samba really is though, the most I can figure out from my search on Google is that Samba is a free and open-source software that allows files to be shared across Windows and Linux systems simply and easily. To be exact, it is an open-source implementation of the SMB&#x2F;CIFS protocol.</p>
-<h3 id="Setup"><a href="#Setup" class="headerlink" title="Setup"></a>Setup</h3><h4 id="Install-smbclient-util-with-pacman"><a href="#Install-smbclient-util-with-pacman" class="headerlink" title="Install smbclient util with pacman"></a>Install <code>smbclient</code> util with <code>pacman</code></h4><figure class="highlight bash"><table><tr><td class="code"><pre><span class="line"><span class="built_in">sudo</span> pacman -S smbclient</span><br></pre></td></tr></table></figure>
-
-<h4 id="Create-shared-directory"><a href="#Create-shared-directory" class="headerlink" title="Create shared directory"></a>Create shared directory</h4><figure class="highlight bash"><table><tr><td class="code"><pre><span class="line"><span class="built_in">sudo</span> <span class="built_in">mkdir</span> /home/&lt;user&gt;/share</span><br></pre></td></tr></table></figure>
-
-<p>This directory is to be shared between the host and guest machines.</p>
-<h4 id="Edit-the-Samba-configuration-file"><a href="#Edit-the-Samba-configuration-file" class="headerlink" title="Edit the Samba configuration file"></a>Edit the Samba configuration file</h4><p>Open up the configuration file for samba:</p>
-<figure class="highlight bash"><table><tr><td class="code"><pre><span class="line"><span class="built_in">sudo</span> nano /etc/samba/smb.conf</span><br></pre></td></tr></table></figure>
-
-<p>Add these lines to the configuration file:</p>
-<figure class="highlight bash"><table><tr><td class="code"><pre><span class="line">[share]</span><br><span class="line">path = /home/&lt;user&gt;/share</span><br><span class="line"><span class="built_in">read</span> only = no</span><br><span class="line">guest ok = <span class="built_in">yes</span></span><br></pre></td></tr></table></figure>
-
-<h4 id="Create-Samba-password"><a href="#Create-Samba-password" class="headerlink" title="Create Samba password"></a>Create Samba password</h4><figure class="highlight bash"><table><tr><td class="code"><pre><span class="line"><span class="built_in">sudo</span> smbpasswd -a &lt;user&gt;</span><br></pre></td></tr></table></figure>
-
-<p>Restart the Samba service to refresh:</p>
-<figure class="highlight bash"><table><tr><td class="code"><pre><span class="line"><span class="built_in">sudo</span> systemctl restart smb.service</span><br></pre></td></tr></table></figure>
-
-<h4 id="IP-Configuration"><a href="#IP-Configuration" class="headerlink" title="IP Configuration"></a>IP Configuration</h4><p>In the UTM app on your MacBook, go to the settings for the ArchLinux VM and enable the “Port Forwarding” option. Add a new rule with the following settings:</p>
-<pre><code>Protocol: TCP
-Host Port: 445
-Guest IP: IP address of the ArchLinux VM
-Guest Port: 445
-</code></pre>
-<p>To get Guest IP, run the following line:</p>
-<figure class="highlight bash"><table><tr><td class="code"><pre><span class="line">[root@alarm ~]# ip addr | grep inet</span><br></pre></td></tr></table></figure>
-
-<pre><code>inet 127.0.0.1/8 scope host lo
-inet6 ::1/128 scope host 
-inet 192.168.65.3/24 metric 1024 brd 192.168.65.255 scope global dynamic enp0s1
-inet6 fde3:e977:b4d3:5c13:e0b4:51ff:fee5:2142/64 scope global dynamic mngtmpaddr noprefixroute 
-inet6 fe80::e0b4:51ff:fee5:2142/64 scope link
-</code></pre>
-<p>In this case, it’s <code>192.168.65.3</code>.</p>
-<p>To get Host IP, run the following line:</p>
-<figure class="highlight bash"><table><tr><td class="code"><pre><span class="line">ipconfig getifaddr en0</span><br><span class="line"></span><br><span class="line"><span class="comment"># 10.8.189.52</span></span><br></pre></td></tr></table></figure>
-
-<p>On your MacBook, open Finder and click “Go” &gt; “Connect to Server” (Cmd + K). </p>
-<p>Enter this address: <code>smb://localhost:445/share</code></p>
-<p>Enter the Samba username and password when prompted.</p>
-<p>You can now access the shared directory and transfer files between the host and guest operating systems.</p>
-<h3 id="Mount-mnt-share"><a href="#Mount-mnt-share" class="headerlink" title="Mount /mnt/share"></a>Mount <code>/mnt/share</code></h3><p>Normally during the boot-up process of our machines, the mounting up of disks and folders are done for us. However, I keep getting this error telling me:</p>
-<pre><code>[FAILED] Failed to mount /mnt/share.
-</code></pre>
-<p>So I have to mount this directory myself, by running:</p>
-<figure class="highlight bash"><table><tr><td class="code"><pre><span class="line"><span class="built_in">sudo</span> mount -t cifs //localhost/share /mnt/share -o user=&lt;Samba username&gt;,password=&lt;Samba password&gt;</span><br></pre></td></tr></table></figure>
-
-<p>This command mounts a Samba share located on the local machine (localhost) to a directory (&#x2F;mnt&#x2F;share) using the Common Internet File System (CIFS) protocol.</p>
-<p>The <code>-o</code> option specifies additional mount options, in this case, it provides the Samba username and password to authenticate and access the share.</p>
-<hr>
-<h4 id="Enable-Samba-service"><a href="#Enable-Samba-service" class="headerlink" title="Enable Samba service"></a>Enable Samba service</h4><p>But before we run this command, we have to ensure that Samba service on the ArchLinux VM is up and running.</p>
-<p>Check that the Samba service is running on the ArchLinux VM:</p>
-<figure class="highlight bash"><table><tr><td class="code"><pre><span class="line"><span class="built_in">sudo</span> systemctl status smb.service</span><br></pre></td></tr></table></figure>
-
-<p>If the service is not running, start it using the following command:</p>
-<figure class="highlight bash"><table><tr><td class="code"><pre><span class="line"><span class="built_in">sudo</span> systemctl start smb.service</span><br></pre></td></tr></table></figure>
-
-<p>To automatically start the Samba service on boot, you can enable the <code>smb.service</code> unit running the following command:</p>
-<figure class="highlight bash"><table><tr><td class="code"><pre><span class="line"><span class="built_in">sudo</span> systemctl <span class="built_in">enable</span> smb.service</span><br></pre></td></tr></table></figure>
-
-<blockquote>
-<p><strong><em>Make sure that the Samba username and password are correct.</em></strong></p>
-</blockquote>
-<figure class="highlight bash"><table><tr><td class="code"><pre><span class="line">smbclient //localhost/share -U mccranky</span><br></pre></td></tr></table></figure>
-
-<p>Restart the ArchLinux VM to test that the Samba service starts automatically:</p>
-<figure class="highlight bash"><table><tr><td class="code"><pre><span class="line"><span class="built_in">sudo</span> systemctl reboot</span><br></pre></td></tr></table></figure>
-
-<hr>
-<p>To check whether <code>/mnt/share</code> has been successfully mounted, run the following line:</p>
-<figure class="highlight bash"><table><tr><td class="code"><pre><span class="line">mount | grep /mnt/share</span><br></pre></td></tr></table></figure>
-
-<p>If the directory is mounted, we should be able to see something similar to this:</p>
-<pre><code>//localhost/share on /mnt/share type cifs (rw,relatime,vers=3.1.1,cache=strict,username=mccranky,
-uid=0,noforceuid,gid=0,noforcegid,addr=127.0.0.1,file_mode=0755,dir_mode=0755,soft,nounix,serveri
-no,mapposix,rsize=4194304,wsize=4194304,bsize=1048576,echo_interval=60,actimeo=1,closetimeo=1,use
-r=mccranky)
-</code></pre>
-<h4 id="Mount-mnt-share-on-startup"><a href="#Mount-mnt-share-on-startup" class="headerlink" title="Mount /mnt/share on startup"></a>Mount <code>/mnt/share</code> on startup</h4><p>To automatically mount the Samba shared directory on boot, you can add an entry to the <code>/etc/fstab</code> file.</p>
-<figure class="highlight bash"><table><tr><td class="code"><pre><span class="line"><span class="built_in">sudo</span> nano /etc/fstab</span><br></pre></td></tr></table></figure>
-
-<p>Then append the following line to the end of the file:</p>
-<figure class="highlight bash"><table><tr><td class="code"><pre><span class="line">//localhost/share /mnt/share cifs user=mccranky,password=Rogue12 0 0</span><br></pre></td></tr></table></figure>
-
-<p>However, it seems that our new input comflicts with this line:</p>
-<figure class="highlight bash"><table><tr><td class="code"><pre><span class="line">share /mnt/share 9p trans=virtio,nofail 0 0</span><br></pre></td></tr></table></figure>
-
-<p>The reason for this is because our new line mounts a CIFS file system from <code>localhost</code> onto the mount point <code>/mnt/share</code>, using the username <code>mccranky</code> and password <code>Rogue12</code>.</p>
-<p>The old line mounts a 9p file system onto the same mount point <code>/mnt/share</code>, using the virtio transport and the nofail option.</p>
-<p>Since our old entry gave us much headache, I’ll just swap it for the new one. :)</p>
-<p>Let’s test the mount by running the following command:</p>
-<figure class="highlight bash"><table><tr><td class="code"><pre><span class="line"><span class="built_in">sudo</span> mount -a</span><br></pre></td></tr></table></figure>
-
-<p>This command will attempt to mount all entries in the <code>/etc/fstab</code> file. If there are any errors, it will display them in the terminal.</p>
-<p>Now we run <code>sudo systemctl reboot</code> to see if everything has been resolved at boot-up. There should be no more failures.</p>
-<h3 id="Rollback"><a href="#Rollback" class="headerlink" title="Rollback"></a>Rollback</h3><h4 id="Disable-Samba-service"><a href="#Disable-Samba-service" class="headerlink" title="Disable Samba service"></a>Disable Samba service</h4><figure class="highlight bash"><table><tr><td class="code"><pre><span class="line"><span class="built_in">sudo</span> systemctl stop smb.service</span><br><span class="line"></span><br><span class="line"><span class="built_in">sudo</span> systemctl <span class="built_in">disable</span> smb.service</span><br><span class="line"></span><br><span class="line"><span class="built_in">sudo</span> pacman -R samba</span><br><span class="line"></span><br><span class="line"><span class="built_in">sudo</span> <span class="built_in">rm</span> -rf /etc/samba</span><br><span class="line"><span class="built_in">sudo</span> <span class="built_in">rm</span> -rf /var/cache/samba</span><br><span class="line"><span class="built_in">sudo</span> <span class="built_in">rm</span> -rf /var/lib/samba</span><br><span class="line"></span><br><span class="line"><span class="built_in">sudo</span> userdel -r samba</span><br><span class="line"><span class="built_in">sudo</span> groupdel samba</span><br><span class="line"></span><br></pre></td></tr></table></figure>
-
-<h4 id="Unmount-mnt-share"><a href="#Unmount-mnt-share" class="headerlink" title="Unmount /mnt/share"></a>Unmount <code>/mnt/share</code></h4><p>Edit the Samba configuration file <code>/etc/samba/smb.conf</code> using a text editor:</p>
-<figure class="highlight bash"><table><tr><td class="code"><pre><span class="line"><span class="built_in">sudo</span> nano /etc/samba/smb.conf</span><br></pre></td></tr></table></figure>
-
-<p>Find the section that defines the <code>/mnt/share</code> share. It should look something like this:</p>
-<figure class="highlight bash"><table><tr><td class="code"><pre><span class="line">[mnt]</span><br><span class="line">   path = /mnt/share</span><br><span class="line">   <span class="built_in">read</span> only = no</span><br><span class="line">   guest ok = <span class="built_in">yes</span></span><br></pre></td></tr></table></figure>
-
-<p>Remove the entire section, then restart the Samba service:</p>
-<figure class="highlight bash"><table><tr><td class="code"><pre><span class="line"><span class="built_in">sudo</span> systemctl start smb.service</span><br></pre></td></tr></table></figure>
-
-<p>The <code>/mnt/share</code> share should now be removed from Samba on Arch Linux.</p>
-<h4 id="Revoke-Samba-password"><a href="#Revoke-Samba-password" class="headerlink" title="Revoke Samba password"></a>Revoke Samba password</h4><figure class="highlight bash"><table><tr><td class="code"><pre><span class="line"><span class="built_in">sudo</span> smbpasswd -x &lt;user&gt;</span><br></pre></td></tr></table></figure>
-
-<p>This will remove the user’s password from the Samba password database, effectively undoing the <code>sudo smbpasswd -a &lt;user&gt;</code> command.</p>
-]]></content>
-      <categories>
-        <category>Linux</category>
-        <category>ArchLinux</category>
-      </categories>
-      <tags>
-        <tag>ArchLinux</tag>
-        <tag>Virtual Machine</tag>
-        <tag>UTM</tag>
-      </tags>
-  </entry>
-  <entry>
     <title>使用 Telnet 连接 GreenMail 模拟邮件服务器 (测试 SMTP / IMAP 连接)</title>
     <url>/2023/04/21/%E4%BD%BF%E7%94%A8%20Telnet%20%E8%BF%9E%E6%8E%A5%20GreenMail%20%E6%A8%A1%E6%8B%9F%E9%82%AE%E4%BB%B6%E6%9C%8D%E5%8A%A1%E5%99%A8%20(%E6%B5%8B%E8%AF%95%20SMTP%20:%20IMAP%20%E8%BF%9E%E6%8E%A5)/</url>
     <content><![CDATA[<h3 id="要求"><a href="#要求" class="headerlink" title="要求"></a><em>要求</em></h3><ul>
@@ -1362,6 +1315,53 @@ S: 221 /0:0:0:0:0:0:0:1 Service closing transmission channel
       </tags>
   </entry>
   <entry>
+    <title>如何使用 GitHub Pages 托管 Hexo 静态博客网站</title>
+    <url>/2023/04/22/%E5%A6%82%E4%BD%95%E4%BD%BF%E7%94%A8%20GitHub%20Pages%20%E6%89%98%E7%AE%A1%20Hexo%20%E9%9D%99%E6%80%81%E5%8D%9A%E5%AE%A2%E7%BD%91%E7%AB%99/</url>
+    <content><![CDATA[<p>– <strong>请先阅读 <a href="/2023/04/22/%E4%BD%BF%E7%94%A8%20Hexo%20%E7%94%9F%E6%88%90%E9%9D%99%E6%80%81%E7%BD%91%E9%A1%B5%E5%8D%9A%E5%AE%A2/index.html">使用 Hexo 生成静态网页博客</a>！</strong></p>
+<h3 id="准备工作"><a href="#准备工作" class="headerlink" title="准备工作"></a>准备工作</h3><p>首先，我们基于完成的博客<code>.md</code>文件生成静态网页：</p>
+<figure class="highlight bash"><table><tr><td class="code"><pre><span class="line"><span class="built_in">cd</span> /path/to/site/</span><br><span class="line"><span class="comment"># 跑到项目路径目录</span></span><br><span class="line"></span><br><span class="line">hexo generate</span><br><span class="line"><span class="comment"># 生成静态网页，存放与 public 文件夹内</span></span><br></pre></td></tr></table></figure>
+
+<p>接着，我们进入<code>public</code>文件夹。</p>
+<pre><code>.
+├── node_modules
+├── public
+├── scaffolds
+├── source
+└── themes
+</code></pre>
+<p>因为我们是使用 GitHub Pages 托管，所以我们需要在<code>public</code>文件夹内初始化<code>git</code>：</p>
+<figure class="highlight bash"><table><tr><td class="code"><pre><span class="line">git init</span><br><span class="line"></span><br><span class="line">git branch -m main</span><br><span class="line"></span><br><span class="line">git add .</span><br><span class="line"></span><br><span class="line">git commit -m <span class="string">&quot;初始化工作&quot;</span></span><br></pre></td></tr></table></figure>
+
+<p>其次，我们还需要在 GitHub 上面建立一个远程仓库，格式<strong>必须</strong>为<code>username.github.io</code>，这是硬性要求。</p>
+<h3 id="关联和发布"><a href="#关联和发布" class="headerlink" title="关联和发布"></a>关联和发布</h3><p>我们现在需要关联本地仓库和远程仓库，用例中我们使用<code>https</code>协议，当然也可以使用<code>ssh</code>密钥：</p>
+<figure class="highlight bash"><table><tr><td class="code"><pre><span class="line">git remote add origin https://github.com/username/username.github.io.git</span><br><span class="line"></span><br><span class="line">git push origin main</span><br></pre></td></tr></table></figure>
+
+<p>我们还需要更改一下远程仓库的 GitHub Pages 的设置，目的是告知它托管文件的地址：</p>
+<div style="display: block; margin-left: auto; margin-right: auto; text-align: center; font-size: 1rem;">
+  
+<p>  <img src="/2023/04/22/%E5%A6%82%E4%BD%95%E4%BD%BF%E7%94%A8%20GitHub%20Pages%20%E6%89%98%E7%AE%A1%20Hexo%20%E9%9D%99%E6%80%81%E5%8D%9A%E5%AE%A2%E7%BD%91%E7%AB%99/images/0001.png" alt="点击 Settings" title="点击 Settings"></p>
+  <div>点击 Settings</div>
+  <br>
+
+<p>  <img src="/2023/04/22/%E5%A6%82%E4%BD%95%E4%BD%BF%E7%94%A8%20GitHub%20Pages%20%E6%89%98%E7%AE%A1%20Hexo%20%E9%9D%99%E6%80%81%E5%8D%9A%E5%AE%A2%E7%BD%91%E7%AB%99/images/0002.png" alt="点击 Pages" title="点击 Pages"></p>
+  <div>点击 Pages</div>
+  <br>
+
+<p>  <img src="/2023/04/22/%E5%A6%82%E4%BD%95%E4%BD%BF%E7%94%A8%20GitHub%20Pages%20%E6%89%98%E7%AE%A1%20Hexo%20%E9%9D%99%E6%80%81%E5%8D%9A%E5%AE%A2%E7%BD%91%E7%AB%99/images/0003.png" alt="修改设置" title="修改设置"></p>
+  <div>修改设置</div>
+  <br>
+
+</div>
+
+<p>最后，我们访问<code>username.github.io</code>就可以来到我们的博客页了 :)</p>
+]]></content>
+      <tags>
+        <tag>Hexo</tag>
+        <tag>GitHub Pages</tag>
+        <tag>Git</tag>
+      </tags>
+  </entry>
+  <entry>
     <title>如何生成项目树状结构图</title>
     <url>/2023/04/22/%E5%A6%82%E4%BD%95%E7%94%9F%E6%88%90%E9%A1%B9%E7%9B%AE%E6%A0%91%E7%8A%B6%E7%BB%93%E6%9E%84%E5%9B%BE/</url>
     <content><![CDATA[<h3 id="Prerequisites"><a href="#Prerequisites" class="headerlink" title="Prerequisites"></a>Prerequisites</h3><ul>
@@ -1408,6 +1408,127 @@ S: 221 /0:0:0:0:0:0:0:1 Service closing transmission channel
         <tag>Bash</tag>
         <tag>CLI</tag>
         <tag>File Systems</tag>
+      </tags>
+  </entry>
+  <entry>
+    <title>软件工程 第三周的博客</title>
+    <url>/2023/04/07/%E8%BD%AF%E4%BB%B6%E5%B7%A5%E7%A8%8B%20%E7%AC%AC%E4%B8%89%E5%91%A8%E7%9A%84%E5%8D%9A%E5%AE%A2/</url>
+    <content><![CDATA[<h2 id="简要概述-CTF-OverTheWire-Bandit-Level-24"><a href="#简要概述-CTF-OverTheWire-Bandit-Level-24" class="headerlink" title="简要概述 CTF OverTheWire Bandit Level 24"></a><em>简要概述 CTF OverTheWire Bandit Level 24</em></h2><h3 id="题目"><a href="#题目" class="headerlink" title="题目"></a><em>题目</em></h3><blockquote>
+<p>在端口 30002 上有一个守护进程正在监听，如果提供了 bandit24 的密码和一个秘密的 4 位数的数字密码，它将为您提供 bandit25 的密码。除了通过穷举全部 10000 种组合的方式以外，没有其他获得 pincode 的方法，这被称为暴力破解。</p>
+</blockquote>
+<p>大致思路如下：</p>
+<ul>
+<li>先写一个<code>script</code>，按要求进行排版输出到<code>stdout</code></li>
+<li>把输出的 10000 种组合<code>pipe</code>到<code>netcat</code>监视的<code>localhost:30002</code>进行测试</li>
+<li>直接输出到<code>stdout</code>可能会<code>timeout</code>打断进程，所以我们输出到<code>output.txt</code></li>
+<li>最后<code>cat</code>文本内容拿到密码</li>
+</ul>
+<p>先利用<code>ssh</code>连接到<code>bandit.labs.overthewire.org</code>的服务器，端口号<code>2220</code>，为此我们需要<code>bandit24</code>的密码。</p>
+<figure class="highlight bash"><table><tr><td class="code"><pre><span class="line">ssh bandit24@bandit.labs.overthewire.org -p 2220</span><br><span class="line"><span class="comment">#					VAfGXJ1PBSsPSnvsjI8p759leLZ9GGar</span></span><br></pre></td></tr></table></figure>
+
+<p>以<code>bandit24</code>进入 Level 24 之后先到系统文件夹<code>/tmp</code>下建立本关的临时文件夹。</p>
+<figure class="highlight bash"><table><tr><td class="code"><pre><span class="line"><span class="built_in">cd</span> /tmp; <span class="built_in">mktemp</span> -d</span><br><span class="line"></span><br><span class="line"><span class="comment"># /tmp/tmp.u4oQlmpmWL</span></span><br><span class="line"></span><br><span class="line"><span class="built_in">cd</span> /tmp/tmp.u4oQlmpmWL</span><br><span class="line"></span><br><span class="line"><span class="comment"># bandit24@bandit:/tmp/tmp.u4oQlmpmWL$</span></span><br></pre></td></tr></table></figure>
+
+<blockquote>
+<p><code>-d</code>代表<code>directory</code>，即告诉<code>mktemp</code>指令创建的临时文件属性为文件夹</p>
+</blockquote>
+<figure class="highlight bash"><table><tr><td class="code"><pre><span class="line"><span class="built_in">touch</span> script.sh</span><br><span class="line"></span><br><span class="line"><span class="built_in">chmod</span> 777 script.sh</span><br><span class="line"></span><br><span class="line">vim script.sh</span><br></pre></td></tr></table></figure>
+
+<blockquote>
+<p><code>touch</code>: 创建文件</p>
+</blockquote>
+<blockquote>
+<p><code>chmod</code> - <code>change mode</code>: 改变文档<code>rwx</code>权限</p>
+</blockquote>
+<ul>
+<li><code>r</code> - <code>read</code>: 读取权限<code>status code</code>为 4</li>
+<li><code>w</code> - <code>write</code>: 书写权限<code>status code</code>为 2</li>
+<li><code>x</code> - <code>execute</code>: 执行权限<code>status code</code>为 1</li>
+</ul>
+<p>进入文本编辑器之后，选定”插入“模式，按<code>i</code>键</p>
+<p>首行书写<code>shebang</code>行，选定使用哪个<code>shell</code>来执行该<code>script</code> - 我们选用<code>bash</code></p>
+<p>然后写我们的<code>entity body</code>的代码：</p>
+<figure class="highlight bash"><table><tr><td class="code"><pre><span class="line"><span class="meta">#!/bin/bash</span></span><br><span class="line"></span><br><span class="line"><span class="keyword">for</span> i <span class="keyword">in</span> &#123;0000..9999&#125;; <span class="keyword">do</span></span><br><span class="line">        <span class="built_in">echo</span> <span class="variable">$i</span></span><br><span class="line">        <span class="built_in">printf</span> <span class="string">&quot;%s %s\n&quot;</span> <span class="string">&quot;VAfGXJ1PBSsPSnvsjI8p759leLZ9GGar&quot;</span> <span class="string">&quot;<span class="variable">$i</span>&quot;</span></span><br><span class="line"><span class="keyword">done</span></span><br><span class="line"></span><br><span class="line"><span class="built_in">exit</span> 0</span><br><span class="line"></span><br></pre></td></tr></table></figure>
+
+<p>除了语法上微小的一点差异，该题的<code>syntax</code>和<code>C</code>的语法很相像，所以不赘述了。</p>
+<p>大致格式就是<code>for [ test statement]; do &lt;command&gt;; done</code></p>
+<p>编辑结束按<code>ESC</code>键回到普通模式，按<code>:</code>,然后输入指令<code>wq</code>，回车保存并退出。</p>
+<p>执行<code>script.sh</code>，并把结果<code>pipe</code>到<code>netcat</code>:</p>
+<figure class="highlight bash"><table><tr><td class="code"><pre><span class="line">./script.sh | nc localhost 30002 &gt; output.txt</span><br></pre></td></tr></table></figure>
+
+<p>然后<code>cat output.txt</code>读取文本内容，这是其中的一小部分：</p>
+<pre>
+        Fail! You did not supply enough data. Try again.
+        Wrong! Please enter the correct pincode. Try again.
+        Fail! You did not supply enough data. Try again.
+        Wrong! Please enter the correct pincode. Try again.
+        Fail! You did not supply enough data. Try again.
+        Wrong! Please enter the correct pincode. Try again.
+        Fail! You did not supply enough data. Try again.
+        Wrong! Please enter the correct pincode. Try again.
+        Fail! You did not supply enough data. Try again.
+        Wrong! Please enter the correct pincode. Try again.
+        Fail! You did not supply enough data. Try again.
+        Wrong! Please enter the correct pincode. Try again.
+        Fail! You did not supply enough data. Try again.
+        Wrong! Please enter the correct pincode. Try again.
+        Fail! You did not supply enough data. Try again.
+        Wrong! Please enter the correct pincode. Try again.
+        Fail! You did not supply enough data. Try again.
+        Correct!
+        The password of user bandit25 is p7TaowMYrmu23Ol8hiZh9UvD0O9hpx8d
+
+        Exiting.
+</pre>
+
+]]></content>
+      <tags>
+        <tag>Bash</tag>
+        <tag>CTF</tag>
+        <tag>OverTheWire</tag>
+        <tag>Bandit</tag>
+      </tags>
+  </entry>
+  <entry>
+    <title>软件工程 第二周的博客</title>
+    <url>/2023/03/29/%E8%BD%AF%E4%BB%B6%E5%B7%A5%E7%A8%8B%20%E7%AC%AC%E4%BA%8C%E5%91%A8%E7%9A%84%E5%8D%9A%E5%AE%A2/</url>
+    <content><![CDATA[<h3 id="使用-Node-js-的-Express-js-模组-Host-自己的静态网页"><a href="#使用-Node-js-的-Express-js-模组-Host-自己的静态网页" class="headerlink" title="使用 Node.js 的 Express.js 模组 Host 自己的静态网页"></a><em>使用 Node.js 的 Express.js 模组 Host 自己的静态网页</em></h3><p>首先创建项目文件夹:</p>
+<figure class="highlight plaintext"><table><tr><td class="code"><pre><span class="line"></span><br><span class="line">mkdir project01; cd project01</span><br><span class="line"></span><br></pre></td></tr></table></figure>
+
+<p>然后创建app.js文件：</p>
+<figure class="highlight plaintext"><table><tr><td class="code"><pre><span class="line"></span><br><span class="line">touch app.js; sudo nano app.js</span><br><span class="line"></span><br></pre></td></tr></table></figure>
+
+<blockquote>
+<p>差点忘了，没下载Node.js的先去这个地址下载一下：<a href="https://nodejs.org/en/download/">https://nodejs.org/en/download/</a></p>
+</blockquote>
+<p>下载完初始化一下：</p>
+<figure class="highlight plaintext"><table><tr><td class="code"><pre><span class="line"></span><br><span class="line">node init -y</span><br><span class="line"></span><br></pre></td></tr></table></figure>
+
+<p>到生成的package.json文件里 script object 里加个参数：</p>
+<figure class="highlight plaintext"><table><tr><td class="code"><pre><span class="line"></span><br><span class="line">‘start&#x27;：‘node app’</span><br><span class="line"></span><br></pre></td></tr></table></figure>
+
+<p>好的，非常完美。</p>
+<p>然后下载express：</p>
+<figure class="highlight plaintext"><table><tr><td class="code"><pre><span class="line"></span><br><span class="line">npm i express --save</span><br><span class="line"></span><br></pre></td></tr></table></figure>
+
+<p>这里不建议把它下载为–global，因为会和别的模组冲突。</p>
+<p>面对空白页，先导入express模组并初始化app（关于http模组的基础不做赘述，因为用那个太麻烦了）：</p>
+<figure class="highlight plaintext"><table><tr><td class="code"><pre><span class="line"></span><br><span class="line">const app = require(&#x27;express&#x27;)()</span><br><span class="line"></span><br></pre></td></tr></table></figure>
+
+<p>然后省略几千字，直接上代码，不懂看注释 : )</p>
+<figure class="highlight plaintext"><table><tr><td class="code"><pre><span class="line"></span><br><span class="line">app.use(express.static(&#x27;./public&#x27;))     // 把静态网页需要的资源全扔 public 文件夹里就好了</span><br><span class="line"></span><br><span class="line">app.all(&#x27;*&#x27;, (req, res) =&gt; &#123;</span><br><span class="line">  res.status(404).send(&#x27;resource not found&#x27;)</span><br><span class="line">&#125;)                                                           // 这个是用来处理404 Bad Request 的</span><br><span class="line"></span><br><span class="line">app.listen(5000, () =&gt; &#123;</span><br><span class="line">  console.log(&#x27;server is listening on port 5000....&#x27;)</span><br><span class="line">&#125;)                                                          // 这个是选择端口</span><br><span class="line"></span><br></pre></td></tr></table></figure>
+
+<p>最后在 console 里输入：</p>
+<figure class="highlight plaintext"><table><tr><td class="code"><pre><span class="line"></span><br><span class="line">npm start</span><br><span class="line"></span><br></pre></td></tr></table></figure>
+
+<p>完成！唯一的问题是我们用的还是 localhost， 也就是只有自己可以在端口 5000 看到自己的网页。</p>
+<p>想让别人看到的话就去使用 Git Pages 的免费服务。</p>
+<p>是不是很简单，开自己动手试一试吧！</p>
+]]></content>
+      <tags>
+        <tag>JavaScript</tag>
+        <tag>Node.js</tag>
+        <tag>Express.js</tag>
       </tags>
   </entry>
   <entry>
@@ -1520,127 +1641,6 @@ Connection to localhost closed.
 <p>我们现在应该是以<code>bandit26</code>的身份登陆了。</p>
 <p>然后需要做的就是去取下一关的密码了。</p>
 <figure class="highlight bash"><table><tr><td class="code"><pre><span class="line"><span class="built_in">cat</span> /etc/bandit_pass/bandit26</span><br><span class="line"><span class="comment"># c7GvcKlw9mC7aUQaPx7nwFstuAIBw1o1</span></span><br></pre></td></tr></table></figure>]]></content>
-      <tags>
-        <tag>Bash</tag>
-        <tag>CTF</tag>
-        <tag>OverTheWire</tag>
-        <tag>Bandit</tag>
-      </tags>
-  </entry>
-  <entry>
-    <title>软件工程 第二周的博客</title>
-    <url>/2023/03/29/%E8%BD%AF%E4%BB%B6%E5%B7%A5%E7%A8%8B%20%E7%AC%AC%E4%BA%8C%E5%91%A8%E7%9A%84%E5%8D%9A%E5%AE%A2/</url>
-    <content><![CDATA[<h3 id="使用-Node-js-的-Express-js-模组-Host-自己的静态网页"><a href="#使用-Node-js-的-Express-js-模组-Host-自己的静态网页" class="headerlink" title="使用 Node.js 的 Express.js 模组 Host 自己的静态网页"></a><em>使用 Node.js 的 Express.js 模组 Host 自己的静态网页</em></h3><p>首先创建项目文件夹:</p>
-<figure class="highlight plaintext"><table><tr><td class="code"><pre><span class="line"></span><br><span class="line">mkdir project01; cd project01</span><br><span class="line"></span><br></pre></td></tr></table></figure>
-
-<p>然后创建app.js文件：</p>
-<figure class="highlight plaintext"><table><tr><td class="code"><pre><span class="line"></span><br><span class="line">touch app.js; sudo nano app.js</span><br><span class="line"></span><br></pre></td></tr></table></figure>
-
-<blockquote>
-<p>差点忘了，没下载Node.js的先去这个地址下载一下：<a href="https://nodejs.org/en/download/">https://nodejs.org/en/download/</a></p>
-</blockquote>
-<p>下载完初始化一下：</p>
-<figure class="highlight plaintext"><table><tr><td class="code"><pre><span class="line"></span><br><span class="line">node init -y</span><br><span class="line"></span><br></pre></td></tr></table></figure>
-
-<p>到生成的package.json文件里 script object 里加个参数：</p>
-<figure class="highlight plaintext"><table><tr><td class="code"><pre><span class="line"></span><br><span class="line">‘start&#x27;：‘node app’</span><br><span class="line"></span><br></pre></td></tr></table></figure>
-
-<p>好的，非常完美。</p>
-<p>然后下载express：</p>
-<figure class="highlight plaintext"><table><tr><td class="code"><pre><span class="line"></span><br><span class="line">npm i express --save</span><br><span class="line"></span><br></pre></td></tr></table></figure>
-
-<p>这里不建议把它下载为–global，因为会和别的模组冲突。</p>
-<p>面对空白页，先导入express模组并初始化app（关于http模组的基础不做赘述，因为用那个太麻烦了）：</p>
-<figure class="highlight plaintext"><table><tr><td class="code"><pre><span class="line"></span><br><span class="line">const app = require(&#x27;express&#x27;)()</span><br><span class="line"></span><br></pre></td></tr></table></figure>
-
-<p>然后省略几千字，直接上代码，不懂看注释 : )</p>
-<figure class="highlight plaintext"><table><tr><td class="code"><pre><span class="line"></span><br><span class="line">app.use(express.static(&#x27;./public&#x27;))     // 把静态网页需要的资源全扔 public 文件夹里就好了</span><br><span class="line"></span><br><span class="line">app.all(&#x27;*&#x27;, (req, res) =&gt; &#123;</span><br><span class="line">  res.status(404).send(&#x27;resource not found&#x27;)</span><br><span class="line">&#125;)                                                           // 这个是用来处理404 Bad Request 的</span><br><span class="line"></span><br><span class="line">app.listen(5000, () =&gt; &#123;</span><br><span class="line">  console.log(&#x27;server is listening on port 5000....&#x27;)</span><br><span class="line">&#125;)                                                          // 这个是选择端口</span><br><span class="line"></span><br></pre></td></tr></table></figure>
-
-<p>最后在 console 里输入：</p>
-<figure class="highlight plaintext"><table><tr><td class="code"><pre><span class="line"></span><br><span class="line">npm start</span><br><span class="line"></span><br></pre></td></tr></table></figure>
-
-<p>完成！唯一的问题是我们用的还是 localhost， 也就是只有自己可以在端口 5000 看到自己的网页。</p>
-<p>想让别人看到的话就去使用 Git Pages 的免费服务。</p>
-<p>是不是很简单，开自己动手试一试吧！</p>
-]]></content>
-      <tags>
-        <tag>JavaScript</tag>
-        <tag>Node.js</tag>
-        <tag>Express.js</tag>
-      </tags>
-  </entry>
-  <entry>
-    <title>软件工程 第三周的博客</title>
-    <url>/2023/04/07/%E8%BD%AF%E4%BB%B6%E5%B7%A5%E7%A8%8B%20%E7%AC%AC%E4%B8%89%E5%91%A8%E7%9A%84%E5%8D%9A%E5%AE%A2/</url>
-    <content><![CDATA[<h2 id="简要概述-CTF-OverTheWire-Bandit-Level-24"><a href="#简要概述-CTF-OverTheWire-Bandit-Level-24" class="headerlink" title="简要概述 CTF OverTheWire Bandit Level 24"></a><em>简要概述 CTF OverTheWire Bandit Level 24</em></h2><h3 id="题目"><a href="#题目" class="headerlink" title="题目"></a><em>题目</em></h3><blockquote>
-<p>在端口 30002 上有一个守护进程正在监听，如果提供了 bandit24 的密码和一个秘密的 4 位数的数字密码，它将为您提供 bandit25 的密码。除了通过穷举全部 10000 种组合的方式以外，没有其他获得 pincode 的方法，这被称为暴力破解。</p>
-</blockquote>
-<p>大致思路如下：</p>
-<ul>
-<li>先写一个<code>script</code>，按要求进行排版输出到<code>stdout</code></li>
-<li>把输出的 10000 种组合<code>pipe</code>到<code>netcat</code>监视的<code>localhost:30002</code>进行测试</li>
-<li>直接输出到<code>stdout</code>可能会<code>timeout</code>打断进程，所以我们输出到<code>output.txt</code></li>
-<li>最后<code>cat</code>文本内容拿到密码</li>
-</ul>
-<p>先利用<code>ssh</code>连接到<code>bandit.labs.overthewire.org</code>的服务器，端口号<code>2220</code>，为此我们需要<code>bandit24</code>的密码。</p>
-<figure class="highlight bash"><table><tr><td class="code"><pre><span class="line">ssh bandit24@bandit.labs.overthewire.org -p 2220</span><br><span class="line"><span class="comment">#					VAfGXJ1PBSsPSnvsjI8p759leLZ9GGar</span></span><br></pre></td></tr></table></figure>
-
-<p>以<code>bandit24</code>进入 Level 24 之后先到系统文件夹<code>/tmp</code>下建立本关的临时文件夹。</p>
-<figure class="highlight bash"><table><tr><td class="code"><pre><span class="line"><span class="built_in">cd</span> /tmp; <span class="built_in">mktemp</span> -d</span><br><span class="line"></span><br><span class="line"><span class="comment"># /tmp/tmp.u4oQlmpmWL</span></span><br><span class="line"></span><br><span class="line"><span class="built_in">cd</span> /tmp/tmp.u4oQlmpmWL</span><br><span class="line"></span><br><span class="line"><span class="comment"># bandit24@bandit:/tmp/tmp.u4oQlmpmWL$</span></span><br></pre></td></tr></table></figure>
-
-<blockquote>
-<p><code>-d</code>代表<code>directory</code>，即告诉<code>mktemp</code>指令创建的临时文件属性为文件夹</p>
-</blockquote>
-<figure class="highlight bash"><table><tr><td class="code"><pre><span class="line"><span class="built_in">touch</span> script.sh</span><br><span class="line"></span><br><span class="line"><span class="built_in">chmod</span> 777 script.sh</span><br><span class="line"></span><br><span class="line">vim script.sh</span><br></pre></td></tr></table></figure>
-
-<blockquote>
-<p><code>touch</code>: 创建文件</p>
-</blockquote>
-<blockquote>
-<p><code>chmod</code> - <code>change mode</code>: 改变文档<code>rwx</code>权限</p>
-</blockquote>
-<ul>
-<li><code>r</code> - <code>read</code>: 读取权限<code>status code</code>为 4</li>
-<li><code>w</code> - <code>write</code>: 书写权限<code>status code</code>为 2</li>
-<li><code>x</code> - <code>execute</code>: 执行权限<code>status code</code>为 1</li>
-</ul>
-<p>进入文本编辑器之后，选定”插入“模式，按<code>i</code>键</p>
-<p>首行书写<code>shebang</code>行，选定使用哪个<code>shell</code>来执行该<code>script</code> - 我们选用<code>bash</code></p>
-<p>然后写我们的<code>entity body</code>的代码：</p>
-<figure class="highlight bash"><table><tr><td class="code"><pre><span class="line"><span class="meta">#!/bin/bash</span></span><br><span class="line"></span><br><span class="line"><span class="keyword">for</span> i <span class="keyword">in</span> &#123;0000..9999&#125;; <span class="keyword">do</span></span><br><span class="line">        <span class="built_in">echo</span> <span class="variable">$i</span></span><br><span class="line">        <span class="built_in">printf</span> <span class="string">&quot;%s %s\n&quot;</span> <span class="string">&quot;VAfGXJ1PBSsPSnvsjI8p759leLZ9GGar&quot;</span> <span class="string">&quot;<span class="variable">$i</span>&quot;</span></span><br><span class="line"><span class="keyword">done</span></span><br><span class="line"></span><br><span class="line"><span class="built_in">exit</span> 0</span><br><span class="line"></span><br></pre></td></tr></table></figure>
-
-<p>除了语法上微小的一点差异，该题的<code>syntax</code>和<code>C</code>的语法很相像，所以不赘述了。</p>
-<p>大致格式就是<code>for [ test statement]; do &lt;command&gt;; done</code></p>
-<p>编辑结束按<code>ESC</code>键回到普通模式，按<code>:</code>,然后输入指令<code>wq</code>，回车保存并退出。</p>
-<p>执行<code>script.sh</code>，并把结果<code>pipe</code>到<code>netcat</code>:</p>
-<figure class="highlight bash"><table><tr><td class="code"><pre><span class="line">./script.sh | nc localhost 30002 &gt; output.txt</span><br></pre></td></tr></table></figure>
-
-<p>然后<code>cat output.txt</code>读取文本内容，这是其中的一小部分：</p>
-<pre>
-        Fail! You did not supply enough data. Try again.
-        Wrong! Please enter the correct pincode. Try again.
-        Fail! You did not supply enough data. Try again.
-        Wrong! Please enter the correct pincode. Try again.
-        Fail! You did not supply enough data. Try again.
-        Wrong! Please enter the correct pincode. Try again.
-        Fail! You did not supply enough data. Try again.
-        Wrong! Please enter the correct pincode. Try again.
-        Fail! You did not supply enough data. Try again.
-        Wrong! Please enter the correct pincode. Try again.
-        Fail! You did not supply enough data. Try again.
-        Wrong! Please enter the correct pincode. Try again.
-        Fail! You did not supply enough data. Try again.
-        Wrong! Please enter the correct pincode. Try again.
-        Fail! You did not supply enough data. Try again.
-        Wrong! Please enter the correct pincode. Try again.
-        Fail! You did not supply enough data. Try again.
-        Correct!
-        The password of user bandit25 is p7TaowMYrmu23Ol8hiZh9UvD0O9hpx8d
-
-        Exiting.
-</pre>
-
-]]></content>
       <tags>
         <tag>Bash</tag>
         <tag>CTF</tag>
