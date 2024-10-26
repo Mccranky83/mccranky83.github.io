@@ -9,11 +9,11 @@ const size = Object.keys(scripts).length;
 const diff = DEFAULT_SIZE - size;
 const empty_html = `<div class="grid-item empty">Empty</div>`;
 for (let key in scripts) {
-  $(".grid-container").append(`<div class="grid-item"><span>${key}</a></div>`);
-  $(".grid-container span").each(function () {
-    $(this).click(() => {
-      location.href = scripts[key];
-    });
+  $(".grid-container").append(
+    `<div class="grid-item"><span>${key}</span></div>`,
+  );
+  $(`.grid-container span:contains(${key})`).click(() => {
+    location.href = scripts[key];
   });
 }
 $(".grid-container").append(empty_html.repeat(diff));
