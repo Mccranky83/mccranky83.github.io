@@ -73,6 +73,39 @@ hello this is bar
       </tags>
   </entry>
   <entry>
+    <title>Delete a superuser in Django</title>
+    <url>/2023/06/08/Delete%20a%20superuser%20in%20Django/</url>
+    <content><![CDATA[<p>To delete a superuser in Django, you can use the Django shell to query and delete the user model instance. Here are the steps to delete a superuser using the Django shell:</p>
+<ol>
+<li><p>Open a terminal and navigate to the root directory of your Django project.</p>
+</li>
+<li><p>Activate the virtual environment, if you are using one.</p>
+</li>
+<li><p>Run the following command to open the Django shell: <code>python manage.py shell</code>.</p>
+</li>
+<li><p>Import the User model by running the following command: <code>from django.contrib.auth.models import User</code>.</p>
+</li>
+<li><p>Query the User model for the superuser you want to delete using the <code>get()</code> method. For example, if the username of the superuser you want to delete is “admin”, you would run: <code>user = User.objects.get(username=&#39;admin&#39;)</code>.</p>
+</li>
+<li><p>Call the <code>delete()</code> method on the user instance to delete the superuser. For example, you would run: <code>user.delete()</code>.</p>
+</li>
+<li><p>Exit the Django shell by typing <code>exit()</code> or pressing <code>Ctrl+D</code>.</p>
+</li>
+</ol>
+<p>After following these steps, the superuser will be deleted from the Django project.</p>
+<p>It’s important to note that deleting a superuser will also delete all related data, such as blog posts or comments, if those models are related to the User model with a foreign key. If you want to preserve this data, you should first transfer ownership of the data to another user before deleting the superuser.</p>
+<p>Another way to delete a superuser is to use the Django admin. To do this, log in as a superuser in the Django admin, navigate to the “Users” section, and click the “Delete” button next to the superuser you want to delete. Confirm the deletion in the next screen.</p>
+<p>In summary, you can delete a superuser in Django by using the Django shell to query and delete the user model instance. Alternatively, you can use the Django admin to delete the superuser. Keep in mind that deleting a superuser will also delete any related data.</p>
+]]></content>
+      <categories>
+        <category>Django</category>
+      </categories>
+      <tags>
+        <tag>Django</tag>
+        <tag>Python</tag>
+      </tags>
+  </entry>
+  <entry>
     <title>Dabbling with Puppeteer</title>
     <url>/2023/04/27/Dabbling%20with%20Puppeteer/</url>
     <content><![CDATA[<p>Puppeteer is a Node.js library that provides a high-level API to control headless Chrome or Chromium browsers. It is widely used for web scraping, testing, and automation, and is an essential tool for many developers who work with web applications.</p>
@@ -163,39 +196,6 @@ hello this is bar
       </categories>
       <tags>
         <tag>Dead Cells</tag>
-      </tags>
-  </entry>
-  <entry>
-    <title>Delete a superuser in Django</title>
-    <url>/2023/06/08/Delete%20a%20superuser%20in%20Django/</url>
-    <content><![CDATA[<p>To delete a superuser in Django, you can use the Django shell to query and delete the user model instance. Here are the steps to delete a superuser using the Django shell:</p>
-<ol>
-<li><p>Open a terminal and navigate to the root directory of your Django project.</p>
-</li>
-<li><p>Activate the virtual environment, if you are using one.</p>
-</li>
-<li><p>Run the following command to open the Django shell: <code>python manage.py shell</code>.</p>
-</li>
-<li><p>Import the User model by running the following command: <code>from django.contrib.auth.models import User</code>.</p>
-</li>
-<li><p>Query the User model for the superuser you want to delete using the <code>get()</code> method. For example, if the username of the superuser you want to delete is “admin”, you would run: <code>user = User.objects.get(username=&#39;admin&#39;)</code>.</p>
-</li>
-<li><p>Call the <code>delete()</code> method on the user instance to delete the superuser. For example, you would run: <code>user.delete()</code>.</p>
-</li>
-<li><p>Exit the Django shell by typing <code>exit()</code> or pressing <code>Ctrl+D</code>.</p>
-</li>
-</ol>
-<p>After following these steps, the superuser will be deleted from the Django project.</p>
-<p>It’s important to note that deleting a superuser will also delete all related data, such as blog posts or comments, if those models are related to the User model with a foreign key. If you want to preserve this data, you should first transfer ownership of the data to another user before deleting the superuser.</p>
-<p>Another way to delete a superuser is to use the Django admin. To do this, log in as a superuser in the Django admin, navigate to the “Users” section, and click the “Delete” button next to the superuser you want to delete. Confirm the deletion in the next screen.</p>
-<p>In summary, you can delete a superuser in Django by using the Django shell to query and delete the user model instance. Alternatively, you can use the Django admin to delete the superuser. Keep in mind that deleting a superuser will also delete any related data.</p>
-]]></content>
-      <categories>
-        <category>Django</category>
-      </categories>
-      <tags>
-        <tag>Django</tag>
-        <tag>Python</tag>
       </tags>
   </entry>
   <entry>
@@ -933,6 +933,35 @@ Possible reasons for having this kind of units are:
       </tags>
   </entry>
   <entry>
+    <title>The Lie of Limitless Freedom: Commodification and the &quot;Meat Market&quot; of Human Intimacy</title>
+    <url>/2026/04/03/The%20Lie%20of%20Limitless%20Freedom%20Commodification%20and%20the%20%22Meat%20Market%22%20of%20Human%20Intimacy/</url>
+    <content><![CDATA[<p>The modern mantra championing the “freedom to do whatever one wants with their own body” is widely celebrated as the pinnacle of personal liberation. In reality, however, this phrase often functions as a deceptive shield. It acts as a socially acceptable cover for self-degeneracy, masking a lazy disregard for personal boundaries and self-esteem. By framing exploitative or self-destructive behaviors as “empowerment,” society ignores the severe psychological and moral costs of treating the self as a mere commodity. Nowhere is the discrepancy between the marketing of freedom and the mechanics of exploitation more glaring than in the Japanese entertainment and adult industries.</p>
+<p>To understand this dynamic, one must look at how these industries are structured. The Japanese approach to the adult and idol industries is highly pragmatic. Rather than imposing outright bans—which historically only drive illicit activities into the dangerous hands of the black market—Japan opts for heavy regulation and containment. It is a cynical but effective system that acknowledges human impulses without necessarily celebrating them as moral goods. However, this hyper-regulated environment also perfects the machinery of human commodification, turning personal identity into a literal “meat market.”</p>
+<p>This is most evident in the Japanese idol industry, which exposes the dark truth behind the illusion of bodily autonomy. Under the guise of pursuing their dreams, young entertainers essentially sell themselves into contractual slavery. The product they are selling is not merely music or acting, but <em>availability</em> and <em>purity</em>. To protect this product, talent agencies strip idols of their basic human rights, dictating what they wear, who they associate with, and expressly forbidding them from having romantic partners. When an idol is caught asserting their actual freedom—such as dating—they are forced to publicly apologize or “graduate” (a polite euphemism for being terminated). They are punished for damaging the merchandise.</p>
+<p>This exploitative system is sustained by the pathetic delusion of the fandom. Through the purchase of merchandise and event tickets, fans are sold the grotesque fantasy that they have bought a claim over another human being’s life. Because they funded the idol’s career, fans feel entitled to the idol’s perpetual purity and isolation. It is a transactional, parasocial relationship born of profound overcompensation. The philosophical irony is stark: human beings barely have a claim over their own lives, subject as we all are to biology, aging, and societal pressures. Yet, the fan—often powerless in their own reality—attempts to play god over a curated celebrity, buying the illusion of control to mask their own loneliness.</p>
+<p>Ultimately, the narrative that one can “do whatever they want with their body” serves as the perfect marketing hook for systemic exploitation. Young people are lured by the promise of agency and fame, only to realize they have signed away their right to authentic human connection. The uncomfortable truth is that true freedom requires self-respect and boundaries, not endless, reckless consumption. When intimacy, beauty, and identity are reduced to corporate inventory, the result is not liberation. It is a mutual degradation shared by the exploitative agency, the deluded consumer, and the commodified self.</p>
+]]></content>
+      <tags>
+        <tag>Life</tag>
+      </tags>
+  </entry>
+  <entry>
+    <title>The Cognitive Compute of Empathy: Why Stereotypes are Just Underfitted Models</title>
+    <url>/2026/04/04/The%20Cognitive%20Compute%20of%20Empathy%20Why%20Stereotypes%20are%20Just%20Underfitted%20Models/</url>
+    <content><![CDATA[<p>Every day, the human brain is tasked with processing a massive, chaotic influx of social data. To navigate this overwhelming reality, the mind must inherently act as a predictive algorithm. However, just as in machine learning, the algorithms we choose to run in our social interactions dictate the accuracy—and the morality—of our worldview. When we examine the phenomenon of stereotyping through the lens of computer science, it becomes clear that prejudice is not merely a moral failing; it is a symptom of cognitive underfitting.</p>
+<p>At its core, a stereotype is a “low-compute” heuristic. It operates much like a Naive Bayes classifier. Because the human brain has limited processing power, it relies on heuristics as slacks to make constant-time, O(1) judgments. By compressing a complex human being into a few highly weighted, discrete features (such as age, gender, dress code, or subculture), the brain establishes a binary baseline. For everyday survival or minimal social navigation, this low-resolution model “gets the job done.” It draws a massive, straight line through a wildly scattered dataset, purposefully ignoring the outliers to save mental CPU.</p>
+<p>But saving compute comes at a severe cost. When a model is aggressively regularized to ignore complexity, it underfits the data, leading to a high rate of false positives and false negatives. In social dynamics, we call this misclassification prejudice. By leaning on these generic, binary parameters, we dull our moral compass. We ignore the very real “cost function” of our errors—the human damage done when we strip an individual of their nuance and force them into a static, pre-calculated bucket.</p>
+<p>For those educated in logic and systems thinking, relying on such a crude baseline is computationally unacceptable. If stereotypes represent an underfitted linear model, the logical upgrade is to process social interactions much like a Support Vector Machine utilizing the Kernel Trick.</p>
+<p>A naive classifier looks at a person in a two-dimensional feature space—perhaps judging them purely on appearance and accent—and clusters them with everyone else who shares those traits. But an SVM-style thinker projects that data into a much higher-dimensional space. By feeding the model dozens of continuous variables—intellectual curiosity, emotional intelligence, conflict resolution style, moral consistency—the “stereotype” dissolves. Two individuals who appear identical in a low-dimensional binary space are suddenly revealed to be miles apart in the high-dimensional space of their actual character.</p>
+<p>Furthermore, an SVM handles non-linearity. It recognizes that human behavior rarely follows a straight line. A person can simultaneously hold seemingly contradictory traits, requiring a complex, dynamic decision boundary rather than a rigid binary box.</p>
+<p>Ultimately, rejecting stereotypes is not just an exercise in social etiquette; it is a commitment to data fidelity. To rely on stereotypes is to accept an intellectually lazy algorithm. To understand people accurately requires us to willingly spend the “mental overhead” necessary to evaluate them as the high-dimensional, non-linear datasets they truly are. As logical thinkers, we must recognize that the real world is infinitely complex, and it is our moral and computational duty to scale our feature space to meet it.</p>
+]]></content>
+      <tags>
+        <tag>Life</tag>
+        <tag>Machine Learning</tag>
+      </tags>
+  </entry>
+  <entry>
     <title>[Fix] Failed to mount /mnt/share</title>
     <url>/2023/04/27/%5BFix%5D%20Failed%20to%20mount%20:mnt:share/</url>
     <content><![CDATA[<h3 id="Solution"><a href="#Solution" class="headerlink" title="Solution"></a>Solution</h3><p>Our fix to the problem is to remove <code>/mnt/share</code> entirely and mount something else in its place.</p>
@@ -1019,19 +1048,6 @@ Apr 27 02:45:46 alarm systemd[1]: Failed to mount /mnt/share.
         <tag>ArchLinux</tag>
         <tag>Virtual Machine</tag>
         <tag>Issue</tag>
-      </tags>
-  </entry>
-  <entry>
-    <title>The Lie of Limitless Freedom: Commodification and the &quot;Meat Market&quot; of Human Intimacy</title>
-    <url>/2026/04/03/The%20Lie%20of%20Limitless%20Freedom%20Commodification%20and%20the%20%22Meat%20Market%22%20of%20Human%20Intimacy/</url>
-    <content><![CDATA[<p>The modern mantra championing the “freedom to do whatever one wants with their own body” is widely celebrated as the pinnacle of personal liberation. In reality, however, this phrase often functions as a deceptive shield. It acts as a socially acceptable cover for self-degeneracy, masking a lazy disregard for personal boundaries and self-esteem. By framing exploitative or self-destructive behaviors as “empowerment,” society ignores the severe psychological and moral costs of treating the self as a mere commodity. Nowhere is the discrepancy between the marketing of freedom and the mechanics of exploitation more glaring than in the Japanese entertainment and adult industries.</p>
-<p>To understand this dynamic, one must look at how these industries are structured. The Japanese approach to the adult and idol industries is highly pragmatic. Rather than imposing outright bans—which historically only drive illicit activities into the dangerous hands of the black market—Japan opts for heavy regulation and containment. It is a cynical but effective system that acknowledges human impulses without necessarily celebrating them as moral goods. However, this hyper-regulated environment also perfects the machinery of human commodification, turning personal identity into a literal “meat market.”</p>
-<p>This is most evident in the Japanese idol industry, which exposes the dark truth behind the illusion of bodily autonomy. Under the guise of pursuing their dreams, young entertainers essentially sell themselves into contractual slavery. The product they are selling is not merely music or acting, but <em>availability</em> and <em>purity</em>. To protect this product, talent agencies strip idols of their basic human rights, dictating what they wear, who they associate with, and expressly forbidding them from having romantic partners. When an idol is caught asserting their actual freedom—such as dating—they are forced to publicly apologize or “graduate” (a polite euphemism for being terminated). They are punished for damaging the merchandise.</p>
-<p>This exploitative system is sustained by the pathetic delusion of the fandom. Through the purchase of merchandise and event tickets, fans are sold the grotesque fantasy that they have bought a claim over another human being’s life. Because they funded the idol’s career, fans feel entitled to the idol’s perpetual purity and isolation. It is a transactional, parasocial relationship born of profound overcompensation. The philosophical irony is stark: human beings barely have a claim over their own lives, subject as we all are to biology, aging, and societal pressures. Yet, the fan—often powerless in their own reality—attempts to play god over a curated celebrity, buying the illusion of control to mask their own loneliness.</p>
-<p>Ultimately, the narrative that one can “do whatever they want with their body” serves as the perfect marketing hook for systemic exploitation. Young people are lured by the promise of agency and fame, only to realize they have signed away their right to authentic human connection. The uncomfortable truth is that true freedom requires self-respect and boundaries, not endless, reckless consumption. When intimacy, beauty, and identity are reduced to corporate inventory, the result is not liberation. It is a mutual degradation shared by the exploitative agency, the deluded consumer, and the commodified self.</p>
-]]></content>
-      <tags>
-        <tag>Life</tag>
       </tags>
   </entry>
   <entry>
@@ -1222,6 +1238,212 @@ fetch-retry-maxtimeout = 300000
       </tags>
   </entry>
   <entry>
+    <title>如何使用 GitHub Pages 托管 Hexo 静态博客网站</title>
+    <url>/2023/04/22/%E5%A6%82%E4%BD%95%E4%BD%BF%E7%94%A8%20GitHub%20Pages%20%E6%89%98%E7%AE%A1%20Hexo%20%E9%9D%99%E6%80%81%E5%8D%9A%E5%AE%A2%E7%BD%91%E7%AB%99/</url>
+    <content><![CDATA[<p>– <strong>请先阅读 <a href="/2023/04/22/%E4%BD%BF%E7%94%A8%20Hexo%20%E7%94%9F%E6%88%90%E9%9D%99%E6%80%81%E7%BD%91%E9%A1%B5%E5%8D%9A%E5%AE%A2/index.html">使用 Hexo 生成静态网页博客</a>！</strong></p>
+<h3 id="准备工作"><a href="#准备工作" class="headerlink" title="准备工作"></a>准备工作</h3><p>首先，我们基于完成的博客<code>.md</code>文件生成静态网页：</p>
+<figure class="highlight bash"><table><tr><td class="code"><pre><span class="line"><span class="built_in">cd</span> /path/to/site/</span><br><span class="line"><span class="comment"># 跑到项目路径目录</span></span><br><span class="line"></span><br><span class="line">hexo generate</span><br><span class="line"><span class="comment"># 生成静态网页，存放与 public 文件夹内</span></span><br></pre></td></tr></table></figure>
+
+<p>接着，我们进入<code>public</code>文件夹。</p>
+<pre><code>.
+├── node_modules
+├── public
+├── scaffolds
+├── source
+└── themes
+</code></pre>
+<p>因为我们是使用 GitHub Pages 托管，所以我们需要在<code>public</code>文件夹内初始化<code>git</code>：</p>
+<figure class="highlight bash"><table><tr><td class="code"><pre><span class="line">git init</span><br><span class="line"></span><br><span class="line">git branch -m main</span><br><span class="line"></span><br><span class="line">git add .</span><br><span class="line"></span><br><span class="line">git commit -m <span class="string">&quot;初始化工作&quot;</span></span><br></pre></td></tr></table></figure>
+
+<p>其次，我们还需要在 GitHub 上面建立一个远程仓库，格式<strong>必须</strong>为<code>username.github.io</code>，这是硬性要求。</p>
+<h3 id="关联和发布"><a href="#关联和发布" class="headerlink" title="关联和发布"></a>关联和发布</h3><p>我们现在需要关联本地仓库和远程仓库，用例中我们使用<code>https</code>协议，当然也可以使用<code>ssh</code>密钥：</p>
+<figure class="highlight bash"><table><tr><td class="code"><pre><span class="line">git remote add origin https://github.com/username/username.github.io.git</span><br><span class="line"></span><br><span class="line">git push origin main</span><br></pre></td></tr></table></figure>
+
+<p>我们还需要更改一下远程仓库的 GitHub Pages 的设置，目的是告知它托管文件的地址：</p>
+<div style="display: block; margin-left: auto; margin-right: auto; text-align: center; font-size: 1rem;">
+  
+<p>  <img src="/2023/04/22/%E5%A6%82%E4%BD%95%E4%BD%BF%E7%94%A8%20GitHub%20Pages%20%E6%89%98%E7%AE%A1%20Hexo%20%E9%9D%99%E6%80%81%E5%8D%9A%E5%AE%A2%E7%BD%91%E7%AB%99/images/0001.png" alt="点击 Settings" title="点击 Settings"></p>
+  <div>点击 Settings</div>
+  <br>
+
+<p>  <img src="/2023/04/22/%E5%A6%82%E4%BD%95%E4%BD%BF%E7%94%A8%20GitHub%20Pages%20%E6%89%98%E7%AE%A1%20Hexo%20%E9%9D%99%E6%80%81%E5%8D%9A%E5%AE%A2%E7%BD%91%E7%AB%99/images/0002.png" alt="点击 Pages" title="点击 Pages"></p>
+  <div>点击 Pages</div>
+  <br>
+
+<p>  <img src="/2023/04/22/%E5%A6%82%E4%BD%95%E4%BD%BF%E7%94%A8%20GitHub%20Pages%20%E6%89%98%E7%AE%A1%20Hexo%20%E9%9D%99%E6%80%81%E5%8D%9A%E5%AE%A2%E7%BD%91%E7%AB%99/images/0003.png" alt="修改设置" title="修改设置"></p>
+  <div>修改设置</div>
+  <br>
+
+</div>
+
+<p>最后，我们访问<code>username.github.io</code>就可以来到我们的博客页了 :)</p>
+]]></content>
+      <tags>
+        <tag>Hexo</tag>
+        <tag>GitHub Pages</tag>
+        <tag>Git</tag>
+      </tags>
+  </entry>
+  <entry>
+    <title>软件工程 第一周的博客</title>
+    <url>/2023/03/22/%E8%BD%AF%E4%BB%B6%E5%B7%A5%E7%A8%8B%20%E7%AC%AC%E4%B8%80%E5%91%A8%E7%9A%84%E5%8D%9A%E5%AE%A2/</url>
+    <content><![CDATA[<h3 id="使用Git-VCS的一些小技巧"><a href="#使用Git-VCS的一些小技巧" class="headerlink" title="使用Git VCS的一些小技巧"></a><em>使用Git VCS的一些小技巧</em></h3><p>初始化步骤我就大段省略了，大致就是去 Git 官网下载 Binary Dependencies 然后安装就好了，或者是去安装<code>xcode-command-line-tools</code>，其中<code>git</code>自动包含在里面了。</p>
+<p>说白了 Git 就是一个 Distributional VCS ，大体就是结合了 Local VCS和Centralized VCS，因此基本步骤就是本地建立一个 Local Repository，再在 Gitea 上建立一个 Remote Repository，然后把两个库连接一下，最后把本地的改动<code>push</code>到 Remote Repository 就可以了。</p>
+<p>先说如何建 Local Repository。</p>
+<p>选一处“风水宝地”，一般选择<code>/User/home</code>。然后跑到系统默认的 Terminal Emulator 去（ Windows：PowerShell ），输入一下指令：</p>
+<figure class="highlight bash"><table><tr><td class="code"><pre><span class="line"><span class="built_in">mkdir</span> temp <span class="comment"># 建立temp</span></span><br><span class="line"></span><br><span class="line"><span class="built_in">cd</span> temp <span class="comment"># 进入</span></span><br><span class="line"></span><br><span class="line">git init <span class="comment"># 初始化 Local Repository</span></span><br><span class="line"></span><br></pre></td></tr></table></figure>
+
+<p>做完最后一步会看到 Git 生成了一个<code>.git</code>的隐藏文件夹。千万不要把自己的项目文件扔进去！</p>
+<p>初始化完成后，你就可以开始做项目了。等你做完第一个版本，你就可以把项目<code>add</code>到<code>staging area</code>。用如下指令：</p>
+<figure class="highlight bash"><table><tr><td class="code"><pre><span class="line">git add file.. <span class="comment"># add 后可以加入多个文件</span></span><br></pre></td></tr></table></figure>
+
+<p>然后用<code>git status</code>查看 Local Repository 的状态。如果你看到所有想要<code>staged</code>的文件已经在<code>staging area</code>里面了，就可以上传了。</p>
+<blockquote>
+<p>eg:</p>
+</blockquote>
+<figure class="highlight bash"><table><tr><td class="code"><pre><span class="line">git commit -m “message<span class="string">&quot;</span></span><br></pre></td></tr></table></figure>
+
+<p>最后，我们需要创建一个 Remote Repository，过程如下：</p>
+<figure class="highlight bash"><table><tr><td class="code"><pre><span class="line">git remote add origin git@example.git</span><br></pre></td></tr></table></figure>
+
+<p>然后，我们<code>push</code> Local Repo 到 Remote Repository，过程如下：</p>
+<figure class="highlight bash"><table><tr><td class="code"><pre><span class="line">git push origin temp</span><br></pre></td></tr></table></figure>]]></content>
+      <tags>
+        <tag>Bash</tag>
+        <tag>Git</tag>
+        <tag>CLI</tag>
+        <tag>File Systems</tag>
+      </tags>
+  </entry>
+  <entry>
+    <title>如何生成项目树状结构图</title>
+    <url>/2023/04/22/%E5%A6%82%E4%BD%95%E7%94%9F%E6%88%90%E9%A1%B9%E7%9B%AE%E6%A0%91%E7%8A%B6%E7%BB%93%E6%9E%84%E5%9B%BE/</url>
+    <content><![CDATA[<h3 id="Prerequisites"><a href="#Prerequisites" class="headerlink" title="Prerequisites"></a>Prerequisites</h3><ul>
+<li><p>Install <code>tree</code> command via Homebrew by running <code>brew install tree</code></p>
+</li>
+<li><p>run <code>brew</code> to check if Homebrew is currently installed on your computer</p>
+</li>
+<li><p>if not, run the following to install Homebrew:</p>
+</li>
+</ul>
+<figure class="highlight bash"><table><tr><td class="code"><pre><span class="line">$ /bin/bash -c <span class="string">&quot;<span class="subst">$(curl -fsSL https://raw.githubusercontent.com/Homebrew/install/HEAD/install.sh)</span>&quot;</span></span><br></pre></td></tr></table></figure>
+
+<h3 id="Basic-Syntax"><a href="#Basic-Syntax" class="headerlink" title="Basic Syntax"></a>Basic Syntax</h3><figure class="highlight bash"><table><tr><td class="code"><pre><span class="line">tree [directory-path]</span><br></pre></td></tr></table></figure>
+
+<blockquote>
+<p><code>[directory-path]</code> is an optional argument that specifies the directory you want to display as a tree structure. If you don’t specify a directory path, tree will display the tree structure for the current directory.</p>
+</blockquote>
+<p>Here are some useful options you can add to the tree command:</p>
+<blockquote>
+<p><code>-L</code> <code>[level]</code>: Limit the depth of the tree to <code>[level]</code> directories.</p>
+</blockquote>
+<blockquote>
+<p><code>-I</code> <code>[pattern]</code>: Exclude files and directories that match the <code>[pattern]</code>.</p>
+</blockquote>
+<blockquote>
+<p><code>-P</code> <code>[pattern]</code>: <code>[pattern]</code> is used to match files or directories that you want to include in the output.</p>
+</blockquote>
+<blockquote>
+<p><code>-a</code>: Show hidden files and directories.</p>
+</blockquote>
+<blockquote>
+<p><code>-f</code>: Print the full path prefix for each file or directory.</p>
+</blockquote>
+<blockquote>
+<p><code>-h</code>: Print the size of each file or directory in a human-readable format.</p>
+</blockquote>
+<h3 id="Example"><a href="#Example" class="headerlink" title="Example"></a>Example</h3><figure class="highlight bash"><table><tr><td class="code"><pre><span class="line">$ tree -L 1 -P <span class="string">&quot;source/*&quot;</span> -I <span class="string">&quot;_drafts|_pages&quot;</span> <span class="built_in">source</span></span><br><span class="line"></span><br><span class="line"><span class="built_in">source</span></span><br><span class="line">└── _posts</span><br><span class="line"></span><br><span class="line">2 directories, 0 files</span><br></pre></td></tr></table></figure>
+
+<blockquote>
+<p>You can omit the report on the last line with option <code>--noreport</code> if it bothers you.</p>
+</blockquote>
+]]></content>
+      <tags>
+        <tag>Bash</tag>
+        <tag>CLI</tag>
+        <tag>File Systems</tag>
+      </tags>
+  </entry>
+  <entry>
+    <title>软件工程 第三周的博客</title>
+    <url>/2023/04/07/%E8%BD%AF%E4%BB%B6%E5%B7%A5%E7%A8%8B%20%E7%AC%AC%E4%B8%89%E5%91%A8%E7%9A%84%E5%8D%9A%E5%AE%A2/</url>
+    <content><![CDATA[<h2 id="简要概述-CTF-OverTheWire-Bandit-Level-24"><a href="#简要概述-CTF-OverTheWire-Bandit-Level-24" class="headerlink" title="简要概述 CTF OverTheWire Bandit Level 24"></a><em>简要概述 CTF OverTheWire Bandit Level 24</em></h2><h3 id="题目"><a href="#题目" class="headerlink" title="题目"></a><em>题目</em></h3><blockquote>
+<p>在端口 30002 上有一个守护进程正在监听，如果提供了 bandit24 的密码和一个秘密的 4 位数的数字密码，它将为您提供 bandit25 的密码。除了通过穷举全部 10000 种组合的方式以外，没有其他获得 pincode 的方法，这被称为暴力破解。</p>
+</blockquote>
+<p>大致思路如下：</p>
+<ul>
+<li>先写一个<code>script</code>，按要求进行排版输出到<code>stdout</code></li>
+<li>把输出的 10000 种组合<code>pipe</code>到<code>netcat</code>监视的<code>localhost:30002</code>进行测试</li>
+<li>直接输出到<code>stdout</code>可能会<code>timeout</code>打断进程，所以我们输出到<code>output.txt</code></li>
+<li>最后<code>cat</code>文本内容拿到密码</li>
+</ul>
+<p>先利用<code>ssh</code>连接到<code>bandit.labs.overthewire.org</code>的服务器，端口号<code>2220</code>，为此我们需要<code>bandit24</code>的密码。</p>
+<figure class="highlight bash"><table><tr><td class="code"><pre><span class="line">ssh bandit24@bandit.labs.overthewire.org -p 2220</span><br><span class="line"><span class="comment">#					VAfGXJ1PBSsPSnvsjI8p759leLZ9GGar</span></span><br></pre></td></tr></table></figure>
+
+<p>以<code>bandit24</code>进入 Level 24 之后先到系统文件夹<code>/tmp</code>下建立本关的临时文件夹。</p>
+<figure class="highlight bash"><table><tr><td class="code"><pre><span class="line"><span class="built_in">cd</span> /tmp; <span class="built_in">mktemp</span> -d</span><br><span class="line"></span><br><span class="line"><span class="comment"># /tmp/tmp.u4oQlmpmWL</span></span><br><span class="line"></span><br><span class="line"><span class="built_in">cd</span> /tmp/tmp.u4oQlmpmWL</span><br><span class="line"></span><br><span class="line"><span class="comment"># bandit24@bandit:/tmp/tmp.u4oQlmpmWL$</span></span><br></pre></td></tr></table></figure>
+
+<blockquote>
+<p><code>-d</code>代表<code>directory</code>，即告诉<code>mktemp</code>指令创建的临时文件属性为文件夹</p>
+</blockquote>
+<figure class="highlight bash"><table><tr><td class="code"><pre><span class="line"><span class="built_in">touch</span> script.sh</span><br><span class="line"></span><br><span class="line"><span class="built_in">chmod</span> 777 script.sh</span><br><span class="line"></span><br><span class="line">vim script.sh</span><br></pre></td></tr></table></figure>
+
+<blockquote>
+<p><code>touch</code>: 创建文件</p>
+</blockquote>
+<blockquote>
+<p><code>chmod</code> - <code>change mode</code>: 改变文档<code>rwx</code>权限</p>
+</blockquote>
+<ul>
+<li><code>r</code> - <code>read</code>: 读取权限<code>status code</code>为 4</li>
+<li><code>w</code> - <code>write</code>: 书写权限<code>status code</code>为 2</li>
+<li><code>x</code> - <code>execute</code>: 执行权限<code>status code</code>为 1</li>
+</ul>
+<p>进入文本编辑器之后，选定”插入“模式，按<code>i</code>键</p>
+<p>首行书写<code>shebang</code>行，选定使用哪个<code>shell</code>来执行该<code>script</code> - 我们选用<code>bash</code></p>
+<p>然后写我们的<code>entity body</code>的代码：</p>
+<figure class="highlight bash"><table><tr><td class="code"><pre><span class="line"><span class="meta">#!/bin/bash</span></span><br><span class="line"></span><br><span class="line"><span class="keyword">for</span> i <span class="keyword">in</span> &#123;0000..9999&#125;; <span class="keyword">do</span></span><br><span class="line">        <span class="built_in">echo</span> <span class="variable">$i</span></span><br><span class="line">        <span class="built_in">printf</span> <span class="string">&quot;%s %s\n&quot;</span> <span class="string">&quot;VAfGXJ1PBSsPSnvsjI8p759leLZ9GGar&quot;</span> <span class="string">&quot;<span class="variable">$i</span>&quot;</span></span><br><span class="line"><span class="keyword">done</span></span><br><span class="line"></span><br><span class="line"><span class="built_in">exit</span> 0</span><br><span class="line"></span><br></pre></td></tr></table></figure>
+
+<p>除了语法上微小的一点差异，该题的<code>syntax</code>和<code>C</code>的语法很相像，所以不赘述了。</p>
+<p>大致格式就是<code>for [ test statement]; do &lt;command&gt;; done</code></p>
+<p>编辑结束按<code>ESC</code>键回到普通模式，按<code>:</code>,然后输入指令<code>wq</code>，回车保存并退出。</p>
+<p>执行<code>script.sh</code>，并把结果<code>pipe</code>到<code>netcat</code>:</p>
+<figure class="highlight bash"><table><tr><td class="code"><pre><span class="line">./script.sh | nc localhost 30002 &gt; output.txt</span><br></pre></td></tr></table></figure>
+
+<p>然后<code>cat output.txt</code>读取文本内容，这是其中的一小部分：</p>
+<pre>
+        Fail! You did not supply enough data. Try again.
+        Wrong! Please enter the correct pincode. Try again.
+        Fail! You did not supply enough data. Try again.
+        Wrong! Please enter the correct pincode. Try again.
+        Fail! You did not supply enough data. Try again.
+        Wrong! Please enter the correct pincode. Try again.
+        Fail! You did not supply enough data. Try again.
+        Wrong! Please enter the correct pincode. Try again.
+        Fail! You did not supply enough data. Try again.
+        Wrong! Please enter the correct pincode. Try again.
+        Fail! You did not supply enough data. Try again.
+        Wrong! Please enter the correct pincode. Try again.
+        Fail! You did not supply enough data. Try again.
+        Wrong! Please enter the correct pincode. Try again.
+        Fail! You did not supply enough data. Try again.
+        Wrong! Please enter the correct pincode. Try again.
+        Fail! You did not supply enough data. Try again.
+        Correct!
+        The password of user bandit25 is p7TaowMYrmu23Ol8hiZh9UvD0O9hpx8d
+
+        Exiting.
+</pre>
+
+]]></content>
+      <tags>
+        <tag>Bash</tag>
+        <tag>CTF</tag>
+        <tag>OverTheWire</tag>
+        <tag>Bandit</tag>
+      </tags>
+  </entry>
+  <entry>
     <title>使用 Telnet 连接 GreenMail 模拟邮件服务器 (测试 SMTP / IMAP 连接)</title>
     <url>/2023/04/21/%E4%BD%BF%E7%94%A8%20Telnet%20%E8%BF%9E%E6%8E%A5%20GreenMail%20%E6%A8%A1%E6%8B%9F%E9%82%AE%E4%BB%B6%E6%9C%8D%E5%8A%A1%E5%99%A8%20(%E6%B5%8B%E8%AF%95%20SMTP%20:%20IMAP%20%E8%BF%9E%E6%8E%A5)/</url>
     <content><![CDATA[<h3 id="要求"><a href="#要求" class="headerlink" title="要求"></a><em>要求</em></h3><ul>
@@ -1325,212 +1547,6 @@ S: 221 /0:0:0:0:0:0:0:1 Service closing transmission channel
 ]]></content>
       <tags>
         <tag>Computer Networking</tag>
-      </tags>
-  </entry>
-  <entry>
-    <title>如何使用 GitHub Pages 托管 Hexo 静态博客网站</title>
-    <url>/2023/04/22/%E5%A6%82%E4%BD%95%E4%BD%BF%E7%94%A8%20GitHub%20Pages%20%E6%89%98%E7%AE%A1%20Hexo%20%E9%9D%99%E6%80%81%E5%8D%9A%E5%AE%A2%E7%BD%91%E7%AB%99/</url>
-    <content><![CDATA[<p>– <strong>请先阅读 <a href="/2023/04/22/%E4%BD%BF%E7%94%A8%20Hexo%20%E7%94%9F%E6%88%90%E9%9D%99%E6%80%81%E7%BD%91%E9%A1%B5%E5%8D%9A%E5%AE%A2/index.html">使用 Hexo 生成静态网页博客</a>！</strong></p>
-<h3 id="准备工作"><a href="#准备工作" class="headerlink" title="准备工作"></a>准备工作</h3><p>首先，我们基于完成的博客<code>.md</code>文件生成静态网页：</p>
-<figure class="highlight bash"><table><tr><td class="code"><pre><span class="line"><span class="built_in">cd</span> /path/to/site/</span><br><span class="line"><span class="comment"># 跑到项目路径目录</span></span><br><span class="line"></span><br><span class="line">hexo generate</span><br><span class="line"><span class="comment"># 生成静态网页，存放与 public 文件夹内</span></span><br></pre></td></tr></table></figure>
-
-<p>接着，我们进入<code>public</code>文件夹。</p>
-<pre><code>.
-├── node_modules
-├── public
-├── scaffolds
-├── source
-└── themes
-</code></pre>
-<p>因为我们是使用 GitHub Pages 托管，所以我们需要在<code>public</code>文件夹内初始化<code>git</code>：</p>
-<figure class="highlight bash"><table><tr><td class="code"><pre><span class="line">git init</span><br><span class="line"></span><br><span class="line">git branch -m main</span><br><span class="line"></span><br><span class="line">git add .</span><br><span class="line"></span><br><span class="line">git commit -m <span class="string">&quot;初始化工作&quot;</span></span><br></pre></td></tr></table></figure>
-
-<p>其次，我们还需要在 GitHub 上面建立一个远程仓库，格式<strong>必须</strong>为<code>username.github.io</code>，这是硬性要求。</p>
-<h3 id="关联和发布"><a href="#关联和发布" class="headerlink" title="关联和发布"></a>关联和发布</h3><p>我们现在需要关联本地仓库和远程仓库，用例中我们使用<code>https</code>协议，当然也可以使用<code>ssh</code>密钥：</p>
-<figure class="highlight bash"><table><tr><td class="code"><pre><span class="line">git remote add origin https://github.com/username/username.github.io.git</span><br><span class="line"></span><br><span class="line">git push origin main</span><br></pre></td></tr></table></figure>
-
-<p>我们还需要更改一下远程仓库的 GitHub Pages 的设置，目的是告知它托管文件的地址：</p>
-<div style="display: block; margin-left: auto; margin-right: auto; text-align: center; font-size: 1rem;">
-  
-<p>  <img src="/2023/04/22/%E5%A6%82%E4%BD%95%E4%BD%BF%E7%94%A8%20GitHub%20Pages%20%E6%89%98%E7%AE%A1%20Hexo%20%E9%9D%99%E6%80%81%E5%8D%9A%E5%AE%A2%E7%BD%91%E7%AB%99/images/0001.png" alt="点击 Settings" title="点击 Settings"></p>
-  <div>点击 Settings</div>
-  <br>
-
-<p>  <img src="/2023/04/22/%E5%A6%82%E4%BD%95%E4%BD%BF%E7%94%A8%20GitHub%20Pages%20%E6%89%98%E7%AE%A1%20Hexo%20%E9%9D%99%E6%80%81%E5%8D%9A%E5%AE%A2%E7%BD%91%E7%AB%99/images/0002.png" alt="点击 Pages" title="点击 Pages"></p>
-  <div>点击 Pages</div>
-  <br>
-
-<p>  <img src="/2023/04/22/%E5%A6%82%E4%BD%95%E4%BD%BF%E7%94%A8%20GitHub%20Pages%20%E6%89%98%E7%AE%A1%20Hexo%20%E9%9D%99%E6%80%81%E5%8D%9A%E5%AE%A2%E7%BD%91%E7%AB%99/images/0003.png" alt="修改设置" title="修改设置"></p>
-  <div>修改设置</div>
-  <br>
-
-</div>
-
-<p>最后，我们访问<code>username.github.io</code>就可以来到我们的博客页了 :)</p>
-]]></content>
-      <tags>
-        <tag>Hexo</tag>
-        <tag>GitHub Pages</tag>
-        <tag>Git</tag>
-      </tags>
-  </entry>
-  <entry>
-    <title>如何生成项目树状结构图</title>
-    <url>/2023/04/22/%E5%A6%82%E4%BD%95%E7%94%9F%E6%88%90%E9%A1%B9%E7%9B%AE%E6%A0%91%E7%8A%B6%E7%BB%93%E6%9E%84%E5%9B%BE/</url>
-    <content><![CDATA[<h3 id="Prerequisites"><a href="#Prerequisites" class="headerlink" title="Prerequisites"></a>Prerequisites</h3><ul>
-<li><p>Install <code>tree</code> command via Homebrew by running <code>brew install tree</code></p>
-</li>
-<li><p>run <code>brew</code> to check if Homebrew is currently installed on your computer</p>
-</li>
-<li><p>if not, run the following to install Homebrew:</p>
-</li>
-</ul>
-<figure class="highlight bash"><table><tr><td class="code"><pre><span class="line">$ /bin/bash -c <span class="string">&quot;<span class="subst">$(curl -fsSL https://raw.githubusercontent.com/Homebrew/install/HEAD/install.sh)</span>&quot;</span></span><br></pre></td></tr></table></figure>
-
-<h3 id="Basic-Syntax"><a href="#Basic-Syntax" class="headerlink" title="Basic Syntax"></a>Basic Syntax</h3><figure class="highlight bash"><table><tr><td class="code"><pre><span class="line">tree [directory-path]</span><br></pre></td></tr></table></figure>
-
-<blockquote>
-<p><code>[directory-path]</code> is an optional argument that specifies the directory you want to display as a tree structure. If you don’t specify a directory path, tree will display the tree structure for the current directory.</p>
-</blockquote>
-<p>Here are some useful options you can add to the tree command:</p>
-<blockquote>
-<p><code>-L</code> <code>[level]</code>: Limit the depth of the tree to <code>[level]</code> directories.</p>
-</blockquote>
-<blockquote>
-<p><code>-I</code> <code>[pattern]</code>: Exclude files and directories that match the <code>[pattern]</code>.</p>
-</blockquote>
-<blockquote>
-<p><code>-P</code> <code>[pattern]</code>: <code>[pattern]</code> is used to match files or directories that you want to include in the output.</p>
-</blockquote>
-<blockquote>
-<p><code>-a</code>: Show hidden files and directories.</p>
-</blockquote>
-<blockquote>
-<p><code>-f</code>: Print the full path prefix for each file or directory.</p>
-</blockquote>
-<blockquote>
-<p><code>-h</code>: Print the size of each file or directory in a human-readable format.</p>
-</blockquote>
-<h3 id="Example"><a href="#Example" class="headerlink" title="Example"></a>Example</h3><figure class="highlight bash"><table><tr><td class="code"><pre><span class="line">$ tree -L 1 -P <span class="string">&quot;source/*&quot;</span> -I <span class="string">&quot;_drafts|_pages&quot;</span> <span class="built_in">source</span></span><br><span class="line"></span><br><span class="line"><span class="built_in">source</span></span><br><span class="line">└── _posts</span><br><span class="line"></span><br><span class="line">2 directories, 0 files</span><br></pre></td></tr></table></figure>
-
-<blockquote>
-<p>You can omit the report on the last line with option <code>--noreport</code> if it bothers you.</p>
-</blockquote>
-]]></content>
-      <tags>
-        <tag>Bash</tag>
-        <tag>CLI</tag>
-        <tag>File Systems</tag>
-      </tags>
-  </entry>
-  <entry>
-    <title>软件工程 第一周的博客</title>
-    <url>/2023/03/22/%E8%BD%AF%E4%BB%B6%E5%B7%A5%E7%A8%8B%20%E7%AC%AC%E4%B8%80%E5%91%A8%E7%9A%84%E5%8D%9A%E5%AE%A2/</url>
-    <content><![CDATA[<h3 id="使用Git-VCS的一些小技巧"><a href="#使用Git-VCS的一些小技巧" class="headerlink" title="使用Git VCS的一些小技巧"></a><em>使用Git VCS的一些小技巧</em></h3><p>初始化步骤我就大段省略了，大致就是去 Git 官网下载 Binary Dependencies 然后安装就好了，或者是去安装<code>xcode-command-line-tools</code>，其中<code>git</code>自动包含在里面了。</p>
-<p>说白了 Git 就是一个 Distributional VCS ，大体就是结合了 Local VCS和Centralized VCS，因此基本步骤就是本地建立一个 Local Repository，再在 Gitea 上建立一个 Remote Repository，然后把两个库连接一下，最后把本地的改动<code>push</code>到 Remote Repository 就可以了。</p>
-<p>先说如何建 Local Repository。</p>
-<p>选一处“风水宝地”，一般选择<code>/User/home</code>。然后跑到系统默认的 Terminal Emulator 去（ Windows：PowerShell ），输入一下指令：</p>
-<figure class="highlight bash"><table><tr><td class="code"><pre><span class="line"><span class="built_in">mkdir</span> temp <span class="comment"># 建立temp</span></span><br><span class="line"></span><br><span class="line"><span class="built_in">cd</span> temp <span class="comment"># 进入</span></span><br><span class="line"></span><br><span class="line">git init <span class="comment"># 初始化 Local Repository</span></span><br><span class="line"></span><br></pre></td></tr></table></figure>
-
-<p>做完最后一步会看到 Git 生成了一个<code>.git</code>的隐藏文件夹。千万不要把自己的项目文件扔进去！</p>
-<p>初始化完成后，你就可以开始做项目了。等你做完第一个版本，你就可以把项目<code>add</code>到<code>staging area</code>。用如下指令：</p>
-<figure class="highlight bash"><table><tr><td class="code"><pre><span class="line">git add file.. <span class="comment"># add 后可以加入多个文件</span></span><br></pre></td></tr></table></figure>
-
-<p>然后用<code>git status</code>查看 Local Repository 的状态。如果你看到所有想要<code>staged</code>的文件已经在<code>staging area</code>里面了，就可以上传了。</p>
-<blockquote>
-<p>eg:</p>
-</blockquote>
-<figure class="highlight bash"><table><tr><td class="code"><pre><span class="line">git commit -m “message<span class="string">&quot;</span></span><br></pre></td></tr></table></figure>
-
-<p>最后，我们需要创建一个 Remote Repository，过程如下：</p>
-<figure class="highlight bash"><table><tr><td class="code"><pre><span class="line">git remote add origin git@example.git</span><br></pre></td></tr></table></figure>
-
-<p>然后，我们<code>push</code> Local Repo 到 Remote Repository，过程如下：</p>
-<figure class="highlight bash"><table><tr><td class="code"><pre><span class="line">git push origin temp</span><br></pre></td></tr></table></figure>]]></content>
-      <tags>
-        <tag>Bash</tag>
-        <tag>Git</tag>
-        <tag>CLI</tag>
-        <tag>File Systems</tag>
-      </tags>
-  </entry>
-  <entry>
-    <title>软件工程 第三周的博客</title>
-    <url>/2023/04/07/%E8%BD%AF%E4%BB%B6%E5%B7%A5%E7%A8%8B%20%E7%AC%AC%E4%B8%89%E5%91%A8%E7%9A%84%E5%8D%9A%E5%AE%A2/</url>
-    <content><![CDATA[<h2 id="简要概述-CTF-OverTheWire-Bandit-Level-24"><a href="#简要概述-CTF-OverTheWire-Bandit-Level-24" class="headerlink" title="简要概述 CTF OverTheWire Bandit Level 24"></a><em>简要概述 CTF OverTheWire Bandit Level 24</em></h2><h3 id="题目"><a href="#题目" class="headerlink" title="题目"></a><em>题目</em></h3><blockquote>
-<p>在端口 30002 上有一个守护进程正在监听，如果提供了 bandit24 的密码和一个秘密的 4 位数的数字密码，它将为您提供 bandit25 的密码。除了通过穷举全部 10000 种组合的方式以外，没有其他获得 pincode 的方法，这被称为暴力破解。</p>
-</blockquote>
-<p>大致思路如下：</p>
-<ul>
-<li>先写一个<code>script</code>，按要求进行排版输出到<code>stdout</code></li>
-<li>把输出的 10000 种组合<code>pipe</code>到<code>netcat</code>监视的<code>localhost:30002</code>进行测试</li>
-<li>直接输出到<code>stdout</code>可能会<code>timeout</code>打断进程，所以我们输出到<code>output.txt</code></li>
-<li>最后<code>cat</code>文本内容拿到密码</li>
-</ul>
-<p>先利用<code>ssh</code>连接到<code>bandit.labs.overthewire.org</code>的服务器，端口号<code>2220</code>，为此我们需要<code>bandit24</code>的密码。</p>
-<figure class="highlight bash"><table><tr><td class="code"><pre><span class="line">ssh bandit24@bandit.labs.overthewire.org -p 2220</span><br><span class="line"><span class="comment">#					VAfGXJ1PBSsPSnvsjI8p759leLZ9GGar</span></span><br></pre></td></tr></table></figure>
-
-<p>以<code>bandit24</code>进入 Level 24 之后先到系统文件夹<code>/tmp</code>下建立本关的临时文件夹。</p>
-<figure class="highlight bash"><table><tr><td class="code"><pre><span class="line"><span class="built_in">cd</span> /tmp; <span class="built_in">mktemp</span> -d</span><br><span class="line"></span><br><span class="line"><span class="comment"># /tmp/tmp.u4oQlmpmWL</span></span><br><span class="line"></span><br><span class="line"><span class="built_in">cd</span> /tmp/tmp.u4oQlmpmWL</span><br><span class="line"></span><br><span class="line"><span class="comment"># bandit24@bandit:/tmp/tmp.u4oQlmpmWL$</span></span><br></pre></td></tr></table></figure>
-
-<blockquote>
-<p><code>-d</code>代表<code>directory</code>，即告诉<code>mktemp</code>指令创建的临时文件属性为文件夹</p>
-</blockquote>
-<figure class="highlight bash"><table><tr><td class="code"><pre><span class="line"><span class="built_in">touch</span> script.sh</span><br><span class="line"></span><br><span class="line"><span class="built_in">chmod</span> 777 script.sh</span><br><span class="line"></span><br><span class="line">vim script.sh</span><br></pre></td></tr></table></figure>
-
-<blockquote>
-<p><code>touch</code>: 创建文件</p>
-</blockquote>
-<blockquote>
-<p><code>chmod</code> - <code>change mode</code>: 改变文档<code>rwx</code>权限</p>
-</blockquote>
-<ul>
-<li><code>r</code> - <code>read</code>: 读取权限<code>status code</code>为 4</li>
-<li><code>w</code> - <code>write</code>: 书写权限<code>status code</code>为 2</li>
-<li><code>x</code> - <code>execute</code>: 执行权限<code>status code</code>为 1</li>
-</ul>
-<p>进入文本编辑器之后，选定”插入“模式，按<code>i</code>键</p>
-<p>首行书写<code>shebang</code>行，选定使用哪个<code>shell</code>来执行该<code>script</code> - 我们选用<code>bash</code></p>
-<p>然后写我们的<code>entity body</code>的代码：</p>
-<figure class="highlight bash"><table><tr><td class="code"><pre><span class="line"><span class="meta">#!/bin/bash</span></span><br><span class="line"></span><br><span class="line"><span class="keyword">for</span> i <span class="keyword">in</span> &#123;0000..9999&#125;; <span class="keyword">do</span></span><br><span class="line">        <span class="built_in">echo</span> <span class="variable">$i</span></span><br><span class="line">        <span class="built_in">printf</span> <span class="string">&quot;%s %s\n&quot;</span> <span class="string">&quot;VAfGXJ1PBSsPSnvsjI8p759leLZ9GGar&quot;</span> <span class="string">&quot;<span class="variable">$i</span>&quot;</span></span><br><span class="line"><span class="keyword">done</span></span><br><span class="line"></span><br><span class="line"><span class="built_in">exit</span> 0</span><br><span class="line"></span><br></pre></td></tr></table></figure>
-
-<p>除了语法上微小的一点差异，该题的<code>syntax</code>和<code>C</code>的语法很相像，所以不赘述了。</p>
-<p>大致格式就是<code>for [ test statement]; do &lt;command&gt;; done</code></p>
-<p>编辑结束按<code>ESC</code>键回到普通模式，按<code>:</code>,然后输入指令<code>wq</code>，回车保存并退出。</p>
-<p>执行<code>script.sh</code>，并把结果<code>pipe</code>到<code>netcat</code>:</p>
-<figure class="highlight bash"><table><tr><td class="code"><pre><span class="line">./script.sh | nc localhost 30002 &gt; output.txt</span><br></pre></td></tr></table></figure>
-
-<p>然后<code>cat output.txt</code>读取文本内容，这是其中的一小部分：</p>
-<pre>
-        Fail! You did not supply enough data. Try again.
-        Wrong! Please enter the correct pincode. Try again.
-        Fail! You did not supply enough data. Try again.
-        Wrong! Please enter the correct pincode. Try again.
-        Fail! You did not supply enough data. Try again.
-        Wrong! Please enter the correct pincode. Try again.
-        Fail! You did not supply enough data. Try again.
-        Wrong! Please enter the correct pincode. Try again.
-        Fail! You did not supply enough data. Try again.
-        Wrong! Please enter the correct pincode. Try again.
-        Fail! You did not supply enough data. Try again.
-        Wrong! Please enter the correct pincode. Try again.
-        Fail! You did not supply enough data. Try again.
-        Wrong! Please enter the correct pincode. Try again.
-        Fail! You did not supply enough data. Try again.
-        Wrong! Please enter the correct pincode. Try again.
-        Fail! You did not supply enough data. Try again.
-        Correct!
-        The password of user bandit25 is p7TaowMYrmu23Ol8hiZh9UvD0O9hpx8d
-
-        Exiting.
-</pre>
-
-]]></content>
-      <tags>
-        <tag>Bash</tag>
-        <tag>CTF</tag>
-        <tag>OverTheWire</tag>
-        <tag>Bandit</tag>
       </tags>
   </entry>
   <entry>
