@@ -20,56 +20,31 @@
       </tags>
   </entry>
   <entry>
-    <title>C++ Pointers</title>
-    <url>/2023/04/29/C++%20Pointers/</url>
-    <content><![CDATA[<h3 id="Array-of-pointers-to-ints"><a href="#Array-of-pointers-to-ints" class="headerlink" title="Array of pointers to ints"></a>Array of pointers to ints</h3><p><strong>Code:</strong></p>
-<figure class="highlight cpp"><table><tr><td class="code"><pre><span class="line"><span class="meta">#<span class="keyword">include</span> <span class="string">&lt;iostream&gt;</span></span></span><br><span class="line"></span><br><span class="line"><span class="function"><span class="type">int</span> <span class="title">main</span><span class="params">()</span></span></span><br><span class="line"><span class="function"></span>&#123;</span><br><span class="line">    <span class="type">int</span>* ap[<span class="number">15</span>];</span><br><span class="line">    <span class="type">int</span> ai[<span class="number">15</span>] = &#123;&#125;;</span><br><span class="line">    <span class="keyword">for</span> (<span class="type">int</span> i = <span class="number">0</span>; i &lt; <span class="number">15</span>; ++i) &#123;</span><br><span class="line">        ai[i] = i; </span><br><span class="line">        ap[i] = &amp;ai[i];</span><br><span class="line">        std::cout &lt;&lt; *ap[i] &lt;&lt; <span class="string">&quot; &quot;</span> &lt;&lt; ap[i]&lt;&lt; std::endl;</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br><span class="line"></span><br></pre></td></tr></table></figure>
-
-<p><strong>Console:</strong></p>
-<pre><code>0 0x16d296d14
-1 0x16d296d18
-2 0x16d296d1c
-3 0x16d296d20
-4 0x16d296d24
-5 0x16d296d28
-6 0x16d296d2c
-7 0x16d296d30
-8 0x16d296d34
-9 0x16d296d38
-10 0x16d296d3c
-11 0x16d296d40
-12 0x16d296d44
-13 0x16d296d48
-14 0x16d296d4c
-</code></pre>
-<h3 id="Pointer-to-an-array-of-ints"><a href="#Pointer-to-an-array-of-ints" class="headerlink" title="Pointer to an array of ints"></a>Pointer to an array of ints</h3><p><strong>Code:</strong></p>
-<figure class="highlight cpp"><table><tr><td class="code"><pre><span class="line"><span class="meta">#<span class="keyword">include</span> <span class="string">&lt;iostream&gt;</span></span></span><br><span class="line"></span><br><span class="line"><span class="function"><span class="type">int</span> <span class="title">main</span><span class="params">()</span></span></span><br><span class="line"><span class="function"></span>&#123;</span><br><span class="line">    <span class="type">int</span> ai[<span class="number">15</span>];</span><br><span class="line">    <span class="keyword">for</span> (<span class="type">int</span> i = <span class="number">0</span>; i &lt; <span class="number">15</span>; i++) ai[i] = i;</span><br><span class="line">    <span class="built_in">int</span> (*ptr)[] = &amp;ai;</span><br><span class="line">    <span class="keyword">for</span> (<span class="type">int</span> i = <span class="number">0</span>; i &lt; <span class="number">15</span>; i++) &#123;</span><br><span class="line">        std::cout &lt;&lt; (*ptr)[i] &lt;&lt; <span class="string">&quot; &quot;</span>;</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br><span class="line"></span><br></pre></td></tr></table></figure>
-
-<p><strong><em>Console</em></strong></p>
-<pre><code>0 1 2 3 4 5 6 7 8 9 10 11 12 13 14
-</code></pre>
+    <title>Dabbling with Puppeteer</title>
+    <url>/2023/04/27/Dabbling%20with%20Puppeteer/</url>
+    <content><![CDATA[<p>Puppeteer is a Node.js library that provides a high-level API to control headless Chrome or Chromium browsers. It is widely used for web scraping, testing, and automation, and is an essential tool for many developers who work with web applications.</p>
 <blockquote>
-<p><strong><em>Notes</em></strong></p>
+<p>Note that I’ll be demonstrating on ArchLinux</p>
 </blockquote>
-<ul>
-<li><p>The parentheses around <code>*ptr</code> are necessary because the <code>[]</code> operator has<br>  higher precedence than the <code>*</code> operator. Without the parentheses, the<br>  declaration would be parsed as an array of pointers to int, like int<br>  <code>*ptr[15]</code>.</p>
-</li>
-<li><p>When I took the address of the array, I got a pointer to the first element<br>  of the array. However, the pointer itself does not contain any information<br>  about the size of the array.</p>
-</li>
-</ul>
-<h3 id="Pointer-to-function-taking-a-string-argument"><a href="#Pointer-to-function-taking-a-string-argument" class="headerlink" title="Pointer to function taking a string argument;"></a>Pointer to function taking a string argument;</h3><h4 id="returns-an-string"><a href="#returns-an-string" class="headerlink" title="returns an string"></a>returns an string</h4><p><strong>Code:</strong></p>
-<figure class="highlight cpp"><table><tr><td class="code"><pre><span class="line"><span class="meta">#<span class="keyword">include</span> <span class="string">&lt;iostream&gt;</span></span></span><br><span class="line"><span class="meta">#<span class="keyword">include</span> <span class="string">&lt;string&gt;</span></span></span><br><span class="line"></span><br><span class="line"><span class="function"><span class="type">void</span> <span class="title">replaceX</span><span class="params">(std::string *str, std::string x)</span></span></span><br><span class="line"><span class="function"></span>&#123;</span><br><span class="line">    <span class="type">size_t</span> pos = (*str).<span class="built_in">find</span>(<span class="string">&quot;$&#123;x&#125;&quot;</span>);</span><br><span class="line">    <span class="keyword">if</span> (pos != std::string::npos)</span><br><span class="line">        (*str).<span class="built_in">replace</span>(pos, <span class="number">4</span>, x);</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"><span class="function">std::string <span class="title">foo</span><span class="params">(std::string x)</span></span></span><br><span class="line"><span class="function"></span>&#123;</span><br><span class="line">    std::string str = <span class="string">&quot;hello this is $&#123;x&#125;&quot;</span>;</span><br><span class="line">    <span class="built_in">replaceX</span>(&amp;str, x);</span><br><span class="line">    <span class="keyword">return</span> str;</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"><span class="function"><span class="type">int</span> <span class="title">main</span><span class="params">()</span></span></span><br><span class="line"><span class="function"></span>&#123;</span><br><span class="line">    std::<span class="built_in">string</span> (*fp)(std::string) = &amp;foo;</span><br><span class="line">    std::cout &lt;&lt; (*fp)(<span class="string">&quot;foo&quot;</span>) &lt;&lt; std::endl;</span><br><span class="line">    std::cout &lt;&lt; (*fp)(<span class="string">&quot;bar&quot;</span>) &lt;&lt; std::endl;</span><br><span class="line">&#125;</span><br><span class="line"></span><br></pre></td></tr></table></figure>
+<p>Because Puppeteer relies on Node.js, the first thing we do is create a project directory and initiate <code>npm</code>.</p>
+<figure class="highlight bash"><table><tr><td class="code"><pre><span class="line"><span class="built_in">mkdir</span> puppeteer-project;</span><br><span class="line"></span><br><span class="line"><span class="built_in">cd</span> puppeteer-project;</span><br><span class="line"></span><br><span class="line">npm init -y</span><br><span class="line"></span><br><span class="line">npm i puppeteer --save</span><br><span class="line"></span><br><span class="line"><span class="built_in">sudo</span> pacman -S libx11 libxcomposite libxdamage libxext libxi libxtst nss freetype2 harfbuzz</span><br><span class="line"></span><br><span class="line"><span class="comment"># Puppeteer requires some additional dependencies to be installed</span></span><br><span class="line"></span><br></pre></td></tr></table></figure>
 
-<p><strong>Console:</strong></p>
-<pre><code>hello this is foo
-hello this is bar
-</code></pre>
+<p>Now we write our script:</p>
+<figure class="highlight bash"><table><tr><td class="code"><pre><span class="line">vim puppeteer.js</span><br></pre></td></tr></table></figure>
+
+<p>The script should be on the lines of this template:</p>
+<figure class="highlight javascript"><table><tr><td class="code"><pre><span class="line"><span class="keyword">const</span> puppeteer = <span class="built_in">require</span>(<span class="string">&#x27;puppeteer&#x27;</span>);</span><br><span class="line"></span><br><span class="line">(<span class="title function_">async</span> () =&gt; &#123;</span><br><span class="line">  <span class="keyword">const</span> browser = <span class="keyword">await</span> puppeteer.<span class="title function_">launch</span>(&#123;</span><br><span class="line">  	<span class="attr">executablePath</span>: <span class="string">&#x27;/usr/bin/chromium&#x27;</span>,</span><br><span class="line"></span><br><span class="line">  	<span class="comment">// We can also drop this line and instead, set an environment variable in Bash.</span></span><br><span class="line"></span><br><span class="line">  	<span class="comment">// `$ export PUPPETEER_EXECUTABLE_PATH=/usr/bin/chromium`</span></span><br><span class="line"></span><br><span class="line">  	<span class="attr">headless</span>: <span class="literal">true</span></span><br><span class="line">  &#125;);</span><br><span class="line">  <span class="keyword">const</span> page = <span class="keyword">await</span> browser.<span class="title function_">newPage</span>();</span><br><span class="line">  <span class="keyword">await</span> page.<span class="title function_">goto</span>(<span class="string">&#x27;https://www.example.com&#x27;</span>);</span><br><span class="line">  <span class="keyword">await</span> page.<span class="title function_">screenshot</span>(&#123; <span class="attr">path</span>: <span class="string">&#x27;example.png&#x27;</span> &#125;);</span><br><span class="line">  <span class="keyword">await</span> browser.<span class="title function_">close</span>();</span><br><span class="line">&#125;)();</span><br><span class="line"></span><br></pre></td></tr></table></figure>
+
+<p>This code will launch Chromium in headless mode and navigate to <code>https://www.example.com</code>, take a screenshot of the page, and then close the browser.</p>
+<p><strong><em>More content about Puppeteer coming up!</em></strong></p>
 ]]></content>
       <categories>
-        <category>C++</category>
+        <category>Puppeteer</category>
       </categories>
       <tags>
-        <tag>Pointers</tag>
+        <tag>Linux</tag>
+        <tag>ArchLinux</tag>
+        <tag>Headless Browser</tag>
       </tags>
   </entry>
   <entry>
@@ -103,34 +78,6 @@ hello this is bar
       <tags>
         <tag>Django</tag>
         <tag>Python</tag>
-      </tags>
-  </entry>
-  <entry>
-    <title>Dabbling with Puppeteer</title>
-    <url>/2023/04/27/Dabbling%20with%20Puppeteer/</url>
-    <content><![CDATA[<p>Puppeteer is a Node.js library that provides a high-level API to control headless Chrome or Chromium browsers. It is widely used for web scraping, testing, and automation, and is an essential tool for many developers who work with web applications.</p>
-<blockquote>
-<p>Note that I’ll be demonstrating on ArchLinux</p>
-</blockquote>
-<p>Because Puppeteer relies on Node.js, the first thing we do is create a project directory and initiate <code>npm</code>.</p>
-<figure class="highlight bash"><table><tr><td class="code"><pre><span class="line"><span class="built_in">mkdir</span> puppeteer-project;</span><br><span class="line"></span><br><span class="line"><span class="built_in">cd</span> puppeteer-project;</span><br><span class="line"></span><br><span class="line">npm init -y</span><br><span class="line"></span><br><span class="line">npm i puppeteer --save</span><br><span class="line"></span><br><span class="line"><span class="built_in">sudo</span> pacman -S libx11 libxcomposite libxdamage libxext libxi libxtst nss freetype2 harfbuzz</span><br><span class="line"></span><br><span class="line"><span class="comment"># Puppeteer requires some additional dependencies to be installed</span></span><br><span class="line"></span><br></pre></td></tr></table></figure>
-
-<p>Now we write our script:</p>
-<figure class="highlight bash"><table><tr><td class="code"><pre><span class="line">vim puppeteer.js</span><br></pre></td></tr></table></figure>
-
-<p>The script should be on the lines of this template:</p>
-<figure class="highlight javascript"><table><tr><td class="code"><pre><span class="line"><span class="keyword">const</span> puppeteer = <span class="built_in">require</span>(<span class="string">&#x27;puppeteer&#x27;</span>);</span><br><span class="line"></span><br><span class="line">(<span class="title function_">async</span> () =&gt; &#123;</span><br><span class="line">  <span class="keyword">const</span> browser = <span class="keyword">await</span> puppeteer.<span class="title function_">launch</span>(&#123;</span><br><span class="line">  	<span class="attr">executablePath</span>: <span class="string">&#x27;/usr/bin/chromium&#x27;</span>,</span><br><span class="line"></span><br><span class="line">  	<span class="comment">// We can also drop this line and instead, set an environment variable in Bash.</span></span><br><span class="line"></span><br><span class="line">  	<span class="comment">// `$ export PUPPETEER_EXECUTABLE_PATH=/usr/bin/chromium`</span></span><br><span class="line"></span><br><span class="line">  	<span class="attr">headless</span>: <span class="literal">true</span></span><br><span class="line">  &#125;);</span><br><span class="line">  <span class="keyword">const</span> page = <span class="keyword">await</span> browser.<span class="title function_">newPage</span>();</span><br><span class="line">  <span class="keyword">await</span> page.<span class="title function_">goto</span>(<span class="string">&#x27;https://www.example.com&#x27;</span>);</span><br><span class="line">  <span class="keyword">await</span> page.<span class="title function_">screenshot</span>(&#123; <span class="attr">path</span>: <span class="string">&#x27;example.png&#x27;</span> &#125;);</span><br><span class="line">  <span class="keyword">await</span> browser.<span class="title function_">close</span>();</span><br><span class="line">&#125;)();</span><br><span class="line"></span><br></pre></td></tr></table></figure>
-
-<p>This code will launch Chromium in headless mode and navigate to <code>https://www.example.com</code>, take a screenshot of the page, and then close the browser.</p>
-<p><strong><em>More content about Puppeteer coming up!</em></strong></p>
-]]></content>
-      <categories>
-        <category>Puppeteer</category>
-      </categories>
-      <tags>
-        <tag>Linux</tag>
-        <tag>ArchLinux</tag>
-        <tag>Headless Browser</tag>
       </tags>
   </entry>
   <entry>
@@ -288,49 +235,56 @@ hello this is bar
       </categories>
   </entry>
   <entry>
-    <title>Installing Puppet server on ArchLinux</title>
-    <url>/2023/04/27/Installing%20Puppet%20server%20on%20ArchLinux/</url>
-    <content><![CDATA[<h3 id="Installation"><a href="#Installation" class="headerlink" title="Installation"></a>Installation</h3><p>To install puppet server first add the upstream GPG key:</p>
-<pre><code>$ gpg --fetch-keys https://yum.puppetlabs.com/RPM-GPG-KEY-puppet-20250406
+    <title>C++ Pointers</title>
+    <url>/2023/04/29/C++%20Pointers/</url>
+    <content><![CDATA[<h3 id="Array-of-pointers-to-ints"><a href="#Array-of-pointers-to-ints" class="headerlink" title="Array of pointers to ints"></a>Array of pointers to ints</h3><p><strong>Code:</strong></p>
+<figure class="highlight cpp"><table><tr><td class="code"><pre><span class="line"><span class="meta">#<span class="keyword">include</span> <span class="string">&lt;iostream&gt;</span></span></span><br><span class="line"></span><br><span class="line"><span class="function"><span class="type">int</span> <span class="title">main</span><span class="params">()</span></span></span><br><span class="line"><span class="function"></span>&#123;</span><br><span class="line">    <span class="type">int</span>* ap[<span class="number">15</span>];</span><br><span class="line">    <span class="type">int</span> ai[<span class="number">15</span>] = &#123;&#125;;</span><br><span class="line">    <span class="keyword">for</span> (<span class="type">int</span> i = <span class="number">0</span>; i &lt; <span class="number">15</span>; ++i) &#123;</span><br><span class="line">        ai[i] = i; </span><br><span class="line">        ap[i] = &amp;ai[i];</span><br><span class="line">        std::cout &lt;&lt; *ap[i] &lt;&lt; <span class="string">&quot; &quot;</span> &lt;&lt; ap[i]&lt;&lt; std::endl;</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br><span class="line"></span><br></pre></td></tr></table></figure>
+
+<p><strong>Console:</strong></p>
+<pre><code>0 0x16d296d14
+1 0x16d296d18
+2 0x16d296d1c
+3 0x16d296d20
+4 0x16d296d24
+5 0x16d296d28
+6 0x16d296d2c
+7 0x16d296d30
+8 0x16d296d34
+9 0x16d296d38
+10 0x16d296d3c
+11 0x16d296d40
+12 0x16d296d44
+13 0x16d296d48
+14 0x16d296d4c
 </code></pre>
-<div>
-    Then install the <a href="https://aur.archlinux.org/packages/puppetserver"><b>puppetserver</b></a><sup>AUR</sup> package.
-</div>
+<h3 id="Pointer-to-an-array-of-ints"><a href="#Pointer-to-an-array-of-ints" class="headerlink" title="Pointer to an array of ints"></a>Pointer to an array of ints</h3><p><strong>Code:</strong></p>
+<figure class="highlight cpp"><table><tr><td class="code"><pre><span class="line"><span class="meta">#<span class="keyword">include</span> <span class="string">&lt;iostream&gt;</span></span></span><br><span class="line"></span><br><span class="line"><span class="function"><span class="type">int</span> <span class="title">main</span><span class="params">()</span></span></span><br><span class="line"><span class="function"></span>&#123;</span><br><span class="line">    <span class="type">int</span> ai[<span class="number">15</span>];</span><br><span class="line">    <span class="keyword">for</span> (<span class="type">int</span> i = <span class="number">0</span>; i &lt; <span class="number">15</span>; i++) ai[i] = i;</span><br><span class="line">    <span class="built_in">int</span> (*ptr)[] = &amp;ai;</span><br><span class="line">    <span class="keyword">for</span> (<span class="type">int</span> i = <span class="number">0</span>; i &lt; <span class="number">15</span>; i++) &#123;</span><br><span class="line">        std::cout &lt;&lt; (*ptr)[i] &lt;&lt; <span class="string">&quot; &quot;</span>;</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br><span class="line"></span><br></pre></td></tr></table></figure>
 
-<figure class="highlight bash"><table><tr><td class="code"><pre><span class="line">git <span class="built_in">clone</span> https://aur.archlinux.org/puppetserver.git</span><br><span class="line"></span><br><span class="line"><span class="built_in">cd</span> puppetserver/</span><br><span class="line"></span><br><span class="line">makepkg -si</span><br><span class="line"></span><br></pre></td></tr></table></figure>
-
-<p>Having questions about the <code>makepkg</code> command? Visit <a href="/2023/04/25/Running%20ArchLinux%20ARM%20in%20UTM%20on%20a%20M1%20MacBook%20Air/#yay" title="makepkg">here</a>!</p>
-<div>
-    Afterwards, enable and start the <b>puppetserver</b> service.
-</div>
-
-<figure class="highlight bash"><table><tr><td class="code"><pre><span class="line"><span class="built_in">sudo</span> systemctl <span class="built_in">enable</span> puppetserver.service</span><br><span class="line"></span><br><span class="line"><span class="comment"># Add to &quot;/etc/systemd/system/multi-user.target.wants&quot;.</span></span><br><span class="line"></span><br><span class="line"><span class="built_in">sudo</span> systemctl start puppetserver.service</span><br><span class="line"></span><br></pre></td></tr></table></figure>
-
-<h3 id="Delete-a-key"><a href="#Delete-a-key" class="headerlink" title="Delete a key"></a>Delete a key</h3><p>List the keys in your keyring using the command <code>gpg --list-keys</code>:</p>
-<pre><code>$ gpg --list-keys
-/root/.gnupg/pubring.kbx
-------------------------
-pub   rsa4096 2019-04-08 [SC] [expires: 2025-04-06]
-      D6811ED3ADEEB8441AF5AA8F4528B6CD9E61EF26
-uid           [ unknown] Puppet, Inc. Release Key (Puppet, Inc. Release Key) &lt;release@puppet.com&gt;
+<p><strong><em>Console</em></strong></p>
+<pre><code>0 1 2 3 4 5 6 7 8 9 10 11 12 13 14
 </code></pre>
-<p>For example, the key ID of the instance above is “D6811ED3ADEEB8441AF5AA8F4528B6CD9E61EF26”.</p>
-<p>Delete the key using the command <code>gpg --delete-keys [key ID]</code>.</p>
-<p>Note that deleting a key from your keyring will prevent you from verifying any signatures made with that key in the future. If you need to use the key again later, you will need to fetch it again using the <code>gpg --fetch-keys</code> command.</p>
 <blockquote>
-<p>Configuration</p>
+<p><strong><em>Notes</em></strong></p>
 </blockquote>
-<p>The Puppet Server’s configuration files are stored in <code>/etc/puppetlabs/puppetserver/</code>.</p>
+<ul>
+<li><p>The parentheses around <code>*ptr</code> are necessary because the <code>[]</code> operator has<br>  higher precedence than the <code>*</code> operator. Without the parentheses, the<br>  declaration would be parsed as an array of pointers to int, like int<br>  <code>*ptr[15]</code>.</p>
+</li>
+<li><p>When I took the address of the array, I got a pointer to the first element<br>  of the array. However, the pointer itself does not contain any information<br>  about the size of the array.</p>
+</li>
+</ul>
+<h3 id="Pointer-to-function-taking-a-string-argument"><a href="#Pointer-to-function-taking-a-string-argument" class="headerlink" title="Pointer to function taking a string argument;"></a>Pointer to function taking a string argument;</h3><h4 id="returns-an-string"><a href="#returns-an-string" class="headerlink" title="returns an string"></a>returns an string</h4><p><strong>Code:</strong></p>
+<figure class="highlight cpp"><table><tr><td class="code"><pre><span class="line"><span class="meta">#<span class="keyword">include</span> <span class="string">&lt;iostream&gt;</span></span></span><br><span class="line"><span class="meta">#<span class="keyword">include</span> <span class="string">&lt;string&gt;</span></span></span><br><span class="line"></span><br><span class="line"><span class="function"><span class="type">void</span> <span class="title">replaceX</span><span class="params">(std::string *str, std::string x)</span></span></span><br><span class="line"><span class="function"></span>&#123;</span><br><span class="line">    <span class="type">size_t</span> pos = (*str).<span class="built_in">find</span>(<span class="string">&quot;$&#123;x&#125;&quot;</span>);</span><br><span class="line">    <span class="keyword">if</span> (pos != std::string::npos)</span><br><span class="line">        (*str).<span class="built_in">replace</span>(pos, <span class="number">4</span>, x);</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"><span class="function">std::string <span class="title">foo</span><span class="params">(std::string x)</span></span></span><br><span class="line"><span class="function"></span>&#123;</span><br><span class="line">    std::string str = <span class="string">&quot;hello this is $&#123;x&#125;&quot;</span>;</span><br><span class="line">    <span class="built_in">replaceX</span>(&amp;str, x);</span><br><span class="line">    <span class="keyword">return</span> str;</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"><span class="function"><span class="type">int</span> <span class="title">main</span><span class="params">()</span></span></span><br><span class="line"><span class="function"></span>&#123;</span><br><span class="line">    std::<span class="built_in">string</span> (*fp)(std::string) = &amp;foo;</span><br><span class="line">    std::cout &lt;&lt; (*fp)(<span class="string">&quot;foo&quot;</span>) &lt;&lt; std::endl;</span><br><span class="line">    std::cout &lt;&lt; (*fp)(<span class="string">&quot;bar&quot;</span>) &lt;&lt; std::endl;</span><br><span class="line">&#125;</span><br><span class="line"></span><br></pre></td></tr></table></figure>
+
+<p><strong>Console:</strong></p>
+<pre><code>hello this is foo
+hello this is bar
+</code></pre>
 ]]></content>
       <categories>
-        <category>Puppet</category>
+        <category>C++</category>
       </categories>
       <tags>
-        <tag>Linux</tag>
-        <tag>ArchLinux</tag>
-        <tag>Puppet</tag>
-        <tag>server</tag>
-        <tag>GPG key</tag>
+        <tag>Pointers</tag>
       </tags>
   </entry>
   <entry>
@@ -348,6 +302,29 @@ uid           [ unknown] Puppet, Inc. Release Key (Puppet, Inc. Release Key) &lt
 ]]></content>
       <tags>
         <tag>Revelations</tag>
+      </tags>
+  </entry>
+  <entry>
+    <title>Minor adjustment from Bash to Zsh</title>
+    <url>/2024/05/27/Minor%20adjustment%20from%20Bash%20to%20Zsh/</url>
+    <content><![CDATA[<blockquote>
+<p>Converting characters to uppercase(&#x2F;lowercase)</p>
+</blockquote>
+<p>Take variable <code>sayhi</code> for example:</p>
+<figure class="highlight bash"><table><tr><td class="code"><pre><span class="line">sayhi=<span class="string">&quot;hello there&quot;</span></span><br><span class="line"><span class="built_in">echo</span> <span class="variable">$&#123;sayhi^^[eo]&#125;</span></span><br></pre></td></tr></table></figure>
+
+<p>This method of converting lowercase letters to uppercase only works in Bash and will throw and “Bad substitution” error if you try it in Zsh.<br>Instead, you should use general replacement for this in Zsh:</p>
+<figure class="highlight plaintext"><table><tr><td class="code"><pre><span class="line">echo $&#123;sayhi//[eo]/[EO]&#125;</span><br></pre></td></tr></table></figure>
+
+<p>Or, for a more Zsh native method, we can try out substitution flags, which comes in two formats:</p>
+<figure class="highlight plaintext"><table><tr><td class="code"><pre><span class="line">echo $&#123;sayhi:u&#125;</span><br><span class="line"># Or use it as a prefix:</span><br><span class="line">echo $&#123;(U):sayhi&#125;</span><br></pre></td></tr></table></figure>
+]]></content>
+      <categories>
+        <category>CLI</category>
+      </categories>
+      <tags>
+        <tag>Bash</tag>
+        <tag>Zsh</tag>
       </tags>
   </entry>
   <entry>
@@ -404,26 +381,107 @@ uid           [ unknown] Puppet, Inc. Release Key (Puppet, Inc. Release Key) &lt
       </tags>
   </entry>
   <entry>
-    <title>Minor adjustment from Bash to Zsh</title>
-    <url>/2024/05/27/Minor%20adjustment%20from%20Bash%20to%20Zsh/</url>
-    <content><![CDATA[<blockquote>
-<p>Converting characters to uppercase(&#x2F;lowercase)</p>
-</blockquote>
-<p>Take variable <code>sayhi</code> for example:</p>
-<figure class="highlight bash"><table><tr><td class="code"><pre><span class="line">sayhi=<span class="string">&quot;hello there&quot;</span></span><br><span class="line"><span class="built_in">echo</span> <span class="variable">$&#123;sayhi^^[eo]&#125;</span></span><br></pre></td></tr></table></figure>
+    <title>Positional Parameters</title>
+    <url>/2023/04/28/Positional%20Parameters/</url>
+    <content><![CDATA[<p>In Bash, positional parameters are special variables that hold the arguments passed to a script or function. The positional parameters are numbered from <code>0</code> to <code>9</code>, where <code>$0</code> holds the name of the script or function, and <code>$1</code> through <code>$9</code> hold the first through ninth arguments, respectively.</p>
+<p><code>$@</code> and <code>$*</code> both hold all the arguments passed to the script. Note that <code>$@</code> is an array-like variable that holds all the positional parameters as <em>separate elements</em>, while <code>$*</code> is another variable that holds all the positional parameters as <em>a single string</em>.</p>
+<p>Here’s an example:</p>
+<pre><code>#!/bin/bash
 
-<p>This method of converting lowercase letters to uppercase only works in Bash and will throw and “Bad substitution” error if you try it in Zsh.<br>Instead, you should use general replacement for this in Zsh:</p>
-<figure class="highlight plaintext"><table><tr><td class="code"><pre><span class="line">echo $&#123;sayhi//[eo]/[EO]&#125;</span><br></pre></td></tr></table></figure>
+#!/bin/bash
 
-<p>Or, for a more Zsh native method, we can try out substitution flags, which comes in two formats:</p>
-<figure class="highlight plaintext"><table><tr><td class="code"><pre><span class="line">echo $&#123;sayhi:u&#125;</span><br><span class="line"># Or use it as a prefix:</span><br><span class="line">echo $&#123;(U):sayhi&#125;</span><br></pre></td></tr></table></figure>
+echo &quot;Script Name: $0&quot;
+echo &quot;First Arg: $1&quot;
+echo &quot;Second Arg: $2&quot;
+echo &quot;All args (arr): $@&quot;
+echo &quot;All args (str): $*&quot;
+</code></pre>
+<p>Now let’s run the script with three arguments:</p>
+<figure class="highlight bash"><table><tr><td class="code"><pre><span class="line"><span class="built_in">chmod</span> u+x ./script <span class="comment"># Grant execution privilege for user</span></span><br><span class="line"></span><br><span class="line">./script a b c</span><br><span class="line"></span><br></pre></td></tr></table></figure>
+
+<p>The output should be something like this:</p>
+<pre><code>Script Name: ./script.sh
+First Arg: a
+Second Arg: b
+All args (arr): a b c
+All args (str): a b c
+</code></pre>
+]]></content>
+      <categories>
+        <category>Bash</category>
+      </categories>
+      <tags>
+        <tag>Linux</tag>
+        <tag>Bash</tag>
+      </tags>
+  </entry>
+  <entry>
+    <title>Notes on word splitting</title>
+    <url>/2024/06/15/Notes%20on%20word%20splitting/</url>
+    <content><![CDATA[<p>Code snippet:</p>
+<figure class="highlight bash"><table><tr><td class="code"><pre><span class="line"><span class="meta">#!/usr/bin/env -S bash</span></span><br><span class="line"></span><br><span class="line">hello=<span class="string">&quot;hello:world:hello:world:hello&quot;</span></span><br><span class="line"></span><br><span class="line">IFS=<span class="string">&quot;lo:&quot;</span></span><br><span class="line"></span><br><span class="line"><span class="built_in">read</span> -ra list &lt;&lt;&lt;<span class="string">&quot;<span class="variable">$hello</span>&quot;</span></span><br><span class="line"></span><br><span class="line"><span class="built_in">printf</span> <span class="string">&quot;%s*&quot;</span> <span class="string">&quot;<span class="variable">$&#123;list[*]&#125;</span>&quot;</span></span><br></pre></td></tr></table></figure>
+
+<ol>
+<li><a href="#Double-quotes">Double quotes</a></li>
+<li><a href="#Bundling-into-an-array">Bundling into an array</a></li>
+<li><a href="#Array-expansion-re-splitting">Array expansion re-splitting</a></li>
+</ol>
+<h4 id="Double-quotes"><a href="#Double-quotes" class="headerlink" title="Double quotes"></a>Double quotes</h4><p>If <code>$hello</code> is wrapped with <code>&quot;&quot;</code>, its literal value will be preserved. Without them, IFS characters will be displayed as blanks spots.</p>
+<table>
+<thead>
+<tr>
+<th align="center">With</th>
+<th align="center">Without</th>
+</tr>
+</thead>
+<tbody><tr>
+<td align="center"><code>hello:world:hello:world:hello</code></td>
+<td align="center"><code>he(4 spaces)w r d he(4 spaces)w r d he   </code></td>
+</tr>
+</tbody></table>
+<h4 id="Bundling-into-an-array"><a href="#Bundling-into-an-array" class="headerlink" title="Bundling into an array"></a>Bundling into an array</h4><p><code>read -ra list</code> cares not for whether the string is wrapped in quotes. It will split the string into an array regardless.</p>
+<p>However, mind that the <code>read</code> command reads one line at a time. If the string is multiline, <code>read</code> will only read the first line.</p>
+<h4 id="Array-expansion-re-splitting"><a href="#Array-expansion-re-splitting" class="headerlink" title="Array expansion re-splitting"></a>Array expansion re-splitting</h4><p>Both <code>$&#123;list[*]&#125;</code> and <code>$&#123;list[@]&#125;</code> are prone to re-splitting the array.</p>
+<table>
+<thead>
+<tr>
+<th align="center"><code>IFS</code> \ <code>printf &quot;%s*&quot; &lt;..&gt;</code></th>
+<th align="center"><code>$&#123;list[*]&#125;</code></th>
+<th align="center"><code>$&#123;list[@]&#125;</code></th>
+<th><code>&quot;$&#123;list[*]&#125;&quot;</code></th>
+<th align="center"><code>&quot;$&#123;list[@]&#125;&quot;</code></th>
+</tr>
+</thead>
+<tbody><tr>
+<td align="center"><code>IFS=&quot;lo:&quot;</code></td>
+<td align="center"><code>he****w*r*d*he****w*r*d*he**</code> <a href="#Observation">(1)</a></td>
+<td align="center"><a href="#Observation">(1)</a></td>
+<td><code>hellllwlrldlhellllwlrldlhell*</code> <a href="#Observation">(2)</a></td>
+<td align="center"><code>he****w*r*d*he****w*r*d*he***</code> <a href="#Observation">(3)</a></td>
+</tr>
+<tr>
+<td align="center"><code>IFS=</code></td>
+<td align="center"><code>he*w*r*d*he*w*r*d*he*</code> <a href="#Observation">(4)</a></td>
+<td align="center"><a href="#Observation">(4)</a></td>
+<td><a href="#Observation">(2)</a></td>
+<td align="center"><a href="#Observation">(3)</a></td>
+</tr>
+</tbody></table>
+<h5 id="Observation"><a href="#Observation" class="headerlink" title="Observation"></a>Observation</h5><ul>
+<li><code>IFS=&quot;lo:&quot;</code><ol>
+<li><code>*</code> acts like a delimiter, and fills the gap between each array element. Eg: he<del>l</del> * <del>l</del> * <del>o</del>. Only behaves like this when the last element contains a single delimiter, else the result is the same as <a href="#Observation">(3)</a>.</li>
+<li>The first character of <code>IFS</code>, which happens to be <code>l</code>, serves as the delimiter for the array elements. The whole string is treated as one element, thus <code>*</code> is appended to the very end.</li>
+<li><code>*</code> acts normally and is appended to each array element. Eg: he<del>l</del> * <del>l</del> * <del>o</del> *</li>
+</ol>
+</li>
+<li><code>IFS=</code>: The effect this has on word splitting seems to be that it squeezes multiple blank arguments into one.</li>
+</ul>
 ]]></content>
       <categories>
         <category>CLI</category>
       </categories>
       <tags>
         <tag>Bash</tag>
-        <tag>Zsh</tag>
       </tags>
   </entry>
   <entry>
@@ -547,154 +605,6 @@ r=mccranky)
         <tag>ArchLinux</tag>
         <tag>UTM</tag>
         <tag>Virtual Machine</tag>
-      </tags>
-  </entry>
-  <entry>
-    <title>Notes on word splitting</title>
-    <url>/2024/06/15/Notes%20on%20word%20splitting/</url>
-    <content><![CDATA[<p>Code snippet:</p>
-<figure class="highlight bash"><table><tr><td class="code"><pre><span class="line"><span class="meta">#!/usr/bin/env -S bash</span></span><br><span class="line"></span><br><span class="line">hello=<span class="string">&quot;hello:world:hello:world:hello&quot;</span></span><br><span class="line"></span><br><span class="line">IFS=<span class="string">&quot;lo:&quot;</span></span><br><span class="line"></span><br><span class="line"><span class="built_in">read</span> -ra list &lt;&lt;&lt;<span class="string">&quot;<span class="variable">$hello</span>&quot;</span></span><br><span class="line"></span><br><span class="line"><span class="built_in">printf</span> <span class="string">&quot;%s*&quot;</span> <span class="string">&quot;<span class="variable">$&#123;list[*]&#125;</span>&quot;</span></span><br></pre></td></tr></table></figure>
-
-<ol>
-<li><a href="#Double-quotes">Double quotes</a></li>
-<li><a href="#Bundling-into-an-array">Bundling into an array</a></li>
-<li><a href="#Array-expansion-re-splitting">Array expansion re-splitting</a></li>
-</ol>
-<h4 id="Double-quotes"><a href="#Double-quotes" class="headerlink" title="Double quotes"></a>Double quotes</h4><p>If <code>$hello</code> is wrapped with <code>&quot;&quot;</code>, its literal value will be preserved. Without them, IFS characters will be displayed as blanks spots.</p>
-<table>
-<thead>
-<tr>
-<th align="center">With</th>
-<th align="center">Without</th>
-</tr>
-</thead>
-<tbody><tr>
-<td align="center"><code>hello:world:hello:world:hello</code></td>
-<td align="center"><code>he(4 spaces)w r d he(4 spaces)w r d he   </code></td>
-</tr>
-</tbody></table>
-<h4 id="Bundling-into-an-array"><a href="#Bundling-into-an-array" class="headerlink" title="Bundling into an array"></a>Bundling into an array</h4><p><code>read -ra list</code> cares not for whether the string is wrapped in quotes. It will split the string into an array regardless.</p>
-<p>However, mind that the <code>read</code> command reads one line at a time. If the string is multiline, <code>read</code> will only read the first line.</p>
-<h4 id="Array-expansion-re-splitting"><a href="#Array-expansion-re-splitting" class="headerlink" title="Array expansion re-splitting"></a>Array expansion re-splitting</h4><p>Both <code>$&#123;list[*]&#125;</code> and <code>$&#123;list[@]&#125;</code> are prone to re-splitting the array.</p>
-<table>
-<thead>
-<tr>
-<th align="center"><code>IFS</code> \ <code>printf &quot;%s*&quot; &lt;..&gt;</code></th>
-<th align="center"><code>$&#123;list[*]&#125;</code></th>
-<th align="center"><code>$&#123;list[@]&#125;</code></th>
-<th><code>&quot;$&#123;list[*]&#125;&quot;</code></th>
-<th align="center"><code>&quot;$&#123;list[@]&#125;&quot;</code></th>
-</tr>
-</thead>
-<tbody><tr>
-<td align="center"><code>IFS=&quot;lo:&quot;</code></td>
-<td align="center"><code>he****w*r*d*he****w*r*d*he**</code> <a href="#Observation">(1)</a></td>
-<td align="center"><a href="#Observation">(1)</a></td>
-<td><code>hellllwlrldlhellllwlrldlhell*</code> <a href="#Observation">(2)</a></td>
-<td align="center"><code>he****w*r*d*he****w*r*d*he***</code> <a href="#Observation">(3)</a></td>
-</tr>
-<tr>
-<td align="center"><code>IFS=</code></td>
-<td align="center"><code>he*w*r*d*he*w*r*d*he*</code> <a href="#Observation">(4)</a></td>
-<td align="center"><a href="#Observation">(4)</a></td>
-<td><a href="#Observation">(2)</a></td>
-<td align="center"><a href="#Observation">(3)</a></td>
-</tr>
-</tbody></table>
-<h5 id="Observation"><a href="#Observation" class="headerlink" title="Observation"></a>Observation</h5><ul>
-<li><code>IFS=&quot;lo:&quot;</code><ol>
-<li><code>*</code> acts like a delimiter, and fills the gap between each array element. Eg: he<del>l</del> * <del>l</del> * <del>o</del>. Only behaves like this when the last element contains a single delimiter, else the result is the same as <a href="#Observation">(3)</a>.</li>
-<li>The first character of <code>IFS</code>, which happens to be <code>l</code>, serves as the delimiter for the array elements. The whole string is treated as one element, thus <code>*</code> is appended to the very end.</li>
-<li><code>*</code> acts normally and is appended to each array element. Eg: he<del>l</del> * <del>l</del> * <del>o</del> *</li>
-</ol>
-</li>
-<li><code>IFS=</code>: The effect this has on word splitting seems to be that it squeezes multiple blank arguments into one.</li>
-</ul>
-]]></content>
-      <categories>
-        <category>CLI</category>
-      </categories>
-      <tags>
-        <tag>Bash</tag>
-      </tags>
-  </entry>
-  <entry>
-    <title>`Path` module - Node.js</title>
-    <url>/2023/05/14/Path%20module%20-%20Node.js/</url>
-    <content><![CDATA[<p>因为本人使用的操作系统是 OS X ，所以一下书写规范均符合 POSIX（Portable Open System Interface eXtended），Windows 用户请自行查阅资料。</p>
-<h3 id="path-basename-path-suffix"><a href="#path-basename-path-suffix" class="headerlink" title="path.basename(path[, suffix])"></a><code>path.basename(path[, suffix])</code></h3><figure class="highlight javascript"><table><tr><td class="code"><pre><span class="line">path.<span class="title function_">basename</span>(<span class="string">&#x27;/path/to/project/index.html&#x27;</span>, <span class="string">&#x27;.html&#x27;</span>)</span><br><span class="line"><span class="comment">// &#x27;index&#x27;</span></span><br></pre></td></tr></table></figure>
-
-<h3 id="path-delimiter"><a href="#path-delimiter" class="headerlink" title="path.delimiter"></a><code>path.delimiter</code></h3><figure class="highlight javascript"><table><tr><td class="code"><pre><span class="line"><span class="variable language_">console</span>.<span class="title function_">log</span>(process.<span class="property">env</span>.<span class="property">PATH</span>)</span><br><span class="line"><span class="comment">// /opt/homebrew/opt/llvm/bin:/opt/homebrew/opt/llvm/bin:/Applications/Sublime Text.app/Contents/SharedSupport/bin/:/Applications/Visual Studio Code.app/Contents/Resources/app/bin/:/Users/Mccranky/.gem/ruby/3.1.3/bin:/Users/Mccranky/.rubies/ruby-3.1.3/lib/ruby/gems/3.1.0/bin:/Users/Mccranky/.rubies/ruby-3.1.3/bin::/opt/local/bin:/opt/homebrew/bin:/opt/homebrew/sbin:/usr/local/bin:/usr/bin:/bin:/usr/sbin:/sbin:/usr/local/mysql/support-files:/usr/local/mysql/bin:/etc/platform-tools:/usr/local/go/bin:/usr/local/MacGPG2/bin:/usr/local/share/dotnet:~/.dotnet/tools:/Library/Apple/usr/bin:/Users/Mccranky/.nami/bin:/Users/Mccranky/.spicetify</span></span><br><span class="line"><span class="comment">// undefined</span></span><br></pre></td></tr></table></figure>
-
-<p>输出第一行为环境变量。<br>输出第二行的<code>undefined</code>示意无返回值。</p>
-<figure class="highlight javascript"><table><tr><td class="code"><pre><span class="line">process.<span class="property">env</span>.<span class="property">PATH</span>.<span class="title function_">split</span>(path.<span class="property">delimiter</span>)</span><br><span class="line"><span class="comment">/*</span></span><br><span class="line"><span class="comment">[</span></span><br><span class="line"><span class="comment">  &#x27;/opt/homebrew/opt/llvm/bin&#x27;,</span></span><br><span class="line"><span class="comment">  &#x27;/opt/homebrew/opt/llvm/bin&#x27;,</span></span><br><span class="line"><span class="comment">  &#x27;/Applications/Sublime Text.app/Contents/SharedSupport/bin/&#x27;,</span></span><br><span class="line"><span class="comment">  &#x27;/Applications/Visual Studio Code.app/Contents/Resources/app/bin/&#x27;,</span></span><br><span class="line"><span class="comment">  &#x27;/Users/Mccranky/.gem/ruby/3.1.3/bin&#x27;,</span></span><br><span class="line"><span class="comment">  &#x27;/Users/Mccranky/.rubies/ruby-3.1.3/lib/ruby/gems/3.1.0/bin&#x27;,</span></span><br><span class="line"><span class="comment">  &#x27;/Users/Mccranky/.rubies/ruby-3.1.3/bin&#x27;,</span></span><br><span class="line"><span class="comment">  &#x27;&#x27;,</span></span><br><span class="line"><span class="comment">  &#x27;/opt/local/bin&#x27;,</span></span><br><span class="line"><span class="comment">  &#x27;/opt/homebrew/bin&#x27;,</span></span><br><span class="line"><span class="comment">  &#x27;/opt/homebrew/sbin&#x27;,</span></span><br><span class="line"><span class="comment">  &#x27;/usr/local/bin&#x27;,</span></span><br><span class="line"><span class="comment">  &#x27;/usr/bin&#x27;,</span></span><br><span class="line"><span class="comment">  &#x27;/bin&#x27;,</span></span><br><span class="line"><span class="comment">  &#x27;/usr/sbin&#x27;,</span></span><br><span class="line"><span class="comment">  &#x27;/sbin&#x27;,</span></span><br><span class="line"><span class="comment">  &#x27;/usr/local/mysql/support-files&#x27;,</span></span><br><span class="line"><span class="comment">  &#x27;/usr/local/mysql/bin&#x27;,</span></span><br><span class="line"><span class="comment">  &#x27;/etc/platform-tools&#x27;,</span></span><br><span class="line"><span class="comment">  &#x27;/usr/local/go/bin&#x27;,</span></span><br><span class="line"><span class="comment">  &#x27;/usr/local/MacGPG2/bin&#x27;,</span></span><br><span class="line"><span class="comment">  &#x27;/usr/local/share/dotnet&#x27;,</span></span><br><span class="line"><span class="comment">  &#x27;~/.dotnet/tools&#x27;,</span></span><br><span class="line"><span class="comment">  &#x27;/Library/Apple/usr/bin&#x27;,</span></span><br><span class="line"><span class="comment">  &#x27;/Users/Mccranky/.nami/bin&#x27;,</span></span><br><span class="line"><span class="comment">  &#x27;/Users/Mccranky/.spicetify&#x27;</span></span><br><span class="line"><span class="comment">]</span></span><br><span class="line"><span class="comment">*/</span></span><br></pre></td></tr></table></figure>
-
-<p><code>path.delimiter</code>: <code>:</code></p>
-<h3 id="path-dirname"><a href="#path-dirname" class="headerlink" title="path.dirname"></a><code>path.dirname</code></h3><figure class="highlight javascript"><table><tr><td class="code"><pre><span class="line">path.<span class="title function_">dirname</span>(<span class="string">&#x27;path/to/file.txt&#x27;</span>)</span><br><span class="line"><span class="comment">// &#x27;path/to&#x27;</span></span><br></pre></td></tr></table></figure>
-
-<h3 id="path-extname"><a href="#path-extname" class="headerlink" title="path.extname"></a><code>path.extname</code></h3><figure class="highlight javascript"><table><tr><td class="code"><pre><span class="line">path.<span class="title function_">extname</span>(<span class="string">&#x27;index.html&#x27;</span>)</span><br><span class="line"><span class="comment">// &#x27;.html&#x27;</span></span><br><span class="line"></span><br><span class="line">path.<span class="title function_">extname</span>(<span class="string">&#x27;index.foo.md&#x27;</span>)</span><br><span class="line"><span class="comment">// &#x27;.md&#x27;</span></span><br><span class="line"></span><br><span class="line">path.<span class="title function_">extname</span>(<span class="string">&#x27;index.&#x27;</span>)</span><br><span class="line"><span class="comment">// &#x27;.&#x27;</span></span><br><span class="line"></span><br><span class="line">path.<span class="title function_">extname</span>(<span class="string">&#x27;index&#x27;</span>)</span><br><span class="line"><span class="comment">// &#x27;&#x27;</span></span><br><span class="line"></span><br><span class="line">path.<span class="title function_">extname</span>(<span class="string">&#x27;.index&#x27;</span>)</span><br><span class="line"><span class="comment">// &#x27;&#x27;</span></span><br><span class="line"></span><br><span class="line">path.<span class="title function_">extname</span>(<span class="string">&#x27;.index.md&#x27;</span>)</span><br><span class="line"><span class="comment">// &#x27;.md&#x27;</span></span><br></pre></td></tr></table></figure>
-
-<h3 id="path-format-pathObject"><a href="#path-format-pathObject" class="headerlink" title="path.format(pathObject)"></a><code>path.format(pathObject)</code></h3><figure class="highlight javascript"><table><tr><td class="code"><pre><span class="line"><span class="comment">// `$&#123;dir&#125;$&#123;path.sep&#125;$&#123;base&#125;`</span></span><br><span class="line">path.<span class="title function_">format</span>(&#123;</span><br><span class="line">  <span class="attr">root</span>: <span class="string">&#x27;/ignored&#x27;</span>,</span><br><span class="line">  <span class="attr">dir</span>: <span class="string">&#x27;/home/user/dir&#x27;</span>,</span><br><span class="line">  <span class="attr">base</span>: <span class="string">&#x27;file.txt&#x27;</span>,</span><br><span class="line">&#125;)</span><br><span class="line"><span class="comment">// &#x27;/home/user/dir/file.txt&#x27;</span></span><br><span class="line"></span><br><span class="line">path.<span class="title function_">format</span>(&#123;</span><br><span class="line">  <span class="attr">root</span>: <span class="string">&#x27;/&#x27;</span>,</span><br><span class="line">  <span class="attr">base</span>: <span class="string">&#x27;file.txt&#x27;</span>,</span><br><span class="line">  <span class="attr">ext</span>: <span class="string">&#x27;ignored&#x27;</span>,</span><br><span class="line">&#125;)</span><br><span class="line"><span class="comment">// &#x27;/file.txt&#x27;</span></span><br><span class="line"></span><br><span class="line">path.<span class="title function_">format</span>(&#123;</span><br><span class="line">  <span class="attr">root</span>: <span class="string">&#x27;/&#x27;</span>,</span><br><span class="line">  <span class="attr">name</span>: <span class="string">&#x27;file&#x27;</span>,</span><br><span class="line">  <span class="attr">ext</span>: <span class="string">&#x27;.txt&#x27;</span>,</span><br><span class="line">&#125;)</span><br><span class="line"><span class="comment">// &#x27;/file.txt&#x27;</span></span><br><span class="line"></span><br><span class="line">path.<span class="title function_">format</span>(&#123;</span><br><span class="line">  <span class="attr">root</span>: <span class="string">&#x27;/&#x27;</span>,</span><br><span class="line">  <span class="attr">name</span>: <span class="string">&#x27;file&#x27;</span>,</span><br><span class="line">  <span class="attr">ext</span>: <span class="string">&#x27;txt&#x27;</span>,</span><br><span class="line">&#125;)</span><br><span class="line"><span class="comment">// &#x27;/file.txt&#x27;</span></span><br></pre></td></tr></table></figure>
-
-<h3 id="path-isAbsolute"><a href="#path-isAbsolute" class="headerlink" title="path.isAbsolute"></a><code>path.isAbsolute</code></h3><figure class="highlight javascript"><table><tr><td class="code"><pre><span class="line">path.<span class="title function_">isAbsolute</span>(<span class="string">&#x27;/foo/bar&#x27;</span>) <span class="comment">// true</span></span><br><span class="line">path.<span class="title function_">isAbsolute</span>(<span class="string">&#x27;/baz/..&#x27;</span>)  <span class="comment">// true</span></span><br><span class="line">path.<span class="title function_">isAbsolute</span>(<span class="string">&#x27;qux/&#x27;</span>)     <span class="comment">// false</span></span><br><span class="line">path.<span class="title function_">isAbsolute</span>(<span class="string">&#x27;.&#x27;</span>)        <span class="comment">// false</span></span><br></pre></td></tr></table></figure>
-
-<h3 id="path-join-paths"><a href="#path-join-paths" class="headerlink" title="path.join([...paths])"></a><code>path.join([...paths])</code></h3><figure class="highlight javascript"><table><tr><td class="code"><pre><span class="line">path.<span class="title function_">join</span>(<span class="string">&#x27;&#x27;</span>)</span><br><span class="line"><span class="comment">// &#x27;.&#x27;</span></span><br><span class="line"></span><br><span class="line">path.<span class="title function_">join</span>(<span class="string">&#x27;/&#x27;</span>, <span class="string">&#x27;/foo&#x27;</span>, <span class="string">&#x27;bar&#x27;</span>, <span class="string">&#x27;baz&#x27;</span>, <span class="string">&#x27;..&#x27;</span>)</span><br><span class="line"><span class="comment">// &#x27;/foo/bar&#x27;</span></span><br></pre></td></tr></table></figure>
-
-<h3 id="path-normalize-path"><a href="#path-normalize-path" class="headerlink" title="path.normalize(path)"></a><code>path.normalize(path)</code></h3><figure class="highlight javascript"><table><tr><td class="code"><pre><span class="line">path.<span class="title function_">normalize</span>(<span class="string">&#x27;/foo/bar//baz/asdf/quux/..&#x27;</span>)</span><br><span class="line"><span class="comment">// Returns: &#x27;/foo/bar/baz/asdf&#x27;</span></span><br></pre></td></tr></table></figure>
-
-<h3 id="path-parse-path"><a href="#path-parse-path" class="headerlink" title="path.parse(path)"></a><code>path.parse(path)</code></h3><figure class="highlight javascript"><table><tr><td class="code"><pre><span class="line">path.<span class="title function_">parse</span>(<span class="string">&#x27;/home/user/dir/file.txt&#x27;</span>)</span><br><span class="line"><span class="comment">/*</span></span><br><span class="line"><span class="comment">&#123;</span></span><br><span class="line"><span class="comment">  root: &#x27;/&#x27;,</span></span><br><span class="line"><span class="comment">  dir: &#x27;/home/user/dir&#x27;,</span></span><br><span class="line"><span class="comment">  base: &#x27;file.txt&#x27;,</span></span><br><span class="line"><span class="comment">  ext: &#x27;.txt&#x27;,</span></span><br><span class="line"><span class="comment">  name: &#x27;file&#x27;</span></span><br><span class="line"><span class="comment">&#125;</span></span><br><span class="line"><span class="comment">*/</span></span><br></pre></td></tr></table></figure>
-
-<figure class="highlight plaintext"><table><tr><td class="code"><pre><span class="line">┌─────────────────────┬────────────┐</span><br><span class="line">│          dir        │    base    │</span><br><span class="line">├──────┬              ├──────┬─────┤</span><br><span class="line">│ root │              │ name │ ext │</span><br><span class="line">&quot;  /    home/user/dir / file  .txt &quot;</span><br><span class="line">└──────┴──────────────┴──────┴─────┘</span><br></pre></td></tr></table></figure>
-
-<h3 id="path-posix"><a href="#path-posix" class="headerlink" title="path.posix"></a><code>path.posix</code></h3><p>只是输出一下<code>path</code>模组所有的方法。</p>
-<h3 id="path-relative-from-to"><a href="#path-relative-from-to" class="headerlink" title="path.relative(from, to)"></a><code>path.relative(from, to)</code></h3><figure class="highlight javascript"><table><tr><td class="code"><pre><span class="line">path.<span class="title function_">relative</span>(<span class="string">&#x27;/data/orandea/test/aaa&#x27;</span>, <span class="string">&#x27;/data/orandea/impl/bbb&#x27;</span>)</span><br><span class="line"><span class="comment">// &#x27;../../impl/bbb&#x27;</span></span><br></pre></td></tr></table></figure>
-
-<h3 id="path-resolve-paths"><a href="#path-resolve-paths" class="headerlink" title="path.resolve([...paths])"></a><code>path.resolve([...paths])</code></h3><figure class="highlight javascript"><table><tr><td class="code"><pre><span class="line">path.<span class="title function_">resolve</span>(<span class="string">&#x27;&#x27;</span>)</span><br><span class="line"><span class="string">&#x27;/Users/Mccranky&#x27;</span></span><br><span class="line"></span><br><span class="line">path.<span class="title function_">join</span>(<span class="string">&#x27;foo&#x27;</span>, <span class="string">&#x27;bar&#x27;</span>, <span class="string">&#x27;baz&#x27;</span>, <span class="string">&#x27;..&#x27;</span>)</span><br><span class="line"><span class="comment">// &#x27;/Users/Mccranky/foo/bar&#x27;</span></span><br></pre></td></tr></table></figure>
-
-<h3 id="path-sep"><a href="#path-sep" class="headerlink" title="path.sep"></a><code>path.sep</code></h3><p><code>path.sep</code>: <code>/</code></p>
-<figure class="highlight javascript"><table><tr><td class="code"><pre><span class="line"><span class="string">&#x27;foo/bar/baz&#x27;</span>.<span class="title function_">split</span>(path.<span class="property">sep</span>)</span><br><span class="line"><span class="comment">// [&#x27;foo&#x27;, &#x27;bar&#x27;, &#x27;baz&#x27;]</span></span><br></pre></td></tr></table></figure>
-]]></content>
-      <categories>
-        <category>Node.js</category>
-      </categories>
-      <tags>
-        <tag>Node.js</tag>
-        <tag>Path</tag>
-      </tags>
-  </entry>
-  <entry>
-    <title>Positional Parameters</title>
-    <url>/2023/04/28/Positional%20Parameters/</url>
-    <content><![CDATA[<p>In Bash, positional parameters are special variables that hold the arguments passed to a script or function. The positional parameters are numbered from <code>0</code> to <code>9</code>, where <code>$0</code> holds the name of the script or function, and <code>$1</code> through <code>$9</code> hold the first through ninth arguments, respectively.</p>
-<p><code>$@</code> and <code>$*</code> both hold all the arguments passed to the script. Note that <code>$@</code> is an array-like variable that holds all the positional parameters as <em>separate elements</em>, while <code>$*</code> is another variable that holds all the positional parameters as <em>a single string</em>.</p>
-<p>Here’s an example:</p>
-<pre><code>#!/bin/bash
-
-#!/bin/bash
-
-echo &quot;Script Name: $0&quot;
-echo &quot;First Arg: $1&quot;
-echo &quot;Second Arg: $2&quot;
-echo &quot;All args (arr): $@&quot;
-echo &quot;All args (str): $*&quot;
-</code></pre>
-<p>Now let’s run the script with three arguments:</p>
-<figure class="highlight bash"><table><tr><td class="code"><pre><span class="line"><span class="built_in">chmod</span> u+x ./script <span class="comment"># Grant execution privilege for user</span></span><br><span class="line"></span><br><span class="line">./script a b c</span><br><span class="line"></span><br></pre></td></tr></table></figure>
-
-<p>The output should be something like this:</p>
-<pre><code>Script Name: ./script.sh
-First Arg: a
-Second Arg: b
-All args (arr): a b c
-All args (str): a b c
-</code></pre>
-]]></content>
-      <categories>
-        <category>Bash</category>
-      </categories>
-      <tags>
-        <tag>Linux</tag>
-        <tag>Bash</tag>
       </tags>
   </entry>
   <entry>
@@ -909,6 +819,96 @@ Possible reasons for having this kind of units are:
       </tags>
   </entry>
   <entry>
+    <title>`Path` module - Node.js</title>
+    <url>/2023/05/14/Path%20module%20-%20Node.js/</url>
+    <content><![CDATA[<p>因为本人使用的操作系统是 OS X ，所以一下书写规范均符合 POSIX（Portable Open System Interface eXtended），Windows 用户请自行查阅资料。</p>
+<h3 id="path-basename-path-suffix"><a href="#path-basename-path-suffix" class="headerlink" title="path.basename(path[, suffix])"></a><code>path.basename(path[, suffix])</code></h3><figure class="highlight javascript"><table><tr><td class="code"><pre><span class="line">path.<span class="title function_">basename</span>(<span class="string">&#x27;/path/to/project/index.html&#x27;</span>, <span class="string">&#x27;.html&#x27;</span>)</span><br><span class="line"><span class="comment">// &#x27;index&#x27;</span></span><br></pre></td></tr></table></figure>
+
+<h3 id="path-delimiter"><a href="#path-delimiter" class="headerlink" title="path.delimiter"></a><code>path.delimiter</code></h3><figure class="highlight javascript"><table><tr><td class="code"><pre><span class="line"><span class="variable language_">console</span>.<span class="title function_">log</span>(process.<span class="property">env</span>.<span class="property">PATH</span>)</span><br><span class="line"><span class="comment">// /opt/homebrew/opt/llvm/bin:/opt/homebrew/opt/llvm/bin:/Applications/Sublime Text.app/Contents/SharedSupport/bin/:/Applications/Visual Studio Code.app/Contents/Resources/app/bin/:/Users/Mccranky/.gem/ruby/3.1.3/bin:/Users/Mccranky/.rubies/ruby-3.1.3/lib/ruby/gems/3.1.0/bin:/Users/Mccranky/.rubies/ruby-3.1.3/bin::/opt/local/bin:/opt/homebrew/bin:/opt/homebrew/sbin:/usr/local/bin:/usr/bin:/bin:/usr/sbin:/sbin:/usr/local/mysql/support-files:/usr/local/mysql/bin:/etc/platform-tools:/usr/local/go/bin:/usr/local/MacGPG2/bin:/usr/local/share/dotnet:~/.dotnet/tools:/Library/Apple/usr/bin:/Users/Mccranky/.nami/bin:/Users/Mccranky/.spicetify</span></span><br><span class="line"><span class="comment">// undefined</span></span><br></pre></td></tr></table></figure>
+
+<p>输出第一行为环境变量。<br>输出第二行的<code>undefined</code>示意无返回值。</p>
+<figure class="highlight javascript"><table><tr><td class="code"><pre><span class="line">process.<span class="property">env</span>.<span class="property">PATH</span>.<span class="title function_">split</span>(path.<span class="property">delimiter</span>)</span><br><span class="line"><span class="comment">/*</span></span><br><span class="line"><span class="comment">[</span></span><br><span class="line"><span class="comment">  &#x27;/opt/homebrew/opt/llvm/bin&#x27;,</span></span><br><span class="line"><span class="comment">  &#x27;/opt/homebrew/opt/llvm/bin&#x27;,</span></span><br><span class="line"><span class="comment">  &#x27;/Applications/Sublime Text.app/Contents/SharedSupport/bin/&#x27;,</span></span><br><span class="line"><span class="comment">  &#x27;/Applications/Visual Studio Code.app/Contents/Resources/app/bin/&#x27;,</span></span><br><span class="line"><span class="comment">  &#x27;/Users/Mccranky/.gem/ruby/3.1.3/bin&#x27;,</span></span><br><span class="line"><span class="comment">  &#x27;/Users/Mccranky/.rubies/ruby-3.1.3/lib/ruby/gems/3.1.0/bin&#x27;,</span></span><br><span class="line"><span class="comment">  &#x27;/Users/Mccranky/.rubies/ruby-3.1.3/bin&#x27;,</span></span><br><span class="line"><span class="comment">  &#x27;&#x27;,</span></span><br><span class="line"><span class="comment">  &#x27;/opt/local/bin&#x27;,</span></span><br><span class="line"><span class="comment">  &#x27;/opt/homebrew/bin&#x27;,</span></span><br><span class="line"><span class="comment">  &#x27;/opt/homebrew/sbin&#x27;,</span></span><br><span class="line"><span class="comment">  &#x27;/usr/local/bin&#x27;,</span></span><br><span class="line"><span class="comment">  &#x27;/usr/bin&#x27;,</span></span><br><span class="line"><span class="comment">  &#x27;/bin&#x27;,</span></span><br><span class="line"><span class="comment">  &#x27;/usr/sbin&#x27;,</span></span><br><span class="line"><span class="comment">  &#x27;/sbin&#x27;,</span></span><br><span class="line"><span class="comment">  &#x27;/usr/local/mysql/support-files&#x27;,</span></span><br><span class="line"><span class="comment">  &#x27;/usr/local/mysql/bin&#x27;,</span></span><br><span class="line"><span class="comment">  &#x27;/etc/platform-tools&#x27;,</span></span><br><span class="line"><span class="comment">  &#x27;/usr/local/go/bin&#x27;,</span></span><br><span class="line"><span class="comment">  &#x27;/usr/local/MacGPG2/bin&#x27;,</span></span><br><span class="line"><span class="comment">  &#x27;/usr/local/share/dotnet&#x27;,</span></span><br><span class="line"><span class="comment">  &#x27;~/.dotnet/tools&#x27;,</span></span><br><span class="line"><span class="comment">  &#x27;/Library/Apple/usr/bin&#x27;,</span></span><br><span class="line"><span class="comment">  &#x27;/Users/Mccranky/.nami/bin&#x27;,</span></span><br><span class="line"><span class="comment">  &#x27;/Users/Mccranky/.spicetify&#x27;</span></span><br><span class="line"><span class="comment">]</span></span><br><span class="line"><span class="comment">*/</span></span><br></pre></td></tr></table></figure>
+
+<p><code>path.delimiter</code>: <code>:</code></p>
+<h3 id="path-dirname"><a href="#path-dirname" class="headerlink" title="path.dirname"></a><code>path.dirname</code></h3><figure class="highlight javascript"><table><tr><td class="code"><pre><span class="line">path.<span class="title function_">dirname</span>(<span class="string">&#x27;path/to/file.txt&#x27;</span>)</span><br><span class="line"><span class="comment">// &#x27;path/to&#x27;</span></span><br></pre></td></tr></table></figure>
+
+<h3 id="path-extname"><a href="#path-extname" class="headerlink" title="path.extname"></a><code>path.extname</code></h3><figure class="highlight javascript"><table><tr><td class="code"><pre><span class="line">path.<span class="title function_">extname</span>(<span class="string">&#x27;index.html&#x27;</span>)</span><br><span class="line"><span class="comment">// &#x27;.html&#x27;</span></span><br><span class="line"></span><br><span class="line">path.<span class="title function_">extname</span>(<span class="string">&#x27;index.foo.md&#x27;</span>)</span><br><span class="line"><span class="comment">// &#x27;.md&#x27;</span></span><br><span class="line"></span><br><span class="line">path.<span class="title function_">extname</span>(<span class="string">&#x27;index.&#x27;</span>)</span><br><span class="line"><span class="comment">// &#x27;.&#x27;</span></span><br><span class="line"></span><br><span class="line">path.<span class="title function_">extname</span>(<span class="string">&#x27;index&#x27;</span>)</span><br><span class="line"><span class="comment">// &#x27;&#x27;</span></span><br><span class="line"></span><br><span class="line">path.<span class="title function_">extname</span>(<span class="string">&#x27;.index&#x27;</span>)</span><br><span class="line"><span class="comment">// &#x27;&#x27;</span></span><br><span class="line"></span><br><span class="line">path.<span class="title function_">extname</span>(<span class="string">&#x27;.index.md&#x27;</span>)</span><br><span class="line"><span class="comment">// &#x27;.md&#x27;</span></span><br></pre></td></tr></table></figure>
+
+<h3 id="path-format-pathObject"><a href="#path-format-pathObject" class="headerlink" title="path.format(pathObject)"></a><code>path.format(pathObject)</code></h3><figure class="highlight javascript"><table><tr><td class="code"><pre><span class="line"><span class="comment">// `$&#123;dir&#125;$&#123;path.sep&#125;$&#123;base&#125;`</span></span><br><span class="line">path.<span class="title function_">format</span>(&#123;</span><br><span class="line">  <span class="attr">root</span>: <span class="string">&#x27;/ignored&#x27;</span>,</span><br><span class="line">  <span class="attr">dir</span>: <span class="string">&#x27;/home/user/dir&#x27;</span>,</span><br><span class="line">  <span class="attr">base</span>: <span class="string">&#x27;file.txt&#x27;</span>,</span><br><span class="line">&#125;)</span><br><span class="line"><span class="comment">// &#x27;/home/user/dir/file.txt&#x27;</span></span><br><span class="line"></span><br><span class="line">path.<span class="title function_">format</span>(&#123;</span><br><span class="line">  <span class="attr">root</span>: <span class="string">&#x27;/&#x27;</span>,</span><br><span class="line">  <span class="attr">base</span>: <span class="string">&#x27;file.txt&#x27;</span>,</span><br><span class="line">  <span class="attr">ext</span>: <span class="string">&#x27;ignored&#x27;</span>,</span><br><span class="line">&#125;)</span><br><span class="line"><span class="comment">// &#x27;/file.txt&#x27;</span></span><br><span class="line"></span><br><span class="line">path.<span class="title function_">format</span>(&#123;</span><br><span class="line">  <span class="attr">root</span>: <span class="string">&#x27;/&#x27;</span>,</span><br><span class="line">  <span class="attr">name</span>: <span class="string">&#x27;file&#x27;</span>,</span><br><span class="line">  <span class="attr">ext</span>: <span class="string">&#x27;.txt&#x27;</span>,</span><br><span class="line">&#125;)</span><br><span class="line"><span class="comment">// &#x27;/file.txt&#x27;</span></span><br><span class="line"></span><br><span class="line">path.<span class="title function_">format</span>(&#123;</span><br><span class="line">  <span class="attr">root</span>: <span class="string">&#x27;/&#x27;</span>,</span><br><span class="line">  <span class="attr">name</span>: <span class="string">&#x27;file&#x27;</span>,</span><br><span class="line">  <span class="attr">ext</span>: <span class="string">&#x27;txt&#x27;</span>,</span><br><span class="line">&#125;)</span><br><span class="line"><span class="comment">// &#x27;/file.txt&#x27;</span></span><br></pre></td></tr></table></figure>
+
+<h3 id="path-isAbsolute"><a href="#path-isAbsolute" class="headerlink" title="path.isAbsolute"></a><code>path.isAbsolute</code></h3><figure class="highlight javascript"><table><tr><td class="code"><pre><span class="line">path.<span class="title function_">isAbsolute</span>(<span class="string">&#x27;/foo/bar&#x27;</span>) <span class="comment">// true</span></span><br><span class="line">path.<span class="title function_">isAbsolute</span>(<span class="string">&#x27;/baz/..&#x27;</span>)  <span class="comment">// true</span></span><br><span class="line">path.<span class="title function_">isAbsolute</span>(<span class="string">&#x27;qux/&#x27;</span>)     <span class="comment">// false</span></span><br><span class="line">path.<span class="title function_">isAbsolute</span>(<span class="string">&#x27;.&#x27;</span>)        <span class="comment">// false</span></span><br></pre></td></tr></table></figure>
+
+<h3 id="path-join-paths"><a href="#path-join-paths" class="headerlink" title="path.join([...paths])"></a><code>path.join([...paths])</code></h3><figure class="highlight javascript"><table><tr><td class="code"><pre><span class="line">path.<span class="title function_">join</span>(<span class="string">&#x27;&#x27;</span>)</span><br><span class="line"><span class="comment">// &#x27;.&#x27;</span></span><br><span class="line"></span><br><span class="line">path.<span class="title function_">join</span>(<span class="string">&#x27;/&#x27;</span>, <span class="string">&#x27;/foo&#x27;</span>, <span class="string">&#x27;bar&#x27;</span>, <span class="string">&#x27;baz&#x27;</span>, <span class="string">&#x27;..&#x27;</span>)</span><br><span class="line"><span class="comment">// &#x27;/foo/bar&#x27;</span></span><br></pre></td></tr></table></figure>
+
+<h3 id="path-normalize-path"><a href="#path-normalize-path" class="headerlink" title="path.normalize(path)"></a><code>path.normalize(path)</code></h3><figure class="highlight javascript"><table><tr><td class="code"><pre><span class="line">path.<span class="title function_">normalize</span>(<span class="string">&#x27;/foo/bar//baz/asdf/quux/..&#x27;</span>)</span><br><span class="line"><span class="comment">// Returns: &#x27;/foo/bar/baz/asdf&#x27;</span></span><br></pre></td></tr></table></figure>
+
+<h3 id="path-parse-path"><a href="#path-parse-path" class="headerlink" title="path.parse(path)"></a><code>path.parse(path)</code></h3><figure class="highlight javascript"><table><tr><td class="code"><pre><span class="line">path.<span class="title function_">parse</span>(<span class="string">&#x27;/home/user/dir/file.txt&#x27;</span>)</span><br><span class="line"><span class="comment">/*</span></span><br><span class="line"><span class="comment">&#123;</span></span><br><span class="line"><span class="comment">  root: &#x27;/&#x27;,</span></span><br><span class="line"><span class="comment">  dir: &#x27;/home/user/dir&#x27;,</span></span><br><span class="line"><span class="comment">  base: &#x27;file.txt&#x27;,</span></span><br><span class="line"><span class="comment">  ext: &#x27;.txt&#x27;,</span></span><br><span class="line"><span class="comment">  name: &#x27;file&#x27;</span></span><br><span class="line"><span class="comment">&#125;</span></span><br><span class="line"><span class="comment">*/</span></span><br></pre></td></tr></table></figure>
+
+<figure class="highlight plaintext"><table><tr><td class="code"><pre><span class="line">┌─────────────────────┬────────────┐</span><br><span class="line">│          dir        │    base    │</span><br><span class="line">├──────┬              ├──────┬─────┤</span><br><span class="line">│ root │              │ name │ ext │</span><br><span class="line">&quot;  /    home/user/dir / file  .txt &quot;</span><br><span class="line">└──────┴──────────────┴──────┴─────┘</span><br></pre></td></tr></table></figure>
+
+<h3 id="path-posix"><a href="#path-posix" class="headerlink" title="path.posix"></a><code>path.posix</code></h3><p>只是输出一下<code>path</code>模组所有的方法。</p>
+<h3 id="path-relative-from-to"><a href="#path-relative-from-to" class="headerlink" title="path.relative(from, to)"></a><code>path.relative(from, to)</code></h3><figure class="highlight javascript"><table><tr><td class="code"><pre><span class="line">path.<span class="title function_">relative</span>(<span class="string">&#x27;/data/orandea/test/aaa&#x27;</span>, <span class="string">&#x27;/data/orandea/impl/bbb&#x27;</span>)</span><br><span class="line"><span class="comment">// &#x27;../../impl/bbb&#x27;</span></span><br></pre></td></tr></table></figure>
+
+<h3 id="path-resolve-paths"><a href="#path-resolve-paths" class="headerlink" title="path.resolve([...paths])"></a><code>path.resolve([...paths])</code></h3><figure class="highlight javascript"><table><tr><td class="code"><pre><span class="line">path.<span class="title function_">resolve</span>(<span class="string">&#x27;&#x27;</span>)</span><br><span class="line"><span class="string">&#x27;/Users/Mccranky&#x27;</span></span><br><span class="line"></span><br><span class="line">path.<span class="title function_">join</span>(<span class="string">&#x27;foo&#x27;</span>, <span class="string">&#x27;bar&#x27;</span>, <span class="string">&#x27;baz&#x27;</span>, <span class="string">&#x27;..&#x27;</span>)</span><br><span class="line"><span class="comment">// &#x27;/Users/Mccranky/foo/bar&#x27;</span></span><br></pre></td></tr></table></figure>
+
+<h3 id="path-sep"><a href="#path-sep" class="headerlink" title="path.sep"></a><code>path.sep</code></h3><p><code>path.sep</code>: <code>/</code></p>
+<figure class="highlight javascript"><table><tr><td class="code"><pre><span class="line"><span class="string">&#x27;foo/bar/baz&#x27;</span>.<span class="title function_">split</span>(path.<span class="property">sep</span>)</span><br><span class="line"><span class="comment">// [&#x27;foo&#x27;, &#x27;bar&#x27;, &#x27;baz&#x27;]</span></span><br></pre></td></tr></table></figure>
+]]></content>
+      <categories>
+        <category>Node.js</category>
+      </categories>
+      <tags>
+        <tag>Node.js</tag>
+        <tag>Path</tag>
+      </tags>
+  </entry>
+  <entry>
+    <title>Installing Puppet server on ArchLinux</title>
+    <url>/2023/04/27/Installing%20Puppet%20server%20on%20ArchLinux/</url>
+    <content><![CDATA[<h3 id="Installation"><a href="#Installation" class="headerlink" title="Installation"></a>Installation</h3><p>To install puppet server first add the upstream GPG key:</p>
+<pre><code>$ gpg --fetch-keys https://yum.puppetlabs.com/RPM-GPG-KEY-puppet-20250406
+</code></pre>
+<div>
+    Then install the <a href="https://aur.archlinux.org/packages/puppetserver"><b>puppetserver</b></a><sup>AUR</sup> package.
+</div>
+
+<figure class="highlight bash"><table><tr><td class="code"><pre><span class="line">git <span class="built_in">clone</span> https://aur.archlinux.org/puppetserver.git</span><br><span class="line"></span><br><span class="line"><span class="built_in">cd</span> puppetserver/</span><br><span class="line"></span><br><span class="line">makepkg -si</span><br><span class="line"></span><br></pre></td></tr></table></figure>
+
+<p>Having questions about the <code>makepkg</code> command? Visit <a href="/2023/04/25/Running%20ArchLinux%20ARM%20in%20UTM%20on%20a%20M1%20MacBook%20Air/#yay" title="makepkg">here</a>!</p>
+<div>
+    Afterwards, enable and start the <b>puppetserver</b> service.
+</div>
+
+<figure class="highlight bash"><table><tr><td class="code"><pre><span class="line"><span class="built_in">sudo</span> systemctl <span class="built_in">enable</span> puppetserver.service</span><br><span class="line"></span><br><span class="line"><span class="comment"># Add to &quot;/etc/systemd/system/multi-user.target.wants&quot;.</span></span><br><span class="line"></span><br><span class="line"><span class="built_in">sudo</span> systemctl start puppetserver.service</span><br><span class="line"></span><br></pre></td></tr></table></figure>
+
+<h3 id="Delete-a-key"><a href="#Delete-a-key" class="headerlink" title="Delete a key"></a>Delete a key</h3><p>List the keys in your keyring using the command <code>gpg --list-keys</code>:</p>
+<pre><code>$ gpg --list-keys
+/root/.gnupg/pubring.kbx
+------------------------
+pub   rsa4096 2019-04-08 [SC] [expires: 2025-04-06]
+      D6811ED3ADEEB8441AF5AA8F4528B6CD9E61EF26
+uid           [ unknown] Puppet, Inc. Release Key (Puppet, Inc. Release Key) &lt;release@puppet.com&gt;
+</code></pre>
+<p>For example, the key ID of the instance above is “D6811ED3ADEEB8441AF5AA8F4528B6CD9E61EF26”.</p>
+<p>Delete the key using the command <code>gpg --delete-keys [key ID]</code>.</p>
+<p>Note that deleting a key from your keyring will prevent you from verifying any signatures made with that key in the future. If you need to use the key again later, you will need to fetch it again using the <code>gpg --fetch-keys</code> command.</p>
+<blockquote>
+<p>Configuration</p>
+</blockquote>
+<p>The Puppet Server’s configuration files are stored in <code>/etc/puppetlabs/puppetserver/</code>.</p>
+]]></content>
+      <categories>
+        <category>Puppet</category>
+      </categories>
+      <tags>
+        <tag>Linux</tag>
+        <tag>ArchLinux</tag>
+        <tag>Puppet</tag>
+        <tag>server</tag>
+        <tag>GPG key</tag>
+      </tags>
+  </entry>
+  <entry>
     <title>The Shanghai Lockdown Diary</title>
     <url>/2023/05/05/The%20Shanghai%20Lockdown%20Diary/</url>
     <content><![CDATA[<p>A late addition to the stack, but by all accounts no less authentic. This is a real account of what transpired in Shanghai during the great lockdown. I, for one, was away at the time, locked up at school in a different city. Nonetheless, ripples of the cataclysmic effects had reached me in that northern coast-lined city, sending waves of shock and grief, piercing my heart like daggers.</p>
@@ -930,124 +930,6 @@ Possible reasons for having this kind of units are:
 ]]></content>
       <tags>
         <tag>Life</tag>
-      </tags>
-  </entry>
-  <entry>
-    <title>The Lie of Limitless Freedom: Commodification and the &quot;Meat Market&quot; of Human Intimacy</title>
-    <url>/2026/04/03/The%20Lie%20of%20Limitless%20Freedom%20Commodification%20and%20the%20%22Meat%20Market%22%20of%20Human%20Intimacy/</url>
-    <content><![CDATA[<p>The modern mantra championing the “freedom to do whatever one wants with their own body” is widely celebrated as the pinnacle of personal liberation. In reality, however, this phrase often functions as a deceptive shield. It acts as a socially acceptable cover for self-degeneracy, masking a lazy disregard for personal boundaries and self-esteem. By framing exploitative or self-destructive behaviors as “empowerment,” society ignores the severe psychological and moral costs of treating the self as a mere commodity. Nowhere is the discrepancy between the marketing of freedom and the mechanics of exploitation more glaring than in the Japanese entertainment and adult industries.</p>
-<p>To understand this dynamic, one must look at how these industries are structured. The Japanese approach to the adult and idol industries is highly pragmatic. Rather than imposing outright bans—which historically only drive illicit activities into the dangerous hands of the black market—Japan opts for heavy regulation and containment. It is a cynical but effective system that acknowledges human impulses without necessarily celebrating them as moral goods. However, this hyper-regulated environment also perfects the machinery of human commodification, turning personal identity into a literal “meat market.”</p>
-<p>This is most evident in the Japanese idol industry, which exposes the dark truth behind the illusion of bodily autonomy. Under the guise of pursuing their dreams, young entertainers essentially sell themselves into contractual slavery. The product they are selling is not merely music or acting, but <em>availability</em> and <em>purity</em>. To protect this product, talent agencies strip idols of their basic human rights, dictating what they wear, who they associate with, and expressly forbidding them from having romantic partners. When an idol is caught asserting their actual freedom—such as dating—they are forced to publicly apologize or “graduate” (a polite euphemism for being terminated). They are punished for damaging the merchandise.</p>
-<p>This exploitative system is sustained by the pathetic delusion of the fandom. Through the purchase of merchandise and event tickets, fans are sold the grotesque fantasy that they have bought a claim over another human being’s life. Because they funded the idol’s career, fans feel entitled to the idol’s perpetual purity and isolation. It is a transactional, parasocial relationship born of profound overcompensation. The philosophical irony is stark: human beings barely have a claim over their own lives, subject as we all are to biology, aging, and societal pressures. Yet, the fan—often powerless in their own reality—attempts to play god over a curated celebrity, buying the illusion of control to mask their own loneliness.</p>
-<p>Ultimately, the narrative that one can “do whatever they want with their body” serves as the perfect marketing hook for systemic exploitation. Young people are lured by the promise of agency and fame, only to realize they have signed away their right to authentic human connection. The uncomfortable truth is that true freedom requires self-respect and boundaries, not endless, reckless consumption. When intimacy, beauty, and identity are reduced to corporate inventory, the result is not liberation. It is a mutual degradation shared by the exploitative agency, the deluded consumer, and the commodified self.</p>
-]]></content>
-      <tags>
-        <tag>Life</tag>
-      </tags>
-  </entry>
-  <entry>
-    <title>The Cognitive Compute of Empathy: Why Stereotypes are Just Underfitted Models</title>
-    <url>/2026/04/04/The%20Cognitive%20Compute%20of%20Empathy%20Why%20Stereotypes%20are%20Just%20Underfitted%20Models/</url>
-    <content><![CDATA[<p>Every day, the human brain is tasked with processing a massive, chaotic influx of social data. To navigate this overwhelming reality, the mind must inherently act as a predictive algorithm. However, just as in machine learning, the algorithms we choose to run in our social interactions dictate the accuracy—and the morality—of our worldview. When we examine the phenomenon of stereotyping through the lens of computer science, it becomes clear that prejudice is not merely a moral failing; it is a symptom of cognitive underfitting.</p>
-<p>At its core, a stereotype is a “low-compute” heuristic. It operates much like a Naive Bayes classifier. Because the human brain has limited processing power, it relies on heuristics as slacks to make constant-time, O(1) judgments. By compressing a complex human being into a few highly weighted, discrete features (such as age, gender, dress code, or subculture), the brain establishes a binary baseline. For everyday survival or minimal social navigation, this low-resolution model “gets the job done.” It draws a massive, straight line through a wildly scattered dataset, purposefully ignoring the outliers to save mental CPU.</p>
-<p>But saving compute comes at a severe cost. When a model is aggressively regularized to ignore complexity, it underfits the data, leading to a high rate of false positives and false negatives. In social dynamics, we call this misclassification prejudice. By leaning on these generic, binary parameters, we dull our moral compass. We ignore the very real “cost function” of our errors—the human damage done when we strip an individual of their nuance and force them into a static, pre-calculated bucket.</p>
-<p>For those educated in logic and systems thinking, relying on such a crude baseline is computationally unacceptable. If stereotypes represent an underfitted linear model, the logical upgrade is to process social interactions much like a Support Vector Machine utilizing the Kernel Trick.</p>
-<p>A naive classifier looks at a person in a two-dimensional feature space—perhaps judging them purely on appearance and accent—and clusters them with everyone else who shares those traits. But an SVM-style thinker projects that data into a much higher-dimensional space. By feeding the model dozens of continuous variables—intellectual curiosity, emotional intelligence, conflict resolution style, moral consistency—the “stereotype” dissolves. Two individuals who appear identical in a low-dimensional binary space are suddenly revealed to be miles apart in the high-dimensional space of their actual character.</p>
-<p>Furthermore, an SVM handles non-linearity. It recognizes that human behavior rarely follows a straight line. A person can simultaneously hold seemingly contradictory traits, requiring a complex, dynamic decision boundary rather than a rigid binary box.</p>
-<p>Ultimately, rejecting stereotypes is not just an exercise in social etiquette; it is a commitment to data fidelity. To rely on stereotypes is to accept an intellectually lazy algorithm. To understand people accurately requires us to willingly spend the “mental overhead” necessary to evaluate them as the high-dimensional, non-linear datasets they truly are. As logical thinkers, we must recognize that the real world is infinitely complex, and it is our moral and computational duty to scale our feature space to meet it.</p>
-]]></content>
-      <tags>
-        <tag>Life</tag>
-        <tag>Machine Learning</tag>
-      </tags>
-  </entry>
-  <entry>
-    <title>[Fix] Failed to mount /mnt/share</title>
-    <url>/2023/04/27/%5BFix%5D%20Failed%20to%20mount%20:mnt:share/</url>
-    <content><![CDATA[<h3 id="Solution"><a href="#Solution" class="headerlink" title="Solution"></a>Solution</h3><p>Our fix to the problem is to remove <code>/mnt/share</code> entirely and mount something else in its place.</p>
-<p>This is the portion of the startup process which showed the error:</p>
-<pre><code>[FAILED] Failed to mount /mnt/share.
-See &#39;systemctl status mnt-share.mount&#39; for details
-</code></pre>
-<p>By the way, this post is for those who followed <a href="/2023/04/26/Mounting-a-Shared-folder-on-ArchLinux-VM/#Rollback">my last tutorial</a> on using Samba service to mount a shared directory on ArchLinux VM.</p>
-<h3 id="Check-mount-unit-status"><a href="#Check-mount-unit-status" class="headerlink" title="Check mount unit status"></a>Check mount unit status</h3><p>We’ll start by following the instruction to check the status of the mount unit by running the suggested command:</p>
-<figure class="highlight bash"><table><tr><td class="code"><pre><span class="line">systemctl status mnt-share.mount</span><br></pre></td></tr></table></figure>
-
-<p>This will give us more information about the specific error that occurred.</p>
-<pre><code>Warning: The unit file, source configuration file or drop-ins of mnt-share.moun&gt;
-x mnt-share.mount - /mnt/share
-     Loaded: loaded (/etc/fstab; generated)
-     Active: failed (Result: exit-code) since Thu 2023-04-27 02:45:46 UTC; 40mi&gt;
-      Where: /mnt/share
-       What: //localhost/share
-       Docs: man:fstab(5)
-             man:systemd-fstab-generator(8)
-        CPU: 28ms
-
-Apr 27 02:45:46 alarm systemd[1]: Mounting /mnt/share...
-Apr 27 02:45:46 alarm mount[379]: mount error(111): could not connect to ::1mou&gt;
-Apr 27 02:45:46 alarm systemd[1]: mnt-share.mount: Mount process exited, code=e&gt;
-Apr 27 02:45:46 alarm systemd[1]: mnt-share.mount: Failed with result &#39;exit-cod&gt;
-Apr 27 02:45:46 alarm systemd[1]: Failed to mount /mnt/share.
-</code></pre>
-<h3 id="Side-Content"><a href="#Side-Content" class="headerlink" title="Side Content"></a>Side Content</h3><h4 id="Check-file-system-properties"><a href="#Check-file-system-properties" class="headerlink" title="Check file system properties"></a>Check file system properties</h4><p>Since we’ve decided to remove the mount <code>/mnt/share</code> instead of trying to fix it, we shall proceed to learn a little about how to mount a disk. For instance, if we want to mount an NTFS file system and ensure that the file system is accessible and error-free, we can use the following command to check it for errors:</p>
-<figure class="highlight bash"><table><tr><td class="code"><pre><span class="line"><span class="built_in">sudo</span> pacman -S ntfs-3g</span><br><span class="line"></span><br><span class="line"><span class="comment">#  Install the `ntfs-3g` package which provides the `ntfsfix` tool.</span></span><br><span class="line"></span><br><span class="line"><span class="built_in">sudo</span> ntfsfix /dev/sda1</span><br><span class="line"></span><br><span class="line"><span class="comment"># Replace `/dev/sda1` with the appropriate device and partition.</span></span><br></pre></td></tr></table></figure>
-
-<p>If the virtual hard disk has multiple partitions, we’ll need to determine which partition contains the NTFS file system we want to mount. Oftentimes we use the <code>lsblk</code> command to list the available storage devices and their partitions, and the <code>blkid</code> command to list the UUIDs of the partitions.</p>
-<pre><code>$ lsblk
-NAME   MAJ:MIN RM  SIZE RO TYPE MOUNTPOINTS
-sr0     11:0    1 1024M  0 rom  
-vda    253:0    0  9.8G  0 disk 
-|-vda1 253:1    0  200M  0 part /boot
-`-vda2 253:2    0  9.6G  0 part /
-</code></pre>
-<p>In my case, the virtual machine has a single virtual hard disk, which is identified as <code>/dev/vda</code>. This virtual hard disk has two partitions, <code>/dev/vda1</code> and <code>/dev/vda2</code>, which are mounted at <code>/boot</code> and <code>/</code>, respectively.</p>
-<p><code>/dev/vda1</code> is a 200MB partition formatted as a Linux file system such as <code>ext4</code> or <code>xfs</code>, and contains the kernel and other boot files.</p>
-<p><code>/dev/vda2</code> is a 9.6GB partition also formatted as a Linux file system, and contains the root file system for the Arch Linux operating system.</p>
-<h4 id="Mount-NTFS-file-system"><a href="#Mount-NTFS-file-system" class="headerlink" title="Mount NTFS file system"></a>Mount NTFS file system</h4><p>If we want to mount an additional NTFS file system on our virtual machine, we can create a new directory to use as the mount point, such as <code>/mnt/ntfs</code>, and then add an entry to the <code>/etc/fstab</code> file to mount the NTFS file system at that mount point.</p>
-<p>For example, if the NTFS file system is located on <code>/dev/vda3</code>, we can add the following line to the <code>/etc/fstab</code> file:</p>
-<figure class="highlight bash"><table><tr><td class="code"><pre><span class="line">/dev/vda3 /mnt/ntfs ntfs-3g defaults 0 0</span><br></pre></td></tr></table></figure>
-
-<p>Or if you’ve run <code>blkid</code> and looked up the UUID of the file system you wanted to mount, you can also swap the line above for the following one:</p>
-<figure class="highlight bash"><table><tr><td class="code"><pre><span class="line">UUID=12345678-1234-1234-1234-1234567890ab /mnt/ntfs ntfs-3g defaults 0 0</span><br><span class="line"></span><br><span class="line"><span class="comment"># Pretend for a sec that the UUID of `/dev/vda3` is &quot;12345678-1234-1234-1234-1234567890ab&quot;</span></span><br></pre></td></tr></table></figure>
-
-<p>After adding the entry to the <code>/etc/fstab</code> file, we need to run <code>sudo mount -a</code>. This should mount the NTFS file system at the specified mount point, and the mount point should be automatically mounted at boot time.</p>
-<h4 id="Remove-Samba-entries"><a href="#Remove-Samba-entries" class="headerlink" title="Remove Samba entries"></a>Remove Samba entries</h4><p>Edit Samba’s configuration file <code>/etc/samba/smb.conf</code> and remove everything in the <code>[mnt]</code> field.</p>
-<p>Then, navigate to <code>/etc/fstab</code> and comment out anything associated with <code>/mnt/share</code>:</p>
-<pre><code># share /mnt/share 9p trans=virtio,nofail 0 0
-# //localhost/share /mnt/share cifs user=mccranky,password=Rogue12 0 0
-</code></pre>
-<p>Since we’ve already removed Samba service on our machine, we have no need of checking whether if the mount options specified in the mount unit are correct. But if you haven’t removed it yet, feel free to edit the mount unit file located at <code>/etc/systemd/system/mnt-share.mount</code> and modify the mount options.</p>
-<p>Remove the mount unit for <code>/mnt/share</code>:</p>
-<figure class="highlight bash"><table><tr><td class="code"><pre><span class="line"><span class="built_in">sudo</span> <span class="built_in">rm</span> /etc/systemd/system/mnt-share.mount</span><br></pre></td></tr></table></figure>
-
-<p>Reload the systemd daemon to ensure that the changes take effect:</p>
-<figure class="highlight bash"><table><tr><td class="code"><pre><span class="line"><span class="built_in">sudo</span> systemctl daemon-reload</span><br></pre></td></tr></table></figure>
-
-<p>When we check the status of <code>mnt-share.mount</code>, we should get:</p>
-<pre><code> $ sudo systemctl status mnt-share.mount
-x mnt-share.mount
-     Loaded: not-found (Reason: Unit mnt-share.mount not found.)
-     Active: failed (Result: exit-code) since Thu 2023-04-27 02:45:46 UTC; 1h 5&gt;
-        CPU: 28ms
-
-Apr 27 02:45:46 alarm systemd[1]: Mounting /mnt/share...
-Apr 27 02:45:46 alarm mount[379]: mount error(111): could not connect to ::1mou&gt;
-Apr 27 02:45:46 alarm systemd[1]: mnt-share.mount: Mount process exited, code=e&gt;
-Apr 27 02:45:46 alarm systemd[1]: mnt-share.mount: Failed with result &#39;exit-cod&gt;
-Apr 27 02:45:46 alarm systemd[1]: Failed to mount /mnt/share.
-</code></pre>
-<p>Last we can finally run <code>sudo rm -r /mnt/share</code> to remove <code>/mnt/share</code> from our machine.</p>
-<p>Perfect! Now when we <code>reboot</code> again we should receive no errors.</p>
-]]></content>
-      <categories>
-        <category>Linux</category>
-        <category>ArchLinux</category>
-      </categories>
-      <tags>
-        <tag>ArchLinux</tag>
-        <tag>Virtual Machine</tag>
-        <tag>Issue</tag>
       </tags>
   </entry>
   <entry>
@@ -1091,6 +973,22 @@ Apr 27 02:45:46 alarm systemd[1]: Failed to mount /mnt/share.
         <tag>Linux</tag>
         <tag>ArchLinux</tag>
         <tag>Bash</tag>
+      </tags>
+  </entry>
+  <entry>
+    <title>The Cognitive Compute of Empathy: Why Stereotypes are Just Underfitted Models</title>
+    <url>/2026/04/04/The%20Cognitive%20Compute%20of%20Empathy%20Why%20Stereotypes%20are%20Just%20Underfitted%20Models/</url>
+    <content><![CDATA[<p>Every day, the human brain is tasked with processing a massive, chaotic influx of social data. To navigate this overwhelming reality, the mind must inherently act as a predictive algorithm. However, just as in machine learning, the algorithms we choose to run in our social interactions dictate the accuracy—and the morality—of our worldview. When we examine the phenomenon of stereotyping through the lens of computer science, it becomes clear that prejudice is not merely a moral failing; it is a symptom of cognitive underfitting.</p>
+<p>At its core, a stereotype is a “low-compute” heuristic. It operates much like a Naive Bayes classifier. Because the human brain has limited processing power, it relies on heuristics as slacks to make constant-time, O(1) judgments. By compressing a complex human being into a few highly weighted, discrete features (such as age, gender, dress code, or subculture), the brain establishes a binary baseline. For everyday survival or minimal social navigation, this low-resolution model “gets the job done.” It draws a massive, straight line through a wildly scattered dataset, purposefully ignoring the outliers to save mental CPU.</p>
+<p>But saving compute comes at a severe cost. When a model is aggressively regularized to ignore complexity, it underfits the data, leading to a high rate of false positives and false negatives. In social dynamics, we call this misclassification prejudice. By leaning on these generic, binary parameters, we dull our moral compass. We ignore the very real “cost function” of our errors—the human damage done when we strip an individual of their nuance and force them into a static, pre-calculated bucket.</p>
+<p>For those educated in logic and systems thinking, relying on such a crude baseline is computationally unacceptable. If stereotypes represent an underfitted linear model, the logical upgrade is to process social interactions much like a Support Vector Machine utilizing the Kernel Trick.</p>
+<p>A naive classifier looks at a person in a two-dimensional feature space—perhaps judging them purely on appearance and accent—and clusters them with everyone else who shares those traits. But an SVM-style thinker projects that data into a much higher-dimensional space. By feeding the model dozens of continuous variables—intellectual curiosity, emotional intelligence, conflict resolution style, moral consistency—the “stereotype” dissolves. Two individuals who appear identical in a low-dimensional binary space are suddenly revealed to be miles apart in the high-dimensional space of their actual character.</p>
+<p>Furthermore, an SVM handles non-linearity. It recognizes that human behavior rarely follows a straight line. A person can simultaneously hold seemingly contradictory traits, requiring a complex, dynamic decision boundary rather than a rigid binary box.</p>
+<p>Ultimately, rejecting stereotypes is not just an exercise in social etiquette; it is a commitment to data fidelity. To rely on stereotypes is to accept an intellectually lazy algorithm. To understand people accurately requires us to willingly spend the “mental overhead” necessary to evaluate them as the high-dimensional, non-linear datasets they truly are. As logical thinkers, we must recognize that the real world is infinitely complex, and it is our moral and computational duty to scale our feature space to meet it.</p>
+]]></content>
+      <tags>
+        <tag>Life</tag>
+        <tag>Machine Learning</tag>
       </tags>
   </entry>
   <entry>
@@ -1168,6 +1066,19 @@ fetch-retry-maxtimeout = 300000
       </tags>
   </entry>
   <entry>
+    <title>The Lie of Limitless Freedom: Commodification and the &quot;Meat Market&quot; of Human Intimacy</title>
+    <url>/2026/04/03/The%20Lie%20of%20Limitless%20Freedom%20Commodification%20and%20the%20%22Meat%20Market%22%20of%20Human%20Intimacy/</url>
+    <content><![CDATA[<p>The modern mantra championing the “freedom to do whatever one wants with their own body” is widely celebrated as the pinnacle of personal liberation. In reality, however, this phrase often functions as a deceptive shield. It acts as a socially acceptable cover for self-degeneracy, masking a lazy disregard for personal boundaries and self-esteem. By framing exploitative or self-destructive behaviors as “empowerment,” society ignores the severe psychological and moral costs of treating the self as a mere commodity. Nowhere is the discrepancy between the marketing of freedom and the mechanics of exploitation more glaring than in the Japanese entertainment and adult industries.</p>
+<p>To understand this dynamic, one must look at how these industries are structured. The Japanese approach to the adult and idol industries is highly pragmatic. Rather than imposing outright bans—which historically only drive illicit activities into the dangerous hands of the black market—Japan opts for heavy regulation and containment. It is a cynical but effective system that acknowledges human impulses without necessarily celebrating them as moral goods. However, this hyper-regulated environment also perfects the machinery of human commodification, turning personal identity into a literal “meat market.”</p>
+<p>This is most evident in the Japanese idol industry, which exposes the dark truth behind the illusion of bodily autonomy. Under the guise of pursuing their dreams, young entertainers essentially sell themselves into contractual slavery. The product they are selling is not merely music or acting, but <em>availability</em> and <em>purity</em>. To protect this product, talent agencies strip idols of their basic human rights, dictating what they wear, who they associate with, and expressly forbidding them from having romantic partners. When an idol is caught asserting their actual freedom—such as dating—they are forced to publicly apologize or “graduate” (a polite euphemism for being terminated). They are punished for damaging the merchandise.</p>
+<p>This exploitative system is sustained by the pathetic delusion of the fandom. Through the purchase of merchandise and event tickets, fans are sold the grotesque fantasy that they have bought a claim over another human being’s life. Because they funded the idol’s career, fans feel entitled to the idol’s perpetual purity and isolation. It is a transactional, parasocial relationship born of profound overcompensation. The philosophical irony is stark: human beings barely have a claim over their own lives, subject as we all are to biology, aging, and societal pressures. Yet, the fan—often powerless in their own reality—attempts to play god over a curated celebrity, buying the illusion of control to mask their own loneliness.</p>
+<p>Ultimately, the narrative that one can “do whatever they want with their body” serves as the perfect marketing hook for systemic exploitation. Young people are lured by the promise of agency and fame, only to realize they have signed away their right to authentic human connection. The uncomfortable truth is that true freedom requires self-respect and boundaries, not endless, reckless consumption. When intimacy, beauty, and identity are reduced to corporate inventory, the result is not liberation. It is a mutual degradation shared by the exploitative agency, the deluded consumer, and the commodified self.</p>
+]]></content>
+      <tags>
+        <tag>Life</tag>
+      </tags>
+  </entry>
+  <entry>
     <title>使用 Hexo 生成静态网页博客</title>
     <url>/2023/04/22/%E4%BD%BF%E7%94%A8%20Hexo%20%E7%94%9F%E6%88%90%E9%9D%99%E6%80%81%E7%BD%91%E9%A1%B5%E5%8D%9A%E5%AE%A2/</url>
     <content><![CDATA[<h3 id="要求"><a href="#要求" class="headerlink" title="要求"></a><em>要求</em></h3><ul>
@@ -1235,212 +1146,6 @@ fetch-retry-maxtimeout = 300000
       <tags>
         <tag>Bash</tag>
         <tag>Hexo</tag>
-      </tags>
-  </entry>
-  <entry>
-    <title>如何使用 GitHub Pages 托管 Hexo 静态博客网站</title>
-    <url>/2023/04/22/%E5%A6%82%E4%BD%95%E4%BD%BF%E7%94%A8%20GitHub%20Pages%20%E6%89%98%E7%AE%A1%20Hexo%20%E9%9D%99%E6%80%81%E5%8D%9A%E5%AE%A2%E7%BD%91%E7%AB%99/</url>
-    <content><![CDATA[<p>– <strong>请先阅读 <a href="/2023/04/22/%E4%BD%BF%E7%94%A8%20Hexo%20%E7%94%9F%E6%88%90%E9%9D%99%E6%80%81%E7%BD%91%E9%A1%B5%E5%8D%9A%E5%AE%A2/index.html">使用 Hexo 生成静态网页博客</a>！</strong></p>
-<h3 id="准备工作"><a href="#准备工作" class="headerlink" title="准备工作"></a>准备工作</h3><p>首先，我们基于完成的博客<code>.md</code>文件生成静态网页：</p>
-<figure class="highlight bash"><table><tr><td class="code"><pre><span class="line"><span class="built_in">cd</span> /path/to/site/</span><br><span class="line"><span class="comment"># 跑到项目路径目录</span></span><br><span class="line"></span><br><span class="line">hexo generate</span><br><span class="line"><span class="comment"># 生成静态网页，存放与 public 文件夹内</span></span><br></pre></td></tr></table></figure>
-
-<p>接着，我们进入<code>public</code>文件夹。</p>
-<pre><code>.
-├── node_modules
-├── public
-├── scaffolds
-├── source
-└── themes
-</code></pre>
-<p>因为我们是使用 GitHub Pages 托管，所以我们需要在<code>public</code>文件夹内初始化<code>git</code>：</p>
-<figure class="highlight bash"><table><tr><td class="code"><pre><span class="line">git init</span><br><span class="line"></span><br><span class="line">git branch -m main</span><br><span class="line"></span><br><span class="line">git add .</span><br><span class="line"></span><br><span class="line">git commit -m <span class="string">&quot;初始化工作&quot;</span></span><br></pre></td></tr></table></figure>
-
-<p>其次，我们还需要在 GitHub 上面建立一个远程仓库，格式<strong>必须</strong>为<code>username.github.io</code>，这是硬性要求。</p>
-<h3 id="关联和发布"><a href="#关联和发布" class="headerlink" title="关联和发布"></a>关联和发布</h3><p>我们现在需要关联本地仓库和远程仓库，用例中我们使用<code>https</code>协议，当然也可以使用<code>ssh</code>密钥：</p>
-<figure class="highlight bash"><table><tr><td class="code"><pre><span class="line">git remote add origin https://github.com/username/username.github.io.git</span><br><span class="line"></span><br><span class="line">git push origin main</span><br></pre></td></tr></table></figure>
-
-<p>我们还需要更改一下远程仓库的 GitHub Pages 的设置，目的是告知它托管文件的地址：</p>
-<div style="display: block; margin-left: auto; margin-right: auto; text-align: center; font-size: 1rem;">
-  
-<p>  <img src="/2023/04/22/%E5%A6%82%E4%BD%95%E4%BD%BF%E7%94%A8%20GitHub%20Pages%20%E6%89%98%E7%AE%A1%20Hexo%20%E9%9D%99%E6%80%81%E5%8D%9A%E5%AE%A2%E7%BD%91%E7%AB%99/images/0001.png" alt="点击 Settings" title="点击 Settings"></p>
-  <div>点击 Settings</div>
-  <br>
-
-<p>  <img src="/2023/04/22/%E5%A6%82%E4%BD%95%E4%BD%BF%E7%94%A8%20GitHub%20Pages%20%E6%89%98%E7%AE%A1%20Hexo%20%E9%9D%99%E6%80%81%E5%8D%9A%E5%AE%A2%E7%BD%91%E7%AB%99/images/0002.png" alt="点击 Pages" title="点击 Pages"></p>
-  <div>点击 Pages</div>
-  <br>
-
-<p>  <img src="/2023/04/22/%E5%A6%82%E4%BD%95%E4%BD%BF%E7%94%A8%20GitHub%20Pages%20%E6%89%98%E7%AE%A1%20Hexo%20%E9%9D%99%E6%80%81%E5%8D%9A%E5%AE%A2%E7%BD%91%E7%AB%99/images/0003.png" alt="修改设置" title="修改设置"></p>
-  <div>修改设置</div>
-  <br>
-
-</div>
-
-<p>最后，我们访问<code>username.github.io</code>就可以来到我们的博客页了 :)</p>
-]]></content>
-      <tags>
-        <tag>Hexo</tag>
-        <tag>GitHub Pages</tag>
-        <tag>Git</tag>
-      </tags>
-  </entry>
-  <entry>
-    <title>软件工程 第一周的博客</title>
-    <url>/2023/03/22/%E8%BD%AF%E4%BB%B6%E5%B7%A5%E7%A8%8B%20%E7%AC%AC%E4%B8%80%E5%91%A8%E7%9A%84%E5%8D%9A%E5%AE%A2/</url>
-    <content><![CDATA[<h3 id="使用Git-VCS的一些小技巧"><a href="#使用Git-VCS的一些小技巧" class="headerlink" title="使用Git VCS的一些小技巧"></a><em>使用Git VCS的一些小技巧</em></h3><p>初始化步骤我就大段省略了，大致就是去 Git 官网下载 Binary Dependencies 然后安装就好了，或者是去安装<code>xcode-command-line-tools</code>，其中<code>git</code>自动包含在里面了。</p>
-<p>说白了 Git 就是一个 Distributional VCS ，大体就是结合了 Local VCS和Centralized VCS，因此基本步骤就是本地建立一个 Local Repository，再在 Gitea 上建立一个 Remote Repository，然后把两个库连接一下，最后把本地的改动<code>push</code>到 Remote Repository 就可以了。</p>
-<p>先说如何建 Local Repository。</p>
-<p>选一处“风水宝地”，一般选择<code>/User/home</code>。然后跑到系统默认的 Terminal Emulator 去（ Windows：PowerShell ），输入一下指令：</p>
-<figure class="highlight bash"><table><tr><td class="code"><pre><span class="line"><span class="built_in">mkdir</span> temp <span class="comment"># 建立temp</span></span><br><span class="line"></span><br><span class="line"><span class="built_in">cd</span> temp <span class="comment"># 进入</span></span><br><span class="line"></span><br><span class="line">git init <span class="comment"># 初始化 Local Repository</span></span><br><span class="line"></span><br></pre></td></tr></table></figure>
-
-<p>做完最后一步会看到 Git 生成了一个<code>.git</code>的隐藏文件夹。千万不要把自己的项目文件扔进去！</p>
-<p>初始化完成后，你就可以开始做项目了。等你做完第一个版本，你就可以把项目<code>add</code>到<code>staging area</code>。用如下指令：</p>
-<figure class="highlight bash"><table><tr><td class="code"><pre><span class="line">git add file.. <span class="comment"># add 后可以加入多个文件</span></span><br></pre></td></tr></table></figure>
-
-<p>然后用<code>git status</code>查看 Local Repository 的状态。如果你看到所有想要<code>staged</code>的文件已经在<code>staging area</code>里面了，就可以上传了。</p>
-<blockquote>
-<p>eg:</p>
-</blockquote>
-<figure class="highlight bash"><table><tr><td class="code"><pre><span class="line">git commit -m “message<span class="string">&quot;</span></span><br></pre></td></tr></table></figure>
-
-<p>最后，我们需要创建一个 Remote Repository，过程如下：</p>
-<figure class="highlight bash"><table><tr><td class="code"><pre><span class="line">git remote add origin git@example.git</span><br></pre></td></tr></table></figure>
-
-<p>然后，我们<code>push</code> Local Repo 到 Remote Repository，过程如下：</p>
-<figure class="highlight bash"><table><tr><td class="code"><pre><span class="line">git push origin temp</span><br></pre></td></tr></table></figure>]]></content>
-      <tags>
-        <tag>Bash</tag>
-        <tag>Git</tag>
-        <tag>CLI</tag>
-        <tag>File Systems</tag>
-      </tags>
-  </entry>
-  <entry>
-    <title>如何生成项目树状结构图</title>
-    <url>/2023/04/22/%E5%A6%82%E4%BD%95%E7%94%9F%E6%88%90%E9%A1%B9%E7%9B%AE%E6%A0%91%E7%8A%B6%E7%BB%93%E6%9E%84%E5%9B%BE/</url>
-    <content><![CDATA[<h3 id="Prerequisites"><a href="#Prerequisites" class="headerlink" title="Prerequisites"></a>Prerequisites</h3><ul>
-<li><p>Install <code>tree</code> command via Homebrew by running <code>brew install tree</code></p>
-</li>
-<li><p>run <code>brew</code> to check if Homebrew is currently installed on your computer</p>
-</li>
-<li><p>if not, run the following to install Homebrew:</p>
-</li>
-</ul>
-<figure class="highlight bash"><table><tr><td class="code"><pre><span class="line">$ /bin/bash -c <span class="string">&quot;<span class="subst">$(curl -fsSL https://raw.githubusercontent.com/Homebrew/install/HEAD/install.sh)</span>&quot;</span></span><br></pre></td></tr></table></figure>
-
-<h3 id="Basic-Syntax"><a href="#Basic-Syntax" class="headerlink" title="Basic Syntax"></a>Basic Syntax</h3><figure class="highlight bash"><table><tr><td class="code"><pre><span class="line">tree [directory-path]</span><br></pre></td></tr></table></figure>
-
-<blockquote>
-<p><code>[directory-path]</code> is an optional argument that specifies the directory you want to display as a tree structure. If you don’t specify a directory path, tree will display the tree structure for the current directory.</p>
-</blockquote>
-<p>Here are some useful options you can add to the tree command:</p>
-<blockquote>
-<p><code>-L</code> <code>[level]</code>: Limit the depth of the tree to <code>[level]</code> directories.</p>
-</blockquote>
-<blockquote>
-<p><code>-I</code> <code>[pattern]</code>: Exclude files and directories that match the <code>[pattern]</code>.</p>
-</blockquote>
-<blockquote>
-<p><code>-P</code> <code>[pattern]</code>: <code>[pattern]</code> is used to match files or directories that you want to include in the output.</p>
-</blockquote>
-<blockquote>
-<p><code>-a</code>: Show hidden files and directories.</p>
-</blockquote>
-<blockquote>
-<p><code>-f</code>: Print the full path prefix for each file or directory.</p>
-</blockquote>
-<blockquote>
-<p><code>-h</code>: Print the size of each file or directory in a human-readable format.</p>
-</blockquote>
-<h3 id="Example"><a href="#Example" class="headerlink" title="Example"></a>Example</h3><figure class="highlight bash"><table><tr><td class="code"><pre><span class="line">$ tree -L 1 -P <span class="string">&quot;source/*&quot;</span> -I <span class="string">&quot;_drafts|_pages&quot;</span> <span class="built_in">source</span></span><br><span class="line"></span><br><span class="line"><span class="built_in">source</span></span><br><span class="line">└── _posts</span><br><span class="line"></span><br><span class="line">2 directories, 0 files</span><br></pre></td></tr></table></figure>
-
-<blockquote>
-<p>You can omit the report on the last line with option <code>--noreport</code> if it bothers you.</p>
-</blockquote>
-]]></content>
-      <tags>
-        <tag>Bash</tag>
-        <tag>CLI</tag>
-        <tag>File Systems</tag>
-      </tags>
-  </entry>
-  <entry>
-    <title>软件工程 第三周的博客</title>
-    <url>/2023/04/07/%E8%BD%AF%E4%BB%B6%E5%B7%A5%E7%A8%8B%20%E7%AC%AC%E4%B8%89%E5%91%A8%E7%9A%84%E5%8D%9A%E5%AE%A2/</url>
-    <content><![CDATA[<h2 id="简要概述-CTF-OverTheWire-Bandit-Level-24"><a href="#简要概述-CTF-OverTheWire-Bandit-Level-24" class="headerlink" title="简要概述 CTF OverTheWire Bandit Level 24"></a><em>简要概述 CTF OverTheWire Bandit Level 24</em></h2><h3 id="题目"><a href="#题目" class="headerlink" title="题目"></a><em>题目</em></h3><blockquote>
-<p>在端口 30002 上有一个守护进程正在监听，如果提供了 bandit24 的密码和一个秘密的 4 位数的数字密码，它将为您提供 bandit25 的密码。除了通过穷举全部 10000 种组合的方式以外，没有其他获得 pincode 的方法，这被称为暴力破解。</p>
-</blockquote>
-<p>大致思路如下：</p>
-<ul>
-<li>先写一个<code>script</code>，按要求进行排版输出到<code>stdout</code></li>
-<li>把输出的 10000 种组合<code>pipe</code>到<code>netcat</code>监视的<code>localhost:30002</code>进行测试</li>
-<li>直接输出到<code>stdout</code>可能会<code>timeout</code>打断进程，所以我们输出到<code>output.txt</code></li>
-<li>最后<code>cat</code>文本内容拿到密码</li>
-</ul>
-<p>先利用<code>ssh</code>连接到<code>bandit.labs.overthewire.org</code>的服务器，端口号<code>2220</code>，为此我们需要<code>bandit24</code>的密码。</p>
-<figure class="highlight bash"><table><tr><td class="code"><pre><span class="line">ssh bandit24@bandit.labs.overthewire.org -p 2220</span><br><span class="line"><span class="comment">#					VAfGXJ1PBSsPSnvsjI8p759leLZ9GGar</span></span><br></pre></td></tr></table></figure>
-
-<p>以<code>bandit24</code>进入 Level 24 之后先到系统文件夹<code>/tmp</code>下建立本关的临时文件夹。</p>
-<figure class="highlight bash"><table><tr><td class="code"><pre><span class="line"><span class="built_in">cd</span> /tmp; <span class="built_in">mktemp</span> -d</span><br><span class="line"></span><br><span class="line"><span class="comment"># /tmp/tmp.u4oQlmpmWL</span></span><br><span class="line"></span><br><span class="line"><span class="built_in">cd</span> /tmp/tmp.u4oQlmpmWL</span><br><span class="line"></span><br><span class="line"><span class="comment"># bandit24@bandit:/tmp/tmp.u4oQlmpmWL$</span></span><br></pre></td></tr></table></figure>
-
-<blockquote>
-<p><code>-d</code>代表<code>directory</code>，即告诉<code>mktemp</code>指令创建的临时文件属性为文件夹</p>
-</blockquote>
-<figure class="highlight bash"><table><tr><td class="code"><pre><span class="line"><span class="built_in">touch</span> script.sh</span><br><span class="line"></span><br><span class="line"><span class="built_in">chmod</span> 777 script.sh</span><br><span class="line"></span><br><span class="line">vim script.sh</span><br></pre></td></tr></table></figure>
-
-<blockquote>
-<p><code>touch</code>: 创建文件</p>
-</blockquote>
-<blockquote>
-<p><code>chmod</code> - <code>change mode</code>: 改变文档<code>rwx</code>权限</p>
-</blockquote>
-<ul>
-<li><code>r</code> - <code>read</code>: 读取权限<code>status code</code>为 4</li>
-<li><code>w</code> - <code>write</code>: 书写权限<code>status code</code>为 2</li>
-<li><code>x</code> - <code>execute</code>: 执行权限<code>status code</code>为 1</li>
-</ul>
-<p>进入文本编辑器之后，选定”插入“模式，按<code>i</code>键</p>
-<p>首行书写<code>shebang</code>行，选定使用哪个<code>shell</code>来执行该<code>script</code> - 我们选用<code>bash</code></p>
-<p>然后写我们的<code>entity body</code>的代码：</p>
-<figure class="highlight bash"><table><tr><td class="code"><pre><span class="line"><span class="meta">#!/bin/bash</span></span><br><span class="line"></span><br><span class="line"><span class="keyword">for</span> i <span class="keyword">in</span> &#123;0000..9999&#125;; <span class="keyword">do</span></span><br><span class="line">        <span class="built_in">echo</span> <span class="variable">$i</span></span><br><span class="line">        <span class="built_in">printf</span> <span class="string">&quot;%s %s\n&quot;</span> <span class="string">&quot;VAfGXJ1PBSsPSnvsjI8p759leLZ9GGar&quot;</span> <span class="string">&quot;<span class="variable">$i</span>&quot;</span></span><br><span class="line"><span class="keyword">done</span></span><br><span class="line"></span><br><span class="line"><span class="built_in">exit</span> 0</span><br><span class="line"></span><br></pre></td></tr></table></figure>
-
-<p>除了语法上微小的一点差异，该题的<code>syntax</code>和<code>C</code>的语法很相像，所以不赘述了。</p>
-<p>大致格式就是<code>for [ test statement]; do &lt;command&gt;; done</code></p>
-<p>编辑结束按<code>ESC</code>键回到普通模式，按<code>:</code>,然后输入指令<code>wq</code>，回车保存并退出。</p>
-<p>执行<code>script.sh</code>，并把结果<code>pipe</code>到<code>netcat</code>:</p>
-<figure class="highlight bash"><table><tr><td class="code"><pre><span class="line">./script.sh | nc localhost 30002 &gt; output.txt</span><br></pre></td></tr></table></figure>
-
-<p>然后<code>cat output.txt</code>读取文本内容，这是其中的一小部分：</p>
-<pre>
-        Fail! You did not supply enough data. Try again.
-        Wrong! Please enter the correct pincode. Try again.
-        Fail! You did not supply enough data. Try again.
-        Wrong! Please enter the correct pincode. Try again.
-        Fail! You did not supply enough data. Try again.
-        Wrong! Please enter the correct pincode. Try again.
-        Fail! You did not supply enough data. Try again.
-        Wrong! Please enter the correct pincode. Try again.
-        Fail! You did not supply enough data. Try again.
-        Wrong! Please enter the correct pincode. Try again.
-        Fail! You did not supply enough data. Try again.
-        Wrong! Please enter the correct pincode. Try again.
-        Fail! You did not supply enough data. Try again.
-        Wrong! Please enter the correct pincode. Try again.
-        Fail! You did not supply enough data. Try again.
-        Wrong! Please enter the correct pincode. Try again.
-        Fail! You did not supply enough data. Try again.
-        Correct!
-        The password of user bandit25 is p7TaowMYrmu23Ol8hiZh9UvD0O9hpx8d
-
-        Exiting.
-</pre>
-
-]]></content>
-      <tags>
-        <tag>Bash</tag>
-        <tag>CTF</tag>
-        <tag>OverTheWire</tag>
-        <tag>Bandit</tag>
       </tags>
   </entry>
   <entry>
@@ -1550,6 +1255,227 @@ S: 221 /0:0:0:0:0:0:0:1 Service closing transmission channel
       </tags>
   </entry>
   <entry>
+    <title>如何使用 GitHub Pages 托管 Hexo 静态博客网站</title>
+    <url>/2023/04/22/%E5%A6%82%E4%BD%95%E4%BD%BF%E7%94%A8%20GitHub%20Pages%20%E6%89%98%E7%AE%A1%20Hexo%20%E9%9D%99%E6%80%81%E5%8D%9A%E5%AE%A2%E7%BD%91%E7%AB%99/</url>
+    <content><![CDATA[<p>– <strong>请先阅读 <a href="/2023/04/22/%E4%BD%BF%E7%94%A8%20Hexo%20%E7%94%9F%E6%88%90%E9%9D%99%E6%80%81%E7%BD%91%E9%A1%B5%E5%8D%9A%E5%AE%A2/index.html">使用 Hexo 生成静态网页博客</a>！</strong></p>
+<h3 id="准备工作"><a href="#准备工作" class="headerlink" title="准备工作"></a>准备工作</h3><p>首先，我们基于完成的博客<code>.md</code>文件生成静态网页：</p>
+<figure class="highlight bash"><table><tr><td class="code"><pre><span class="line"><span class="built_in">cd</span> /path/to/site/</span><br><span class="line"><span class="comment"># 跑到项目路径目录</span></span><br><span class="line"></span><br><span class="line">hexo generate</span><br><span class="line"><span class="comment"># 生成静态网页，存放与 public 文件夹内</span></span><br></pre></td></tr></table></figure>
+
+<p>接着，我们进入<code>public</code>文件夹。</p>
+<pre><code>.
+├── node_modules
+├── public
+├── scaffolds
+├── source
+└── themes
+</code></pre>
+<p>因为我们是使用 GitHub Pages 托管，所以我们需要在<code>public</code>文件夹内初始化<code>git</code>：</p>
+<figure class="highlight bash"><table><tr><td class="code"><pre><span class="line">git init</span><br><span class="line"></span><br><span class="line">git branch -m main</span><br><span class="line"></span><br><span class="line">git add .</span><br><span class="line"></span><br><span class="line">git commit -m <span class="string">&quot;初始化工作&quot;</span></span><br></pre></td></tr></table></figure>
+
+<p>其次，我们还需要在 GitHub 上面建立一个远程仓库，格式<strong>必须</strong>为<code>username.github.io</code>，这是硬性要求。</p>
+<h3 id="关联和发布"><a href="#关联和发布" class="headerlink" title="关联和发布"></a>关联和发布</h3><p>我们现在需要关联本地仓库和远程仓库，用例中我们使用<code>https</code>协议，当然也可以使用<code>ssh</code>密钥：</p>
+<figure class="highlight bash"><table><tr><td class="code"><pre><span class="line">git remote add origin https://github.com/username/username.github.io.git</span><br><span class="line"></span><br><span class="line">git push origin main</span><br></pre></td></tr></table></figure>
+
+<p>我们还需要更改一下远程仓库的 GitHub Pages 的设置，目的是告知它托管文件的地址：</p>
+<div style="display: block; margin-left: auto; margin-right: auto; text-align: center; font-size: 1rem;">
+  
+<p>  <img src="/2023/04/22/%E5%A6%82%E4%BD%95%E4%BD%BF%E7%94%A8%20GitHub%20Pages%20%E6%89%98%E7%AE%A1%20Hexo%20%E9%9D%99%E6%80%81%E5%8D%9A%E5%AE%A2%E7%BD%91%E7%AB%99/images/0001.png" alt="点击 Settings" title="点击 Settings"></p>
+  <div>点击 Settings</div>
+  <br>
+
+<p>  <img src="/2023/04/22/%E5%A6%82%E4%BD%95%E4%BD%BF%E7%94%A8%20GitHub%20Pages%20%E6%89%98%E7%AE%A1%20Hexo%20%E9%9D%99%E6%80%81%E5%8D%9A%E5%AE%A2%E7%BD%91%E7%AB%99/images/0002.png" alt="点击 Pages" title="点击 Pages"></p>
+  <div>点击 Pages</div>
+  <br>
+
+<p>  <img src="/2023/04/22/%E5%A6%82%E4%BD%95%E4%BD%BF%E7%94%A8%20GitHub%20Pages%20%E6%89%98%E7%AE%A1%20Hexo%20%E9%9D%99%E6%80%81%E5%8D%9A%E5%AE%A2%E7%BD%91%E7%AB%99/images/0003.png" alt="修改设置" title="修改设置"></p>
+  <div>修改设置</div>
+  <br>
+
+</div>
+
+<p>最后，我们访问<code>username.github.io</code>就可以来到我们的博客页了 :)</p>
+]]></content>
+      <tags>
+        <tag>Hexo</tag>
+        <tag>GitHub Pages</tag>
+        <tag>Git</tag>
+      </tags>
+  </entry>
+  <entry>
+    <title>如何生成项目树状结构图</title>
+    <url>/2023/04/22/%E5%A6%82%E4%BD%95%E7%94%9F%E6%88%90%E9%A1%B9%E7%9B%AE%E6%A0%91%E7%8A%B6%E7%BB%93%E6%9E%84%E5%9B%BE/</url>
+    <content><![CDATA[<h3 id="Prerequisites"><a href="#Prerequisites" class="headerlink" title="Prerequisites"></a>Prerequisites</h3><ul>
+<li><p>Install <code>tree</code> command via Homebrew by running <code>brew install tree</code></p>
+</li>
+<li><p>run <code>brew</code> to check if Homebrew is currently installed on your computer</p>
+</li>
+<li><p>if not, run the following to install Homebrew:</p>
+</li>
+</ul>
+<figure class="highlight bash"><table><tr><td class="code"><pre><span class="line">$ /bin/bash -c <span class="string">&quot;<span class="subst">$(curl -fsSL https://raw.githubusercontent.com/Homebrew/install/HEAD/install.sh)</span>&quot;</span></span><br></pre></td></tr></table></figure>
+
+<h3 id="Basic-Syntax"><a href="#Basic-Syntax" class="headerlink" title="Basic Syntax"></a>Basic Syntax</h3><figure class="highlight bash"><table><tr><td class="code"><pre><span class="line">tree [directory-path]</span><br></pre></td></tr></table></figure>
+
+<blockquote>
+<p><code>[directory-path]</code> is an optional argument that specifies the directory you want to display as a tree structure. If you don’t specify a directory path, tree will display the tree structure for the current directory.</p>
+</blockquote>
+<p>Here are some useful options you can add to the tree command:</p>
+<blockquote>
+<p><code>-L</code> <code>[level]</code>: Limit the depth of the tree to <code>[level]</code> directories.</p>
+</blockquote>
+<blockquote>
+<p><code>-I</code> <code>[pattern]</code>: Exclude files and directories that match the <code>[pattern]</code>.</p>
+</blockquote>
+<blockquote>
+<p><code>-P</code> <code>[pattern]</code>: <code>[pattern]</code> is used to match files or directories that you want to include in the output.</p>
+</blockquote>
+<blockquote>
+<p><code>-a</code>: Show hidden files and directories.</p>
+</blockquote>
+<blockquote>
+<p><code>-f</code>: Print the full path prefix for each file or directory.</p>
+</blockquote>
+<blockquote>
+<p><code>-h</code>: Print the size of each file or directory in a human-readable format.</p>
+</blockquote>
+<h3 id="Example"><a href="#Example" class="headerlink" title="Example"></a>Example</h3><figure class="highlight bash"><table><tr><td class="code"><pre><span class="line">$ tree -L 1 -P <span class="string">&quot;source/*&quot;</span> -I <span class="string">&quot;_drafts|_pages&quot;</span> <span class="built_in">source</span></span><br><span class="line"></span><br><span class="line"><span class="built_in">source</span></span><br><span class="line">└── _posts</span><br><span class="line"></span><br><span class="line">2 directories, 0 files</span><br></pre></td></tr></table></figure>
+
+<blockquote>
+<p>You can omit the report on the last line with option <code>--noreport</code> if it bothers you.</p>
+</blockquote>
+]]></content>
+      <tags>
+        <tag>Bash</tag>
+        <tag>CLI</tag>
+        <tag>File Systems</tag>
+      </tags>
+  </entry>
+  <entry>
+    <title>软件工程 第一周的博客</title>
+    <url>/2023/03/22/%E8%BD%AF%E4%BB%B6%E5%B7%A5%E7%A8%8B%20%E7%AC%AC%E4%B8%80%E5%91%A8%E7%9A%84%E5%8D%9A%E5%AE%A2/</url>
+    <content><![CDATA[<h3 id="使用Git-VCS的一些小技巧"><a href="#使用Git-VCS的一些小技巧" class="headerlink" title="使用Git VCS的一些小技巧"></a><em>使用Git VCS的一些小技巧</em></h3><p>初始化步骤我就大段省略了，大致就是去 Git 官网下载 Binary Dependencies 然后安装就好了，或者是去安装<code>xcode-command-line-tools</code>，其中<code>git</code>自动包含在里面了。</p>
+<p>说白了 Git 就是一个 Distributional VCS ，大体就是结合了 Local VCS和Centralized VCS，因此基本步骤就是本地建立一个 Local Repository，再在 Gitea 上建立一个 Remote Repository，然后把两个库连接一下，最后把本地的改动<code>push</code>到 Remote Repository 就可以了。</p>
+<p>先说如何建 Local Repository。</p>
+<p>选一处“风水宝地”，一般选择<code>/User/home</code>。然后跑到系统默认的 Terminal Emulator 去（ Windows：PowerShell ），输入一下指令：</p>
+<figure class="highlight bash"><table><tr><td class="code"><pre><span class="line"><span class="built_in">mkdir</span> temp <span class="comment"># 建立temp</span></span><br><span class="line"></span><br><span class="line"><span class="built_in">cd</span> temp <span class="comment"># 进入</span></span><br><span class="line"></span><br><span class="line">git init <span class="comment"># 初始化 Local Repository</span></span><br><span class="line"></span><br></pre></td></tr></table></figure>
+
+<p>做完最后一步会看到 Git 生成了一个<code>.git</code>的隐藏文件夹。千万不要把自己的项目文件扔进去！</p>
+<p>初始化完成后，你就可以开始做项目了。等你做完第一个版本，你就可以把项目<code>add</code>到<code>staging area</code>。用如下指令：</p>
+<figure class="highlight bash"><table><tr><td class="code"><pre><span class="line">git add file.. <span class="comment"># add 后可以加入多个文件</span></span><br></pre></td></tr></table></figure>
+
+<p>然后用<code>git status</code>查看 Local Repository 的状态。如果你看到所有想要<code>staged</code>的文件已经在<code>staging area</code>里面了，就可以上传了。</p>
+<blockquote>
+<p>eg:</p>
+</blockquote>
+<figure class="highlight bash"><table><tr><td class="code"><pre><span class="line">git commit -m “message<span class="string">&quot;</span></span><br></pre></td></tr></table></figure>
+
+<p>最后，我们需要创建一个 Remote Repository，过程如下：</p>
+<figure class="highlight bash"><table><tr><td class="code"><pre><span class="line">git remote add origin git@example.git</span><br></pre></td></tr></table></figure>
+
+<p>然后，我们<code>push</code> Local Repo 到 Remote Repository，过程如下：</p>
+<figure class="highlight bash"><table><tr><td class="code"><pre><span class="line">git push origin temp</span><br></pre></td></tr></table></figure>]]></content>
+      <tags>
+        <tag>Bash</tag>
+        <tag>Git</tag>
+        <tag>CLI</tag>
+        <tag>File Systems</tag>
+      </tags>
+  </entry>
+  <entry>
+    <title>悬浮的世代与消亡的常识</title>
+    <url>/2026/04/07/%E6%82%AC%E6%B5%AE%E7%9A%84%E4%B8%96%E4%BB%A3%E4%B8%8E%E6%B6%88%E4%BA%A1%E7%9A%84%E5%B8%B8%E8%AF%86/</url>
+    <content><![CDATA[<p>近来，关于天朝二三线城市年轻人的讨论颇多。从表面上看，他们是不再困于温饱的一代，享受着比乡村更好的物质条件，每天在互联网和流媒体的碎片信息中浸泡。但令人困惑的是，这种物质的改善与技术的普及，并没有带来精神世界的开放。相反，在一个缺乏真实国际视野的半封闭生态里，滋生出了一种极其吊诡的群体性格——既盲目自大，又在道德上极度“双标”。</p>
+<p>如果你用现代文明的常识去审视，这种现象其实并不突兀，它恰恰是天朝这几十年来社会工程结出的必然之果。互联网在这里并没有成为接轨世界的桥梁，反而成了算法圈养和宏大叙事洗脑的围栏。在这个信息茧房里，缺乏跨文化现实碰撞的年轻人，很容易把无知当个性，习惯于站在道德制高点上去审视他人，却对自身的行为毫无底线。这种“严以待人、宽以律己”的狂欢，本质上是传统熟人社会解体后，现代公民责任未能建立而留下的道德真空。</p>
+<p>更有意思的是，抛开当下经济下行的现实压力不谈，这代人对结婚生子表现出了前所未有的排斥。他们热衷于当下的“快活”，对所谓延续家族和抚养后代的使命感嗤之以鼻。</p>
+<p>这其实是一场历史的宿命。正如我们常看到的，天朝有着极强的“控制能力”，却极度缺乏现代意义上的“治理能力”。为了建立这种自上而下的绝对控制，官府自建政以来，通过连番的政治运动，系统性地摧毁了以家族、乡绅和儒家伦理为基础的传统民间自治结构。那些曾经维系中国人精神内核的“传统美德”，早就在权力的碾盘下化为齑粉。</p>
+<p>紧接着，长达三十多年的计划生育政策，又从微观上彻底重塑了家庭。一个从小被视为绝对中心、习惯了单向索取的“原子化”个体，怎么可能在成年后，突然生出牺牲自我、去承担繁衍责任的使命感？</p>
+<p>所以，当我们看到这些以自我为中心、拒绝生育、精神世界高度封闭的年轻人时，不能仅仅归咎于个人的自私。这是制度与国民互为因果的绝佳样本。他们失去了传统宗族社会的敬畏心，又被阻挡在现代公民文明的门外；他们被剥夺了历史的厚重感，最终只能在消费主义的奶嘴中寻找虚无的寄托。</p>
+<p>这一切，或许正是那个反常识的体制，在狂飙突进几十年后，不得不面对的社会残局。</p>
+]]></content>
+      <tags>
+        <tag>Life</tag>
+      </tags>
+  </entry>
+  <entry>
+    <title>软件工程 第三周的博客</title>
+    <url>/2023/04/07/%E8%BD%AF%E4%BB%B6%E5%B7%A5%E7%A8%8B%20%E7%AC%AC%E4%B8%89%E5%91%A8%E7%9A%84%E5%8D%9A%E5%AE%A2/</url>
+    <content><![CDATA[<h2 id="简要概述-CTF-OverTheWire-Bandit-Level-24"><a href="#简要概述-CTF-OverTheWire-Bandit-Level-24" class="headerlink" title="简要概述 CTF OverTheWire Bandit Level 24"></a><em>简要概述 CTF OverTheWire Bandit Level 24</em></h2><h3 id="题目"><a href="#题目" class="headerlink" title="题目"></a><em>题目</em></h3><blockquote>
+<p>在端口 30002 上有一个守护进程正在监听，如果提供了 bandit24 的密码和一个秘密的 4 位数的数字密码，它将为您提供 bandit25 的密码。除了通过穷举全部 10000 种组合的方式以外，没有其他获得 pincode 的方法，这被称为暴力破解。</p>
+</blockquote>
+<p>大致思路如下：</p>
+<ul>
+<li>先写一个<code>script</code>，按要求进行排版输出到<code>stdout</code></li>
+<li>把输出的 10000 种组合<code>pipe</code>到<code>netcat</code>监视的<code>localhost:30002</code>进行测试</li>
+<li>直接输出到<code>stdout</code>可能会<code>timeout</code>打断进程，所以我们输出到<code>output.txt</code></li>
+<li>最后<code>cat</code>文本内容拿到密码</li>
+</ul>
+<p>先利用<code>ssh</code>连接到<code>bandit.labs.overthewire.org</code>的服务器，端口号<code>2220</code>，为此我们需要<code>bandit24</code>的密码。</p>
+<figure class="highlight bash"><table><tr><td class="code"><pre><span class="line">ssh bandit24@bandit.labs.overthewire.org -p 2220</span><br><span class="line"><span class="comment">#					VAfGXJ1PBSsPSnvsjI8p759leLZ9GGar</span></span><br></pre></td></tr></table></figure>
+
+<p>以<code>bandit24</code>进入 Level 24 之后先到系统文件夹<code>/tmp</code>下建立本关的临时文件夹。</p>
+<figure class="highlight bash"><table><tr><td class="code"><pre><span class="line"><span class="built_in">cd</span> /tmp; <span class="built_in">mktemp</span> -d</span><br><span class="line"></span><br><span class="line"><span class="comment"># /tmp/tmp.u4oQlmpmWL</span></span><br><span class="line"></span><br><span class="line"><span class="built_in">cd</span> /tmp/tmp.u4oQlmpmWL</span><br><span class="line"></span><br><span class="line"><span class="comment"># bandit24@bandit:/tmp/tmp.u4oQlmpmWL$</span></span><br></pre></td></tr></table></figure>
+
+<blockquote>
+<p><code>-d</code>代表<code>directory</code>，即告诉<code>mktemp</code>指令创建的临时文件属性为文件夹</p>
+</blockquote>
+<figure class="highlight bash"><table><tr><td class="code"><pre><span class="line"><span class="built_in">touch</span> script.sh</span><br><span class="line"></span><br><span class="line"><span class="built_in">chmod</span> 777 script.sh</span><br><span class="line"></span><br><span class="line">vim script.sh</span><br></pre></td></tr></table></figure>
+
+<blockquote>
+<p><code>touch</code>: 创建文件</p>
+</blockquote>
+<blockquote>
+<p><code>chmod</code> - <code>change mode</code>: 改变文档<code>rwx</code>权限</p>
+</blockquote>
+<ul>
+<li><code>r</code> - <code>read</code>: 读取权限<code>status code</code>为 4</li>
+<li><code>w</code> - <code>write</code>: 书写权限<code>status code</code>为 2</li>
+<li><code>x</code> - <code>execute</code>: 执行权限<code>status code</code>为 1</li>
+</ul>
+<p>进入文本编辑器之后，选定”插入“模式，按<code>i</code>键</p>
+<p>首行书写<code>shebang</code>行，选定使用哪个<code>shell</code>来执行该<code>script</code> - 我们选用<code>bash</code></p>
+<p>然后写我们的<code>entity body</code>的代码：</p>
+<figure class="highlight bash"><table><tr><td class="code"><pre><span class="line"><span class="meta">#!/bin/bash</span></span><br><span class="line"></span><br><span class="line"><span class="keyword">for</span> i <span class="keyword">in</span> &#123;0000..9999&#125;; <span class="keyword">do</span></span><br><span class="line">        <span class="built_in">echo</span> <span class="variable">$i</span></span><br><span class="line">        <span class="built_in">printf</span> <span class="string">&quot;%s %s\n&quot;</span> <span class="string">&quot;VAfGXJ1PBSsPSnvsjI8p759leLZ9GGar&quot;</span> <span class="string">&quot;<span class="variable">$i</span>&quot;</span></span><br><span class="line"><span class="keyword">done</span></span><br><span class="line"></span><br><span class="line"><span class="built_in">exit</span> 0</span><br><span class="line"></span><br></pre></td></tr></table></figure>
+
+<p>除了语法上微小的一点差异，该题的<code>syntax</code>和<code>C</code>的语法很相像，所以不赘述了。</p>
+<p>大致格式就是<code>for [ test statement]; do &lt;command&gt;; done</code></p>
+<p>编辑结束按<code>ESC</code>键回到普通模式，按<code>:</code>,然后输入指令<code>wq</code>，回车保存并退出。</p>
+<p>执行<code>script.sh</code>，并把结果<code>pipe</code>到<code>netcat</code>:</p>
+<figure class="highlight bash"><table><tr><td class="code"><pre><span class="line">./script.sh | nc localhost 30002 &gt; output.txt</span><br></pre></td></tr></table></figure>
+
+<p>然后<code>cat output.txt</code>读取文本内容，这是其中的一小部分：</p>
+<pre>
+        Fail! You did not supply enough data. Try again.
+        Wrong! Please enter the correct pincode. Try again.
+        Fail! You did not supply enough data. Try again.
+        Wrong! Please enter the correct pincode. Try again.
+        Fail! You did not supply enough data. Try again.
+        Wrong! Please enter the correct pincode. Try again.
+        Fail! You did not supply enough data. Try again.
+        Wrong! Please enter the correct pincode. Try again.
+        Fail! You did not supply enough data. Try again.
+        Wrong! Please enter the correct pincode. Try again.
+        Fail! You did not supply enough data. Try again.
+        Wrong! Please enter the correct pincode. Try again.
+        Fail! You did not supply enough data. Try again.
+        Wrong! Please enter the correct pincode. Try again.
+        Fail! You did not supply enough data. Try again.
+        Wrong! Please enter the correct pincode. Try again.
+        Fail! You did not supply enough data. Try again.
+        Correct!
+        The password of user bandit25 is p7TaowMYrmu23Ol8hiZh9UvD0O9hpx8d
+
+        Exiting.
+</pre>
+
+]]></content>
+      <tags>
+        <tag>Bash</tag>
+        <tag>CTF</tag>
+        <tag>OverTheWire</tag>
+        <tag>Bandit</tag>
+      </tags>
+  </entry>
+  <entry>
     <title>软件工程 第二周的博客</title>
     <url>/2023/03/29/%E8%BD%AF%E4%BB%B6%E5%B7%A5%E7%A8%8B%20%E7%AC%AC%E4%BA%8C%E5%91%A8%E7%9A%84%E5%8D%9A%E5%AE%A2/</url>
     <content><![CDATA[<h3 id="使用-Node-js-的-Express-js-模组-Host-自己的静态网页"><a href="#使用-Node-js-的-Express-js-模组-Host-自己的静态网页" class="headerlink" title="使用 Node.js 的 Express.js 模组 Host 自己的静态网页"></a><em>使用 Node.js 的 Express.js 模组 Host 自己的静态网页</em></h3><p>首先创建项目文件夹:</p>
@@ -1589,6 +1515,95 @@ S: 221 /0:0:0:0:0:0:0:1 Service closing transmission channel
         <tag>JavaScript</tag>
         <tag>Node.js</tag>
         <tag>Express.js</tag>
+      </tags>
+  </entry>
+  <entry>
+    <title>[Fix] Failed to mount /mnt/share</title>
+    <url>/2023/04/27/%5BFix%5D%20Failed%20to%20mount%20:mnt:share/</url>
+    <content><![CDATA[<h3 id="Solution"><a href="#Solution" class="headerlink" title="Solution"></a>Solution</h3><p>Our fix to the problem is to remove <code>/mnt/share</code> entirely and mount something else in its place.</p>
+<p>This is the portion of the startup process which showed the error:</p>
+<pre><code>[FAILED] Failed to mount /mnt/share.
+See &#39;systemctl status mnt-share.mount&#39; for details
+</code></pre>
+<p>By the way, this post is for those who followed <a href="/2023/04/26/Mounting-a-Shared-folder-on-ArchLinux-VM/#Rollback">my last tutorial</a> on using Samba service to mount a shared directory on ArchLinux VM.</p>
+<h3 id="Check-mount-unit-status"><a href="#Check-mount-unit-status" class="headerlink" title="Check mount unit status"></a>Check mount unit status</h3><p>We’ll start by following the instruction to check the status of the mount unit by running the suggested command:</p>
+<figure class="highlight bash"><table><tr><td class="code"><pre><span class="line">systemctl status mnt-share.mount</span><br></pre></td></tr></table></figure>
+
+<p>This will give us more information about the specific error that occurred.</p>
+<pre><code>Warning: The unit file, source configuration file or drop-ins of mnt-share.moun&gt;
+x mnt-share.mount - /mnt/share
+     Loaded: loaded (/etc/fstab; generated)
+     Active: failed (Result: exit-code) since Thu 2023-04-27 02:45:46 UTC; 40mi&gt;
+      Where: /mnt/share
+       What: //localhost/share
+       Docs: man:fstab(5)
+             man:systemd-fstab-generator(8)
+        CPU: 28ms
+
+Apr 27 02:45:46 alarm systemd[1]: Mounting /mnt/share...
+Apr 27 02:45:46 alarm mount[379]: mount error(111): could not connect to ::1mou&gt;
+Apr 27 02:45:46 alarm systemd[1]: mnt-share.mount: Mount process exited, code=e&gt;
+Apr 27 02:45:46 alarm systemd[1]: mnt-share.mount: Failed with result &#39;exit-cod&gt;
+Apr 27 02:45:46 alarm systemd[1]: Failed to mount /mnt/share.
+</code></pre>
+<h3 id="Side-Content"><a href="#Side-Content" class="headerlink" title="Side Content"></a>Side Content</h3><h4 id="Check-file-system-properties"><a href="#Check-file-system-properties" class="headerlink" title="Check file system properties"></a>Check file system properties</h4><p>Since we’ve decided to remove the mount <code>/mnt/share</code> instead of trying to fix it, we shall proceed to learn a little about how to mount a disk. For instance, if we want to mount an NTFS file system and ensure that the file system is accessible and error-free, we can use the following command to check it for errors:</p>
+<figure class="highlight bash"><table><tr><td class="code"><pre><span class="line"><span class="built_in">sudo</span> pacman -S ntfs-3g</span><br><span class="line"></span><br><span class="line"><span class="comment">#  Install the `ntfs-3g` package which provides the `ntfsfix` tool.</span></span><br><span class="line"></span><br><span class="line"><span class="built_in">sudo</span> ntfsfix /dev/sda1</span><br><span class="line"></span><br><span class="line"><span class="comment"># Replace `/dev/sda1` with the appropriate device and partition.</span></span><br></pre></td></tr></table></figure>
+
+<p>If the virtual hard disk has multiple partitions, we’ll need to determine which partition contains the NTFS file system we want to mount. Oftentimes we use the <code>lsblk</code> command to list the available storage devices and their partitions, and the <code>blkid</code> command to list the UUIDs of the partitions.</p>
+<pre><code>$ lsblk
+NAME   MAJ:MIN RM  SIZE RO TYPE MOUNTPOINTS
+sr0     11:0    1 1024M  0 rom  
+vda    253:0    0  9.8G  0 disk 
+|-vda1 253:1    0  200M  0 part /boot
+`-vda2 253:2    0  9.6G  0 part /
+</code></pre>
+<p>In my case, the virtual machine has a single virtual hard disk, which is identified as <code>/dev/vda</code>. This virtual hard disk has two partitions, <code>/dev/vda1</code> and <code>/dev/vda2</code>, which are mounted at <code>/boot</code> and <code>/</code>, respectively.</p>
+<p><code>/dev/vda1</code> is a 200MB partition formatted as a Linux file system such as <code>ext4</code> or <code>xfs</code>, and contains the kernel and other boot files.</p>
+<p><code>/dev/vda2</code> is a 9.6GB partition also formatted as a Linux file system, and contains the root file system for the Arch Linux operating system.</p>
+<h4 id="Mount-NTFS-file-system"><a href="#Mount-NTFS-file-system" class="headerlink" title="Mount NTFS file system"></a>Mount NTFS file system</h4><p>If we want to mount an additional NTFS file system on our virtual machine, we can create a new directory to use as the mount point, such as <code>/mnt/ntfs</code>, and then add an entry to the <code>/etc/fstab</code> file to mount the NTFS file system at that mount point.</p>
+<p>For example, if the NTFS file system is located on <code>/dev/vda3</code>, we can add the following line to the <code>/etc/fstab</code> file:</p>
+<figure class="highlight bash"><table><tr><td class="code"><pre><span class="line">/dev/vda3 /mnt/ntfs ntfs-3g defaults 0 0</span><br></pre></td></tr></table></figure>
+
+<p>Or if you’ve run <code>blkid</code> and looked up the UUID of the file system you wanted to mount, you can also swap the line above for the following one:</p>
+<figure class="highlight bash"><table><tr><td class="code"><pre><span class="line">UUID=12345678-1234-1234-1234-1234567890ab /mnt/ntfs ntfs-3g defaults 0 0</span><br><span class="line"></span><br><span class="line"><span class="comment"># Pretend for a sec that the UUID of `/dev/vda3` is &quot;12345678-1234-1234-1234-1234567890ab&quot;</span></span><br></pre></td></tr></table></figure>
+
+<p>After adding the entry to the <code>/etc/fstab</code> file, we need to run <code>sudo mount -a</code>. This should mount the NTFS file system at the specified mount point, and the mount point should be automatically mounted at boot time.</p>
+<h4 id="Remove-Samba-entries"><a href="#Remove-Samba-entries" class="headerlink" title="Remove Samba entries"></a>Remove Samba entries</h4><p>Edit Samba’s configuration file <code>/etc/samba/smb.conf</code> and remove everything in the <code>[mnt]</code> field.</p>
+<p>Then, navigate to <code>/etc/fstab</code> and comment out anything associated with <code>/mnt/share</code>:</p>
+<pre><code># share /mnt/share 9p trans=virtio,nofail 0 0
+# //localhost/share /mnt/share cifs user=mccranky,password=Rogue12 0 0
+</code></pre>
+<p>Since we’ve already removed Samba service on our machine, we have no need of checking whether if the mount options specified in the mount unit are correct. But if you haven’t removed it yet, feel free to edit the mount unit file located at <code>/etc/systemd/system/mnt-share.mount</code> and modify the mount options.</p>
+<p>Remove the mount unit for <code>/mnt/share</code>:</p>
+<figure class="highlight bash"><table><tr><td class="code"><pre><span class="line"><span class="built_in">sudo</span> <span class="built_in">rm</span> /etc/systemd/system/mnt-share.mount</span><br></pre></td></tr></table></figure>
+
+<p>Reload the systemd daemon to ensure that the changes take effect:</p>
+<figure class="highlight bash"><table><tr><td class="code"><pre><span class="line"><span class="built_in">sudo</span> systemctl daemon-reload</span><br></pre></td></tr></table></figure>
+
+<p>When we check the status of <code>mnt-share.mount</code>, we should get:</p>
+<pre><code> $ sudo systemctl status mnt-share.mount
+x mnt-share.mount
+     Loaded: not-found (Reason: Unit mnt-share.mount not found.)
+     Active: failed (Result: exit-code) since Thu 2023-04-27 02:45:46 UTC; 1h 5&gt;
+        CPU: 28ms
+
+Apr 27 02:45:46 alarm systemd[1]: Mounting /mnt/share...
+Apr 27 02:45:46 alarm mount[379]: mount error(111): could not connect to ::1mou&gt;
+Apr 27 02:45:46 alarm systemd[1]: mnt-share.mount: Mount process exited, code=e&gt;
+Apr 27 02:45:46 alarm systemd[1]: mnt-share.mount: Failed with result &#39;exit-cod&gt;
+Apr 27 02:45:46 alarm systemd[1]: Failed to mount /mnt/share.
+</code></pre>
+<p>Last we can finally run <code>sudo rm -r /mnt/share</code> to remove <code>/mnt/share</code> from our machine.</p>
+<p>Perfect! Now when we <code>reboot</code> again we should receive no errors.</p>
+]]></content>
+      <categories>
+        <category>Linux</category>
+        <category>ArchLinux</category>
+      </categories>
+      <tags>
+        <tag>ArchLinux</tag>
+        <tag>Virtual Machine</tag>
+        <tag>Issue</tag>
       </tags>
   </entry>
   <entry>
