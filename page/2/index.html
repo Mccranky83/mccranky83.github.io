@@ -152,7 +152,7 @@
   <nav class="site-state">
       <div class="site-state-item site-state-posts">
         <a href="/archives/">
-          <span class="site-state-item-count">36</span>
+          <span class="site-state-item-count">37</span>
           <span class="site-state-item-name">posts</span>
         </a>
       </div>
@@ -188,6 +188,105 @@
     </div>
 
     <div class="main-inner index posts-expand">
+
+    
+
+
+<div class="post-block">
+  
+  
+
+  <article itemscope itemtype="http://schema.org/Article" class="post-content" lang="">
+    <link itemprop="mainEntityOfPage" href="https://mccranky83.github.io/2023/06/08/Delete%20a%20superuser%20in%20Django/">
+
+    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
+      <meta itemprop="image" content="/images/icons8-dead-cells-1024.png">
+      <meta itemprop="name" content="Mccranky83">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="Mccranky's Blog">
+      <meta itemprop="description" content=""Bliss was it in that dawn to be alive But to be young was very heaven!"">
+    </span>
+
+    <span hidden itemprop="post" itemscope itemtype="http://schema.org/CreativeWork">
+      <meta itemprop="name" content="undefined | Mccranky's Blog">
+      <meta itemprop="description" content="">
+    </span>
+      <header class="post-header">
+        <h2 class="post-title" itemprop="name headline">
+          <a href="/2023/06/08/Delete%20a%20superuser%20in%20Django/" class="post-title-link" itemprop="url">Delete a superuser in Django</a>
+        </h2>
+
+        <div class="post-meta-container">
+          <div class="post-meta">
+    <span class="post-meta-item">
+      <span class="post-meta-item-icon">
+        <i class="far fa-calendar"></i>
+      </span>
+      <span class="post-meta-item-text">Posted on</span>
+      
+
+      <time title="Created: 2023-06-08 22:10:28 / Modified: 22:17:14" itemprop="dateCreated datePublished" datetime="2023-06-08T22:10:28-05:00">2023-06-08</time>
+    </span>
+    <span class="post-meta-item">
+      <span class="post-meta-item-icon">
+        <i class="far fa-folder"></i>
+      </span>
+      <span class="post-meta-item-text">In</span>
+        <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
+          <a href="/categories/Django/" itemprop="url" rel="index"><span itemprop="name">Django</span></a>
+        </span>
+    </span>
+
+  
+</div>
+
+        </div>
+      </header>
+
+    
+    
+    
+    <div class="post-body" itemprop="articleBody">
+          <p>To delete a superuser in Django, you can use the Django shell to query and delete the user model instance. Here are the steps to delete a superuser using the Django shell:</p>
+<ol>
+<li><p>Open a terminal and navigate to the root directory of your Django project.</p>
+</li>
+<li><p>Activate the virtual environment, if you are using one.</p>
+</li>
+<li><p>Run the following command to open the Django shell: <code>python manage.py shell</code>.</p>
+</li>
+<li><p>Import the User model by running the following command: <code>from django.contrib.auth.models import User</code>.</p>
+</li>
+<li><p>Query the User model for the superuser you want to delete using the <code>get()</code> method. For example, if the username of the superuser you want to delete is “admin”, you would run: <code>user = User.objects.get(username=&#39;admin&#39;)</code>.</p>
+</li>
+<li><p>Call the <code>delete()</code> method on the user instance to delete the superuser. For example, you would run: <code>user.delete()</code>.</p>
+</li>
+<li><p>Exit the Django shell by typing <code>exit()</code> or pressing <code>Ctrl+D</code>.</p>
+</li>
+</ol>
+<p>After following these steps, the superuser will be deleted from the Django project.</p>
+<p>It’s important to note that deleting a superuser will also delete all related data, such as blog posts or comments, if those models are related to the User model with a foreign key. If you want to preserve this data, you should first transfer ownership of the data to another user before deleting the superuser.</p>
+<p>Another way to delete a superuser is to use the Django admin. To do this, log in as a superuser in the Django admin, navigate to the “Users” section, and click the “Delete” button next to the superuser you want to delete. Confirm the deletion in the next screen.</p>
+<p>In summary, you can delete a superuser in Django by using the Django shell to query and delete the user model instance. Alternatively, you can use the Django admin to delete the superuser. Keep in mind that deleting a superuser will also delete any related data.</p>
+
+      
+    </div>
+
+    
+    
+    
+
+    <footer class="post-footer">
+        <div class="post-eof"></div>
+      
+    </footer>
+  </article>
+</div>
+
+
+
 
     
 
@@ -1141,91 +1240,6 @@ fetch-retry-maxtimeout = 300000
 </li>
 </ol>
 <p>Based on this, you would want to install <code>express-generator</code> using the <code>-g</code> flag as you will use it as a command line tool, but you’d want to install <code>express</code> without this flag as it’s a module you will want to <code>require()</code> it in your application.</p>
-
-      
-    </div>
-
-    
-    
-    
-
-    <footer class="post-footer">
-        <div class="post-eof"></div>
-      
-    </footer>
-  </article>
-</div>
-
-
-
-
-    
-
-
-<div class="post-block">
-  
-  
-
-  <article itemscope itemtype="http://schema.org/Article" class="post-content" lang="">
-    <link itemprop="mainEntityOfPage" href="https://mccranky83.github.io/2023/04/27/Immediately%20Executing%20Function%20Demo/">
-
-    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
-      <meta itemprop="image" content="/images/icons8-dead-cells-1024.png">
-      <meta itemprop="name" content="Mccranky83">
-    </span>
-
-    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
-      <meta itemprop="name" content="Mccranky's Blog">
-      <meta itemprop="description" content=""Bliss was it in that dawn to be alive But to be young was very heaven!"">
-    </span>
-
-    <span hidden itemprop="post" itemscope itemtype="http://schema.org/CreativeWork">
-      <meta itemprop="name" content="undefined | Mccranky's Blog">
-      <meta itemprop="description" content="">
-    </span>
-      <header class="post-header">
-        <h2 class="post-title" itemprop="name headline">
-          <a href="/2023/04/27/Immediately%20Executing%20Function%20Demo/" class="post-title-link" itemprop="url">Immediately Executing Function Demo</a>
-        </h2>
-
-        <div class="post-meta-container">
-          <div class="post-meta">
-    <span class="post-meta-item">
-      <span class="post-meta-item-icon">
-        <i class="far fa-calendar"></i>
-      </span>
-      <span class="post-meta-item-text">Posted on</span>
-      
-
-      <time title="Created: 2023-04-27 22:16:10 / Modified: 22:20:51" itemprop="dateCreated datePublished" datetime="2023-04-27T22:16:10-05:00">2023-04-27</time>
-    </span>
-    <span class="post-meta-item">
-      <span class="post-meta-item-icon">
-        <i class="far fa-folder"></i>
-      </span>
-      <span class="post-meta-item-text">In</span>
-        <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
-          <a href="/categories/JavaScript/" itemprop="url" rel="index"><span itemprop="name">JavaScript</span></a>
-        </span>
-    </span>
-
-  
-</div>
-
-        </div>
-      </header>
-
-    
-    
-    
-    <div class="post-body" itemprop="articleBody">
-          <p>The key aspect of this demo is that the utilization of an immediately executing function in JavaScript generates a fresh variable scope, which distinguishes it from <code>if</code>, <code>else</code>, and <code>while</code>. The code presented below exemplifies this fact.</p>
-<figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">var</span> foo = <span class="number">123</span></span><br><span class="line"></span><br><span class="line"><span class="keyword">if</span> (<span class="number">1</span>) &#123;</span><br><span class="line">    <span class="keyword">var</span> foo = <span class="number">456</span></span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line">(<span class="function"><span class="params">_</span> =&gt;</span> &#123;</span><br><span class="line">    <span class="keyword">var</span> foo = <span class="number">123</span></span><br><span class="line">&#125;)()</span><br><span class="line"></span><br><span class="line"><span class="variable language_">console</span>.<span class="title function_">log</span>(foo)</span><br><span class="line"></span><br></pre></td></tr></table></figure>
-
-<p>Output:</p>
-<pre><code>456
-</code></pre>
-<p>Notice how the function does not reset the value of variable <code>foo</code>? Now that’s something to be mindful of!</p>
 
       
     </div>
