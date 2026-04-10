@@ -1,6 +1,25 @@
 <?xml version="1.0" encoding="utf-8"?>
 <search>
   <entry>
+    <title>7-2-Java-基本语法-大整数相加</title>
+    <url>/2023/04/24/7-2-Java-%E5%9F%BA%E6%9C%AC%E8%AF%AD%E6%B3%95-%E5%A4%A7%E6%95%B4%E6%95%B0%E7%9B%B8%E5%8A%A0/</url>
+    <content><![CDATA[<h3 id="题目"><a href="#题目" class="headerlink" title="题目"></a>题目</h3><p>有若干大整数，需要对其进行求和操作。</p>
+<h3 id="输入格式"><a href="#输入格式" class="headerlink" title="输入格式"></a>输入格式</h3><p>每行输入一个字符串代表一个大整数，连续输入若干行，当某行字符为e或E时退出。</p>
+<h3 id="输入样例"><a href="#输入样例" class="headerlink" title="输入样例:"></a>输入样例:</h3><figure class="highlight plaintext"><table><tr><td class="code"><pre><span class="line">42846280183517070527831839425882145521227251250327</span><br><span class="line">55121603546981200581762165212827652751691296897789</span><br><span class="line">e</span><br></pre></td></tr></table></figure>
+
+<h3 id="输出样例"><a href="#输出样例" class="headerlink" title="输出样例:"></a>输出样例:</h3><figure class="highlight plaintext"><table><tr><td class="code"><pre><span class="line">97967883730498271109594004638709798272918548148116</span><br></pre></td></tr></table></figure>
+
+<h3 id="JavaScript"><a href="#JavaScript" class="headerlink" title="JavaScript"></a>JavaScript</h3><figure class="highlight javascript"><table><tr><td class="code"><pre><span class="line"><span class="keyword">const</span> readline = <span class="built_in">require</span>(<span class="string">&#x27;readline&#x27;</span>)</span><br><span class="line"><span class="keyword">const</span> rl = readline.<span class="title function_">createInterface</span>(&#123;</span><br><span class="line">    <span class="attr">input</span>: process.<span class="property">stdin</span>,</span><br><span class="line">    <span class="attr">output</span>: process.<span class="property">stdout</span></span><br><span class="line">&#125;)</span><br><span class="line"></span><br><span class="line"><span class="keyword">let</span> sum = <span class="title class_">BigInt</span>(<span class="number">0</span>)</span><br><span class="line"></span><br><span class="line">rl.<span class="title function_">on</span>(<span class="string">&#x27;line&#x27;</span>, <span class="function"><span class="params">line</span> =&gt;</span> &#123;</span><br><span class="line">    <span class="keyword">if</span> (!line.<span class="title function_">localeCompare</span>(<span class="string">&quot;e&quot;</span>, <span class="literal">undefined</span>, &#123; <span class="attr">sensitivity</span>: <span class="string">&quot;base&quot;</span> &#125;)) &#123;</span><br><span class="line">        <span class="variable language_">console</span>.<span class="title function_">log</span>(sum.<span class="title function_">toString</span>())</span><br><span class="line">        rl.<span class="title function_">close</span>()</span><br><span class="line">    &#125; <span class="keyword">else</span> &#123;</span><br><span class="line">        sum += <span class="title class_">BigInt</span>(line)</span><br><span class="line">    &#125;</span><br><span class="line">&#125;)</span><br></pre></td></tr></table></figure>
+
+<h3 id="Java"><a href="#Java" class="headerlink" title="Java"></a>Java</h3><figure class="highlight java"><table><tr><td class="code"><pre><span class="line"><span class="keyword">import</span> java.util.Scanner;</span><br><span class="line"><span class="keyword">import</span> java.math.BigInteger;</span><br><span class="line"></span><br><span class="line"><span class="keyword">public</span> <span class="keyword">class</span> <span class="title class_">Main</span> &#123;</span><br><span class="line">    <span class="keyword">public</span> <span class="keyword">static</span> <span class="keyword">void</span> <span class="title function_">main</span> <span class="params">(String[] args)</span> &#123;</span><br><span class="line">        <span class="type">Scanner</span> <span class="variable">scanner</span> <span class="operator">=</span> <span class="keyword">new</span> <span class="title class_">Scanner</span>(System.in);</span><br><span class="line">        <span class="type">BigInteger</span> <span class="variable">sum</span> <span class="operator">=</span> BigInteger.ZERO;</span><br><span class="line"></span><br><span class="line">        <span class="keyword">while</span> (scanner.hasNextLine()) &#123;</span><br><span class="line">            <span class="type">String</span> <span class="variable">line</span> <span class="operator">=</span> scanner.nextLine();</span><br><span class="line">            <span class="keyword">if</span> (line.equalsIgnoreCase(<span class="string">&quot;e&quot;</span>)) &#123;</span><br><span class="line">                System.out.println(sum.toString());</span><br><span class="line">                <span class="keyword">break</span>;</span><br><span class="line">            &#125; <span class="keyword">else</span> &#123;</span><br><span class="line">                sum = sum.add(<span class="keyword">new</span> <span class="title class_">BigInteger</span>(line));</span><br><span class="line">            &#125;</span><br><span class="line">        &#125;</span><br><span class="line">        scanner.close();</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>]]></content>
+      <tags>
+        <tag>Java</tag>
+        <tag>JavaScript</tag>
+        <tag>BigInt</tag>
+        <tag>readline</tag>
+      </tags>
+  </entry>
+  <entry>
     <title>C++ Pointers</title>
     <url>/2023/04/29/C++%20Pointers/</url>
     <content><![CDATA[<h3 id="Array-of-pointers-to-ints"><a href="#Array-of-pointers-to-ints" class="headerlink" title="Array of pointers to ints"></a>Array of pointers to ints</h3><p><strong>Code:</strong></p>
@@ -82,6 +101,39 @@ hello this is bar
       </tags>
   </entry>
   <entry>
+    <title>Delete a superuser in Django</title>
+    <url>/2023/06/08/Delete%20a%20superuser%20in%20Django/</url>
+    <content><![CDATA[<p>To delete a superuser in Django, you can use the Django shell to query and delete the user model instance. Here are the steps to delete a superuser using the Django shell:</p>
+<ol>
+<li><p>Open a terminal and navigate to the root directory of your Django project.</p>
+</li>
+<li><p>Activate the virtual environment, if you are using one.</p>
+</li>
+<li><p>Run the following command to open the Django shell: <code>python manage.py shell</code>.</p>
+</li>
+<li><p>Import the User model by running the following command: <code>from django.contrib.auth.models import User</code>.</p>
+</li>
+<li><p>Query the User model for the superuser you want to delete using the <code>get()</code> method. For example, if the username of the superuser you want to delete is “admin”, you would run: <code>user = User.objects.get(username=&#39;admin&#39;)</code>.</p>
+</li>
+<li><p>Call the <code>delete()</code> method on the user instance to delete the superuser. For example, you would run: <code>user.delete()</code>.</p>
+</li>
+<li><p>Exit the Django shell by typing <code>exit()</code> or pressing <code>Ctrl+D</code>.</p>
+</li>
+</ol>
+<p>After following these steps, the superuser will be deleted from the Django project.</p>
+<p>It’s important to note that deleting a superuser will also delete all related data, such as blog posts or comments, if those models are related to the User model with a foreign key. If you want to preserve this data, you should first transfer ownership of the data to another user before deleting the superuser.</p>
+<p>Another way to delete a superuser is to use the Django admin. To do this, log in as a superuser in the Django admin, navigate to the “Users” section, and click the “Delete” button next to the superuser you want to delete. Confirm the deletion in the next screen.</p>
+<p>In summary, you can delete a superuser in Django by using the Django shell to query and delete the user model instance. Alternatively, you can use the Django admin to delete the superuser. Keep in mind that deleting a superuser will also delete any related data.</p>
+]]></content>
+      <categories>
+        <category>Django</category>
+      </categories>
+      <tags>
+        <tag>Django</tag>
+        <tag>Python</tag>
+      </tags>
+  </entry>
+  <entry>
     <title>Dead Cells：Unlocking Daily Challenge blueprints</title>
     <url>/2023/05/03/Dead%20Cells%EF%BC%9AUnlocking%20Daily%20Challenge%20blueprints/</url>
     <content><![CDATA[<p>The Daily Challenge mode boasts a significant player base, even compared to other popular modes, and offers several exclusive weapons to boot. However, this is bad news for us freeloaders who, through various means, gained access to the game without ever paying the publisher a single cent. Some may consider piracy bad practice, but to be honest, I’m broke as f*ck.</p>
@@ -147,39 +199,6 @@ hello this is bar
       </tags>
   </entry>
   <entry>
-    <title>Delete a superuser in Django</title>
-    <url>/2023/06/08/Delete%20a%20superuser%20in%20Django/</url>
-    <content><![CDATA[<p>To delete a superuser in Django, you can use the Django shell to query and delete the user model instance. Here are the steps to delete a superuser using the Django shell:</p>
-<ol>
-<li><p>Open a terminal and navigate to the root directory of your Django project.</p>
-</li>
-<li><p>Activate the virtual environment, if you are using one.</p>
-</li>
-<li><p>Run the following command to open the Django shell: <code>python manage.py shell</code>.</p>
-</li>
-<li><p>Import the User model by running the following command: <code>from django.contrib.auth.models import User</code>.</p>
-</li>
-<li><p>Query the User model for the superuser you want to delete using the <code>get()</code> method. For example, if the username of the superuser you want to delete is “admin”, you would run: <code>user = User.objects.get(username=&#39;admin&#39;)</code>.</p>
-</li>
-<li><p>Call the <code>delete()</code> method on the user instance to delete the superuser. For example, you would run: <code>user.delete()</code>.</p>
-</li>
-<li><p>Exit the Django shell by typing <code>exit()</code> or pressing <code>Ctrl+D</code>.</p>
-</li>
-</ol>
-<p>After following these steps, the superuser will be deleted from the Django project.</p>
-<p>It’s important to note that deleting a superuser will also delete all related data, such as blog posts or comments, if those models are related to the User model with a foreign key. If you want to preserve this data, you should first transfer ownership of the data to another user before deleting the superuser.</p>
-<p>Another way to delete a superuser is to use the Django admin. To do this, log in as a superuser in the Django admin, navigate to the “Users” section, and click the “Delete” button next to the superuser you want to delete. Confirm the deletion in the next screen.</p>
-<p>In summary, you can delete a superuser in Django by using the Django shell to query and delete the user model instance. Alternatively, you can use the Django admin to delete the superuser. Keep in mind that deleting a superuser will also delete any related data.</p>
-]]></content>
-      <categories>
-        <category>Django</category>
-      </categories>
-      <tags>
-        <tag>Django</tag>
-        <tag>Python</tag>
-      </tags>
-  </entry>
-  <entry>
     <title>How to re-center Spotlight search bar on Mac?</title>
     <url>/2023/05/06/How%20to%20re-center%20Spotlight%20search%20bar%20on%20Mac?/</url>
     <content><![CDATA[<p>Click and hold the Spotlight icon on the menu bar, until the Spotlight window has returned to its original location.</p>
@@ -193,6 +212,21 @@ hello this is bar
         <tag>Tips</tag>
         <tag>Utilities</tag>
       </tags>
+  </entry>
+  <entry>
+    <title>Immediately Executing Function Demo</title>
+    <url>/2023/04/27/Immediately%20Executing%20Function%20Demo/</url>
+    <content><![CDATA[<p>The key aspect of this demo is that the utilization of an immediately executing function in JavaScript generates a fresh variable scope, which distinguishes it from <code>if</code>, <code>else</code>, and <code>while</code>. The code presented below exemplifies this fact.</p>
+<figure class="highlight javascript"><table><tr><td class="code"><pre><span class="line"><span class="keyword">var</span> foo = <span class="number">123</span></span><br><span class="line"></span><br><span class="line"><span class="keyword">if</span> (<span class="number">1</span>) &#123;</span><br><span class="line">    <span class="keyword">var</span> foo = <span class="number">456</span></span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line">(<span class="function"><span class="params">_</span> =&gt;</span> &#123;</span><br><span class="line">    <span class="keyword">var</span> foo = <span class="number">123</span></span><br><span class="line">&#125;)()</span><br><span class="line"></span><br><span class="line"><span class="variable language_">console</span>.<span class="title function_">log</span>(foo)</span><br><span class="line"></span><br></pre></td></tr></table></figure>
+
+<p>Output:</p>
+<pre><code>456
+</code></pre>
+<p>Notice how the function does not reset the value of variable <code>foo</code>? Now that’s something to be mindful of!</p>
+]]></content>
+      <categories>
+        <category>JavaScript</category>
+      </categories>
   </entry>
   <entry>
     <title>Initialize shared directory with SPICE WebDAV</title>
@@ -254,19 +288,21 @@ hello this is bar
       </categories>
   </entry>
   <entry>
-    <title>Immediately Executing Function Demo</title>
-    <url>/2023/04/27/Immediately%20Executing%20Function%20Demo/</url>
-    <content><![CDATA[<p>The key aspect of this demo is that the utilization of an immediately executing function in JavaScript generates a fresh variable scope, which distinguishes it from <code>if</code>, <code>else</code>, and <code>while</code>. The code presented below exemplifies this fact.</p>
-<figure class="highlight javascript"><table><tr><td class="code"><pre><span class="line"><span class="keyword">var</span> foo = <span class="number">123</span></span><br><span class="line"></span><br><span class="line"><span class="keyword">if</span> (<span class="number">1</span>) &#123;</span><br><span class="line">    <span class="keyword">var</span> foo = <span class="number">456</span></span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line">(<span class="function"><span class="params">_</span> =&gt;</span> &#123;</span><br><span class="line">    <span class="keyword">var</span> foo = <span class="number">123</span></span><br><span class="line">&#125;)()</span><br><span class="line"></span><br><span class="line"><span class="variable language_">console</span>.<span class="title function_">log</span>(foo)</span><br><span class="line"></span><br></pre></td></tr></table></figure>
-
-<p>Output:</p>
-<pre><code>456
-</code></pre>
-<p>Notice how the function does not reset the value of variable <code>foo</code>? Now that’s something to be mindful of!</p>
+    <title>Intuition</title>
+    <url>/2023/05/10/Intuition/</url>
+    <content><![CDATA[<p>While a clever person may have a strong intuition, their insights may only benefit themselves. On the other hand, a learned person who has gained knowledge through studies has the ability to express their ideas and contribute to society.</p>
+<p>Intuition is often described as a gut feeling or a hunch that arises without conscious reasoning. It is a valuable skill, but it can be limited by personal biases and experiences. In contrast, knowledge gained through education and study is based on evidence and critical thinking. This allows learned individuals to make informed decisions and contribute to the advancement of society.</p>
+<p><strong><em>References:</em></strong></p>
+<ul>
+<li><p>The Catcher in the Rye: Mr. Antolini Quotes in Chapter 24</p>
+</li>
+<li><p>Steve Jobs: “Intuition is a very powerful thing, more powerful than intellect, in my opinion.”</p>
+</li>
+</ul>
 ]]></content>
-      <categories>
-        <category>JavaScript</category>
-      </categories>
+      <tags>
+        <tag>Revelations</tag>
+      </tags>
   </entry>
   <entry>
     <title>JavaScript Method：localeCompare</title>
@@ -322,69 +358,6 @@ hello this is bar
       </tags>
   </entry>
   <entry>
-    <title>Intuition</title>
-    <url>/2023/05/10/Intuition/</url>
-    <content><![CDATA[<p>While a clever person may have a strong intuition, their insights may only benefit themselves. On the other hand, a learned person who has gained knowledge through studies has the ability to express their ideas and contribute to society.</p>
-<p>Intuition is often described as a gut feeling or a hunch that arises without conscious reasoning. It is a valuable skill, but it can be limited by personal biases and experiences. In contrast, knowledge gained through education and study is based on evidence and critical thinking. This allows learned individuals to make informed decisions and contribute to the advancement of society.</p>
-<p><strong><em>References:</em></strong></p>
-<ul>
-<li><p>The Catcher in the Rye: Mr. Antolini Quotes in Chapter 24</p>
-</li>
-<li><p>Steve Jobs: “Intuition is a very powerful thing, more powerful than intellect, in my opinion.”</p>
-</li>
-</ul>
-]]></content>
-      <tags>
-        <tag>Revelations</tag>
-      </tags>
-  </entry>
-  <entry>
-    <title>Installing Puppet server on ArchLinux</title>
-    <url>/2023/04/27/Installing%20Puppet%20server%20on%20ArchLinux/</url>
-    <content><![CDATA[<h3 id="Installation"><a href="#Installation" class="headerlink" title="Installation"></a>Installation</h3><p>To install puppet server first add the upstream GPG key:</p>
-<pre><code>$ gpg --fetch-keys https://yum.puppetlabs.com/RPM-GPG-KEY-puppet-20250406
-</code></pre>
-<div>
-    Then install the <a href="https://aur.archlinux.org/packages/puppetserver"><b>puppetserver</b></a><sup>AUR</sup> package.
-</div>
-
-<figure class="highlight bash"><table><tr><td class="code"><pre><span class="line">git <span class="built_in">clone</span> https://aur.archlinux.org/puppetserver.git</span><br><span class="line"></span><br><span class="line"><span class="built_in">cd</span> puppetserver/</span><br><span class="line"></span><br><span class="line">makepkg -si</span><br><span class="line"></span><br></pre></td></tr></table></figure>
-
-<p>Having questions about the <code>makepkg</code> command? Visit <a href="/2023/04/25/Running%20ArchLinux%20ARM%20in%20UTM%20on%20a%20M1%20MacBook%20Air/#yay" title="makepkg">here</a>!</p>
-<div>
-    Afterwards, enable and start the <b>puppetserver</b> service.
-</div>
-
-<figure class="highlight bash"><table><tr><td class="code"><pre><span class="line"><span class="built_in">sudo</span> systemctl <span class="built_in">enable</span> puppetserver.service</span><br><span class="line"></span><br><span class="line"><span class="comment"># Add to &quot;/etc/systemd/system/multi-user.target.wants&quot;.</span></span><br><span class="line"></span><br><span class="line"><span class="built_in">sudo</span> systemctl start puppetserver.service</span><br><span class="line"></span><br></pre></td></tr></table></figure>
-
-<h3 id="Delete-a-key"><a href="#Delete-a-key" class="headerlink" title="Delete a key"></a>Delete a key</h3><p>List the keys in your keyring using the command <code>gpg --list-keys</code>:</p>
-<pre><code>$ gpg --list-keys
-/root/.gnupg/pubring.kbx
-------------------------
-pub   rsa4096 2019-04-08 [SC] [expires: 2025-04-06]
-      D6811ED3ADEEB8441AF5AA8F4528B6CD9E61EF26
-uid           [ unknown] Puppet, Inc. Release Key (Puppet, Inc. Release Key) &lt;release@puppet.com&gt;
-</code></pre>
-<p>For example, the key ID of the instance above is “D6811ED3ADEEB8441AF5AA8F4528B6CD9E61EF26”.</p>
-<p>Delete the key using the command <code>gpg --delete-keys [key ID]</code>.</p>
-<p>Note that deleting a key from your keyring will prevent you from verifying any signatures made with that key in the future. If you need to use the key again later, you will need to fetch it again using the <code>gpg --fetch-keys</code> command.</p>
-<blockquote>
-<p>Configuration</p>
-</blockquote>
-<p>The Puppet Server’s configuration files are stored in <code>/etc/puppetlabs/puppetserver/</code>.</p>
-]]></content>
-      <categories>
-        <category>Puppet</category>
-      </categories>
-      <tags>
-        <tag>Linux</tag>
-        <tag>ArchLinux</tag>
-        <tag>Puppet</tag>
-        <tag>server</tag>
-        <tag>GPG key</tag>
-      </tags>
-  </entry>
-  <entry>
     <title>Minor adjustment from Bash to Zsh</title>
     <url>/2024/05/27/Minor%20adjustment%20from%20Bash%20to%20Zsh/</url>
     <content><![CDATA[<blockquote>
@@ -405,50 +378,6 @@ uid           [ unknown] Puppet, Inc. Release Key (Puppet, Inc. Release Key) &lt
       <tags>
         <tag>Bash</tag>
         <tag>Zsh</tag>
-      </tags>
-  </entry>
-  <entry>
-    <title>`Path` module - Node.js</title>
-    <url>/2023/05/14/Path%20module%20-%20Node.js/</url>
-    <content><![CDATA[<p>因为本人使用的操作系统是 OS X ，所以一下书写规范均符合 POSIX（Portable Open System Interface eXtended），Windows 用户请自行查阅资料。</p>
-<h3 id="path-basename-path-suffix"><a href="#path-basename-path-suffix" class="headerlink" title="path.basename(path[, suffix])"></a><code>path.basename(path[, suffix])</code></h3><figure class="highlight javascript"><table><tr><td class="code"><pre><span class="line">path.<span class="title function_">basename</span>(<span class="string">&#x27;/path/to/project/index.html&#x27;</span>, <span class="string">&#x27;.html&#x27;</span>)</span><br><span class="line"><span class="comment">// &#x27;index&#x27;</span></span><br></pre></td></tr></table></figure>
-
-<h3 id="path-delimiter"><a href="#path-delimiter" class="headerlink" title="path.delimiter"></a><code>path.delimiter</code></h3><figure class="highlight javascript"><table><tr><td class="code"><pre><span class="line"><span class="variable language_">console</span>.<span class="title function_">log</span>(process.<span class="property">env</span>.<span class="property">PATH</span>)</span><br><span class="line"><span class="comment">// /opt/homebrew/opt/llvm/bin:/opt/homebrew/opt/llvm/bin:/Applications/Sublime Text.app/Contents/SharedSupport/bin/:/Applications/Visual Studio Code.app/Contents/Resources/app/bin/:/Users/Mccranky/.gem/ruby/3.1.3/bin:/Users/Mccranky/.rubies/ruby-3.1.3/lib/ruby/gems/3.1.0/bin:/Users/Mccranky/.rubies/ruby-3.1.3/bin::/opt/local/bin:/opt/homebrew/bin:/opt/homebrew/sbin:/usr/local/bin:/usr/bin:/bin:/usr/sbin:/sbin:/usr/local/mysql/support-files:/usr/local/mysql/bin:/etc/platform-tools:/usr/local/go/bin:/usr/local/MacGPG2/bin:/usr/local/share/dotnet:~/.dotnet/tools:/Library/Apple/usr/bin:/Users/Mccranky/.nami/bin:/Users/Mccranky/.spicetify</span></span><br><span class="line"><span class="comment">// undefined</span></span><br></pre></td></tr></table></figure>
-
-<p>输出第一行为环境变量。<br>输出第二行的<code>undefined</code>示意无返回值。</p>
-<figure class="highlight javascript"><table><tr><td class="code"><pre><span class="line">process.<span class="property">env</span>.<span class="property">PATH</span>.<span class="title function_">split</span>(path.<span class="property">delimiter</span>)</span><br><span class="line"><span class="comment">/*</span></span><br><span class="line"><span class="comment">[</span></span><br><span class="line"><span class="comment">  &#x27;/opt/homebrew/opt/llvm/bin&#x27;,</span></span><br><span class="line"><span class="comment">  &#x27;/opt/homebrew/opt/llvm/bin&#x27;,</span></span><br><span class="line"><span class="comment">  &#x27;/Applications/Sublime Text.app/Contents/SharedSupport/bin/&#x27;,</span></span><br><span class="line"><span class="comment">  &#x27;/Applications/Visual Studio Code.app/Contents/Resources/app/bin/&#x27;,</span></span><br><span class="line"><span class="comment">  &#x27;/Users/Mccranky/.gem/ruby/3.1.3/bin&#x27;,</span></span><br><span class="line"><span class="comment">  &#x27;/Users/Mccranky/.rubies/ruby-3.1.3/lib/ruby/gems/3.1.0/bin&#x27;,</span></span><br><span class="line"><span class="comment">  &#x27;/Users/Mccranky/.rubies/ruby-3.1.3/bin&#x27;,</span></span><br><span class="line"><span class="comment">  &#x27;&#x27;,</span></span><br><span class="line"><span class="comment">  &#x27;/opt/local/bin&#x27;,</span></span><br><span class="line"><span class="comment">  &#x27;/opt/homebrew/bin&#x27;,</span></span><br><span class="line"><span class="comment">  &#x27;/opt/homebrew/sbin&#x27;,</span></span><br><span class="line"><span class="comment">  &#x27;/usr/local/bin&#x27;,</span></span><br><span class="line"><span class="comment">  &#x27;/usr/bin&#x27;,</span></span><br><span class="line"><span class="comment">  &#x27;/bin&#x27;,</span></span><br><span class="line"><span class="comment">  &#x27;/usr/sbin&#x27;,</span></span><br><span class="line"><span class="comment">  &#x27;/sbin&#x27;,</span></span><br><span class="line"><span class="comment">  &#x27;/usr/local/mysql/support-files&#x27;,</span></span><br><span class="line"><span class="comment">  &#x27;/usr/local/mysql/bin&#x27;,</span></span><br><span class="line"><span class="comment">  &#x27;/etc/platform-tools&#x27;,</span></span><br><span class="line"><span class="comment">  &#x27;/usr/local/go/bin&#x27;,</span></span><br><span class="line"><span class="comment">  &#x27;/usr/local/MacGPG2/bin&#x27;,</span></span><br><span class="line"><span class="comment">  &#x27;/usr/local/share/dotnet&#x27;,</span></span><br><span class="line"><span class="comment">  &#x27;~/.dotnet/tools&#x27;,</span></span><br><span class="line"><span class="comment">  &#x27;/Library/Apple/usr/bin&#x27;,</span></span><br><span class="line"><span class="comment">  &#x27;/Users/Mccranky/.nami/bin&#x27;,</span></span><br><span class="line"><span class="comment">  &#x27;/Users/Mccranky/.spicetify&#x27;</span></span><br><span class="line"><span class="comment">]</span></span><br><span class="line"><span class="comment">*/</span></span><br></pre></td></tr></table></figure>
-
-<p><code>path.delimiter</code>: <code>:</code></p>
-<h3 id="path-dirname"><a href="#path-dirname" class="headerlink" title="path.dirname"></a><code>path.dirname</code></h3><figure class="highlight javascript"><table><tr><td class="code"><pre><span class="line">path.<span class="title function_">dirname</span>(<span class="string">&#x27;path/to/file.txt&#x27;</span>)</span><br><span class="line"><span class="comment">// &#x27;path/to&#x27;</span></span><br></pre></td></tr></table></figure>
-
-<h3 id="path-extname"><a href="#path-extname" class="headerlink" title="path.extname"></a><code>path.extname</code></h3><figure class="highlight javascript"><table><tr><td class="code"><pre><span class="line">path.<span class="title function_">extname</span>(<span class="string">&#x27;index.html&#x27;</span>)</span><br><span class="line"><span class="comment">// &#x27;.html&#x27;</span></span><br><span class="line"></span><br><span class="line">path.<span class="title function_">extname</span>(<span class="string">&#x27;index.foo.md&#x27;</span>)</span><br><span class="line"><span class="comment">// &#x27;.md&#x27;</span></span><br><span class="line"></span><br><span class="line">path.<span class="title function_">extname</span>(<span class="string">&#x27;index.&#x27;</span>)</span><br><span class="line"><span class="comment">// &#x27;.&#x27;</span></span><br><span class="line"></span><br><span class="line">path.<span class="title function_">extname</span>(<span class="string">&#x27;index&#x27;</span>)</span><br><span class="line"><span class="comment">// &#x27;&#x27;</span></span><br><span class="line"></span><br><span class="line">path.<span class="title function_">extname</span>(<span class="string">&#x27;.index&#x27;</span>)</span><br><span class="line"><span class="comment">// &#x27;&#x27;</span></span><br><span class="line"></span><br><span class="line">path.<span class="title function_">extname</span>(<span class="string">&#x27;.index.md&#x27;</span>)</span><br><span class="line"><span class="comment">// &#x27;.md&#x27;</span></span><br></pre></td></tr></table></figure>
-
-<h3 id="path-format-pathObject"><a href="#path-format-pathObject" class="headerlink" title="path.format(pathObject)"></a><code>path.format(pathObject)</code></h3><figure class="highlight javascript"><table><tr><td class="code"><pre><span class="line"><span class="comment">// `$&#123;dir&#125;$&#123;path.sep&#125;$&#123;base&#125;`</span></span><br><span class="line">path.<span class="title function_">format</span>(&#123;</span><br><span class="line">  <span class="attr">root</span>: <span class="string">&#x27;/ignored&#x27;</span>,</span><br><span class="line">  <span class="attr">dir</span>: <span class="string">&#x27;/home/user/dir&#x27;</span>,</span><br><span class="line">  <span class="attr">base</span>: <span class="string">&#x27;file.txt&#x27;</span>,</span><br><span class="line">&#125;)</span><br><span class="line"><span class="comment">// &#x27;/home/user/dir/file.txt&#x27;</span></span><br><span class="line"></span><br><span class="line">path.<span class="title function_">format</span>(&#123;</span><br><span class="line">  <span class="attr">root</span>: <span class="string">&#x27;/&#x27;</span>,</span><br><span class="line">  <span class="attr">base</span>: <span class="string">&#x27;file.txt&#x27;</span>,</span><br><span class="line">  <span class="attr">ext</span>: <span class="string">&#x27;ignored&#x27;</span>,</span><br><span class="line">&#125;)</span><br><span class="line"><span class="comment">// &#x27;/file.txt&#x27;</span></span><br><span class="line"></span><br><span class="line">path.<span class="title function_">format</span>(&#123;</span><br><span class="line">  <span class="attr">root</span>: <span class="string">&#x27;/&#x27;</span>,</span><br><span class="line">  <span class="attr">name</span>: <span class="string">&#x27;file&#x27;</span>,</span><br><span class="line">  <span class="attr">ext</span>: <span class="string">&#x27;.txt&#x27;</span>,</span><br><span class="line">&#125;)</span><br><span class="line"><span class="comment">// &#x27;/file.txt&#x27;</span></span><br><span class="line"></span><br><span class="line">path.<span class="title function_">format</span>(&#123;</span><br><span class="line">  <span class="attr">root</span>: <span class="string">&#x27;/&#x27;</span>,</span><br><span class="line">  <span class="attr">name</span>: <span class="string">&#x27;file&#x27;</span>,</span><br><span class="line">  <span class="attr">ext</span>: <span class="string">&#x27;txt&#x27;</span>,</span><br><span class="line">&#125;)</span><br><span class="line"><span class="comment">// &#x27;/file.txt&#x27;</span></span><br></pre></td></tr></table></figure>
-
-<h3 id="path-isAbsolute"><a href="#path-isAbsolute" class="headerlink" title="path.isAbsolute"></a><code>path.isAbsolute</code></h3><figure class="highlight javascript"><table><tr><td class="code"><pre><span class="line">path.<span class="title function_">isAbsolute</span>(<span class="string">&#x27;/foo/bar&#x27;</span>) <span class="comment">// true</span></span><br><span class="line">path.<span class="title function_">isAbsolute</span>(<span class="string">&#x27;/baz/..&#x27;</span>)  <span class="comment">// true</span></span><br><span class="line">path.<span class="title function_">isAbsolute</span>(<span class="string">&#x27;qux/&#x27;</span>)     <span class="comment">// false</span></span><br><span class="line">path.<span class="title function_">isAbsolute</span>(<span class="string">&#x27;.&#x27;</span>)        <span class="comment">// false</span></span><br></pre></td></tr></table></figure>
-
-<h3 id="path-join-paths"><a href="#path-join-paths" class="headerlink" title="path.join([...paths])"></a><code>path.join([...paths])</code></h3><figure class="highlight javascript"><table><tr><td class="code"><pre><span class="line">path.<span class="title function_">join</span>(<span class="string">&#x27;&#x27;</span>)</span><br><span class="line"><span class="comment">// &#x27;.&#x27;</span></span><br><span class="line"></span><br><span class="line">path.<span class="title function_">join</span>(<span class="string">&#x27;/&#x27;</span>, <span class="string">&#x27;/foo&#x27;</span>, <span class="string">&#x27;bar&#x27;</span>, <span class="string">&#x27;baz&#x27;</span>, <span class="string">&#x27;..&#x27;</span>)</span><br><span class="line"><span class="comment">// &#x27;/foo/bar&#x27;</span></span><br></pre></td></tr></table></figure>
-
-<h3 id="path-normalize-path"><a href="#path-normalize-path" class="headerlink" title="path.normalize(path)"></a><code>path.normalize(path)</code></h3><figure class="highlight javascript"><table><tr><td class="code"><pre><span class="line">path.<span class="title function_">normalize</span>(<span class="string">&#x27;/foo/bar//baz/asdf/quux/..&#x27;</span>)</span><br><span class="line"><span class="comment">// Returns: &#x27;/foo/bar/baz/asdf&#x27;</span></span><br></pre></td></tr></table></figure>
-
-<h3 id="path-parse-path"><a href="#path-parse-path" class="headerlink" title="path.parse(path)"></a><code>path.parse(path)</code></h3><figure class="highlight javascript"><table><tr><td class="code"><pre><span class="line">path.<span class="title function_">parse</span>(<span class="string">&#x27;/home/user/dir/file.txt&#x27;</span>)</span><br><span class="line"><span class="comment">/*</span></span><br><span class="line"><span class="comment">&#123;</span></span><br><span class="line"><span class="comment">  root: &#x27;/&#x27;,</span></span><br><span class="line"><span class="comment">  dir: &#x27;/home/user/dir&#x27;,</span></span><br><span class="line"><span class="comment">  base: &#x27;file.txt&#x27;,</span></span><br><span class="line"><span class="comment">  ext: &#x27;.txt&#x27;,</span></span><br><span class="line"><span class="comment">  name: &#x27;file&#x27;</span></span><br><span class="line"><span class="comment">&#125;</span></span><br><span class="line"><span class="comment">*/</span></span><br></pre></td></tr></table></figure>
-
-<figure class="highlight plaintext"><table><tr><td class="code"><pre><span class="line">┌─────────────────────┬────────────┐</span><br><span class="line">│          dir        │    base    │</span><br><span class="line">├──────┬              ├──────┬─────┤</span><br><span class="line">│ root │              │ name │ ext │</span><br><span class="line">&quot;  /    home/user/dir / file  .txt &quot;</span><br><span class="line">└──────┴──────────────┴──────┴─────┘</span><br></pre></td></tr></table></figure>
-
-<h3 id="path-posix"><a href="#path-posix" class="headerlink" title="path.posix"></a><code>path.posix</code></h3><p>只是输出一下<code>path</code>模组所有的方法。</p>
-<h3 id="path-relative-from-to"><a href="#path-relative-from-to" class="headerlink" title="path.relative(from, to)"></a><code>path.relative(from, to)</code></h3><figure class="highlight javascript"><table><tr><td class="code"><pre><span class="line">path.<span class="title function_">relative</span>(<span class="string">&#x27;/data/orandea/test/aaa&#x27;</span>, <span class="string">&#x27;/data/orandea/impl/bbb&#x27;</span>)</span><br><span class="line"><span class="comment">// &#x27;../../impl/bbb&#x27;</span></span><br></pre></td></tr></table></figure>
-
-<h3 id="path-resolve-paths"><a href="#path-resolve-paths" class="headerlink" title="path.resolve([...paths])"></a><code>path.resolve([...paths])</code></h3><figure class="highlight javascript"><table><tr><td class="code"><pre><span class="line">path.<span class="title function_">resolve</span>(<span class="string">&#x27;&#x27;</span>)</span><br><span class="line"><span class="string">&#x27;/Users/Mccranky&#x27;</span></span><br><span class="line"></span><br><span class="line">path.<span class="title function_">join</span>(<span class="string">&#x27;foo&#x27;</span>, <span class="string">&#x27;bar&#x27;</span>, <span class="string">&#x27;baz&#x27;</span>, <span class="string">&#x27;..&#x27;</span>)</span><br><span class="line"><span class="comment">// &#x27;/Users/Mccranky/foo/bar&#x27;</span></span><br></pre></td></tr></table></figure>
-
-<h3 id="path-sep"><a href="#path-sep" class="headerlink" title="path.sep"></a><code>path.sep</code></h3><p><code>path.sep</code>: <code>/</code></p>
-<figure class="highlight javascript"><table><tr><td class="code"><pre><span class="line"><span class="string">&#x27;foo/bar/baz&#x27;</span>.<span class="title function_">split</span>(path.<span class="property">sep</span>)</span><br><span class="line"><span class="comment">// [&#x27;foo&#x27;, &#x27;bar&#x27;, &#x27;baz&#x27;]</span></span><br></pre></td></tr></table></figure>
-]]></content>
-      <categories>
-        <category>Node.js</category>
-      </categories>
-      <tags>
-        <tag>Node.js</tag>
-        <tag>Path</tag>
       </tags>
   </entry>
   <entry>
@@ -644,38 +573,47 @@ r=mccranky)
       </tags>
   </entry>
   <entry>
-    <title>Positional Parameters</title>
-    <url>/2023/04/28/Positional%20Parameters/</url>
-    <content><![CDATA[<p>In Bash, positional parameters are special variables that hold the arguments passed to a script or function. The positional parameters are numbered from <code>0</code> to <code>9</code>, where <code>$0</code> holds the name of the script or function, and <code>$1</code> through <code>$9</code> hold the first through ninth arguments, respectively.</p>
-<p><code>$@</code> and <code>$*</code> both hold all the arguments passed to the script. Note that <code>$@</code> is an array-like variable that holds all the positional parameters as <em>separate elements</em>, while <code>$*</code> is another variable that holds all the positional parameters as <em>a single string</em>.</p>
-<p>Here’s an example:</p>
-<pre><code>#!/bin/bash
+    <title>`Path` module - Node.js</title>
+    <url>/2023/05/14/Path%20module%20-%20Node.js/</url>
+    <content><![CDATA[<p>因为本人使用的操作系统是 OS X ，所以一下书写规范均符合 POSIX（Portable Open System Interface eXtended），Windows 用户请自行查阅资料。</p>
+<h3 id="path-basename-path-suffix"><a href="#path-basename-path-suffix" class="headerlink" title="path.basename(path[, suffix])"></a><code>path.basename(path[, suffix])</code></h3><figure class="highlight javascript"><table><tr><td class="code"><pre><span class="line">path.<span class="title function_">basename</span>(<span class="string">&#x27;/path/to/project/index.html&#x27;</span>, <span class="string">&#x27;.html&#x27;</span>)</span><br><span class="line"><span class="comment">// &#x27;index&#x27;</span></span><br></pre></td></tr></table></figure>
 
-#!/bin/bash
+<h3 id="path-delimiter"><a href="#path-delimiter" class="headerlink" title="path.delimiter"></a><code>path.delimiter</code></h3><figure class="highlight javascript"><table><tr><td class="code"><pre><span class="line"><span class="variable language_">console</span>.<span class="title function_">log</span>(process.<span class="property">env</span>.<span class="property">PATH</span>)</span><br><span class="line"><span class="comment">// /opt/homebrew/opt/llvm/bin:/opt/homebrew/opt/llvm/bin:/Applications/Sublime Text.app/Contents/SharedSupport/bin/:/Applications/Visual Studio Code.app/Contents/Resources/app/bin/:/Users/Mccranky/.gem/ruby/3.1.3/bin:/Users/Mccranky/.rubies/ruby-3.1.3/lib/ruby/gems/3.1.0/bin:/Users/Mccranky/.rubies/ruby-3.1.3/bin::/opt/local/bin:/opt/homebrew/bin:/opt/homebrew/sbin:/usr/local/bin:/usr/bin:/bin:/usr/sbin:/sbin:/usr/local/mysql/support-files:/usr/local/mysql/bin:/etc/platform-tools:/usr/local/go/bin:/usr/local/MacGPG2/bin:/usr/local/share/dotnet:~/.dotnet/tools:/Library/Apple/usr/bin:/Users/Mccranky/.nami/bin:/Users/Mccranky/.spicetify</span></span><br><span class="line"><span class="comment">// undefined</span></span><br></pre></td></tr></table></figure>
 
-echo &quot;Script Name: $0&quot;
-echo &quot;First Arg: $1&quot;
-echo &quot;Second Arg: $2&quot;
-echo &quot;All args (arr): $@&quot;
-echo &quot;All args (str): $*&quot;
-</code></pre>
-<p>Now let’s run the script with three arguments:</p>
-<figure class="highlight bash"><table><tr><td class="code"><pre><span class="line"><span class="built_in">chmod</span> u+x ./script <span class="comment"># Grant execution privilege for user</span></span><br><span class="line"></span><br><span class="line">./script a b c</span><br><span class="line"></span><br></pre></td></tr></table></figure>
+<p>输出第一行为环境变量。<br>输出第二行的<code>undefined</code>示意无返回值。</p>
+<figure class="highlight javascript"><table><tr><td class="code"><pre><span class="line">process.<span class="property">env</span>.<span class="property">PATH</span>.<span class="title function_">split</span>(path.<span class="property">delimiter</span>)</span><br><span class="line"><span class="comment">/*</span></span><br><span class="line"><span class="comment">[</span></span><br><span class="line"><span class="comment">  &#x27;/opt/homebrew/opt/llvm/bin&#x27;,</span></span><br><span class="line"><span class="comment">  &#x27;/opt/homebrew/opt/llvm/bin&#x27;,</span></span><br><span class="line"><span class="comment">  &#x27;/Applications/Sublime Text.app/Contents/SharedSupport/bin/&#x27;,</span></span><br><span class="line"><span class="comment">  &#x27;/Applications/Visual Studio Code.app/Contents/Resources/app/bin/&#x27;,</span></span><br><span class="line"><span class="comment">  &#x27;/Users/Mccranky/.gem/ruby/3.1.3/bin&#x27;,</span></span><br><span class="line"><span class="comment">  &#x27;/Users/Mccranky/.rubies/ruby-3.1.3/lib/ruby/gems/3.1.0/bin&#x27;,</span></span><br><span class="line"><span class="comment">  &#x27;/Users/Mccranky/.rubies/ruby-3.1.3/bin&#x27;,</span></span><br><span class="line"><span class="comment">  &#x27;&#x27;,</span></span><br><span class="line"><span class="comment">  &#x27;/opt/local/bin&#x27;,</span></span><br><span class="line"><span class="comment">  &#x27;/opt/homebrew/bin&#x27;,</span></span><br><span class="line"><span class="comment">  &#x27;/opt/homebrew/sbin&#x27;,</span></span><br><span class="line"><span class="comment">  &#x27;/usr/local/bin&#x27;,</span></span><br><span class="line"><span class="comment">  &#x27;/usr/bin&#x27;,</span></span><br><span class="line"><span class="comment">  &#x27;/bin&#x27;,</span></span><br><span class="line"><span class="comment">  &#x27;/usr/sbin&#x27;,</span></span><br><span class="line"><span class="comment">  &#x27;/sbin&#x27;,</span></span><br><span class="line"><span class="comment">  &#x27;/usr/local/mysql/support-files&#x27;,</span></span><br><span class="line"><span class="comment">  &#x27;/usr/local/mysql/bin&#x27;,</span></span><br><span class="line"><span class="comment">  &#x27;/etc/platform-tools&#x27;,</span></span><br><span class="line"><span class="comment">  &#x27;/usr/local/go/bin&#x27;,</span></span><br><span class="line"><span class="comment">  &#x27;/usr/local/MacGPG2/bin&#x27;,</span></span><br><span class="line"><span class="comment">  &#x27;/usr/local/share/dotnet&#x27;,</span></span><br><span class="line"><span class="comment">  &#x27;~/.dotnet/tools&#x27;,</span></span><br><span class="line"><span class="comment">  &#x27;/Library/Apple/usr/bin&#x27;,</span></span><br><span class="line"><span class="comment">  &#x27;/Users/Mccranky/.nami/bin&#x27;,</span></span><br><span class="line"><span class="comment">  &#x27;/Users/Mccranky/.spicetify&#x27;</span></span><br><span class="line"><span class="comment">]</span></span><br><span class="line"><span class="comment">*/</span></span><br></pre></td></tr></table></figure>
 
-<p>The output should be something like this:</p>
-<pre><code>Script Name: ./script.sh
-First Arg: a
-Second Arg: b
-All args (arr): a b c
-All args (str): a b c
-</code></pre>
+<p><code>path.delimiter</code>: <code>:</code></p>
+<h3 id="path-dirname"><a href="#path-dirname" class="headerlink" title="path.dirname"></a><code>path.dirname</code></h3><figure class="highlight javascript"><table><tr><td class="code"><pre><span class="line">path.<span class="title function_">dirname</span>(<span class="string">&#x27;path/to/file.txt&#x27;</span>)</span><br><span class="line"><span class="comment">// &#x27;path/to&#x27;</span></span><br></pre></td></tr></table></figure>
+
+<h3 id="path-extname"><a href="#path-extname" class="headerlink" title="path.extname"></a><code>path.extname</code></h3><figure class="highlight javascript"><table><tr><td class="code"><pre><span class="line">path.<span class="title function_">extname</span>(<span class="string">&#x27;index.html&#x27;</span>)</span><br><span class="line"><span class="comment">// &#x27;.html&#x27;</span></span><br><span class="line"></span><br><span class="line">path.<span class="title function_">extname</span>(<span class="string">&#x27;index.foo.md&#x27;</span>)</span><br><span class="line"><span class="comment">// &#x27;.md&#x27;</span></span><br><span class="line"></span><br><span class="line">path.<span class="title function_">extname</span>(<span class="string">&#x27;index.&#x27;</span>)</span><br><span class="line"><span class="comment">// &#x27;.&#x27;</span></span><br><span class="line"></span><br><span class="line">path.<span class="title function_">extname</span>(<span class="string">&#x27;index&#x27;</span>)</span><br><span class="line"><span class="comment">// &#x27;&#x27;</span></span><br><span class="line"></span><br><span class="line">path.<span class="title function_">extname</span>(<span class="string">&#x27;.index&#x27;</span>)</span><br><span class="line"><span class="comment">// &#x27;&#x27;</span></span><br><span class="line"></span><br><span class="line">path.<span class="title function_">extname</span>(<span class="string">&#x27;.index.md&#x27;</span>)</span><br><span class="line"><span class="comment">// &#x27;.md&#x27;</span></span><br></pre></td></tr></table></figure>
+
+<h3 id="path-format-pathObject"><a href="#path-format-pathObject" class="headerlink" title="path.format(pathObject)"></a><code>path.format(pathObject)</code></h3><figure class="highlight javascript"><table><tr><td class="code"><pre><span class="line"><span class="comment">// `$&#123;dir&#125;$&#123;path.sep&#125;$&#123;base&#125;`</span></span><br><span class="line">path.<span class="title function_">format</span>(&#123;</span><br><span class="line">  <span class="attr">root</span>: <span class="string">&#x27;/ignored&#x27;</span>,</span><br><span class="line">  <span class="attr">dir</span>: <span class="string">&#x27;/home/user/dir&#x27;</span>,</span><br><span class="line">  <span class="attr">base</span>: <span class="string">&#x27;file.txt&#x27;</span>,</span><br><span class="line">&#125;)</span><br><span class="line"><span class="comment">// &#x27;/home/user/dir/file.txt&#x27;</span></span><br><span class="line"></span><br><span class="line">path.<span class="title function_">format</span>(&#123;</span><br><span class="line">  <span class="attr">root</span>: <span class="string">&#x27;/&#x27;</span>,</span><br><span class="line">  <span class="attr">base</span>: <span class="string">&#x27;file.txt&#x27;</span>,</span><br><span class="line">  <span class="attr">ext</span>: <span class="string">&#x27;ignored&#x27;</span>,</span><br><span class="line">&#125;)</span><br><span class="line"><span class="comment">// &#x27;/file.txt&#x27;</span></span><br><span class="line"></span><br><span class="line">path.<span class="title function_">format</span>(&#123;</span><br><span class="line">  <span class="attr">root</span>: <span class="string">&#x27;/&#x27;</span>,</span><br><span class="line">  <span class="attr">name</span>: <span class="string">&#x27;file&#x27;</span>,</span><br><span class="line">  <span class="attr">ext</span>: <span class="string">&#x27;.txt&#x27;</span>,</span><br><span class="line">&#125;)</span><br><span class="line"><span class="comment">// &#x27;/file.txt&#x27;</span></span><br><span class="line"></span><br><span class="line">path.<span class="title function_">format</span>(&#123;</span><br><span class="line">  <span class="attr">root</span>: <span class="string">&#x27;/&#x27;</span>,</span><br><span class="line">  <span class="attr">name</span>: <span class="string">&#x27;file&#x27;</span>,</span><br><span class="line">  <span class="attr">ext</span>: <span class="string">&#x27;txt&#x27;</span>,</span><br><span class="line">&#125;)</span><br><span class="line"><span class="comment">// &#x27;/file.txt&#x27;</span></span><br></pre></td></tr></table></figure>
+
+<h3 id="path-isAbsolute"><a href="#path-isAbsolute" class="headerlink" title="path.isAbsolute"></a><code>path.isAbsolute</code></h3><figure class="highlight javascript"><table><tr><td class="code"><pre><span class="line">path.<span class="title function_">isAbsolute</span>(<span class="string">&#x27;/foo/bar&#x27;</span>) <span class="comment">// true</span></span><br><span class="line">path.<span class="title function_">isAbsolute</span>(<span class="string">&#x27;/baz/..&#x27;</span>)  <span class="comment">// true</span></span><br><span class="line">path.<span class="title function_">isAbsolute</span>(<span class="string">&#x27;qux/&#x27;</span>)     <span class="comment">// false</span></span><br><span class="line">path.<span class="title function_">isAbsolute</span>(<span class="string">&#x27;.&#x27;</span>)        <span class="comment">// false</span></span><br></pre></td></tr></table></figure>
+
+<h3 id="path-join-paths"><a href="#path-join-paths" class="headerlink" title="path.join([...paths])"></a><code>path.join([...paths])</code></h3><figure class="highlight javascript"><table><tr><td class="code"><pre><span class="line">path.<span class="title function_">join</span>(<span class="string">&#x27;&#x27;</span>)</span><br><span class="line"><span class="comment">// &#x27;.&#x27;</span></span><br><span class="line"></span><br><span class="line">path.<span class="title function_">join</span>(<span class="string">&#x27;/&#x27;</span>, <span class="string">&#x27;/foo&#x27;</span>, <span class="string">&#x27;bar&#x27;</span>, <span class="string">&#x27;baz&#x27;</span>, <span class="string">&#x27;..&#x27;</span>)</span><br><span class="line"><span class="comment">// &#x27;/foo/bar&#x27;</span></span><br></pre></td></tr></table></figure>
+
+<h3 id="path-normalize-path"><a href="#path-normalize-path" class="headerlink" title="path.normalize(path)"></a><code>path.normalize(path)</code></h3><figure class="highlight javascript"><table><tr><td class="code"><pre><span class="line">path.<span class="title function_">normalize</span>(<span class="string">&#x27;/foo/bar//baz/asdf/quux/..&#x27;</span>)</span><br><span class="line"><span class="comment">// Returns: &#x27;/foo/bar/baz/asdf&#x27;</span></span><br></pre></td></tr></table></figure>
+
+<h3 id="path-parse-path"><a href="#path-parse-path" class="headerlink" title="path.parse(path)"></a><code>path.parse(path)</code></h3><figure class="highlight javascript"><table><tr><td class="code"><pre><span class="line">path.<span class="title function_">parse</span>(<span class="string">&#x27;/home/user/dir/file.txt&#x27;</span>)</span><br><span class="line"><span class="comment">/*</span></span><br><span class="line"><span class="comment">&#123;</span></span><br><span class="line"><span class="comment">  root: &#x27;/&#x27;,</span></span><br><span class="line"><span class="comment">  dir: &#x27;/home/user/dir&#x27;,</span></span><br><span class="line"><span class="comment">  base: &#x27;file.txt&#x27;,</span></span><br><span class="line"><span class="comment">  ext: &#x27;.txt&#x27;,</span></span><br><span class="line"><span class="comment">  name: &#x27;file&#x27;</span></span><br><span class="line"><span class="comment">&#125;</span></span><br><span class="line"><span class="comment">*/</span></span><br></pre></td></tr></table></figure>
+
+<figure class="highlight plaintext"><table><tr><td class="code"><pre><span class="line">┌─────────────────────┬────────────┐</span><br><span class="line">│          dir        │    base    │</span><br><span class="line">├──────┬              ├──────┬─────┤</span><br><span class="line">│ root │              │ name │ ext │</span><br><span class="line">&quot;  /    home/user/dir / file  .txt &quot;</span><br><span class="line">└──────┴──────────────┴──────┴─────┘</span><br></pre></td></tr></table></figure>
+
+<h3 id="path-posix"><a href="#path-posix" class="headerlink" title="path.posix"></a><code>path.posix</code></h3><p>只是输出一下<code>path</code>模组所有的方法。</p>
+<h3 id="path-relative-from-to"><a href="#path-relative-from-to" class="headerlink" title="path.relative(from, to)"></a><code>path.relative(from, to)</code></h3><figure class="highlight javascript"><table><tr><td class="code"><pre><span class="line">path.<span class="title function_">relative</span>(<span class="string">&#x27;/data/orandea/test/aaa&#x27;</span>, <span class="string">&#x27;/data/orandea/impl/bbb&#x27;</span>)</span><br><span class="line"><span class="comment">// &#x27;../../impl/bbb&#x27;</span></span><br></pre></td></tr></table></figure>
+
+<h3 id="path-resolve-paths"><a href="#path-resolve-paths" class="headerlink" title="path.resolve([...paths])"></a><code>path.resolve([...paths])</code></h3><figure class="highlight javascript"><table><tr><td class="code"><pre><span class="line">path.<span class="title function_">resolve</span>(<span class="string">&#x27;&#x27;</span>)</span><br><span class="line"><span class="string">&#x27;/Users/Mccranky&#x27;</span></span><br><span class="line"></span><br><span class="line">path.<span class="title function_">join</span>(<span class="string">&#x27;foo&#x27;</span>, <span class="string">&#x27;bar&#x27;</span>, <span class="string">&#x27;baz&#x27;</span>, <span class="string">&#x27;..&#x27;</span>)</span><br><span class="line"><span class="comment">// &#x27;/Users/Mccranky/foo/bar&#x27;</span></span><br></pre></td></tr></table></figure>
+
+<h3 id="path-sep"><a href="#path-sep" class="headerlink" title="path.sep"></a><code>path.sep</code></h3><p><code>path.sep</code>: <code>/</code></p>
+<figure class="highlight javascript"><table><tr><td class="code"><pre><span class="line"><span class="string">&#x27;foo/bar/baz&#x27;</span>.<span class="title function_">split</span>(path.<span class="property">sep</span>)</span><br><span class="line"><span class="comment">// [&#x27;foo&#x27;, &#x27;bar&#x27;, &#x27;baz&#x27;]</span></span><br></pre></td></tr></table></figure>
 ]]></content>
       <categories>
-        <category>Bash</category>
+        <category>Node.js</category>
       </categories>
       <tags>
-        <tag>Linux</tag>
-        <tag>Bash</tag>
+        <tag>Node.js</tag>
+        <tag>Path</tag>
       </tags>
   </entry>
   <entry>
@@ -890,38 +828,38 @@ Possible reasons for having this kind of units are:
       </tags>
   </entry>
   <entry>
-    <title>The Cognitive Compute of Empathy: Why Stereotypes are Just Underfitted Models</title>
-    <url>/2026/04/04/The%20Cognitive%20Compute%20of%20Empathy%20Why%20Stereotypes%20are%20Just%20Underfitted%20Models/</url>
-    <content><![CDATA[<p>Every day, the human brain is tasked with processing a massive, chaotic influx of social data. To navigate this overwhelming reality, the mind must inherently act as a predictive algorithm. However, just as in machine learning, the algorithms we choose to run in our social interactions dictate the accuracy—and the morality—of our worldview. When we examine the phenomenon of stereotyping through the lens of computer science, it becomes clear that prejudice is not merely a moral failing; it is a symptom of cognitive underfitting.</p>
-<p>At its core, a stereotype is a “low-compute” heuristic. It operates much like a Naive Bayes classifier. Because the human brain has limited processing power, it relies on heuristics as slacks to make constant-time, O(1) judgments. By compressing a complex human being into a few highly weighted, discrete features (such as age, gender, dress code, or subculture), the brain establishes a binary baseline. For everyday survival or minimal social navigation, this low-resolution model “gets the job done.” It draws a massive, straight line through a wildly scattered dataset, purposefully ignoring the outliers to save mental CPU.</p>
-<p>But saving compute comes at a severe cost. When a model is aggressively regularized to ignore complexity, it underfits the data, leading to a high rate of false positives and false negatives. In social dynamics, we call this misclassification prejudice. By leaning on these generic, binary parameters, we dull our moral compass. We ignore the very real “cost function” of our errors—the human damage done when we strip an individual of their nuance and force them into a static, pre-calculated bucket.</p>
-<p>For those educated in logic and systems thinking, relying on such a crude baseline is computationally unacceptable. If stereotypes represent an underfitted linear model, the logical upgrade is to process social interactions much like a Support Vector Machine utilizing the Kernel Trick.</p>
-<p>A naive classifier looks at a person in a two-dimensional feature space—perhaps judging them purely on appearance and accent—and clusters them with everyone else who shares those traits. But an SVM-style thinker projects that data into a much higher-dimensional space. By feeding the model dozens of continuous variables—intellectual curiosity, emotional intelligence, conflict resolution style, moral consistency—the “stereotype” dissolves. Two individuals who appear identical in a low-dimensional binary space are suddenly revealed to be miles apart in the high-dimensional space of their actual character.</p>
-<p>Furthermore, an SVM handles non-linearity. It recognizes that human behavior rarely follows a straight line. A person can simultaneously hold seemingly contradictory traits, requiring a complex, dynamic decision boundary rather than a rigid binary box.</p>
-<p>Ultimately, rejecting stereotypes is not just an exercise in social etiquette; it is a commitment to data fidelity. To rely on stereotypes is to accept an intellectually lazy algorithm. To understand people accurately requires us to willingly spend the “mental overhead” necessary to evaluate them as the high-dimensional, non-linear datasets they truly are. As logical thinkers, we must recognize that the real world is infinitely complex, and it is our moral and computational duty to scale our feature space to meet it.</p>
+    <title>Positional Parameters</title>
+    <url>/2023/04/28/Positional%20Parameters/</url>
+    <content><![CDATA[<p>In Bash, positional parameters are special variables that hold the arguments passed to a script or function. The positional parameters are numbered from <code>0</code> to <code>9</code>, where <code>$0</code> holds the name of the script or function, and <code>$1</code> through <code>$9</code> hold the first through ninth arguments, respectively.</p>
+<p><code>$@</code> and <code>$*</code> both hold all the arguments passed to the script. Note that <code>$@</code> is an array-like variable that holds all the positional parameters as <em>separate elements</em>, while <code>$*</code> is another variable that holds all the positional parameters as <em>a single string</em>.</p>
+<p>Here’s an example:</p>
+<pre><code>#!/bin/bash
+
+#!/bin/bash
+
+echo &quot;Script Name: $0&quot;
+echo &quot;First Arg: $1&quot;
+echo &quot;Second Arg: $2&quot;
+echo &quot;All args (arr): $@&quot;
+echo &quot;All args (str): $*&quot;
+</code></pre>
+<p>Now let’s run the script with three arguments:</p>
+<figure class="highlight bash"><table><tr><td class="code"><pre><span class="line"><span class="built_in">chmod</span> u+x ./script <span class="comment"># Grant execution privilege for user</span></span><br><span class="line"></span><br><span class="line">./script a b c</span><br><span class="line"></span><br></pre></td></tr></table></figure>
+
+<p>The output should be something like this:</p>
+<pre><code>Script Name: ./script.sh
+First Arg: a
+Second Arg: b
+All args (arr): a b c
+All args (str): a b c
+</code></pre>
 ]]></content>
+      <categories>
+        <category>Bash</category>
+      </categories>
       <tags>
-        <tag>Machine Learning</tag>
-        <tag>Life</tag>
-      </tags>
-  </entry>
-  <entry>
-    <title>7-2-Java-基本语法-大整数相加</title>
-    <url>/2023/04/24/7-2-Java-%E5%9F%BA%E6%9C%AC%E8%AF%AD%E6%B3%95-%E5%A4%A7%E6%95%B4%E6%95%B0%E7%9B%B8%E5%8A%A0/</url>
-    <content><![CDATA[<h3 id="题目"><a href="#题目" class="headerlink" title="题目"></a>题目</h3><p>有若干大整数，需要对其进行求和操作。</p>
-<h3 id="输入格式"><a href="#输入格式" class="headerlink" title="输入格式"></a>输入格式</h3><p>每行输入一个字符串代表一个大整数，连续输入若干行，当某行字符为e或E时退出。</p>
-<h3 id="输入样例"><a href="#输入样例" class="headerlink" title="输入样例:"></a>输入样例:</h3><figure class="highlight plaintext"><table><tr><td class="code"><pre><span class="line">42846280183517070527831839425882145521227251250327</span><br><span class="line">55121603546981200581762165212827652751691296897789</span><br><span class="line">e</span><br></pre></td></tr></table></figure>
-
-<h3 id="输出样例"><a href="#输出样例" class="headerlink" title="输出样例:"></a>输出样例:</h3><figure class="highlight plaintext"><table><tr><td class="code"><pre><span class="line">97967883730498271109594004638709798272918548148116</span><br></pre></td></tr></table></figure>
-
-<h3 id="JavaScript"><a href="#JavaScript" class="headerlink" title="JavaScript"></a>JavaScript</h3><figure class="highlight javascript"><table><tr><td class="code"><pre><span class="line"><span class="keyword">const</span> readline = <span class="built_in">require</span>(<span class="string">&#x27;readline&#x27;</span>)</span><br><span class="line"><span class="keyword">const</span> rl = readline.<span class="title function_">createInterface</span>(&#123;</span><br><span class="line">    <span class="attr">input</span>: process.<span class="property">stdin</span>,</span><br><span class="line">    <span class="attr">output</span>: process.<span class="property">stdout</span></span><br><span class="line">&#125;)</span><br><span class="line"></span><br><span class="line"><span class="keyword">let</span> sum = <span class="title class_">BigInt</span>(<span class="number">0</span>)</span><br><span class="line"></span><br><span class="line">rl.<span class="title function_">on</span>(<span class="string">&#x27;line&#x27;</span>, <span class="function"><span class="params">line</span> =&gt;</span> &#123;</span><br><span class="line">    <span class="keyword">if</span> (!line.<span class="title function_">localeCompare</span>(<span class="string">&quot;e&quot;</span>, <span class="literal">undefined</span>, &#123; <span class="attr">sensitivity</span>: <span class="string">&quot;base&quot;</span> &#125;)) &#123;</span><br><span class="line">        <span class="variable language_">console</span>.<span class="title function_">log</span>(sum.<span class="title function_">toString</span>())</span><br><span class="line">        rl.<span class="title function_">close</span>()</span><br><span class="line">    &#125; <span class="keyword">else</span> &#123;</span><br><span class="line">        sum += <span class="title class_">BigInt</span>(line)</span><br><span class="line">    &#125;</span><br><span class="line">&#125;)</span><br></pre></td></tr></table></figure>
-
-<h3 id="Java"><a href="#Java" class="headerlink" title="Java"></a>Java</h3><figure class="highlight java"><table><tr><td class="code"><pre><span class="line"><span class="keyword">import</span> java.util.Scanner;</span><br><span class="line"><span class="keyword">import</span> java.math.BigInteger;</span><br><span class="line"></span><br><span class="line"><span class="keyword">public</span> <span class="keyword">class</span> <span class="title class_">Main</span> &#123;</span><br><span class="line">    <span class="keyword">public</span> <span class="keyword">static</span> <span class="keyword">void</span> <span class="title function_">main</span> <span class="params">(String[] args)</span> &#123;</span><br><span class="line">        <span class="type">Scanner</span> <span class="variable">scanner</span> <span class="operator">=</span> <span class="keyword">new</span> <span class="title class_">Scanner</span>(System.in);</span><br><span class="line">        <span class="type">BigInteger</span> <span class="variable">sum</span> <span class="operator">=</span> BigInteger.ZERO;</span><br><span class="line"></span><br><span class="line">        <span class="keyword">while</span> (scanner.hasNextLine()) &#123;</span><br><span class="line">            <span class="type">String</span> <span class="variable">line</span> <span class="operator">=</span> scanner.nextLine();</span><br><span class="line">            <span class="keyword">if</span> (line.equalsIgnoreCase(<span class="string">&quot;e&quot;</span>)) &#123;</span><br><span class="line">                System.out.println(sum.toString());</span><br><span class="line">                <span class="keyword">break</span>;</span><br><span class="line">            &#125; <span class="keyword">else</span> &#123;</span><br><span class="line">                sum = sum.add(<span class="keyword">new</span> <span class="title class_">BigInteger</span>(line));</span><br><span class="line">            &#125;</span><br><span class="line">        &#125;</span><br><span class="line">        scanner.close();</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>]]></content>
-      <tags>
-        <tag>JavaScript</tag>
-        <tag>Java</tag>
-        <tag>BigInt</tag>
-        <tag>readline</tag>
+        <tag>Linux</tag>
+        <tag>Bash</tag>
       </tags>
   </entry>
   <entry>
@@ -962,73 +900,62 @@ Possible reasons for having this kind of units are:
       </tags>
   </entry>
   <entry>
-    <title>使用 Hexo 生成静态网页博客</title>
-    <url>/2023/04/22/%E4%BD%BF%E7%94%A8%20Hexo%20%E7%94%9F%E6%88%90%E9%9D%99%E6%80%81%E7%BD%91%E9%A1%B5%E5%8D%9A%E5%AE%A2/</url>
-    <content><![CDATA[<h3 id="要求"><a href="#要求" class="headerlink" title="要求"></a><em>要求</em></h3><ul>
-<li><p>Node.js</p>
-</li>
-<li><p>Git</p>
-</li>
-</ul>
-<h3 id="下载"><a href="#下载" class="headerlink" title="下载"></a><em>下载</em></h3><ul>
-<li><p><a href="https://nodejs.org/dist/v18.15.0/node-v18.15.0.pkg" title="Download Node (LTS)">官网下载 Node.js 安装包</a></p>
-</li>
-<li><p><a href="https://git-scm.com/downloads" title="Download Git">官网下载 Git</a></p>
-</li>
-</ul>
-<p>– <strong>请注意参考个人电脑的操作系统！</strong></p>
-<p>进入 Terminal 查看安装的版本：</p>
-<figure class="highlight bash"><table><tr><td class="code"><pre><span class="line">node --version <span class="comment"># v18.16.0</span></span><br><span class="line"></span><br><span class="line">git --version <span class="comment"># git version 2.40.0</span></span><br></pre></td></tr></table></figure>
-
-<h3 id="Quick-Start"><a href="#Quick-Start" class="headerlink" title="Quick Start"></a>Quick Start</h3><figure class="highlight bash"><table><tr><td class="code"><pre><span class="line">hexo init my-blog</span><br><span class="line"></span><br><span class="line"><span class="built_in">cd</span> my-blog</span><br><span class="line"></span><br><span class="line"><span class="comment"># 因为 hexo 是基于 Node.js 完成的框架，所以完成第一步之后无需再执行 `npm init -y` 生成 package.json 文件</span></span><br><span class="line"></span><br><span class="line">npm i </span><br><span class="line"></span><br><span class="line">hexo server</span><br></pre></td></tr></table></figure>
-
-<p>接着我们去 <code>localhost:4000</code> 就能看到我们的博客了！</p>
-<h3 id="项目树状结构图"><a href="#项目树状结构图" class="headerlink" title="项目树状结构图"></a>项目树状结构图</h3><p>我们首先来了解一下我们的项目文件夹下面有些什么：</p>
-<figure class="highlight plaintext"><table><tr><td class="code"><pre><span class="line">.</span><br><span class="line">├── _config.landscape.yml</span><br><span class="line">├── _config.yml</span><br><span class="line">├── db.json</span><br><span class="line">├── node_modules</span><br><span class="line">├── package-lock.json</span><br><span class="line">├── package.json</span><br><span class="line">├── public</span><br><span class="line">├── scaffolds</span><br><span class="line">├── source</span><br><span class="line">├── themes</span><br><span class="line">└── yarn.lock</span><br></pre></td></tr></table></figure>
-
-<ul>
-<li><a href="/2023/04/22/%E5%A6%82%E4%BD%95%E7%94%9F%E6%88%90%E9%A1%B9%E7%9B%AE%E6%A0%91%E7%8A%B6%E7%BB%93%E6%9E%84%E5%9B%BE/index.html">如何生成项目树状结构图</a></li>
-</ul>
-<blockquote>
-<p><code>_config.yml</code>：Hexo 博客设置</p>
-</blockquote>
-<blockquote>
-<p><code>node_modules</code>：存放启动需要使用的模组</p>
-</blockquote>
-<blockquote>
-<p><code>public</code>：存放生成的静态网页</p>
-</blockquote>
-<figure class="highlight plaintext"><table><tr><td class="code"><pre><span class="line">public</span><br><span class="line">├── 2023</span><br><span class="line">├── README.md</span><br><span class="line">├── archives</span><br><span class="line">├── assets</span><br><span class="line">├── css</span><br><span class="line">├── fontawesome</span><br><span class="line">├── fonts</span><br><span class="line">├── images</span><br><span class="line">├── index.html</span><br><span class="line">├── js</span><br><span class="line">├── tags</span><br><span class="line">└── webfonts</span><br></pre></td></tr></table></figure>
-
-<blockquote>
-<p><code>scaffolds</code>：存放 Hexo 个人博客的 3 种模版：page (白页)，post (博客)，draft (草稿)</p>
-</blockquote>
-<figure class="highlight plaintext"><table><tr><td class="code"><pre><span class="line">scaffolds</span><br><span class="line">├── draft.md</span><br><span class="line">├── page.md</span><br><span class="line">└── post.md</span><br></pre></td></tr></table></figure>
-
-<blockquote>
-<p><code>source</code>：存放博客<code>.md</code>文件</p>
-</blockquote>
-<blockquote>
-<p><code>themes</code>：存放<code>Custom</code>主题，从<code>npm</code>下载的主题存放在<code>node_modules</code>里</p>
-</blockquote>
-<h3 id="第一篇博客"><a href="#第一篇博客" class="headerlink" title="第一篇博客"></a>第一篇博客</h3><p>我们先从草稿开始：</p>
-<figure class="highlight bash"><table><tr><td class="code"><pre><span class="line">hexo new draft first-draft</span><br></pre></td></tr></table></figure>
-
-<p>Hexo 会帮我们在<code>/source/_drafts/</code>文件夹里创建我们的第一篇草稿。</p>
-<p>如果觉得写得差不多了，我们可以：</p>
-<figure class="highlight bash"><table><tr><td class="code"><pre><span class="line">hexo publish first-draft</span><br></pre></td></tr></table></figure>
-
-<p>Hexo 会自动帮我们把<code>first-draft.md</code>移动到<code>/source/_posts/</code>文件夹里，这样当我们打开服务器的时候就能看到这篇博客了。</p>
-<p>当然我们也可以带参数运行<code>hexo server</code>：</p>
-<figure class="highlight bash"><table><tr><td class="code"><pre><span class="line">hexo server --draft</span><br></pre></td></tr></table></figure>
-<p>这样我们在写草稿时也能看到最终的布局，方便我们对内容排版进行修改。</p>
-<h3 id="修改-config-yml文件"><a href="#修改-config-yml文件" class="headerlink" title="修改_config.yml文件"></a>修改<code>_config.yml</code>文件</h3><p>我们可以通过修改设置文件来改变 Hexo 的一些初始行为，比如说在 Writing 一栏里改变<code>default_layout</code>变量的参数可以改变<code>hexo new</code>创建的文件类型。</p>
-<figure class="highlight yml"><table><tr><td class="code"><pre><span class="line"><span class="comment"># Writing</span></span><br><span class="line"><span class="attr">default_layout:</span> <span class="string">post</span></span><br></pre></td></tr></table></figure>
-<p>这样我们就不用每次<code>hexo new</code>时还需要特地指定创建的文件类型了。</p>
+    <title>The Cognitive Compute of Empathy: Why Stereotypes are Just Underfitted Models</title>
+    <url>/2026/04/04/The%20Cognitive%20Compute%20of%20Empathy%20Why%20Stereotypes%20are%20Just%20Underfitted%20Models/</url>
+    <content><![CDATA[<p>Every day, the human brain is tasked with processing a massive, chaotic influx of social data. To navigate this overwhelming reality, the mind must inherently act as a predictive algorithm. However, just as in machine learning, the algorithms we choose to run in our social interactions dictate the accuracy—and the morality—of our worldview. When we examine the phenomenon of stereotyping through the lens of computer science, it becomes clear that prejudice is not merely a moral failing; it is a symptom of cognitive underfitting.</p>
+<p>At its core, a stereotype is a “low-compute” heuristic. It operates much like a Naive Bayes classifier. Because the human brain has limited processing power, it relies on heuristics as slacks to make constant-time, O(1) judgments. By compressing a complex human being into a few highly weighted, discrete features (such as age, gender, dress code, or subculture), the brain establishes a binary baseline. For everyday survival or minimal social navigation, this low-resolution model “gets the job done.” It draws a massive, straight line through a wildly scattered dataset, purposefully ignoring the outliers to save mental CPU.</p>
+<p>But saving compute comes at a severe cost. When a model is aggressively regularized to ignore complexity, it underfits the data, leading to a high rate of false positives and false negatives. In social dynamics, we call this misclassification prejudice. By leaning on these generic, binary parameters, we dull our moral compass. We ignore the very real “cost function” of our errors—the human damage done when we strip an individual of their nuance and force them into a static, pre-calculated bucket.</p>
+<p>For those educated in logic and systems thinking, relying on such a crude baseline is computationally unacceptable. If stereotypes represent an underfitted linear model, the logical upgrade is to process social interactions much like a Support Vector Machine utilizing the Kernel Trick.</p>
+<p>A naive classifier looks at a person in a two-dimensional feature space—perhaps judging them purely on appearance and accent—and clusters them with everyone else who shares those traits. But an SVM-style thinker projects that data into a much higher-dimensional space. By feeding the model dozens of continuous variables—intellectual curiosity, emotional intelligence, conflict resolution style, moral consistency—the “stereotype” dissolves. Two individuals who appear identical in a low-dimensional binary space are suddenly revealed to be miles apart in the high-dimensional space of their actual character.</p>
+<p>Furthermore, an SVM handles non-linearity. It recognizes that human behavior rarely follows a straight line. A person can simultaneously hold seemingly contradictory traits, requiring a complex, dynamic decision boundary rather than a rigid binary box.</p>
+<p>Ultimately, rejecting stereotypes is not just an exercise in social etiquette; it is a commitment to data fidelity. To rely on stereotypes is to accept an intellectually lazy algorithm. To understand people accurately requires us to willingly spend the “mental overhead” necessary to evaluate them as the high-dimensional, non-linear datasets they truly are. As logical thinkers, we must recognize that the real world is infinitely complex, and it is our moral and computational duty to scale our feature space to meet it.</p>
 ]]></content>
       <tags>
+        <tag>Life</tag>
+        <tag>Machine Learning</tag>
+      </tags>
+  </entry>
+  <entry>
+    <title>`inpath`</title>
+    <url>/2023/04/28/%60inpath%60/</url>
+    <content><![CDATA[<p>Coding along with the book <em>Wicked Cool Shell Scripts- 101 Scripts for Linux, OS X, and UNIX Systems</em>.</p>
+<p>This is the script from Page 11:</p>
+<figure class="highlight bash"><table><tr><td class="code"><pre><span class="line"><span class="meta">#!/bin/bash</span></span><br><span class="line"></span><br><span class="line"><span class="function"><span class="title">in_path</span></span>()</span><br><span class="line">&#123;</span><br><span class="line">        cmd=<span class="variable">$1</span></span><br><span class="line">        ourpath=<span class="variable">$2</span>      </span><br><span class="line">        result=1</span><br><span class="line">        oldIFS=<span class="variable">$IFS</span>     </span><br><span class="line">        IFS=<span class="string">&quot;:&quot;</span></span><br><span class="line"> </span><br><span class="line">        <span class="keyword">for</span> directory <span class="keyword">in</span> <span class="variable">$ourpath</span>; <span class="keyword">do</span></span><br><span class="line"></span><br><span class="line">        <span class="comment"># If i double quoted `$ourpath`, it will not word split, and the loop will only run once.</span></span><br><span class="line"></span><br><span class="line">                <span class="keyword">if</span> [ -x <span class="string">&quot;<span class="variable">$directory</span>/<span class="variable">$cmd</span>&quot;</span> ]; <span class="keyword">then</span></span><br><span class="line">                        result=0</span><br><span class="line">                <span class="keyword">fi</span></span><br><span class="line">        <span class="keyword">done</span></span><br><span class="line"> </span><br><span class="line">        IFS=<span class="variable">$oldIFS</span></span><br><span class="line">        <span class="built_in">return</span> <span class="variable">$result</span></span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"><span class="function"><span class="title">checkForCmdInPath</span></span>()</span><br><span class="line">&#123;</span><br><span class="line">        var=<span class="variable">$1</span></span><br><span class="line"> </span><br><span class="line">        <span class="keyword">if</span> [ ! <span class="string">&quot;<span class="variable">$var</span>&quot;</span> = <span class="string">&quot;&quot;</span> ]; <span class="keyword">then</span></span><br><span class="line">                <span class="keyword">if</span> [ <span class="string">&quot;<span class="variable">$&#123;var:0:1&#125;</span>&quot;</span> = <span class="string">&quot;/&quot;</span> ]; <span class="keyword">then</span></span><br><span class="line">                	<span class="comment"># Checks whether the command represented by the `$var` is an absolute path or not. </span></span><br><span class="line">                        <span class="keyword">if</span> [ ! -x <span class="string">&quot;<span class="variable">$var</span>&quot;</span> ]; <span class="keyword">then</span></span><br><span class="line">                                <span class="built_in">return</span> 1</span><br><span class="line">                        <span class="keyword">fi</span></span><br><span class="line">                <span class="keyword">elif</span> ! in_path <span class="string">&quot;<span class="variable">$var</span>&quot;</span> <span class="string">&quot;<span class="variable">$PATH</span>&quot;</span>; <span class="keyword">then</span></span><br><span class="line">                        <span class="built_in">return</span> 2</span><br><span class="line">                <span class="keyword">fi</span></span><br><span class="line">        <span class="keyword">fi</span></span><br><span class="line">&#125;</span><br><span class="line"></span><br></pre></td></tr></table></figure>
+
+<h3 id="Positional-parameters"><a href="#Positional-parameters" class="headerlink" title="Positional parameters"></a>Positional parameters</h3><p>See <a href="/2023/04/29/Positional%20Parameters/">here</a></p>
+<blockquote>
+<p><strong><em>A Quick Word</em></strong>  </p>
+<p>It is good practice to put double quotes around variables in Bash because it prevents word splitting and globbing.</p>
+<ul>
+<li><p>Word splitting is the process of breaking up a string into separate words based on whitespace. If a variable contains spaces, without quotes, Bash will treat each space-separated word as a separate argument. This can cause unexpected behavior if the variable is used as an argument to a command.</p>
+</li>
+<li><p>Globbing is the process of expanding wildcard characters such as <code>*</code> and <code>?</code> into a list of matching filenames. If a variable contains a glob character, without quotes, Bash will try to expand it into a list of matching filenames. This can also cause unexpected behavior if the variable is used as an argument to a command.</p>
+</li>
+</ul>
+<p>By putting double quotes around variables, Bash treats the variable as a single argument, preserving any whitespace or glob characters within the variable. This helps to ensure that the variable is interpreted correctly and the script behaves as expected.</p>
+</blockquote>
+<h3 id="Special-variables"><a href="#Special-variables" class="headerlink" title="Special variables"></a>Special variables</h3><p><strong><em><code>$IFS</code></em></strong></p>
+<p>The internal field separator (IFS) is a special variable in Bash that specifies the delimiter used to separate fields in a string. By default, the IFS is set to whitespace (i.e., space, tab, and newline characters).</p>
+<p><strong><em>&#96;$?</em></strong></p>
+<p>Display the return values of functions.</p>
+<figure class="highlight bash"><table><tr><td class="code"><pre><span class="line"><span class="built_in">echo</span> $?</span><br></pre></td></tr></table></figure>
+
+<p>You can use it immediately after calling a function with return value.</p>
+<h3 id="Slice"><a href="#Slice" class="headerlink" title="Slice"></a>Slice</h3><pre><code>[ &quot;$&#123;var:0:1&#125;&quot; = &quot;/&quot; ];
+</code></pre>
+<p>The slicing starts at index <code>0</code> and lasts for the duration of a single character.</p>
+<h3 id="Compare"><a href="#Compare" class="headerlink" title="Compare"></a>Compare</h3><p><strong><em>String comparison</em></strong></p>
+<p><code>=</code> tests if two strings are equal. For example, if <code>[ &quot;$string1&quot; = &quot;$string2&quot; ]</code> would be true if <code>$string1</code> and <code>$string2</code> have the same value.</p>
+<p><strong><em>Pattern matching</em></strong></p>
+<p><code>==</code> tests if a string matches a pattern using globbing, which is a way to match filenames based on wildcard characters. For example, if <code>[[ &quot;$string&quot; == a* ]]</code> would be true if <code>$string</code> starts with the letter “a”.</p>
+]]></content>
+      <categories>
+        <category>Wicked Cool Shell Scripts</category>
+      </categories>
+      <tags>
+        <tag>Linux</tag>
+        <tag>ArchLinux</tag>
         <tag>Bash</tag>
-        <tag>Hexo</tag>
       </tags>
   </entry>
   <entry>
@@ -1195,16 +1122,100 @@ fetch-retry-maxtimeout = 300000
       </tags>
   </entry>
   <entry>
+    <title>使用 Hexo 生成静态网页博客</title>
+    <url>/2023/04/22/%E4%BD%BF%E7%94%A8%20Hexo%20%E7%94%9F%E6%88%90%E9%9D%99%E6%80%81%E7%BD%91%E9%A1%B5%E5%8D%9A%E5%AE%A2/</url>
+    <content><![CDATA[<h3 id="要求"><a href="#要求" class="headerlink" title="要求"></a><em>要求</em></h3><ul>
+<li><p>Node.js</p>
+</li>
+<li><p>Git</p>
+</li>
+</ul>
+<h3 id="下载"><a href="#下载" class="headerlink" title="下载"></a><em>下载</em></h3><ul>
+<li><p><a href="https://nodejs.org/dist/v18.15.0/node-v18.15.0.pkg" title="Download Node (LTS)">官网下载 Node.js 安装包</a></p>
+</li>
+<li><p><a href="https://git-scm.com/downloads" title="Download Git">官网下载 Git</a></p>
+</li>
+</ul>
+<p>– <strong>请注意参考个人电脑的操作系统！</strong></p>
+<p>进入 Terminal 查看安装的版本：</p>
+<figure class="highlight bash"><table><tr><td class="code"><pre><span class="line">node --version <span class="comment"># v18.16.0</span></span><br><span class="line"></span><br><span class="line">git --version <span class="comment"># git version 2.40.0</span></span><br></pre></td></tr></table></figure>
+
+<h3 id="Quick-Start"><a href="#Quick-Start" class="headerlink" title="Quick Start"></a>Quick Start</h3><figure class="highlight bash"><table><tr><td class="code"><pre><span class="line">hexo init my-blog</span><br><span class="line"></span><br><span class="line"><span class="built_in">cd</span> my-blog</span><br><span class="line"></span><br><span class="line"><span class="comment"># 因为 hexo 是基于 Node.js 完成的框架，所以完成第一步之后无需再执行 `npm init -y` 生成 package.json 文件</span></span><br><span class="line"></span><br><span class="line">npm i </span><br><span class="line"></span><br><span class="line">hexo server</span><br></pre></td></tr></table></figure>
+
+<p>接着我们去 <code>localhost:4000</code> 就能看到我们的博客了！</p>
+<h3 id="项目树状结构图"><a href="#项目树状结构图" class="headerlink" title="项目树状结构图"></a>项目树状结构图</h3><p>我们首先来了解一下我们的项目文件夹下面有些什么：</p>
+<figure class="highlight plaintext"><table><tr><td class="code"><pre><span class="line">.</span><br><span class="line">├── _config.landscape.yml</span><br><span class="line">├── _config.yml</span><br><span class="line">├── db.json</span><br><span class="line">├── node_modules</span><br><span class="line">├── package-lock.json</span><br><span class="line">├── package.json</span><br><span class="line">├── public</span><br><span class="line">├── scaffolds</span><br><span class="line">├── source</span><br><span class="line">├── themes</span><br><span class="line">└── yarn.lock</span><br></pre></td></tr></table></figure>
+
+<ul>
+<li><a href="/2023/04/22/%E5%A6%82%E4%BD%95%E7%94%9F%E6%88%90%E9%A1%B9%E7%9B%AE%E6%A0%91%E7%8A%B6%E7%BB%93%E6%9E%84%E5%9B%BE/index.html">如何生成项目树状结构图</a></li>
+</ul>
+<blockquote>
+<p><code>_config.yml</code>：Hexo 博客设置</p>
+</blockquote>
+<blockquote>
+<p><code>node_modules</code>：存放启动需要使用的模组</p>
+</blockquote>
+<blockquote>
+<p><code>public</code>：存放生成的静态网页</p>
+</blockquote>
+<figure class="highlight plaintext"><table><tr><td class="code"><pre><span class="line">public</span><br><span class="line">├── 2023</span><br><span class="line">├── README.md</span><br><span class="line">├── archives</span><br><span class="line">├── assets</span><br><span class="line">├── css</span><br><span class="line">├── fontawesome</span><br><span class="line">├── fonts</span><br><span class="line">├── images</span><br><span class="line">├── index.html</span><br><span class="line">├── js</span><br><span class="line">├── tags</span><br><span class="line">└── webfonts</span><br></pre></td></tr></table></figure>
+
+<blockquote>
+<p><code>scaffolds</code>：存放 Hexo 个人博客的 3 种模版：page (白页)，post (博客)，draft (草稿)</p>
+</blockquote>
+<figure class="highlight plaintext"><table><tr><td class="code"><pre><span class="line">scaffolds</span><br><span class="line">├── draft.md</span><br><span class="line">├── page.md</span><br><span class="line">└── post.md</span><br></pre></td></tr></table></figure>
+
+<blockquote>
+<p><code>source</code>：存放博客<code>.md</code>文件</p>
+</blockquote>
+<blockquote>
+<p><code>themes</code>：存放<code>Custom</code>主题，从<code>npm</code>下载的主题存放在<code>node_modules</code>里</p>
+</blockquote>
+<h3 id="第一篇博客"><a href="#第一篇博客" class="headerlink" title="第一篇博客"></a>第一篇博客</h3><p>我们先从草稿开始：</p>
+<figure class="highlight bash"><table><tr><td class="code"><pre><span class="line">hexo new draft first-draft</span><br></pre></td></tr></table></figure>
+
+<p>Hexo 会帮我们在<code>/source/_drafts/</code>文件夹里创建我们的第一篇草稿。</p>
+<p>如果觉得写得差不多了，我们可以：</p>
+<figure class="highlight bash"><table><tr><td class="code"><pre><span class="line">hexo publish first-draft</span><br></pre></td></tr></table></figure>
+
+<p>Hexo 会自动帮我们把<code>first-draft.md</code>移动到<code>/source/_posts/</code>文件夹里，这样当我们打开服务器的时候就能看到这篇博客了。</p>
+<p>当然我们也可以带参数运行<code>hexo server</code>：</p>
+<figure class="highlight bash"><table><tr><td class="code"><pre><span class="line">hexo server --draft</span><br></pre></td></tr></table></figure>
+<p>这样我们在写草稿时也能看到最终的布局，方便我们对内容排版进行修改。</p>
+<h3 id="修改-config-yml文件"><a href="#修改-config-yml文件" class="headerlink" title="修改_config.yml文件"></a>修改<code>_config.yml</code>文件</h3><p>我们可以通过修改设置文件来改变 Hexo 的一些初始行为，比如说在 Writing 一栏里改变<code>default_layout</code>变量的参数可以改变<code>hexo new</code>创建的文件类型。</p>
+<figure class="highlight yml"><table><tr><td class="code"><pre><span class="line"><span class="comment"># Writing</span></span><br><span class="line"><span class="attr">default_layout:</span> <span class="string">post</span></span><br></pre></td></tr></table></figure>
+<p>这样我们就不用每次<code>hexo new</code>时还需要特地指定创建的文件类型了。</p>
+]]></content>
+      <tags>
+        <tag>Bash</tag>
+        <tag>Hexo</tag>
+      </tags>
+  </entry>
+  <entry>
     <title>回答“上海”的瞬间</title>
-    <url>/2026/04/08/%E5%9B%9E%E7%AD%94%E2%80%9C%E4%B8%8A%E6%B5%B7%E2%80%9D%E7%9A%84%E7%9E%AC%E9%97%B4/</url>
+    <url>/2026/04/09/%E5%9B%9E%E7%AD%94%E2%80%9C%E4%B8%8A%E6%B5%B7%E2%80%9D%E7%9A%84%E7%9E%AC%E9%97%B4/</url>
     <content><![CDATA[<p>作为留美研究生，我的课余时间大多耗在了攀岩俱乐部里。在岩壁下给双手打着镁粉，与新结识的同好交流攀登路线时，总会遇到那个无可回避的问题：“Where are you from?”</p>
 <p>每当这时，我都会不假思索地回答：“Shanghai.”</p>
 <p>这并非单纯的地理定标，而更像是一种精心算计过的、带点无奈的文化防御。在这个简短的回答背后，藏着一句没有说出口的潜台词：请将我视作一个拥有契约精神、懂得边界感的现代人，而不是那个庞大、喧哗且面目模糊的集体中的一员。</p>
 <p>如果碰巧，你能用毫无口音的英语与对方交谈，你能明显察觉到对方眼底那层天然戒备的消融。然而，这种消融带给我的，往往不是庆幸，而是一丝深沉的悲哀。因为这种对“无口音”和“得体”的执念，本质上是一种近乎绝望的伪装。我们在试图用力擦洗掉一种不属于自己的集体底色。</p>
-<p>这总让我联想起《人间失格》英文版译者在附文里写下的那种困境。明治以来的日本拼命想要“脱亚入欧”，渴望被当作现代文明的一部分，但无论怎么模仿，西方审视他们的目光里，依然死死贴着“亚洲”的标签。 今天的我们，同样身处这种巨大的身份错位中。我们认同普世的秩序，欣赏发达社会的整洁与体面，试图在精神上完成一次个体的突围。但现实是，无论你多么努力地展示文明的素养，只要身处国际社会的宏大语境下，你依然要为某些你不认同的粗鄙和战狼式的傲慢买单。</p>
+<p>这总让我联想起《人间失格》英文版译者在附文里写下的那种困境。明治以来的日本拼命想要“脱亚入欧”，渴望被当作现代文明的一部分，但无论怎么模仿，西方审视他们的目光里，依然死死贴着“亚洲”的标签。今天的我们，同样身处这种巨大的身份错位中。我们认同普世的秩序，欣赏发达社会的整洁与体面，试图在精神上完成一次个体的突围。但现实是，无论你多么努力地展示文明的素养，只要身处国际社会的宏大语境下，你依然要为某些你不认同的粗鄙和战狼式的傲慢买单。</p>
 <p>而更残忍的撕裂，发生在转身面对故土的时刻。</p>
-<p>这几年的周遭，正被一种粗糙的仇恨教育和排外情绪所笼罩。当你试图保持常识的清醒，拒绝去盲目仇恨那些你明明觉得值得学习的社会时，你便成了同胞嘴里的“精外”与“汉奸”。这是一种极其荒谬的倒错：你仅仅是因为向往更文明的生活方式，就被粗暴地开除了爱国的资格。 在国际上，你因为无法选择的出身而被防备；在故土上，你又因为自己选择的清醒而被排斥。这成了我们这一代人最尴尬的处境。</p>
+<p>这几年的周遭，正被一种粗糙的仇恨教育和排外情绪所笼罩。当你试图保持常识的清醒，拒绝去盲目仇恨那些你明明觉得值得学习的社会时，你便成了同胞嘴里的“精外”与“汉奸”。这是一种极其荒谬的倒错：你仅仅是因为向往更文明的生活方式，就被粗暴地开除了爱国的资格。在国际上，你因为无法选择的出身而被防备；在故土上，你又因为自己选择的清醒而被排斥。这成了我们这一代人最尴尬的处境。</p>
 <p>最终，我们既无法彻底融入彼岸的认同，也再难附和此岸的狂热。那些识时务的年轻人，渐渐变成了游荡在两种叙事夹缝里的“精神侨民”。我们别无他法，只能在心里牢牢守住那座名叫“文明”的孤岛，在看透了周遭的藩篱之后，孤独、但必须体面地活着。</p>
+]]></content>
+      <tags>
+        <tag>Life</tag>
+      </tags>
+  </entry>
+  <entry>
+    <title>失语的世代：我的母语，成了一截隐隐作痛的幻肢</title>
+    <url>/2026/04/08/%E5%A4%B1%E8%AF%AD%E7%9A%84%E4%B8%96%E4%BB%A3/</url>
+    <content><![CDATA[<p>5岁前我在海门，和外公外婆一起生活，6岁回到上海。如今，海门话对我而言，变成了一截隐隐作痛的幻肢。我能听懂，口腔肌肉甚至还记得发音的位置，但每当试图开口，意识却怎么也拨不通那串输出的号码。这在语言学上叫“被动双语”，但在我心里，这叫剥夺。</p>
+<p>作为00后，我们这代人的普通话标准得毫无破绽，这是宏大叙事的一场全胜。从小，校园里的方言是被隐秘地“污名化”的。我至今记得，小学老师平时讲着标准的普通话，只有在勃然大怒、甚至体罚学生时，才会飙出上海话。在这种潜移默化的心理规训下，方言与“粗鄙、失控”画上了等号，我们在潜意识里，自动完成了对家乡话的抵触与阉割。</p>
+<p>这种母语的断裂绝非偶然。语言从来不仅是沟通的工具，它是凝结同乡认同的粘合剂，是一道抵御权力渗透的文化护城河。当方言被强制从校园和家庭的堡垒中驱逐，一种基于地域的民间凝聚力便随之瓦解。推普的推土机铲平了语言的沟壑，也顺手将复杂的社会结构，碾压成了便于管理的、平庸的原子化沙盘。失去了共同的乡音，我们就成了流水线上规格统一、却不知来处的产品。</p>
+<p>极具讽刺意味的是，我是通过学习英语，才真正读懂了母语消亡的悲剧。外语的介入重塑了我的思维方式，让我恍然大悟：语言中那些感性的“nuance”（细微差别），是无论多么精准的翻译都无法替代的。普通话像一台轰鸣的工业烘干机，抽干了方言里湿润、暧昧且鲜活的市井温度。那些只属于海门江风或上海弄堂的情感密码，一旦失去时间的积累，就会变成永远无法破译的死语。</p>
+<p>我时常感到愤怒，这种愤怒是对文化根脉被强行折断的本能痛感。但愤怒，也是觉醒的开始。我庆幸我的口腔肌肉还保留着那一点微弱的发音本能。在一个高度标准化的时代，拒绝遗忘，本身就是一种微小而坚韧的反抗。</p>
+<p>我的方言还在那里。那不仅是乡音，那是我的灵魂指纹，是我绝不交出的最后一块主权。</p>
 ]]></content>
       <tags>
         <tag>Life</tag>
@@ -1317,17 +1328,49 @@ S: 221 /0:0:0:0:0:0:0:1 Service closing transmission channel
       </tags>
   </entry>
   <entry>
-    <title>失语的世代：我的母语，成了一截隐隐作痛的幻肢</title>
-    <url>/2026/04/08/%E5%A4%B1%E8%AF%AD%E7%9A%84%E4%B8%96%E4%BB%A3/</url>
-    <content><![CDATA[<p>5岁前我在海门，和外公外婆一起生活，6岁回到上海。如今，海门话对我而言，变成了一截隐隐作痛的幻肢。我能听懂，口腔肌肉甚至还记得发音的位置，但每当试图开口，意识却怎么也拨不通那串输出的号码。这在语言学上叫“被动双语”，但在我心里，这叫剥夺。</p>
-<p>作为00后，我们这代人的普通话标准得毫无破绽，这是宏大叙事的一场全胜。从小，校园里的方言是被隐秘地“污名化”的。我至今记得，小学老师平时讲着标准的普通话，只有在勃然大怒、甚至体罚学生时，才会飙出上海话。在这种潜移默化的心理规训下，方言与“粗鄙、失控”画上了等号，我们在潜意识里，自动完成了对家乡话的抵触与阉割。</p>
-<p>这种母语的断裂绝非偶然。语言从来不仅是沟通的工具，它是凝结同乡认同的粘合剂，是一道抵御权力渗透的文化护城河。当方言被强制从校园和家庭的堡垒中驱逐，一种基于地域的民间凝聚力便随之瓦解。推普的推土机铲平了语言的沟壑，也顺手将复杂的社会结构，碾压成了便于管理的、平庸的原子化沙盘。失去了共同的乡音，我们就成了流水线上规格统一、却不知来处的产品。</p>
-<p>极具讽刺意味的是，我是通过学习英语，才真正读懂了母语消亡的悲剧。外语的介入重塑了我的思维方式，让我恍然大悟：语言中那些感性的“nuance”（细微差别），是无论多么精准的翻译都无法替代的。普通话像一台轰鸣的工业烘干机，抽干了方言里湿润、暧昧且鲜活的市井温度。那些只属于海门江风或上海弄堂的情感密码，一旦失去时间的积累，就会变成永远无法破译的死语。</p>
-<p>我时常感到愤怒，这种愤怒是对文化根脉被强行折断的本能痛感。但愤怒，也是觉醒的开始。我庆幸我的口腔肌肉还保留着那一点微弱的发音本能。在一个高度标准化的时代，拒绝遗忘，本身就是一种微小而坚韧的反抗。</p>
-<p>我的方言还在那里。那不仅是乡音，那是我的灵魂指纹，是我绝不交出的最后一块主权。</p>
+    <title>Installing Puppet server on ArchLinux</title>
+    <url>/2023/04/27/Installing%20Puppet%20server%20on%20ArchLinux/</url>
+    <content><![CDATA[<h3 id="Installation"><a href="#Installation" class="headerlink" title="Installation"></a>Installation</h3><p>To install puppet server first add the upstream GPG key:</p>
+<pre><code>$ gpg --fetch-keys https://yum.puppetlabs.com/RPM-GPG-KEY-puppet-20250406
+</code></pre>
+<div>
+    Then install the <a href="https://aur.archlinux.org/packages/puppetserver"><b>puppetserver</b></a><sup>AUR</sup> package.
+</div>
+
+<figure class="highlight bash"><table><tr><td class="code"><pre><span class="line">git <span class="built_in">clone</span> https://aur.archlinux.org/puppetserver.git</span><br><span class="line"></span><br><span class="line"><span class="built_in">cd</span> puppetserver/</span><br><span class="line"></span><br><span class="line">makepkg -si</span><br><span class="line"></span><br></pre></td></tr></table></figure>
+
+<p>Having questions about the <code>makepkg</code> command? Visit <a href="/2023/04/25/Running%20ArchLinux%20ARM%20in%20UTM%20on%20a%20M1%20MacBook%20Air/#yay" title="makepkg">here</a>!</p>
+<div>
+    Afterwards, enable and start the <b>puppetserver</b> service.
+</div>
+
+<figure class="highlight bash"><table><tr><td class="code"><pre><span class="line"><span class="built_in">sudo</span> systemctl <span class="built_in">enable</span> puppetserver.service</span><br><span class="line"></span><br><span class="line"><span class="comment"># Add to &quot;/etc/systemd/system/multi-user.target.wants&quot;.</span></span><br><span class="line"></span><br><span class="line"><span class="built_in">sudo</span> systemctl start puppetserver.service</span><br><span class="line"></span><br></pre></td></tr></table></figure>
+
+<h3 id="Delete-a-key"><a href="#Delete-a-key" class="headerlink" title="Delete a key"></a>Delete a key</h3><p>List the keys in your keyring using the command <code>gpg --list-keys</code>:</p>
+<pre><code>$ gpg --list-keys
+/root/.gnupg/pubring.kbx
+------------------------
+pub   rsa4096 2019-04-08 [SC] [expires: 2025-04-06]
+      D6811ED3ADEEB8441AF5AA8F4528B6CD9E61EF26
+uid           [ unknown] Puppet, Inc. Release Key (Puppet, Inc. Release Key) &lt;release@puppet.com&gt;
+</code></pre>
+<p>For example, the key ID of the instance above is “D6811ED3ADEEB8441AF5AA8F4528B6CD9E61EF26”.</p>
+<p>Delete the key using the command <code>gpg --delete-keys [key ID]</code>.</p>
+<p>Note that deleting a key from your keyring will prevent you from verifying any signatures made with that key in the future. If you need to use the key again later, you will need to fetch it again using the <code>gpg --fetch-keys</code> command.</p>
+<blockquote>
+<p>Configuration</p>
+</blockquote>
+<p>The Puppet Server’s configuration files are stored in <code>/etc/puppetlabs/puppetserver/</code>.</p>
 ]]></content>
+      <categories>
+        <category>Puppet</category>
+      </categories>
       <tags>
-        <tag>Life</tag>
+        <tag>Linux</tag>
+        <tag>ArchLinux</tag>
+        <tag>Puppet</tag>
+        <tag>server</tag>
+        <tag>GPG key</tag>
       </tags>
   </entry>
   <entry>
@@ -1427,49 +1470,6 @@ S: 221 /0:0:0:0:0:0:0:1 Service closing transmission channel
       </tags>
   </entry>
   <entry>
-    <title>`inpath`</title>
-    <url>/2023/04/28/%60inpath%60/</url>
-    <content><![CDATA[<p>Coding along with the book <em>Wicked Cool Shell Scripts- 101 Scripts for Linux, OS X, and UNIX Systems</em>.</p>
-<p>This is the script from Page 11:</p>
-<figure class="highlight bash"><table><tr><td class="code"><pre><span class="line"><span class="meta">#!/bin/bash</span></span><br><span class="line"></span><br><span class="line"><span class="function"><span class="title">in_path</span></span>()</span><br><span class="line">&#123;</span><br><span class="line">        cmd=<span class="variable">$1</span></span><br><span class="line">        ourpath=<span class="variable">$2</span>      </span><br><span class="line">        result=1</span><br><span class="line">        oldIFS=<span class="variable">$IFS</span>     </span><br><span class="line">        IFS=<span class="string">&quot;:&quot;</span></span><br><span class="line"> </span><br><span class="line">        <span class="keyword">for</span> directory <span class="keyword">in</span> <span class="variable">$ourpath</span>; <span class="keyword">do</span></span><br><span class="line"></span><br><span class="line">        <span class="comment"># If i double quoted `$ourpath`, it will not word split, and the loop will only run once.</span></span><br><span class="line"></span><br><span class="line">                <span class="keyword">if</span> [ -x <span class="string">&quot;<span class="variable">$directory</span>/<span class="variable">$cmd</span>&quot;</span> ]; <span class="keyword">then</span></span><br><span class="line">                        result=0</span><br><span class="line">                <span class="keyword">fi</span></span><br><span class="line">        <span class="keyword">done</span></span><br><span class="line"> </span><br><span class="line">        IFS=<span class="variable">$oldIFS</span></span><br><span class="line">        <span class="built_in">return</span> <span class="variable">$result</span></span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"><span class="function"><span class="title">checkForCmdInPath</span></span>()</span><br><span class="line">&#123;</span><br><span class="line">        var=<span class="variable">$1</span></span><br><span class="line"> </span><br><span class="line">        <span class="keyword">if</span> [ ! <span class="string">&quot;<span class="variable">$var</span>&quot;</span> = <span class="string">&quot;&quot;</span> ]; <span class="keyword">then</span></span><br><span class="line">                <span class="keyword">if</span> [ <span class="string">&quot;<span class="variable">$&#123;var:0:1&#125;</span>&quot;</span> = <span class="string">&quot;/&quot;</span> ]; <span class="keyword">then</span></span><br><span class="line">                	<span class="comment"># Checks whether the command represented by the `$var` is an absolute path or not. </span></span><br><span class="line">                        <span class="keyword">if</span> [ ! -x <span class="string">&quot;<span class="variable">$var</span>&quot;</span> ]; <span class="keyword">then</span></span><br><span class="line">                                <span class="built_in">return</span> 1</span><br><span class="line">                        <span class="keyword">fi</span></span><br><span class="line">                <span class="keyword">elif</span> ! in_path <span class="string">&quot;<span class="variable">$var</span>&quot;</span> <span class="string">&quot;<span class="variable">$PATH</span>&quot;</span>; <span class="keyword">then</span></span><br><span class="line">                        <span class="built_in">return</span> 2</span><br><span class="line">                <span class="keyword">fi</span></span><br><span class="line">        <span class="keyword">fi</span></span><br><span class="line">&#125;</span><br><span class="line"></span><br></pre></td></tr></table></figure>
-
-<h3 id="Positional-parameters"><a href="#Positional-parameters" class="headerlink" title="Positional parameters"></a>Positional parameters</h3><p>See <a href="/2023/04/29/Positional%20Parameters/">here</a></p>
-<blockquote>
-<p><strong><em>A Quick Word</em></strong>  </p>
-<p>It is good practice to put double quotes around variables in Bash because it prevents word splitting and globbing.</p>
-<ul>
-<li><p>Word splitting is the process of breaking up a string into separate words based on whitespace. If a variable contains spaces, without quotes, Bash will treat each space-separated word as a separate argument. This can cause unexpected behavior if the variable is used as an argument to a command.</p>
-</li>
-<li><p>Globbing is the process of expanding wildcard characters such as <code>*</code> and <code>?</code> into a list of matching filenames. If a variable contains a glob character, without quotes, Bash will try to expand it into a list of matching filenames. This can also cause unexpected behavior if the variable is used as an argument to a command.</p>
-</li>
-</ul>
-<p>By putting double quotes around variables, Bash treats the variable as a single argument, preserving any whitespace or glob characters within the variable. This helps to ensure that the variable is interpreted correctly and the script behaves as expected.</p>
-</blockquote>
-<h3 id="Special-variables"><a href="#Special-variables" class="headerlink" title="Special variables"></a>Special variables</h3><p><strong><em><code>$IFS</code></em></strong></p>
-<p>The internal field separator (IFS) is a special variable in Bash that specifies the delimiter used to separate fields in a string. By default, the IFS is set to whitespace (i.e., space, tab, and newline characters).</p>
-<p><strong><em>&#96;$?</em></strong></p>
-<p>Display the return values of functions.</p>
-<figure class="highlight bash"><table><tr><td class="code"><pre><span class="line"><span class="built_in">echo</span> $?</span><br></pre></td></tr></table></figure>
-
-<p>You can use it immediately after calling a function with return value.</p>
-<h3 id="Slice"><a href="#Slice" class="headerlink" title="Slice"></a>Slice</h3><pre><code>[ &quot;$&#123;var:0:1&#125;&quot; = &quot;/&quot; ];
-</code></pre>
-<p>The slicing starts at index <code>0</code> and lasts for the duration of a single character.</p>
-<h3 id="Compare"><a href="#Compare" class="headerlink" title="Compare"></a>Compare</h3><p><strong><em>String comparison</em></strong></p>
-<p><code>=</code> tests if two strings are equal. For example, if <code>[ &quot;$string1&quot; = &quot;$string2&quot; ]</code> would be true if <code>$string1</code> and <code>$string2</code> have the same value.</p>
-<p><strong><em>Pattern matching</em></strong></p>
-<p><code>==</code> tests if a string matches a pattern using globbing, which is a way to match filenames based on wildcard characters. For example, if <code>[[ &quot;$string&quot; == a* ]]</code> would be true if <code>$string</code> starts with the letter “a”.</p>
-]]></content>
-      <categories>
-        <category>Wicked Cool Shell Scripts</category>
-      </categories>
-      <tags>
-        <tag>Linux</tag>
-        <tag>ArchLinux</tag>
-        <tag>Bash</tag>
-      </tags>
-  </entry>
-  <entry>
     <title>开往奈良的电车，与故乡的倒影</title>
     <url>/2026/04/08/%E5%BC%80%E5%BE%80%E5%A5%88%E8%89%AF%E7%9A%84%E7%94%B5%E8%BD%A6%EF%BC%8C%E4%B8%8E%E6%95%85%E4%B9%A1%E7%9A%84%E5%80%92%E5%BD%B1/</url>
     <content><![CDATA[<p>出生在上海，五岁前长在海门的三厂镇，这是我认知的起点。后来跨过大洋，吹过科罗拉多的风，走过纽约和波士顿的街头。年少的眼睛看世界，大多是走马观花，直到高一那年去了新加坡。</p>
@@ -1486,15 +1486,16 @@ S: 221 /0:0:0:0:0:0:0:1 Service closing transmission channel
       </tags>
   </entry>
   <entry>
-    <title>悬浮的世代与消亡的常识</title>
-    <url>/2026/04/07/%E6%82%AC%E6%B5%AE%E7%9A%84%E4%B8%96%E4%BB%A3%E4%B8%8E%E6%B6%88%E4%BA%A1%E7%9A%84%E5%B8%B8%E8%AF%86/</url>
-    <content><![CDATA[<p>近来，关于天朝二三线城市年轻人的讨论颇多。从表面上看，他们是不再困于温饱的一代，享受着比乡村更好的物质条件，每天在互联网和流媒体的碎片信息中浸泡。但令人困惑的是，这种物质的改善与技术的普及，并没有带来精神世界的开放。相反，在一个缺乏真实国际视野的半封闭生态里，滋生出了一种极其吊诡的群体性格——既盲目自大，又在道德上极度“双标”。</p>
-<p>如果你用现代文明的常识去审视，这种现象其实并不突兀，它恰恰是天朝这几十年来社会工程结出的必然之果。互联网在这里并没有成为接轨世界的桥梁，反而成了算法圈养和宏大叙事洗脑的围栏。在这个信息茧房里，缺乏跨文化现实碰撞的年轻人，很容易把无知当个性，习惯于站在道德制高点上去审视他人，却对自身的行为毫无底线。这种“严以待人、宽以律己”的狂欢，本质上是传统熟人社会解体后，现代公民责任未能建立而留下的道德真空。</p>
-<p>更有意思的是，抛开当下经济下行的现实压力不谈，这代人对结婚生子表现出了前所未有的排斥。他们热衷于当下的“快活”，对所谓延续家族和抚养后代的使命感嗤之以鼻。</p>
-<p>这其实是一场历史的宿命。正如我们常看到的，天朝有着极强的“控制能力”，却极度缺乏现代意义上的“治理能力”。为了建立这种自上而下的绝对控制，官府自建政以来，通过连番的政治运动，系统性地摧毁了以家族、乡绅和儒家伦理为基础的传统民间自治结构。那些曾经维系中国人精神内核的“传统美德”，早就在权力的碾盘下化为齑粉。</p>
-<p>紧接着，长达三十多年的计划生育政策，又从微观上彻底重塑了家庭。一个从小被视为绝对中心、习惯了单向索取的“原子化”个体，怎么可能在成年后，突然生出牺牲自我、去承担繁衍责任的使命感？</p>
-<p>所以，当我们看到这些以自我为中心、拒绝生育、精神世界高度封闭的年轻人时，不能仅仅归咎于个人的自私。这是制度与国民互为因果的绝佳样本。他们失去了传统宗族社会的敬畏心，又被阻挡在现代公民文明的门外；他们被剥夺了历史的厚重感，最终只能在消费主义的奶嘴中寻找虚无的寄托。</p>
-<p>这一切，或许正是那个反常识的体制，在狂飙突进几十年后，不得不面对的社会残局。</p>
+    <title>无题</title>
+    <url>/2026/04/09/%E6%97%A0%E9%A2%98/</url>
+    <content><![CDATA[<p>我总觉得，我们这代人像是经历了一场漫长的大切除手术。主刀的大夫拍着胸脯说，为了跑得快、为了赶超别人，盲肠得割，扁桃体得切，连带着神经纤维也得抽掉几根。等我们从历史的麻醉中醒来，发现自己确实跑得像台高铁，机器轰鸣，肌肉发达。但稍微吹点凉风，五脏六腑就不受控制地痉挛。</p>
+<p>研究历史久了，你会发现一件挺荒谬的事。过去两千年的王朝更替，说白了是换东家。新东家拎着刀进门，坐定之后，还得拜孔庙、修族谱、听乡音，因为他懂一个常识：管人，还得顺着“人”的纹理来。</p>
+<p>但近现代这套包裹在工业化外衣下的狂热逻辑，不讲这些。它嫌“人”的纹理太麻烦，它的目的是要把树木直接压成标准化的密度板。于是，方言被视作交流的阻碍，祠堂被认定为封建的余孽，血缘和乡土结成的纽带，布满了时代进步的车轱辘印。这套机制极其高效且冰冷，它打着“去粗取精”的旗号，实际上是在借着一场巨大的混乱，把所有横亘在个人与绝对权力之间的缓冲地带，连根拔起，统统踹进了焚化炉。</p>
+<p>这哪是杀鸡取卵，这是把养鸡场的地皮都铲了去烧砖。</p>
+<p>所以，我时常感到一种难以名状的焦躁与憋闷。这种感觉，就像是你兜里揣着一把祖传的黄铜钥匙，但在故乡的街头转了一整圈，发现所有的门都换成了密码锁。礼崩乐坏并不可怕，可怕的是人们连“礼”的说明书都被烧光了。</p>
+<p>人总不能靠着虚无活着。为了证明自己没疯，人只能把目光投向别处。我们越过海峡，去看台湾保留的繁体字与温良恭俭，或者去京都的石板路上，对着别人家的屋檐寻找唐宋的倒影。这并非是因为骨头软去崇拜他者，而是一个被强制失忆的人，只能借着邻居家的镜子，拼命回忆自己祖辈原本的容貌。</p>
+<p>这无疑是极其悲哀的。几千年的浩大文明，在其发源地被剔除得只剩下一具坚硬的躯壳，而其残存的魂魄，却只能附着在海外的孤岛与邻居的衣钵上。</p>
+<p>没办法，当脚下的土壤已经被浇筑成了统一规格的水泥地，一棵树若还想保持一点翠绿的尊严，大概也只能选择在精神上流亡，做一粒随风飘向海外的种子了。</p>
 ]]></content>
       <tags>
         <tag>Life</tag>
@@ -1507,9 +1508,24 @@ S: 221 /0:0:0:0:0:0:0:1 Service closing transmission channel
 <p>你不难发觉，如今互联网上的漫画解说与评论区，正弥漫着一种冰冷的“审查感”。一个角色若是出于恐惧、犹疑，或是为了保护同伴而未能做出“最优解”惨死，弹幕便会如法庭宣判般降临：“降智”、“喂屎”、“强行剧情杀”。</p>
 <p>在上帝视角的绝对庇护下，这群赛博时代的战术大师们，一边嚼着薯片，一边为生死一瞬的纸片人列出完美逃生的一二三条预案。他们苛求一个涉世未深的少年，在血沫飞溅的绝境中，必须像久经沙场的特种兵一样杀伐果断，甚至要在脑中飞速运行一套无懈可击的SOP流程。</p>
 <p>所谓的“剧情杀”，本是戏剧冲突中最为动人的宿命与必然，如今却被污名化，成了这群人掩饰自身审美匮乏的遮羞布。他们对悲剧免疫，对文学性里的“残缺与遗憾”毫无胃口。在他们的脑海里，顺应人性的情感不叫逻辑，只有绝对理性的“赢”，才叫逻辑。</p>
-<p>拨开这层“理中客”的外衣，底下藏着的，其实是现代人干瘪的共情力与极度的自我中心。 那些在屏幕前对角色大呼小叫、苛责其没有留足后手的人，在现实的高压齿轮下，往往是外强中干、最不敢越雷池一步的疲惫者。正因为现实中处处无力，他们才迫切地需要在虚构的作品中，投射一种病态的掌控欲。他们无法容忍角色的软弱与感性，因为那会刺痛他们潜意识中不敢面对的真实自我。社会达尔文主义的慕强法则，就这样堂而皇之地绞杀了古典的浪漫与悲壮。</p>
+<p>拨开这层“理中客”的外衣，底下藏着的，其实是现代人干瘪的共情力与极度的自我中心。那些在屏幕前对角色大呼小叫、苛责其没有留足后手的人，在现实的高压齿轮下，往往是外强中干、最不敢越雷池一步的疲惫者。正因为现实中处处无力，他们才迫切地需要在虚构的作品中，投射一种病态的掌控欲。他们无法容忍角色的软弱与感性，因为那会刺痛他们潜意识中不敢面对的真实自我。社会达尔文主义的慕强法则，就这样堂而皇之地绞杀了古典的浪漫与悲壮。</p>
 <p>其实，不必与他们去争辩。如果艺术的顶峰，只是一群毫无破绽的机器人在进行战力数值的对撞，那这世界该有多么无趣。</p>
 <p>就让他们捧着冰冷的说明书，去寻找那永不犯错的通关秘籍吧。而我们，依然可以选择留在那些会流泪、会犯傻、会为了毫无胜算的羁绊而慨然赴死的故事里。毕竟，人之所以为人，正是因为我们懂得脆弱的重量。</p>
+]]></content>
+      <tags>
+        <tag>Life</tag>
+      </tags>
+  </entry>
+  <entry>
+    <title>悬浮的世代与消亡的常识</title>
+    <url>/2026/04/07/%E6%82%AC%E6%B5%AE%E7%9A%84%E4%B8%96%E4%BB%A3%E4%B8%8E%E6%B6%88%E4%BA%A1%E7%9A%84%E5%B8%B8%E8%AF%86/</url>
+    <content><![CDATA[<p>近来，关于天朝二三线城市年轻人的讨论颇多。从表面上看，他们是不再困于温饱的一代，享受着比乡村更好的物质条件，每天在互联网和流媒体的碎片信息中浸泡。但令人困惑的是，这种物质的改善与技术的普及，并没有带来精神世界的开放。相反，在一个缺乏真实国际视野的半封闭生态里，滋生出了一种极其吊诡的群体性格——既盲目自大，又在道德上极度“双标”。</p>
+<p>如果你用现代文明的常识去审视，这种现象其实并不突兀，它恰恰是天朝这几十年来社会工程结出的必然之果。互联网在这里并没有成为接轨世界的桥梁，反而成了算法圈养和宏大叙事洗脑的围栏。在这个信息茧房里，缺乏跨文化现实碰撞的年轻人，很容易把无知当个性，习惯于站在道德制高点上去审视他人，却对自身的行为毫无底线。这种“严以待人、宽以律己”的狂欢，本质上是传统熟人社会解体后，现代公民责任未能建立而留下的道德真空。</p>
+<p>更有意思的是，抛开当下经济下行的现实压力不谈，这代人对结婚生子表现出了前所未有的排斥。他们热衷于当下的“快活”，对所谓延续家族和抚养后代的使命感嗤之以鼻。</p>
+<p>这其实是一场历史的宿命。正如我们常看到的，天朝有着极强的“控制能力”，却极度缺乏现代意义上的“治理能力”。为了建立这种自上而下的绝对控制，官府自建政以来，通过连番的政治运动，系统性地摧毁了以家族、乡绅和儒家伦理为基础的传统民间自治结构。那些曾经维系中国人精神内核的“传统美德”，早就在权力的碾盘下化为齑粉。</p>
+<p>紧接着，长达三十多年的计划生育政策，又从微观上彻底重塑了家庭。一个从小被视为绝对中心、习惯了单向索取的“原子化”个体，怎么可能在成年后，突然生出牺牲自我、去承担繁衍责任的使命感？</p>
+<p>所以，当我们看到这些以自我为中心、拒绝生育、精神世界高度封闭的年轻人时，不能仅仅归咎于个人的自私。这是制度与国民互为因果的绝佳样本。他们失去了传统宗族社会的敬畏心，又被阻挡在现代公民文明的门外；他们被剥夺了历史的厚重感，最终只能在消费主义的奶嘴中寻找虚无的寄托。</p>
+<p>这一切，或许正是那个反常识的体制，在狂飙突进几十年后，不得不面对的社会残局。</p>
 ]]></content>
       <tags>
         <tag>Life</tag>
@@ -1586,6 +1602,85 @@ S: 221 /0:0:0:0:0:0:0:1 Service closing transmission channel
         <tag>JavaScript</tag>
         <tag>Node.js</tag>
         <tag>Express.js</tag>
+      </tags>
+  </entry>
+  <entry>
+    <title>软件工程 第三周的博客</title>
+    <url>/2023/04/07/%E8%BD%AF%E4%BB%B6%E5%B7%A5%E7%A8%8B%20%E7%AC%AC%E4%B8%89%E5%91%A8%E7%9A%84%E5%8D%9A%E5%AE%A2/</url>
+    <content><![CDATA[<h2 id="简要概述-CTF-OverTheWire-Bandit-Level-24"><a href="#简要概述-CTF-OverTheWire-Bandit-Level-24" class="headerlink" title="简要概述 CTF OverTheWire Bandit Level 24"></a><em>简要概述 CTF OverTheWire Bandit Level 24</em></h2><h3 id="题目"><a href="#题目" class="headerlink" title="题目"></a><em>题目</em></h3><blockquote>
+<p>在端口 30002 上有一个守护进程正在监听，如果提供了 bandit24 的密码和一个秘密的 4 位数的数字密码，它将为您提供 bandit25 的密码。除了通过穷举全部 10000 种组合的方式以外，没有其他获得 pincode 的方法，这被称为暴力破解。</p>
+</blockquote>
+<p>大致思路如下：</p>
+<ul>
+<li>先写一个<code>script</code>，按要求进行排版输出到<code>stdout</code></li>
+<li>把输出的 10000 种组合<code>pipe</code>到<code>netcat</code>监视的<code>localhost:30002</code>进行测试</li>
+<li>直接输出到<code>stdout</code>可能会<code>timeout</code>打断进程，所以我们输出到<code>output.txt</code></li>
+<li>最后<code>cat</code>文本内容拿到密码</li>
+</ul>
+<p>先利用<code>ssh</code>连接到<code>bandit.labs.overthewire.org</code>的服务器，端口号<code>2220</code>，为此我们需要<code>bandit24</code>的密码。</p>
+<figure class="highlight bash"><table><tr><td class="code"><pre><span class="line">ssh bandit24@bandit.labs.overthewire.org -p 2220</span><br><span class="line"><span class="comment">#					VAfGXJ1PBSsPSnvsjI8p759leLZ9GGar</span></span><br></pre></td></tr></table></figure>
+
+<p>以<code>bandit24</code>进入 Level 24 之后先到系统文件夹<code>/tmp</code>下建立本关的临时文件夹。</p>
+<figure class="highlight bash"><table><tr><td class="code"><pre><span class="line"><span class="built_in">cd</span> /tmp; <span class="built_in">mktemp</span> -d</span><br><span class="line"></span><br><span class="line"><span class="comment"># /tmp/tmp.u4oQlmpmWL</span></span><br><span class="line"></span><br><span class="line"><span class="built_in">cd</span> /tmp/tmp.u4oQlmpmWL</span><br><span class="line"></span><br><span class="line"><span class="comment"># bandit24@bandit:/tmp/tmp.u4oQlmpmWL$</span></span><br></pre></td></tr></table></figure>
+
+<blockquote>
+<p><code>-d</code>代表<code>directory</code>，即告诉<code>mktemp</code>指令创建的临时文件属性为文件夹</p>
+</blockquote>
+<figure class="highlight bash"><table><tr><td class="code"><pre><span class="line"><span class="built_in">touch</span> script.sh</span><br><span class="line"></span><br><span class="line"><span class="built_in">chmod</span> 777 script.sh</span><br><span class="line"></span><br><span class="line">vim script.sh</span><br></pre></td></tr></table></figure>
+
+<blockquote>
+<p><code>touch</code>: 创建文件</p>
+</blockquote>
+<blockquote>
+<p><code>chmod</code> - <code>change mode</code>: 改变文档<code>rwx</code>权限</p>
+</blockquote>
+<ul>
+<li><code>r</code> - <code>read</code>: 读取权限<code>status code</code>为 4</li>
+<li><code>w</code> - <code>write</code>: 书写权限<code>status code</code>为 2</li>
+<li><code>x</code> - <code>execute</code>: 执行权限<code>status code</code>为 1</li>
+</ul>
+<p>进入文本编辑器之后，选定”插入“模式，按<code>i</code>键</p>
+<p>首行书写<code>shebang</code>行，选定使用哪个<code>shell</code>来执行该<code>script</code> - 我们选用<code>bash</code></p>
+<p>然后写我们的<code>entity body</code>的代码：</p>
+<figure class="highlight bash"><table><tr><td class="code"><pre><span class="line"><span class="meta">#!/bin/bash</span></span><br><span class="line"></span><br><span class="line"><span class="keyword">for</span> i <span class="keyword">in</span> &#123;0000..9999&#125;; <span class="keyword">do</span></span><br><span class="line">        <span class="built_in">echo</span> <span class="variable">$i</span></span><br><span class="line">        <span class="built_in">printf</span> <span class="string">&quot;%s %s\n&quot;</span> <span class="string">&quot;VAfGXJ1PBSsPSnvsjI8p759leLZ9GGar&quot;</span> <span class="string">&quot;<span class="variable">$i</span>&quot;</span></span><br><span class="line"><span class="keyword">done</span></span><br><span class="line"></span><br><span class="line"><span class="built_in">exit</span> 0</span><br><span class="line"></span><br></pre></td></tr></table></figure>
+
+<p>除了语法上微小的一点差异，该题的<code>syntax</code>和<code>C</code>的语法很相像，所以不赘述了。</p>
+<p>大致格式就是<code>for [ test statement]; do &lt;command&gt;; done</code></p>
+<p>编辑结束按<code>ESC</code>键回到普通模式，按<code>:</code>,然后输入指令<code>wq</code>，回车保存并退出。</p>
+<p>执行<code>script.sh</code>，并把结果<code>pipe</code>到<code>netcat</code>:</p>
+<figure class="highlight bash"><table><tr><td class="code"><pre><span class="line">./script.sh | nc localhost 30002 &gt; output.txt</span><br></pre></td></tr></table></figure>
+
+<p>然后<code>cat output.txt</code>读取文本内容，这是其中的一小部分：</p>
+<pre>
+        Fail! You did not supply enough data. Try again.
+        Wrong! Please enter the correct pincode. Try again.
+        Fail! You did not supply enough data. Try again.
+        Wrong! Please enter the correct pincode. Try again.
+        Fail! You did not supply enough data. Try again.
+        Wrong! Please enter the correct pincode. Try again.
+        Fail! You did not supply enough data. Try again.
+        Wrong! Please enter the correct pincode. Try again.
+        Fail! You did not supply enough data. Try again.
+        Wrong! Please enter the correct pincode. Try again.
+        Fail! You did not supply enough data. Try again.
+        Wrong! Please enter the correct pincode. Try again.
+        Fail! You did not supply enough data. Try again.
+        Wrong! Please enter the correct pincode. Try again.
+        Fail! You did not supply enough data. Try again.
+        Wrong! Please enter the correct pincode. Try again.
+        Fail! You did not supply enough data. Try again.
+        Correct!
+        The password of user bandit25 is p7TaowMYrmu23Ol8hiZh9UvD0O9hpx8d
+
+        Exiting.
+</pre>
+
+]]></content>
+      <tags>
+        <tag>Bash</tag>
+        <tag>CTF</tag>
+        <tag>OverTheWire</tag>
+        <tag>Bandit</tag>
       </tags>
   </entry>
   <entry>
@@ -1672,101 +1767,6 @@ Connection to localhost closed.
         <tag>CTF</tag>
         <tag>OverTheWire</tag>
         <tag>Bandit</tag>
-      </tags>
-  </entry>
-  <entry>
-    <title>软件工程 第三周的博客</title>
-    <url>/2023/04/07/%E8%BD%AF%E4%BB%B6%E5%B7%A5%E7%A8%8B%20%E7%AC%AC%E4%B8%89%E5%91%A8%E7%9A%84%E5%8D%9A%E5%AE%A2/</url>
-    <content><![CDATA[<h2 id="简要概述-CTF-OverTheWire-Bandit-Level-24"><a href="#简要概述-CTF-OverTheWire-Bandit-Level-24" class="headerlink" title="简要概述 CTF OverTheWire Bandit Level 24"></a><em>简要概述 CTF OverTheWire Bandit Level 24</em></h2><h3 id="题目"><a href="#题目" class="headerlink" title="题目"></a><em>题目</em></h3><blockquote>
-<p>在端口 30002 上有一个守护进程正在监听，如果提供了 bandit24 的密码和一个秘密的 4 位数的数字密码，它将为您提供 bandit25 的密码。除了通过穷举全部 10000 种组合的方式以外，没有其他获得 pincode 的方法，这被称为暴力破解。</p>
-</blockquote>
-<p>大致思路如下：</p>
-<ul>
-<li>先写一个<code>script</code>，按要求进行排版输出到<code>stdout</code></li>
-<li>把输出的 10000 种组合<code>pipe</code>到<code>netcat</code>监视的<code>localhost:30002</code>进行测试</li>
-<li>直接输出到<code>stdout</code>可能会<code>timeout</code>打断进程，所以我们输出到<code>output.txt</code></li>
-<li>最后<code>cat</code>文本内容拿到密码</li>
-</ul>
-<p>先利用<code>ssh</code>连接到<code>bandit.labs.overthewire.org</code>的服务器，端口号<code>2220</code>，为此我们需要<code>bandit24</code>的密码。</p>
-<figure class="highlight bash"><table><tr><td class="code"><pre><span class="line">ssh bandit24@bandit.labs.overthewire.org -p 2220</span><br><span class="line"><span class="comment">#					VAfGXJ1PBSsPSnvsjI8p759leLZ9GGar</span></span><br></pre></td></tr></table></figure>
-
-<p>以<code>bandit24</code>进入 Level 24 之后先到系统文件夹<code>/tmp</code>下建立本关的临时文件夹。</p>
-<figure class="highlight bash"><table><tr><td class="code"><pre><span class="line"><span class="built_in">cd</span> /tmp; <span class="built_in">mktemp</span> -d</span><br><span class="line"></span><br><span class="line"><span class="comment"># /tmp/tmp.u4oQlmpmWL</span></span><br><span class="line"></span><br><span class="line"><span class="built_in">cd</span> /tmp/tmp.u4oQlmpmWL</span><br><span class="line"></span><br><span class="line"><span class="comment"># bandit24@bandit:/tmp/tmp.u4oQlmpmWL$</span></span><br></pre></td></tr></table></figure>
-
-<blockquote>
-<p><code>-d</code>代表<code>directory</code>，即告诉<code>mktemp</code>指令创建的临时文件属性为文件夹</p>
-</blockquote>
-<figure class="highlight bash"><table><tr><td class="code"><pre><span class="line"><span class="built_in">touch</span> script.sh</span><br><span class="line"></span><br><span class="line"><span class="built_in">chmod</span> 777 script.sh</span><br><span class="line"></span><br><span class="line">vim script.sh</span><br></pre></td></tr></table></figure>
-
-<blockquote>
-<p><code>touch</code>: 创建文件</p>
-</blockquote>
-<blockquote>
-<p><code>chmod</code> - <code>change mode</code>: 改变文档<code>rwx</code>权限</p>
-</blockquote>
-<ul>
-<li><code>r</code> - <code>read</code>: 读取权限<code>status code</code>为 4</li>
-<li><code>w</code> - <code>write</code>: 书写权限<code>status code</code>为 2</li>
-<li><code>x</code> - <code>execute</code>: 执行权限<code>status code</code>为 1</li>
-</ul>
-<p>进入文本编辑器之后，选定”插入“模式，按<code>i</code>键</p>
-<p>首行书写<code>shebang</code>行，选定使用哪个<code>shell</code>来执行该<code>script</code> - 我们选用<code>bash</code></p>
-<p>然后写我们的<code>entity body</code>的代码：</p>
-<figure class="highlight bash"><table><tr><td class="code"><pre><span class="line"><span class="meta">#!/bin/bash</span></span><br><span class="line"></span><br><span class="line"><span class="keyword">for</span> i <span class="keyword">in</span> &#123;0000..9999&#125;; <span class="keyword">do</span></span><br><span class="line">        <span class="built_in">echo</span> <span class="variable">$i</span></span><br><span class="line">        <span class="built_in">printf</span> <span class="string">&quot;%s %s\n&quot;</span> <span class="string">&quot;VAfGXJ1PBSsPSnvsjI8p759leLZ9GGar&quot;</span> <span class="string">&quot;<span class="variable">$i</span>&quot;</span></span><br><span class="line"><span class="keyword">done</span></span><br><span class="line"></span><br><span class="line"><span class="built_in">exit</span> 0</span><br><span class="line"></span><br></pre></td></tr></table></figure>
-
-<p>除了语法上微小的一点差异，该题的<code>syntax</code>和<code>C</code>的语法很相像，所以不赘述了。</p>
-<p>大致格式就是<code>for [ test statement]; do &lt;command&gt;; done</code></p>
-<p>编辑结束按<code>ESC</code>键回到普通模式，按<code>:</code>,然后输入指令<code>wq</code>，回车保存并退出。</p>
-<p>执行<code>script.sh</code>，并把结果<code>pipe</code>到<code>netcat</code>:</p>
-<figure class="highlight bash"><table><tr><td class="code"><pre><span class="line">./script.sh | nc localhost 30002 &gt; output.txt</span><br></pre></td></tr></table></figure>
-
-<p>然后<code>cat output.txt</code>读取文本内容，这是其中的一小部分：</p>
-<pre>
-        Fail! You did not supply enough data. Try again.
-        Wrong! Please enter the correct pincode. Try again.
-        Fail! You did not supply enough data. Try again.
-        Wrong! Please enter the correct pincode. Try again.
-        Fail! You did not supply enough data. Try again.
-        Wrong! Please enter the correct pincode. Try again.
-        Fail! You did not supply enough data. Try again.
-        Wrong! Please enter the correct pincode. Try again.
-        Fail! You did not supply enough data. Try again.
-        Wrong! Please enter the correct pincode. Try again.
-        Fail! You did not supply enough data. Try again.
-        Wrong! Please enter the correct pincode. Try again.
-        Fail! You did not supply enough data. Try again.
-        Wrong! Please enter the correct pincode. Try again.
-        Fail! You did not supply enough data. Try again.
-        Wrong! Please enter the correct pincode. Try again.
-        Fail! You did not supply enough data. Try again.
-        Correct!
-        The password of user bandit25 is p7TaowMYrmu23Ol8hiZh9UvD0O9hpx8d
-
-        Exiting.
-</pre>
-
-]]></content>
-      <tags>
-        <tag>Bash</tag>
-        <tag>CTF</tag>
-        <tag>OverTheWire</tag>
-        <tag>Bandit</tag>
-      </tags>
-  </entry>
-  <entry>
-    <title>无题</title>
-    <url>/2026/04/09/%E6%97%A0%E9%A2%98/</url>
-    <content><![CDATA[<p>我总觉得，我们这代人像是经历了一场漫长的大切除手术。主刀的大夫拍着胸脯说，为了跑得快、为了赶超别人，盲肠得割，扁桃体得切，连带着神经纤维也得抽掉几根。等我们从历史的麻醉中醒来，发现自己确实跑得像台高铁，机器轰鸣，肌肉发达。但稍微吹点凉风，五脏六腑就不受控制地痉挛。</p>
-<p>研究历史久了，你会发现一件挺荒谬的事。过去两千年的王朝更替，说白了是换东家。新东家拎着刀进门，坐定之后，还得拜孔庙、修族谱、听乡音，因为他懂一个常识：管人，还得顺着“人”的纹理来。</p>
-<p>但近现代这套包裹在工业化外衣下的狂热逻辑，不讲这些。它嫌“人”的纹理太麻烦，它的目的是要把树木直接压成标准化的密度板。于是，方言被视作交流的阻碍，祠堂被认定为封建的余孽，血缘和乡土结成的纽带，布满了时代进步的车轱辘印。这套机制极其高效且冰冷，它打着“去粗取精”的旗号，实际上是在借着一场巨大的混乱，把所有横亘在个人与绝对权力之间的缓冲地带，连根拔起，统统踹进了焚化炉。</p>
-<p>这哪是杀鸡取卵，这是把养鸡场的地皮都铲了去烧砖。</p>
-<p>所以，我时常感到一种难以名状的焦躁与憋闷。这种感觉，就像是你兜里揣着一把祖传的黄铜钥匙，但在故乡的街头转了一整圈，发现所有的门都换成了密码锁。礼崩乐坏并不可怕，可怕的是人们连“礼”的说明书都被烧光了。</p>
-<p>人总不能靠着虚无活着。为了证明自己没疯，人只能把目光投向别处。我们越过海峡，去看台湾保留的繁体字与温良恭俭，或者去京都的石板路上，对着别人家的屋檐寻找唐宋的倒影。这并非是因为骨头软去崇拜他者，而是一个被强制失忆的人，只能借着邻居家的镜子，拼命回忆自己祖辈原本的容貌。</p>
-<p>这无疑是极其悲哀的。几千年的浩大文明，在其发源地被剔除得只剩下一具坚硬的躯壳，而其残存的魂魄，却只能附着在海外的孤岛与邻居的衣钵上。</p>
-<p>没办法，当脚下的土壤已经被浇筑成了统一规格的水泥地，一棵树若还想保持一点翠绿的尊严，大概也只能选择在精神上流亡，做一粒随风飘向海外的种子了。</p>
-]]></content>
-      <tags>
-        <tag>Life</tag>
       </tags>
   </entry>
 </search>
