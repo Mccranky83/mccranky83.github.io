@@ -909,22 +909,6 @@ Possible reasons for having this kind of units are:
       </tags>
   </entry>
   <entry>
-    <title>The Cognitive Compute of Empathy: Why Stereotypes are Just Underfitted Models</title>
-    <url>/2026/04/04/The%20Cognitive%20Compute%20of%20Empathy%20Why%20Stereotypes%20are%20Just%20Underfitted%20Models/</url>
-    <content><![CDATA[<p>Every day, the human brain is tasked with processing a massive, chaotic influx of social data. To navigate this overwhelming reality, the mind must inherently act as a predictive algorithm. However, just as in machine learning, the algorithms we choose to run in our social interactions dictate the accuracy—and the morality—of our worldview. When we examine the phenomenon of stereotyping through the lens of computer science, it becomes clear that prejudice is not merely a moral failing; it is a symptom of cognitive underfitting.</p>
-<p>At its core, a stereotype is a “low-compute” heuristic. It operates much like a Naive Bayes classifier. Because the human brain has limited processing power, it relies on heuristics as slacks to make constant-time, O(1) judgments. By compressing a complex human being into a few highly weighted, discrete features (such as age, gender, dress code, or subculture), the brain establishes a binary baseline. For everyday survival or minimal social navigation, this low-resolution model “gets the job done.” It draws a massive, straight line through a wildly scattered dataset, purposefully ignoring the outliers to save mental CPU.</p>
-<p>But saving compute comes at a severe cost. When a model is aggressively regularized to ignore complexity, it underfits the data, leading to a high rate of false positives and false negatives. In social dynamics, we call this misclassification prejudice. By leaning on these generic, binary parameters, we dull our moral compass. We ignore the very real “cost function” of our errors—the human damage done when we strip an individual of their nuance and force them into a static, pre-calculated bucket.</p>
-<p>For those educated in logic and systems thinking, relying on such a crude baseline is computationally unacceptable. If stereotypes represent an underfitted linear model, the logical upgrade is to process social interactions much like a Support Vector Machine utilizing the Kernel Trick.</p>
-<p>A naive classifier looks at a person in a two-dimensional feature space—perhaps judging them purely on appearance and accent—and clusters them with everyone else who shares those traits. But an SVM-style thinker projects that data into a much higher-dimensional space. By feeding the model dozens of continuous variables—intellectual curiosity, emotional intelligence, conflict resolution style, moral consistency—the “stereotype” dissolves. Two individuals who appear identical in a low-dimensional binary space are suddenly revealed to be miles apart in the high-dimensional space of their actual character.</p>
-<p>Furthermore, an SVM handles non-linearity. It recognizes that human behavior rarely follows a straight line. A person can simultaneously hold seemingly contradictory traits, requiring a complex, dynamic decision boundary rather than a rigid binary box.</p>
-<p>Ultimately, rejecting stereotypes is not just an exercise in social etiquette; it is a commitment to data fidelity. To rely on stereotypes is to accept an intellectually lazy algorithm. To understand people accurately requires us to willingly spend the “mental overhead” necessary to evaluate them as the high-dimensional, non-linear datasets they truly are. As logical thinkers, we must recognize that the real world is infinitely complex, and it is our moral and computational duty to scale our feature space to meet it.</p>
-]]></content>
-      <tags>
-        <tag>Machine Learning</tag>
-        <tag>Life</tag>
-      </tags>
-  </entry>
-  <entry>
     <title>Shadowing Emma</title>
     <url>/2026/04/10/Shadowing%20Emma/</url>
     <content><![CDATA[<p>我出生在上海，小时候母亲有意培养我学习英语。起初幼儿园时期，学校每周有外教 Emma 来教我们英语，能够通过她的小测就可以离开课堂去旁边玩。一直以来我都是第一个通过测试的人，Emma 甚至有意让我提早下课，因为我的积极表现 overshadowed 了所有其他的同学。虽然大家都很努力，但是每次能在下课前和我一起去玩的同学从没超过两个，我也有意不特意表现，只期待能多和同学们一起多待一会儿。</p>
@@ -937,6 +921,22 @@ Possible reasons for having this kind of units are:
 ]]></content>
       <tags>
         <tag>Life</tag>
+      </tags>
+  </entry>
+  <entry>
+    <title>The Cognitive Compute of Empathy: Why Stereotypes are Just Underfitted Models</title>
+    <url>/2026/04/04/The%20Cognitive%20Compute%20of%20Empathy%20Why%20Stereotypes%20are%20Just%20Underfitted%20Models/</url>
+    <content><![CDATA[<p>Every day, the human brain is tasked with processing a massive, chaotic influx of social data. To navigate this overwhelming reality, the mind must inherently act as a predictive algorithm. However, just as in machine learning, the algorithms we choose to run in our social interactions dictate the accuracy—and the morality—of our worldview. When we examine the phenomenon of stereotyping through the lens of computer science, it becomes clear that prejudice is not merely a moral failing; it is a symptom of cognitive underfitting.</p>
+<p>At its core, a stereotype is a “low-compute” heuristic. It operates much like a Naive Bayes classifier. Because the human brain has limited processing power, it relies on heuristics as slacks to make constant-time, O(1) judgments. By compressing a complex human being into a few highly weighted, discrete features (such as age, gender, dress code, or subculture), the brain establishes a binary baseline. For everyday survival or minimal social navigation, this low-resolution model “gets the job done.” It draws a massive, straight line through a wildly scattered dataset, purposefully ignoring the outliers to save mental CPU.</p>
+<p>But saving compute comes at a severe cost. When a model is aggressively regularized to ignore complexity, it underfits the data, leading to a high rate of false positives and false negatives. In social dynamics, we call this misclassification prejudice. By leaning on these generic, binary parameters, we dull our moral compass. We ignore the very real “cost function” of our errors—the human damage done when we strip an individual of their nuance and force them into a static, pre-calculated bucket.</p>
+<p>For those educated in logic and systems thinking, relying on such a crude baseline is computationally unacceptable. If stereotypes represent an underfitted linear model, the logical upgrade is to process social interactions much like a Support Vector Machine utilizing the Kernel Trick.</p>
+<p>A naive classifier looks at a person in a two-dimensional feature space—perhaps judging them purely on appearance and accent—and clusters them with everyone else who shares those traits. But an SVM-style thinker projects that data into a much higher-dimensional space. By feeding the model dozens of continuous variables—intellectual curiosity, emotional intelligence, conflict resolution style, moral consistency—the “stereotype” dissolves. Two individuals who appear identical in a low-dimensional binary space are suddenly revealed to be miles apart in the high-dimensional space of their actual character.</p>
+<p>Furthermore, an SVM handles non-linearity. It recognizes that human behavior rarely follows a straight line. A person can simultaneously hold seemingly contradictory traits, requiring a complex, dynamic decision boundary rather than a rigid binary box.</p>
+<p>Ultimately, rejecting stereotypes is not just an exercise in social etiquette; it is a commitment to data fidelity. To rely on stereotypes is to accept an intellectually lazy algorithm. To understand people accurately requires us to willingly spend the “mental overhead” necessary to evaluate them as the high-dimensional, non-linear datasets they truly are. As logical thinkers, we must recognize that the real world is infinitely complex, and it is our moral and computational duty to scale our feature space to meet it.</p>
+]]></content>
+      <tags>
+        <tag>Life</tag>
+        <tag>Machine Learning</tag>
       </tags>
   </entry>
   <entry>
@@ -973,8 +973,8 @@ Possible reasons for having this kind of units are:
 <p>We are neither hardcoded automatons nor passive mirrors of our environment. We are self-tuning systems. And the ultimate measure of our integrity is our willingness to spend the cognitive compute necessary to author our own models.</p>
 ]]></content>
       <tags>
-        <tag>Machine Learning</tag>
         <tag>Life</tag>
+        <tag>Machine Learning</tag>
       </tags>
   </entry>
   <entry>
@@ -1147,76 +1147,6 @@ Apr 27 02:45:46 alarm systemd[1]: Failed to mount /mnt/share.
       </tags>
   </entry>
   <entry>
-    <title>使用 Hexo 生成静态网页博客</title>
-    <url>/2023/04/22/%E4%BD%BF%E7%94%A8%20Hexo%20%E7%94%9F%E6%88%90%E9%9D%99%E6%80%81%E7%BD%91%E9%A1%B5%E5%8D%9A%E5%AE%A2/</url>
-    <content><![CDATA[<h3 id="要求"><a href="#要求" class="headerlink" title="要求"></a><em>要求</em></h3><ul>
-<li><p>Node.js</p>
-</li>
-<li><p>Git</p>
-</li>
-</ul>
-<h3 id="下载"><a href="#下载" class="headerlink" title="下载"></a><em>下载</em></h3><ul>
-<li><p><a href="https://nodejs.org/dist/v18.15.0/node-v18.15.0.pkg" title="Download Node (LTS)">官网下载 Node.js 安装包</a></p>
-</li>
-<li><p><a href="https://git-scm.com/downloads" title="Download Git">官网下载 Git</a></p>
-</li>
-</ul>
-<p>– <strong>请注意参考个人电脑的操作系统！</strong></p>
-<p>进入 Terminal 查看安装的版本：</p>
-<figure class="highlight bash"><table><tr><td class="code"><pre><span class="line">node --version <span class="comment"># v18.16.0</span></span><br><span class="line"></span><br><span class="line">git --version <span class="comment"># git version 2.40.0</span></span><br></pre></td></tr></table></figure>
-
-<h3 id="Quick-Start"><a href="#Quick-Start" class="headerlink" title="Quick Start"></a>Quick Start</h3><figure class="highlight bash"><table><tr><td class="code"><pre><span class="line">hexo init my-blog</span><br><span class="line"></span><br><span class="line"><span class="built_in">cd</span> my-blog</span><br><span class="line"></span><br><span class="line"><span class="comment"># 因为 hexo 是基于 Node.js 完成的框架，所以完成第一步之后无需再执行 `npm init -y` 生成 package.json 文件</span></span><br><span class="line"></span><br><span class="line">npm i </span><br><span class="line"></span><br><span class="line">hexo server</span><br></pre></td></tr></table></figure>
-
-<p>接着我们去 <code>localhost:4000</code> 就能看到我们的博客了！</p>
-<h3 id="项目树状结构图"><a href="#项目树状结构图" class="headerlink" title="项目树状结构图"></a>项目树状结构图</h3><p>我们首先来了解一下我们的项目文件夹下面有些什么：</p>
-<figure class="highlight plaintext"><table><tr><td class="code"><pre><span class="line">.</span><br><span class="line">├── _config.landscape.yml</span><br><span class="line">├── _config.yml</span><br><span class="line">├── db.json</span><br><span class="line">├── node_modules</span><br><span class="line">├── package-lock.json</span><br><span class="line">├── package.json</span><br><span class="line">├── public</span><br><span class="line">├── scaffolds</span><br><span class="line">├── source</span><br><span class="line">├── themes</span><br><span class="line">└── yarn.lock</span><br></pre></td></tr></table></figure>
-
-<ul>
-<li><a href="/2023/04/22/%E5%A6%82%E4%BD%95%E7%94%9F%E6%88%90%E9%A1%B9%E7%9B%AE%E6%A0%91%E7%8A%B6%E7%BB%93%E6%9E%84%E5%9B%BE/index.html">如何生成项目树状结构图</a></li>
-</ul>
-<blockquote>
-<p><code>_config.yml</code>：Hexo 博客设置</p>
-</blockquote>
-<blockquote>
-<p><code>node_modules</code>：存放启动需要使用的模组</p>
-</blockquote>
-<blockquote>
-<p><code>public</code>：存放生成的静态网页</p>
-</blockquote>
-<figure class="highlight plaintext"><table><tr><td class="code"><pre><span class="line">public</span><br><span class="line">├── 2023</span><br><span class="line">├── README.md</span><br><span class="line">├── archives</span><br><span class="line">├── assets</span><br><span class="line">├── css</span><br><span class="line">├── fontawesome</span><br><span class="line">├── fonts</span><br><span class="line">├── images</span><br><span class="line">├── index.html</span><br><span class="line">├── js</span><br><span class="line">├── tags</span><br><span class="line">└── webfonts</span><br></pre></td></tr></table></figure>
-
-<blockquote>
-<p><code>scaffolds</code>：存放 Hexo 个人博客的 3 种模版：page (白页)，post (博客)，draft (草稿)</p>
-</blockquote>
-<figure class="highlight plaintext"><table><tr><td class="code"><pre><span class="line">scaffolds</span><br><span class="line">├── draft.md</span><br><span class="line">├── page.md</span><br><span class="line">└── post.md</span><br></pre></td></tr></table></figure>
-
-<blockquote>
-<p><code>source</code>：存放博客<code>.md</code>文件</p>
-</blockquote>
-<blockquote>
-<p><code>themes</code>：存放<code>Custom</code>主题，从<code>npm</code>下载的主题存放在<code>node_modules</code>里</p>
-</blockquote>
-<h3 id="第一篇博客"><a href="#第一篇博客" class="headerlink" title="第一篇博客"></a>第一篇博客</h3><p>我们先从草稿开始：</p>
-<figure class="highlight bash"><table><tr><td class="code"><pre><span class="line">hexo new draft first-draft</span><br></pre></td></tr></table></figure>
-
-<p>Hexo 会帮我们在<code>/source/_drafts/</code>文件夹里创建我们的第一篇草稿。</p>
-<p>如果觉得写得差不多了，我们可以：</p>
-<figure class="highlight bash"><table><tr><td class="code"><pre><span class="line">hexo publish first-draft</span><br></pre></td></tr></table></figure>
-
-<p>Hexo 会自动帮我们把<code>first-draft.md</code>移动到<code>/source/_posts/</code>文件夹里，这样当我们打开服务器的时候就能看到这篇博客了。</p>
-<p>当然我们也可以带参数运行<code>hexo server</code>：</p>
-<figure class="highlight bash"><table><tr><td class="code"><pre><span class="line">hexo server --draft</span><br></pre></td></tr></table></figure>
-<p>这样我们在写草稿时也能看到最终的布局，方便我们对内容排版进行修改。</p>
-<h3 id="修改-config-yml文件"><a href="#修改-config-yml文件" class="headerlink" title="修改_config.yml文件"></a>修改<code>_config.yml</code>文件</h3><p>我们可以通过修改设置文件来改变 Hexo 的一些初始行为，比如说在 Writing 一栏里改变<code>default_layout</code>变量的参数可以改变<code>hexo new</code>创建的文件类型。</p>
-<figure class="highlight yml"><table><tr><td class="code"><pre><span class="line"><span class="comment"># Writing</span></span><br><span class="line"><span class="attr">default_layout:</span> <span class="string">post</span></span><br></pre></td></tr></table></figure>
-<p>这样我们就不用每次<code>hexo new</code>时还需要特地指定创建的文件类型了。</p>
-]]></content>
-      <tags>
-        <tag>Bash</tag>
-        <tag>Hexo</tag>
-      </tags>
-  </entry>
-  <entry>
     <title>`node` in the command line</title>
     <url>/2023/04/28/%60node%60%20in%20the%20command%20line/</url>
     <content><![CDATA[<p>I ran into this hassle the other day when my <code>npm</code> command failed to work in the command line. It took me a while to sort things out and left me in a foul mood. To prevent something like that from happening again, I decided to write this post. Nothing fancy - just some commands that might prove helpful in the long run.</p>
@@ -1288,6 +1218,76 @@ fetch-retry-maxtimeout = 300000
         <tag>Node.js</tag>
         <tag>Express.js</tag>
         <tag>Note</tag>
+      </tags>
+  </entry>
+  <entry>
+    <title>使用 Hexo 生成静态网页博客</title>
+    <url>/2023/04/22/%E4%BD%BF%E7%94%A8%20Hexo%20%E7%94%9F%E6%88%90%E9%9D%99%E6%80%81%E7%BD%91%E9%A1%B5%E5%8D%9A%E5%AE%A2/</url>
+    <content><![CDATA[<h3 id="要求"><a href="#要求" class="headerlink" title="要求"></a><em>要求</em></h3><ul>
+<li><p>Node.js</p>
+</li>
+<li><p>Git</p>
+</li>
+</ul>
+<h3 id="下载"><a href="#下载" class="headerlink" title="下载"></a><em>下载</em></h3><ul>
+<li><p><a href="https://nodejs.org/dist/v18.15.0/node-v18.15.0.pkg" title="Download Node (LTS)">官网下载 Node.js 安装包</a></p>
+</li>
+<li><p><a href="https://git-scm.com/downloads" title="Download Git">官网下载 Git</a></p>
+</li>
+</ul>
+<p>– <strong>请注意参考个人电脑的操作系统！</strong></p>
+<p>进入 Terminal 查看安装的版本：</p>
+<figure class="highlight bash"><table><tr><td class="code"><pre><span class="line">node --version <span class="comment"># v18.16.0</span></span><br><span class="line"></span><br><span class="line">git --version <span class="comment"># git version 2.40.0</span></span><br></pre></td></tr></table></figure>
+
+<h3 id="Quick-Start"><a href="#Quick-Start" class="headerlink" title="Quick Start"></a>Quick Start</h3><figure class="highlight bash"><table><tr><td class="code"><pre><span class="line">hexo init my-blog</span><br><span class="line"></span><br><span class="line"><span class="built_in">cd</span> my-blog</span><br><span class="line"></span><br><span class="line"><span class="comment"># 因为 hexo 是基于 Node.js 完成的框架，所以完成第一步之后无需再执行 `npm init -y` 生成 package.json 文件</span></span><br><span class="line"></span><br><span class="line">npm i </span><br><span class="line"></span><br><span class="line">hexo server</span><br></pre></td></tr></table></figure>
+
+<p>接着我们去 <code>localhost:4000</code> 就能看到我们的博客了！</p>
+<h3 id="项目树状结构图"><a href="#项目树状结构图" class="headerlink" title="项目树状结构图"></a>项目树状结构图</h3><p>我们首先来了解一下我们的项目文件夹下面有些什么：</p>
+<figure class="highlight plaintext"><table><tr><td class="code"><pre><span class="line">.</span><br><span class="line">├── _config.landscape.yml</span><br><span class="line">├── _config.yml</span><br><span class="line">├── db.json</span><br><span class="line">├── node_modules</span><br><span class="line">├── package-lock.json</span><br><span class="line">├── package.json</span><br><span class="line">├── public</span><br><span class="line">├── scaffolds</span><br><span class="line">├── source</span><br><span class="line">├── themes</span><br><span class="line">└── yarn.lock</span><br></pre></td></tr></table></figure>
+
+<ul>
+<li><a href="/2023/04/22/%E5%A6%82%E4%BD%95%E7%94%9F%E6%88%90%E9%A1%B9%E7%9B%AE%E6%A0%91%E7%8A%B6%E7%BB%93%E6%9E%84%E5%9B%BE/index.html">如何生成项目树状结构图</a></li>
+</ul>
+<blockquote>
+<p><code>_config.yml</code>：Hexo 博客设置</p>
+</blockquote>
+<blockquote>
+<p><code>node_modules</code>：存放启动需要使用的模组</p>
+</blockquote>
+<blockquote>
+<p><code>public</code>：存放生成的静态网页</p>
+</blockquote>
+<figure class="highlight plaintext"><table><tr><td class="code"><pre><span class="line">public</span><br><span class="line">├── 2023</span><br><span class="line">├── README.md</span><br><span class="line">├── archives</span><br><span class="line">├── assets</span><br><span class="line">├── css</span><br><span class="line">├── fontawesome</span><br><span class="line">├── fonts</span><br><span class="line">├── images</span><br><span class="line">├── index.html</span><br><span class="line">├── js</span><br><span class="line">├── tags</span><br><span class="line">└── webfonts</span><br></pre></td></tr></table></figure>
+
+<blockquote>
+<p><code>scaffolds</code>：存放 Hexo 个人博客的 3 种模版：page (白页)，post (博客)，draft (草稿)</p>
+</blockquote>
+<figure class="highlight plaintext"><table><tr><td class="code"><pre><span class="line">scaffolds</span><br><span class="line">├── draft.md</span><br><span class="line">├── page.md</span><br><span class="line">└── post.md</span><br></pre></td></tr></table></figure>
+
+<blockquote>
+<p><code>source</code>：存放博客<code>.md</code>文件</p>
+</blockquote>
+<blockquote>
+<p><code>themes</code>：存放<code>Custom</code>主题，从<code>npm</code>下载的主题存放在<code>node_modules</code>里</p>
+</blockquote>
+<h3 id="第一篇博客"><a href="#第一篇博客" class="headerlink" title="第一篇博客"></a>第一篇博客</h3><p>我们先从草稿开始：</p>
+<figure class="highlight bash"><table><tr><td class="code"><pre><span class="line">hexo new draft first-draft</span><br></pre></td></tr></table></figure>
+
+<p>Hexo 会帮我们在<code>/source/_drafts/</code>文件夹里创建我们的第一篇草稿。</p>
+<p>如果觉得写得差不多了，我们可以：</p>
+<figure class="highlight bash"><table><tr><td class="code"><pre><span class="line">hexo publish first-draft</span><br></pre></td></tr></table></figure>
+
+<p>Hexo 会自动帮我们把<code>first-draft.md</code>移动到<code>/source/_posts/</code>文件夹里，这样当我们打开服务器的时候就能看到这篇博客了。</p>
+<p>当然我们也可以带参数运行<code>hexo server</code>：</p>
+<figure class="highlight bash"><table><tr><td class="code"><pre><span class="line">hexo server --draft</span><br></pre></td></tr></table></figure>
+<p>这样我们在写草稿时也能看到最终的布局，方便我们对内容排版进行修改。</p>
+<h3 id="修改-config-yml文件"><a href="#修改-config-yml文件" class="headerlink" title="修改_config.yml文件"></a>修改<code>_config.yml</code>文件</h3><p>我们可以通过修改设置文件来改变 Hexo 的一些初始行为，比如说在 Writing 一栏里改变<code>default_layout</code>变量的参数可以改变<code>hexo new</code>创建的文件类型。</p>
+<figure class="highlight yml"><table><tr><td class="code"><pre><span class="line"><span class="comment"># Writing</span></span><br><span class="line"><span class="attr">default_layout:</span> <span class="string">post</span></span><br></pre></td></tr></table></figure>
+<p>这样我们就不用每次<code>hexo new</code>时还需要特地指定创建的文件类型了。</p>
+]]></content>
+      <tags>
+        <tag>Bash</tag>
+        <tag>Hexo</tag>
       </tags>
   </entry>
   <entry>
@@ -1539,6 +1539,21 @@ S: 221 /0:0:0:0:0:0:0:1 Service closing transmission channel
       </tags>
   </entry>
   <entry>
+    <title>悬浮的世代与消亡的常识</title>
+    <url>/2026/04/07/%E6%82%AC%E6%B5%AE%E7%9A%84%E4%B8%96%E4%BB%A3%E4%B8%8E%E6%B6%88%E4%BA%A1%E7%9A%84%E5%B8%B8%E8%AF%86/</url>
+    <content><![CDATA[<p>近来，关于天朝二三线城市年轻人的讨论颇多。从表面上看，他们是不再困于温饱的一代，享受着比乡村更好的物质条件，每天在互联网和流媒体的碎片信息中浸泡。但令人困惑的是，这种物质的改善与技术的普及，并没有带来精神世界的开放。相反，在一个缺乏真实国际视野的半封闭生态里，滋生出了一种极其吊诡的群体性格——既盲目自大，又在道德上极度“双标”。</p>
+<p>如果你用现代文明的常识去审视，这种现象其实并不突兀，它恰恰是天朝这几十年来社会工程结出的必然之果。互联网在这里并没有成为接轨世界的桥梁，反而成了算法圈养和宏大叙事洗脑的围栏。在这个信息茧房里，缺乏跨文化现实碰撞的年轻人，很容易把无知当个性，习惯于站在道德制高点上去审视他人，却对自身的行为毫无底线。这种“严以待人、宽以律己”的狂欢，本质上是传统熟人社会解体后，现代公民责任未能建立而留下的道德真空。</p>
+<p>更有意思的是，抛开当下经济下行的现实压力不谈，这代人对结婚生子表现出了前所未有的排斥。他们热衷于当下的“快活”，对所谓延续家族和抚养后代的使命感嗤之以鼻。</p>
+<p>这其实是一场历史的宿命。正如我们常看到的，天朝有着极强的“控制能力”，却极度缺乏现代意义上的“治理能力”。为了建立这种自上而下的绝对控制，官府自建政以来，通过连番的政治运动，系统性地摧毁了以家族、乡绅和儒家伦理为基础的传统民间自治结构。那些曾经维系中国人精神内核的“传统美德”，早就在权力的碾盘下化为齑粉。</p>
+<p>紧接着，长达三十多年的计划生育政策，又从微观上彻底重塑了家庭。一个从小被视为绝对中心、习惯了单向索取的“原子化”个体，怎么可能在成年后，突然生出牺牲自我、去承担繁衍责任的使命感？</p>
+<p>所以，当我们看到这些以自我为中心、拒绝生育、精神世界高度封闭的年轻人时，不能仅仅归咎于个人的自私。这是制度与国民互为因果的绝佳样本。他们失去了传统宗族社会的敬畏心，又被阻挡在现代公民文明的门外；他们被剥夺了历史的厚重感，最终只能在消费主义的奶嘴中寻找虚无的寄托。</p>
+<p>这一切，或许正是那个反常识的体制，在狂飙突进几十年后，不得不面对的社会残局。</p>
+]]></content>
+      <tags>
+        <tag>Life</tag>
+      </tags>
+  </entry>
+  <entry>
     <title>无题</title>
     <url>/2026/04/09/%E6%97%A0%E9%A2%98/</url>
     <content><![CDATA[<p>我总觉得，我们这代人像是经历了一场漫长的大切除手术。主刀的大夫拍着胸脯说，为了跑得快、为了赶超别人，盲肠得割，扁桃体得切，连带着神经纤维也得抽掉几根。等我们从历史的麻醉中醒来，发现自己确实跑得像台高铁，机器轰鸣，肌肉发达。但稍微吹点凉风，五脏六腑就不受控制地痉挛。</p>
@@ -1549,21 +1564,6 @@ S: 221 /0:0:0:0:0:0:0:1 Service closing transmission channel
 <p>人总不能靠着虚无活着。为了证明自己没疯，人只能把目光投向别处。我们越过海峡，去看台湾保留的繁体字与温良恭俭，或者去京都的石板路上，对着别人家的屋檐寻找唐宋的倒影。这并非是因为骨头软去崇拜他者，而是一个被强制失忆的人，只能借着邻居家的镜子，拼命回忆自己祖辈原本的容貌。</p>
 <p>这无疑是极其悲哀的。几千年的浩大文明，在其发源地被剔除得只剩下一具坚硬的躯壳，而其残存的魂魄，却只能附着在海外的孤岛与邻居的衣钵上。</p>
 <p>没办法，当脚下的土壤已经被浇筑成了统一规格的水泥地，一棵树若还想保持一点翠绿的尊严，大概也只能选择在精神上流亡，做一粒随风飘向海外的种子了。</p>
-]]></content>
-      <tags>
-        <tag>Life</tag>
-      </tags>
-  </entry>
-  <entry>
-    <title>悬浮的世代与消亡的常识</title>
-    <url>/2026/04/07/%E6%82%AC%E6%B5%AE%E7%9A%84%E4%B8%96%E4%BB%A3%E4%B8%8E%E6%B6%88%E4%BA%A1%E7%9A%84%E5%B8%B8%E8%AF%86/</url>
-    <content><![CDATA[<p>近来，关于天朝二三线城市年轻人的讨论颇多。从表面上看，他们是不再困于温饱的一代，享受着比乡村更好的物质条件，每天在互联网和流媒体的碎片信息中浸泡。但令人困惑的是，这种物质的改善与技术的普及，并没有带来精神世界的开放。相反，在一个缺乏真实国际视野的半封闭生态里，滋生出了一种极其吊诡的群体性格——既盲目自大，又在道德上极度“双标”。</p>
-<p>如果你用现代文明的常识去审视，这种现象其实并不突兀，它恰恰是天朝这几十年来社会工程结出的必然之果。互联网在这里并没有成为接轨世界的桥梁，反而成了算法圈养和宏大叙事洗脑的围栏。在这个信息茧房里，缺乏跨文化现实碰撞的年轻人，很容易把无知当个性，习惯于站在道德制高点上去审视他人，却对自身的行为毫无底线。这种“严以待人、宽以律己”的狂欢，本质上是传统熟人社会解体后，现代公民责任未能建立而留下的道德真空。</p>
-<p>更有意思的是，抛开当下经济下行的现实压力不谈，这代人对结婚生子表现出了前所未有的排斥。他们热衷于当下的“快活”，对所谓延续家族和抚养后代的使命感嗤之以鼻。</p>
-<p>这其实是一场历史的宿命。正如我们常看到的，天朝有着极强的“控制能力”，却极度缺乏现代意义上的“治理能力”。为了建立这种自上而下的绝对控制，官府自建政以来，通过连番的政治运动，系统性地摧毁了以家族、乡绅和儒家伦理为基础的传统民间自治结构。那些曾经维系中国人精神内核的“传统美德”，早就在权力的碾盘下化为齑粉。</p>
-<p>紧接着，长达三十多年的计划生育政策，又从微观上彻底重塑了家庭。一个从小被视为绝对中心、习惯了单向索取的“原子化”个体，怎么可能在成年后，突然生出牺牲自我、去承担繁衍责任的使命感？</p>
-<p>所以，当我们看到这些以自我为中心、拒绝生育、精神世界高度封闭的年轻人时，不能仅仅归咎于个人的自私。这是制度与国民互为因果的绝佳样本。他们失去了传统宗族社会的敬畏心，又被阻挡在现代公民文明的门外；他们被剥夺了历史的厚重感，最终只能在消费主义的奶嘴中寻找虚无的寄托。</p>
-<p>这一切，或许正是那个反常识的体制，在狂飙突进几十年后，不得不面对的社会残局。</p>
 ]]></content>
       <tags>
         <tag>Life</tag>
