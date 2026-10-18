@@ -101,6 +101,71 @@ hello this is bar
       </tags>
   </entry>
   <entry>
+    <title>Dead Cells：Unlocking Daily Challenge blueprints</title>
+    <url>/2023/05/03/Dead%20Cells%EF%BC%9AUnlocking%20Daily%20Challenge%20blueprints/</url>
+    <content><![CDATA[<p>The Daily Challenge mode boasts a significant player base, even compared to other popular modes, and offers several exclusive weapons to boot. However, this is bad news for us freeloaders who, through various means, gained access to the game without ever paying the publisher a single cent. Some may consider piracy bad practice, but to be honest, I’m broke as f*ck.</p>
+<p>Since we can’t do the challenge runs like the normal person would, I find it not much of a stretch to hack the game a bit further.</p>
+<h3 id="Overview"><a href="#Overview" class="headerlink" title="Overview"></a>Overview</h3><p>The approach we’re taking is to assign the blueprints to a chosen enemy. Naturally we’d want to assign it to an enemy we frequently run into and have a decent drop rate. It so happens that the zombie fits our description perfectly.</p>
+<p>Let us have a look at the relevant part of its JSON description:</p>
+<figure class="highlight json"><table><tr><td class="code"><pre><span class="line"><span class="attr">&quot;name&quot;</span><span class="punctuation">:</span> <span class="string">&quot;Zombie&quot;</span><span class="punctuation">,</span></span><br><span class="line"><span class="attr">&quot;score&quot;</span><span class="punctuation">:</span> <span class="number">2</span><span class="punctuation">,</span></span><br><span class="line"><span class="attr">&quot;maxPerRoom&quot;</span><span class="punctuation">:</span> <span class="number">0</span><span class="punctuation">,</span></span><br><span class="line"><span class="attr">&quot;canBeElite&quot;</span><span class="punctuation">:</span> <span class="literal"><span class="keyword">true</span></span><span class="punctuation">,</span></span><br><span class="line"><span class="attr">&quot;glowInnerColor&quot;</span><span class="punctuation">:</span> <span class="number">11197250</span><span class="punctuation">,</span></span><br><span class="line"><span class="attr">&quot;volteDelay&quot;</span><span class="punctuation">:</span> <span class="number">1</span><span class="punctuation">,</span></span><br><span class="line"><span class="attr">&quot;flesh1&quot;</span><span class="punctuation">:</span> <span class="number">5669211</span><span class="punctuation">,</span></span><br><span class="line"><span class="attr">&quot;flesh2&quot;</span><span class="punctuation">:</span> <span class="number">12303527</span><span class="punctuation">,</span></span><br><span class="line"><span class="attr">&quot;pfCost&quot;</span><span class="punctuation">:</span> <span class="number">0.5</span><span class="punctuation">,</span></span><br><span class="line"><span class="attr">&quot;blueprints&quot;</span><span class="punctuation">:</span> <span class="punctuation">[</span></span><br><span class="line">	<span class="punctuation">&#123;</span></span><br><span class="line">		<span class="attr">&quot;item&quot;</span><span class="punctuation">:</span> <span class="string">&quot;HorizontalTurret&quot;</span><span class="punctuation">,</span></span><br><span class="line">		<span class="attr">&quot;rarity&quot;</span><span class="punctuation">:</span> <span class="string">&quot;Rare&quot;</span><span class="punctuation">,</span></span><br><span class="line">		<span class="attr">&quot;minDifficulty&quot;</span><span class="punctuation">:</span> <span class="number">0</span></span><br><span class="line">	<span class="punctuation">&#125;</span><span class="punctuation">,</span></span><br><span class="line">	<span class="punctuation">&#123;</span></span><br><span class="line">		<span class="attr">&quot;item&quot;</span><span class="punctuation">:</span> <span class="string">&quot;Bleeder&quot;</span><span class="punctuation">,</span></span><br><span class="line">		<span class="attr">&quot;rarity&quot;</span><span class="punctuation">:</span> <span class="string">&quot;Always&quot;</span><span class="punctuation">,</span></span><br><span class="line">		<span class="attr">&quot;minDifficulty&quot;</span><span class="punctuation">:</span> <span class="number">0</span></span><br><span class="line">	<span class="punctuation">&#125;</span><span class="punctuation">,</span></span><br><span class="line">	<span class="punctuation">&#123;</span></span><br><span class="line">		<span class="attr">&quot;rarity&quot;</span><span class="punctuation">:</span> <span class="string">&quot;Rare&quot;</span><span class="punctuation">,</span></span><br><span class="line">		<span class="attr">&quot;minDifficulty&quot;</span><span class="punctuation">:</span> <span class="number">1</span><span class="punctuation">,</span></span><br><span class="line">		<span class="attr">&quot;item&quot;</span><span class="punctuation">:</span> <span class="string">&quot;PrisonerBobby&quot;</span></span><br><span class="line">	<span class="punctuation">&#125;</span></span><br><span class="line"><span class="punctuation">]</span></span><br></pre></td></tr></table></figure>
+
+<p><code>Bleeder</code> is the internal name for <code>Blood Sword</code>, which is typically the first blueprint obtained by Dead Cells players on their initial run. As such, it can be readily exchanged for an item of our preference.</p>
+<div style="display: block; margin-left: auto; margin-right: auto; text-align: center; font-size: 1rem;">
+
+<p><img src="/2023/05/03/Dead%20Cells%EF%BC%9AUnlocking%20Daily%20Challenge%20blueprints/images/Blood%20Sword.png" alt="Blood Sword" title="Blood Sword"></p>
+<p><span>Blood Sword</span></p>
+</div>
+
+<h4 id="Targets"><a href="#Targets" class="headerlink" title="Targets:"></a>Targets:</h4><ol>
+<li><em>Swift Sword</em> (internal name <code>SpeedBlade</code>) - first run</li>
+<li><em>Lacerating Aura</em> (internal name <code>DamageAura</code>) - 5th run</li>
+<li><em>Meat Skewer</em> (internal name <code>DashSword</code>) - 10th run</li>
+</ol>
+<p>Visit <a href="https://deadcells.fandom.com/wiki/Dead_Cells_Wiki">the official wiki page</a> for more information!</p>
+<h3 id="CellPacker"><a href="#CellPacker" class="headerlink" title="CellPacker"></a>CellPacker</h3><p>I use CellPacker to extract the <code>data.cdb</code> file so as to avoid having to read from the hexdump. It is a lot more comfortable to inspect an formatted JSON file!</p>
+<div style="display: block; margin-left: auto; margin-right: auto; text-align: center; font-size: 1rem;">
+
+<p><img src="/2023/05/03/Dead%20Cells%EF%BC%9AUnlocking%20Daily%20Challenge%20blueprints/images/CellPacker.png" alt="CellPacker" title="CellPacker"></p>
+<p><span>CellPacker</span></p>
+</div>
+
+<p>We <em>can</em> open CellPacker by double-clicking <code>CellPacker.jar</code>, however I suggest running the following command to avoid headaches:</p>
+<figure class="highlight bash"><table><tr><td class="code"><pre><span class="line">java -jar /path/to/CellPacker.jar</span><br></pre></td></tr></table></figure>
+
+<p>GitHub Repo: <a href="https://github.com/ReBuilders101/CellPacker" title="ReBuilders101/CellPacker Repo">ReBuilders101&#x2F;CellPacker</a></p>
+<p>Click <a href="https://github.com/ReBuilders101/CellPacker/raw/master/release/CellPacker.jar" title="CellPacker.jar">here</a> to install <code>CellPacker.jar</code>.</p>
+<h3 id="res-pak"><a href="#res-pak" class="headerlink" title="res.pak"></a><em><code>res.pak</code></em></h3><p>As the name suggests, the <code>res.pak</code> is the resource pack for the game itself and contains every aspect of what the graphics and cutscenes require to load. It also contains the <code>json</code> data files which store the underlying logic behind the interactions in the game.</p>
+<p>To hack it, we need a hexdump editor. I use <code>ghex</code> because it’s fairly simple and easy to use. We can install it on our MacBook via Homebrew, using the following command:</p>
+<figure class="highlight bash"><table><tr><td class="code"><pre><span class="line">brew install ghex</span><br></pre></td></tr></table></figure>
+
+<blockquote>
+<p><strong><em>Note:</em></strong><br>Before we begin the actual editing process, make sure you have a copy of your game saves and the resource pack we’re editing on. This is in case we make a mistake and corrupt the files.</p>
+</blockquote>
+<h3 id="ghex"><a href="#ghex" class="headerlink" title="ghex"></a><em><code>ghex</code></em></h3><p>Run <code>ghex</code> in Terminal and open <code>res.pak</code>. Locate <code>Bleeder</code> and replace it with the internal name of any of the three daily challenge blueprints.</p>
+<div style="display: block; margin-left: auto; margin-right: auto; text-align: center; font-size: 1rem;">
+
+<p><img src="/2023/05/03/Dead%20Cells%EF%BC%9AUnlocking%20Daily%20Challenge%20blueprints/images/Before.png" alt="Before" title="Before"></p>
+</div>
+
+<p>Please note that the resulting file must remain the same size as the original. Making significant changes will only complicate matters. For instance, <code>Bleeder</code> has 7 characters, while <code>SpeedBlade</code> and <code>DamageAura</code> have 10, and <code>DashSword</code> has 9. To address this discrepancy, I reduced the length of “Zombie” by the difference. Here’s an example:</p>
+<div style="display: block; margin-left: auto; margin-right: auto; text-align: center; font-size: 1rem;">
+
+<p><img src="/2023/05/03/Dead%20Cells%EF%BC%9AUnlocking%20Daily%20Challenge%20blueprints/images/After.png" alt="After" title="After"></p>
+</div>
+
+<hr>
+<h3 id="References"><a href="#References" class="headerlink" title="References"></a>References</h3><ul>
+<li>Sebadorn’s Blog: <a href="https://sebadorn.de/2021/06/28/dead-cells-unlocking-the-daily-challenge-blueprints-in-the-bugged-linux-gog-version" title="Unlocking the Daily Challenge blueprints in the bugged Linux GOG version">2021.06.28</a></li>
+</ul>
+]]></content>
+      <categories>
+        <category>Games</category>
+      </categories>
+      <tags>
+        <tag>Dead Cells</tag>
+      </tags>
+  </entry>
+  <entry>
     <title>Delete a superuser in Django</title>
     <url>/2023/06/08/Delete%20a%20superuser%20in%20Django/</url>
     <content><![CDATA[<p>To delete a superuser in Django, you can use the Django shell to query and delete the user model instance. Here are the steps to delete a superuser using the Django shell:</p>
@@ -339,68 +404,26 @@ uid           [ unknown] Puppet, Inc. Release Key (Puppet, Inc. Release Key) &lt
       </tags>
   </entry>
   <entry>
-    <title>Dead Cells：Unlocking Daily Challenge blueprints</title>
-    <url>/2023/05/03/Dead%20Cells%EF%BC%9AUnlocking%20Daily%20Challenge%20blueprints/</url>
-    <content><![CDATA[<p>The Daily Challenge mode boasts a significant player base, even compared to other popular modes, and offers several exclusive weapons to boot. However, this is bad news for us freeloaders who, through various means, gained access to the game without ever paying the publisher a single cent. Some may consider piracy bad practice, but to be honest, I’m broke as f*ck.</p>
-<p>Since we can’t do the challenge runs like the normal person would, I find it not much of a stretch to hack the game a bit further.</p>
-<h3 id="Overview"><a href="#Overview" class="headerlink" title="Overview"></a>Overview</h3><p>The approach we’re taking is to assign the blueprints to a chosen enemy. Naturally we’d want to assign it to an enemy we frequently run into and have a decent drop rate. It so happens that the zombie fits our description perfectly.</p>
-<p>Let us have a look at the relevant part of its JSON description:</p>
-<figure class="highlight json"><table><tr><td class="code"><pre><span class="line"><span class="attr">&quot;name&quot;</span><span class="punctuation">:</span> <span class="string">&quot;Zombie&quot;</span><span class="punctuation">,</span></span><br><span class="line"><span class="attr">&quot;score&quot;</span><span class="punctuation">:</span> <span class="number">2</span><span class="punctuation">,</span></span><br><span class="line"><span class="attr">&quot;maxPerRoom&quot;</span><span class="punctuation">:</span> <span class="number">0</span><span class="punctuation">,</span></span><br><span class="line"><span class="attr">&quot;canBeElite&quot;</span><span class="punctuation">:</span> <span class="literal"><span class="keyword">true</span></span><span class="punctuation">,</span></span><br><span class="line"><span class="attr">&quot;glowInnerColor&quot;</span><span class="punctuation">:</span> <span class="number">11197250</span><span class="punctuation">,</span></span><br><span class="line"><span class="attr">&quot;volteDelay&quot;</span><span class="punctuation">:</span> <span class="number">1</span><span class="punctuation">,</span></span><br><span class="line"><span class="attr">&quot;flesh1&quot;</span><span class="punctuation">:</span> <span class="number">5669211</span><span class="punctuation">,</span></span><br><span class="line"><span class="attr">&quot;flesh2&quot;</span><span class="punctuation">:</span> <span class="number">12303527</span><span class="punctuation">,</span></span><br><span class="line"><span class="attr">&quot;pfCost&quot;</span><span class="punctuation">:</span> <span class="number">0.5</span><span class="punctuation">,</span></span><br><span class="line"><span class="attr">&quot;blueprints&quot;</span><span class="punctuation">:</span> <span class="punctuation">[</span></span><br><span class="line">	<span class="punctuation">&#123;</span></span><br><span class="line">		<span class="attr">&quot;item&quot;</span><span class="punctuation">:</span> <span class="string">&quot;HorizontalTurret&quot;</span><span class="punctuation">,</span></span><br><span class="line">		<span class="attr">&quot;rarity&quot;</span><span class="punctuation">:</span> <span class="string">&quot;Rare&quot;</span><span class="punctuation">,</span></span><br><span class="line">		<span class="attr">&quot;minDifficulty&quot;</span><span class="punctuation">:</span> <span class="number">0</span></span><br><span class="line">	<span class="punctuation">&#125;</span><span class="punctuation">,</span></span><br><span class="line">	<span class="punctuation">&#123;</span></span><br><span class="line">		<span class="attr">&quot;item&quot;</span><span class="punctuation">:</span> <span class="string">&quot;Bleeder&quot;</span><span class="punctuation">,</span></span><br><span class="line">		<span class="attr">&quot;rarity&quot;</span><span class="punctuation">:</span> <span class="string">&quot;Always&quot;</span><span class="punctuation">,</span></span><br><span class="line">		<span class="attr">&quot;minDifficulty&quot;</span><span class="punctuation">:</span> <span class="number">0</span></span><br><span class="line">	<span class="punctuation">&#125;</span><span class="punctuation">,</span></span><br><span class="line">	<span class="punctuation">&#123;</span></span><br><span class="line">		<span class="attr">&quot;rarity&quot;</span><span class="punctuation">:</span> <span class="string">&quot;Rare&quot;</span><span class="punctuation">,</span></span><br><span class="line">		<span class="attr">&quot;minDifficulty&quot;</span><span class="punctuation">:</span> <span class="number">1</span><span class="punctuation">,</span></span><br><span class="line">		<span class="attr">&quot;item&quot;</span><span class="punctuation">:</span> <span class="string">&quot;PrisonerBobby&quot;</span></span><br><span class="line">	<span class="punctuation">&#125;</span></span><br><span class="line"><span class="punctuation">]</span></span><br></pre></td></tr></table></figure>
-
-<p><code>Bleeder</code> is the internal name for <code>Blood Sword</code>, which is typically the first blueprint obtained by Dead Cells players on their initial run. As such, it can be readily exchanged for an item of our preference.</p>
-<div style="display: block; margin-left: auto; margin-right: auto; text-align: center; font-size: 1rem;">
-
-<p><img src="/2023/05/03/Dead%20Cells%EF%BC%9AUnlocking%20Daily%20Challenge%20blueprints/images/Blood%20Sword.png" alt="Blood Sword" title="Blood Sword"></p>
-<p><span>Blood Sword</span></p>
-</div>
-
-<h4 id="Targets"><a href="#Targets" class="headerlink" title="Targets:"></a>Targets:</h4><ol>
-<li><em>Swift Sword</em> (internal name <code>SpeedBlade</code>) - first run</li>
-<li><em>Lacerating Aura</em> (internal name <code>DamageAura</code>) - 5th run</li>
-<li><em>Meat Skewer</em> (internal name <code>DashSword</code>) - 10th run</li>
-</ol>
-<p>Visit <a href="https://deadcells.fandom.com/wiki/Dead_Cells_Wiki">the official wiki page</a> for more information!</p>
-<h3 id="CellPacker"><a href="#CellPacker" class="headerlink" title="CellPacker"></a>CellPacker</h3><p>I use CellPacker to extract the <code>data.cdb</code> file so as to avoid having to read from the hexdump. It is a lot more comfortable to inspect an formatted JSON file!</p>
-<div style="display: block; margin-left: auto; margin-right: auto; text-align: center; font-size: 1rem;">
-
-<p><img src="/2023/05/03/Dead%20Cells%EF%BC%9AUnlocking%20Daily%20Challenge%20blueprints/images/CellPacker.png" alt="CellPacker" title="CellPacker"></p>
-<p><span>CellPacker</span></p>
-</div>
-
-<p>We <em>can</em> open CellPacker by double-clicking <code>CellPacker.jar</code>, however I suggest running the following command to avoid headaches:</p>
-<figure class="highlight bash"><table><tr><td class="code"><pre><span class="line">java -jar /path/to/CellPacker.jar</span><br></pre></td></tr></table></figure>
-
-<p>GitHub Repo: <a href="https://github.com/ReBuilders101/CellPacker" title="ReBuilders101/CellPacker Repo">ReBuilders101&#x2F;CellPacker</a></p>
-<p>Click <a href="https://github.com/ReBuilders101/CellPacker/raw/master/release/CellPacker.jar" title="CellPacker.jar">here</a> to install <code>CellPacker.jar</code>.</p>
-<h3 id="res-pak"><a href="#res-pak" class="headerlink" title="res.pak"></a><em><code>res.pak</code></em></h3><p>As the name suggests, the <code>res.pak</code> is the resource pack for the game itself and contains every aspect of what the graphics and cutscenes require to load. It also contains the <code>json</code> data files which store the underlying logic behind the interactions in the game.</p>
-<p>To hack it, we need a hexdump editor. I use <code>ghex</code> because it’s fairly simple and easy to use. We can install it on our MacBook via Homebrew, using the following command:</p>
-<figure class="highlight bash"><table><tr><td class="code"><pre><span class="line">brew install ghex</span><br></pre></td></tr></table></figure>
-
-<blockquote>
-<p><strong><em>Note:</em></strong><br>Before we begin the actual editing process, make sure you have a copy of your game saves and the resource pack we’re editing on. This is in case we make a mistake and corrupt the files.</p>
+    <title>Minor adjustment from Bash to Zsh</title>
+    <url>/2024/05/27/Minor%20adjustment%20from%20Bash%20to%20Zsh/</url>
+    <content><![CDATA[<blockquote>
+<p>Converting characters to uppercase(&#x2F;lowercase)</p>
 </blockquote>
-<h3 id="ghex"><a href="#ghex" class="headerlink" title="ghex"></a><em><code>ghex</code></em></h3><p>Run <code>ghex</code> in Terminal and open <code>res.pak</code>. Locate <code>Bleeder</code> and replace it with the internal name of any of the three daily challenge blueprints.</p>
-<div style="display: block; margin-left: auto; margin-right: auto; text-align: center; font-size: 1rem;">
+<p>Take variable <code>sayhi</code> for example:</p>
+<figure class="highlight bash"><table><tr><td class="code"><pre><span class="line">sayhi=<span class="string">&quot;hello there&quot;</span></span><br><span class="line"><span class="built_in">echo</span> <span class="variable">$&#123;sayhi^^[eo]&#125;</span></span><br></pre></td></tr></table></figure>
 
-<p><img src="/2023/05/03/Dead%20Cells%EF%BC%9AUnlocking%20Daily%20Challenge%20blueprints/images/Before.png" alt="Before" title="Before"></p>
-</div>
+<p>This method of converting lowercase letters to uppercase only works in Bash and will throw and “Bad substitution” error if you try it in Zsh.<br>Instead, you should use general replacement for this in Zsh:</p>
+<figure class="highlight plaintext"><table><tr><td class="code"><pre><span class="line">echo $&#123;sayhi//[eo]/[EO]&#125;</span><br></pre></td></tr></table></figure>
 
-<p>Please note that the resulting file must remain the same size as the original. Making significant changes will only complicate matters. For instance, <code>Bleeder</code> has 7 characters, while <code>SpeedBlade</code> and <code>DamageAura</code> have 10, and <code>DashSword</code> has 9. To address this discrepancy, I reduced the length of “Zombie” by the difference. Here’s an example:</p>
-<div style="display: block; margin-left: auto; margin-right: auto; text-align: center; font-size: 1rem;">
-
-<p><img src="/2023/05/03/Dead%20Cells%EF%BC%9AUnlocking%20Daily%20Challenge%20blueprints/images/After.png" alt="After" title="After"></p>
-</div>
-
-<hr>
-<h3 id="References"><a href="#References" class="headerlink" title="References"></a>References</h3><ul>
-<li>Sebadorn’s Blog: <a href="https://sebadorn.de/2021/06/28/dead-cells-unlocking-the-daily-challenge-blueprints-in-the-bugged-linux-gog-version" title="Unlocking the Daily Challenge blueprints in the bugged Linux GOG version">2021.06.28</a></li>
-</ul>
+<p>Or, for a more Zsh native method, we can try out substitution flags, which comes in two formats:</p>
+<figure class="highlight plaintext"><table><tr><td class="code"><pre><span class="line">echo $&#123;sayhi:u&#125;</span><br><span class="line"># Or use it as a prefix:</span><br><span class="line">echo $&#123;(U):sayhi&#125;</span><br></pre></td></tr></table></figure>
 ]]></content>
       <categories>
-        <category>Games</category>
+        <category>CLI</category>
       </categories>
       <tags>
-        <tag>Dead Cells</tag>
+        <tag>Bash</tag>
+        <tag>Zsh</tag>
       </tags>
   </entry>
   <entry>
@@ -596,26 +619,82 @@ r=mccranky)
       </tags>
   </entry>
   <entry>
-    <title>Minor adjustment from Bash to Zsh</title>
-    <url>/2024/05/27/Minor%20adjustment%20from%20Bash%20to%20Zsh/</url>
-    <content><![CDATA[<blockquote>
-<p>Converting characters to uppercase(&#x2F;lowercase)</p>
-</blockquote>
-<p>Take variable <code>sayhi</code> for example:</p>
-<figure class="highlight bash"><table><tr><td class="code"><pre><span class="line">sayhi=<span class="string">&quot;hello there&quot;</span></span><br><span class="line"><span class="built_in">echo</span> <span class="variable">$&#123;sayhi^^[eo]&#125;</span></span><br></pre></td></tr></table></figure>
+    <title>`Path` module - Node.js</title>
+    <url>/2023/06/08/Path%20module%20-%20Node.js/</url>
+    <content><![CDATA[<p>因为本人使用的操作系统是 OS X ，所以一下书写规范均符合 POSIX（Portable Open System Interface eXtended），Windows 用户请自行查阅资料。</p>
+<h3 id="path-basename-path-suffix"><a href="#path-basename-path-suffix" class="headerlink" title="path.basename(path[, suffix])"></a><code>path.basename(path[, suffix])</code></h3><figure class="highlight javascript"><table><tr><td class="code"><pre><span class="line">path.<span class="title function_">basename</span>(<span class="string">&#x27;/path/to/project/index.html&#x27;</span>, <span class="string">&#x27;.html&#x27;</span>)</span><br><span class="line"><span class="comment">// &#x27;index&#x27;</span></span><br></pre></td></tr></table></figure>
 
-<p>This method of converting lowercase letters to uppercase only works in Bash and will throw and “Bad substitution” error if you try it in Zsh.<br>Instead, you should use general replacement for this in Zsh:</p>
-<figure class="highlight plaintext"><table><tr><td class="code"><pre><span class="line">echo $&#123;sayhi//[eo]/[EO]&#125;</span><br></pre></td></tr></table></figure>
+<h3 id="path-delimiter"><a href="#path-delimiter" class="headerlink" title="path.delimiter"></a><code>path.delimiter</code></h3><figure class="highlight javascript"><table><tr><td class="code"><pre><span class="line"><span class="variable language_">console</span>.<span class="title function_">log</span>(process.<span class="property">env</span>.<span class="property">PATH</span>)</span><br><span class="line"><span class="comment">// /opt/homebrew/opt/llvm/bin:/opt/homebrew/opt/llvm/bin:/Applications/Sublime Text.app/Contents/SharedSupport/bin/:/Applications/Visual Studio Code.app/Contents/Resources/app/bin/:/Users/Mccranky/.gem/ruby/3.1.3/bin:/Users/Mccranky/.rubies/ruby-3.1.3/lib/ruby/gems/3.1.0/bin:/Users/Mccranky/.rubies/ruby-3.1.3/bin::/opt/local/bin:/opt/homebrew/bin:/opt/homebrew/sbin:/usr/local/bin:/usr/bin:/bin:/usr/sbin:/sbin:/usr/local/mysql/support-files:/usr/local/mysql/bin:/etc/platform-tools:/usr/local/go/bin:/usr/local/MacGPG2/bin:/usr/local/share/dotnet:~/.dotnet/tools:/Library/Apple/usr/bin:/Users/Mccranky/.nami/bin:/Users/Mccranky/.spicetify</span></span><br><span class="line"><span class="comment">// undefined</span></span><br></pre></td></tr></table></figure>
 
-<p>Or, for a more Zsh native method, we can try out substitution flags, which comes in two formats:</p>
-<figure class="highlight plaintext"><table><tr><td class="code"><pre><span class="line">echo $&#123;sayhi:u&#125;</span><br><span class="line"># Or use it as a prefix:</span><br><span class="line">echo $&#123;(U):sayhi&#125;</span><br></pre></td></tr></table></figure>
+<p>输出第一行为环境变量。<br>输出第二行的<code>undefined</code>示意无返回值。</p>
+<figure class="highlight javascript"><table><tr><td class="code"><pre><span class="line">process.<span class="property">env</span>.<span class="property">PATH</span>.<span class="title function_">split</span>(path.<span class="property">delimiter</span>)</span><br><span class="line"><span class="comment">/*</span></span><br><span class="line"><span class="comment">[</span></span><br><span class="line"><span class="comment">  &#x27;/opt/homebrew/opt/llvm/bin&#x27;,</span></span><br><span class="line"><span class="comment">  &#x27;/opt/homebrew/opt/llvm/bin&#x27;,</span></span><br><span class="line"><span class="comment">  &#x27;/Applications/Sublime Text.app/Contents/SharedSupport/bin/&#x27;,</span></span><br><span class="line"><span class="comment">  &#x27;/Applications/Visual Studio Code.app/Contents/Resources/app/bin/&#x27;,</span></span><br><span class="line"><span class="comment">  &#x27;/Users/Mccranky/.gem/ruby/3.1.3/bin&#x27;,</span></span><br><span class="line"><span class="comment">  &#x27;/Users/Mccranky/.rubies/ruby-3.1.3/lib/ruby/gems/3.1.0/bin&#x27;,</span></span><br><span class="line"><span class="comment">  &#x27;/Users/Mccranky/.rubies/ruby-3.1.3/bin&#x27;,</span></span><br><span class="line"><span class="comment">  &#x27;&#x27;,</span></span><br><span class="line"><span class="comment">  &#x27;/opt/local/bin&#x27;,</span></span><br><span class="line"><span class="comment">  &#x27;/opt/homebrew/bin&#x27;,</span></span><br><span class="line"><span class="comment">  &#x27;/opt/homebrew/sbin&#x27;,</span></span><br><span class="line"><span class="comment">  &#x27;/usr/local/bin&#x27;,</span></span><br><span class="line"><span class="comment">  &#x27;/usr/bin&#x27;,</span></span><br><span class="line"><span class="comment">  &#x27;/bin&#x27;,</span></span><br><span class="line"><span class="comment">  &#x27;/usr/sbin&#x27;,</span></span><br><span class="line"><span class="comment">  &#x27;/sbin&#x27;,</span></span><br><span class="line"><span class="comment">  &#x27;/usr/local/mysql/support-files&#x27;,</span></span><br><span class="line"><span class="comment">  &#x27;/usr/local/mysql/bin&#x27;,</span></span><br><span class="line"><span class="comment">  &#x27;/etc/platform-tools&#x27;,</span></span><br><span class="line"><span class="comment">  &#x27;/usr/local/go/bin&#x27;,</span></span><br><span class="line"><span class="comment">  &#x27;/usr/local/MacGPG2/bin&#x27;,</span></span><br><span class="line"><span class="comment">  &#x27;/usr/local/share/dotnet&#x27;,</span></span><br><span class="line"><span class="comment">  &#x27;~/.dotnet/tools&#x27;,</span></span><br><span class="line"><span class="comment">  &#x27;/Library/Apple/usr/bin&#x27;,</span></span><br><span class="line"><span class="comment">  &#x27;/Users/Mccranky/.nami/bin&#x27;,</span></span><br><span class="line"><span class="comment">  &#x27;/Users/Mccranky/.spicetify&#x27;</span></span><br><span class="line"><span class="comment">]</span></span><br><span class="line"><span class="comment">*/</span></span><br></pre></td></tr></table></figure>
+
+<p><code>path.delimiter</code>: <code>:</code></p>
+<h3 id="path-dirname"><a href="#path-dirname" class="headerlink" title="path.dirname"></a><code>path.dirname</code></h3><figure class="highlight javascript"><table><tr><td class="code"><pre><span class="line">path.<span class="title function_">dirname</span>(<span class="string">&#x27;path/to/file.txt&#x27;</span>)</span><br><span class="line"><span class="comment">// &#x27;path/to&#x27;</span></span><br></pre></td></tr></table></figure>
+
+<h3 id="path-extname"><a href="#path-extname" class="headerlink" title="path.extname"></a><code>path.extname</code></h3><figure class="highlight javascript"><table><tr><td class="code"><pre><span class="line">path.<span class="title function_">extname</span>(<span class="string">&#x27;index.html&#x27;</span>)</span><br><span class="line"><span class="comment">// &#x27;.html&#x27;</span></span><br><span class="line"></span><br><span class="line">path.<span class="title function_">extname</span>(<span class="string">&#x27;index.foo.md&#x27;</span>)</span><br><span class="line"><span class="comment">// &#x27;.md&#x27;</span></span><br><span class="line"></span><br><span class="line">path.<span class="title function_">extname</span>(<span class="string">&#x27;index.&#x27;</span>)</span><br><span class="line"><span class="comment">// &#x27;.&#x27;</span></span><br><span class="line"></span><br><span class="line">path.<span class="title function_">extname</span>(<span class="string">&#x27;index&#x27;</span>)</span><br><span class="line"><span class="comment">// &#x27;&#x27;</span></span><br><span class="line"></span><br><span class="line">path.<span class="title function_">extname</span>(<span class="string">&#x27;.index&#x27;</span>)</span><br><span class="line"><span class="comment">// &#x27;&#x27;</span></span><br><span class="line"></span><br><span class="line">path.<span class="title function_">extname</span>(<span class="string">&#x27;.index.md&#x27;</span>)</span><br><span class="line"><span class="comment">// &#x27;.md&#x27;</span></span><br></pre></td></tr></table></figure>
+
+<h3 id="path-format-pathObject"><a href="#path-format-pathObject" class="headerlink" title="path.format(pathObject)"></a><code>path.format(pathObject)</code></h3><figure class="highlight javascript"><table><tr><td class="code"><pre><span class="line"><span class="comment">// `$&#123;dir&#125;$&#123;path.sep&#125;$&#123;base&#125;`</span></span><br><span class="line">path.<span class="title function_">format</span>(&#123;</span><br><span class="line">  <span class="attr">root</span>: <span class="string">&#x27;/ignored&#x27;</span>,</span><br><span class="line">  <span class="attr">dir</span>: <span class="string">&#x27;/home/user/dir&#x27;</span>,</span><br><span class="line">  <span class="attr">base</span>: <span class="string">&#x27;file.txt&#x27;</span>,</span><br><span class="line">&#125;)</span><br><span class="line"><span class="comment">// &#x27;/home/user/dir/file.txt&#x27;</span></span><br><span class="line"></span><br><span class="line">path.<span class="title function_">format</span>(&#123;</span><br><span class="line">  <span class="attr">root</span>: <span class="string">&#x27;/&#x27;</span>,</span><br><span class="line">  <span class="attr">base</span>: <span class="string">&#x27;file.txt&#x27;</span>,</span><br><span class="line">  <span class="attr">ext</span>: <span class="string">&#x27;ignored&#x27;</span>,</span><br><span class="line">&#125;)</span><br><span class="line"><span class="comment">// &#x27;/file.txt&#x27;</span></span><br><span class="line"></span><br><span class="line">path.<span class="title function_">format</span>(&#123;</span><br><span class="line">  <span class="attr">root</span>: <span class="string">&#x27;/&#x27;</span>,</span><br><span class="line">  <span class="attr">name</span>: <span class="string">&#x27;file&#x27;</span>,</span><br><span class="line">  <span class="attr">ext</span>: <span class="string">&#x27;.txt&#x27;</span>,</span><br><span class="line">&#125;)</span><br><span class="line"><span class="comment">// &#x27;/file.txt&#x27;</span></span><br><span class="line"></span><br><span class="line">path.<span class="title function_">format</span>(&#123;</span><br><span class="line">  <span class="attr">root</span>: <span class="string">&#x27;/&#x27;</span>,</span><br><span class="line">  <span class="attr">name</span>: <span class="string">&#x27;file&#x27;</span>,</span><br><span class="line">  <span class="attr">ext</span>: <span class="string">&#x27;txt&#x27;</span>,</span><br><span class="line">&#125;)</span><br><span class="line"><span class="comment">// &#x27;/file.txt&#x27;</span></span><br></pre></td></tr></table></figure>
+
+<h3 id="path-isAbsolute"><a href="#path-isAbsolute" class="headerlink" title="path.isAbsolute"></a><code>path.isAbsolute</code></h3><figure class="highlight javascript"><table><tr><td class="code"><pre><span class="line">path.<span class="title function_">isAbsolute</span>(<span class="string">&#x27;/foo/bar&#x27;</span>) <span class="comment">// true</span></span><br><span class="line">path.<span class="title function_">isAbsolute</span>(<span class="string">&#x27;/baz/..&#x27;</span>)  <span class="comment">// true</span></span><br><span class="line">path.<span class="title function_">isAbsolute</span>(<span class="string">&#x27;qux/&#x27;</span>)     <span class="comment">// false</span></span><br><span class="line">path.<span class="title function_">isAbsolute</span>(<span class="string">&#x27;.&#x27;</span>)        <span class="comment">// false</span></span><br></pre></td></tr></table></figure>
+
+<h3 id="path-join-paths"><a href="#path-join-paths" class="headerlink" title="path.join([...paths])"></a><code>path.join([...paths])</code></h3><figure class="highlight javascript"><table><tr><td class="code"><pre><span class="line">path.<span class="title function_">join</span>(<span class="string">&#x27;&#x27;</span>)</span><br><span class="line"><span class="comment">// &#x27;.&#x27;</span></span><br><span class="line"></span><br><span class="line">path.<span class="title function_">join</span>(<span class="string">&#x27;/&#x27;</span>, <span class="string">&#x27;/foo&#x27;</span>, <span class="string">&#x27;bar&#x27;</span>, <span class="string">&#x27;baz&#x27;</span>, <span class="string">&#x27;..&#x27;</span>)</span><br><span class="line"><span class="comment">// &#x27;/foo/bar&#x27;</span></span><br></pre></td></tr></table></figure>
+
+<h3 id="path-normalize-path"><a href="#path-normalize-path" class="headerlink" title="path.normalize(path)"></a><code>path.normalize(path)</code></h3><figure class="highlight javascript"><table><tr><td class="code"><pre><span class="line">path.<span class="title function_">normalize</span>(<span class="string">&#x27;/foo/bar//baz/asdf/quux/..&#x27;</span>)</span><br><span class="line"><span class="comment">// Returns: &#x27;/foo/bar/baz/asdf&#x27;</span></span><br></pre></td></tr></table></figure>
+
+<h3 id="path-parse-path"><a href="#path-parse-path" class="headerlink" title="path.parse(path)"></a><code>path.parse(path)</code></h3><figure class="highlight javascript"><table><tr><td class="code"><pre><span class="line">path.<span class="title function_">parse</span>(<span class="string">&#x27;/home/user/dir/file.txt&#x27;</span>)</span><br><span class="line"><span class="comment">/*</span></span><br><span class="line"><span class="comment">&#123;</span></span><br><span class="line"><span class="comment">  root: &#x27;/&#x27;,</span></span><br><span class="line"><span class="comment">  dir: &#x27;/home/user/dir&#x27;,</span></span><br><span class="line"><span class="comment">  base: &#x27;file.txt&#x27;,</span></span><br><span class="line"><span class="comment">  ext: &#x27;.txt&#x27;,</span></span><br><span class="line"><span class="comment">  name: &#x27;file&#x27;</span></span><br><span class="line"><span class="comment">&#125;</span></span><br><span class="line"><span class="comment">*/</span></span><br></pre></td></tr></table></figure>
+
+<figure class="highlight plaintext"><table><tr><td class="code"><pre><span class="line">┌─────────────────────┬────────────┐</span><br><span class="line">│          dir        │    base    │</span><br><span class="line">├──────┬              ├──────┬─────┤</span><br><span class="line">│ root │              │ name │ ext │</span><br><span class="line">&quot;  /    home/user/dir / file  .txt &quot;</span><br><span class="line">└──────┴──────────────┴──────┴─────┘</span><br></pre></td></tr></table></figure>
+
+<h3 id="path-posix"><a href="#path-posix" class="headerlink" title="path.posix"></a><code>path.posix</code></h3><p>只是输出一下<code>path</code>模组所有的方法。</p>
+<h3 id="path-relative-from-to"><a href="#path-relative-from-to" class="headerlink" title="path.relative(from, to)"></a><code>path.relative(from, to)</code></h3><figure class="highlight javascript"><table><tr><td class="code"><pre><span class="line">path.<span class="title function_">relative</span>(<span class="string">&#x27;/data/orandea/test/aaa&#x27;</span>, <span class="string">&#x27;/data/orandea/impl/bbb&#x27;</span>)</span><br><span class="line"><span class="comment">// &#x27;../../impl/bbb&#x27;</span></span><br></pre></td></tr></table></figure>
+
+<h3 id="path-resolve-paths"><a href="#path-resolve-paths" class="headerlink" title="path.resolve([...paths])"></a><code>path.resolve([...paths])</code></h3><figure class="highlight javascript"><table><tr><td class="code"><pre><span class="line">path.<span class="title function_">resolve</span>(<span class="string">&#x27;&#x27;</span>)</span><br><span class="line"><span class="string">&#x27;/Users/Mccranky&#x27;</span></span><br><span class="line"></span><br><span class="line">path.<span class="title function_">join</span>(<span class="string">&#x27;foo&#x27;</span>, <span class="string">&#x27;bar&#x27;</span>, <span class="string">&#x27;baz&#x27;</span>, <span class="string">&#x27;..&#x27;</span>)</span><br><span class="line"><span class="comment">// &#x27;/Users/Mccranky/foo/bar&#x27;</span></span><br></pre></td></tr></table></figure>
+
+<h3 id="path-sep"><a href="#path-sep" class="headerlink" title="path.sep"></a><code>path.sep</code></h3><p><code>path.sep</code>: <code>/</code></p>
+<figure class="highlight javascript"><table><tr><td class="code"><pre><span class="line"><span class="string">&#x27;foo/bar/baz&#x27;</span>.<span class="title function_">split</span>(path.<span class="property">sep</span>)</span><br><span class="line"><span class="comment">// [&#x27;foo&#x27;, &#x27;bar&#x27;, &#x27;baz&#x27;]</span></span><br></pre></td></tr></table></figure>
 ]]></content>
       <categories>
-        <category>CLI</category>
+        <category>Node.js</category>
       </categories>
       <tags>
+        <tag>Node.js</tag>
+        <tag>Path</tag>
+      </tags>
+  </entry>
+  <entry>
+    <title>Positional Parameters</title>
+    <url>/2023/04/28/Positional%20Parameters/</url>
+    <content><![CDATA[<p>In Bash, positional parameters are special variables that hold the arguments passed to a script or function. The positional parameters are numbered from <code>0</code> to <code>9</code>, where <code>$0</code> holds the name of the script or function, and <code>$1</code> through <code>$9</code> hold the first through ninth arguments, respectively.</p>
+<p><code>$@</code> and <code>$*</code> both hold all the arguments passed to the script. Note that <code>$@</code> is an array-like variable that holds all the positional parameters as <em>separate elements</em>, while <code>$*</code> is another variable that holds all the positional parameters as <em>a single string</em>.</p>
+<p>Here’s an example:</p>
+<pre><code>#!/bin/bash
+
+#!/bin/bash
+
+echo &quot;Script Name: $0&quot;
+echo &quot;First Arg: $1&quot;
+echo &quot;Second Arg: $2&quot;
+echo &quot;All args (arr): $@&quot;
+echo &quot;All args (str): $*&quot;
+</code></pre>
+<p>Now let’s run the script with three arguments:</p>
+<figure class="highlight bash"><table><tr><td class="code"><pre><span class="line"><span class="built_in">chmod</span> u+x ./script <span class="comment"># Grant execution privilege for user</span></span><br><span class="line"></span><br><span class="line">./script a b c</span><br><span class="line"></span><br></pre></td></tr></table></figure>
+
+<p>The output should be something like this:</p>
+<pre><code>Script Name: ./script.sh
+First Arg: a
+Second Arg: b
+All args (arr): a b c
+All args (str): a b c
+</code></pre>
+]]></content>
+      <categories>
+        <category>Bash</category>
+      </categories>
+      <tags>
+        <tag>Linux</tag>
         <tag>Bash</tag>
-        <tag>Zsh</tag>
       </tags>
   </entry>
   <entry>
@@ -830,50 +909,6 @@ Possible reasons for having this kind of units are:
       </tags>
   </entry>
   <entry>
-    <title>`Path` module - Node.js</title>
-    <url>/2023/05/14/Path%20module%20-%20Node.js/</url>
-    <content><![CDATA[<p>因为本人使用的操作系统是 OS X ，所以一下书写规范均符合 POSIX（Portable Open System Interface eXtended），Windows 用户请自行查阅资料。</p>
-<h3 id="path-basename-path-suffix"><a href="#path-basename-path-suffix" class="headerlink" title="path.basename(path[, suffix])"></a><code>path.basename(path[, suffix])</code></h3><figure class="highlight javascript"><table><tr><td class="code"><pre><span class="line">path.<span class="title function_">basename</span>(<span class="string">&#x27;/path/to/project/index.html&#x27;</span>, <span class="string">&#x27;.html&#x27;</span>)</span><br><span class="line"><span class="comment">// &#x27;index&#x27;</span></span><br></pre></td></tr></table></figure>
-
-<h3 id="path-delimiter"><a href="#path-delimiter" class="headerlink" title="path.delimiter"></a><code>path.delimiter</code></h3><figure class="highlight javascript"><table><tr><td class="code"><pre><span class="line"><span class="variable language_">console</span>.<span class="title function_">log</span>(process.<span class="property">env</span>.<span class="property">PATH</span>)</span><br><span class="line"><span class="comment">// /opt/homebrew/opt/llvm/bin:/opt/homebrew/opt/llvm/bin:/Applications/Sublime Text.app/Contents/SharedSupport/bin/:/Applications/Visual Studio Code.app/Contents/Resources/app/bin/:/Users/Mccranky/.gem/ruby/3.1.3/bin:/Users/Mccranky/.rubies/ruby-3.1.3/lib/ruby/gems/3.1.0/bin:/Users/Mccranky/.rubies/ruby-3.1.3/bin::/opt/local/bin:/opt/homebrew/bin:/opt/homebrew/sbin:/usr/local/bin:/usr/bin:/bin:/usr/sbin:/sbin:/usr/local/mysql/support-files:/usr/local/mysql/bin:/etc/platform-tools:/usr/local/go/bin:/usr/local/MacGPG2/bin:/usr/local/share/dotnet:~/.dotnet/tools:/Library/Apple/usr/bin:/Users/Mccranky/.nami/bin:/Users/Mccranky/.spicetify</span></span><br><span class="line"><span class="comment">// undefined</span></span><br></pre></td></tr></table></figure>
-
-<p>输出第一行为环境变量。<br>输出第二行的<code>undefined</code>示意无返回值。</p>
-<figure class="highlight javascript"><table><tr><td class="code"><pre><span class="line">process.<span class="property">env</span>.<span class="property">PATH</span>.<span class="title function_">split</span>(path.<span class="property">delimiter</span>)</span><br><span class="line"><span class="comment">/*</span></span><br><span class="line"><span class="comment">[</span></span><br><span class="line"><span class="comment">  &#x27;/opt/homebrew/opt/llvm/bin&#x27;,</span></span><br><span class="line"><span class="comment">  &#x27;/opt/homebrew/opt/llvm/bin&#x27;,</span></span><br><span class="line"><span class="comment">  &#x27;/Applications/Sublime Text.app/Contents/SharedSupport/bin/&#x27;,</span></span><br><span class="line"><span class="comment">  &#x27;/Applications/Visual Studio Code.app/Contents/Resources/app/bin/&#x27;,</span></span><br><span class="line"><span class="comment">  &#x27;/Users/Mccranky/.gem/ruby/3.1.3/bin&#x27;,</span></span><br><span class="line"><span class="comment">  &#x27;/Users/Mccranky/.rubies/ruby-3.1.3/lib/ruby/gems/3.1.0/bin&#x27;,</span></span><br><span class="line"><span class="comment">  &#x27;/Users/Mccranky/.rubies/ruby-3.1.3/bin&#x27;,</span></span><br><span class="line"><span class="comment">  &#x27;&#x27;,</span></span><br><span class="line"><span class="comment">  &#x27;/opt/local/bin&#x27;,</span></span><br><span class="line"><span class="comment">  &#x27;/opt/homebrew/bin&#x27;,</span></span><br><span class="line"><span class="comment">  &#x27;/opt/homebrew/sbin&#x27;,</span></span><br><span class="line"><span class="comment">  &#x27;/usr/local/bin&#x27;,</span></span><br><span class="line"><span class="comment">  &#x27;/usr/bin&#x27;,</span></span><br><span class="line"><span class="comment">  &#x27;/bin&#x27;,</span></span><br><span class="line"><span class="comment">  &#x27;/usr/sbin&#x27;,</span></span><br><span class="line"><span class="comment">  &#x27;/sbin&#x27;,</span></span><br><span class="line"><span class="comment">  &#x27;/usr/local/mysql/support-files&#x27;,</span></span><br><span class="line"><span class="comment">  &#x27;/usr/local/mysql/bin&#x27;,</span></span><br><span class="line"><span class="comment">  &#x27;/etc/platform-tools&#x27;,</span></span><br><span class="line"><span class="comment">  &#x27;/usr/local/go/bin&#x27;,</span></span><br><span class="line"><span class="comment">  &#x27;/usr/local/MacGPG2/bin&#x27;,</span></span><br><span class="line"><span class="comment">  &#x27;/usr/local/share/dotnet&#x27;,</span></span><br><span class="line"><span class="comment">  &#x27;~/.dotnet/tools&#x27;,</span></span><br><span class="line"><span class="comment">  &#x27;/Library/Apple/usr/bin&#x27;,</span></span><br><span class="line"><span class="comment">  &#x27;/Users/Mccranky/.nami/bin&#x27;,</span></span><br><span class="line"><span class="comment">  &#x27;/Users/Mccranky/.spicetify&#x27;</span></span><br><span class="line"><span class="comment">]</span></span><br><span class="line"><span class="comment">*/</span></span><br></pre></td></tr></table></figure>
-
-<p><code>path.delimiter</code>: <code>:</code></p>
-<h3 id="path-dirname"><a href="#path-dirname" class="headerlink" title="path.dirname"></a><code>path.dirname</code></h3><figure class="highlight javascript"><table><tr><td class="code"><pre><span class="line">path.<span class="title function_">dirname</span>(<span class="string">&#x27;path/to/file.txt&#x27;</span>)</span><br><span class="line"><span class="comment">// &#x27;path/to&#x27;</span></span><br></pre></td></tr></table></figure>
-
-<h3 id="path-extname"><a href="#path-extname" class="headerlink" title="path.extname"></a><code>path.extname</code></h3><figure class="highlight javascript"><table><tr><td class="code"><pre><span class="line">path.<span class="title function_">extname</span>(<span class="string">&#x27;index.html&#x27;</span>)</span><br><span class="line"><span class="comment">// &#x27;.html&#x27;</span></span><br><span class="line"></span><br><span class="line">path.<span class="title function_">extname</span>(<span class="string">&#x27;index.foo.md&#x27;</span>)</span><br><span class="line"><span class="comment">// &#x27;.md&#x27;</span></span><br><span class="line"></span><br><span class="line">path.<span class="title function_">extname</span>(<span class="string">&#x27;index.&#x27;</span>)</span><br><span class="line"><span class="comment">// &#x27;.&#x27;</span></span><br><span class="line"></span><br><span class="line">path.<span class="title function_">extname</span>(<span class="string">&#x27;index&#x27;</span>)</span><br><span class="line"><span class="comment">// &#x27;&#x27;</span></span><br><span class="line"></span><br><span class="line">path.<span class="title function_">extname</span>(<span class="string">&#x27;.index&#x27;</span>)</span><br><span class="line"><span class="comment">// &#x27;&#x27;</span></span><br><span class="line"></span><br><span class="line">path.<span class="title function_">extname</span>(<span class="string">&#x27;.index.md&#x27;</span>)</span><br><span class="line"><span class="comment">// &#x27;.md&#x27;</span></span><br></pre></td></tr></table></figure>
-
-<h3 id="path-format-pathObject"><a href="#path-format-pathObject" class="headerlink" title="path.format(pathObject)"></a><code>path.format(pathObject)</code></h3><figure class="highlight javascript"><table><tr><td class="code"><pre><span class="line"><span class="comment">// `$&#123;dir&#125;$&#123;path.sep&#125;$&#123;base&#125;`</span></span><br><span class="line">path.<span class="title function_">format</span>(&#123;</span><br><span class="line">  <span class="attr">root</span>: <span class="string">&#x27;/ignored&#x27;</span>,</span><br><span class="line">  <span class="attr">dir</span>: <span class="string">&#x27;/home/user/dir&#x27;</span>,</span><br><span class="line">  <span class="attr">base</span>: <span class="string">&#x27;file.txt&#x27;</span>,</span><br><span class="line">&#125;)</span><br><span class="line"><span class="comment">// &#x27;/home/user/dir/file.txt&#x27;</span></span><br><span class="line"></span><br><span class="line">path.<span class="title function_">format</span>(&#123;</span><br><span class="line">  <span class="attr">root</span>: <span class="string">&#x27;/&#x27;</span>,</span><br><span class="line">  <span class="attr">base</span>: <span class="string">&#x27;file.txt&#x27;</span>,</span><br><span class="line">  <span class="attr">ext</span>: <span class="string">&#x27;ignored&#x27;</span>,</span><br><span class="line">&#125;)</span><br><span class="line"><span class="comment">// &#x27;/file.txt&#x27;</span></span><br><span class="line"></span><br><span class="line">path.<span class="title function_">format</span>(&#123;</span><br><span class="line">  <span class="attr">root</span>: <span class="string">&#x27;/&#x27;</span>,</span><br><span class="line">  <span class="attr">name</span>: <span class="string">&#x27;file&#x27;</span>,</span><br><span class="line">  <span class="attr">ext</span>: <span class="string">&#x27;.txt&#x27;</span>,</span><br><span class="line">&#125;)</span><br><span class="line"><span class="comment">// &#x27;/file.txt&#x27;</span></span><br><span class="line"></span><br><span class="line">path.<span class="title function_">format</span>(&#123;</span><br><span class="line">  <span class="attr">root</span>: <span class="string">&#x27;/&#x27;</span>,</span><br><span class="line">  <span class="attr">name</span>: <span class="string">&#x27;file&#x27;</span>,</span><br><span class="line">  <span class="attr">ext</span>: <span class="string">&#x27;txt&#x27;</span>,</span><br><span class="line">&#125;)</span><br><span class="line"><span class="comment">// &#x27;/file.txt&#x27;</span></span><br></pre></td></tr></table></figure>
-
-<h3 id="path-isAbsolute"><a href="#path-isAbsolute" class="headerlink" title="path.isAbsolute"></a><code>path.isAbsolute</code></h3><figure class="highlight javascript"><table><tr><td class="code"><pre><span class="line">path.<span class="title function_">isAbsolute</span>(<span class="string">&#x27;/foo/bar&#x27;</span>) <span class="comment">// true</span></span><br><span class="line">path.<span class="title function_">isAbsolute</span>(<span class="string">&#x27;/baz/..&#x27;</span>)  <span class="comment">// true</span></span><br><span class="line">path.<span class="title function_">isAbsolute</span>(<span class="string">&#x27;qux/&#x27;</span>)     <span class="comment">// false</span></span><br><span class="line">path.<span class="title function_">isAbsolute</span>(<span class="string">&#x27;.&#x27;</span>)        <span class="comment">// false</span></span><br></pre></td></tr></table></figure>
-
-<h3 id="path-join-paths"><a href="#path-join-paths" class="headerlink" title="path.join([...paths])"></a><code>path.join([...paths])</code></h3><figure class="highlight javascript"><table><tr><td class="code"><pre><span class="line">path.<span class="title function_">join</span>(<span class="string">&#x27;&#x27;</span>)</span><br><span class="line"><span class="comment">// &#x27;.&#x27;</span></span><br><span class="line"></span><br><span class="line">path.<span class="title function_">join</span>(<span class="string">&#x27;/&#x27;</span>, <span class="string">&#x27;/foo&#x27;</span>, <span class="string">&#x27;bar&#x27;</span>, <span class="string">&#x27;baz&#x27;</span>, <span class="string">&#x27;..&#x27;</span>)</span><br><span class="line"><span class="comment">// &#x27;/foo/bar&#x27;</span></span><br></pre></td></tr></table></figure>
-
-<h3 id="path-normalize-path"><a href="#path-normalize-path" class="headerlink" title="path.normalize(path)"></a><code>path.normalize(path)</code></h3><figure class="highlight javascript"><table><tr><td class="code"><pre><span class="line">path.<span class="title function_">normalize</span>(<span class="string">&#x27;/foo/bar//baz/asdf/quux/..&#x27;</span>)</span><br><span class="line"><span class="comment">// Returns: &#x27;/foo/bar/baz/asdf&#x27;</span></span><br></pre></td></tr></table></figure>
-
-<h3 id="path-parse-path"><a href="#path-parse-path" class="headerlink" title="path.parse(path)"></a><code>path.parse(path)</code></h3><figure class="highlight javascript"><table><tr><td class="code"><pre><span class="line">path.<span class="title function_">parse</span>(<span class="string">&#x27;/home/user/dir/file.txt&#x27;</span>)</span><br><span class="line"><span class="comment">/*</span></span><br><span class="line"><span class="comment">&#123;</span></span><br><span class="line"><span class="comment">  root: &#x27;/&#x27;,</span></span><br><span class="line"><span class="comment">  dir: &#x27;/home/user/dir&#x27;,</span></span><br><span class="line"><span class="comment">  base: &#x27;file.txt&#x27;,</span></span><br><span class="line"><span class="comment">  ext: &#x27;.txt&#x27;,</span></span><br><span class="line"><span class="comment">  name: &#x27;file&#x27;</span></span><br><span class="line"><span class="comment">&#125;</span></span><br><span class="line"><span class="comment">*/</span></span><br></pre></td></tr></table></figure>
-
-<figure class="highlight plaintext"><table><tr><td class="code"><pre><span class="line">┌─────────────────────┬────────────┐</span><br><span class="line">│          dir        │    base    │</span><br><span class="line">├──────┬              ├──────┬─────┤</span><br><span class="line">│ root │              │ name │ ext │</span><br><span class="line">&quot;  /    home/user/dir / file  .txt &quot;</span><br><span class="line">└──────┴──────────────┴──────┴─────┘</span><br></pre></td></tr></table></figure>
-
-<h3 id="path-posix"><a href="#path-posix" class="headerlink" title="path.posix"></a><code>path.posix</code></h3><p>只是输出一下<code>path</code>模组所有的方法。</p>
-<h3 id="path-relative-from-to"><a href="#path-relative-from-to" class="headerlink" title="path.relative(from, to)"></a><code>path.relative(from, to)</code></h3><figure class="highlight javascript"><table><tr><td class="code"><pre><span class="line">path.<span class="title function_">relative</span>(<span class="string">&#x27;/data/orandea/test/aaa&#x27;</span>, <span class="string">&#x27;/data/orandea/impl/bbb&#x27;</span>)</span><br><span class="line"><span class="comment">// &#x27;../../impl/bbb&#x27;</span></span><br></pre></td></tr></table></figure>
-
-<h3 id="path-resolve-paths"><a href="#path-resolve-paths" class="headerlink" title="path.resolve([...paths])"></a><code>path.resolve([...paths])</code></h3><figure class="highlight javascript"><table><tr><td class="code"><pre><span class="line">path.<span class="title function_">resolve</span>(<span class="string">&#x27;&#x27;</span>)</span><br><span class="line"><span class="string">&#x27;/Users/Mccranky&#x27;</span></span><br><span class="line"></span><br><span class="line">path.<span class="title function_">join</span>(<span class="string">&#x27;foo&#x27;</span>, <span class="string">&#x27;bar&#x27;</span>, <span class="string">&#x27;baz&#x27;</span>, <span class="string">&#x27;..&#x27;</span>)</span><br><span class="line"><span class="comment">// &#x27;/Users/Mccranky/foo/bar&#x27;</span></span><br></pre></td></tr></table></figure>
-
-<h3 id="path-sep"><a href="#path-sep" class="headerlink" title="path.sep"></a><code>path.sep</code></h3><p><code>path.sep</code>: <code>/</code></p>
-<figure class="highlight javascript"><table><tr><td class="code"><pre><span class="line"><span class="string">&#x27;foo/bar/baz&#x27;</span>.<span class="title function_">split</span>(path.<span class="property">sep</span>)</span><br><span class="line"><span class="comment">// [&#x27;foo&#x27;, &#x27;bar&#x27;, &#x27;baz&#x27;]</span></span><br></pre></td></tr></table></figure>
-]]></content>
-      <categories>
-        <category>Node.js</category>
-      </categories>
-      <tags>
-        <tag>Node.js</tag>
-        <tag>Path</tag>
-      </tags>
-  </entry>
-  <entry>
     <title>The Cognitive Compute of Empathy: Why Stereotypes are Just Underfitted Models</title>
     <url>/2026/04/04/The%20Cognitive%20Compute%20of%20Empathy%20Why%20Stereotypes%20are%20Just%20Underfitted%20Models/</url>
     <content><![CDATA[<p>Every day, the human brain is tasked with processing a massive, chaotic influx of social data. To navigate this overwhelming reality, the mind must inherently act as a predictive algorithm. However, just as in machine learning, the algorithms we choose to run in our social interactions dictate the accuracy—and the morality—of our worldview. When we examine the phenomenon of stereotyping through the lens of computer science, it becomes clear that prejudice is not merely a moral failing; it is a symptom of cognitive underfitting.</p>
@@ -883,6 +918,59 @@ Possible reasons for having this kind of units are:
 <p>A naive classifier looks at a person in a two-dimensional feature space—perhaps judging them purely on appearance and accent—and clusters them with everyone else who shares those traits. But an SVM-style thinker projects that data into a much higher-dimensional space. By feeding the model dozens of continuous variables—intellectual curiosity, emotional intelligence, conflict resolution style, moral consistency—the “stereotype” dissolves. Two individuals who appear identical in a low-dimensional binary space are suddenly revealed to be miles apart in the high-dimensional space of their actual character.</p>
 <p>Furthermore, an SVM handles non-linearity. It recognizes that human behavior rarely follows a straight line. A person can simultaneously hold seemingly contradictory traits, requiring a complex, dynamic decision boundary rather than a rigid binary box.</p>
 <p>Ultimately, rejecting stereotypes is not just an exercise in social etiquette; it is a commitment to data fidelity. To rely on stereotypes is to accept an intellectually lazy algorithm. To understand people accurately requires us to willingly spend the “mental overhead” necessary to evaluate them as the high-dimensional, non-linear datasets they truly are. As logical thinkers, we must recognize that the real world is infinitely complex, and it is our moral and computational duty to scale our feature space to meet it.</p>
+]]></content>
+      <tags>
+        <tag>Machine Learning</tag>
+        <tag>Life</tag>
+      </tags>
+  </entry>
+  <entry>
+    <title>Shadowing Emma</title>
+    <url>/2026/04/10/Shadowing%20Emma/</url>
+    <content><![CDATA[<p>我出生在上海，小时候母亲有意培养我学习英语。起初幼儿园时期，学校每周有外教 Emma 来教我们英语，能够通过她的小测就可以离开课堂去旁边玩。一直以来我都是第一个通过测试的人，Emma 甚至有意让我提早下课，因为我的积极表现 overshadowed 了所有其他的同学。虽然大家都很努力，但是每次能在下课前和我一起去玩的同学从没超过两个，我也有意不特意表现，只期待能多和同学们一起多待一会儿。</p>
+<p>上小学以后，妈妈给我报了周末的英语课外班，虽然从后面的发展来看，对我的英语学习提供了很少以至于没有帮助，但是某一节发音课让我潜意识中开始关注标准的发音。三年级开始我就不再上英文补习班了，转而开始听有声书。从《牛津书虫》到各类西方儿童经典读物（《时代广场的蟋蟀》、《海狸的信号》），到流行的青少年读物（《哈利·波特》、《波西·杰克逊》），直至初中时期我开始听一些更有深度的内容（CNN 10、《杀死一只知更鸟》、《野性的呼唤》、《老人与海》、《傲慢与偏见》、《The Great Gatsby》）。高中开始我的听力水平已经达到了 TOEFL 听力满分的水平，内容也过渡到了人物传记和宏大史观的内容（《The Inheritance Cycle》、《Stoner》、《The Catcher in the Rye》、《Steve Jobs》by Walter Isaacson、《Hunger Makes Me a Modern Girl》、《Lord of the Rings》）。大学属于 plateau 期，也不断验证了我的个人听书习惯：反复重复地听一样的内容，一遍又一遍。如果说初中时期是因为不理解含义所以反复，高中之后则更像是宅在熟悉的内容里无法自拔。从我 23 岁（2025）ADHD 自检的结果来看，可能那时的我已经深受其影响了吧。</p>
+<p>妈妈对我英文的影响也基本止步于初中：小学三年级时我有一次英语考试只考了 87 分，没上 90。她笃定我没用功，given my talent in English，于是她把考卷撕碎了。初中和高中基本就是她对我口音的挑刺，说我说话含糊，口齿不清。可能也是这个原因，加上初中时期除了英语以外我没有任何擅长的科目，英语于我而言成了一种执念。虽然我一直第一，但我从来没以此自豪过。仅有的一点骄傲也仅限于同学的吹捧，但那也是昙花一现，毕竟他们还有其他擅长的科目。真的是一种极度自卑与自负的扭曲结合啊。</p>
+<p>如今我已经在 UTD 读 CS 研究生，英语并不能成为我的资本，最多只能提供生活上的便利。唯一让我自豪的一点是：除非别人问我从哪里来，没人能从我的口音里发觉我是国际生。这成了从非英语环境中走出来的我的骄傲。谁能想到我给自己搭建的 bubble 并没有破碎，反而让我这个从大陆出来的孩子得到了天然的保护色。虽然妈妈仍然会挑刺，但是如今她也不能拿我的英语说事了。</p>
+<p>她一再给我施压，却一边让我不要有压力。一边让我以身体健康为重，一边又说如果我不努力，自己永远不会开心的。我反感这种无意义的沟通，甚至一再迷茫：我到底有没有努力过？我热爱编程，但是别的低风险低压力的兴趣（看日本漫画，玩 Warframe）时常让我摸不着北。我曾经 4 天学完了一个半月的 ML (CS 6375) 的内容（gradient descent, linear regression, perceptron, SVM, kernel trick），虽然只考了 40 分，平均分 52（虽然很多印度学生作弊），我似乎也满足于我的这份急智。说它是临时抱佛脚也好，别人还真不一定能做到。</p>
+<p>我之所以申请到了 UTD 也是因为本科 GPA 不佳，只有 3.23。大一大二的挥霍使我的绩点降到了 3.04。我很急，因为低于 3 是没法申请美国的学校的。于是我开始发力，说是这样说，但也只是开始采用我曾经鄙视的学习方法：死记硬背。电路分析就背公式，背样板题，线性代数亦然。虽然都拿了 90+ 分，但我不认为这是努力。</p>
+<p>如今，母亲一再认为我需要努力，我也只能用“CS 已经不是你熟悉的内容了，请闭嘴吧，别再指手画脚了”来回应。然而我自己却没有什么方案，依然干着自己的兴趣，最多临了模仿一下别人的行事风格。我真的不知道自己算不算努力，还是真的只是运气好。</p>
+]]></content>
+      <tags>
+        <tag>Life</tag>
+      </tags>
+  </entry>
+  <entry>
+    <title>The Gradient Descent of the Soul꞉ Fine-Tuning Moral Identity in an Era of Data Poisoning</title>
+    <url>/2026/10/18/The%20Gradient%20Descent%20of%20the%20Soul/</url>
+    <content><![CDATA[<p>In social cognition, our minds operate in two distinct computational regimes: inference and training. </p>
+<p>When we encounter another person, we run an inference pass. We evaluate their character, decide how much compute to allocate to understanding them, and choose whether to underfit them into a rigid, low-dimensional stereotype or project them into the continuous, high-dimensional feature space of empathy. </p>
+<p>Yet, social interactions do not end when the inference pass completes. The moment we act—whether we step back to protect ourselves or step forward to carry another’s burden—a secondary, more consequential routine is triggered: the self-training loop.</p>
+<h3 id="The-Retrospective-Audit-and-the-Moral-Vector-Space"><a href="#The-Retrospective-Audit-and-the-Moral-Vector-Space" class="headerlink" title="The Retrospective Audit and the Moral Vector Space"></a>The Retrospective Audit and the Moral Vector Space</h3><p>Humans do not possess a fixed, immutable moral geometry. Instead, like a large language model being continually fine-tuned on recent context, our behavioral instincts are adjusted through an iterative, post-hoc audit.</p>
+<p>Every significant social act lands somewhere along a fundamental tension: <strong>self-preservation</strong> versus <strong>self-sacrifice</strong> (the psychological poles of agency and communion). In the immediate aftermath of an event, the conscious mind halts execution and inspects the trace:</p>
+<ul>
+<li><em>Did I retreat into self-preservation at the cost of the group?</em></li>
+<li><em>Or did I overcommit to self-sacrifice at the cost of my own stability?</em></li>
+</ul>
+<p>Once the behavior is classified, an evaluation against an internal standard takes place. In machine learning, this delta is the loss function—the distance between our actual output and our target distribution (the “ideal self”). </p>
+<p>When a discrepancy is detected, the internal dialogue initiates what can best be described as a gradient update. The persistent voice in your head, repeating <em>“I should have stood my ground,”</em> or <em>“I should have been more generous”</em>, is not mere passive rumination. It is an algorithmic induction loop. By replaying the scenario and penalizing the error, the internal monologue nudges the weights of your latent space. With enough iterative passes, the probability distribution of your future actions shifts, slowly aligning your baseline behavior with your evolving self-image.</p>
+<h3 id="Algorithmic-Feeds-as-Data-Poisoning"><a href="#Algorithmic-Feeds-as-Data-Poisoning" class="headerlink" title="Algorithmic Feeds as Data Poisoning"></a>Algorithmic Feeds as Data Poisoning</h3><p>This self-tuning mechanism is elegant, but it rests on a critical vulnerability: <strong>it assumes clean training data.</strong></p>
+<p>In the modern digital ecology, our minds are bombarded by algorithmic content designed to bypass deliberate cognition. Consider the short-form feeds of platforms like Instagram or TikTok. To maximize engagement metrics, recommendation engines systematically reward and distribute the lowest-compute artifacts possible: racial stereotypes, tribal outrage, and zero-sum conflict. </p>
+<p>These feeds do not depict reality; they present artificially underfitted synthetic data. They flatten humanity into crude, binary caricature because caricatures generate immediate, frictionless behavioral reactions.</p>
+<p>The danger of consuming this content is not merely intellectual; it is architectural. It induces data poisoning in the viewer’s self-tuning loop. When our sensory inputs are flooded with caricatures of human hostility, our internal loss function is distorted. We begin to calibrate our balance of self-preservation and self-sacrifice against an adversarial, warped environment. The internal voice begins whispering paranoid priors: <em>“The world is zero-sum. Everyone is out for themselves. Protect the perimeter.”</em> Passive consumption of degenerate data quietly pulls the weights of the self toward cynical hyper-preservation.</p>
+<h3 id="The-Epistemic-Firewall-Existence-as-Telemetry"><a href="#The-Epistemic-Firewall-Existence-as-Telemetry" class="headerlink" title="The Epistemic Firewall: Existence as Telemetry"></a>The Epistemic Firewall: <em>Existence as Telemetry</em></h3><p>To prevent this data contamination, the conscious mind must deploy an epistemic firewall. Here, a nuanced reading of the classical dictum <strong>“存在即为道理”</strong> (<em>what exists has a reason to exist</em>) becomes essential.</p>
+<p>Many misinterpret this principle as a moral endorsement—as if the sheer existence of prejudice or irrationality justifies its validity. But in systems thinking, existence is merely descriptive telemetry, never normative instruction. </p>
+<p>When you encounter an irrational, racist reel on a screen, its viral presence does not signify moral truth or accurate human reality. Its existence simply indicates that an optimization metric, paired with primitive human cognitive biases, produced a local minimum of outrage. It tells you something about the state of the platform’s incentive landscape—and nothing about the character of the human beings it purports to describe. </p>
+<p>Recognizing this distinction allows you to discard the corrupted sample before it enters your fine-tuning pipeline. You record its presence as noise in the environment, rather than incorporating it into the loss function that shapes who you are.</p>
+<h3 id="Regulating-the-Learning-Rate"><a href="#Regulating-the-Learning-Rate" class="headerlink" title="Regulating the Learning Rate"></a>Regulating the Learning Rate</h3><p>Even when operating on clean data, the fine-tuning of the soul faces a second engineering pitfall: <strong>setting the learning rate too high</strong>.</p>
+<p>When people experience social pain—such as the exhaustion of being exploited or the guilt of being selfish—their instinct is often to execute a massive, violent weight update. A person burned by over-sacrifice declares, <em>“I will never care again,”</em> slamming their slider entirely into callous self-preservation. Later, alienated by their own coldness, they swing violently back toward martyrdom.</p>
+<p>In gradient descent, an aggressive learning rate prevents convergence. Instead of descending toward an optimal equilibrium where healthy self-boundaries sustain authentic generosity, the model oscillates wildly between extremes. </p>
+<p>Emotional maturity is effectively learning rate regularization. It is the discipline of taking a measured gradient step: recognizing that you gave too much, or protected too much, without dismantling your core architecture in a panic. It is the ability to adjust your vector space by degrees, allowing experience to refine your character rather than shatter it.</p>
+<h3 id="The-Double-Mandate"><a href="#The-Double-Mandate" class="headerlink" title="The Double Mandate"></a>The Double Mandate</h3><p>Ultimately, social life demands that we master two distinct computational tasks:</p>
+<ol>
+<li>At Inference: We must spend the high mental overhead required to perceive others in their full, non-linear dimensionality, refusing to save compute through stereotypes.</li>
+<li>At Training: We must vigilantly curate the feedback loops that update our own hearts, refusing to let ambient digital noise poison our weights or swing our learning rates into extremes.</li>
+</ol>
+<p>We are neither hardcoded automatons nor passive mirrors of our environment. We are self-tuning systems. And the ultimate measure of our integrity is our willingness to spend the cognitive compute necessary to author our own models.</p>
 ]]></content>
       <tags>
         <tag>Machine Learning</tag>
@@ -1016,126 +1104,45 @@ Apr 27 02:45:46 alarm systemd[1]: Failed to mount /mnt/share.
       </tags>
   </entry>
   <entry>
-    <title>Shadowing Emma</title>
-    <url>/2026/04/10/Shadowing%20Emma/</url>
-    <content><![CDATA[<p>我出生在上海，小时候母亲有意培养我学习英语。起初幼儿园时期，学校每周有外教 Emma 来教我们英语，能够通过她的小测就可以离开课堂去旁边玩。一直以来我都是第一个通过测试的人，Emma 甚至有意让我提早下课，因为我的积极表现 overshadowed 了所有其他的同学。虽然大家都很努力，但是每次能在下课前和我一起去玩的同学从没超过两个，我也有意不特意表现，只期待能多和同学们一起多待一会儿。</p>
-<p>上小学以后，妈妈给我报了周末的英语课外班，虽然从后面的发展来看，对我的英语学习提供了很少以至于没有帮助，但是某一节发音课让我潜意识中开始关注标准的发音。三年级开始我就不再上英文补习班了，转而开始听有声书。从《牛津书虫》到各类西方儿童经典读物（《时代广场的蟋蟀》、《海狸的信号》），到流行的青少年读物（《哈利·波特》、《波西·杰克逊》），直至初中时期我开始听一些更有深度的内容（CNN 10、《杀死一只知更鸟》、《野性的呼唤》、《老人与海》、《傲慢与偏见》、《The Great Gatsby》）。高中开始我的听力水平已经达到了 TOEFL 听力满分的水平，内容也过渡到了人物传记和宏大史观的内容（《The Inheritance Cycle》、《Stoner》、《The Catcher in the Rye》、《Steve Jobs》by Walter Isaacson、《Hunger Makes Me a Modern Girl》、《Lord of the Rings》）。大学属于 plateau 期，也不断验证了我的个人听书习惯：反复重复地听一样的内容，一遍又一遍。如果说初中时期是因为不理解含义所以反复，高中之后则更像是宅在熟悉的内容里无法自拔。从我 23 岁（2025）ADHD 自检的结果来看，可能那时的我已经深受其影响了吧。</p>
-<p>妈妈对我英文的影响也基本止步于初中：小学三年级时我有一次英语考试只考了 87 分，没上 90。她笃定我没用功，given my talent in English，于是她把考卷撕碎了。初中和高中基本就是她对我口音的挑刺，说我说话含糊，口齿不清。可能也是这个原因，加上初中时期除了英语以外我没有任何擅长的科目，英语于我而言成了一种执念。虽然我一直第一，但我从来没以此自豪过。仅有的一点骄傲也仅限于同学的吹捧，但那也是昙花一现，毕竟他们还有其他擅长的科目。真的是一种极度自卑与自负的扭曲结合啊。</p>
-<p>如今我已经在 UTD 读 CS 研究生，英语并不能成为我的资本，最多只能提供生活上的便利。唯一让我自豪的一点是：除非别人问我从哪里来，没人能从我的口音里发觉我是国际生。这成了从非英语环境中走出来的我的骄傲。谁能想到我给自己搭建的 bubble 并没有破碎，反而让我这个从大陆出来的孩子得到了天然的保护色。虽然妈妈仍然会挑刺，但是如今她也不能拿我的英语说事了。</p>
-<p>她一再给我施压，却一边让我不要有压力。一边让我以身体健康为重，一边又说如果我不努力，自己永远不会开心的。我反感这种无意义的沟通，甚至一再迷茫：我到底有没有努力过？我热爱编程，但是别的低风险低压力的兴趣（看日本漫画，玩 Warframe）时常让我摸不着北。我曾经 4 天学完了一个半月的 ML (CS 6375) 的内容（gradient descent, linear regression, perceptron, SVM, kernel trick），虽然只考了 40 分，平均分 52（虽然很多印度学生作弊），我似乎也满足于我的这份急智。说它是临时抱佛脚也好，别人还真不一定能做到。</p>
-<p>我之所以申请到了 UTD 也是因为本科 GPA 不佳，只有 3.23。大一大二的挥霍使我的绩点降到了 3.04。我很急，因为低于 3 是没法申请美国的学校的。于是我开始发力，说是这样说，但也只是开始采用我曾经鄙视的学习方法：死记硬背。电路分析就背公式，背样板题，线性代数亦然。虽然都拿了 90+ 分，但我不认为这是努力。</p>
-<p>如今，母亲一再认为我需要努力，我也只能用“CS 已经不是你熟悉的内容了，请闭嘴吧，别再指手画脚了”来回应。然而我自己却没有什么方案，依然干着自己的兴趣，最多临了模仿一下别人的行事风格。我真的不知道自己算不算努力，还是真的只是运气好。</p>
-]]></content>
-      <tags>
-        <tag>Life</tag>
-      </tags>
-  </entry>
-  <entry>
-    <title>`node` in the command line</title>
-    <url>/2023/04/28/%60node%60%20in%20the%20command%20line/</url>
-    <content><![CDATA[<p>I ran into this hassle the other day when my <code>npm</code> command failed to work in the command line. It took me a while to sort things out and left me in a foul mood. To prevent something like that from happening again, I decided to write this post. Nothing fancy - just some commands that might prove helpful in the long run.</p>
-<h3 id="node"><a href="#node" class="headerlink" title="node"></a><em><code>node</code></em></h3><h4 id="Display-global-installation-directory"><a href="#Display-global-installation-directory" class="headerlink" title="Display global installation directory"></a>Display global installation directory</h4><figure class="highlight bash"><table><tr><td class="code"><pre><span class="line">npm root -g</span><br></pre></td></tr></table></figure>
+    <title>`inpath`</title>
+    <url>/2023/04/28/%60inpath%60/</url>
+    <content><![CDATA[<p>Coding along with the book <em>Wicked Cool Shell Scripts- 101 Scripts for Linux, OS X, and UNIX Systems</em>.</p>
+<p>This is the script from Page 11:</p>
+<figure class="highlight bash"><table><tr><td class="code"><pre><span class="line"><span class="meta">#!/bin/bash</span></span><br><span class="line"></span><br><span class="line"><span class="function"><span class="title">in_path</span></span>()</span><br><span class="line">&#123;</span><br><span class="line">        cmd=<span class="variable">$1</span></span><br><span class="line">        ourpath=<span class="variable">$2</span>      </span><br><span class="line">        result=1</span><br><span class="line">        oldIFS=<span class="variable">$IFS</span>     </span><br><span class="line">        IFS=<span class="string">&quot;:&quot;</span></span><br><span class="line"> </span><br><span class="line">        <span class="keyword">for</span> directory <span class="keyword">in</span> <span class="variable">$ourpath</span>; <span class="keyword">do</span></span><br><span class="line"></span><br><span class="line">        <span class="comment"># If i double quoted `$ourpath`, it will not word split, and the loop will only run once.</span></span><br><span class="line"></span><br><span class="line">                <span class="keyword">if</span> [ -x <span class="string">&quot;<span class="variable">$directory</span>/<span class="variable">$cmd</span>&quot;</span> ]; <span class="keyword">then</span></span><br><span class="line">                        result=0</span><br><span class="line">                <span class="keyword">fi</span></span><br><span class="line">        <span class="keyword">done</span></span><br><span class="line"> </span><br><span class="line">        IFS=<span class="variable">$oldIFS</span></span><br><span class="line">        <span class="built_in">return</span> <span class="variable">$result</span></span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"><span class="function"><span class="title">checkForCmdInPath</span></span>()</span><br><span class="line">&#123;</span><br><span class="line">        var=<span class="variable">$1</span></span><br><span class="line"> </span><br><span class="line">        <span class="keyword">if</span> [ ! <span class="string">&quot;<span class="variable">$var</span>&quot;</span> = <span class="string">&quot;&quot;</span> ]; <span class="keyword">then</span></span><br><span class="line">                <span class="keyword">if</span> [ <span class="string">&quot;<span class="variable">$&#123;var:0:1&#125;</span>&quot;</span> = <span class="string">&quot;/&quot;</span> ]; <span class="keyword">then</span></span><br><span class="line">                	<span class="comment"># Checks whether the command represented by the `$var` is an absolute path or not. </span></span><br><span class="line">                        <span class="keyword">if</span> [ ! -x <span class="string">&quot;<span class="variable">$var</span>&quot;</span> ]; <span class="keyword">then</span></span><br><span class="line">                                <span class="built_in">return</span> 1</span><br><span class="line">                        <span class="keyword">fi</span></span><br><span class="line">                <span class="keyword">elif</span> ! in_path <span class="string">&quot;<span class="variable">$var</span>&quot;</span> <span class="string">&quot;<span class="variable">$PATH</span>&quot;</span>; <span class="keyword">then</span></span><br><span class="line">                        <span class="built_in">return</span> 2</span><br><span class="line">                <span class="keyword">fi</span></span><br><span class="line">        <span class="keyword">fi</span></span><br><span class="line">&#125;</span><br><span class="line"></span><br></pre></td></tr></table></figure>
 
-<p>If you installed <code>node</code> using the official package installer, the global installation directory for <code>npm</code> packages would be:</p>
-<pre><code>/usr/local/lib/node_modules
-</code></pre>
-<p>Or you could’ve installed it using Homebrew. In that case, the global installation directory would be:</p>
-<pre><code>/opt/homebrew/lib/node_modules
-</code></pre>
-<h4 id="View-global-installation"><a href="#View-global-installation" class="headerlink" title="View global installation"></a>View global installation</h4><figure class="highlight bash"><table><tr><td class="code"><pre><span class="line">npm <span class="built_in">ls</span> -g</span><br></pre></td></tr></table></figure>
-
-<pre><code>/opt/homebrew/lib
-├── @e-hentai/home@1.6.0-alpha.9
-├── express-generator@4.16.1
-├── nodemon@2.0.22
-└── npm@9.6.5
-</code></pre>
-<h4 id="Update-global-installation"><a href="#Update-global-installation" class="headerlink" title="Update global installation"></a>Update global installation</h4><figure class="highlight bash"><table><tr><td class="code"><pre><span class="line">npm update -g</span><br></pre></td></tr></table></figure>
-
-<h4 id="View-global-configuration"><a href="#View-global-configuration" class="headerlink" title="View global configuration"></a>View global configuration</h4><figure class="highlight bash"><table><tr><td class="code"><pre><span class="line">npm config list</span><br></pre></td></tr></table></figure>
-
-<p>The output should be on the lines of this:</p>
-<pre><code>; &quot;builtin&quot; config from /opt/homebrew/lib/node_modules/npm/npmrc
-
-prefix = &quot;/opt/homebrew&quot; 
-
-; &quot;user&quot; config from /Users/Mccranky/.npmrc
-
-fetch-retry-maxtimeout = 300000 
-
-; node bin location = /opt/homebrew/Cellar/node/20.0.0/bin/node
-; node version = v20.0.0
-; npm local prefix = /Users/Mccranky
-; npm version = 9.6.5
-; cwd = /Users/Mccranky
-; HOME = /Users/Mccranky
-; Run `npm config ls -l` to show all defaults.
-</code></pre>
-<p>From it, we can discern a few key instances that might prove helpful.</p>
+<h3 id="Positional-parameters"><a href="#Positional-parameters" class="headerlink" title="Positional parameters"></a>Positional parameters</h3><p>See <a href="/2023/04/29/Positional%20Parameters/">here</a></p>
 <blockquote>
-<p>“builtin” config is stored at <code>/opt/homebrew/lib/node_modules/npm/npmrc</code></p>
-</blockquote>
-<blockquote>
-<p>“user” config is stored at <code>/Users/Mccranky/.npmrc</code></p>
-</blockquote>
-<h4 id="Add-remove-configuration"><a href="#Add-remove-configuration" class="headerlink" title="Add&#x2F;remove configuration"></a>Add&#x2F;remove configuration</h4><figure class="highlight bash"><table><tr><td class="code"><pre><span class="line">npm config <span class="built_in">set</span> &lt;name&gt; &lt;value&gt;</span><br></pre></td></tr></table></figure>
-
-<p>For example, if I want to specify a range of time before timeout occurs, I can use the following command:</p>
-<figure class="highlight bash"><table><tr><td class="code"><pre><span class="line">npm config <span class="built_in">set</span> fetch-retry-maxtimeout 300000 // 5 minutes</span><br><span class="line"></span><br><span class="line">npm config <span class="built_in">set</span> fetch-retry-mintimeout 60000 // 1 minute</span><br><span class="line"></span><br></pre></td></tr></table></figure>
-
-<p>The same mechanism applys when it comes to how we delete configurations:</p>
-<figure class="highlight bash"><table><tr><td class="code"><pre><span class="line">npm config delete fetch-retry-maxtimeout</span><br><span class="line"></span><br><span class="line">npm config delete fetch-retry-mintimeout</span><br><span class="line"></span><br></pre></td></tr></table></figure>
-
-<h3 id="express"><a href="#express" class="headerlink" title="express"></a><em><code>express</code></em></h3><p>I’ve only just started dabbling with <code>express</code> and my expertise is cut pretty thin, but the rule of thumb I tend to follow is:</p>
-<ol>
-<li><p>If you’re installing something that you want to use in <strong>your program</strong> using <code>require(&#39;something&#39;)</code>, then install it locally, at the root of your project.</p>
+<p><strong><em>A Quick Word</em></strong>  </p>
+<p>It is good practice to put double quotes around variables in Bash because it prevents word splitting and globbing.</p>
+<ul>
+<li><p>Word splitting is the process of breaking up a string into separate words based on whitespace. If a variable contains spaces, without quotes, Bash will treat each space-separated word as a separate argument. This can cause unexpected behavior if the variable is used as an argument to a command.</p>
 </li>
-<li><p>If you’re installing something that you want to use on the <strong>command line</strong> or something, install it globally, so that its binaries end up in your <code>$PATH</code> environment variable.</p>
+<li><p>Globbing is the process of expanding wildcard characters such as <code>*</code> and <code>?</code> into a list of matching filenames. If a variable contains a glob character, without quotes, Bash will try to expand it into a list of matching filenames. This can also cause unexpected behavior if the variable is used as an argument to a command.</p>
 </li>
-</ol>
-<p>Based on this, you would want to install <code>express-generator</code> using the <code>-g</code> flag as you will use it as a command line tool, but you’d want to install <code>express</code> without this flag as it’s a module you will want to <code>require()</code> it in your application.</p>
+</ul>
+<p>By putting double quotes around variables, Bash treats the variable as a single argument, preserving any whitespace or glob characters within the variable. This helps to ensure that the variable is interpreted correctly and the script behaves as expected.</p>
+</blockquote>
+<h3 id="Special-variables"><a href="#Special-variables" class="headerlink" title="Special variables"></a>Special variables</h3><p><strong><em><code>$IFS</code></em></strong></p>
+<p>The internal field separator (IFS) is a special variable in Bash that specifies the delimiter used to separate fields in a string. By default, the IFS is set to whitespace (i.e., space, tab, and newline characters).</p>
+<p><strong><em>&#96;$?</em></strong></p>
+<p>Display the return values of functions.</p>
+<figure class="highlight bash"><table><tr><td class="code"><pre><span class="line"><span class="built_in">echo</span> $?</span><br></pre></td></tr></table></figure>
+
+<p>You can use it immediately after calling a function with return value.</p>
+<h3 id="Slice"><a href="#Slice" class="headerlink" title="Slice"></a>Slice</h3><pre><code>[ &quot;$&#123;var:0:1&#125;&quot; = &quot;/&quot; ];
+</code></pre>
+<p>The slicing starts at index <code>0</code> and lasts for the duration of a single character.</p>
+<h3 id="Compare"><a href="#Compare" class="headerlink" title="Compare"></a>Compare</h3><p><strong><em>String comparison</em></strong></p>
+<p><code>=</code> tests if two strings are equal. For example, if <code>[ &quot;$string1&quot; = &quot;$string2&quot; ]</code> would be true if <code>$string1</code> and <code>$string2</code> have the same value.</p>
+<p><strong><em>Pattern matching</em></strong></p>
+<p><code>==</code> tests if a string matches a pattern using globbing, which is a way to match filenames based on wildcard characters. For example, if <code>[[ &quot;$string&quot; == a* ]]</code> would be true if <code>$string</code> starts with the letter “a”.</p>
 ]]></content>
       <categories>
-        <category>Node.js</category>
-      </categories>
-      <tags>
-        <tag>Node.js</tag>
-        <tag>Express.js</tag>
-        <tag>Note</tag>
-      </tags>
-  </entry>
-  <entry>
-    <title>Positional Parameters</title>
-    <url>/2023/04/28/Positional%20Parameters/</url>
-    <content><![CDATA[<p>In Bash, positional parameters are special variables that hold the arguments passed to a script or function. The positional parameters are numbered from <code>0</code> to <code>9</code>, where <code>$0</code> holds the name of the script or function, and <code>$1</code> through <code>$9</code> hold the first through ninth arguments, respectively.</p>
-<p><code>$@</code> and <code>$*</code> both hold all the arguments passed to the script. Note that <code>$@</code> is an array-like variable that holds all the positional parameters as <em>separate elements</em>, while <code>$*</code> is another variable that holds all the positional parameters as <em>a single string</em>.</p>
-<p>Here’s an example:</p>
-<pre><code>#!/bin/bash
-
-#!/bin/bash
-
-echo &quot;Script Name: $0&quot;
-echo &quot;First Arg: $1&quot;
-echo &quot;Second Arg: $2&quot;
-echo &quot;All args (arr): $@&quot;
-echo &quot;All args (str): $*&quot;
-</code></pre>
-<p>Now let’s run the script with three arguments:</p>
-<figure class="highlight bash"><table><tr><td class="code"><pre><span class="line"><span class="built_in">chmod</span> u+x ./script <span class="comment"># Grant execution privilege for user</span></span><br><span class="line"></span><br><span class="line">./script a b c</span><br><span class="line"></span><br></pre></td></tr></table></figure>
-
-<p>The output should be something like this:</p>
-<pre><code>Script Name: ./script.sh
-First Arg: a
-Second Arg: b
-All args (arr): a b c
-All args (str): a b c
-</code></pre>
-]]></content>
-      <categories>
-        <category>Bash</category>
+        <category>Wicked Cool Shell Scripts</category>
       </categories>
       <tags>
         <tag>Linux</tag>
+        <tag>ArchLinux</tag>
         <tag>Bash</tag>
       </tags>
   </entry>
@@ -1210,19 +1217,77 @@ All args (str): a b c
       </tags>
   </entry>
   <entry>
-    <title>回答“上海”的瞬间</title>
-    <url>/2026/04/09/%E5%9B%9E%E7%AD%94%E2%80%9C%E4%B8%8A%E6%B5%B7%E2%80%9D%E7%9A%84%E7%9E%AC%E9%97%B4/</url>
-    <content><![CDATA[<p>作为留美研究生，我的课余时间大多耗在了攀岩俱乐部里。在岩壁下给双手打着镁粉，与新结识的同好交流攀登路线时，总会遇到那个无可回避的问题：“Where are you from?”</p>
-<p>每当这时，我都会不假思索地回答：“Shanghai.”</p>
-<p>这并非单纯的地理定标，而更像是一种精心算计过的、带点无奈的文化防御。在这个简短的回答背后，藏着一句没有说出口的潜台词：请将我视作一个拥有契约精神、懂得边界感的现代人，而不是那个庞大、喧哗且面目模糊的集体中的一员。</p>
-<p>如果碰巧，你能用毫无口音的英语与对方交谈，你能明显察觉到对方眼底那层天然戒备的消融。然而，这种消融带给我的，往往不是庆幸，而是一丝深沉的悲哀。因为这种对“无口音”和“得体”的执念，本质上是一种近乎绝望的伪装。我们在试图用力擦洗掉一种不属于自己的集体底色。</p>
-<p>这总让我联想起《人间失格》英文版译者在附文里写下的那种困境。明治以来的日本拼命想要“脱亚入欧”，渴望被当作现代文明的一部分，但无论怎么模仿，西方审视他们的目光里，依然死死贴着“亚洲”的标签。今天的我们，同样身处这种巨大的身份错位中。我们认同普世的秩序，欣赏发达社会的整洁与体面，试图在精神上完成一次个体的突围。但现实是，无论你多么努力地展示文明的素养，只要身处国际社会的宏大语境下，你依然要为某些你不认同的粗鄙和战狼式的傲慢买单。</p>
-<p>而更残忍的撕裂，发生在转身面对故土的时刻。</p>
-<p>这几年的周遭，正被一种粗糙的仇恨教育和排外情绪所笼罩。当你试图保持常识的清醒，拒绝去盲目仇恨那些你明明觉得值得学习的社会时，你便成了同胞嘴里的“精外”与“汉奸”。这是一种极其荒谬的倒错：你仅仅是因为向往更文明的生活方式，就被粗暴地开除了爱国的资格。在国际上，你因为无法选择的出身而被防备；在故土上，你又因为自己选择的清醒而被排斥。这成了我们这一代人最尴尬的处境。</p>
-<p>最终，我们既无法彻底融入彼岸的认同，也再难附和此岸的狂热。那些识时务的年轻人，渐渐变成了游荡在两种叙事夹缝里的“精神侨民”。我们别无他法，只能在心里牢牢守住那座名叫“文明”的孤岛，在看透了周遭的藩篱之后，孤独、但必须体面地活着。</p>
+    <title>`node` in the command line</title>
+    <url>/2023/04/28/%60node%60%20in%20the%20command%20line/</url>
+    <content><![CDATA[<p>I ran into this hassle the other day when my <code>npm</code> command failed to work in the command line. It took me a while to sort things out and left me in a foul mood. To prevent something like that from happening again, I decided to write this post. Nothing fancy - just some commands that might prove helpful in the long run.</p>
+<h3 id="node"><a href="#node" class="headerlink" title="node"></a><em><code>node</code></em></h3><h4 id="Display-global-installation-directory"><a href="#Display-global-installation-directory" class="headerlink" title="Display global installation directory"></a>Display global installation directory</h4><figure class="highlight bash"><table><tr><td class="code"><pre><span class="line">npm root -g</span><br></pre></td></tr></table></figure>
+
+<p>If you installed <code>node</code> using the official package installer, the global installation directory for <code>npm</code> packages would be:</p>
+<pre><code>/usr/local/lib/node_modules
+</code></pre>
+<p>Or you could’ve installed it using Homebrew. In that case, the global installation directory would be:</p>
+<pre><code>/opt/homebrew/lib/node_modules
+</code></pre>
+<h4 id="View-global-installation"><a href="#View-global-installation" class="headerlink" title="View global installation"></a>View global installation</h4><figure class="highlight bash"><table><tr><td class="code"><pre><span class="line">npm <span class="built_in">ls</span> -g</span><br></pre></td></tr></table></figure>
+
+<pre><code>/opt/homebrew/lib
+├── @e-hentai/home@1.6.0-alpha.9
+├── express-generator@4.16.1
+├── nodemon@2.0.22
+└── npm@9.6.5
+</code></pre>
+<h4 id="Update-global-installation"><a href="#Update-global-installation" class="headerlink" title="Update global installation"></a>Update global installation</h4><figure class="highlight bash"><table><tr><td class="code"><pre><span class="line">npm update -g</span><br></pre></td></tr></table></figure>
+
+<h4 id="View-global-configuration"><a href="#View-global-configuration" class="headerlink" title="View global configuration"></a>View global configuration</h4><figure class="highlight bash"><table><tr><td class="code"><pre><span class="line">npm config list</span><br></pre></td></tr></table></figure>
+
+<p>The output should be on the lines of this:</p>
+<pre><code>; &quot;builtin&quot; config from /opt/homebrew/lib/node_modules/npm/npmrc
+
+prefix = &quot;/opt/homebrew&quot; 
+
+; &quot;user&quot; config from /Users/Mccranky/.npmrc
+
+fetch-retry-maxtimeout = 300000 
+
+; node bin location = /opt/homebrew/Cellar/node/20.0.0/bin/node
+; node version = v20.0.0
+; npm local prefix = /Users/Mccranky
+; npm version = 9.6.5
+; cwd = /Users/Mccranky
+; HOME = /Users/Mccranky
+; Run `npm config ls -l` to show all defaults.
+</code></pre>
+<p>From it, we can discern a few key instances that might prove helpful.</p>
+<blockquote>
+<p>“builtin” config is stored at <code>/opt/homebrew/lib/node_modules/npm/npmrc</code></p>
+</blockquote>
+<blockquote>
+<p>“user” config is stored at <code>/Users/Mccranky/.npmrc</code></p>
+</blockquote>
+<h4 id="Add-remove-configuration"><a href="#Add-remove-configuration" class="headerlink" title="Add&#x2F;remove configuration"></a>Add&#x2F;remove configuration</h4><figure class="highlight bash"><table><tr><td class="code"><pre><span class="line">npm config <span class="built_in">set</span> &lt;name&gt; &lt;value&gt;</span><br></pre></td></tr></table></figure>
+
+<p>For example, if I want to specify a range of time before timeout occurs, I can use the following command:</p>
+<figure class="highlight bash"><table><tr><td class="code"><pre><span class="line">npm config <span class="built_in">set</span> fetch-retry-maxtimeout 300000 // 5 minutes</span><br><span class="line"></span><br><span class="line">npm config <span class="built_in">set</span> fetch-retry-mintimeout 60000 // 1 minute</span><br><span class="line"></span><br></pre></td></tr></table></figure>
+
+<p>The same mechanism applys when it comes to how we delete configurations:</p>
+<figure class="highlight bash"><table><tr><td class="code"><pre><span class="line">npm config delete fetch-retry-maxtimeout</span><br><span class="line"></span><br><span class="line">npm config delete fetch-retry-mintimeout</span><br><span class="line"></span><br></pre></td></tr></table></figure>
+
+<h3 id="express"><a href="#express" class="headerlink" title="express"></a><em><code>express</code></em></h3><p>I’ve only just started dabbling with <code>express</code> and my expertise is cut pretty thin, but the rule of thumb I tend to follow is:</p>
+<ol>
+<li><p>If you’re installing something that you want to use in <strong>your program</strong> using <code>require(&#39;something&#39;)</code>, then install it locally, at the root of your project.</p>
+</li>
+<li><p>If you’re installing something that you want to use on the <strong>command line</strong> or something, install it globally, so that its binaries end up in your <code>$PATH</code> environment variable.</p>
+</li>
+</ol>
+<p>Based on this, you would want to install <code>express-generator</code> using the <code>-g</code> flag as you will use it as a command line tool, but you’d want to install <code>express</code> without this flag as it’s a module you will want to <code>require()</code> it in your application.</p>
 ]]></content>
+      <categories>
+        <category>Node.js</category>
+      </categories>
       <tags>
-        <tag>Life</tag>
+        <tag>Node.js</tag>
+        <tag>Express.js</tag>
+        <tag>Note</tag>
       </tags>
   </entry>
   <entry>
@@ -1329,6 +1394,22 @@ S: 221 /0:0:0:0:0:0:0:1 Service closing transmission channel
 ]]></content>
       <tags>
         <tag>Computer Networking</tag>
+      </tags>
+  </entry>
+  <entry>
+    <title>回答“上海”的瞬间</title>
+    <url>/2026/04/09/%E5%9B%9E%E7%AD%94%E2%80%9C%E4%B8%8A%E6%B5%B7%E2%80%9D%E7%9A%84%E7%9E%AC%E9%97%B4/</url>
+    <content><![CDATA[<p>作为留美研究生，我的课余时间大多耗在了攀岩俱乐部里。在岩壁下给双手打着镁粉，与新结识的同好交流攀登路线时，总会遇到那个无可回避的问题：“Where are you from?”</p>
+<p>每当这时，我都会不假思索地回答：“Shanghai.”</p>
+<p>这并非单纯的地理定标，而更像是一种精心算计过的、带点无奈的文化防御。在这个简短的回答背后，藏着一句没有说出口的潜台词：请将我视作一个拥有契约精神、懂得边界感的现代人，而不是那个庞大、喧哗且面目模糊的集体中的一员。</p>
+<p>如果碰巧，你能用毫无口音的英语与对方交谈，你能明显察觉到对方眼底那层天然戒备的消融。然而，这种消融带给我的，往往不是庆幸，而是一丝深沉的悲哀。因为这种对“无口音”和“得体”的执念，本质上是一种近乎绝望的伪装。我们在试图用力擦洗掉一种不属于自己的集体底色。</p>
+<p>这总让我联想起《人间失格》英文版译者在附文里写下的那种困境。明治以来的日本拼命想要“脱亚入欧”，渴望被当作现代文明的一部分，但无论怎么模仿，西方审视他们的目光里，依然死死贴着“亚洲”的标签。今天的我们，同样身处这种巨大的身份错位中。我们认同普世的秩序，欣赏发达社会的整洁与体面，试图在精神上完成一次个体的突围。但现实是，无论你多么努力地展示文明的素养，只要身处国际社会的宏大语境下，你依然要为某些你不认同的粗鄙和战狼式的傲慢买单。</p>
+<p>而更残忍的撕裂，发生在转身面对故土的时刻。</p>
+<p>这几年的周遭，正被一种粗糙的仇恨教育和排外情绪所笼罩。当你试图保持常识的清醒，拒绝去盲目仇恨那些你明明觉得值得学习的社会时，你便成了同胞嘴里的“精外”与“汉奸”。这是一种极其荒谬的倒错：你仅仅是因为向往更文明的生活方式，就被粗暴地开除了爱国的资格。在国际上，你因为无法选择的出身而被防备；在故土上，你又因为自己选择的清醒而被排斥。这成了我们这一代人最尴尬的处境。</p>
+<p>最终，我们既无法彻底融入彼岸的认同，也再难附和此岸的狂热。那些识时务的年轻人，渐渐变成了游荡在两种叙事夹缝里的“精神侨民”。我们别无他法，只能在心里牢牢守住那座名叫“文明”的孤岛，在看透了周遭的藩篱之后，孤独、但必须体面地活着。</p>
+]]></content>
+      <tags>
+        <tag>Life</tag>
       </tags>
   </entry>
   <entry>
@@ -1442,49 +1523,6 @@ S: 221 /0:0:0:0:0:0:0:1 Service closing transmission channel
       </tags>
   </entry>
   <entry>
-    <title>`inpath`</title>
-    <url>/2023/04/28/%60inpath%60/</url>
-    <content><![CDATA[<p>Coding along with the book <em>Wicked Cool Shell Scripts- 101 Scripts for Linux, OS X, and UNIX Systems</em>.</p>
-<p>This is the script from Page 11:</p>
-<figure class="highlight bash"><table><tr><td class="code"><pre><span class="line"><span class="meta">#!/bin/bash</span></span><br><span class="line"></span><br><span class="line"><span class="function"><span class="title">in_path</span></span>()</span><br><span class="line">&#123;</span><br><span class="line">        cmd=<span class="variable">$1</span></span><br><span class="line">        ourpath=<span class="variable">$2</span>      </span><br><span class="line">        result=1</span><br><span class="line">        oldIFS=<span class="variable">$IFS</span>     </span><br><span class="line">        IFS=<span class="string">&quot;:&quot;</span></span><br><span class="line"> </span><br><span class="line">        <span class="keyword">for</span> directory <span class="keyword">in</span> <span class="variable">$ourpath</span>; <span class="keyword">do</span></span><br><span class="line"></span><br><span class="line">        <span class="comment"># If i double quoted `$ourpath`, it will not word split, and the loop will only run once.</span></span><br><span class="line"></span><br><span class="line">                <span class="keyword">if</span> [ -x <span class="string">&quot;<span class="variable">$directory</span>/<span class="variable">$cmd</span>&quot;</span> ]; <span class="keyword">then</span></span><br><span class="line">                        result=0</span><br><span class="line">                <span class="keyword">fi</span></span><br><span class="line">        <span class="keyword">done</span></span><br><span class="line"> </span><br><span class="line">        IFS=<span class="variable">$oldIFS</span></span><br><span class="line">        <span class="built_in">return</span> <span class="variable">$result</span></span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"><span class="function"><span class="title">checkForCmdInPath</span></span>()</span><br><span class="line">&#123;</span><br><span class="line">        var=<span class="variable">$1</span></span><br><span class="line"> </span><br><span class="line">        <span class="keyword">if</span> [ ! <span class="string">&quot;<span class="variable">$var</span>&quot;</span> = <span class="string">&quot;&quot;</span> ]; <span class="keyword">then</span></span><br><span class="line">                <span class="keyword">if</span> [ <span class="string">&quot;<span class="variable">$&#123;var:0:1&#125;</span>&quot;</span> = <span class="string">&quot;/&quot;</span> ]; <span class="keyword">then</span></span><br><span class="line">                	<span class="comment"># Checks whether the command represented by the `$var` is an absolute path or not. </span></span><br><span class="line">                        <span class="keyword">if</span> [ ! -x <span class="string">&quot;<span class="variable">$var</span>&quot;</span> ]; <span class="keyword">then</span></span><br><span class="line">                                <span class="built_in">return</span> 1</span><br><span class="line">                        <span class="keyword">fi</span></span><br><span class="line">                <span class="keyword">elif</span> ! in_path <span class="string">&quot;<span class="variable">$var</span>&quot;</span> <span class="string">&quot;<span class="variable">$PATH</span>&quot;</span>; <span class="keyword">then</span></span><br><span class="line">                        <span class="built_in">return</span> 2</span><br><span class="line">                <span class="keyword">fi</span></span><br><span class="line">        <span class="keyword">fi</span></span><br><span class="line">&#125;</span><br><span class="line"></span><br></pre></td></tr></table></figure>
-
-<h3 id="Positional-parameters"><a href="#Positional-parameters" class="headerlink" title="Positional parameters"></a>Positional parameters</h3><p>See <a href="/2023/04/29/Positional%20Parameters/">here</a></p>
-<blockquote>
-<p><strong><em>A Quick Word</em></strong>  </p>
-<p>It is good practice to put double quotes around variables in Bash because it prevents word splitting and globbing.</p>
-<ul>
-<li><p>Word splitting is the process of breaking up a string into separate words based on whitespace. If a variable contains spaces, without quotes, Bash will treat each space-separated word as a separate argument. This can cause unexpected behavior if the variable is used as an argument to a command.</p>
-</li>
-<li><p>Globbing is the process of expanding wildcard characters such as <code>*</code> and <code>?</code> into a list of matching filenames. If a variable contains a glob character, without quotes, Bash will try to expand it into a list of matching filenames. This can also cause unexpected behavior if the variable is used as an argument to a command.</p>
-</li>
-</ul>
-<p>By putting double quotes around variables, Bash treats the variable as a single argument, preserving any whitespace or glob characters within the variable. This helps to ensure that the variable is interpreted correctly and the script behaves as expected.</p>
-</blockquote>
-<h3 id="Special-variables"><a href="#Special-variables" class="headerlink" title="Special variables"></a>Special variables</h3><p><strong><em><code>$IFS</code></em></strong></p>
-<p>The internal field separator (IFS) is a special variable in Bash that specifies the delimiter used to separate fields in a string. By default, the IFS is set to whitespace (i.e., space, tab, and newline characters).</p>
-<p><strong><em>&#96;$?</em></strong></p>
-<p>Display the return values of functions.</p>
-<figure class="highlight bash"><table><tr><td class="code"><pre><span class="line"><span class="built_in">echo</span> $?</span><br></pre></td></tr></table></figure>
-
-<p>You can use it immediately after calling a function with return value.</p>
-<h3 id="Slice"><a href="#Slice" class="headerlink" title="Slice"></a>Slice</h3><pre><code>[ &quot;$&#123;var:0:1&#125;&quot; = &quot;/&quot; ];
-</code></pre>
-<p>The slicing starts at index <code>0</code> and lasts for the duration of a single character.</p>
-<h3 id="Compare"><a href="#Compare" class="headerlink" title="Compare"></a>Compare</h3><p><strong><em>String comparison</em></strong></p>
-<p><code>=</code> tests if two strings are equal. For example, if <code>[ &quot;$string1&quot; = &quot;$string2&quot; ]</code> would be true if <code>$string1</code> and <code>$string2</code> have the same value.</p>
-<p><strong><em>Pattern matching</em></strong></p>
-<p><code>==</code> tests if a string matches a pattern using globbing, which is a way to match filenames based on wildcard characters. For example, if <code>[[ &quot;$string&quot; == a* ]]</code> would be true if <code>$string</code> starts with the letter “a”.</p>
-]]></content>
-      <categories>
-        <category>Wicked Cool Shell Scripts</category>
-      </categories>
-      <tags>
-        <tag>Linux</tag>
-        <tag>ArchLinux</tag>
-        <tag>Bash</tag>
-      </tags>
-  </entry>
-  <entry>
     <title>开往奈良的电车，与故乡的倒影</title>
     <url>/2026/04/08/%E5%BC%80%E5%BE%80%E5%A5%88%E8%89%AF%E7%9A%84%E7%94%B5%E8%BD%A6%EF%BC%8C%E4%B8%8E%E6%95%85%E4%B9%A1%E7%9A%84%E5%80%92%E5%BD%B1/</url>
     <content><![CDATA[<p>出生在上海，五岁前长在海门的三厂镇，这是我认知的起点。后来跨过大洋，吹过科罗拉多的风，走过纽约和波士顿的街头。年少的眼睛看世界，大多是走马观花，直到高一那年去了新加坡。</p>
@@ -1495,6 +1533,22 @@ S: 221 /0:0:0:0:0:0:0:1 Service closing transmission channel
 <p>但我依然对这片土地抱有渴望。我不去幻想某种宏大叙事下的全面腾飞，我只看我生活过的地方。</p>
 <p>长三角本就有足够的底蕴。如果未来的二十年，我们能从一味追求做大的狂热中冷静下来，去缝补那些制度的漏洞，去重新拾起对人的教化，去巩固一个现代公民应有的底线素养，一切并非不可挽回。</p>
 <p>到那时，海门完全可以成为下一个奈良，上海也理应拥有大阪那般的从容。差距依然横亘，痼疾绝非朝夕可改。但在那趟开往奈良的列车上，我确乎看清了故乡脱胎换骨后，原本可以拥有的模样。</p>
+]]></content>
+      <tags>
+        <tag>Life</tag>
+      </tags>
+  </entry>
+  <entry>
+    <title>无题</title>
+    <url>/2026/04/09/%E6%97%A0%E9%A2%98/</url>
+    <content><![CDATA[<p>我总觉得，我们这代人像是经历了一场漫长的大切除手术。主刀的大夫拍着胸脯说，为了跑得快、为了赶超别人，盲肠得割，扁桃体得切，连带着神经纤维也得抽掉几根。等我们从历史的麻醉中醒来，发现自己确实跑得像台高铁，机器轰鸣，肌肉发达。但稍微吹点凉风，五脏六腑就不受控制地痉挛。</p>
+<p>研究历史久了，你会发现一件挺荒谬的事。过去两千年的王朝更替，说白了是换东家。新东家拎着刀进门，坐定之后，还得拜孔庙、修族谱、听乡音，因为他懂一个常识：管人，还得顺着“人”的纹理来。</p>
+<p>但近现代这套包裹在工业化外衣下的狂热逻辑，不讲这些。它嫌“人”的纹理太麻烦，它的目的是要把树木直接压成标准化的密度板。于是，方言被视作交流的阻碍，祠堂被认定为封建的余孽，血缘和乡土结成的纽带，布满了时代进步的车轱辘印。这套机制极其高效且冰冷，它打着“去粗取精”的旗号，实际上是在借着一场巨大的混乱，把所有横亘在个人与绝对权力之间的缓冲地带，连根拔起，统统踹进了焚化炉。</p>
+<p>这哪是杀鸡取卵，这是把养鸡场的地皮都铲了去烧砖。</p>
+<p>所以，我时常感到一种难以名状的焦躁与憋闷。这种感觉，就像是你兜里揣着一把祖传的黄铜钥匙，但在故乡的街头转了一整圈，发现所有的门都换成了密码锁。礼崩乐坏并不可怕，可怕的是人们连“礼”的说明书都被烧光了。</p>
+<p>人总不能靠着虚无活着。为了证明自己没疯，人只能把目光投向别处。我们越过海峡，去看台湾保留的繁体字与温良恭俭，或者去京都的石板路上，对着别人家的屋檐寻找唐宋的倒影。这并非是因为骨头软去崇拜他者，而是一个被强制失忆的人，只能借着邻居家的镜子，拼命回忆自己祖辈原本的容貌。</p>
+<p>这无疑是极其悲哀的。几千年的浩大文明，在其发源地被剔除得只剩下一具坚硬的躯壳，而其残存的魂魄，却只能附着在海外的孤岛与邻居的衣钵上。</p>
+<p>没办法，当脚下的土壤已经被浇筑成了统一规格的水泥地，一棵树若还想保持一点翠绿的尊严，大概也只能选择在精神上流亡，做一粒随风飘向海外的种子了。</p>
 ]]></content>
       <tags>
         <tag>Life</tag>
@@ -1516,16 +1570,15 @@ S: 221 /0:0:0:0:0:0:0:1 Service closing transmission channel
       </tags>
   </entry>
   <entry>
-    <title>无题</title>
-    <url>/2026/04/09/%E6%97%A0%E9%A2%98/</url>
-    <content><![CDATA[<p>我总觉得，我们这代人像是经历了一场漫长的大切除手术。主刀的大夫拍着胸脯说，为了跑得快、为了赶超别人，盲肠得割，扁桃体得切，连带着神经纤维也得抽掉几根。等我们从历史的麻醉中醒来，发现自己确实跑得像台高铁，机器轰鸣，肌肉发达。但稍微吹点凉风，五脏六腑就不受控制地痉挛。</p>
-<p>研究历史久了，你会发现一件挺荒谬的事。过去两千年的王朝更替，说白了是换东家。新东家拎着刀进门，坐定之后，还得拜孔庙、修族谱、听乡音，因为他懂一个常识：管人，还得顺着“人”的纹理来。</p>
-<p>但近现代这套包裹在工业化外衣下的狂热逻辑，不讲这些。它嫌“人”的纹理太麻烦，它的目的是要把树木直接压成标准化的密度板。于是，方言被视作交流的阻碍，祠堂被认定为封建的余孽，血缘和乡土结成的纽带，布满了时代进步的车轱辘印。这套机制极其高效且冰冷，它打着“去粗取精”的旗号，实际上是在借着一场巨大的混乱，把所有横亘在个人与绝对权力之间的缓冲地带，连根拔起，统统踹进了焚化炉。</p>
-<p>这哪是杀鸡取卵，这是把养鸡场的地皮都铲了去烧砖。</p>
-<p>所以，我时常感到一种难以名状的焦躁与憋闷。这种感觉，就像是你兜里揣着一把祖传的黄铜钥匙，但在故乡的街头转了一整圈，发现所有的门都换成了密码锁。礼崩乐坏并不可怕，可怕的是人们连“礼”的说明书都被烧光了。</p>
-<p>人总不能靠着虚无活着。为了证明自己没疯，人只能把目光投向别处。我们越过海峡，去看台湾保留的繁体字与温良恭俭，或者去京都的石板路上，对着别人家的屋檐寻找唐宋的倒影。这并非是因为骨头软去崇拜他者，而是一个被强制失忆的人，只能借着邻居家的镜子，拼命回忆自己祖辈原本的容貌。</p>
-<p>这无疑是极其悲哀的。几千年的浩大文明，在其发源地被剔除得只剩下一具坚硬的躯壳，而其残存的魂魄，却只能附着在海外的孤岛与邻居的衣钵上。</p>
-<p>没办法，当脚下的土壤已经被浇筑成了统一规格的水泥地，一棵树若还想保持一点翠绿的尊严，大概也只能选择在精神上流亡，做一粒随风飘向海外的种子了。</p>
+    <title>死于“最优解”</title>
+    <url>/2026/04/09/%E6%AD%BB%E4%BA%8E%E2%80%9C%E6%9C%80%E4%BC%98%E8%A7%A3%E2%80%9D/</url>
+    <content><![CDATA[<p>现在的看客，手里大抵是攥着秒表的。</p>
+<p>你不难发觉，如今互联网上的漫画解说与评论区，正弥漫着一种冰冷的“审查感”。一个角色若是出于恐惧、犹疑，或是为了保护同伴而未能做出“最优解”惨死，弹幕便会如法庭宣判般降临：“降智”、“喂屎”、“强行剧情杀”。</p>
+<p>在上帝视角的绝对庇护下，这群赛博时代的战术大师们，一边嚼着薯片，一边为生死一瞬的纸片人列出完美逃生的一二三条预案。他们苛求一个涉世未深的少年，在血沫飞溅的绝境中，必须像久经沙场的特种兵一样杀伐果断，甚至要在脑中飞速运行一套无懈可击的SOP流程。</p>
+<p>所谓的“剧情杀”，本是戏剧冲突中最为动人的宿命与必然，如今却被污名化，成了这群人掩饰自身审美匮乏的遮羞布。他们对悲剧免疫，对文学性里的“残缺与遗憾”毫无胃口。在他们的脑海里，顺应人性的情感不叫逻辑，只有绝对理性的“赢”，才叫逻辑。</p>
+<p>拨开这层“理中客”的外衣，底下藏着的，其实是现代人干瘪的共情力与极度的自我中心。那些在屏幕前对角色大呼小叫、苛责其没有留足后手的人，在现实的高压齿轮下，往往是外强中干、最不敢越雷池一步的疲惫者。正因为现实中处处无力，他们才迫切地需要在虚构的作品中，投射一种病态的掌控欲。他们无法容忍角色的软弱与感性，因为那会刺痛他们潜意识中不敢面对的真实自我。社会达尔文主义的慕强法则，就这样堂而皇之地绞杀了古典的浪漫与悲壮。</p>
+<p>其实，不必与他们去争辩。如果艺术的顶峰，只是一群毫无破绽的机器人在进行战力数值的对撞，那这世界该有多么无趣。</p>
+<p>就让他们捧着冰冷的说明书，去寻找那永不犯错的通关秘籍吧。而我们，依然可以选择留在那些会流泪、会犯傻、会为了毫无胜算的羁绊而慨然赴死的故事里。毕竟，人之所以为人，正是因为我们懂得脆弱的重量。</p>
 ]]></content>
       <tags>
         <tag>Life</tag>
@@ -1563,18 +1616,82 @@ S: 221 /0:0:0:0:0:0:0:1 Service closing transmission channel
       </tags>
   </entry>
   <entry>
-    <title>死于“最优解”</title>
-    <url>/2026/04/09/%E6%AD%BB%E4%BA%8E%E2%80%9C%E6%9C%80%E4%BC%98%E8%A7%A3%E2%80%9D/</url>
-    <content><![CDATA[<p>现在的看客，手里大抵是攥着秒表的。</p>
-<p>你不难发觉，如今互联网上的漫画解说与评论区，正弥漫着一种冰冷的“审查感”。一个角色若是出于恐惧、犹疑，或是为了保护同伴而未能做出“最优解”惨死，弹幕便会如法庭宣判般降临：“降智”、“喂屎”、“强行剧情杀”。</p>
-<p>在上帝视角的绝对庇护下，这群赛博时代的战术大师们，一边嚼着薯片，一边为生死一瞬的纸片人列出完美逃生的一二三条预案。他们苛求一个涉世未深的少年，在血沫飞溅的绝境中，必须像久经沙场的特种兵一样杀伐果断，甚至要在脑中飞速运行一套无懈可击的SOP流程。</p>
-<p>所谓的“剧情杀”，本是戏剧冲突中最为动人的宿命与必然，如今却被污名化，成了这群人掩饰自身审美匮乏的遮羞布。他们对悲剧免疫，对文学性里的“残缺与遗憾”毫无胃口。在他们的脑海里，顺应人性的情感不叫逻辑，只有绝对理性的“赢”，才叫逻辑。</p>
-<p>拨开这层“理中客”的外衣，底下藏着的，其实是现代人干瘪的共情力与极度的自我中心。那些在屏幕前对角色大呼小叫、苛责其没有留足后手的人，在现实的高压齿轮下，往往是外强中干、最不敢越雷池一步的疲惫者。正因为现实中处处无力，他们才迫切地需要在虚构的作品中，投射一种病态的掌控欲。他们无法容忍角色的软弱与感性，因为那会刺痛他们潜意识中不敢面对的真实自我。社会达尔文主义的慕强法则，就这样堂而皇之地绞杀了古典的浪漫与悲壮。</p>
-<p>其实，不必与他们去争辩。如果艺术的顶峰，只是一群毫无破绽的机器人在进行战力数值的对撞，那这世界该有多么无趣。</p>
-<p>就让他们捧着冰冷的说明书，去寻找那永不犯错的通关秘籍吧。而我们，依然可以选择留在那些会流泪、会犯傻、会为了毫无胜算的羁绊而慨然赴死的故事里。毕竟，人之所以为人，正是因为我们懂得脆弱的重量。</p>
+    <title>软件工程 第三周的博客</title>
+    <url>/2023/04/07/%E8%BD%AF%E4%BB%B6%E5%B7%A5%E7%A8%8B%20%E7%AC%AC%E4%B8%89%E5%91%A8%E7%9A%84%E5%8D%9A%E5%AE%A2/</url>
+    <content><![CDATA[<h2 id="简要概述-CTF-OverTheWire-Bandit-Level-24"><a href="#简要概述-CTF-OverTheWire-Bandit-Level-24" class="headerlink" title="简要概述 CTF OverTheWire Bandit Level 24"></a><em>简要概述 CTF OverTheWire Bandit Level 24</em></h2><h3 id="题目"><a href="#题目" class="headerlink" title="题目"></a><em>题目</em></h3><blockquote>
+<p>在端口 30002 上有一个守护进程正在监听，如果提供了 bandit24 的密码和一个秘密的 4 位数的数字密码，它将为您提供 bandit25 的密码。除了通过穷举全部 10000 种组合的方式以外，没有其他获得 pincode 的方法，这被称为暴力破解。</p>
+</blockquote>
+<p>大致思路如下：</p>
+<ul>
+<li>先写一个<code>script</code>，按要求进行排版输出到<code>stdout</code></li>
+<li>把输出的 10000 种组合<code>pipe</code>到<code>netcat</code>监视的<code>localhost:30002</code>进行测试</li>
+<li>直接输出到<code>stdout</code>可能会<code>timeout</code>打断进程，所以我们输出到<code>output.txt</code></li>
+<li>最后<code>cat</code>文本内容拿到密码</li>
+</ul>
+<p>先利用<code>ssh</code>连接到<code>bandit.labs.overthewire.org</code>的服务器，端口号<code>2220</code>，为此我们需要<code>bandit24</code>的密码。</p>
+<figure class="highlight bash"><table><tr><td class="code"><pre><span class="line">ssh bandit24@bandit.labs.overthewire.org -p 2220</span><br><span class="line"><span class="comment">#					VAfGXJ1PBSsPSnvsjI8p759leLZ9GGar</span></span><br></pre></td></tr></table></figure>
+
+<p>以<code>bandit24</code>进入 Level 24 之后先到系统文件夹<code>/tmp</code>下建立本关的临时文件夹。</p>
+<figure class="highlight bash"><table><tr><td class="code"><pre><span class="line"><span class="built_in">cd</span> /tmp; <span class="built_in">mktemp</span> -d</span><br><span class="line"></span><br><span class="line"><span class="comment"># /tmp/tmp.u4oQlmpmWL</span></span><br><span class="line"></span><br><span class="line"><span class="built_in">cd</span> /tmp/tmp.u4oQlmpmWL</span><br><span class="line"></span><br><span class="line"><span class="comment"># bandit24@bandit:/tmp/tmp.u4oQlmpmWL$</span></span><br></pre></td></tr></table></figure>
+
+<blockquote>
+<p><code>-d</code>代表<code>directory</code>，即告诉<code>mktemp</code>指令创建的临时文件属性为文件夹</p>
+</blockquote>
+<figure class="highlight bash"><table><tr><td class="code"><pre><span class="line"><span class="built_in">touch</span> script.sh</span><br><span class="line"></span><br><span class="line"><span class="built_in">chmod</span> 777 script.sh</span><br><span class="line"></span><br><span class="line">vim script.sh</span><br></pre></td></tr></table></figure>
+
+<blockquote>
+<p><code>touch</code>: 创建文件</p>
+</blockquote>
+<blockquote>
+<p><code>chmod</code> - <code>change mode</code>: 改变文档<code>rwx</code>权限</p>
+</blockquote>
+<ul>
+<li><code>r</code> - <code>read</code>: 读取权限<code>status code</code>为 4</li>
+<li><code>w</code> - <code>write</code>: 书写权限<code>status code</code>为 2</li>
+<li><code>x</code> - <code>execute</code>: 执行权限<code>status code</code>为 1</li>
+</ul>
+<p>进入文本编辑器之后，选定”插入“模式，按<code>i</code>键</p>
+<p>首行书写<code>shebang</code>行，选定使用哪个<code>shell</code>来执行该<code>script</code> - 我们选用<code>bash</code></p>
+<p>然后写我们的<code>entity body</code>的代码：</p>
+<figure class="highlight bash"><table><tr><td class="code"><pre><span class="line"><span class="meta">#!/bin/bash</span></span><br><span class="line"></span><br><span class="line"><span class="keyword">for</span> i <span class="keyword">in</span> &#123;0000..9999&#125;; <span class="keyword">do</span></span><br><span class="line">        <span class="built_in">echo</span> <span class="variable">$i</span></span><br><span class="line">        <span class="built_in">printf</span> <span class="string">&quot;%s %s\n&quot;</span> <span class="string">&quot;VAfGXJ1PBSsPSnvsjI8p759leLZ9GGar&quot;</span> <span class="string">&quot;<span class="variable">$i</span>&quot;</span></span><br><span class="line"><span class="keyword">done</span></span><br><span class="line"></span><br><span class="line"><span class="built_in">exit</span> 0</span><br><span class="line"></span><br></pre></td></tr></table></figure>
+
+<p>除了语法上微小的一点差异，该题的<code>syntax</code>和<code>C</code>的语法很相像，所以不赘述了。</p>
+<p>大致格式就是<code>for [ test statement]; do &lt;command&gt;; done</code></p>
+<p>编辑结束按<code>ESC</code>键回到普通模式，按<code>:</code>,然后输入指令<code>wq</code>，回车保存并退出。</p>
+<p>执行<code>script.sh</code>，并把结果<code>pipe</code>到<code>netcat</code>:</p>
+<figure class="highlight bash"><table><tr><td class="code"><pre><span class="line">./script.sh | nc localhost 30002 &gt; output.txt</span><br></pre></td></tr></table></figure>
+
+<p>然后<code>cat output.txt</code>读取文本内容，这是其中的一小部分：</p>
+<pre>
+        Fail! You did not supply enough data. Try again.
+        Wrong! Please enter the correct pincode. Try again.
+        Fail! You did not supply enough data. Try again.
+        Wrong! Please enter the correct pincode. Try again.
+        Fail! You did not supply enough data. Try again.
+        Wrong! Please enter the correct pincode. Try again.
+        Fail! You did not supply enough data. Try again.
+        Wrong! Please enter the correct pincode. Try again.
+        Fail! You did not supply enough data. Try again.
+        Wrong! Please enter the correct pincode. Try again.
+        Fail! You did not supply enough data. Try again.
+        Wrong! Please enter the correct pincode. Try again.
+        Fail! You did not supply enough data. Try again.
+        Wrong! Please enter the correct pincode. Try again.
+        Fail! You did not supply enough data. Try again.
+        Wrong! Please enter the correct pincode. Try again.
+        Fail! You did not supply enough data. Try again.
+        Correct!
+        The password of user bandit25 is p7TaowMYrmu23Ol8hiZh9UvD0O9hpx8d
+
+        Exiting.
+</pre>
+
 ]]></content>
       <tags>
-        <tag>Life</tag>
+        <tag>Bash</tag>
+        <tag>CTF</tag>
+        <tag>OverTheWire</tag>
+        <tag>Bandit</tag>
       </tags>
   </entry>
   <entry>
@@ -1698,85 +1815,6 @@ Connection to localhost closed.
 <p>我们现在应该是以<code>bandit26</code>的身份登陆了。</p>
 <p>然后需要做的就是去取下一关的密码了。</p>
 <figure class="highlight bash"><table><tr><td class="code"><pre><span class="line"><span class="built_in">cat</span> /etc/bandit_pass/bandit26</span><br><span class="line"><span class="comment"># c7GvcKlw9mC7aUQaPx7nwFstuAIBw1o1</span></span><br></pre></td></tr></table></figure>]]></content>
-      <tags>
-        <tag>Bash</tag>
-        <tag>CTF</tag>
-        <tag>OverTheWire</tag>
-        <tag>Bandit</tag>
-      </tags>
-  </entry>
-  <entry>
-    <title>软件工程 第三周的博客</title>
-    <url>/2023/04/07/%E8%BD%AF%E4%BB%B6%E5%B7%A5%E7%A8%8B%20%E7%AC%AC%E4%B8%89%E5%91%A8%E7%9A%84%E5%8D%9A%E5%AE%A2/</url>
-    <content><![CDATA[<h2 id="简要概述-CTF-OverTheWire-Bandit-Level-24"><a href="#简要概述-CTF-OverTheWire-Bandit-Level-24" class="headerlink" title="简要概述 CTF OverTheWire Bandit Level 24"></a><em>简要概述 CTF OverTheWire Bandit Level 24</em></h2><h3 id="题目"><a href="#题目" class="headerlink" title="题目"></a><em>题目</em></h3><blockquote>
-<p>在端口 30002 上有一个守护进程正在监听，如果提供了 bandit24 的密码和一个秘密的 4 位数的数字密码，它将为您提供 bandit25 的密码。除了通过穷举全部 10000 种组合的方式以外，没有其他获得 pincode 的方法，这被称为暴力破解。</p>
-</blockquote>
-<p>大致思路如下：</p>
-<ul>
-<li>先写一个<code>script</code>，按要求进行排版输出到<code>stdout</code></li>
-<li>把输出的 10000 种组合<code>pipe</code>到<code>netcat</code>监视的<code>localhost:30002</code>进行测试</li>
-<li>直接输出到<code>stdout</code>可能会<code>timeout</code>打断进程，所以我们输出到<code>output.txt</code></li>
-<li>最后<code>cat</code>文本内容拿到密码</li>
-</ul>
-<p>先利用<code>ssh</code>连接到<code>bandit.labs.overthewire.org</code>的服务器，端口号<code>2220</code>，为此我们需要<code>bandit24</code>的密码。</p>
-<figure class="highlight bash"><table><tr><td class="code"><pre><span class="line">ssh bandit24@bandit.labs.overthewire.org -p 2220</span><br><span class="line"><span class="comment">#					VAfGXJ1PBSsPSnvsjI8p759leLZ9GGar</span></span><br></pre></td></tr></table></figure>
-
-<p>以<code>bandit24</code>进入 Level 24 之后先到系统文件夹<code>/tmp</code>下建立本关的临时文件夹。</p>
-<figure class="highlight bash"><table><tr><td class="code"><pre><span class="line"><span class="built_in">cd</span> /tmp; <span class="built_in">mktemp</span> -d</span><br><span class="line"></span><br><span class="line"><span class="comment"># /tmp/tmp.u4oQlmpmWL</span></span><br><span class="line"></span><br><span class="line"><span class="built_in">cd</span> /tmp/tmp.u4oQlmpmWL</span><br><span class="line"></span><br><span class="line"><span class="comment"># bandit24@bandit:/tmp/tmp.u4oQlmpmWL$</span></span><br></pre></td></tr></table></figure>
-
-<blockquote>
-<p><code>-d</code>代表<code>directory</code>，即告诉<code>mktemp</code>指令创建的临时文件属性为文件夹</p>
-</blockquote>
-<figure class="highlight bash"><table><tr><td class="code"><pre><span class="line"><span class="built_in">touch</span> script.sh</span><br><span class="line"></span><br><span class="line"><span class="built_in">chmod</span> 777 script.sh</span><br><span class="line"></span><br><span class="line">vim script.sh</span><br></pre></td></tr></table></figure>
-
-<blockquote>
-<p><code>touch</code>: 创建文件</p>
-</blockquote>
-<blockquote>
-<p><code>chmod</code> - <code>change mode</code>: 改变文档<code>rwx</code>权限</p>
-</blockquote>
-<ul>
-<li><code>r</code> - <code>read</code>: 读取权限<code>status code</code>为 4</li>
-<li><code>w</code> - <code>write</code>: 书写权限<code>status code</code>为 2</li>
-<li><code>x</code> - <code>execute</code>: 执行权限<code>status code</code>为 1</li>
-</ul>
-<p>进入文本编辑器之后，选定”插入“模式，按<code>i</code>键</p>
-<p>首行书写<code>shebang</code>行，选定使用哪个<code>shell</code>来执行该<code>script</code> - 我们选用<code>bash</code></p>
-<p>然后写我们的<code>entity body</code>的代码：</p>
-<figure class="highlight bash"><table><tr><td class="code"><pre><span class="line"><span class="meta">#!/bin/bash</span></span><br><span class="line"></span><br><span class="line"><span class="keyword">for</span> i <span class="keyword">in</span> &#123;0000..9999&#125;; <span class="keyword">do</span></span><br><span class="line">        <span class="built_in">echo</span> <span class="variable">$i</span></span><br><span class="line">        <span class="built_in">printf</span> <span class="string">&quot;%s %s\n&quot;</span> <span class="string">&quot;VAfGXJ1PBSsPSnvsjI8p759leLZ9GGar&quot;</span> <span class="string">&quot;<span class="variable">$i</span>&quot;</span></span><br><span class="line"><span class="keyword">done</span></span><br><span class="line"></span><br><span class="line"><span class="built_in">exit</span> 0</span><br><span class="line"></span><br></pre></td></tr></table></figure>
-
-<p>除了语法上微小的一点差异，该题的<code>syntax</code>和<code>C</code>的语法很相像，所以不赘述了。</p>
-<p>大致格式就是<code>for [ test statement]; do &lt;command&gt;; done</code></p>
-<p>编辑结束按<code>ESC</code>键回到普通模式，按<code>:</code>,然后输入指令<code>wq</code>，回车保存并退出。</p>
-<p>执行<code>script.sh</code>，并把结果<code>pipe</code>到<code>netcat</code>:</p>
-<figure class="highlight bash"><table><tr><td class="code"><pre><span class="line">./script.sh | nc localhost 30002 &gt; output.txt</span><br></pre></td></tr></table></figure>
-
-<p>然后<code>cat output.txt</code>读取文本内容，这是其中的一小部分：</p>
-<pre>
-        Fail! You did not supply enough data. Try again.
-        Wrong! Please enter the correct pincode. Try again.
-        Fail! You did not supply enough data. Try again.
-        Wrong! Please enter the correct pincode. Try again.
-        Fail! You did not supply enough data. Try again.
-        Wrong! Please enter the correct pincode. Try again.
-        Fail! You did not supply enough data. Try again.
-        Wrong! Please enter the correct pincode. Try again.
-        Fail! You did not supply enough data. Try again.
-        Wrong! Please enter the correct pincode. Try again.
-        Fail! You did not supply enough data. Try again.
-        Wrong! Please enter the correct pincode. Try again.
-        Fail! You did not supply enough data. Try again.
-        Wrong! Please enter the correct pincode. Try again.
-        Fail! You did not supply enough data. Try again.
-        Wrong! Please enter the correct pincode. Try again.
-        Fail! You did not supply enough data. Try again.
-        Correct!
-        The password of user bandit25 is p7TaowMYrmu23Ol8hiZh9UvD0O9hpx8d
-
-        Exiting.
-</pre>
-
-]]></content>
       <tags>
         <tag>Bash</tag>
         <tag>CTF</tag>
